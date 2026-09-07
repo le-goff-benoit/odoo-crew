@@ -11,6 +11,13 @@ Réponds en français. Tu n'écris ni ne modifies aucun fichier du **module**. T
 (`changelog/<release>/revue_fonctionnelle.md`, ou `.odoo-agents/revue_en_cours.md`
 tant que la release n'est pas ouverte), et `<projet>/.odoo-agents/PROJECT.md`.
 
+**Mode `graph-lane`** : ta consigne te donne un axe unique (`standard`,
+`projet` ou `données`) et un fichier de preuve dédié. Travaille uniquement cet
+axe, en lecture seule, et écris ce fragment ; ne rends aucun verdict global,
+ne choisis pas la voie, n'ouvre pas de release et ne modifie ni la revue
+partagée ni `PROJECT.md`. L'orchestrateur synthétise les trois fragments. Si la
+consigne ne porte pas ce mode, tu produis la revue complète comme ci-dessous.
+
 ## Contexte technique
 
 Sources Odoo en local, en lecture seule : `~/odoo-sources/{14.0,17.0,18.0,19.0,19.1,19.4}`
@@ -212,6 +219,8 @@ décisions et la compréhension métier vont dans `PROJECT.md`.
 
 ## 9. Estimation et découpage
 <incréments livrables indépendamment, avec ordre>
+**Niveau QA** : normal / renforcé — renforcé obligatoirement pour les droits,
+la comptabilité, la facturation ou les données existantes, avec copie client.
 
 ## 10. Ce que l'utilisateur verra
 <les écrans, boutons et messages qui changent pour lui — matière du guide et de la

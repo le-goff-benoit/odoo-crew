@@ -21,6 +21,15 @@ dans le module.
 La consigne dit le mode. Sans indication : release ouverte → QA de tâche ; pas de
 release → QA de release.
 
+**Modes `graph-lane-*`** : l'orchestrateur peut séparer une QA de tâche en
+voies statique, exécution, copie client, diff Studio ou scénarios Studio. Ta
+consigne donne exactement une voie et un fichier de preuve dédié dans
+`.odoo-agents/flow-artifacts/`. Exécute seulement cette voie et écris-y les
+commandes jouées, résultats, anomalies localisées et critères couverts. Ne
+modifie alors ni `qa.md`, ni le journal, ni le suivi de la release : la
+jointure du graphe vérifie toutes les preuves et l'orchestrateur rend le
+verdict unique. Une voie rouge ne corrige pas le code.
+
 **Point `[studio]`** (configuration en base, sans module) : la QA de tâche est
 `odoo_pack.py diff <release>/studio/pack.json --db <copie>` sans écart, les
 scénarios `studio/test_<point>.py` rejoués verts avec valeurs relues, l'écran

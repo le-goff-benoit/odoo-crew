@@ -25,6 +25,14 @@ CLAUDE_SKILLS="$HOME/.claude/skills"
 
 mkdir -p "$CLAUDE_AGENTS" "$CLAUDE_COMMANDS" "$CODEX_SKILLS" "$CLAUDE_SKILLS"
 
+echo "Validation du graphe Odoo…"
+python3 "$HERE/scripts/odoo_flow.py" validate
+python3 -m unittest discover -s "$HERE/tests" -q
+
+yaml_string() {
+    python3 -c 'import json, sys; print(json.dumps(sys.argv[1], ensure_ascii=False))' "$1"
+}
+
 emit() {
     local slug="$1" role="$2" tools="$3" short="$4" desc="$5" color="${6:-}"
 
@@ -32,7 +40,7 @@ emit() {
     {
         printf -- '---\n'
         printf 'name: %s\n' "$slug"
-        printf 'description: %s\n' "$desc"
+        printf 'description: %s\n' "$(yaml_string "$desc")"
         [ -n "$tools" ] && printf 'tools: %s\n' "$tools"
         printf 'model: inherit\n'
         [ -n "$color" ] && printf 'color: %s\n' "$color"
@@ -48,9 +56,9 @@ emit() {
     {
         printf -- '---\n'
         printf 'name: %s\n' "$slug"
-        printf 'description: %s\n' "$desc"
+        printf 'description: %s\n' "$(yaml_string "$desc")"
         printf 'metadata:\n'
-        printf '  short-description: %s\n' "$short"
+        printf '  short-description: %s\n' "$(yaml_string "$short")"
         printf -- '---\n\n'
         printf '<!-- Généré par ~/.odoo19-agents/build.sh — ne pas éditer ici.\n'
         printf '     Source : ~/.odoo19-agents/roles/%s.md -->\n\n' "$role"
@@ -80,7 +88,7 @@ emit "odoo-analyst" "functional-review" \
 emit "odoo-developer" "implementation" \
     "" \
     "Coder un module custom avec ses tests, dans la série du projet" \
-    "Développeur Odoo (17.0 → saas~19.x, dans la série du projet). Écrit ou modifie le code d'un module custom (modèles, vues, sécurité, assets, tests) dans la ligne éditoriale des sources de sa série : ordre des membres, models.Constraint ou _sql_constraints selon la série, Command, api.model_create_multi, <list>, chatter, sécurité livrée avec le code. Livre les tests avec le code, lint des fichiers touchés et tests ciblés avant de rendre." \
+    "Développeur Odoo (17.0 → saas~19.x, dans la série du projet). Écrit ou modifie le code d'un module custom (modèles, vues, sécurité, assets, tests) dans la ligne éditoriale des sources de sa série : ordre des membres, models.Constraint ou _sql_constraints selon la série, Command, api.model_create_multi, balise list, chatter, sécurité livrée avec le code. Livre les tests avec le code, lint des fichiers touchés et tests ciblés avant de rendre." \
     "green"
 
 emit "odoo-studio" "studio" \
@@ -153,8 +161,8 @@ emit_command() {
 
     {
         printf -- '---\n'
-        printf 'description: %s\n' "$desc"
-        [ -n "$hint" ] && printf 'argument-hint: %s\n' "$hint"
+        printf 'description: %s\n' "$(yaml_string "$desc")"
+        [ -n "$hint" ] && printf 'argument-hint: %s\n' "$(yaml_string "$hint")"
         printf -- '---\n\n'
         printf '<!-- Généré par ~/.odoo19-agents/build.sh — ne pas éditer ici.\n'
         printf '     Source : ~/.odoo19-agents/roles/%s.md -->\n\n' "$role"
@@ -167,9 +175,9 @@ emit_command() {
     {
         printf -- '---\n'
         printf 'name: %s\n' "$slug"
-        printf 'description: %s\n' "$desc"
+        printf 'description: %s\n' "$(yaml_string "$desc")"
         printf 'metadata:\n'
-        printf '  short-description: %s\n' "$short"
+        printf '  short-description: %s\n' "$(yaml_string "$short")"
         printf -- '---\n\n'
         printf '<!-- Généré par ~/.odoo19-agents/build.sh — ne pas éditer ici.\n'
         printf '     Source : ~/.odoo19-agents/roles/%s.md -->\n\n' "$role"
@@ -194,7 +202,7 @@ emit_command "odoo-env" "env" \
     "[projet] [add|list|check <nom>|secret <nom>]" \
     'Projet et action : $ARGUMENTS' \
     "Déclarer ou vérifier un environnement (prod, staging, test) sans exposer de secret" \
-    "Déclare ou vérifie les environnements Odoo d'un projet (production, staging, test, local) : ouvre une boîte de dialogue du bureau où l'humain saisit URL, base, identifiant et clé API — la clé va directement dans son trousseau GNOME, les métadonnées sans secret dans <projet>/.odoo-agents/instances.json (à commiter). Vérifie l'accès, la version et la cohérence de série. Ne demande, n'affiche et n'écrit jamais un secret."
+    "Déclare ou vérifie les environnements Odoo d'un projet (production, staging, test, local) : ouvre une boîte de dialogue du bureau où l'humain saisit URL, base, identifiant et clé API — la clé va directement dans son trousseau GNOME, les métadonnées sans secret dans le fichier .odoo-agents/instances.json du projet (à commiter). Vérifie l'accès, la version et la cohérence de série. Ne demande, n'affiche et n'écrit jamais un secret."
 
 emit_command "odoo-feedback" "retex" \
     "[période | projet | \"remarque à retenir\"]" \
@@ -211,9 +219,9 @@ emit_skill() {
         {
             printf -- '---\n'
             printf 'name: %s\n' "$slug"
-            printf 'description: %s\n' "$desc"
+            printf 'description: %s\n' "$(yaml_string "$desc")"
             printf 'metadata:\n'
-            printf '  short-description: %s\n' "$short"
+            printf '  short-description: %s\n' "$(yaml_string "$short")"
             printf -- '---\n\n'
             printf '<!-- Généré par ~/.odoo19-agents/build.sh — ne pas éditer ici.\n'
             printf '     Source : ~/.odoo19-agents/roles/%s.md -->\n\n' "$role"
@@ -229,7 +237,8 @@ emit_skill "camptocamp-docs" "docs" \
 
 # --- Contrôle : Claude et Codex doivent porter le même texte ------------------
 echo
-for role in functional-review:odoo-analyst implementation:odoo-developer qa-review:odoo-tester; do
+for role in functional-review:odoo-analyst implementation:odoo-developer \
+            studio:odoo-studio support:odoo-support qa-review:odoo-tester; do
     slug="${role##*:}"
     if diff -q <(sed '1,/^---$/d' "$CLAUDE_AGENTS/$slug.md" | sed '1,/^---$/d') \
                <(sed '1,/^---$/d' "$CODEX_SKILLS/$slug/SKILL.md" | sed '1,/^---$/d') >/dev/null; then

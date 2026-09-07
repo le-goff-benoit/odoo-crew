@@ -128,6 +128,8 @@ trompe fait plus de dégâts qu'un contrôle absent.
 ```bash
 # Dater le passage : le compteur de /odoo-close et la prochaine relecture partent d'ici
 sed -i "s/dernier-retex: [0-9-]*/dernier-retex: $(date +%F)/" ~/.odoo19-agents/LESSONS.md
+python3 ~/.odoo19-agents/scripts/odoo_flow.py validate
+python3 -m unittest discover -s ~/.odoo19-agents/tests -v
 ~/.odoo19-agents/build.sh
 # Non-régression : le lint doit rester propre là où il l'était
 ~/.odoo19-agents/scripts/odoo-lint.sh <un_module_sain>

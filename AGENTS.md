@@ -6,12 +6,14 @@ référentiel, scripts, stack). L'aiguillage Odoo de `~/.claude/CLAUDE.md` et
 
 ## Source unique et génération
 
-- `roles/*.md` et `routing.md` sont la **source unique** des profils, commandes
-  et skills. Les fichiers de `~/.claude/agents`, `~/.claude/commands`,
+- `roles/*.md`, `routing.md` et `workflows/odoo-workflow.json` sont la **source
+  unique** des profils, commandes, skills et transitions. Les fichiers de
+  `~/.claude/agents`, `~/.claude/commands`,
   `~/.claude/skills`, `~/.codex/skills` et les blocs délimités de
   `~/.claude/CLAUDE.md` / `~/.codex/AGENTS.md` sont **générés** par `build.sh` :
   ne jamais les éditer.
-- Après toute modification : `./build.sh`, qui vérifie que Claude et Codex
+- Après toute modification : `python3 scripts/odoo_flow.py validate`,
+  `python3 -m unittest discover -s tests -v`, puis `./build.sh`, qui vérifie que Claude et Codex
   portent le même texte. Une divergence (`≠`) est un défaut à corriger avant
   de commiter.
 - Les noms : rôles `odoo-analyst`, `odoo-developer`, `odoo-tester`,

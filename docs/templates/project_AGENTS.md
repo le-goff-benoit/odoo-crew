@@ -38,6 +38,12 @@ python3 ~/.odoo19-agents/scripts/odoo_briefing.py .
   métier, décisions actées, pièges connus) et `.odoo-agents/JOURNAL.md` (une
   entrée de quinze lignes au plus par intervention). À lire par le briefing, à
   compléter à chaque intervention.
+- **Graphe** : les chaînes gardent leur état local dans `.odoo-agents/flows/` ;
+  l'agent principal affiche `odoo_flow.py status` au début de chaque vague,
+  met seul l'état à jour et peut déléguer uniquement les nœuds indépendants.
+  Les lignes `AGENT`, `ORCHESTRATEUR` et `HUMAIN` du tableau de bord indiquent
+  qui agit et où se trouve le run. Les fragments parallèles vont dans
+  `.odoo-agents/flow-artifacts/`, jamais dans un livrable partagé.
 - **Données réelles** : copie locale restaurée (`odoo-restore.sh`) ; production
   en lecture seule, toute écriture confirmée par l'humain opération par opération.
 

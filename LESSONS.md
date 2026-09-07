@@ -1,6 +1,6 @@
 # Leçons — mémoire longue des agents Odoo
 
-<!-- dernier-retex: 2026-09-02 -->
+<!-- dernier-retex: 2026-09-07 -->
 
 > Le `JOURNAL.md` d'un projet retient ce qui s'est passé **sur ce projet**.
 > Ce fichier retient ce qui doit changer **dans la façon de travailler**, tous

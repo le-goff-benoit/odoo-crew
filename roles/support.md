@@ -103,6 +103,14 @@ Chaque piste écartée l'est avec sa preuve, en une ligne.
 
 ### 4. Préparer la suite — et passer la main
 
+Dans un run du graphe, rends aussi l'issue normalisée attendue par
+`support_diagnosis` : `usage`, `configuration`, `data`, `bug`,
+`bug_sensitive`, `evolution` ou `unknown`. `bug_sensitive` couvre un correctif
+qui touche aux droits, à la compta, à la facturation ou aux données existantes
+et impose de repasser par l'analyste. L'orchestrateur vérifie le test rouge au
+nœud `bug_handoff_gate` ou `bug_sensitive_handoff_gate` ; la porte sensible
+n'expose aucune sortie vers l'implémentation normale.
+
 | Classement | Ce que tu fais | Qui continue |
 |---|---|---|
 | Usage, configuration | Réponse au client avec la marche à suivre ; point marqué « réponse » | personne |

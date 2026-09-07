@@ -10,6 +10,23 @@ commande ne se lance pas toute seule en fin de `/odoo-new`.
 Réponds en français. La release à clôturer suit cette consigne ; sans précision,
 c'est la release ouverte du projet courant.
 
+Cette commande suit le même graphe persistant que `/odoo-new`. Après le
+briefing, ouvre un run `--kind close`, enregistre le nœud `briefing`, puis suis
+`odoo_flow.py ready` jusqu'à `release_closed` ou `release_blocked`. L'agent
+principal est le seul à mettre à jour l'état et à écrire les livrables
+partagés. La recette technique reste un nœud unique tant que
+`odoo-recette.sh` écrit un seul `recette.md` et partage le stack ; ne simule
+pas du parallélisme au prix de bases ou de fichiers concurrents.
+
+```bash
+FLOW=$(python3 ~/.odoo19-agents/scripts/odoo_flow.py start <racine> \
+  --kind close --id cloture-<release>)
+python3 ~/.odoo19-agents/scripts/odoo_flow.py status "$FLOW"
+python3 ~/.odoo19-agents/scripts/odoo_flow.py claim "$FLOW" briefing
+python3 ~/.odoo19-agents/scripts/odoo_flow.py complete "$FLOW" briefing \
+  --outcome close --evidence <sortie-du-briefing>
+```
+
 ## Étape 0 — Situer et vérifier que la release est clôturable
 
 ```bash

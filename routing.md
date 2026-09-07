@@ -22,6 +22,35 @@ décisions actées, pièges connus), dernières entrées de `JOURNAL.md`, releas
 changelog ouvert, leçons applicables. Si `.odoo-agents/` manque :
 `~/.odoo19-agents/scripts/odoo_project_scan.py <racine>`.
 
+## Orchestration en graphe
+
+Les chaînes Odoo suivent le graphe déclaré dans
+`~/.odoo19-agents/workflows/odoo-workflow.json`. L'agent principal en est
+l'orchestrateur et l'unique écrivain : il ouvre l'état avec `odoo_flow.py
+start`, demande les nœuds prêts avec `ready`, revendique un nœud et ses verrous
+avec `claim`, puis enregistre le résultat avec `complete` et une preuve réelle.
+Les revendications sont contrôlées entre les runs d'un même projet et les
+mises à jour d'état sont sérialisées entre processus. L'état local vit dans
+`<projet>/.odoo-agents/flows/` ; les livrables qui font foi restent dans la
+release et dans `JOURNAL.md`.
+
+Dans le terminal, affiche `odoo_flow.py status <flow>` au début de chaque vague
+et conserve la sortie humaine de `claim` et `complete`. Elle indique la
+position, les rôles actifs, les propriétaires, les prochaines étapes, le
+parallélisme et les attentes humaines. Donne à `--owner` un nom explicite qui
+identifie Claude/Codex et le rôle ; n'utilise `--json` que pour une lecture
+machine.
+
+Quand plusieurs nœuds prêts sont dans la même vague et que leurs verrous sont
+compatibles, l'orchestrateur peut les déléguer en parallèle aux profils
+indiqués par le graphe. Il ne délègue pas une étape courte par principe et ne
+fait jamais écrire deux agents dans le même module, la même base ou le même
+livrable partagé. Les agents spécialisés rendent une preuve isolée ;
+l'orchestrateur seul fusionne les fragments dans la revue, `qa.md`, la recette
+ou le journal. Une porte humaine ne se franchit qu'avec `--human-confirmed` et
+le chemin du fichier où la décision est consignée ; les protections de
+`odoo_instance.py` restent obligatoires pour toute production.
+
 ## Aiguillage
 
 | Nature de la demande | Réponse |
@@ -69,8 +98,10 @@ Règles :
   sans agent — dans la série du projet.
 - Toute intervention se termine par une entrée (≤ 15 lignes) dans le
   `JOURNAL.md` du projet ; le détail vit dans le dossier de la release.
-- Claude Code délègue aux sous-agents ; Codex applique les rôles
-  (`~/.odoo19-agents/roles/*.md`) lui-même, en séquence. Résultat identique.
+- Claude Code et Codex emploient la même définition de graphe. Ils délèguent
+  seulement les nœuds indépendants quand leur mécanisme de sous-agents est
+  disponible ; sinon l'agent principal applique le rôle lui-même. Le résultat
+  et les preuves attendues restent identiques.
 - Hors Odoo, cet aiguillage ne s'applique pas.
 
 ## Données réelles
