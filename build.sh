@@ -13,15 +13,31 @@
 #   ~/.codex/skills/odoo-{feature,release-close,retex}/ — les mêmes, côté Codex
 #   ~/.claude/skills/<nom>/SKILL.md    — skills Claude Code (camptocamp-docs)
 #
+# --output-root <répertoire> génère une distribution isolée, sans modifier les profils actifs.
+# --check vérifie les sorties sans les régénérer.
 # Relancer après toute modification d'un rôle ou de routing.md : ./build.sh
 
 set -euo pipefail
 
 HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-CLAUDE_AGENTS="$HOME/.claude/agents"
-CLAUDE_COMMANDS="$HOME/.claude/commands"
-CODEX_SKILLS="$HOME/.codex/skills"
-CLAUDE_SKILLS="$HOME/.claude/skills"
+DEST_ROOT="$HOME"
+CHECK_ONLY=0
+while [ $# -gt 0 ]; do
+    case "$1" in
+        --output-root)
+            [ $# -ge 2 ] && [ -n "$2" ] || { echo "--output-root exige un chemin" >&2; exit 2; }
+            DEST_ROOT="$(realpath -m -- "$2")"; shift 2 ;;
+        --check) CHECK_ONLY=1; shift ;;
+        *) echo "Usage: $0 [--output-root <répertoire isolé>] [--check]" >&2; exit 2 ;;
+    esac
+done
+if [ "$CHECK_ONLY" -eq 1 ]; then
+    exec python3 "$HERE/scripts/odoo_generated.py" "$DEST_ROOT"
+fi
+CLAUDE_AGENTS="$DEST_ROOT/.claude/agents"
+CLAUDE_COMMANDS="$DEST_ROOT/.claude/commands"
+CODEX_SKILLS="$DEST_ROOT/.codex/skills"
+CLAUDE_SKILLS="$DEST_ROOT/.claude/skills"
 
 mkdir -p "$CLAUDE_AGENTS" "$CLAUDE_COMMANDS" "$CODEX_SKILLS" "$CLAUDE_SKILLS"
 
@@ -151,8 +167,8 @@ inject_routing() {
     echo "  ✓ $target"
 }
 
-inject_routing "$HOME/.claude/CLAUDE.md" "# Développement Odoo"
-inject_routing "$HOME/.codex/AGENTS.md" "# Développement Odoo"
+inject_routing "$DEST_ROOT/.claude/CLAUDE.md" "# Développement Odoo"
+inject_routing "$DEST_ROOT/.codex/AGENTS.md" "# Développement Odoo"
 
 # --- Commandes --------------------------------------------------------------
 # emit_command <slug> <role> <argument-hint> <intro> <short> <description>
@@ -235,17 +251,6 @@ emit_skill "camptocamp-docs" "docs" \
     "Guide utilisateur, changelog, communication client à la charte Camptocamp" \
     "Livrables documentaires Camptocamp pour un client Odoo : guide utilisateur ou de décision (DOCX + PDF à la charte, captures depuis une copie locale restaurée), dossier de changelog d'une release (README, demande, recette navigateur, communication client). S'exécute UNIQUEMENT à la clôture d'une release (/odoo-close) ou sur demande explicite de l'humain — jamais pendant une tâche d'une release ouverte."
 
-# --- Contrôle : Claude et Codex doivent porter le même texte ------------------
-echo
-for role in functional-review:odoo-analyst implementation:odoo-developer \
-            studio:odoo-studio support:odoo-support qa-review:odoo-tester; do
-    slug="${role##*:}"
-    if diff -q <(sed '1,/^---$/d' "$CLAUDE_AGENTS/$slug.md" | sed '1,/^---$/d') \
-               <(sed '1,/^---$/d' "$CODEX_SKILLS/$slug/SKILL.md" | sed '1,/^---$/d') >/dev/null; then
-        echo "  = $slug : Claude et Codex identiques"
-    else
-        echo "  ≠ $slug : DIVERGENCE Claude / Codex" >&2
-    fi
-done
-echo
-echo "Terminé. Sources partagées : $HERE/roles/, $HERE/routing.md, $HERE/ODOO19_STYLE_GUIDE.md"
+# Tous les profils, commandes, skills et blocs de routing sont vérifiés.
+python3 "$HERE/scripts/odoo_generated.py" "$DEST_ROOT"
+echo "Terminé. Sources partagées : $HERE/roles/, $HERE/routing.md"

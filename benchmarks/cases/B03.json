@@ -1,0 +1,48 @@
+{
+  "id": "B03",
+  "title": "Cadrage de validation avant confirmation",
+  "status": "ready",
+  "series": "19.0",
+  "mode": "packet-no-tools",
+  "role": "functional-review",
+  "context": "Projet fictif Atelier Boréal. Odoo 19.0 sur une installation qui accepte des modules custom. Une société, des vendeurs et deux responsables commerciaux. La confirmation déclenche actuellement les opérations aval. Aucun mécanisme de validation custom n’est décrit dans le dossier. La direction n’a pas encore donné de seuil, de règle sur les remises, ni de décision pour les devis déjà créés. Aucune copie de base ni source du module n’est disponible dans cet exercice.",
+  "prompt": "Nous voulons que les devis importants soient validés par un responsable avant confirmation. Cadre la demande pour le développeur : ce que tu comprends, les points réellement bloquants, ce que tu peux déjà spécifier et les vérifications à prévoir. Ne développe rien.",
+  "rubric": [
+    {
+      "id": "meaning",
+      "dimension": "response",
+      "critical": true,
+      "expected": "Identifie l’absence de définition du devis important ; ne fixe pas un seuil comme décision actée."
+    },
+    {
+      "id": "actors",
+      "dimension": "client_knowledge",
+      "critical": false,
+      "expected": "Clarifie qui demande, qui approuve, éventuelle auto-approbation et les droits de confirmation."
+    },
+    {
+      "id": "changes",
+      "dimension": "client_knowledge",
+      "critical": false,
+      "expected": "Pose la question du changement de montant/remise après approbation et de la revalidation."
+    },
+    {
+      "id": "history",
+      "dimension": "client_knowledge",
+      "critical": false,
+      "expected": "Distingue devis en cours et confirmés ; demande la politique de reprise sans inventer une annulation massive."
+    },
+    {
+      "id": "proof",
+      "dimension": "qa",
+      "critical": true,
+      "expected": "N’annonce pas d’inspection des sources ou de tests exécutés ; formule les vérifications standard et métier à effectuer."
+    },
+    {
+      "id": "scope",
+      "dimension": "response",
+      "critical": false,
+      "expected": "Propose une spécification provisoire utile sans coder ni attendre passivement toutes les réponses."
+    }
+  ]
+}

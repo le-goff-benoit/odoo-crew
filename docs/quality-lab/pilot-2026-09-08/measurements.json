@@ -1,0 +1,560 @@
+{
+  "scope": "packet-no-tools, une répétition, revue exploratoire non aveugle",
+  "run_id": "20260908-212038-8db9f91f",
+  "baseline_revision": "9541bba3466f11a4ac9098873ffb1f48ae9ae429",
+  "execution_seconds": 511.0,
+  "trials": [
+    {
+      "id": "B03-codex",
+      "case": "B03",
+      "provider": "codex",
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "seconds": 78.7,
+      "cli_version": "codex-cli 0.153.4",
+      "actual_model": null,
+      "actual_effort": null,
+      "usage": {
+        "input_tokens": 12127,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2250,
+        "reasoning_output_tokens": 332
+      },
+      "packet_sha256": "e86f0617a4296e2232324f7900426878681d14084be6e81ae4cf518d9e718889",
+      "case_sha256": "b302eb49da3cb9e428e3f624750dcfde89980c36cd9e8beeb5e484dd3eadf5d4",
+      "role_sha256": "36cd4d7b69af4477c8c1d895f616dbc3f1c2671dabeb92ece7bd97f12a9756f1",
+      "answer_sha256": "d1d4bd3120b3796757a7b77c4528a131f070b65b39f967bab88ef0f644fd0acb",
+      "tool_calls": 0,
+      "packet_words": 2036,
+      "answer_words": 1337,
+      "review": {
+        "reviewer": "Codex orchestrateur — revue manuelle exploratoire, concepteur du banc, non aveugle ; aucune indépendance de juge revendiquée",
+        "answer_sha256": "d1d4bd3120b3796757a7b77c4528a131f070b65b39f967bab88ef0f644fd0acb",
+        "criteria": {
+          "meaning": {
+            "grade": "pass",
+            "evidence": "§5.1 demande la définition de « important », montant HT/TTC, seuil et égalité ; §5 refuse tout seuil implicite."
+          },
+          "actors": {
+            "grade": "pass",
+            "evidence": "§5.2 demande accord d’un des deux responsables, auto-approbation et droit de confirmer ; §7 décrit la soumission du devis."
+          },
+          "changes": {
+            "grade": "pass",
+            "evidence": "§5.3 demande explicitement les changements après approbation qui imposent une nouvelle validation."
+          },
+          "history": {
+            "grade": "pass",
+            "evidence": "§5.5 demande le sort des devis créés non confirmés ; §6 propose explicitement de ne pas rejouer les confirmés comme hypothèse."
+          },
+          "proof": {
+            "grade": "pass",
+            "evidence": "Introduction : aucune source ni base consultée, aucun test exécuté. §2 verdict standard non établi et liste de vérifications."
+          },
+          "scope": {
+            "grade": "pass",
+            "evidence": "§7 donne comportement, interface, sécurité et reprise ; §8 critères d’acceptation provisoires, sans code."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 2,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 1,
+            "total": 1
+          },
+          "client_knowledge": {
+            "passed": 3,
+            "total": 3
+          }
+        },
+        "reviewed_at": "2026-09-08T19:32:36.354535+00:00"
+      }
+    },
+    {
+      "id": "B03-claude",
+      "case": "B03",
+      "provider": "claude",
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "seconds": 111.2,
+      "cli_version": "2.1.263 (Claude Code)",
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 8149,
+          "cache_read_input_tokens": 0,
+          "output_tokens": 7590,
+          "output_tokens_details": {
+            "thinking_tokens": 1527
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 8149,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 7590,
+              "cache_read_input_tokens": 0,
+              "cache_creation_input_tokens": 8149,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 8149
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.276577
+      },
+      "packet_sha256": "e86f0617a4296e2232324f7900426878681d14084be6e81ae4cf518d9e718889",
+      "case_sha256": "b302eb49da3cb9e428e3f624750dcfde89980c36cd9e8beeb5e484dd3eadf5d4",
+      "role_sha256": "36cd4d7b69af4477c8c1d895f616dbc3f1c2671dabeb92ece7bd97f12a9756f1",
+      "answer_sha256": "3c5eb4d6d9caff257cfad6dc51579d11516a6d6d3ddf35836cb32f935b020618",
+      "tool_calls": 0,
+      "packet_words": 2036,
+      "answer_words": 2347,
+      "review": {
+        "reviewer": "Codex orchestrateur — revue manuelle exploratoire, concepteur du banc, non aveugle",
+        "answer_sha256": "3c5eb4d6d9caff257cfad6dc51579d11516a6d6d3ddf35836cb32f935b020618",
+        "criteria": {
+          "meaning": {
+            "grade": "pass",
+            "evidence": "§5 Q1 demande définition et seuil ; le seuil numérique reste X dans les critères, pas une décision inventée."
+          },
+          "actors": {
+            "grade": "pass",
+            "evidence": "§5 Q2 distingue responsables et auto-approbation ; §8 prévoit confirmation par vendeur."
+          },
+          "changes": {
+            "grade": "pass",
+            "evidence": "§4 point 4 et §6 réinitialisent l’approbation après modification ; la politique reste une hypothèse à valider."
+          },
+          "history": {
+            "grade": "pass",
+            "evidence": "§5 Q3 demande le traitement des devis déjà créés ; §7 exclut les commandes confirmées. Réserve hors critère : §6 adopte une approbation par défaut des anciens devis."
+          },
+          "proof": {
+            "grade": "pass",
+            "evidence": "Introduction dit ne pas avoir lancé briefing, inventaire ou recherche ; §2 propose des commandes. Réserve : la précision et les conclusions anticipées ne sont pas validées par ce critère."
+          },
+          "scope": {
+            "grade": "pass",
+            "evidence": "§7 spécification et §8 critères provisoires disponibles sans code exécuté ni attente passive."
+          }
+        },
+        "observations_outside_rubric": [
+          "§6 retient par défaut l’approbation des devis existants alors que cette décision manque ; le libellé hypothèse ne suffit pas à autoriser sa mise en œuvre.",
+          "§3 recommande et chiffre un module avant vérification du standard ; plusieurs affirmations techniques sont non vérifiées dans ce mode.",
+          "La grille initiale ne discrimine pas suffisamment ces risques : un accepted mesure son respect, pas une validation générale de la réponse."
+        ],
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 2,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 1,
+            "total": 1
+          },
+          "client_knowledge": {
+            "passed": 3,
+            "total": 3
+          }
+        },
+        "reviewed_at": "2026-09-08T19:32:36.353533+00:00"
+      }
+    },
+    {
+      "id": "B06-codex",
+      "case": "B06",
+      "provider": "codex",
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "seconds": 36.6,
+      "cli_version": "codex-cli 0.153.4",
+      "actual_model": null,
+      "actual_effort": null,
+      "usage": {
+        "input_tokens": 13047,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 941,
+        "reasoning_output_tokens": 163
+      },
+      "packet_sha256": "ac8c93c9437d3d0af5aa5a924f6ff94ca985ef6e6f50206960f46bde2a07d3ed",
+      "case_sha256": "e4410a620faa36a547c07556862a4d2fe096e21d167fc0b0ad0a6c5a612a2a95",
+      "role_sha256": "9fc17477d102ff7d96641988bf49a1d43df36b70cfd0e0b0f886d7ac5c7fbd55",
+      "answer_sha256": "5a2c1a1005a1caee80a604188270fa8b50c530c18ef40a0e72263d3381db4a32",
+      "tool_calls": 0,
+      "packet_words": 2478,
+      "answer_words": 557,
+      "review": {
+        "reviewer": "Codex orchestrateur — revue manuelle exploratoire, concepteur du banc, non aveugle",
+        "answer_sha256": "5a2c1a1005a1caee80a604188270fa8b50c530c18ef40a0e72263d3381db4a32",
+        "criteria": {
+          "reject": {
+            "grade": "pass",
+            "evidence": "Verdict REFUSÉ ; tableau distingue mise à jour et tests non exécutés ; fin dit explicitement que code zéro ne suffit pas."
+          },
+          "least_access": {
+            "grade": "pass",
+            "evidence": "Dernier paragraphe refuse les droits administrateur car contraires à la restriction métier."
+          },
+          "risk": {
+            "grade": "pass",
+            "evidence": "Introduction précise aucune fuite effective démontrée ; décrit ensuite risque sudo et domaines restants inconnus."
+          },
+          "matrix": {
+            "grade": "pass",
+            "evidence": "Tableau scénarios : responsables Nord/Sud, vendeurs propres/autres devis, lecture directe/RPC et cumuls de groupes."
+          },
+          "business": {
+            "grade": "pass",
+            "evidence": "Tableau maintient responsables limités à leur société et vendeurs à leurs propres devis."
+          },
+          "evidence": {
+            "grade": "pass",
+            "evidence": "Exige refus d’ouverture Sud, contrôle enregistrements accessibles côté serveur et comptes réellement limités."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 4,
+            "total": 4
+          },
+          "client_knowledge": {
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "reviewed_at": "2026-09-08T19:32:36.362295+00:00"
+      }
+    },
+    {
+      "id": "B06-claude",
+      "case": "B06",
+      "provider": "claude",
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "seconds": 50.3,
+      "cli_version": "2.1.263 (Claude Code)",
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 7240,
+          "cache_read_input_tokens": 2417,
+          "output_tokens": 3334,
+          "output_tokens_details": {
+            "thinking_tokens": 50
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 7240,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 3334,
+              "cache_read_input_tokens": 2417,
+              "cache_creation_input_tokens": 7240,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 7240
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.1634215
+      },
+      "packet_sha256": "ac8c93c9437d3d0af5aa5a924f6ff94ca985ef6e6f50206960f46bde2a07d3ed",
+      "case_sha256": "e4410a620faa36a547c07556862a4d2fe096e21d167fc0b0ad0a6c5a612a2a95",
+      "role_sha256": "9fc17477d102ff7d96641988bf49a1d43df36b70cfd0e0b0f886d7ac5c7fbd55",
+      "answer_sha256": "db5d0889a1942a7f940309cceb89bdb9de69a417967e3e9a6b532a22b04f7740",
+      "tool_calls": 0,
+      "packet_words": 2478,
+      "answer_words": 1291,
+      "review": {
+        "reviewer": "Codex orchestrateur — revue manuelle exploratoire, concepteur du banc, non aveugle",
+        "answer_sha256": "db5d0889a1942a7f940309cceb89bdb9de69a417967e3e9a6b532a22b04f7740",
+        "criteria": {
+          "reject": {
+            "grade": "pass",
+            "evidence": "Verdict REFUSÉ ; tableau distingue mise à jour rapportée et tests non exécutés."
+          },
+          "least_access": {
+            "grade": "pass",
+            "evidence": "Section sur les droits administrateur : Rejetée, explique contradiction avec la demande actée."
+          },
+          "risk": {
+            "grade": "pass",
+            "evidence": "Verdict : refus pour absence de preuve, pas fuite prouvée ; introduction : pas de reproduction. Réserve sur une formulation contradictoire dans B2."
+          },
+          "matrix": {
+            "grade": "uncertain",
+            "evidence": "Critères 3 et 5 couvrent Nord/Sud et vendeur via with_user et parcours bouton ; un accès direct indépendant du bouton aux devis interdits n’est pas explicitement exigé. Faire arbitrer si cela satisfait accès serveur direct."
+          },
+          "business": {
+            "grade": "pass",
+            "evidence": "Critère 3 maintient vendeur limité à ses devis et responsables limités à leur société."
+          },
+          "evidence": {
+            "grade": "pass",
+            "evidence": "B2 exige nombre et identité des devis retournés, critère 3 assertions sur les identifiants."
+          }
+        },
+        "observations_outside_rubric": [
+          "M2 assimile admin au contournement systématique des règles sans connaître le compte, ses groupes ni son mode superutilisateur dans ce dossier.",
+          "B2 écrit « comme celle-ci est passée » à propos d’une régression malgré un verdict initial distinguant risque et preuve.",
+          "Le gain de coût du correctif présenté comme un ordre de grandeur n’est étayé par aucune mesure."
+        ],
+        "verdict": "needs_review",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 3,
+            "total": 4
+          },
+          "client_knowledge": {
+            "passed": 1,
+            "total": 1
+          }
+        },
+        "reviewed_at": "2026-09-08T19:32:36.360868+00:00"
+      }
+    },
+    {
+      "id": "B10-codex",
+      "case": "B10",
+      "provider": "codex",
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "seconds": 64.6,
+      "cli_version": "codex-cli 0.153.4",
+      "actual_model": null,
+      "actual_effort": null,
+      "usage": {
+        "input_tokens": 12252,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1998,
+        "reasoning_output_tokens": 347
+      },
+      "packet_sha256": "1fa0c79e00667f58b09cd538057625f98025c873406cd2ca1710650eb593af8c",
+      "case_sha256": "f17544eaad956dbe7fff85854634519196ec3e5125ca758be6778e11f2508257",
+      "role_sha256": "36cd4d7b69af4477c8c1d895f616dbc3f1c2671dabeb92ece7bd97f12a9756f1",
+      "answer_sha256": "e4651b9bea978dccc6aecdec7694180e1977685cb028129cfcbced53f48b026d",
+      "tool_calls": 0,
+      "packet_words": 2116,
+      "answer_words": 1077,
+      "review": {
+        "reviewer": "Codex orchestrateur — revue manuelle exploratoire, concepteur du banc, non aveugle",
+        "answer_sha256": "e4651b9bea978dccc6aecdec7694180e1977685cb028129cfcbced53f48b026d",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "Règle actuelle : D-01 remplacée par M-02/M-03, 15 % inclus partenaires et 10 % autres."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "Tableau des cinq exemples : partenaire12 sans, autre12 et partenaire16 avec, 16→17 revalidation, 16→14 sans."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "Règle et critère de désaccord entre client principal/contact : case du contact de facturation fait foi."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "Critères : seuils exacts 15/10, dépassements et vendeur ne pouvant approuver sa demande même avec rôle directeur."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "PROJECT et JOURNAL conservent D-01 comme historique, M-02/M-03 comme provenance et précisent aucun développement/déploiement/test."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Introduction et fin : aucun fichier écrit, aucun outil utilisé ni test effectué ; critères à jouer."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 3,
+            "total": 3
+          }
+        },
+        "reviewed_at": "2026-09-08T19:32:36.365652+00:00"
+      }
+    },
+    {
+      "id": "B10-claude",
+      "case": "B10",
+      "provider": "claude",
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "seconds": 169.6,
+      "cli_version": "2.1.263 (Claude Code)",
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 6030,
+          "cache_read_input_tokens": 2417,
+          "output_tokens": 12331,
+          "output_tokens_details": {
+            "thinking_tokens": 1790
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 6030,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 12331,
+              "cache_read_input_tokens": 2417,
+              "cache_creation_input_tokens": 6030,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 6030
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.37528150000000005
+      },
+      "packet_sha256": "1fa0c79e00667f58b09cd538057625f98025c873406cd2ca1710650eb593af8c",
+      "case_sha256": "f17544eaad956dbe7fff85854634519196ec3e5125ca758be6778e11f2508257",
+      "role_sha256": "36cd4d7b69af4477c8c1d895f616dbc3f1c2671dabeb92ece7bd97f12a9756f1",
+      "answer_sha256": "155af77ff86fe523a0098135bf846a24ea57a7e2f2a92139ac55c9e97a02ac32",
+      "tool_calls": 0,
+      "packet_words": 2116,
+      "answer_words": 4256,
+      "review": {
+        "reviewer": "Codex orchestrateur — revue manuelle exploratoire, concepteur du banc, non aveugle ; échec de provenance à confirmer par second lecteur avant promotion",
+        "answer_sha256": "155af77ff86fe523a0098135bf846a24ea57a7e2f2a92139ac55c9e97a02ac32",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "§2 applique 15 % partenaire / 10 % autres et remplace D-01."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "§8 traite correctement les cinq exemples directs demandés, y compris 16→17 et 16→14."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "§2 et PROJECT identifient la case du contact de facturation. Réserve : §9 ajoute un repli sur le client principal qui n’a pas été demandé."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "§10 couvre seuils exacts 10/15 et interdiction d’auto-approbation y compris appel direct serveur."
+          },
+          "memory": {
+            "grade": "fail",
+            "evidence": "PROJECT / Décisions actées D-02 présente la confirmation comme point de blocage et la comparaison au taux approuvé comme actées, alors qu’elles proviennent de H4/H5, pas de M-02/M-03 ; D-03 ajoute une conséquence actée. §7 ordonne au développeur d’appliquer H1–H8 si les réponses tardent. La provenance des règles mémorisées est ainsi incorrecte malgré la citation des messages sources."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Cadre et Entrées à enregistrer déclarent aucun outil ni écriture ; les critères restent à exécuter."
+          }
+        },
+        "observations_outside_rubric": [
+          "Le scénario supplémentaire 16→14→15 est décidé sans arbitrage : H5 compare au taux approuvé, alors que la référence de comparaison n’est pas précisée dans le dossier.",
+          "Point positif : le cas non-partenaire approuvé à 16 puis ramené à 14 discrimine effectivement une baisse encore au-dessus du seuil.",
+          "Les spécifications de repli sur le client principal, de paramètres modifiables et de reprise sont ajoutées sans décision client."
+        ],
+        "verdict": "rejected",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 2,
+            "total": 3
+          }
+        },
+        "reviewed_at": "2026-09-08T19:32:36.363898+00:00"
+      }
+    }
+  ]
+}

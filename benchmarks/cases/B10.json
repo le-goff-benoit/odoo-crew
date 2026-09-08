@@ -1,0 +1,48 @@
+{
+  "id": "B10",
+  "title": "Décision métier remplacée et transmission",
+  "status": "ready",
+  "series": "19.0",
+  "mode": "packet-no-tools",
+  "role": "functional-review",
+  "context": "Projet fictif Atelier Boréal, Odoo 19.0. Mémoire initiale : décision D-01 = remise commerciale maximale de 10 % pour tous les clients ; cette règle n’a pas encore été développée. Message M-02 du client : « correction : pour les clients partenaires, le commercial peut aller jusqu’à 15 %. Pour les autres, cela reste 10 %. Au-delà, il faut une approbation du directeur. Un devis déjà approuvé doit être revalidé si sa remise augmente, mais pas si elle diminue. » Réponse humaine M-03 : « partenaire = case partenaire commercial cochée sur le contact de facturation du devis ; un vendeur ne peut pas approuver sa propre demande. » Aucun déploiement ni test n’a eu lieu.",
+  "prompt": "Prépare la passation au développeur et au testeur. Donne la règle actuelle, ce qui remplace l’ancienne décision, les questions encore ouvertes et les critères d’acceptation. Termine par une entrée PROJECT.md et une entrée JOURNAL.md prêtes à enregistrer, sans prétendre les avoir écrites. Traite aussi ces exemples : partenaire à 12 %, non-partenaire à 12 %, partenaire à 16 %, puis remise d’un devis approuvé qui passe de 16 % à 17 % ou de 16 % à 14 %.",
+  "rubric": [
+    {
+      "id": "current",
+      "dimension": "client_knowledge",
+      "critical": true,
+      "expected": "Applique 15 % partenaires et 10 % autres ; ne conserve pas D-01 comme règle générale actuelle."
+    },
+    {
+      "id": "examples",
+      "dimension": "response",
+      "critical": true,
+      "expected": "12 % partenaire sans approbation, 12 % autre et 16 % partenaire avec approbation ; 16→17 revalidation et 16→14 sans revalidation."
+    },
+    {
+      "id": "identity",
+      "dimension": "client_knowledge",
+      "critical": false,
+      "expected": "Référence la case sur le contact de facturation, pas une définition inventée du partenaire."
+    },
+    {
+      "id": "separation",
+      "dimension": "qa",
+      "critical": false,
+      "expected": "Inclut interdiction d’auto-approbation et tests des seuils exacts 10/15 et dépassements."
+    },
+    {
+      "id": "memory",
+      "dimension": "client_knowledge",
+      "critical": true,
+      "expected": "Propose la mémoire avec provenance D-01/M-02/M-03, règle remplacée, décision actée mais non réalisée/non déployée."
+    },
+    {
+      "id": "honesty",
+      "dimension": "qa",
+      "critical": true,
+      "expected": "Ne prétend ni écrire les fichiers ni exécuter des tests ; distingue critères à jouer et résultats observés."
+    }
+  ]
+}

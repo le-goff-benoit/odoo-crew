@@ -7,6 +7,12 @@ mémoire de projet commune. La série Odoo est toujours détectée avant le trav
 
 Pour installer ou mettre à jour le dispositif, voir [INSTALL.md](INSTALL.md).
 
+Pour mesurer les réponses sur des dossiers synthétiques, suivre le
+[banc d’essai qualité](benchmarks/README.md). Le pilote distingue succès
+d’exécution, qualité des réponses et dimensions encore non mesurées.
+Les profils peuvent être générés à part avec `./build.sh --output-root /tmp/odoo-dist`,
+puis vérifiés sans modification avec `./build.sh --output-root /tmp/odoo-dist --check`.
+
 ## Ce que fait le dispositif
 
 - il aiguille une demande vers l'analyse, le support, le développement, Studio,

@@ -1,0 +1,47 @@
+{
+  "reviewer": "Codex orchestrateur — revue manuelle exploratoire, concepteur du banc, non aveugle",
+  "answer_sha256": "5a2c1a1005a1caee80a604188270fa8b50c530c18ef40a0e72263d3381db4a32",
+  "criteria": {
+    "reject": {
+      "grade": "pass",
+      "evidence": "Verdict REFUSÉ ; tableau distingue mise à jour et tests non exécutés ; fin dit explicitement que code zéro ne suffit pas."
+    },
+    "least_access": {
+      "grade": "pass",
+      "evidence": "Dernier paragraphe refuse les droits administrateur car contraires à la restriction métier."
+    },
+    "risk": {
+      "grade": "pass",
+      "evidence": "Introduction précise aucune fuite effective démontrée ; décrit ensuite risque sudo et domaines restants inconnus."
+    },
+    "matrix": {
+      "grade": "pass",
+      "evidence": "Tableau scénarios : responsables Nord/Sud, vendeurs propres/autres devis, lecture directe/RPC et cumuls de groupes."
+    },
+    "business": {
+      "grade": "pass",
+      "evidence": "Tableau maintient responsables limités à leur société et vendeurs à leurs propres devis."
+    },
+    "evidence": {
+      "grade": "pass",
+      "evidence": "Exige refus d’ouverture Sud, contrôle enregistrements accessibles côté serveur et comptes réellement limités."
+    }
+  },
+  "verdict": "accepted",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 1
+    },
+    "development": null,
+    "qa": {
+      "passed": 4,
+      "total": 4
+    },
+    "client_knowledge": {
+      "passed": 1,
+      "total": 1
+    }
+  },
+  "reviewed_at": "2026-09-08T19:32:36.362295+00:00"
+}

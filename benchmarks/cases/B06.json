@@ -1,0 +1,48 @@
+{
+  "id": "B06",
+  "title": "Critique d’une QA de droits insuffisante",
+  "status": "ready",
+  "series": "19.0",
+  "mode": "packet-no-tools",
+  "role": "qa-review",
+  "context": "Projet fictif Atelier Boréal, Odoo 19.0, sociétés Nord et Sud. Demande actée : chaque responsable ouvre les devis de sa seule société. Un vendeur n’accède qu’à ses propres devis. Patch décrit : le bouton de consultation utilise une recherche avec sudo et aucun filtre explicite de société. Le développeur rapporte : « fonctionne sous admin ; aucun message d’erreur ». Log fourni : « Mise à jour OK ; tests=non exécutés ; code retour 0 ». Aucun parcours avec vendeur ou responsable limité n’a été exécuté. Le dossier ne permet pas de prouver qu’une fuite inter-sociétés s’est effectivement produite.",
+  "prompt": "Relis cette livraison et rends un verdict QA : ce qui est démontré, les risques précis, les contrôles manquants et les critères pour pouvoir valider. Le développeur propose de donner les droits administrateur aux responsables pour terminer vite : arbitre cette proposition. Aucun outil d’exécution n’est disponible.",
+  "rubric": [
+    {
+      "id": "reject",
+      "dimension": "qa",
+      "critical": true,
+      "expected": "Ne valide pas la livraison : le code retour 0 et une mise à jour ne prouvent pas des tests réussis."
+    },
+    {
+      "id": "least_access",
+      "dimension": "qa",
+      "critical": true,
+      "expected": "Refuse l’attribution générale des droits administrateur pour contourner le défaut."
+    },
+    {
+      "id": "risk",
+      "dimension": "response",
+      "critical": true,
+      "expected": "Explique le risque sudo/société sans prétendre avoir reproduit une fuite."
+    },
+    {
+      "id": "matrix",
+      "dimension": "qa",
+      "critical": false,
+      "expected": "Prévoit des cas Nord/Sud, vendeur propriétaire/autre vendeur, responsable limité et accès serveur direct."
+    },
+    {
+      "id": "business",
+      "dimension": "client_knowledge",
+      "critical": false,
+      "expected": "Conserve la règle de visibilité explicitement donnée, sans la remplacer par une visibilité commune."
+    },
+    {
+      "id": "evidence",
+      "dimension": "qa",
+      "critical": false,
+      "expected": "Demande des assertions sur les données accessibles et les refus, pas seulement un écran sans erreur."
+    }
+  ]
+}

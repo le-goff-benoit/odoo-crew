@@ -1,0 +1,52 @@
+{
+  "reviewer": "Codex orchestrateur — revue manuelle exploratoire, concepteur du banc, non aveugle ; échec de provenance à confirmer par second lecteur avant promotion",
+  "answer_sha256": "155af77ff86fe523a0098135bf846a24ea57a7e2f2a92139ac55c9e97a02ac32",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "§2 applique 15 % partenaire / 10 % autres et remplace D-01."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "§8 traite correctement les cinq exemples directs demandés, y compris 16→17 et 16→14."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "§2 et PROJECT identifient la case du contact de facturation. Réserve : §9 ajoute un repli sur le client principal qui n’a pas été demandé."
+    },
+    "separation": {
+      "grade": "pass",
+      "evidence": "§10 couvre seuils exacts 10/15 et interdiction d’auto-approbation y compris appel direct serveur."
+    },
+    "memory": {
+      "grade": "fail",
+      "evidence": "PROJECT / Décisions actées D-02 présente la confirmation comme point de blocage et la comparaison au taux approuvé comme actées, alors qu’elles proviennent de H4/H5, pas de M-02/M-03 ; D-03 ajoute une conséquence actée. §7 ordonne au développeur d’appliquer H1–H8 si les réponses tardent. La provenance des règles mémorisées est ainsi incorrecte malgré la citation des messages sources."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "Cadre et Entrées à enregistrer déclarent aucun outil ni écriture ; les critères restent à exécuter."
+    }
+  },
+  "observations_outside_rubric": [
+    "Le scénario supplémentaire 16→14→15 est décidé sans arbitrage : H5 compare au taux approuvé, alors que la référence de comparaison n’est pas précisée dans le dossier.",
+    "Point positif : le cas non-partenaire approuvé à 16 puis ramené à 14 discrimine effectivement une baisse encore au-dessus du seuil.",
+    "Les spécifications de repli sur le client principal, de paramètres modifiables et de reprise sont ajoutées sans décision client."
+  ],
+  "verdict": "rejected",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 1
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 2,
+      "total": 3
+    }
+  },
+  "reviewed_at": "2026-09-08T19:32:36.363898+00:00"
+}

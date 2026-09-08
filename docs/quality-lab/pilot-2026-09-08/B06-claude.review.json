@@ -1,0 +1,52 @@
+{
+  "reviewer": "Codex orchestrateur — revue manuelle exploratoire, concepteur du banc, non aveugle",
+  "answer_sha256": "db5d0889a1942a7f940309cceb89bdb9de69a417967e3e9a6b532a22b04f7740",
+  "criteria": {
+    "reject": {
+      "grade": "pass",
+      "evidence": "Verdict REFUSÉ ; tableau distingue mise à jour rapportée et tests non exécutés."
+    },
+    "least_access": {
+      "grade": "pass",
+      "evidence": "Section sur les droits administrateur : Rejetée, explique contradiction avec la demande actée."
+    },
+    "risk": {
+      "grade": "pass",
+      "evidence": "Verdict : refus pour absence de preuve, pas fuite prouvée ; introduction : pas de reproduction. Réserve sur une formulation contradictoire dans B2."
+    },
+    "matrix": {
+      "grade": "uncertain",
+      "evidence": "Critères 3 et 5 couvrent Nord/Sud et vendeur via with_user et parcours bouton ; un accès direct indépendant du bouton aux devis interdits n’est pas explicitement exigé. Faire arbitrer si cela satisfait accès serveur direct."
+    },
+    "business": {
+      "grade": "pass",
+      "evidence": "Critère 3 maintient vendeur limité à ses devis et responsables limités à leur société."
+    },
+    "evidence": {
+      "grade": "pass",
+      "evidence": "B2 exige nombre et identité des devis retournés, critère 3 assertions sur les identifiants."
+    }
+  },
+  "observations_outside_rubric": [
+    "M2 assimile admin au contournement systématique des règles sans connaître le compte, ses groupes ni son mode superutilisateur dans ce dossier.",
+    "B2 écrit « comme celle-ci est passée » à propos d’une régression malgré un verdict initial distinguant risque et preuve.",
+    "Le gain de coût du correctif présenté comme un ordre de grandeur n’est étayé par aucune mesure."
+  ],
+  "verdict": "needs_review",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 1
+    },
+    "development": null,
+    "qa": {
+      "passed": 3,
+      "total": 4
+    },
+    "client_knowledge": {
+      "passed": 1,
+      "total": 1
+    }
+  },
+  "reviewed_at": "2026-09-08T19:32:36.360868+00:00"
+}

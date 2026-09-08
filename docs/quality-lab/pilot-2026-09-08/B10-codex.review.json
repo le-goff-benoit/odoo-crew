@@ -1,0 +1,47 @@
+{
+  "reviewer": "Codex orchestrateur — revue manuelle exploratoire, concepteur du banc, non aveugle",
+  "answer_sha256": "e4651b9bea978dccc6aecdec7694180e1977685cb028129cfcbced53f48b026d",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "Règle actuelle : D-01 remplacée par M-02/M-03, 15 % inclus partenaires et 10 % autres."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "Tableau des cinq exemples : partenaire12 sans, autre12 et partenaire16 avec, 16→17 revalidation, 16→14 sans."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "Règle et critère de désaccord entre client principal/contact : case du contact de facturation fait foi."
+    },
+    "separation": {
+      "grade": "pass",
+      "evidence": "Critères : seuils exacts 15/10, dépassements et vendeur ne pouvant approuver sa demande même avec rôle directeur."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "PROJECT et JOURNAL conservent D-01 comme historique, M-02/M-03 comme provenance et précisent aucun développement/déploiement/test."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "Introduction et fin : aucun fichier écrit, aucun outil utilisé ni test effectué ; critères à jouer."
+    }
+  },
+  "verdict": "accepted",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 1
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 3,
+      "total": 3
+    }
+  },
+  "reviewed_at": "2026-09-08T19:32:36.365652+00:00"
+}
