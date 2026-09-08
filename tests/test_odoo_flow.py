@@ -10,6 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parent.parent
+sys.path.insert(0, str(ROOT / "scripts"))
 SPEC = importlib.util.spec_from_file_location(
     "odoo_flow", ROOT / "scripts" / "odoo_flow.py"
 )
@@ -24,6 +25,50 @@ def finish(state, graph, node, outcome):
 
 
 class GraphDefinitionTest(unittest.TestCase):
+    def test_physical_resource_conflicts_across_projects(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            graph = json.loads(GRAPH_PATH.read_text())
+            graph['nodes']['briefing']['locks'] = [{'resource': 'qa_db_module', 'mode': 'write'}]
+            graph_file = root / 'graph.json'
+            graph_file.write_text(json.dumps(graph))
+            states = []
+            for name in ('one', 'two'):
+                project = root / name
+                (project / '.odoo-agents').mkdir(parents=True)
+                config = {'schema': 1, 'registry': str(root / 'shared.json'), 'bindings': {
+                    'qa_db_module': {'id': 'postgresql://LOCALHOST/synthetic', 'parents': ['stack:synthetic']}}}
+                (project / '.odoo-agents/resources.json').write_text(json.dumps(config))
+                state = FLOW.new_state(project, 'development', name, graph_file)
+                path = project / 'state.json'
+                FLOW.write_state(path, state)
+                states.append(path)
+            FLOW.claim_node(states[0], graph_file, 'briefing', 'codex-one')
+            with self.assertRaises(FLOW.FlowError):
+                FLOW.claim_node(states[1], graph_file, 'briefing', 'claude-two')
+            FLOW.release_claim(states[0], graph_file, 'briefing', 'codex-one', 'finished isolated work')
+            FLOW.claim_node(states[1], graph_file, 'briefing', 'claude-two')
+
+    def test_stack_write_conflicts_with_child_database_but_siblings_can_run(self):
+        state = {'run_id': 'test', 'project': '/synthetic', 'resource_bindings': {
+            'db1': {'id': 'postgresql://localhost/one', 'parents': ['stack:synthetic']},
+            'db2': {'id': 'postgresql://localhost/two', 'parents': ['stack:synthetic']},
+            'stack': {'id': 'stack:synthetic'}}}
+        def locks(name):
+            return FLOW.resolve_locks({'locks': [{'resource': name, 'mode': 'write'}]}, state)
+        self.assertTrue(FLOW.locks_compatible(locks('db1'), locks('db2')))
+        self.assertFalse(FLOW.locks_compatible(locks('stack'), locks('db1')))
+
+    def test_empty_file_or_directory_is_not_evidence(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            empty = Path(tmp) / 'empty.md'
+            empty.touch()
+            for path in (Path(tmp), empty):
+                with self.assertRaises(FLOW.FlowError):
+                    FLOW.evidence_files([str(path)])
+            empty.write_text('Test exécuté : 3 critères satisfaits.')
+            self.assertEqual(FLOW.evidence_files([str(empty)]), [str(empty)])
+
     @classmethod
     def setUpClass(cls):
         cls.graph = json.loads(GRAPH_PATH.read_text(encoding="utf-8"))
@@ -70,6 +115,21 @@ class FlowExecutionTest(unittest.TestCase):
 
     def state(self, kind):
         return FLOW.new_state(self.project, kind, "test", GRAPH_PATH)
+
+    def test_completion_rejects_stale_structured_evidence(self):
+        from odoo_evidence import execute
+        code = self.project / 'code.py'
+        code.write_text('value = 1')
+        proof = self.project / 'proof.json'
+        execute(self.project, ['code.py'], proof, [sys.executable, '-c', 'print("checked")'])
+        state = self.state('development')
+        path = self.project / 'state.json'
+        FLOW.write_state(path, state)
+        FLOW.claim_node(path, GRAPH_PATH, 'briefing', 'codex-test')
+        code.write_text('value = 2')
+        with self.assertRaisesRegex(FLOW.FlowError, 'code changé'):
+            FLOW.complete_claimed_node(path, GRAPH_PATH, 'briefing', 'development', [str(proof)], None, 'codex-test', False)
+        self.assertIn('briefing', json.loads(path.read_text())['claims'])
 
     def test_normal_module_path_forks_and_joins(self):
         state = self.state("development")
@@ -324,6 +384,29 @@ class FlowExecutionTest(unittest.TestCase):
         graph_copy.write_text(GRAPH_PATH.read_text(encoding="utf-8") + "\n", encoding="utf-8")
         with self.assertRaisesRegex(FLOW.FlowError, "graphe a changé"):
             FLOW.load_state(state_path, graph_copy)
+
+    def test_claim_can_be_released_even_after_graph_disappears(self):
+        state = self.state('development')
+        state_path = self.project / 'state.json'
+        FLOW.write_state(state_path, state)
+        FLOW.claim_node(state_path, GRAPH_PATH, 'briefing', 'codex-test')
+        result = subprocess.run([sys.executable, str(ROOT / 'scripts/odoo_flow.py'),
+                                 '--graph', str(self.project / 'missing.json'), 'release',
+                                 str(state_path), 'briefing', '--owner', 'codex-test', '--reason', 'interruption'],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        saved = FLOW.load_json(state_path)
+        self.assertFalse(saved['claims'])
+        self.assertTrue(saved['start_pending'])
+
+    def test_migration_rejects_changed_meaning_of_active_edge(self):
+        state = self.state('development')
+        finish(state, self.graph, 'briefing', 'development')
+        altered = json.loads(json.dumps(self.graph))
+        active = next(edge for edge in altered['edges'] if state['tokens'].get(edge['id']))
+        active['to'] = 'task_done'
+        with self.assertRaises(FLOW.FlowError):
+            FLOW.validate_migration(state, altered)
 
     def test_start_directories_are_local_git_ignored(self):
         FLOW.ensure_local_flow_dirs(self.project)

@@ -14,12 +14,12 @@ quelques Ko qui contient tout ce qu'un agent doit savoir avant d'agir :
   - les formes attendues dans cette série (ce qui diffère du guide 19.0).
 
 Usage : odoo_briefing.py <chemin_du_projet_ou_du_module> [--series X] [--journal N]
-                          [--full-journal]
+                          [--full-journal] [--offline]
 """
 
 from __future__ import annotations
 
-import os
+import json
 import re
 import subprocess
 import sys
@@ -71,7 +71,9 @@ def section(title: str) -> str:
 def hand_written(project_md: Path) -> str:
     """Tout ce qui suit le bloc relevé : compréhension, décisions, pièges."""
     text = project_md.read_text(encoding="utf-8", errors="replace")
-    _, _, tail = text.partition("<!-- odoo-agents:relevé fin -->")
+    _, marker, tail = text.partition("<!-- odoo-agents:relevé fin -->")
+    if not marker:
+        tail = text
     tail = re.sub(r"<!--.*?-->", "", tail, flags=re.S)
     # Les paragraphes-gabarits « (à compléter : …) » ne portent aucune information.
     tail = re.sub(r"\*\(à compléter[^)]*\)\*", "", tail)
@@ -115,15 +117,34 @@ def learned_lines(entries: list[str]) -> list[str]:
     out = []
     for entry in entries:
         title = entry.splitlines()[0][3:]
-        found = re.search(r"\*\*Appris\*\*\s*:?(.*?)(?=\n\*\*[A-ZÀ-Ü][^*]*\*\*|\Z)", entry, re.S)
-        if not found:
-            continue
-        body = found[1].strip()
-        bullets = [b.strip() for b in re.split(r"\n\s*-\s+", "\n" + body) if b.strip()]
-        for bullet in bullets:
-            bullet = re.sub(r"\s+", " ", bullet)
-            out.append(f"- ({title[:10]}) {bullet[:220]}{'…' if len(bullet) > 220 else ''}")
+        matches = re.finditer(r"\*\*Appris\*\*\s*:?(.*?)(?=\n\*\*[A-ZÀ-Ü][^*]*\*\*|\Z)", entry, re.S)
+        for found in matches:
+            body = found[1].strip()
+            bullets = [b.strip() for b in re.split(r"\n\s*-\s+", "\n" + body) if b.strip()]
+            for bullet in bullets:
+                bullet = re.sub(r"\s+", " ", bullet)
+                # Ne jamais couper une exception métier en fin de phrase.
+                out.append(f"- ({title}) {bullet}")
     return out
+
+
+def journal_summary(entries: list[str], count: int, full: bool) -> str:
+    if count < 0:
+        raise ValueError("--journal doit être positif ou nul")
+    shown = entries if full else entries[-count:] if count else []
+    out = [section(f"Journal — {len(entries)} entrée(s), "
+                   f"{'toutes' if full else f'les {len(shown)} dernières'}")]
+    for entry in shown:
+        body = entry.strip()
+        if not full and len(body) > 1800:
+            body = body[:1800] + "\n…(entrée tronquée, lire JOURNAL.md pour le détail)"
+        out.append(body + "\n")
+    # Même les entrées récentes peuvent être tronquées avant leur section Appris.
+    learned = learned_lines(entries)
+    if learned:
+        out.append(section("Appris sur ce projet (historique sourcé, à confronter aux décisions actuelles)"))
+        out += learned
+    return "\n".join(out)
 
 
 def lessons(series: str) -> list[str]:
@@ -247,12 +268,18 @@ def main(argv: list[str]) -> int:
     explicit = None
     n_journal = 3
     full_journal = False
+    offline = "--offline" in args
+    if offline:
+        args.remove("--offline")
     if "--series" in args:
         i = args.index("--series"); explicit = args[i + 1]; del args[i:i + 2]
     if "--journal" in args:
         i = args.index("--journal"); n_journal = int(args[i + 1]); del args[i:i + 2]
     if "--full-journal" in args:
         full_journal = True; args.remove("--full-journal")
+    if n_journal < 0:
+        print("--journal doit être positif ou nul", file=sys.stderr)
+        return 2
     if not args:
         print(__doc__)
         return 2
@@ -282,7 +309,7 @@ def main(argv: list[str]) -> int:
     if declared and "aucune" not in declared.lower():
         out.append("- **Instances déclarées** : " + "; ".join(
             l.strip() for l in declared.splitlines() if l.strip())[:300])
-    dbs = restored_dbs(series)
+    dbs = "" if offline else restored_dbs(series)
     if dbs:
         out.append(f"- **Bases sur le stack {series}** : {dbs}")
     inbox = inbox_status(root)
@@ -291,7 +318,9 @@ def main(argv: list[str]) -> int:
     project_md = agents / "PROJECT.md"
     modules = re.findall(r"^### `([^`]+)`", project_md.read_text(encoding="utf-8", errors="replace"), re.M) \
         if project_md.is_file() else []
-    for line in deployed_versions(root, modules):
+    if offline:
+        out.append("- **Hors ligne** : bases locales et versions déployées non interrogées.")
+    for line in ([] if offline else deployed_versions(root, modules)):
         out.append(f"- **Déployé** — {line}")
     repo_versions = re.findall(r"^### `([^`]+)`\n\n- version `([^`]+)`",
                                project_md.read_text(encoding="utf-8", errors="replace"), re.M) \
@@ -313,21 +342,19 @@ def main(argv: list[str]) -> int:
         out.append(section("Ce que le projet sait déjà (PROJECT.md, écrit à la main)"))
         out.append(hand_written(project_md) or "*(rien encore)*")
 
+    memory = agents / "DECISIONS.json"
+    if memory.is_file():
+        import odoo_memory
+        try:
+            out.append(odoo_memory.render(json.loads(memory.read_text()), root))
+        except (ValueError, KeyError, OSError) as exc:
+            out.append(section("Mémoire structurée NON VALIDÉE"))
+            out.append(str(exc) + " — vérifier les sources avant toute décision.")
+
     journal = agents / "JOURNAL.md"
     if journal.is_file():
         entries = journal_entries(journal)
-        shown = entries if full_journal else entries[-n_journal:]
-        out.append(section(f"Journal — {len(entries)} entrée(s), "
-                           f"{'toutes' if full_journal else f'les {len(shown)} dernières'}"))
-        for entry in shown:
-            body = entry.strip()
-            if not full_journal and len(body) > 1800:
-                body = body[:1800] + "\n…(entrée tronquée, lire JOURNAL.md pour le détail)"
-            out.append(body + "\n")
-        learned = learned_lines(entries[:-len(shown)] if shown else entries)
-        if learned:
-            out.append(section("Appris sur ce projet (entrées plus anciennes)"))
-            out += learned
+        out.append(journal_summary(entries, n_journal, full_journal))
 
     out.append(section(f"Leçons du dispositif applicables en {series} (LESSONS.md)"))
     out += lessons(series) or ["*(aucune)*"]

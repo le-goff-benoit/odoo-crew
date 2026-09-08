@@ -7,6 +7,8 @@
 # Options :
 #   --release <dossier>       dossier de la release : la référence git vient de son `.base`,
 #                         le résumé est écrit dans <release>/recette.md
+#   --risk normal|high  high impose une copie client
+#   --without-client-copy <motif>  dispense explicite uniquement en risque normal
 #   --base <ref-git>      référence pour le lint --changed (défaut : .base de la release, sinon HEAD)
 #   --db <copie_client>   base restaurée du client : mise à niveau -u dessus, logs contrôlés
 #   --no-uninstall        ne teste pas la désinstallation
@@ -36,7 +38,7 @@ MODULE="${1:-}"
 if [ -z "$MODULE" ] || [[ "$MODULE" == --* ]]; then sed -n '2,28p' "$0" >&2; exit 2; fi
 shift
 
-RELEASE=""; BASE=""; CLIENT_DB=""; UNINSTALL=1; FRESH=1; FULL_LINT=0
+RELEASE=""; BASE=""; CLIENT_DB=""; UNINSTALL=1; FRESH=1; FULL_LINT=0; RISK=normal; COPY_WAIVER=""
 while [ $# -gt 0 ]; do
     case "$1" in
         --release)          shift; RELEASE="$(cd "$1" && pwd)" ;;
@@ -45,10 +47,15 @@ while [ $# -gt 0 ]; do
         --no-uninstall) UNINSTALL=0 ;;
         --no-fresh)     FRESH=0 ;;
         --full-lint)    FULL_LINT=1 ;;
+        --risk)         shift; RISK="$1" ;;
+        --without-client-copy) shift; COPY_WAIVER="$1" ;;
         *) echo "option inconnue : $1" >&2; exit 2 ;;
     esac
     shift
 done
+
+if [[ "$RISK" != normal && "$RISK" != high ]]; then echo "--risk attend normal ou high" >&2; exit 2; fi
+if [[ "$RISK" == high && -n "$COPY_WAIVER" ]]; then echo "copie client obligatoire en risque high : dispense refusée" >&2; exit 2; fi
 
 # --- Où est le module ? ------------------------------------------------------
 ADDONS="${ODOO_ADDONS_DIR:-}"
@@ -128,8 +135,8 @@ RESULT_LINE="$(grep -h "odoo.tests.result:" "$TEST_LOG" 2>/dev/null | tail -1 | 
 STATS_LINE="$(grep -h "odoo.tests.stats: $MODULE:" "$TEST_LOG" 2>/dev/null | tail -1 | sed "s/.*odoo.tests.stats: $MODULE: //; s/ queries.*/ queries/")"
 TOURS="$(grep -c "tour succeeded\|Tour .* succeeded" "$TEST_LOG" 2>/dev/null || true)"
 if grep -q "✅ tests OK" "$TEST_OUT"; then
-    if echo "$RESULT_LINE" | grep -qE "of 0 tests"; then
-        row "Tests Python" "⚠️ aucun test" "le module ne déclare aucun test : à écrire"; STATUS=1
+    if ! python3 "$HERE/odoo_test_result.py" "$TEST_LOG" --module "$MODULE"; then
+        row "Tests Python" "⚠️ aucun test" "aucune preuve valide de tests du module"; STATUS=1
     else
         row "Tests Python (suite complète)" "✅" "${RESULT_LINE:-?}${STATS_LINE:+ — $STATS_LINE} · $(dur tests)"
     fi
@@ -167,8 +174,10 @@ if [ -n "$CLIENT_DB" ]; then
         row "Mise à niveau sur copie client \`$CLIENT_DB\`" "❌" "rc=$CRC, $CERR ERROR — voir $CLIENT_LOG"; STATUS=1
     fi
     [ "$CWARN" -gt 0 ] && grep -E "WARNING" "$CLIENT_LOG" | grep "$MODULE\|ir.ui.view\|ir_ui_view" | head -10
+elif [ -n "$COPY_WAIVER" ]; then
+    row "Mise à niveau sur copie client" "dispensée explicitement" "$COPY_WAIVER (risque normal)"
 else
-    row "Mise à niveau sur copie client" "— non exécutée" "aucune copie fournie (--db) : réserve à écrire"
+    row "Mise à niveau sur copie client" "❌ non exécutée" "aucune copie fournie (--db) et aucune dispense explicite"; STATUS=1
 fi
 
 # --- 4. Résumé ----------------------------------------------------------------

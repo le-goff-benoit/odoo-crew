@@ -12,11 +12,11 @@ import fcntl
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import shutil
 import signal
 import subprocess
-import sys
 import tempfile
 import time
 import uuid
@@ -84,14 +84,18 @@ def make_packet(case, role_body):
     )
 
 
-def create_plan(output, selected, providers, config, timeout=600):
+def create_plan(output, selected, providers, config, timeout=600, *,
+                corpus=None, variants=None, repetitions=1):
     if not 1 <= timeout <= 600:
         raise ValueError("durée par essai : 1 à 600 secondes")
     if not selected or not providers:
         raise ValueError("au moins un cas et un fournisseur requis")
     if len(selected) != len(set(selected)) or len(providers) != len(set(providers)):
         raise ValueError("cas ou fournisseurs dupliqués")
-    catalog = cases()
+    catalog = cases(Path(corpus)) if corpus else cases()
+    variants = variants or {"reference": None}
+    if not 1 <= repetitions <= 5 or any(not re.fullmatch(r"[a-z0-9_-]+", name) for name in variants):
+        raise ValueError("répétitions 1–5 et noms de variantes simples requis")
     for identifier in selected:
         if identifier not in catalog or catalog[identifier]["status"] != "ready":
             raise ValueError(f"cas non exécutable : {identifier}")
@@ -107,24 +111,33 @@ def create_plan(output, selected, providers, config, timeout=600):
     trials = []
     for identifier in selected:
         case = catalog[identifier]
-        role = ROOT / "roles" / (case["role"] + ".md")
-        if role.resolve().parent != (ROOT / "roles").resolve():
+        if not re.fullmatch(r"[a-z0-9_-]+", case["role"]):
             raise ValueError("rôle hors du référentiel")
-        packet = make_packet(case, role.read_text(encoding="utf-8"))
-        for provider in providers:
-            trial_id = f"{identifier}-{provider}"
-            folder = run / trial_id
-            folder.mkdir()
-            (folder / "packet.txt").write_text(packet, encoding="utf-8")
-            atomic_json(folder / "case.json", case)
-            trials.append({
-                "id": trial_id, "case": identifier, "provider": provider,
-                "config": config[provider], "status": "pending", "mode": case["mode"],
-                "packet_sha256": digest(packet.encode()),
-                "packet_bytes": len(packet.encode()), "packet_words": len(packet.split()),
-                "case_sha256": digest((folder / "case.json").read_bytes()),
-                "role_sha256": digest(role.read_bytes()), "review": None,
-            })
+        for repetition in range(1, repetitions + 1):
+            order = list(variants) if repetition % 2 else list(reversed(variants))
+            for provider in providers:
+                for variant in order:
+                    role_root = ROOT / variants[variant] if variants[variant] else ROOT / "roles"
+                    role = role_root / (case["role"] + ".md")
+                    role_body = role.read_text(encoding="utf-8")
+                    packet = make_packet(case, role_body)
+                    trial_id = f"{identifier}-{provider}"
+                    if len(variants) > 1 or repetitions > 1 or variant != "reference":
+                        trial_id += f"-{variant}-r{repetition}"
+                    folder = run / trial_id
+                    folder.mkdir()
+                    (folder / "packet.txt").write_text(packet, encoding="utf-8")
+                    (folder / "role.md").write_text(role_body, encoding="utf-8")
+                    atomic_json(folder / "case.json", case)
+                    trials.append({
+                        "id": trial_id, "case": identifier, "provider": provider,
+                        "variant": variant, "repetition": repetition,
+                        "config": config[provider], "status": "pending", "mode": case["mode"],
+                        "packet_sha256": digest(packet.encode()),
+                        "packet_bytes": len(packet.encode()), "packet_words": len(packet.split()),
+                        "case_sha256": digest((folder / "case.json").read_bytes()),
+                        "role_sha256": digest(role_body.encode()), "review": None,
+                    })
     revision = subprocess.run(["git", "rev-parse", "HEAD"], cwd=ROOT, capture_output=True, text=True)
     state = {
         "schema": 1, "id": run.name, "created_at": now(), "updated_at": now(),
@@ -134,7 +147,7 @@ def create_plan(output, selected, providers, config, timeout=600):
         "status": "planned", "trials": trials,
         "limitations": ["Pilote sans outils : aucune exécution Odoo ni validation du développement.",
                         "Consignes du rôle injectées explicitement : routage natif non évalué.",
-                        "Une seule répétition et efforts différents : aucun classement causal des modèles.",
+                        "Comparaisons entre outils non causales ; comparer les variantes au sein du même réglage.",
                         "Effort effectif inconnu si le fournisseur ne le retourne pas."],
     }
     atomic_json(run / "state.json", state)
@@ -187,6 +200,14 @@ def isolated_command(provider, config, workspace):
     return command + provider_command(provider, config)
 
 
+def provider_environment():
+    env = {key: value for key, value in os.environ.items() if key in
+           ("HOME", "USER", "LANG", "HTTPS_PROXY", "HTTP_PROXY", "NO_PROXY",
+            "https_proxy", "http_proxy", "no_proxy")}
+    env["PATH"] = "/opt/node/bin:/usr/bin:/bin"
+    return env
+
+
 def parse_output(path, provider):
     answer = ""
     usage = None
@@ -236,7 +257,7 @@ def report(run, state):
     for trial in state["trials"]:
         review = trial.get("review")
         quality = review["verdict"] if review else "non évaluée"
-        lines.append(f"| {trial['case']} | {trial['provider']} | {trial['status']} | {trial.get('seconds', '—')} | {quality} |")
+        lines.append(f"| {trial['id']} | {trial['provider']} | {trial['status']} | {trial.get('seconds', '—')} | {quality} |")
     lines.extend(["", "## Configurations et mesure", "",
                   "| Essai | Modèle demandé | Effort demandé | Modèle observé |", "|---|---|---|---|"])
     for trial in state["trials"]:
@@ -348,10 +369,7 @@ def run_plan(run):
                         binary = shutil.which(trial["provider"])
                         version = subprocess.run([binary, "--version"], capture_output=True, text=True, timeout=10)
                         trial["cli_version"] = version.stdout.strip()
-                        env = {key: value for key, value in os.environ.items() if key in
-                               ("HOME", "USER", "LANG", "HTTPS_PROXY", "HTTP_PROXY", "NO_PROXY",
-                                "https_proxy", "http_proxy", "no_proxy")}
-                        env["PATH"] = "/opt/node/bin:/usr/bin:/bin"
+                        env = provider_environment()
                         with (folder / "events.jsonl").open("wb") as out, (folder / "stderr.log").open("wb") as err:
                             process = subprocess.Popen(command, stdin=subprocess.PIPE, stdout=out, stderr=err,
                                                        env=env, start_new_session=True)
@@ -419,6 +437,9 @@ def main():
     plan.add_argument("--config", type=Path, required=True)
     plan.add_argument("--output", type=Path, required=True)
     plan.add_argument("--timeout", type=int, default=600)
+    plan.add_argument("--corpus", type=Path)
+    plan.add_argument("--variants", type=Path)
+    plan.add_argument("--repetitions", type=int, default=1)
     review = commands.add_parser("review")
     review.add_argument("run", type=Path)
     review.add_argument("trial")
@@ -432,7 +453,9 @@ def main():
             for case in cases().values():
                 print(f"{case['id']} · {case['status']} · {case['title']}")
         elif args.command == "plan":
-            print(create_plan(args.output, args.cases, args.providers, read_json(args.config), args.timeout))
+            print(create_plan(args.output, args.cases, args.providers, read_json(args.config), args.timeout,
+                              corpus=args.corpus, variants=read_json(args.variants) if args.variants else None,
+                              repetitions=args.repetitions))
         elif args.command == "status":
             display(read_json(args.run / "state.json"))
         elif args.command == "review":

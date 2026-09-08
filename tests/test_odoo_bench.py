@@ -28,6 +28,21 @@ class BenchTests(unittest.TestCase):
         self.assertNotIn('SECRET CORRECTOR', packet)
         self.assertIn(case['prompt'], packet)
 
+    def test_comparison_is_paired_frozen_and_alternates_order(self):
+        variants = b.read_json(ROOT / 'benchmarks/variants/comparison.json')
+        run = b.create_plan(self.root, ['B10', 'B11'], ['codex', 'claude'],
+                            {p: {'model': 'fixture', 'effort': 'high'} for p in ('codex', 'claude')},
+                            corpus=ROOT / 'benchmarks/cases-v2', variants=variants, repetitions=2)
+        trials = b.read_json(run / 'state.json')['trials']
+        self.assertEqual(len(trials), 24)
+        for provider in ('codex', 'claude'):
+            group = [t for t in trials if t['case'] == 'B10' and t['provider'] == provider]
+            self.assertEqual([t['variant'] for t in group], ['reference', 'fidelity', 'compact', 'compact', 'fidelity', 'reference'])
+            self.assertEqual(len({t['case_sha256'] for t in group}), 1)
+            self.assertLess(group[2]['packet_words'], group[0]['packet_words'])
+            for trial in group:
+                self.assertEqual(b.digest((run / trial['id'] / 'role.md').read_bytes()), trial['role_sha256'])
+
     def test_plan_rejects_unimplemented_and_overbudget(self):
         for selected, seconds in [(['B01'], 600), (['B06'], 601), (['B06', 'B06'], 600)]:
             with self.assertRaises(ValueError):

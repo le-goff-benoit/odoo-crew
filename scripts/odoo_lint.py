@@ -448,6 +448,7 @@ def main(argv: list[str]) -> int:
         print(__doc__)
         return 2
 
+    structural = set()
     for arg in args:
         module = Path(arg).resolve()
         if not (module / "__manifest__.py").exists():
@@ -469,16 +470,18 @@ def main(argv: list[str]) -> int:
             if not info["exact_sources"]:
                 print(f"   ⚠️  sources {SERIES} absentes du poste, "
                       f"repli sur {SOURCES.name} pour la résolution des dépendances")
+            before = len(findings)
             check_manifest(mod)
-            check_python(mod)
-            check_xml(mod)
             check_security(mod)
             check_tests(mod)
+            structural.update(tuple(f) for f in findings[before:])
+            check_python(mod)
+            check_xml(mod)
 
     shown = findings
     if only is not None:
         hidden = len(findings)
-        shown = [f for f in findings if str(Path(f[1]).resolve()) in only]
+        shown = [f for f in findings if tuple(f) in structural or str(Path(f[1]).resolve()) in only]
         hidden -= len(shown)
         if hidden:
             print(f"\n({hidden} anomalie(s) sur des fichiers non modifiés, masquées)")

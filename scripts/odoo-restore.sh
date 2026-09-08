@@ -170,13 +170,16 @@ fi
 echo "Neutralisation (odoo neutralize)…"
 compose exec -T odoo odoo neutralize -c "$CONF" -d "$DB" >/dev/null
 
+mkdir -p "$STACK/artifacts"
 echo "Réglages locaux (admin/admin, web.base.url, assets)…"
-compose exec -T -e RESTORE_PORT="$HTTP_PORT" odoo odoo shell -c "$CONF" -d "$DB" --no-http <<'PY' 2>&1 \
-    | grep -vE '^\s*$|^[0-9]{4}-[0-9]{2}-[0-9]{2} ' | sed 's/^/  /' || true
+PREP_LOG="$(mktemp "$STACK/artifacts/restore-preparation.XXXXXX.log")"
+if compose exec -T -e RESTORE_PORT="$HTTP_PORT" odoo odoo shell -c "$CONF" -d "$DB" --no-http > "$PREP_LOG" 2>&1 <<'PY'
 import os
 import odoo
 admin = env['res.users'].browse(2).with_context(active_test=False)
-admin.write({'active': True, 'password': 'admin'})
+if not admin.exists():
+    raise RuntimeError('Compte administrateur local absent')
+admin.write({'active': True, 'login': 'admin', 'password': 'admin'})
 icp = env['ir.config_parameter'].sudo()
 icp.set_param('web.base.url', 'http://localhost:%s' % os.environ['RESTORE_PORT'])
 icp.set_param('web.base.url.freeze', 'True')
@@ -186,17 +189,35 @@ PSEUDO = {'studio_customization'}   # module virtuel de Studio, jamais sur disqu
 installed = env['ir.module.module'].search([('state', 'in', ('installed', 'to upgrade', 'to install'))])
 missing = sorted(m.name for m in installed if m.name not in PSEUDO
                  and not any(os.path.isdir(os.path.join(p, m.name)) for p in paths))
+if missing:
+    raise RuntimeError('Modules absents du chemin des addons : ' + ', '.join(missing))
 env.cr.commit()
 print('Modules installés : %d' % len(installed))
 if missing:
     print('ABSENTS du chemin des addons (%d) : %s' % (len(missing), ', '.join(missing)))
     print("→ régler ODOO_ADDONS_DIR sur le dossier qui contient les modules custom de ce client.")
 PY
+then
+    sed 's/^/  /' "$PREP_LOG"
+else
+    cat "$PREP_LOG" >&2
+    echo "Préparation locale échouée : la base n'est pas prête." >&2
+    exit 1
+fi
 
 if [ -n "$UPDATE" ]; then
     echo "Mise à jour de : $UPDATE…"
-    compose exec -T odoo odoo -c "$CONF" -d "$DB" -u "$UPDATE" --stop-after-init --no-http 2>&1 \
-        | grep -E "ERROR|CRITICAL|Modules loaded" | sed 's/^/  /' || true
+    UPDATE_LOG="$(mktemp "$STACK/artifacts/restore-update.XXXXXX.log")"
+    if ! compose exec -T odoo odoo -c "$CONF" -d "$DB" -u "$UPDATE" --stop-after-init --no-http > "$UPDATE_LOG" 2>&1; then
+        cat "$UPDATE_LOG" >&2
+        echo "Mise à jour échouée : la base n'est pas prête." >&2
+        exit 1
+    fi
+    if grep -qE 'ERROR|CRITICAL|invalid module names, ignored' "$UPDATE_LOG"; then
+        cat "$UPDATE_LOG" >&2
+        echo "Mise à jour non validée." >&2; exit 1
+    fi
+    sed 's/^/  /' "$UPDATE_LOG"
 fi
 
 echo

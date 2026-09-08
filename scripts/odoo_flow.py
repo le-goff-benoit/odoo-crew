@@ -31,6 +31,7 @@ from contextlib import contextmanager
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlsplit
 
 
 HERE = Path(__file__).resolve().parent.parent
@@ -315,22 +316,43 @@ def locks_compatible(
     return compatible({"locks": first}, {"locks": second})
 
 
+def canonical_resource(value: str) -> str:
+    if value.startswith('path:'):
+        return 'path:' + str(Path(value[5:]).expanduser().resolve())
+    if value.startswith('postgresql://'):
+        uri = urlsplit(value)
+        if not uri.hostname or not uri.path.strip('/') or uri.username or uri.password or uri.query or uri.fragment:
+            raise FlowError('identité PostgreSQL invalide ou contenant des identifiants')
+        return f"postgresql://{uri.hostname.lower()}:{uri.port or 5432}{uri.path}"
+    if not value or any(c.isspace() for c in value):
+        raise FlowError('identité de ressource invalide')
+    return value
+
+
 def resolve_locks(node: dict[str, Any], state: dict[str, Any]) -> list[dict[str, str]]:
-    """Résout les ressources locales au run sans affaiblir les verrous partagés."""
-    return [
-        {
-            "resource": lock["resource"].format(run=state["run_id"]),
-            "mode": lock["mode"],
-        }
-        for lock in node.get("locks", [])
-    ]
+    bindings = state.get('resource_bindings', {})
+    resolved = {}
+    for lock in node.get('locks', []):
+        name = lock['resource'].format(run=state['run_id'])
+        binding = bindings.get(name)
+        if binding:
+            resource = canonical_resource(binding['id'])
+            parents = binding.get('parents', [])
+        else:
+            resource = f"project:{state['project']}:{name}" if state.get('resource_registry') else name
+            parents = []
+        for key, mode in [(resource, lock['mode']), *[(canonical_resource(p), 'read') for p in parents]]:
+            resolved[key] = 'write' if 'write' in (resolved.get(key), mode) else 'read'
+    return [{'resource': key, 'mode': mode} for key, mode in resolved.items()]
 
 
-def parallel_waves(graph: dict[str, Any], ready: list[str]) -> list[list[str]]:
+def parallel_waves(graph: dict[str, Any], ready: list[str], state=None) -> list[list[str]]:
     waves: list[list[str]] = []
+    nodes = {name: dict(graph['nodes'][name], locks=resolve_locks(graph['nodes'][name], state))
+             if state else graph['nodes'][name] for name in ready}
     for name in ready:
         for wave in waves:
-            if all(compatible(graph["nodes"][name], graph["nodes"][other]) for other in wave):
+            if all(compatible(nodes[name], nodes[other]) for other in wave):
                 wave.append(name)
                 break
         else:
@@ -402,7 +424,7 @@ def ensure_local_flow_dirs(project: Path) -> None:
 
 
 def registry_path(state: dict[str, Any]) -> Path:
-    return Path(state["project"]) / ".odoo-agents" / "flows" / "resource-locks.json"
+    return Path(state["resource_registry"]) if state.get("resource_registry") else Path(state["project"]) / ".odoo-agents" / "flows" / "resource-locks.json"
 
 
 def load_registry(path: Path) -> dict[str, Any]:
@@ -424,6 +446,8 @@ def evidence_files(values: list[str]) -> list[str]:
         path = Path(value).expanduser().resolve()
         if not path.exists():
             raise FlowError(f"preuve introuvable : {value}")
+        if not path.is_file() or not path.stat().st_size:
+            raise FlowError(f"preuve attendue : fichier non vide : {value}")
         resolved.append(str(path))
     return resolved
 
@@ -434,13 +458,14 @@ def slugify(value: str) -> str:
 
 
 def new_state(project: Path, kind: str, run_id: str, graph_path: Path) -> dict[str, Any]:
-    return {
+    state = {
         "schema_version": 1,
         "run_id": run_id,
         "project": str(project.resolve()),
         "kind": kind,
         "graph": str(graph_path.resolve()),
         "graph_sha256": graph_hash(graph_path),
+        "graph_snapshot": load_json(graph_path),
         "created_at": now(),
         "updated_at": now(),
         "status": "active",
@@ -451,6 +476,23 @@ def new_state(project: Path, kind: str, run_id: str, graph_path: Path) -> dict[s
         "claims": {},
         "events": [],
     }
+
+    resources = project / '.odoo-agents/resources.json'
+    if resources.is_file():
+        config = load_json(resources)
+        if config.get('schema') != 1 or not isinstance(config.get('bindings'), dict):
+            raise FlowError('configuration de ressources invalide')
+        old = load_registry(project / '.odoo-agents/flows/resource-locks.json')
+        prune_registry(old)
+        if old['claims']:
+            raise FlowError('libérer les anciennes revendications locales avant activation du registre partagé')
+        state['resource_registry'] = str(Path(config.get('registry', str(Path.home() / '.cache/odoo-agents/resource-locks.json'))).expanduser().resolve())
+        state['resource_bindings'] = config['bindings']
+        for binding in config['bindings'].values():
+            canonical_resource(binding['id'])
+            for parent in binding.get('parents', []):
+                canonical_resource(parent)
+    return state
 
 
 def consume_ready_token(state: dict[str, Any], graph: dict[str, Any], node_name: str) -> None:
@@ -543,7 +585,7 @@ def state_summary(state: dict[str, Any], graph: dict[str, Any]) -> dict[str, Any
         "kind": state["kind"],
         "status": status,
         "ready": ready,
-        "parallel_waves": parallel_waves(graph, ready),
+        "parallel_waves": parallel_waves(graph, ready, state),
         "running": running,
         "completed_events": len(state["events"]),
     }
@@ -613,11 +655,33 @@ def claim_node(state_path: Path, graph_path: Path, node_name: str, owner: str) -
             write_state(state_path, state)
 
 
+def validate_migration(state: dict[str, Any], new_graph: dict[str, Any]) -> None:
+    old = state.get("graph_snapshot")
+    if not old:
+        raise FlowError("ancien graphe absent : fournir --from-graph correspondant à l'empreinte du run")
+    active = {edge_id for edge_id, count in state.get("tokens", {}).items() if count}
+    executed = {event["node"] for event in state.get("events", [])}
+    old_edges = {edge['id']: edge for edge in old['edges']}
+    new_edges = {edge['id']: edge for edge in new_graph['edges']}
+    pending = {old_edges[e]['to'] for e in active if e in old_edges}
+    if state.get('start_pending'):
+        pending.add(old['start'])
+        if old['start'] != new_graph['start']:
+            raise FlowError('point de départ modifié pendant un run')
+    for node in executed | pending:
+        if old['nodes'].get(node) != new_graph['nodes'].get(node):
+            raise FlowError('sémantique de nœud active ou historique modifiée : ' + node)
+    relevant_old = {k: e for k, e in old_edges.items() if k in active or e['from'] in executed or e['to'] in pending}
+    relevant_new = {k: e for k, e in new_edges.items() if k in active or e['from'] in executed or e['to'] in pending}
+    if relevant_old != relevant_new:
+        raise FlowError('transitions actives ou historiques modifiées : migration refusée')
+
+
 def release_claim(
     state_path: Path, graph_path: Path, node_name: str, owner: str, reason: str
 ) -> None:
     with exclusive_lock(state_path):
-        state, _graph = load_state(state_path, graph_path)
+        state = load_json(state_path)  # libérer ne consomme aucun jeton du graphe
         claim = state.get("claims", {}).get(node_name)
         if not claim or claim.get("owner") != owner:
             raise FlowError(f"revendication absente pour {node_name} et {owner}")
@@ -657,6 +721,17 @@ def complete_claimed_node(
             raise FlowError(f"nœud inconnu : {node_name}")
         node = graph["nodes"][node_name]
         checked_evidence = evidence_files(evidence)
+        from odoo_evidence import verify as verify_evidence
+        for value in checked_evidence:
+            if Path(value).suffix == '.json':
+                try:
+                    proof = json.loads(Path(value).read_text())
+                    if isinstance(proof, dict) and proof.get('format') == 'odoo-evidence/1':
+                        verify_evidence(proof, state['project'], require_success=outcome not in
+                                        {'fail', 'failed', 'red', 'retry', 'blocked', 'exhausted'})
+                except (ValueError, KeyError, OSError) as exc:
+                    raise FlowError(f"preuve JSON invalide : {value} : {exc}") from exc
+        evidence_digests = {value: graph_hash(Path(value)) for value in checked_evidence}
         is_human = node["executor"] == "human"
         if is_human and not human_confirmed:
             raise FlowError(
@@ -671,6 +746,7 @@ def complete_claimed_node(
             state["claims"].pop(node_name)
         try:
             complete_node(state, graph, node_name, outcome, checked_evidence, note)
+            state["events"][-1]["evidence_sha256"] = evidence_digests
         except Exception:
             if not is_human:
                 state["claims"][node_name] = claim
@@ -880,6 +956,7 @@ def build_parser() -> argparse.ArgumentParser:
         "migrate", help="rattacher explicitement un run à une nouvelle version compatible du graphe"
     )
     migrate.add_argument("state", type=Path)
+    migrate.add_argument("--from-graph", type=Path)
     return parser
 
 
@@ -887,6 +964,10 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     graph_path = args.graph.resolve()
     try:
+        if args.command == "release":
+            release_claim(args.state.resolve(), graph_path, args.node, args.owner, args.reason)
+            print(f"■ {args.node} · verrou libéré par {args.owner}")
+            return 0
         graph = load_json(graph_path)
         errors = validate_graph(graph)
         if args.command == "validate":
@@ -943,6 +1024,11 @@ def main(argv: list[str] | None = None) -> int:
                 state = load_json(state_path)
                 if state.get("claims"):
                     raise FlowError("libérez les nœuds en cours avant de migrer ce run")
+                if args.from_graph:
+                    if graph_hash(args.from_graph) != state.get('graph_sha256'):
+                        raise FlowError('ancien graphe différent de celui du run')
+                    state['graph_snapshot'] = load_json(args.from_graph)
+                validate_migration(state, graph)
                 known_nodes = set(graph["nodes"])
                 known_edges = {edge["id"] for edge in graph["edges"]}
                 for event in state.get("events", []):
@@ -965,6 +1051,7 @@ def main(argv: list[str] | None = None) -> int:
                 previous = state.get("graph_sha256", "")
                 state["graph"] = str(graph_path)
                 state["graph_sha256"] = graph_hash(graph_path)
+                state["graph_snapshot"] = graph
                 state.setdefault("migrations", []).append(
                     {"at": now(), "from": previous, "to": state["graph_sha256"]}
                 )

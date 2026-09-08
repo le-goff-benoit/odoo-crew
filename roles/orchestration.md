@@ -266,13 +266,15 @@ Une chaîne qui ne laisse pas de trace oblige la suivante à tout redécouvrir.
 
 ## Boucle de reprise
 
-Si la QA remonte des anomalies **bloquantes** : retour à l'étape 2 pour les
+Si la QA remonte un **critère d’acceptation non satisfait, une régression introduite,
+un contrôle obligatoire manquant ou une anomalie bloquante** : retour à l’étape 2 pour les
 corriger, puis nouvelle QA. **Deux reprises au maximum.** Au-delà, arrête et
 livre l'état réel avec ce qui reste rouge — ne boucle pas indéfiniment et ne
 masque pas un échec.
 
-Les anomalies majeures et mineures ne déclenchent pas de reprise : elles sont
-listées dans le compte-rendu final pour arbitrage, et dans `qa.md`.
+La gravité ne dispense jamais de satisfaire les critères convenus. Seules la dette
+antérieure explicitement identifiée et les améliorations facultatives peuvent rester
+pour arbitrage dans `qa.md`, sans masquer un défaut introduit.
 
 ## Ce que l'utilisateur voit pendant la chaîne
 

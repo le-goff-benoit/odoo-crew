@@ -39,7 +39,7 @@ grep -o "dernier-retex: [0-9-]*" ~/.odoo19-agents/LESSONS.md
 ls -t ~/*/.odoo-agents/JOURNAL.md
 grep -h "^## 20" ~/*/.odoo-agents/JOURNAL.md | sort
 # Ce qui a été appris, tous projets confondus (une puce par leçon, sans relire les journaux)
-for p in ~/*/.odoo-agents; do python3 ~/.odoo19-agents/scripts/odoo_briefing.py "$(dirname "$p")" --journal 0 2>/dev/null | sed -n '/^## Appris/,/^## Leçons/p'; done
+for p in ~/*/.odoo-agents; do python3 ~/.odoo19-agents/scripts/odoo_briefing.py "$(dirname "$p")" --journal 0 --offline 2>/dev/null | sed -n '/^## Appris/,/^## Leçons/p'; done
 # Les réserves des recettes et des changelogs livrés
 grep -h -A6 "^## Réserves" ~/*/changelog/*/README.md 2>/dev/null
 grep -h "❌\|⚠️" ~/*/changelog/*/recette.md 2>/dev/null

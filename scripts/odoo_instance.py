@@ -56,7 +56,7 @@ import sys
 import urllib.parse
 import urllib.request
 import xmlrpc.client
-from dataclasses import dataclass, asdict
+from dataclasses import dataclass
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -278,13 +278,12 @@ class Instance:
         return uid
 
     def execute(self, model: str, method: str, *args, allow_write: bool = False, **kwargs):
-        is_write = method not in READ_METHODS and not method.startswith(
-            ("search", "read", "get_", "name_", "fields_", "web_read", "check_"))
+        is_write = method not in READ_METHODS
         if self.is_production and is_write:
             confirmed = os.environ.get("ODOO_PRODUCTION_CONFIRMED") == self.name
             if not (allow_write and confirmed):
                 raise SystemExit(
-                    f"REFUSÉ : {model}.{method} est une écriture sur la PRODUCTION « {self.name} ».\n"
+                    f"REFUSÉ : {model}.{method} n’est pas dans la liste de lecture autorisée en PRODUCTION « {self.name} ».\n"
                     f"Il faut (1) la confirmation explicite de l'humain pour cette opération précise,\n"
                     f"(2) --allow-write / allow_write=True et (3) ODOO_PRODUCTION_CONFIRMED={self.name}.\n"
                     f"Sinon : sauvegarde + restauration locale (odoo-restore.sh)."

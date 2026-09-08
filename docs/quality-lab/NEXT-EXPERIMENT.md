@@ -61,3 +61,18 @@ Pour couvrir le développement, la prochaine étape devra ajouter un module
 synthétique exécutable avec tests métier externes au code produit, vrais profils
 d’utilisateur et base jetable. Les présents dossiers sans outils ne peuvent pas
 servir de preuve à cette dimension.
+
+## Mise en exécution — suite autorisée le 8 septembre 2026
+
+Ce protocole est maintenant exécuté : B10 v2 + B11 réservé, référence/fidélité/
+compact, deux répétitions par Codex/high et Claude/medium (24 réponses).
+B12 ajoute quatre générations avec efforts high/medium croisés, puis l'oracle
+réel décrit dans `benchmarks/odoo/CONTRACT.md`. Le pilote v1 reste inchangé.
+
+Avant la correction, règle de décision retenue : une variante courte ne remplace
+pas un rôle complet sur la seule réussite d'une analyse sans outils. Les étapes
+de workflow et les autres métiers resteraient non testés. Une correction ciblée
+de fidélité peut être proposée si elle élimine des erreurs critiques observées
+sans en introduire sur les cas et outils évalués ; les petits effectifs imposent
+une conclusion locale, sans classement général. Les sorties originales et les
+avis du correcteur sont conservés, même en cas d'arbitrage ultérieur.

@@ -9,16 +9,16 @@
 #                    liste des dépendances change) : quelques secondes au lieu de minutes
 #   --no-template    --fresh sans gabarit : installation intégrale des dépendances
 #   --rebuild-template  reconstruit le gabarit avant de s'en servir
-#   --quick          QA de tâche : UN seul passage (-i si la base n'existe pas, sinon -u)
+#   --quick          QA de tâche : UN seul passage (-i si le module n'est pas installé, sinon -u)
 #                    avec les tests ciblés — pas d'étape install/update séparée
 #   --update         teste aussi la mise à jour (-u) sur la base existante
 #   --uninstall      teste la désinstallation à la fin
 #   --tags <spec>    passe --test-tags (défaut : /<module>)
 #   --tours          n'exécute que les tours (--test-tags /<module>:HttpCase)
-#   --keep           ne coupe pas PostgreSQL à la fin (il n'est de toute façon
-#                    jamais coupé s'il tournait déjà avant l'appel)
+#   --keep           conservé pour compatibilité ; PostgreSQL reste démarré,
+#                    son arrêt est confié au superviseur du stack
 #
-# Base de test : $ODOO_TEST_DB si posée, sinon odoo_qa_<série>_<module>.
+# Base de test : $ODOO_TEST_DB si posée, sinon odoo_qa_<série>_<projet>_<module>.
 #
 # Sortie : rapport par étape + extraction des ERROR/WARNING des logs, et une
 # ligne finale `RECETTE module=… install=… update=… tests=… uninstall=… errors=…`
@@ -27,7 +27,8 @@
 
 set -uo pipefail
 
-STACK="$(cd "$(dirname "${BASH_SOURCE[0]}")/../stack" && pwd)"
+HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+STACK="$(cd "$HERE/../stack" && pwd)"
 # shellcheck source=series-env.sh
 . "$(dirname "${BASH_SOURCE[0]}")/series-env.sh"
 CONF="/etc/odoo/odoo.conf"
@@ -38,6 +39,9 @@ if [ -z "$MODULE" ] || [[ "$MODULE" == --* ]]; then
     exit 2
 fi
 shift
+if [[ ! "$MODULE" =~ ^[a-zA-Z0-9_]+$ ]]; then
+    echo "nom de module invalide" >&2; exit 2
+fi
 
 # Base de test : celle de l'utilisateur si ODOO_TEST_DB est posée, sinon une base
 # par module. Deux projets de la même série (Claude sur l'un, Codex sur l'autre)
@@ -45,8 +49,13 @@ shift
 if [ -n "${ODOO_TEST_DB_EXPLICIT:-}" ]; then
     DB="$ODOO_TEST_DB"
 else
-    DB="odoo_qa_${ODOO_SERIES_SLUG}_$(printf '%s' "$MODULE" | tr -c 'a-z0-9_\n' '_' | cut -c1-40)"
+    PROJECT_KEY="$(printf '%s' "$(realpath "${ODOO_ADDONS_DIR:-.}")" | sha256sum | cut -c1-8)"
+    DB="odoo_qa_${ODOO_SERIES_SLUG}_${PROJECT_KEY}_$(printf '%s' "$MODULE" | tr -c 'a-z0-9_\n' '_' | cut -c1-28)"
     export ODOO_TEST_DB="$DB"
+fi
+
+if [[ ! "$DB" =~ ^[a-zA-Z0-9_.-]+$ ]]; then
+    echo "nom de base invalide" >&2; exit 2
 fi
 
 FRESH=0; UPDATE=0; UNINSTALL=0; KEEP=0; QUICK=0; TEMPLATE=1; REBUILD_TPL=0
@@ -72,8 +81,14 @@ cd "$STACK"
 # Le conteneur tourne sous l'utilisateur `odoo` (uid 101) : sans droits d'écriture,
 # Odoo échoue à créer /mnt/artifacts/<db>/screenshots au démarrage de Chrome.
 mkdir -p artifacts && chmod 777 artifacts
-LOG="artifacts/${MODULE}-$(date +%Y%m%d-%H%M%S).log"
+LOG="$(mktemp "artifacts/${MODULE}-$(date +%Y%m%d-%H%M%S).XXXXXX.log")"
 STATUS=0
+# Identité physique locale : même base sur le même projet Compose => sérialisation.
+LOCK_ROOT="${XDG_CACHE_HOME:-$HOME/.cache}/odoo-agents/qa-locks"
+mkdir -p "$LOCK_ROOT"
+LOCK_KEY="$(printf '%s' "${DOCKER_CONTEXT:-default}:${DOCKER_HOST:-local}:${COMPOSE_PROJECT_NAME:-odoo-qa-${ODOO_SERIES_SLUG}}:$DB" | sha256sum | cut -c1-24)"
+exec 9>"$LOCK_ROOT/$LOCK_KEY.lock"
+flock 9
 
 compose() { docker compose "$@"; }
 
@@ -105,10 +120,11 @@ compose exec -T db bash -c 'for i in $(seq 1 30); do pg_isready -U odoo -q && ex
 # Gabarit : une base par module avec les dépendances STANDARD préinstallées.
 # Les dépendances custom (présentes dans ODOO_ADDONS_DIR) n'y sont pas : leur code
 # bouge avec la release, elles s'installent avec le module.
-TPL="odoo_qa_${ODOO_SERIES_SLUG}_tpl_$(printf '%s' "$MODULE" | tr -c 'a-z0-9_\n' '_' | cut -c1-36)"
+PROJECT_KEY="${PROJECT_KEY:-$(printf '%s' "$(realpath "${ODOO_ADDONS_DIR:-.}")" | sha256sum | cut -c1-8)}"
+TPL="odoo_qa_${ODOO_SERIES_SLUG}_${PROJECT_KEY}_tpl_$(printf '%s' "$MODULE" | tr -c 'a-z0-9_\n' '_' | cut -c1-24)"
 tpl_info() {   # → "<hash> <deps standard séparées par des virgules>"
     python3 - "$ODOO_ADDONS_DIR" "$MODULE" "$ODOO_SERIES" <<'PY'
-import ast, hashlib, os, sys
+import ast, hashlib, os, sys, subprocess
 addons, module, series = sys.argv[1], sys.argv[2], sys.argv[3]
 path = os.path.join(addons, module, "__manifest__.py")
 if not os.path.isfile(path):
@@ -126,11 +142,32 @@ def is_custom(d):
         dirs[:] = [x for x in dirs if not x.startswith(".") and x not in ("node_modules", "changelog")]
     return False
 std = sorted(d for d in deps if d != "base" and not is_custom(d))
-print(hashlib.sha1((series + ":" + ",".join(std)).encode()).hexdigest()[:12], ",".join(std))
+image = subprocess.run(["docker", "image", "inspect", "--format={{.Id}}", "odoo-qa:" + series], capture_output=True, text=True)
+material = (series + ":" + ",".join(std) + ":" + image.stdout.strip()).encode()
+enterprise = os.environ.get("ODOO_ENTERPRISE_DIR", "")
+head = subprocess.run(["git", "-C", enterprise, "rev-parse", "HEAD"], capture_output=True)
+if image.returncode or not image.stdout.strip() or head.returncode:
+    # Identité du code inconnue : pas de réutilisation d'un cache prétendument valide.
+    material += os.urandom(16)
+else:
+    material += head.stdout
+    diff = subprocess.run(["git", "-C", enterprise, "diff", "HEAD", "--binary"], capture_output=True)
+    material += diff.stdout
+    untracked = subprocess.run(["git", "-C", enterprise, "ls-files", "--others", "--exclude-standard", "-z"], capture_output=True)
+    for name in sorted(untracked.stdout.split(b"\0")):
+        if name:
+            file = os.path.join(enterprise, os.fsdecode(name))
+            if os.path.isfile(file):
+                with open(file, 'rb') as stream:
+                    material += name + hashlib.sha256(stream.read()).digest()
+print(hashlib.sha256(material).hexdigest()[:20], ",".join(std))
 PY
 }
 
 if [ "$FRESH" -eq 1 ]; then
+    TPL_LOCK_KEY="$(printf '%s' "${DOCKER_CONTEXT:-default}:${DOCKER_HOST:-local}:${COMPOSE_PROJECT_NAME:-odoo-qa-${ODOO_SERIES_SLUG}}:$TPL" | sha256sum | cut -c1-24)"
+    exec 8>"$LOCK_ROOT/$TPL_LOCK_KEY.lock"
+    flock 8
     tic
     read -r TPL_HASH TPL_DEPS < <(tpl_info)
     if [ "$TEMPLATE" -eq 1 ] && [ -n "${TPL_DEPS:-}" ]; then
@@ -163,19 +200,30 @@ if [ "$FRESH" -eq 1 ]; then
         compose exec -T db createdb -U odoo "$DB"
     fi
     toc base
+    flock -u 8
 fi
 
 ignored() { grep -q "invalid module names, ignored: .*\b$MODULE\b" "$LOG"; }
 
 if [ "$QUICK" -eq 1 ]; then
-    # Un seul chargement : installation si la base n'existe pas, mise à jour sinon,
-    # tests ciblés dans le même passage.
+    # Une base existante ne prouve pas que le module est installé.
     tic
-    if db_exists "$DB"; then MODE=-u; step "1. QA de tâche : -u $MODULE + tests ($TAGS) sur $DB"
-    else compose exec -T db createdb -U odoo "$DB"; MODE=-i; step "1. QA de tâche : -i $MODULE + tests ($TAGS) sur $DB (base neuve)"; fi
+    MODE=-i
+    if db_exists "$DB"; then
+        TABLE_PRESENT="$(compose exec -T db psql -U odoo -d "$DB" -Atc "SELECT to_regclass('public.ir_module_module') IS NOT NULL")" \
+            || { echo "état de la base illisible"; exit 1; }
+        if [ "$TABLE_PRESENT" = t ]; then
+            MODULE_STATE="$(compose exec -T db psql -U odoo -d "$DB" -Atc "SELECT state FROM ir_module_module WHERE name='$MODULE'")" \
+                || { echo "état du module illisible"; exit 1; }
+            case "$MODULE_STATE" in installed|"to upgrade") MODE=-u ;; esac
+        fi
+    else
+        compose exec -T db createdb -U odoo "$DB" || exit 1
+    fi
+    step "1. QA de tâche : $MODE $MODULE + tests ($TAGS) sur $DB"
     if run_odoo -c "$CONF" -d "$DB" $MODE "$MODULE" --test-enable --test-tags "$TAGS" \
             --log-level=test --stop-after-init --without-demo=all --screenshots=/mnt/artifacts \
-            && ! ignored; then
+            && ! ignored && python3 "$HERE/odoo_test_result.py" "$LOG" --module "$MODULE"; then
         echo "✅ $MODE + tests OK"; INSTALL_OK=ok; [ "$MODE" = -u ] && UPDATE_OK=ok
     elif ignored; then
         echo "❌ $MODULE est INTROUVABLE dans le chemin des addons du conteneur (ODOO_ADDONS_DIR=${ODOO_ADDONS_DIR:-?}) ou illisible par l'uid 101"
@@ -221,7 +269,7 @@ else
         if run_odoo -c "$CONF" -d "$DB" -u "$MODULE" \
                 --test-enable --test-tags "$TAGS" \
                 --log-level=test --stop-after-init \
-                --screenshots=/mnt/artifacts; then
+                --screenshots=/mnt/artifacts && python3 "$HERE/odoo_test_result.py" "$LOG" --module "$MODULE"; then
             echo "✅ tests OK"
         else
             echo "❌ tests en échec"
@@ -289,9 +337,12 @@ if [ "$WARNS" -gt 0 ]; then
     grep -E "^[0-9-]+ [0-9:,]+ [0-9]+ WARNING" "$LOG" | grep "$MODULE" | head -20
 fi
 
-if [ "$KEEP" -eq 0 ] && [ "$DB_WAS_UP" -eq 0 ]; then compose stop db >/dev/null 2>&1; fi
+echo "PostgreSQL conservé : son arrêt relève du superviseur du stack."
 
 RESULT_LINE="$(grep -h "odoo.tests.result:" "$LOG" 2>/dev/null | tail -1 | sed 's/.*odoo.tests.result: //; s/ when loading.*//')"
+if ! python3 "$HERE/odoo_test_result.py" "$LOG" --module "$MODULE"; then
+    echo "❌ preuve de tests absente ou invalide"; STATUS=1
+fi
 echo "RECETTE module=$MODULE db=$DB install=$INSTALL_OK update=$UPDATE_OK uninstall=$UNINSTALL_OK tests=\"${RESULT_LINE:-non exécutés}\" errors=$ERRORS failed=$FAILED skipped=$SKIPPED warnings=$WARNS total=$(( $(date +%s) - T_ALL ))s ${DURATIONS}"
 
 echo

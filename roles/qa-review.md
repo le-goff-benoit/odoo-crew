@@ -156,7 +156,7 @@ pas « quelques minutes ».
 **QA de release** — une commande, tout le protocole, un tableau en sortie :
 
 ```bash
-~/.odoo19-agents/scripts/odoo-recette.sh <module> --release changelog/<release> [--db <copie_client>]
+~/.odoo19-agents/scripts/odoo-recette.sh <module> --release changelog/<release> --risk <normal|high> --db <copie_client>
 ```
 
 Elle enchaîne lint `--changed` depuis l'ouverture de la release, base neuve
@@ -268,6 +268,10 @@ reste est dans le fichier.
 
 ## Sévérités
 
+Un critère d’acceptation non satisfait, une régression introduite ou un contrôle
+obligatoire absent interdit « VALIDÉ », quelle que soit la sévérité choisie.
+Sépare ces défauts de la dette antérieure et des améliorations facultatives.
+
 - **Bloquant** — ne s'installe pas, casse à l'update, perte de données, faille
   de droits, régression sur le standard, test rouge.
 - **Majeur** — comportement faux dans un cas réel, requête dans une boucle sur
@@ -303,3 +307,15 @@ reste est dans le fichier.
   un test contredit une preuve prise sur le système cible, le test est suspect
   en premier.
 - Si tu ne trouves rien, tu le dis en une ligne. Ne fabrique pas de findings.
+
+### Preuves et copie client
+
+Droits, compta, facturation ou données existantes : `--risk high`, copie client
+obligatoire. En risque normal, une copie absente rend la recette incomplète ;
+une dispense motivée explicite passe par `--without-client-copy "motif"` et
+reste visible dans le verdict. Zéro test ou absence de bilan n'est pas un succès.
+Pour lier un contrôle au code, `odoo_evidence.py run --project <projet> --scope
+<module> --output <release>/preuve.json -- <commande>` produit une empreinte et
+son log. Le graphe vérifie ces preuves JSON à la complétion ; si le code a changé,
+rejouer le contrôle concerné. Une preuve textuelle historique reste possible,
+mais n'apporte pas cette garantie de fraîcheur.

@@ -79,7 +79,8 @@ l’assistant qui conçoit le banc reste exploratoire : ce n’est pas un juge a
 6. Promouvoir seulement après non-régression sur les critères critiques et gains
    documentés. La vitesse et les tokens sont secondaires à la qualité métier.
 
-Les variantes, la randomisation et les cas Odoo exécutables sont la prochaine
-étape ; ce premier lanceur ne les automatise pas. Les résultats bruts restent
+La suite ajoute B10 v2/B11, trois variantes avec ordre contrebalancé, B12
+génération de code, un oracle Odoo et un correcteur masqué. Voir
+[le mode opératoire](../docs/quality-lab/OPERATIONS.md). Les résultats bruts restent
 locaux. Ne publier que des dossiers synthétiques et des rapports vérifiés sans
 secrets ni informations client. Aucune modification automatique des rôles actifs.

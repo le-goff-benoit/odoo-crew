@@ -3,13 +3,14 @@
 « Studio » (champs, modèles, automatisations, actions serveur, vues, menus, droits…)
 entre une base et un fichier JSON versionnable — sans module.
 
-Même nomenclature qu'Odoo Studio : les enregistrements sont créés et modifiés avec
-le contexte `studio=True`, ce qui laisse Odoo créer lui-même l'identifiant externe
-dans `studio_customization` (`<libellé>_<uuid>`, marqué `studio`, `noupdate`). Un
-pack exporté depuis une base et appliqué sur une autre y est indiscernable d'un
-travail fait dans Studio. `--since` (date ISO, typiquement l'ouverture de la
-release, fichier `.opened`) ou `--only` (un XML-ID par ligne) restreignent l'export
-à ce que la release a créé, sans emporter le Studio historique du client.
+Les créations utilisent l'import ORM `load` : objet et identifiant externe du
+pack sont enregistrés dans une même transaction. Le contexte `studio=True`
+conserve le marquage Studio lorsque ce module est installé ; `install_mode`
+évite un deuxième identifiant automatique. Les champs des modèles nouveaux,
+y compris `x_name`, doivent être présents dans le pack. `--since` ou `--only`
+restreignent l'export à la release. Une prévalidation précède toute écriture ;
+le pack entier n'est pas une transaction unique. Après une interruption, une
+réapplication retrouve les objets par leur identifiant externe stable.
 
 Tout repose sur l'identifiant externe (`ir.model.data`, `module.name`) : un
 enregistrement du pack se retrouve par son XML-ID, se crée s'il manque, se met à
@@ -39,13 +40,15 @@ from __future__ import annotations
 
 import json
 import os
+import re
+from urllib.parse import urlsplit
 import sys
 import xmlrpc.client
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 
-UNRESOLVED = object()   # référence sans XML-ID dans le pack : champ ignoré à l'application
+UNRESOLVED = object()   # pack incomplet : application refusée
 ORDER = ["ir.model", "ir.model.fields", "res.groups", "ir.model.access", "ir.rule",
          "ir.ui.view", "ir.actions.server", "base.automation", "ir.cron",
          "ir.actions.act_window", "ir.ui.menu", "ir.actions.report", "mail.template",
@@ -72,6 +75,11 @@ class Target:
     """Une base Odoo jointe par XML-RPC : locale (stack) ou instance déclarée."""
 
     def __init__(self, url: str, db: str, login: str, secret: str, guard=None, label: str = ""):
+        parsed = urlsplit(url)
+        if guard is None and (parsed.scheme not in ('http', 'https') or
+                              parsed.hostname not in ('localhost', '127.0.0.1', '::1') or
+                              parsed.username is not None or parsed.password is not None):
+            raise ValueError("cible distante : utiliser une instance déclarée, pas le chemin local")
         self.url, self.db, self.login, self.secret = url.rstrip("/"), db, login, secret
         self.guard = guard          # Instance d'odoo_instance (règles de production) ou None
         self.label = label or f"{url} / {db}"
@@ -109,10 +117,12 @@ class Target:
                          fields=["module", "name"], limit=1, order="id")
         return f"{rows[0]['module']}.{rows[0]['name']}" if rows else None
 
-    def id_of(self, xmlid: str) -> int | None:
+    def id_of(self, xmlid: str, expected_model: str | None = None) -> int | None:
         module, _, name = xmlid.partition(".")
         rows = self.call("ir.model.data", "search_read",
-                         [("module", "=", module), ("name", "=", name)], fields=["res_id"], limit=1)
+                         [("module", "=", module), ("name", "=", name)], fields=["res_id", "model"], limit=1)
+        if rows and expected_model and rows[0]["model"] != expected_model:
+            raise ValueError("identifiant lié à un autre modèle : " + xmlid)
         return rows[0]["res_id"] if rows else None
 
     def name_record(self, model: str, res_id: int, xmlid: str, allow_write: bool) -> None:
@@ -251,40 +261,156 @@ def normalize(current, field_type: str):
     return current
 
 
+def references(value):
+    if isinstance(value, dict):
+        if 'unresolved' in value:
+            raise ValueError('référence sans identifiant externe : pack incomplet')
+        if 'ref' in value:
+            yield value['ref']
+    elif isinstance(value, list):
+        for item in value:
+            yield from references(item)
+
+
+def preflight(target, pack):
+    if pack.get('format') != 'odoo-pack/1' or not isinstance(pack.get('records'), list):
+        raise ValueError('format de pack invalide')
+    def series(value):
+        match = re.search(r'(\d+)\.(\d+)', str(value))
+        if not match:
+            raise ValueError('série de pack ou de cible non établie')
+        return match.groups()
+    version = target.call('ir.module.module', 'search_read', [('name', '=', 'base')], fields=['latest_version'])
+    if not version or series(pack.get('series')) != series(version[0]['latest_version']):
+        raise ValueError('série du pack différente de celle de la cible')
+    records = pack['records']
+    by_ref = {}
+    for rec in records:
+        if not isinstance(rec, dict) or not isinstance(rec.get('model'), str) or not isinstance(rec.get('values'), dict) or not isinstance(rec.get('xml_id'), str):
+            raise ValueError('enregistrement de pack mal formé')
+        ref = rec['xml_id']
+        if not re.fullmatch(r'[A-Za-z0-9_]+\.[A-Za-z0-9_.-]+', ref) or ref in by_ref:
+            raise ValueError('identifiant externe invalide ou dupliqué : ' + ref)
+        by_ref[ref] = rec
+    ids = {ref: target.id_of(ref, expected_model=rec['model']) for ref, rec in by_ref.items()}
+    virtual = {}
+    for rec in records:
+        if rec['model'] == 'ir.model':
+            virtual[rec['values']['model']] = {}  # les champs importés doivent être explicites
+    for rec in records:
+        if rec['model'] == 'ir.model.fields':
+            values = rec['values']
+            model_link = values.get('model_id')
+            if not isinstance(model_link, dict) or not model_link.get('ref'):
+                raise ValueError('model_id exige une référence externe : ' + rec['xml_id'])
+            model_ref = model_link['ref']
+            if model_ref in by_ref:
+                model_name = by_ref[model_ref]['values']['model']
+            elif model_ref and target.id_of(model_ref):
+                model_name = target.call('ir.model', 'read', [target.id_of(model_ref)], fields=['model'])[0]['model']
+            else:
+                raise ValueError('modèle du champ non résolu : ' + rec['xml_id'])
+            virtual.setdefault(model_name, {})[values['name']] = {'type': values['ttype']}
+    metadata = {}
+    dependencies = {}
+    for rec in records:
+        model, ref = rec['model'], rec['xml_id']
+        if model not in metadata:
+            try:
+                metadata[model] = target.call(model, 'fields_get', attributes=['type'])
+            except Exception:
+                if model not in virtual:
+                    raise
+                metadata[model] = {}
+            metadata[model].update(virtual.get(model, {}))
+        unknown = set(rec['values']) - set(metadata[model])
+        if unknown:
+            raise ValueError(ref + ' : champs inconnus : ' + ', '.join(sorted(unknown)))
+        refs = set(r for value in rec['values'].values() for r in references(value))
+        deps = set()
+        for referenced in refs:
+            rid = ids.get(referenced) or target.id_of(referenced)
+            if rid:
+                continue
+            if referenced not in by_ref:
+                raise ValueError('référence introuvable : ' + referenced)
+            deps.add(referenced)
+        # Les modèles et champs nouveaux doivent exister avant leurs données.
+        for schema in records:
+            if schema['model'] == 'ir.model' and schema['values'].get('model') == model:
+                deps.add(schema['xml_id'])
+            if schema['model'] == 'ir.model.fields' and schema['values'].get('name') in rec['values']:
+                model_ref = schema['values'].get('model_id', {}).get('ref')
+                if model_ref in by_ref and by_ref[model_ref]['values'].get('model') == model:
+                    deps.add(schema['xml_id'])
+        dependencies[ref] = deps
+    ordered, remaining = [], dict(by_ref)
+    while remaining:
+        ready = [ref for ref in remaining if not (dependencies[ref] & remaining.keys())]
+        if not ready:
+            raise ValueError('dépendances circulaires non applicables sans arbitrage : ' + ', '.join(remaining))
+        for ref in ready:
+            ordered.append(remaining.pop(ref))
+    return ordered, metadata
+
+
+def create_named(target, model, xmlid, vals, meta, allow_write):
+    # load crée l'objet ET son XML-ID dans la même transaction RPC.
+    columns, row = ['id'], [xmlid]
+    for name, value in vals.items():
+        kind = meta[name]['type']
+        if kind == 'many2one':
+            columns.append(name + '/.id')
+            row.append(str(value) if value else '')
+        elif kind == 'many2many':
+            columns.append(name + '/.id')
+            row.append(','.join(map(str, value[0][2])))
+        else:
+            columns.append(name)
+            row.append(json.dumps(value) if kind == 'json' or isinstance(value, (dict, list)) else
+                       '' if value is None or (value is False and kind != 'boolean') else str(value))
+    result = target.call(model, 'load', columns, [row], allow_write=allow_write,
+                         context=dict(STUDIO_CTX, module=xmlid.split('.')[0], noupdate=True,
+                                      install_mode=True))
+    if not result.get('ids') or len(result['ids']) != 1 or any(m.get('type') == 'error' for m in result.get('messages', [])):
+        raise ValueError('création/import refusé : ' + xmlid + ' : ' + str(result.get('messages')))
+    rid = result['ids'][0]
+    if target.id_of(xmlid) != rid:
+        raise ValueError('identité non confirmée après import : ' + xmlid + ' ; arrêter et vérifier la cible')
+    return rid
+
+
 def apply(target: Target, pack: dict, dry_run: bool, allow_write: bool) -> int:
+    records, planned_meta = preflight(target, pack)  # aucune écriture avant la validation globale
     cache: dict = {}
     created = updated = unchanged = 0
-    for rec in pack["records"]:
+    for rec in records:
         model, xmlid = rec["model"], rec["xml_id"]
         cache.setdefault(xmlid, target.id_of(xmlid))
         rid = cache[xmlid]
-        meta = target.call(model, "fields_get", attributes=["type"])
+        meta = planned_meta[model] if dry_run else target.call(model, "fields_get", attributes=["type"])
         vals, m2m = {}, {}
         for name, value in rec["values"].items():
             if name not in meta:
-                print(f"  ⚠️ {xmlid}.{name} inconnu sur la cible (série différente ?) — ignoré")
-                continue
+                raise ValueError(f"champ devenu indisponible après prévalidation : {xmlid}.{name}")
             if meta[name]["type"] == "many2many":
                 ids = [resolve(target, v, cache) for v in (value or [])]
                 if UNRESOLVED in ids:
-                    print(f"  ⚠️ {xmlid}.{name} : référence sans XML-ID dans le pack — champ ignoré")
-                    continue
+                    raise ValueError(f"référence incomplète : {xmlid}.{name}")
                 m2m[name] = sorted(ids)
                 vals[name] = [(6, 0, ids)]
                 continue
             resolved = resolve(target, value, cache)
             if resolved is UNRESOLVED:
-                print(f"  ⚠️ {xmlid}.{name} : référence sans XML-ID dans le pack — champ ignoré")
-                continue
+                raise ValueError(f"référence incomplète : {xmlid}.{name}")
             vals[name] = resolved
         if rid is None:
             print(f"  + {model} {xmlid}")
             if not dry_run:
-                rid = target.call(model, "create", vals, allow_write=allow_write, context=STUDIO_CTX)
-                if isinstance(rid, list):   # create([vals]) renvoie une liste selon la série
-                    rid = rid[0]
-                target.name_record(model, rid, xmlid, allow_write)
+                rid = create_named(target, model, xmlid, vals, meta, allow_write)
                 cache[xmlid] = rid
+            else:
+                cache[xmlid] = -(created + 1)  # identifiant de plan, jamais envoyé en écriture
             created += 1
             continue
         current = target.call(model, "read", [rid], fields=list(vals))[0]

@@ -189,7 +189,8 @@ Principes :
 3. Chaque voie parallèle écrit un fragment distinct dans
    `.odoo-agents/flow-artifacts/<run>/`.
 4. L'orchestrateur fusionne les fragments dans les fichiers de release.
-5. `complete` exige une preuve existante et enregistre la transition.
+5. `complete` exige un fichier de preuve non vide, vérifie les preuves structurées
+   `odoo-evidence/1` (code et log inchangés), puis enregistre la transition.
 6. Une porte humaine exige en plus `--human-confirmed`.
 7. Une reprise après modification compatible du graphe exige `migrate` ; elle
    n'est jamais silencieuse.
@@ -295,10 +296,16 @@ jamais directement. Toute évolution part de ce référentiel puis passe par
 - Une clôture rouge ne produit pas les documents de livraison.
 - Une écriture en production reste protégée par `odoo_instance.py`, en plus de
   la porte humaine du graphe.
-- Les verrous sont locaux au projet et à la machine ; ils ne constituent pas
-  un verrou distribué entre plusieurs postes.
-- La preuve est actuellement contrôlée par existence de fichier ; sa qualité
-  est évaluée par le rôle et l'orchestrateur.
+- Les verrous restent coopératifs sur la machine. Un registre physique partagé
+  entre projets est optionnel ; il doit être configuré par tous les intervenants.
+- Les preuves textuelles sont vérifiées comme fichiers non vides. Les preuves
+  JSON structurées vérifient aussi le contenu du code et du log ; la pertinence
+  du contrôle reste évaluée par le rôle et l’orchestrateur.
 
 Le détail de l'installation, de la validation et de la mise à jour se trouve
 dans [INSTALL.md](INSTALL.md).
+
+Le [mode opératoire du laboratoire](docs/quality-lab/OPERATIONS.md) explique
+comment adapter les cas, comparer les directives et suivre une campagne. Les
+[changements outillés](docs/quality-lab/TOOLING-CHANGES.md) détaillent mémoire
+optionnelle, preuves de contrôle, protections et configuration des ressources.
