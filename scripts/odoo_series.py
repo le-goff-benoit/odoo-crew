@@ -78,6 +78,8 @@ def key(series: str) -> tuple[int, int]:
 
 def available() -> list[str]:
     """Séries dont les sources sont présentes sur le poste, ordre croissant."""
+    if not SOURCES_ROOT.is_dir():
+        return []
     found = [
         p.name for p in SOURCES_ROOT.iterdir()
         if p.is_dir() and re.fullmatch(r"\d+\.\d+", p.name)

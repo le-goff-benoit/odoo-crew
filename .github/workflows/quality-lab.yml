@@ -1,0 +1,32 @@
+name: Qualité du dispositif Odoo
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    strategy:
+      matrix:
+        python-version: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1 # v6
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Graphe et contrats sans appels LLM
+        run: |
+          python3 scripts/odoo_flow.py validate
+          python3 -m unittest discover -s tests -v
+          bash -n build.sh scripts/odoo-test.sh scripts/odoo-recette.sh scripts/odoo-restore.sh
+      - name: Parité des profils générés dans une distribution isolée
+        run: |
+          ./build.sh --output-root "$RUNNER_TEMP/odoo-quality-dist"
+          ./build.sh --output-root "$RUNNER_TEMP/odoo-quality-dist" --check

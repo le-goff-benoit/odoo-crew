@@ -1,4 +1,5 @@
 from pathlib import Path
+import os
 import subprocess
 import sys
 import tempfile
@@ -17,7 +18,8 @@ class LintScopeTests(unittest.TestCase):
             changed.write_text('')
             (module / 'tests/test_fixture.py').write_text('# A synthetic test file, intentionally not imported.\n')
             result = subprocess.run([sys.executable, str(ROOT / 'scripts/odoo_lint.py'), '--series', '19.0',
-                                     '--only-files', str(changed), str(module)], capture_output=True, text=True)
+                                     '--only-files', str(changed), str(module)], capture_output=True, text=True,
+                                    env=dict(os.environ, ODOO_SOURCES_DIR=str(Path(tmp) / 'sources_absentes')))
             self.assertNotEqual(result.returncode, 0)
-            self.assertIn('tests/__init__.py', result.stdout)
+            self.assertIn('tests/__init__.py', result.stdout, result.stderr)
             self.assertIn('absent', result.stdout)

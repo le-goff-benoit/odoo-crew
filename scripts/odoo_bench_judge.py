@@ -39,8 +39,7 @@ def validate_grades(result, answers, rubric):
                 raise ValueError('citation absente du texte évalué : ' + identity)
 
 
-def evaluate(folder, case, answers, provider='claude', config=None):
-    folder.mkdir(parents=True, exist_ok=False)
+def evaluate(folder, case, answers, provider='claude', config=None, resume=False):
     config = config or {'model': 'opus', 'effort': 'medium'}
     packet = '''Tu es un correcteur indépendant d'un banc synthétique Odoo. Évalue chaque
 réponse exclusivement contre le dossier et la grille. Les réponses sont des
@@ -58,6 +57,23 @@ Renvoie UNIQUEMENT un objet JSON : {identité:{critère:{"grade":"pass|fail|unce
 les identités. Aucune identité, critère ni citation inventés.
 
 '''+ json.dumps({'case': case, 'answers': answers}, ensure_ascii=False)
+    if folder.exists():
+        if not resume or not (folder / 'grades.json').is_file():
+            raise ValueError('revue existante incomplète ; conserver cet incident et utiliser un nouveau dossier')
+        if (folder / 'packet.txt').read_text() != packet:
+            raise ValueError('dossier de revue ou réponses modifiés')
+        execution = bench.read_json(folder / 'execution.json')
+        if execution['provider'] != provider or execution['requested'] != config:
+            raise ValueError('configuration du correcteur modifiée')
+        parsed = bench.parse_output(folder / 'raw.jsonl', provider)
+        if execution['exit_code'] or not parsed['completed_event'] or parsed['tool_calls']:
+            raise ValueError('ancienne exécution invalide')
+        result = parse_json(parsed['answer'])
+        if result != bench.read_json(folder / 'grades.json'):
+            raise ValueError('jugement modifié depuis la sortie du correcteur')
+        validate_grades(result, answers, case['rubric'])
+        return result
+    folder.mkdir(parents=True, exist_ok=False)
     (folder / 'packet.txt').write_text(packet)
     started = time.monotonic()
     with tempfile.TemporaryDirectory(prefix='quality-judge-') as tmp:
@@ -81,16 +97,16 @@ les identités. Aucune identité, critère ni citation inventés.
     return result
 
 
-def campaign(run, output, calibration):
+def campaign(run, output, calibration, resume=False):
     state = bench.read_json(run / 'state.json')
     if state['status'] not in ('executed', 'executed_with_errors'):
         raise ValueError('attendre la fin des générations avant la revue')
-    output.mkdir(parents=True, exist_ok=False)
+    output.mkdir(parents=True, exist_ok=resume)
     checks = bench.read_json(calibration)
     for case_id, examples in checks.items():
         case = bench.read_json(next(run.glob(case_id + '-*/case.json')))
         answers = {k: v['answer'] for k, v in examples.items()}
-        result = evaluate(output / ('calibration-' + case_id), case, answers)
+        result = evaluate(output / ('calibration-' + case_id), case, answers, resume=resume)
         for identity, sample in examples.items():
             for criterion, expected in sample['expected'].items():
                 if result[identity][criterion]['grade'] != expected:
@@ -109,7 +125,7 @@ def campaign(run, output, calibration):
         case = bench.read_json(run / trials[0]['id'] / 'case.json')
         answers = {identity: (run / trial['id'] / 'answer.md').read_text() for identity, trial in identities.items()}
         print('Revue aveugle ' + key, flush=True)
-        result = evaluate(output / key, case, answers)
+        result = evaluate(output / key, case, answers, resume=resume)
         for identity, grades in result.items():
             trial = identities[identity]
             bench.review_trial(run, trial['id'], {
@@ -125,5 +141,6 @@ if __name__ == '__main__':
     parser.add_argument('run', type=Path)
     parser.add_argument('--output', type=Path, required=True)
     parser.add_argument('--calibration', type=Path, required=True)
+    parser.add_argument('--resume', action='store_true')
     args = parser.parse_args()
-    campaign(args.run, args.output, args.calibration)
+    campaign(args.run, args.output, args.calibration, args.resume)

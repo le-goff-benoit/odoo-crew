@@ -110,3 +110,18 @@ invalide échoue sans réparation. Les résultats de l'oracle reviennent dans le
 rapports des générations avec les empreintes des réponses et des logs. Une revue
 du code reste requise : ce banc vise des erreurs de développement, pas un modèle
 malveillant qui chercherait activement à falsifier le processus de test.
+
+## GitHub
+
+`.github/workflows/quality-lab.yml` lance graphe, tests de contrat et génération
+isolée sur Python 3.10/3.12 à chaque push/PR ou lancement manuel. Aucune clé ni
+requête LLM n'est nécessaire. GitHub affiche les étapes et le verdict du job.
+Les campagnes payantes et les oracles Odoo/Enterprise restent des lancements
+explicites dans un environnement équipé ; leur suivi est assuré par les états
+et rapports du laboratoire. Le workflow est livré dans le dépôt ; son exécution
+sur GitHub ne peut être attestée qu'après publication et retour du service.
+
+Le correcteur accepte `--resume` : les lots déjà corrigés sont relus et vérifiés
+sans nouvel appel au fournisseur. Une réponse, une grille ou une configuration
+modifiée invalide cette reprise. Un lot commencé mais incomplet reste un incident
+conservé ; utiliser un nouveau dossier pour une nouvelle tentative explicite.
