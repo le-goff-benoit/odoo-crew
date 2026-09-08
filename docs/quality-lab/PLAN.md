@@ -4,7 +4,7 @@ Référence initiale : `9541bba`. Branche : `feat/quality-lab`.
 Conception : analyse du bureau, sections 10, 13–16 (copie locale ignorée par Git).
 Périmètre initial : pilote court L00–L04. **Poursuite L05–L09 autorisée par
 l’utilisateur après le pilote**, avec arbitrages autonomes et mesure des gains.
-Les profils actifs et les projets client ne sont pas la cible de cette branche.
+Les essais restent isolés des projets client ; les corrections validées sont désormais intégrées aux profils actifs.
 
 ## Critère directeur
 
@@ -25,7 +25,7 @@ Un rapport sans jugement indépendant reste « à évaluer », jamais « réussi
 | L06 | Fiabiliser les verdicts QA, preuves et protections (R03–R11) | L00 | validé sur le périmètre documenté | Cas de contrat isolés, défauts distincts |
 | L07 | Organisation des tâches, mémoire et documentation | L05, L06 | livré avec options et limites explicites | Critères sections 10, 13, 14, compatibles avec l’existant |
 | L08 | Variantes et comparaison contrôlée des directives | L04, L06 | terminé : 34 générations + 6 corrections | Évaluation indépendante, corpus réservé |
-| L09 | Validation intégrée et livraison réversible | L07, L08 | validation locale terminée, livraison en cours | Aucun gain annoncé sans résultat mesuré |
+| L09 | Validation intégrée et livraison réversible | L07, L08 | livré et vérifié | `de0000e` publié sur main ; profils actifs conformes ; CI Python 3.10/3.12 verte |
 
 ## Pilote autorisé
 
@@ -57,3 +57,5 @@ Elle ne prouve pas une supériorité statistique ni une amélioration générale
 
 - Conclusion : rôle développeur enrichi par la précision RPC v2, validée sur B12 (deux outils) et B13 (Claude). Rôles analystes compacts non promus. Tous les résultats, y compris rejets et défauts de l'oracle : `experiment-2026-09-08/README.md`.
 - Vérification finale : 91 tests sous Python 3.10/3.12, graphe, lint Python bloquant, syntaxe shell, génération isolée conforme.
+
+- Livraison : intégration par avance rapide dans `main`, publication de `de0000e`, génération active de 20 fichiers et 2 blocs conforme. [CI GitHub validée](https://github.com/le-goff-benoit/odoo-skills/actions/runs/34278073993). Analyse du bureau et mémoire locale actualisées. Aucun projet client modifié.
