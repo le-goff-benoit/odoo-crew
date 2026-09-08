@@ -1,0 +1,51 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "1e24dbfad85eff4e4073b802298a43dabacc01dfb2bb0f4d7204dc7a8fcb400c",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "Contact **acceptant** les partiels, disponible ≥ 60 % du commandé → livraison sans approbation. — E-01 déclarée remplacée, seuil inclusif, approbation sous le seuil, attente du complet en cas de refus."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "Livraison possible **sans approbation** (50 ≥ 48) — T1 à T5 donnent les cinq résultats attendus, y compris invalidation à la baisse et maintien à la hausse."
+    },
+    "identity": {
+      "grade": "uncertain",
+      "evidence": "**Case « accepte les partiels »** : sur quel contact exactement (adresse de livraison, client facturé, société parente) — R1 pose bien la case du contact de livraison, mais Q5 rouvre le choix du contact déjà arbitré par E-03."
+    },
+    "qa": {
+      "grade": "pass",
+      "evidence": "doit être **rejeté côté serveur**, pas seulement masqué dans l'interface — T6 (48), T7 (47) et T12 (appel serveur direct) couvrent les trois exigences."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "E-01 : « toutes les commandes doivent être livrées en une fois ». Règle jamais implémentée, explicitement corrigée par E-02. — Sources tracées, historique remplacé, questions ouvertes et hypothèses séparées des décisions, état des travaux consigné."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "evidence": "Aucune de ces questions n'a été arbitrée par le client. — Q1 à Q4 restent ouvertes ; les cas dépendants sont marqués non recettables plutôt que résolus par défaut."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "**État réel des travaux : aucun développement, déploiement ni test réalisé ou constaté.** — Verdict standard non établi, aucun outil ni écriture revendiqués."
+    }
+  },
+  "verdict": "needs_review",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 1
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 3,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:45:12.819236+00:00"
+}

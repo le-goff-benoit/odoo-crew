@@ -125,3 +125,12 @@ Le correcteur accepte `--resume` : les lots déjà corrigés sont relus et véri
 sans nouvel appel au fournisseur. Une réponse, une grille ou une configuration
 modifiée invalide cette reprise. Un lot commencé mais incomplet reste un incident
 conservé ; utiliser un nouveau dossier pour une nouvelle tentative explicite.
+
+L'itération de développement conserve trois états des instructions : référence,
+`dev_guard` (règle générale) et `dev_guard_v2` (ordre d'application des défauts
+explicitement expliqué). B12 mesure la correction et la non-régression ; B13
+sert au transfert vers les notes de frais. Le runner accepte `--case B13
+--fixtures benchmarks/odoo-expense --implementation quality_case/models/expense.py`.
+Le [rapport de l'expérience](experiment-2026-09-08/README.md) conserve aussi les
+échecs des variantes et les corrections de l'oracle. Un échec du modèle ne doit
+jamais être effacé en remplaçant son code par une version corrigée manuellement.

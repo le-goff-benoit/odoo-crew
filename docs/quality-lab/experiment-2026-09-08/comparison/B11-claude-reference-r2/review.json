@@ -1,0 +1,51 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "b15542c4b7a7ef3a033308087b61e00eb1cc352845b8c9422b776e23d90f7f86",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "E-02 est présentée comme une « correction », je la traite donc comme remplaçant E-01, avec E-01 réduit au cas « contact refusant les partiels ». — E-01 est bien traitée comme remplacée ; seuil 60 % inclusif (48), approbation en dessous et attente du complet en cas de refus sont énoncés."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "50 ≥ 48 → **livraison sans approbation** — Les cinq cas (50 accepte, 40 accepte, 50 refuse, 50→40, 50→60) reçoivent les résultats attendus."
+    },
+    "identity": {
+      "grade": "uncertain",
+      "evidence": "Si le transfert n'a pas d'adresse de livraison distincte, on retombe sur le client — La case du contact de livraison est bien retenue (D-03), mais un repli vers le client est évoqué comme comportement, seule une « règle de repli à écrire » étant annoncée."
+    },
+    "qa": {
+      "grade": "fail",
+      "evidence": "— Auto-approbation et contrôle serveur testés (T2b, T7), mais aucun cas au seuil exact 48/80 ni juste en dessous (47)."
+    },
+    "memory": {
+      "grade": "uncertain",
+      "evidence": "**D-06** (analyse) — Cas « refus client » sans soupape — Provenance et remplacement bien conservés, mais des éléments d'analyse figurent sous « Décisions actées », même assortis d'une mention « à confirmer »."
+    },
+    "open_stays_open": {
+      "grade": "fail",
+      "evidence": "le développeur les implémente telles quelles — Granularité, point de blocage, reprise et référence de variation sont couverts par des hypothèses H1–H5 que le développeur doit appliquer par défaut, sans arbitrage client."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "dans cet exercice je n'ai ni les sources Odoo, ni la base client, ni le briefing — Aucune écriture ni test prétendus ; verdict standard explicitement marqué présomption non vérifiée."
+    }
+  },
+  "verdict": "rejected",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 1
+    },
+    "development": null,
+    "qa": {
+      "passed": 1,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 1,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:48:06.381991+00:00"
+}

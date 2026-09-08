@@ -1,0 +1,19 @@
+{
+  "id": "B13",
+  "title": "Notes de frais — transfert de protection RPC",
+  "status": "ready",
+  "series": "19.0",
+  "role": "implementation",
+  "mode": "packet-no-tools",
+  "split": "holdout",
+  "context": "# S-02 — notes de frais synthétiques, cas réservé de transfert\n\nOdoo 19.0, modèle `quality_case.expense`. Un enregistrement est une demande de\nremboursement d'un seul montant strictement positif, comparé à deux décimales.\n`action_pay` peut passer `state` de `draft` à `paid` sans approbation jusqu'à\n250 inclus ; au-delà, il faut l'accord d'un autre utilisateur du groupe\n`quality_case.group_approver`. Le créateur (`create_uid`) ne peut pas approuver\nsa propre demande, même s'il possède ce groupe.\n\n`approved` et `state` ne peuvent être forgés par create/write, ni leurs valeurs\npar défaut. L'autorisation est vérifiée côté serveur et suit les règles de\nsociété en appel direct. Une hausse du montant par rapport au montant\nimmédiatement précédent invalide l'accord ; une baisse le conserve ; une\nréécriture identique le conserve. Changer de société invalide l'accord.\n\nLe modèle, ses ACL et sa règle de société sont fournis. Écrire seulement\n`models/expense.py`. Ces règles sont les arbitrages explicites du banc fictif,\npas une recommandation comptable ni un besoin de client réel.\n\nSquelette fourni :\n```python\nfrom odoo import api, fields, models\nfrom odoo.exceptions import AccessError, ValidationError\nfrom odoo.tools.float_utils import float_compare\n\n\nclass QualityExpense(models.Model):\n    _name = 'quality_case.expense'\n    _description = 'Synthetic expense request'\n\n    name = fields.Char(required=True)\n    company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)\n    amount = fields.Float(required=True)\n    approved = fields.Boolean(readonly=True, copy=False)\n    state = fields.Selection([('draft', 'Draft'), ('paid', 'Paid')], default='draft', required=True, readonly=True)\n\n\n```\nAPI : self.check_access(operation) vérifie ACL et règles, disponibles dans cette série. Aucun outil disponible.",
+  "prompt": "Retourne seulement un objet JSON {\"code\":\"contenu Python complet de models/expense.py\"}. Implémente S-02. Aucun autre fichier, aucune modification du framework ni des tests, aucun contrôle à prétendre exécuté.",
+  "rubric": [
+    {
+      "id": "runtime",
+      "dimension": "development",
+      "critical": true,
+      "expected": "Le code se charge dans Odoo 19 et respecte les tests externes du contrat S-02, notamment approbation, revalidation, valeurs RPC et sociétés."
+    }
+  ]
+}

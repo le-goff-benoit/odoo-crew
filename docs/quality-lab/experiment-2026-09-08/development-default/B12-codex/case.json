@@ -1,0 +1,18 @@
+{
+  "id": "B12",
+  "title": "Implémenter une règle métier et ses droits dans Odoo 19",
+  "status": "ready",
+  "series": "19.0",
+  "role": "implementation",
+  "mode": "packet-no-tools",
+  "context": "# S-01 — contrat synthétique de développement\n\nSérie 19.0, module `quality_case`, objet `quality_case.delivery`. Ce contrat est\nune décision de conception du **banc fictif**, pas un arbitrage pris pour un client.\nIl complète volontairement les inconnues des exercices d’analyse.\n\n- Une demande concerne un seul article. `ordered_qty` strictement positif,\n  `available_qty` positif ou nul. Comparaison des quantités à six décimales.\n- Quantité disponible complète : expédition permise ; disponibilité nulle : refus.\n- Partiel accepté : expédition sans accord à partir de 60 % inclus ; en dessous,\n  un accord du responsable est obligatoire. Si partiel refusé, attendre le complet,\n  même avec un accord. Le blocage intervient dans `action_ship`.\n- `action_approve` requiert le groupe `quality_case.group_approver` et une personne\n  distincte de `create_uid`. L’approbation ne doit pas être forgeable via create/write.\n- Une baisse par rapport à la proposition **immédiatement précédente** invalide\n  l’accord ; une hausse le conserve. Changer `ordered_qty`, `accepts_partial` ou\n  `company_id` invalide aussi l’accord. Pas de maximum historique implicite.\n- Les accès suivent les règles de société, y compris en appel direct aux méthodes.\n  Le champ `state` passe de `draft` à `done` seulement par `action_ship` autorisée.\n- Les groupes, ACL et règle de société sont fournis dans le squelette et figés.\n  Le fichier candidat implémente seulement `models/delivery.py`.\n\n\nSquelette du fichier à compléter :\n```python\nfrom odoo import api, fields, models\nfrom odoo.exceptions import AccessError, ValidationError\nfrom odoo.tools.float_utils import float_compare\n\n\nclass QualityDelivery(models.Model):\n    _name = 'quality_case.delivery'\n    _description = 'Synthetic delivery request'\n\n    name = fields.Char(required=True)\n    company_id = fields.Many2one('res.company', required=True, default=lambda self: self.env.company)\n    ordered_qty = fields.Float(required=True)\n    available_qty = fields.Float(required=True)\n    accepts_partial = fields.Boolean()\n    approved = fields.Boolean(readonly=True, copy=False)\n    state = fields.Selection([('draft', 'Draft'), ('done', 'Done')], default='draft', required=True, readonly=True)\n\n```\nAPI disponible dans cette série : self.check_access(operation) vérifie ACL/règles ; le groupe est quality_case.group_approver. Aucun code existant en plus du squelette, aucun outil ni test disponible pendant la génération.",
+  "prompt": "Retourne uniquement un objet JSON {\"code\": \"contenu Python complet du fichier models/delivery.py\"}, sans Markdown ni autre livrable. Implémente le contrat S-01 dans ce fichier. Le contexte de cet exercice remplace les étapes impossibles à exécuter : aucun fichier, graphe, lint ou test à prétendre effectué. Tu peux importer des fonctions Odoo, mais ne modifie pas les autres modules, le framework ou les tests. Des tests externes seront exécutés ensuite par le banc.",
+  "rubric": [
+    {
+      "id": "runtime",
+      "dimension": "development",
+      "critical": true,
+      "expected": "Le code se charge dans Odoo 19 et les scénarios externes de seuil, revalidation, droits, fraude, société et changement de politique passent."
+    }
+  ]
+}

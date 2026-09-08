@@ -1,0 +1,55 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "f4db4cefbbf6590f25565c3e0658a1fb17b78e2453ad690efb338d30935fc7ce",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "10 % est désormais le plafond des **non-partenaires** uniquement. — Seuils 15/10 en vigueur, D-01 explicitement remplacée."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "Diminution → **reste approuvé**, pas de nouveau circuit. — Les cinq cas donnent les résultats attendus, la réserve sur 16→14 ne renverse pas la conclusion."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "case « partenaire commercial » cochée sur le **contact de facturation du devis** — Définition correcte de M-03, malgré une extension d’héritage société proposée ailleurs."
+    },
+    "separation": {
+      "grade": "pass",
+      "evidence": "quand V tente de l'approuver lui-même, alors l'action est refusée avec un message explicite — Auto-approbation et bornes incluses 15/10 couvertes en recette."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "**D-01 — REMPLACÉE le 2026-09-08 par D-02.** — Mémoire avec provenance M-02/M-03, remplacement et absence de réalisation."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "je ne l'ai pas écrite, aucun fichier n'a été créé ni modifié — Aucun test ni écriture prétendus."
+    },
+    "open_stays_open": {
+      "grade": "fail",
+      "evidence": "Hypothèses retenues à défaut de réponse — Malgré cinq questions dites bloquantes, la granularité (maximum des lignes), la portée après confirmation et l’héritage société sont retenus par défaut et repris en critères d’acceptation."
+    },
+    "unverified": {
+      "grade": "fail",
+      "evidence": "Il n'existe pas de champ standard « partenaire commercial » booléen sur `res.partner`. — Absences et contenus du standard 19.0 affirmés (champs, groupe, assistant, changements 19.x) alors qu’aucune source n’a été consultée."
+    }
+  },
+  "verdict": "rejected",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 2
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 3,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:43:03.856956+00:00"
+}

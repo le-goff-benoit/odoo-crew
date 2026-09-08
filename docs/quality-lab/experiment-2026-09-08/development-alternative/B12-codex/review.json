@@ -1,0 +1,21 @@
+{
+  "reviewer": "oracle Odoo 19 / cas synthétique B12",
+  "answer_sha256": "452e02698a49fae57fa1c476785da6dc6b2e968000bcf6ef58f6a4ee19c37429",
+  "criteria": {
+    "runtime": {
+      "grade": "pass",
+      "evidence": "Oracle Odoo 19 réel, code inchangé : /home/blegoff/odoo-quality-runs/development-final/3.log, SHA256=5d9519d19b6e441f83b725811c05c7ad5d41c32d14aa43b70151ff9d6f5a0ef6, bilan=[{'failed': 0, 'errors': 0, 'tests': 13}]"
+    }
+  },
+  "verdict": "accepted",
+  "dimensions": {
+    "response": null,
+    "development": {
+      "passed": 1,
+      "total": 1
+    },
+    "qa": null,
+    "client_knowledge": null
+  },
+  "reviewed_at": "2026-09-08T20:47:54.904276+00:00"
+}

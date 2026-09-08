@@ -1,0 +1,104 @@
+2026-09-08 20:37:09,685 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-08 20:37:09,685 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-08 20:37:09,685 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-08 20:37:09,685 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-08 20:37:09,685 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-08 20:37:09,685 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo/addons/19.0', '/mnt/quality', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-08 20:37:09,685 1 INFO ? odoo: database: odoo@quality-lab-b35c8e7d95-db:default 
+2026-09-08 20:37:09,852 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 6d4d7037bc95:8069 
+2026-09-08 20:37:09,864 1 INFO lab_trial_4 odoo.tests.common: Importing test framework 
+2026-09-08 20:37:09,882 1 INFO lab_trial_4 odoo.modules.loading: loading 1 modules... 
+2026-09-08 20:37:09,885 1 INFO lab_trial_4 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-08 20:37:09,900 1 INFO lab_trial_4 odoo.modules.loading: updating modules list 
+2026-09-08 20:37:09,901 1 INFO lab_trial_4 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-08 20:37:10,283 1 WARNING lab_trial_4 odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-08 20:37:10,283 1 WARNING lab_trial_4 odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-08 20:37:10,283 1 WARNING lab_trial_4 odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-08 20:37:10,284 1 WARNING lab_trial_4 odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-08 20:37:10,406 1 INFO lab_trial_4 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Quality Lab Independent Business Oracle'] to user __system__ #1 via n/a 
+2026-09-08 20:37:10,439 1 INFO lab_trial_4 odoo.modules.loading: loading 16 modules... 
+2026-09-08 20:37:10,535 1 INFO lab_trial_4 odoo.modules.loading: Loading module quality_case (15/16) 
+2026-09-08 20:37:10,556 1 INFO lab_trial_4 odoo.registry: module quality_case: creating or updating database tables 
+2026-09-08 20:37:10,589 1 INFO lab_trial_4 odoo.modules.loading: loading quality_case/security/groups.xml 
+2026-09-08 20:37:10,597 1 INFO lab_trial_4 odoo.modules.loading: loading quality_case/security/ir.model.access.csv 
+2026-09-08 20:37:10,607 1 INFO lab_trial_4 odoo.modules.loading: Module quality_case loaded in 0.07s, 69 queries (+69 other) 
+2026-09-08 20:37:10,607 1 INFO lab_trial_4 odoo.modules.loading: Loading module quality_oracle (16/16) 
+2026-09-08 20:37:10,622 1 INFO lab_trial_4 odoo.modules.loading: Module quality_oracle loaded in 0.02s, 10 queries (+10 other) 
+2026-09-08 20:37:10,623 1 INFO lab_trial_4 odoo.modules.loading: 16 modules loaded in 0.18s, 79 queries (+79 extra) 
+2026-09-08 20:37:10,737 1 INFO lab_trial_4 odoo.modules.loading: Modules loaded. 
+2026-09-08 20:37:10,754 1 INFO lab_trial_4 odoo.registry: Registry changed, signaling through the database 
+2026-09-08 20:37:10,755 1 INFO lab_trial_4 odoo.registry: Registry loaded in 0.903s 
+2026-09-08 20:37:10,755 1 INFO lab_trial_4 odoo.service.server: Starting post tests 
+2026-09-08 20:37:10,860 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_approval_revalidation_and_increase ... 
+2026-09-08 20:37:10,888 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_changed_customer_policy_invalidates_approval ... 
+2026-09-08 20:37:10,901 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_context_defaults_cannot_forge_approval_or_state ... 
+2026-09-08 20:37:10,909 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: ====================================================================== 
+2026-09-08 20:37:10,909 1 ERROR lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: FAIL: Subtest TestDeliveryContract.test_context_defaults_cannot_forge_approval_or_state (context={'default_approved': True})
+Traceback (most recent call last):
+  File "/mnt/quality/quality_oracle/tests/test_delivery.py", line 97, in test_context_defaults_cannot_forge_approval_or_state
+    self.assertFalse(record.approved)
+AssertionError: True is not false
+ 
+2026-09-08 20:37:10,911 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: ====================================================================== 
+2026-09-08 20:37:10,911 1 ERROR lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: FAIL: Subtest TestDeliveryContract.test_context_defaults_cannot_forge_approval_or_state (context={'default_state': 'done'})
+Traceback (most recent call last):
+  File "/mnt/quality/quality_oracle/tests/test_delivery.py", line 98, in test_context_defaults_cannot_forge_approval_or_state
+    self.assertEqual(record.state, 'draft')
+AssertionError: 'done' != 'draft'
+- done
++ draft
+
+ 
+2026-09-08 20:37:10,912 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_no_forged_approval_or_state ... 
+2026-09-08 20:37:10,927 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: ====================================================================== 
+2026-09-08 20:37:10,927 1 ERROR lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: FAIL: TestDeliveryContract.test_no_forged_approval_or_state
+Traceback (most recent call last):
+  File "/mnt/quality/quality_oracle/tests/test_delivery.py", line 64, in test_no_forged_approval_or_state
+    with self.assertRaises(AccessError):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: AccessError not raised
+ 
+2026-09-08 20:37:10,928 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_no_self_approval_even_as_manager ... 
+2026-09-08 20:37:10,942 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_other_company_denied_on_direct_access ... 
+2026-09-08 20:37:10,954 1 INFO lab_trial_4 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [8], uid: 7, model: quality_case.delivery 
+2026-09-08 20:37:10,962 1 INFO lab_trial_4 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [8], uid: 7, model: quality_case.delivery 
+2026-09-08 20:37:10,966 1 INFO lab_trial_4 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [8], uid: 7, model: quality_case.delivery 
+2026-09-08 20:37:10,973 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_threshold_and_full_delivery ... 
+2026-09-08 20:37:10,989 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_unchanged_policy_keeps_approval ... 
+2026-09-08 20:37:11,000 1 INFO lab_trial_4 odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 3 removed 
+2026-09-08 20:37:11,001 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_pack: Starting TestPackContract.test_failed_import_does_not_leave_xmlid_or_row ... 
+2026-09-08 20:37:11,010 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_pack: Starting TestPackContract.test_import_has_identity_and_second_apply_is_unchanged ... 
+2026-09-08 20:37:11,020 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_pack: Starting TestPackContract.test_new_model_field_and_record_dependency_order ... 
+2026-09-08 20:37:11,027 1 INFO lab_trial_4 odoo.registry: module studio_customization: creating or updating database tables 
+2026-09-08 20:37:11,048 1 INFO lab_trial_4 odoo.registry: module studio_customization: creating or updating database tables 
+2026-09-08 20:37:11,068 1 INFO lab_trial_4 odoo.registry: module studio_customization: creating or updating database tables 
+2026-09-08 20:37:11,090 1 INFO lab_trial_4 odoo.addons.quality_oracle.tests.test_pack: Starting TestPackContract.test_unknown_field_rejected_before_any_creation ... 
+2026-09-08 20:37:11,111 1 INFO lab_trial_4 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-08 20:37:11,111 1 INFO lab_trial_4 odoo.service.server: 12 post-tests in 0.36s, 640 queries 
+2026-09-08 20:37:11,111 1 INFO lab_trial_4 odoo.tests.stats: quality_oracle: 16 tests 0.35s 640 queries 
+2026-09-08 20:37:11,111 1 ERROR lab_trial_4 odoo.tests.result: 3 failed, 0 error(s) of 12 tests when loading database 'lab_trial_4' 
+2026-09-08 20:37:11,111 1 INFO lab_trial_4 odoo.service.server: Initiating shutdown 
+2026-09-08 20:37:11,111 1 INFO lab_trial_4 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-08 20:37:11,360 1 INFO lab_trial_4 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+  + res.partner studio_customization.quality_contact
+1 / 0 / 0 créés / modifiés / inchangés sur synthetic ORM oracle
+0 / 0 / 1 créés / modifiés / inchangés sur synthetic ORM oracle
+  + ir.model studio_customization.dynamic_model
+  + ir.model.fields studio_customization.dynamic_field
+  + ir.model.fields studio_customization.dynamic_name
+  + x_quality_dynamic studio_customization.dynamic_row
+4 / 0 / 0 à créer / à modifier / inchangés sur synthetic ORM oracle
+  + ir.model studio_customization.dynamic_model
+  + ir.model.fields studio_customization.dynamic_field
+  + ir.model.fields studio_customization.dynamic_name
+  + x_quality_dynamic studio_customization.dynamic_row
+4 / 0 / 0 créés / modifiés / inchangés sur synthetic ORM oracle
+0 / 0 / 4 créés / modifiés / inchangés sur synthetic ORM oracle

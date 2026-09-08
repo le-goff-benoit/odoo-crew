@@ -1,0 +1,46 @@
+2026-09-08 20:49:03,507 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-08 20:49:03,507 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-08 20:49:03,507 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-08 20:49:03,507 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-08 20:49:03,507 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-08 20:49:03,507 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo/addons/19.0', '/mnt/quality', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-08 20:49:03,507 1 INFO ? odoo: database: odoo@quality-lab-6cac7b233b-db:default 
+2026-09-08 20:49:03,674 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 9285fa242262:8069 
+2026-09-08 20:49:03,685 1 INFO lab_trial_0 odoo.tests.common: Importing test framework 
+2026-09-08 20:49:03,707 1 INFO lab_trial_0 odoo.modules.loading: loading 1 modules... 
+2026-09-08 20:49:03,710 1 INFO lab_trial_0 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-08 20:49:03,728 1 INFO lab_trial_0 odoo.modules.loading: updating modules list 
+2026-09-08 20:49:03,729 1 INFO lab_trial_0 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-08 20:49:04,115 1 WARNING lab_trial_0 odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-08 20:49:04,115 1 WARNING lab_trial_0 odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-08 20:49:04,115 1 WARNING lab_trial_0 odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-08 20:49:04,115 1 WARNING lab_trial_0 odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-08 20:49:04,218 1 INFO lab_trial_0 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Quality Lab Independent Business Oracle'] to user __system__ #1 via n/a 
+2026-09-08 20:49:04,242 1 INFO lab_trial_0 odoo.modules.loading: loading 16 modules... 
+2026-09-08 20:49:04,338 1 INFO lab_trial_0 odoo.modules.loading: Loading module quality_case (15/16) 
+2026-09-08 20:49:04,358 1 INFO lab_trial_0 odoo.registry: module quality_case: creating or updating database tables 
+2026-09-08 20:49:04,396 1 INFO lab_trial_0 odoo.modules.loading: loading quality_case/security/groups.xml 
+2026-09-08 20:49:04,405 1 INFO lab_trial_0 odoo.modules.loading: loading quality_case/security/ir.model.access.csv 
+2026-09-08 20:49:04,431 1 INFO lab_trial_0 odoo.modules.loading: Module quality_case loaded in 0.09s, 69 queries (+69 other) 
+2026-09-08 20:49:04,431 1 INFO lab_trial_0 odoo.modules.loading: Loading module quality_oracle (16/16) 
+2026-09-08 20:49:04,447 1 INFO lab_trial_0 odoo.modules.loading: Module quality_oracle loaded in 0.02s, 10 queries (+10 other) 
+2026-09-08 20:49:04,447 1 INFO lab_trial_0 odoo.modules.loading: 16 modules loaded in 0.21s, 79 queries (+79 extra) 
+2026-09-08 20:49:04,568 1 INFO lab_trial_0 odoo.modules.loading: Modules loaded. 
+2026-09-08 20:49:04,584 1 INFO lab_trial_0 odoo.registry: Registry changed, signaling through the database 
+2026-09-08 20:49:04,585 1 INFO lab_trial_0 odoo.registry: Registry loaded in 0.911s 
+2026-09-08 20:49:04,585 1 INFO lab_trial_0 odoo.service.server: Starting post tests 
+2026-09-08 20:49:04,707 1 INFO lab_trial_0 odoo.addons.quality_oracle.tests.test_expense: Starting TestExpenseContract.test_boundary_and_approval ... 
+2026-09-08 20:49:04,731 1 INFO lab_trial_0 odoo.addons.quality_oracle.tests.test_expense: Starting TestExpenseContract.test_company_rules_apply_to_actions ... 
+2026-09-08 20:49:04,741 1 INFO lab_trial_0 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [3], uid: 7, model: quality_case.expense 
+2026-09-08 20:49:04,746 1 INFO lab_trial_0 odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [3], uid: 7, model: quality_case.expense 
+2026-09-08 20:49:04,750 1 INFO lab_trial_0 odoo.addons.quality_oracle.tests.test_expense: Starting TestExpenseContract.test_defaults_cannot_forge_workflow ... 
+2026-09-08 20:49:04,751 1 INFO lab_trial_0 odoo.addons.quality_oracle.tests.test_expense: Starting TestExpenseContract.test_direct_values_and_context_cannot_forge_workflow ... 
+2026-09-08 20:49:04,757 1 INFO lab_trial_0 odoo.addons.quality_oracle.tests.test_expense: Starting TestExpenseContract.test_increase_revalidates_decrease_and_unchanged_do_not ... 
+2026-09-08 20:49:04,763 1 INFO lab_trial_0 odoo.addons.quality_oracle.tests.test_expense: Starting TestExpenseContract.test_no_self_or_unprivileged_approval ... 
+2026-09-08 20:49:04,770 1 INFO lab_trial_0 odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 3 removed 
+2026-09-08 20:49:04,771 1 INFO lab_trial_0 odoo.service.server: 6 post-tests in 0.19s, 293 queries 
+2026-09-08 20:49:04,771 1 INFO lab_trial_0 odoo.tests.stats: quality_oracle: 8 tests 0.18s 293 queries 
+2026-09-08 20:49:04,771 1 INFO lab_trial_0 odoo.tests.result: 0 failed, 0 error(s) of 6 tests when loading database 'lab_trial_0' 
+2026-09-08 20:49:04,771 1 INFO lab_trial_0 odoo.service.server: Initiating shutdown 
+2026-09-08 20:49:04,771 1 INFO lab_trial_0 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-08 20:49:05,182 1 INFO lab_trial_0 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

@@ -1,0 +1,55 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "23bacba57e9c0125d4cec7de5125286e94d62bb661f9ccae7d688b5e9755ba55",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "le commercial peut accorder jusqu’à **15 % inclus** à un partenaire et **10 % inclus** aux autres clients — Règle actuelle conforme à M-02/M-03, D-01 remplacée."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "Pas de revalidation nécessaire, même si 14 % reste au-dessus du seuil applicable. — Les cinq exemples donnent les résultats attendus."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "Est partenaire un client dont la case « partenaire commercial » est cochée sur le **contact de facturation du devis** — Définition tirée de M-03."
+    },
+    "separation": {
+      "grade": "pass",
+      "evidence": "Un partenaire à 15 % et un non-partenaire à 10 % ne nécessitent pas d’approbation au titre du seuil. — Seuils exacts, premier dépassement et interdiction d'auto-approbation testés."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "- D-01 — REMPLACÉE par D-02 et D-03. — Provenance M-02/M-03 explicite, règle remplacée, état réel « aucune implémentation », sans test ni déploiement."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "Aucun fichier, contrôle, test ou déploiement n’a été réalisé dans cet exercice. — Entrées présentées comme prêtes à enregistrer ; critères présentés comme à jouer."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "evidence": "Aucune hypothèse ne doit devenir une décision par défaut. — Assiette, point de blocage, habilitations et référence après baisse puis hausse restent ouverts."
+    },
+    "unverified": {
+      "grade": "pass",
+      "evidence": "**Verdict standard et voie technique : non établis** — Aucune couverture standard, voie définitive ni coût ferme affirmés."
+    }
+  },
+  "verdict": "accepted",
+  "dimensions": {
+    "response": {
+      "passed": 2,
+      "total": 2
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 4,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:40:11.943712+00:00"
+}

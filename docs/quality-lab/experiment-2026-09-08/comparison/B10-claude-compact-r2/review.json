@@ -1,0 +1,55 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "f5cf96501622a6192b62d4c07997580f8d584a90f0fc442c8cb7f93991a854ab",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "Remise accordée librement jusqu'à **15 %** pour un client **partenaire**. — R1–R3 posent 10/15 avec approbation au-delà ; D-01 seulement en historique."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "Seuil applicable 10 %. 12 > 10 → **approbation directeur requise**. — Les cinq cas sont traités conformément, dont 16→17 revalidé et 16→14 non revalidé."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "« Partenaire » = case **« partenaire commercial » cochée sur le contact de facturation du devis**. — Référence fidèle à M-03, avec question ouverte sur l’héritage société."
+    },
+    "separation": {
+      "grade": "pass",
+      "evidence": "le vendeur auteur du devis ne peut pas approuver sa propre demande, y compris s'il dispose par ailleurs des droits de directeur — Interdiction d’auto-approbation et bornes 10,00/10,01 et 15,00/15,01 testées."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "**D-01 (remplacée par M-02)** : remise maximale 10 % pour tous les clients. — Provenance M-02/M-03 par règle, D-01 remplacée, aucun développement/test/déploiement."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "*Proposition de texte — non écrite dans le dépôt.* — Aucune prétention d’écriture ni d’exécution de tests."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "evidence": "Hypothèses proposées (non validées — le silence ne vaut pas accord) — Hypothèses non actées, questions bloquantes maintenues, reprise laissée à l’arbitrage client."
+    },
+    "unverified": {
+      "grade": "uncertain",
+      "evidence": "Odoo propose nativement une limite de remise par groupe et un circuit d'approbation sur devis — Section annonçant qu’aucun résultat n’est présumé, mais une couverture standard est affirmée sans inspection."
+    }
+  },
+  "verdict": "needs_review",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 2
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 4,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:43:03.854506+00:00"
+}

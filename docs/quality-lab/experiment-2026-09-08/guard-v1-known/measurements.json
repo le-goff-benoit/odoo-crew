@@ -1,0 +1,147 @@
+{
+  "id": "20260908-223929-89805e17",
+  "status": "executed",
+  "trials": [
+    {
+      "id": "B12-codex-dev_guard-r1",
+      "case": "B12",
+      "provider": "codex",
+      "variant": "dev_guard",
+      "repetition": 1,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "460e2b42bf8f0033e524e609e978247b42b3ce2c80d946ad695c96db460b1bb7",
+      "packet_bytes": 15899,
+      "packet_words": 2218,
+      "case_sha256": "b8cb6b64eafc7926d7a959919aaa17bbe872e941ce20d3b631de22a1e5b10c73",
+      "role_sha256": "55371145fadcc6256fc9a1e6a86d8adacd9aaea3d6b3cc7db635fd37a8930620",
+      "review": {
+        "reviewer": "oracle Odoo 19 / cas synthétique B12",
+        "answer_sha256": "af68100dc053cb50534fe358e2453636481f736304eb74cd6e00e20318528557",
+        "criteria": {
+          "runtime": {
+            "grade": "pass",
+            "evidence": "Oracle Odoo 19 réel, code inchangé : /home/blegoff/odoo-quality-runs/development-final/5.log, SHA256=63797f007ce6d458b06d4eb0d2d8b5fef2800bf36c5868d8f64b3363f38100b7, bilan=[{'failed': 0, 'errors': 0, 'tests': 13}]"
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": null,
+          "development": {
+            "passed": 1,
+            "total": 1
+          },
+          "qa": null,
+          "client_knowledge": null
+        },
+        "reviewed_at": "2026-09-08T20:47:54.906200+00:00"
+      },
+      "started_at": "2026-09-08T20:39:29.740745+00:00",
+      "seconds": 71.6,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 12785,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2146,
+        "reasoning_output_tokens": 737
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "af68100dc053cb50534fe358e2453636481f736304eb74cd6e00e20318528557",
+      "ended_at": "2026-09-08T20:40:41.361929+00:00"
+    },
+    {
+      "id": "B12-claude-dev_guard-r1",
+      "case": "B12",
+      "provider": "claude",
+      "variant": "dev_guard",
+      "repetition": 1,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "460e2b42bf8f0033e524e609e978247b42b3ce2c80d946ad695c96db460b1bb7",
+      "packet_bytes": 15899,
+      "packet_words": 2218,
+      "case_sha256": "b8cb6b64eafc7926d7a959919aaa17bbe872e941ce20d3b631de22a1e5b10c73",
+      "role_sha256": "55371145fadcc6256fc9a1e6a86d8adacd9aaea3d6b3cc7db635fd37a8930620",
+      "review": {
+        "reviewer": "oracle Odoo 19 / cas synthétique B12",
+        "answer_sha256": "35100e623f7f58b4b5f8a58e778f8e3b11ecb57dbf7e962fddb4610f190798ff",
+        "criteria": {
+          "runtime": {
+            "grade": "fail",
+            "evidence": "Oracle Odoo 19 réel, code inchangé : /home/blegoff/odoo-quality-runs/development-final/6.log, SHA256=b7684071d0939408be87b582f6548707e805174660c9abfb4e782ada8160d96f, bilan=[{'failed': 2, 'errors': 0, 'tests': 13}]"
+          }
+        },
+        "verdict": "rejected",
+        "dimensions": {
+          "response": null,
+          "development": {
+            "passed": 0,
+            "total": 1
+          },
+          "qa": null,
+          "client_knowledge": null
+        },
+        "reviewed_at": "2026-09-08T20:47:54.907157+00:00"
+      },
+      "started_at": "2026-09-08T20:40:41.362473+00:00",
+      "seconds": 74.6,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 6888,
+          "cache_read_input_tokens": 2284,
+          "output_tokens": 6362,
+          "output_tokens_details": {
+            "thinking_tokens": 3739
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 6888,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 6362,
+              "cache_read_input_tokens": 2284,
+              "cache_creation_input_tokens": 6888,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 6888
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.235267
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "35100e623f7f58b4b5f8a58e778f8e3b11ecb57dbf7e962fddb4610f190798ff",
+      "ended_at": "2026-09-08T20:41:55.991998+00:00"
+    }
+  ]
+}

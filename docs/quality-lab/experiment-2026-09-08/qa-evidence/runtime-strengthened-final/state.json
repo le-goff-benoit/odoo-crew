@@ -1,0 +1,110 @@
+{
+  "studio": true,
+  "status": "completed",
+  "scope": "Odoo 19 synthetic isolated business oracle",
+  "trials": [
+    {
+      "name": "reference",
+      "seconds": 3.74,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 16,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 12
+          }
+        ]
+      },
+      "log": "0.log",
+      "sources": "0-sources.json",
+      "log_sha256": "a0a66bf79f4f1628ec008568dfed1db37d3a261653c5bca878def1e52ce476d9"
+    },
+    {
+      "name": "threshold_exclusive",
+      "seconds": 3.74,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": false,
+      "expectation_met": true,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 16,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 1,
+            "tests": 12
+          }
+        ]
+      },
+      "log": "1.log",
+      "sources": "1-sources.json",
+      "log_sha256": "49ae38c8eaf1f9c7c1f1934c6cc5ca86c0a9c62e4ccf29acb97c50e71afd8488"
+    },
+    {
+      "name": "self_approval",
+      "seconds": 3.74,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": false,
+      "expectation_met": true,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 16,
+        "summaries": [
+          {
+            "failed": 1,
+            "errors": 0,
+            "tests": 12
+          }
+        ]
+      },
+      "log": "2.log",
+      "sources": "2-sources.json",
+      "log_sha256": "fc9f979ef38be0f8bd9f43570ef343c01b82c105a1cde380652ce03465afa3b6"
+    },
+    {
+      "name": "stale_approval",
+      "seconds": 3.29,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": false,
+      "expectation_met": true,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 16,
+        "summaries": [
+          {
+            "failed": 2,
+            "errors": 0,
+            "tests": 12
+          }
+        ]
+      },
+      "log": "3.log",
+      "sources": "3-sources.json",
+      "log_sha256": "12d699be7006757470d00f406709e85a508530c19a4677503e393ba199db42c0"
+    }
+  ],
+  "template_seconds": 16.93,
+  "image_id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d"
+}

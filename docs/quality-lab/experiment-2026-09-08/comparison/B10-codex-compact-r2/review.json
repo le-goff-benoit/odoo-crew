@@ -1,0 +1,55 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "17bae673181085471e0a86c6b11da4d66712b17415b10be3ee39b71fa4ced343",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "**Client partenaire :** le commercial peut accorder jusqu’à **15 % inclus** sans approbation — Règle actuelle 15/10 posée, D-01 conservée seulement en historique."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "| Devis approuvé à 16 %, puis porté à 17 % | Revalidation obligatoire ; l’approbation précédente ne suffit plus. | — Les cinq cas donnent les résultats attendus, y compris 16→14 sans revalidation."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "Le statut partenaire correspond à la case **« partenaire commercial » du contact de facturation du devis** — M-03. — Définition sourcée, sans extension inventée."
+    },
+    "separation": {
+      "grade": "pass",
+      "evidence": "Un utilisateur non habilité et un vendeur approuvant sa propre demande sont refusés. — Auto-approbation couverte ; seuils exacts 15/10 et premier taux au-dessus testés."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "D-01, qui fixait un plafond uniforme de 10 %, est **remplacée par M-02, précisée par M-03**. — Entrées mémoire avec provenance, règle remplacée et absence de réalisation."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "Les critères suivants sont définis mais **non exécutés** — Distingue critères à jouer et résultats ; aucun fichier prétendu écrit."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "evidence": "Ces questions restent ouvertes dans la spécification et la recette. — Aucune hypothèse imposée ; interdiction explicite de résoudre implicitement."
+    },
+    "unverified": {
+      "grade": "pass",
+      "evidence": "**Aucun verdict ni choix entre configuration, Studio et module n’est donc établi.** — Couverture standard, existant et chiffrage laissés ouverts ; voies présentées sous condition."
+    }
+  },
+  "verdict": "accepted",
+  "dimensions": {
+    "response": {
+      "passed": 2,
+      "total": 2
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 4,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:43:03.851570+00:00"
+}

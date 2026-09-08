@@ -22,10 +22,10 @@ Un rapport sans jugement indépendant reste « à évaluer », jamais « réussi
 | L03 | Exécuteur avec état persistant, arrêt, reprise et rapport | L01 | validé par tests de contrat | Résultat d’exécution distinct du jugement qualité |
 | L04 | Premier pilote réel | L02, L03 | terminé | Accord utilisateur : 3 cas × 2 outils, 600 s maximum par exécution |
 | L05 | Corriger les pertes du briefing (M01–M03) | L00 | tests verts | Tests rouges puis verts, ancienne référence préservée |
-| L06 | Fiabiliser les verdicts QA, preuves et protections (R03–R11) | L00 | implémenté, revue intégrée en cours | Cas de contrat isolés, défauts distincts |
-| L07 | Organisation des tâches, mémoire et documentation | L05, L06 | implémenté, documentation en cours | Critères sections 10, 13, 14, compatibles avec l’existant |
-| L08 | Variantes et comparaison contrôlée des directives | L04, L06 | campagne réelle en cours | Évaluation indépendante, corpus réservé |
-| L09 | Validation intégrée et livraison réversible | L07, L08 | en cours | Aucun gain annoncé sans résultat mesuré |
+| L06 | Fiabiliser les verdicts QA, preuves et protections (R03–R11) | L00 | validé sur le périmètre documenté | Cas de contrat isolés, défauts distincts |
+| L07 | Organisation des tâches, mémoire et documentation | L05, L06 | livré avec options et limites explicites | Critères sections 10, 13, 14, compatibles avec l’existant |
+| L08 | Variantes et comparaison contrôlée des directives | L04, L06 | terminé : 34 générations + 6 corrections | Évaluation indépendante, corpus réservé |
+| L09 | Validation intégrée et livraison réversible | L07, L08 | validation locale terminée, livraison en cours | Aucun gain annoncé sans résultat mesuré |
 
 ## Pilote autorisé
 
@@ -51,3 +51,9 @@ Elle ne prouve pas une supériorité statistique ni une amélioration générale
 
 - Poursuite : 24 réponses comparées (2 cas, 3 variantes, 2 outils, 2 répétitions), puis quatre générations de code à deux efforts, oracle Odoo et correction masquée. Les rôles expérimentaux restent séparés.
 - Suivi et adaptation : `OPERATIONS.md`. Corrections, preuves et limites : `TOOLING-CHANGES.md`.
+
+- Runs locaux (`~/odoo-quality-runs/`) : comparaison `20260908-214544-91d4d786` (24/24 réponses produites, correction à suivre) ; développement `20260908-215142-3aabc864` et `20260908-215142-4142810f` ; correction `judge-comparison-01`.
+- Outillage : commits `1b1128e`, `e162992`, 90 tests sur Python 3.10 et 3.12 ; premier faux vert reproduit puis supprimé sur vrai Odoo isolé.
+
+- Conclusion : rôle développeur enrichi par la précision RPC v2, validée sur B12 (deux outils) et B13 (Claude). Rôles analystes compacts non promus. Tous les résultats, y compris rejets et défauts de l'oracle : `experiment-2026-09-08/README.md`.
+- Vérification finale : 91 tests sous Python 3.10/3.12, graphe, lint Python bloquant, syntaxe shell, génération isolée conforme.

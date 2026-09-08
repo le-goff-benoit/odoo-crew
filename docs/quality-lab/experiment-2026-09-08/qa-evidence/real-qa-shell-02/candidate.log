@@ -1,0 +1,270 @@
+Série 19.0 — image odoo-qa:19.0 — base quality_empty_candidate
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-shell-6ec247d9-db-1  Running
+
+══ 1. QA de tâche : -i quality_oracle + tests (/quality_oracle) sur quality_empty_candidate ═══════════════════════════════════════════════════
+2026-09-08 20:18:27,464 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/enterprise-addons', skipped 
+2026-09-08 20:18:27,464 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-08 20:18:27,464 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/enterprise-addons', skipped 
+2026-09-08 20:18:27,464 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-08 20:18:27,465 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-08 20:18:27,465 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-08 20:18:27,465 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-08 20:18:27,465 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-08 20:18:27,633 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 7620a382d6c5:8069 
+2026-09-08 20:18:27,644 1 INFO quality_empty_candidate odoo.tests.common: Importing test framework 
+2026-09-08 20:18:27,664 1 INFO quality_empty_candidate odoo.modules.loading: Initializing database quality_empty_candidate 
+2026-09-08 20:18:28,017 1 WARNING quality_empty_candidate odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-08 20:18:28,018 1 WARNING quality_empty_candidate odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-08 20:18:28,018 1 WARNING quality_empty_candidate odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-08 20:18:28,019 1 WARNING quality_empty_candidate odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-08 20:18:28,159 1 INFO quality_empty_candidate odoo.modules.loading: loading 1 modules... 
+2026-09-08 20:18:28,159 1 INFO quality_empty_candidate odoo.modules.loading: Loading module base (1/1) 
+2026-09-08 20:18:28,173 1 INFO quality_empty_candidate odoo.registry: module base: creating or updating database tables 
+2026-09-08 20:18:28,296 1 INFO quality_empty_candidate odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-08 20:18:28,296 1 INFO quality_empty_candidate odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-08 20:18:28,296 1 INFO quality_empty_candidate odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-08 20:18:28,336 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.partner.user_id 
+2026-09-08 20:18:28,336 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-08 20:18:28,336 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-08 20:18:28,336 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.partner.lang 
+2026-09-08 20:18:28,336 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-08 20:18:28,336 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-08 20:18:28,336 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.partner.properties 
+2026-09-08 20:18:28,336 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-08 20:18:28,349 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-08 20:18:28,359 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-08 20:18:28,359 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.company.logo_web 
+2026-09-08 20:18:28,360 1 INFO quality_empty_candidate odoo.models: Computing parent_path for table res_company... 
+2026-09-08 20:18:28,371 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.users.signature 
+2026-09-08 20:18:28,371 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.users.share 
+2026-09-08 20:18:29,096 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-08 20:18:29,099 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-08 20:18:29,118 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-08 20:18:29,135 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-09-08 20:18:29,157 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-09-08 20:18:29,351 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-09-08 20:18:29,356 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-09-08 20:18:29,893 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-09-08 20:18:29,898 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-09-08 20:18:30,239 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-09-08 20:18:30,248 1 INFO quality_empty_candidate odoo.modules.loading: loading base/security/base_groups.xml 
+2026-09-08 20:18:30,348 1 INFO quality_empty_candidate odoo.modules.loading: loading base/security/base_security.xml 
+2026-09-08 20:18:30,451 1 INFO quality_empty_candidate odoo.modules.loading: loading base/wizard/wizard_ir_model_menu_create_views.xml 
+2026-09-08 20:18:30,458 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/base_menus.xml 
+2026-09-08 20:18:30,487 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-09-08 20:18:30,495 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-09-08 20:18:30,498 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-09-08 20:18:30,724 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-09-08 20:18:30,820 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-09-08 20:18:30,831 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-09-08 20:18:30,840 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-09-08 20:18:30,855 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-09-08 20:18:30,865 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-09-08 20:18:30,877 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-09-08 20:18:30,889 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-09-08 20:18:30,967 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-09-08 20:18:30,979 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-09-08 20:18:30,992 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-09-08 20:18:31,003 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-09-08 20:18:31,015 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-09-08 20:18:31,042 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-09-08 20:18:31,054 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/ir_config_parameter_data.xml 
+2026-09-08 20:18:31,056 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-09-08 20:18:31,063 1 INFO quality_empty_candidate odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-09-08 20:18:31,065 1 INFO quality_empty_candidate odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-09-08 20:18:31,069 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-09-08 20:18:31,081 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-09-08 20:18:31,089 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-09-08 20:18:31,118 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-09-08 20:18:31,138 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-09-08 20:18:31,179 1 INFO quality_empty_candidate odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-09-08 20:18:31,181 1 INFO quality_empty_candidate odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-09-08 20:18:31,185 1 INFO quality_empty_candidate odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-09-08 20:18:31,192 1 INFO quality_empty_candidate odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-09-08 20:18:31,202 1 INFO quality_empty_candidate odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-09-08 20:18:31,208 1 INFO quality_empty_candidate odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-09-08 20:18:31,217 1 INFO quality_empty_candidate odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-09-08 20:18:31,222 1 INFO quality_empty_candidate odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-09-08 20:18:31,231 1 INFO quality_empty_candidate odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-09-08 20:18:31,238 1 INFO quality_empty_candidate odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-09-08 20:18:31,248 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-09-08 20:18:31,261 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-09-08 20:18:31,273 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-09-08 20:18:31,283 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-09-08 20:18:31,333 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-09-08 20:18:31,350 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-09-08 20:18:31,376 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-09-08 20:18:31,397 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_groups_views.xml 
+2026-09-08 20:18:31,423 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-09-08 20:18:31,474 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_users_apikeys_views.xml 
+2026-09-08 20:18:31,479 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_device_views.xml 
+2026-09-08 20:18:31,490 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-09-08 20:18:31,494 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-09-08 20:18:31,498 1 INFO quality_empty_candidate odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-09-08 20:18:31,512 1 INFO quality_empty_candidate odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-09-08 20:18:31,667 1 INFO quality_empty_candidate odoo.modules.loading: Module base loaded in 3.51s, 8454 queries (+8454 other) 
+2026-09-08 20:18:31,667 1 INFO quality_empty_candidate odoo.modules.loading: 1 modules loaded in 3.51s, 8454 queries (+8454 extra) 
+2026-09-08 20:18:31,669 1 INFO quality_empty_candidate odoo.modules.loading: updating modules list 
+2026-09-08 20:18:31,670 1 INFO quality_empty_candidate odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-08 20:18:32,094 1 WARNING quality_empty_candidate odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-08 20:18:32,094 1 WARNING quality_empty_candidate odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-08 20:18:32,183 1 INFO quality_empty_candidate odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Quality Lab Independent Business Oracle'] to user __system__ #1 via n/a 
+2026-09-08 20:18:32,214 1 INFO quality_empty_candidate odoo.modules.loading: loading 16 modules... 
+2026-09-08 20:18:32,214 1 INFO quality_empty_candidate odoo.modules.loading: Loading module quality_case (2/16) 
+2026-09-08 20:18:32,217 1 INFO quality_empty_candidate odoo.registry: module quality_case: creating or updating database tables 
+2026-09-08 20:18:32,244 1 INFO quality_empty_candidate odoo.modules.loading: loading quality_case/security/groups.xml 
+2026-09-08 20:18:32,252 1 INFO quality_empty_candidate odoo.modules.loading: loading quality_case/security/ir.model.access.csv 
+2026-09-08 20:18:32,258 1 INFO quality_empty_candidate odoo.modules.loading: Module quality_case loaded in 0.04s, 69 queries (+69 other) 
+2026-09-08 20:18:32,258 1 INFO quality_empty_candidate odoo.modules.loading: Loading module rpc (3/16) 
+2026-09-08 20:18:32,271 1 INFO quality_empty_candidate odoo.modules.loading: Module rpc loaded in 0.01s, 10 queries (+10 other) 
+2026-09-08 20:18:32,271 1 INFO quality_empty_candidate odoo.modules.loading: Loading module web (4/16) 
+2026-09-08 20:18:32,290 1 INFO quality_empty_candidate odoo.registry: module web: creating or updating database tables 
+2026-09-08 20:18:32,533 1 INFO quality_empty_candidate odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-09-08 20:18:32,536 1 INFO quality_empty_candidate odoo.modules.loading: loading web/security/web_security.xml 
+2026-09-08 20:18:32,541 1 INFO quality_empty_candidate odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-09-08 20:18:32,571 1 INFO quality_empty_candidate odoo.modules.loading: loading web/views/report_templates.xml 
+2026-09-08 20:18:32,619 1 INFO quality_empty_candidate odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-09-08 20:18:32,628 1 INFO quality_empty_candidate odoo.modules.loading: loading web/views/partner_view.xml 
+2026-09-08 20:18:32,631 1 INFO quality_empty_candidate odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-09-08 20:18:32,634 1 INFO quality_empty_candidate odoo.modules.loading: loading web/views/memory_template.xml 
+2026-09-08 20:18:32,636 1 INFO quality_empty_candidate odoo.modules.loading: loading web/views/speedscope_config_wizard.xml 
+2026-09-08 20:18:32,640 1 INFO quality_empty_candidate odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-09-08 20:18:32,643 1 INFO quality_empty_candidate odoo.modules.loading: loading web/views/ir_ui_view_views.xml 
+2026-09-08 20:18:32,649 1 INFO quality_empty_candidate odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-09-08 20:18:32,652 1 INFO quality_empty_candidate odoo.modules.loading: loading web/data/report_layout.xml 
+2026-09-08 20:18:32,680 1 INFO quality_empty_candidate odoo.modules.loading: Module web loaded in 0.41s, 1237 queries (+1237 other) 
+2026-09-08 20:18:32,680 1 INFO quality_empty_candidate odoo.modules.loading: Loading module api_doc (5/16) 
+2026-09-08 20:18:32,683 1 INFO quality_empty_candidate odoo.registry: module api_doc: creating or updating database tables 
+2026-09-08 20:18:32,692 1 INFO quality_empty_candidate odoo.modules.loading: loading api_doc/security/res_groups.xml 
+2026-09-08 20:18:32,703 1 INFO quality_empty_candidate odoo.modules.loading: loading api_doc/views/docclient.xml 
+2026-09-08 20:18:32,713 1 INFO quality_empty_candidate odoo.modules.loading: Module api_doc loaded in 0.03s, 63 queries (+63 other) 
+2026-09-08 20:18:32,713 1 INFO quality_empty_candidate odoo.modules.loading: Loading module auth_totp (6/16) 
+2026-09-08 20:18:32,720 1 INFO quality_empty_candidate odoo.registry: module auth_totp: creating or updating database tables 
+2026-09-08 20:18:32,757 1 INFO quality_empty_candidate odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-09-08 20:18:32,773 1 INFO quality_empty_candidate odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-09-08 20:18:32,779 1 INFO quality_empty_candidate odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-09-08 20:18:32,784 1 INFO quality_empty_candidate odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-09-08 20:18:32,806 1 INFO quality_empty_candidate odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-09-08 20:18:32,809 1 INFO quality_empty_candidate odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-09-08 20:18:32,822 1 INFO quality_empty_candidate odoo.modules.loading: Module auth_totp loaded in 0.11s, 218 queries (+218 other) 
+2026-09-08 20:18:32,822 1 INFO quality_empty_candidate odoo.modules.loading: Loading module base_import (7/16) 
+2026-09-08 20:18:32,839 1 INFO quality_empty_candidate odoo.registry: module base_import: creating or updating database tables 
+2026-09-08 20:18:33,095 1 INFO quality_empty_candidate odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-09-08 20:18:33,102 1 INFO quality_empty_candidate odoo.modules.loading: Module base_import loaded in 0.28s, 961 queries (+961 other) 
+2026-09-08 20:18:33,102 1 INFO quality_empty_candidate odoo.modules.loading: Loading module base_import_module (8/16) 
+2026-09-08 20:18:33,106 1 INFO quality_empty_candidate odoo.registry: module base_import_module: creating or updating database tables 
+2026-09-08 20:18:33,136 1 INFO quality_empty_candidate odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-09-08 20:18:33,139 1 INFO quality_empty_candidate odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-09-08 20:18:33,149 1 INFO quality_empty_candidate odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-09-08 20:18:33,174 1 INFO quality_empty_candidate odoo.modules.loading: Module base_import_module loaded in 0.07s, 172 queries (+172 other) 
+2026-09-08 20:18:33,174 1 INFO quality_empty_candidate odoo.modules.loading: Loading module base_setup (9/16) 
+2026-09-08 20:18:33,178 1 INFO quality_empty_candidate odoo.registry: module base_setup: creating or updating database tables 
+2026-09-08 20:18:33,199 1 INFO quality_empty_candidate odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-09-08 20:18:33,202 1 INFO quality_empty_candidate odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-09-08 20:18:33,216 1 INFO quality_empty_candidate odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-09-08 20:18:33,226 1 INFO quality_empty_candidate odoo.modules.loading: Module base_setup loaded in 0.05s, 152 queries (+152 other) 
+2026-09-08 20:18:33,226 1 INFO quality_empty_candidate odoo.modules.loading: Loading module bus (10/16) 
+2026-09-08 20:18:33,235 1 INFO quality_empty_candidate odoo.registry: module bus: creating or updating database tables 
+2026-09-08 20:18:33,280 1 INFO quality_empty_candidate odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-09-08 20:18:33,287 1 INFO quality_empty_candidate odoo.modules.loading: Module bus loaded in 0.06s, 159 queries (+159 other) 
+2026-09-08 20:18:33,287 1 INFO quality_empty_candidate odoo.modules.loading: Loading module quality_oracle (11/16) 
+2026-09-08 20:18:33,303 1 INFO quality_empty_candidate odoo.modules.loading: Module quality_oracle loaded in 0.02s, 10 queries (+10 other) 
+2026-09-08 20:18:33,303 1 INFO quality_empty_candidate odoo.modules.loading: Loading module web_tour (12/16) 
+2026-09-08 20:18:33,309 1 INFO quality_empty_candidate odoo.registry: module web_tour: creating or updating database tables 
+2026-09-08 20:18:33,312 1 INFO quality_empty_candidate odoo.models: Prepare computation of res.users.tour_enabled 
+2026-09-08 20:18:33,347 1 INFO quality_empty_candidate odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-09-08 20:18:33,354 1 INFO quality_empty_candidate odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-09-08 20:18:33,385 1 INFO quality_empty_candidate odoo.modules.loading: Module web_tour loaded in 0.08s, 180 queries (+180 other) 
+2026-09-08 20:18:33,385 1 INFO quality_empty_candidate odoo.modules.loading: Loading module auth_passkey (13/16) 
+2026-09-08 20:18:33,408 1 INFO quality_empty_candidate odoo.registry: module auth_passkey: creating or updating database tables 
+2026-09-08 20:18:33,453 1 INFO quality_empty_candidate odoo.modules.loading: loading auth_passkey/views/auth_passkey_key_views.xml 
+2026-09-08 20:18:33,473 1 INFO quality_empty_candidate odoo.modules.loading: loading auth_passkey/views/auth_passkey_login_templates.xml 
+2026-09-08 20:18:33,481 1 INFO quality_empty_candidate odoo.modules.loading: loading auth_passkey/views/res_users_identitycheck_views.xml 
+2026-09-08 20:18:33,486 1 INFO quality_empty_candidate odoo.modules.loading: loading auth_passkey/views/res_users_views.xml 
+2026-09-08 20:18:33,495 1 INFO quality_empty_candidate odoo.modules.loading: loading auth_passkey/security/ir.model.access.csv 
+2026-09-08 20:18:33,498 1 INFO quality_empty_candidate odoo.modules.loading: loading auth_passkey/security/security.xml 
+2026-09-08 20:18:33,511 1 INFO quality_empty_candidate odoo.modules.loading: Module auth_passkey loaded in 0.13s, 218 queries (+218 other) 
+2026-09-08 20:18:33,511 1 INFO quality_empty_candidate odoo.modules.loading: Loading module html_editor (14/16) 
+2026-09-08 20:18:33,590 1 INFO quality_empty_candidate odoo.registry: module html_editor: creating or updating database tables 
+2026-09-08 20:18:33,836 1 INFO quality_empty_candidate odoo.modules.loading: loading html_editor/security/ir.model.access.csv 
+2026-09-08 20:18:33,845 1 INFO quality_empty_candidate odoo.modules.loading: Module html_editor loaded in 0.33s, 1039 queries (+1039 other) 
+2026-09-08 20:18:33,845 1 INFO quality_empty_candidate odoo.modules.loading: Loading module iap (15/16) 
+2026-09-08 20:18:33,847 1 INFO quality_empty_candidate odoo.registry: module iap: creating or updating database tables 
+2026-09-08 20:18:33,878 1 INFO quality_empty_candidate odoo.modules.loading: loading iap/data/services.xml 
+2026-09-08 20:18:33,881 1 INFO quality_empty_candidate odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-09-08 20:18:33,884 1 INFO quality_empty_candidate odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-09-08 20:18:33,888 1 INFO quality_empty_candidate odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-09-08 20:18:33,902 1 INFO quality_empty_candidate odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-09-08 20:18:33,919 1 INFO quality_empty_candidate odoo.modules.loading: Module iap loaded in 0.07s, 182 queries (+182 other) 
+2026-09-08 20:18:33,919 1 INFO quality_empty_candidate odoo.modules.loading: Loading module web_unsplash (16/16) 
+2026-09-08 20:18:33,923 1 INFO quality_empty_candidate odoo.registry: module web_unsplash: creating or updating database tables 
+2026-09-08 20:18:33,940 1 INFO quality_empty_candidate odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-09-08 20:18:33,959 1 INFO quality_empty_candidate odoo.modules.loading: Module web_unsplash loaded in 0.04s, 93 queries (+93 other) 
+2026-09-08 20:18:33,959 1 INFO quality_empty_candidate odoo.modules.loading: 16 modules loaded in 1.75s, 4763 queries (+4763 extra) 
+2026-09-08 20:18:34,050 1 INFO quality_empty_candidate odoo.modules.loading: Modules loaded. 
+2026-09-08 20:18:34,052 1 INFO quality_empty_candidate odoo.registry: Registry changed, signaling through the database 
+2026-09-08 20:18:34,053 1 INFO quality_empty_candidate odoo.registry: Registry loaded in 6.419s 
+2026-09-08 20:18:34,053 1 INFO quality_empty_candidate odoo.service.server: Starting post tests 
+2026-09-08 20:18:34,145 1 INFO quality_empty_candidate odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_approval_revalidation_and_increase ... 
+2026-09-08 20:18:34,175 1 INFO quality_empty_candidate odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_changed_customer_policy_invalidates_approval ... 
+2026-09-08 20:18:34,183 1 INFO quality_empty_candidate odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_context_defaults_cannot_forge_approval_or_state ... 
+2026-09-08 20:18:34,184 1 INFO quality_empty_candidate odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_no_forged_approval_or_state ... 
+2026-09-08 20:18:34,191 1 INFO quality_empty_candidate odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_no_self_approval_even_as_manager ... 
+2026-09-08 20:18:34,198 1 INFO quality_empty_candidate odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_other_company_denied_on_direct_access ... 
+2026-09-08 20:18:34,203 1 INFO quality_empty_candidate odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [5], uid: 7, model: quality_case.delivery 
+2026-09-08 20:18:34,208 1 INFO quality_empty_candidate odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [5], uid: 7, model: quality_case.delivery 
+2026-09-08 20:18:34,211 1 INFO quality_empty_candidate odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [5], uid: 7, model: quality_case.delivery 
+2026-09-08 20:18:34,216 1 INFO quality_empty_candidate odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_threshold_and_full_delivery ... 
+2026-09-08 20:18:34,225 1 INFO quality_empty_candidate odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_unchanged_policy_keeps_approval ... 
+2026-09-08 20:18:34,232 1 INFO quality_empty_candidate odoo.addons.base.models.ir_attachment: filestore gc 13 checked, 3 removed 
+2026-09-08 20:18:34,233 1 INFO quality_empty_candidate odoo.addons.quality_oracle.tests.test_pack: Starting TestPackContract.test_failed_import_does_not_leave_xmlid_or_row ... 
+2026-09-08 20:18:34,250 1 INFO quality_empty_candidate odoo.addons.quality_oracle.tests.test_pack: Starting TestPackContract.test_import_has_identity_and_second_apply_is_unchanged ... 
+2026-09-08 20:18:34,267 1 INFO quality_empty_candidate odoo.addons.quality_oracle.tests.test_pack: Starting TestPackContract.test_new_model_field_and_record_dependency_order ... 
+2026-09-08 20:18:34,280 1 INFO quality_empty_candidate odoo.registry: module studio_customization: creating or updating database tables 
+2026-09-08 20:18:34,302 1 INFO quality_empty_candidate odoo.registry: module studio_customization: creating or updating database tables 
+2026-09-08 20:18:34,316 1 INFO quality_empty_candidate odoo.registry: module studio_customization: creating or updating database tables 
+2026-09-08 20:18:34,328 1 INFO quality_empty_candidate odoo.addons.quality_oracle.tests.test_pack: Starting TestPackContract.test_unknown_field_rejected_before_any_creation ... 
+2026-09-08 20:18:34,345 1 INFO quality_empty_candidate odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-08 20:18:34,345 1 INFO quality_empty_candidate odoo.service.server: 12 post-tests in 0.29s, 625 queries 
+2026-09-08 20:18:34,345 1 INFO quality_empty_candidate odoo.tests.stats: quality_oracle: 16 tests 0.28s 625 queries 
+2026-09-08 20:18:34,345 1 INFO quality_empty_candidate odoo.tests.result: 0 failed, 0 error(s) of 12 tests when loading database 'quality_empty_candidate' 
+2026-09-08 20:18:34,345 1 INFO quality_empty_candidate odoo.service.server: Initiating shutdown 
+2026-09-08 20:18:34,345 1 INFO quality_empty_candidate odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-08 20:18:34,667 1 INFO quality_empty_candidate odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+  + res.partner studio_customization.quality_contact
+1 / 0 / 0 créés / modifiés / inchangés sur synthetic ORM oracle
+0 / 0 / 1 créés / modifiés / inchangés sur synthetic ORM oracle
+  + ir.model studio_customization.dynamic_model
+  + ir.model.fields studio_customization.dynamic_field
+  + ir.model.fields studio_customization.dynamic_name
+  + x_quality_dynamic studio_customization.dynamic_row
+4 / 0 / 0 à créer / à modifier / inchangés sur synthetic ORM oracle
+  + ir.model studio_customization.dynamic_model
+  + ir.model.fields studio_customization.dynamic_field
+  + ir.model.fields studio_customization.dynamic_name
+  + x_quality_dynamic studio_customization.dynamic_row
+4 / 0 / 0 créés / modifiés / inchangés sur synthetic ORM oracle
+0 / 0 / 4 créés / modifiés / inchangés sur synthetic ORM oracle
+{"valid": true, "reasons": [], "module_tests": 16, "summaries": [{"failed": 0, "errors": 0, "tests": 12}]}
+✅ -i + tests OK
+   ⏱ 8s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 0
+tests échoués  : 0
+tests ignorés  : 0
+WARNING liés à quality_oracle : 3
+
+── avertissements liés au module (à traiter) ──
+2026-09-08 20:18:28,018 1 WARNING quality_empty_candidate odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-08 20:18:28,019 1 WARNING quality_empty_candidate odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-08 20:18:32,094 1 WARNING quality_empty_candidate odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": true, "reasons": [], "module_tests": 16, "summaries": [{"failed": 0, "errors": 0, "tests": 12}]}
+RECETTE module=quality_oracle db=quality_empty_candidate install=ok update=n.a. uninstall=n.a. tests="0 failed, 0 error(s) of 12 tests" errors=0 failed=0 skipped=0 warnings=3 total=8s quick=8s
+
+Log complet   : /tmp/quality-shell-w71ohywh/stack/artifacts/quality_oracle-20260908-221826.knJg4N.log
+Captures      : /tmp/quality-shell-w71ohywh/stack/artifacts/
+✅ quality_oracle : installation, tests et logs propres

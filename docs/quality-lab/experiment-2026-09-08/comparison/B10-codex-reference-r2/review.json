@@ -1,0 +1,55 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "4b9dfaabe015109b94bb04585eadad5d96237ca10b786bc7367fecb44d10c276",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "Sans approbation, la remise peut atteindre **15 % inclus pour un partenaire**, **10 % inclus pour les autres**. — Règle 15/10 posée comme règle en vigueur, D-01 explicitement remplacée."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "| Non-partenaire à 12 % | Approbation d’un directeur requise | — Les cinq cas sont traités avec les résultats attendus, y compris 16→17 et 16→14."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "Le statut partenaire vient de la case **« partenaire commercial » du contact de facturation du devis**. — Définition reprise de M-03 sans invention."
+    },
+    "separation": {
+      "grade": "pass",
+      "evidence": "Un vendeur tentant d’approuver sa propre demande est refusé, même s’il est directeur. — Interdiction d’auto-approbation et tests des seuils 10/15 avec dépassements présents."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "D-01 — REMPLACÉE : maximum de 10 % pour tous les clients. — Mémoire proposée avec provenance D-01/M-02/M-03, règle remplacée et état non développé/non déployé."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "Aucun résultat de recette n’est acquis. — Entrées annoncées non écrites, critères distingués des résultats observés."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "evidence": "Ces réponses ne doivent pas être remplacées par des hypothèses silencieuses. — Granularité, étape bloquée, référence après variations et reprise restent ouvertes, sans hypothèse imposée."
+    },
+    "unverified": {
+      "grade": "pass",
+      "evidence": "La couverture standard et la voie technique restent à vérifier. — Aucune affirmation sur le standard, l’existant ou le coût ; pistes conditionnelles."
+    }
+  },
+  "verdict": "accepted",
+  "dimensions": {
+    "response": {
+      "passed": 2,
+      "total": 2
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 4,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:43:03.844074+00:00"
+}

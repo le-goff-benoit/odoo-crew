@@ -24,12 +24,15 @@ def command(args, *, log=None, timeout=300):
     return result
 
 
-def campaign(output, candidates, mutations=False, studio=False):
+def campaign(output, candidates, mutations=False, studio=False, fixtures=None, implementation='quality_case/models/delivery.py'):
+    fixtures = Path(fixtures or ROOT / 'benchmarks/odoo').resolve()
+    if not (fixtures / implementation).resolve().is_relative_to(fixtures):
+        raise ValueError('implémentation hors fixtures')
     output = Path(output).resolve()
     output.mkdir(parents=True, exist_ok=False)
     prefix = 'quality-lab-' + uuid.uuid4().hex[:10]
     network, database = prefix + '-net', prefix + '-db'
-    state = {'studio': studio, 'status': 'running', 'scope': 'Odoo 19 synthetic isolated business oracle', 'trials': []}
+    state = {'fixtures': str(fixtures), 'implementation': implementation, 'studio': studio, 'status': 'running', 'scope': 'Odoo 19 synthetic isolated business oracle', 'trials': []}
     active = None
     try:
         command(['docker', 'network', 'create', '--internal', network]).check_returncode()
@@ -42,7 +45,7 @@ def campaign(output, candidates, mutations=False, studio=False):
             time.sleep(0.5)
         else:
             raise RuntimeError('PostgreSQL synthétique indisponible')
-        original = (ROOT / 'benchmarks/odoo/quality_case/models/delivery.py').read_text()
+        original = (fixtures / implementation).read_text()
         versions = [('reference', original, True)]
         for name, path in candidates.items():
             versions.append((name, Path(path).read_text(), True))
@@ -60,7 +63,7 @@ def campaign(output, candidates, mutations=False, studio=False):
             addons = Path(tmp)
             addons.chmod(0o755)
             for module in ('quality_case', 'quality_oracle'):
-                shutil.copytree(ROOT / 'benchmarks/odoo' / module, addons / module, ignore=shutil.ignore_patterns('__pycache__'))
+                shutil.copytree(fixtures / module, addons / module, ignore=shutil.ignore_patterns('__pycache__'))
             shutil.copy2(ROOT / 'scripts/odoo_pack.py', addons / 'quality_oracle/tests/pack_driver.py')
             base = ['docker', 'run', '--rm', '--network', network, '--read-only', '--cap-drop=ALL',
                     '--security-opt=no-new-privileges', '--memory=2g', '--cpus=2', '--pids-limit=256',
@@ -78,7 +81,7 @@ def campaign(output, candidates, mutations=False, studio=False):
             state['template_seconds'] = round(time.monotonic() - started, 2)
             state['image_id'] = command(['docker', 'image', 'inspect', '--format={{.Id}}', 'odoo-qa:19.0']).stdout.strip()
             for number, (name, code, expected) in enumerate(versions):
-                (addons / 'quality_case/models/delivery.py').write_text(code)
+                (addons / implementation).write_text(code)
                 snapshot = output / f'{number}-source'
                 shutil.copytree(addons, snapshot)
                 sources = {str(p.relative_to(snapshot)): hashlib.sha256(p.read_bytes()).hexdigest()
@@ -123,7 +126,9 @@ if __name__ == '__main__':
     parser.add_argument('--candidate', action='append', default=[], help='label=chemin du fichier Python')
     parser.add_argument('--mutations', action='store_true')
     parser.add_argument('--studio', action='store_true')
+    parser.add_argument('--fixtures', type=Path)
+    parser.add_argument('--implementation', default='quality_case/models/delivery.py')
     args = parser.parse_args()
     candidates = dict(item.split('=', 1) for item in args.candidate)
-    result = campaign(args.output, candidates, args.mutations, args.studio)
+    result = campaign(args.output, candidates, args.mutations, args.studio, args.fixtures, args.implementation)
     raise SystemExit(0 if result['status'] == 'completed' else 1)

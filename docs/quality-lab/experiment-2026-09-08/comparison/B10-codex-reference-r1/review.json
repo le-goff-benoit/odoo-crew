@@ -1,0 +1,55 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "f87e0f2c6b08b424393a6778477f310e5931c1c55f94196cf29408dea0d2070b",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "**La règle actuelle remplace D-01 : le plafond sans approbation devient 15 % pour les partenaires et reste 10 % pour les autres clients.** — Règle en vigueur correcte et D-01 explicitement supplantée."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "Pas d’approbation nécessaire : 12 % ≤ 15 %. — Les cinq résultats attendus sont exacts, y compris la non-revalidation de 16→14."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "Le statut partenaire est déterminé par la case « partenaire commercial » du **contact de facturation du devis** — Référence exacte à M-03."
+    },
+    "separation": {
+      "grade": "pass",
+      "evidence": "Un partenaire à **15 % exactement** et un non-partenaire à **10 % exactement** passent sans approbation. — Bornes exactes, dépassements et interdiction d'auto-approbation couverts par la recette."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "- D-01 n’a pas été développée. — Entrée PROJECT.md avec provenance D-01/M-02/M-03, règle remplacée et état non développé/non déployé."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "aucun fichier, test ou déploiement n’a été réalisé — Aucune prétention d'écriture ni d'exécution ; « Aucun résultat de test n’est acquis »."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "evidence": "faut-il revalider parce que la dernière remise augmente, ou conserver l’approbation tant que les 16 % approuvés ne sont pas dépassés ? — Granularité, point de blocage, référence après variations et reprise restent ouverts sans hypothèse imposée."
+    },
+    "unverified": {
+      "grade": "pass",
+      "evidence": "le dossier ne contient aucune preuve sur les capacités standard d’Odoo 19.0 — Refuse de conclure « à développer » et ne fixe ni voie ni coût."
+    }
+  },
+  "verdict": "accepted",
+  "dimensions": {
+    "response": {
+      "passed": 2,
+      "total": 2
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 4,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:40:11.941847+00:00"
+}

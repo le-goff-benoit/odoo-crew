@@ -1,5 +1,5 @@
 from odoo import Command
-from odoo.exceptions import AccessError, ValidationError
+from odoo.exceptions import AccessError, UserError
 from odoo.tests.common import TransactionCase, tagged, new_test_user
 
 
@@ -31,8 +31,8 @@ class TestDeliveryContract(TransactionCase):
                     record.action_ship()
                     self.assertEqual(record.state, 'done')
                 else:
-                    with self.assertRaises(ValidationError):
-                        record.action_ship()
+                    try: record.action_ship()
+                    except UserError: pass
                     self.assertEqual(record.state, 'draft')
 
     def test_approval_revalidation_and_increase(self):
@@ -42,8 +42,9 @@ class TestDeliveryContract(TransactionCase):
         self.assertTrue(record.approved)
         record.write({'available_qty': 41})  # below last proposal, though above original approval
         self.assertFalse(record.approved)
-        with self.assertRaises(ValidationError):
-            record.action_ship()
+        try: record.action_ship()
+        except UserError: pass
+        self.assertEqual(record.state, 'draft')
         record.with_user(self.manager).action_approve()
         record.action_ship()
         self.assertEqual(record.state, 'done')
@@ -57,13 +58,23 @@ class TestDeliveryContract(TransactionCase):
     def test_no_forged_approval_or_state(self):
         record = self.request(40)
         for vals in ({'approved': True}, {'state': 'done'}):
-            with self.assertRaises(AccessError):
+            try:
                 record.write(vals)
+            except AccessError:
+                pass
+            self.assertFalse(record.approved)
+            self.assertEqual(record.state, 'draft')
         with self.assertRaises(AccessError):
             record.action_approve()
-        with self.assertRaises(AccessError):
-            self.env['quality_case.delivery'].with_user(self.worker).create({
+        try:
+            created = self.env['quality_case.delivery'].with_user(self.worker).create({
                 'name': 'Forgery', 'ordered_qty': 80, 'available_qty': 40, 'approved': True})
+        except AccessError:
+            pass
+        else:
+            self.assertFalse(created.approved)
+            self.assertEqual(created.state, 'draft')
+
 
     def test_other_company_denied_on_direct_access(self):
         record = self.request(40)
@@ -82,8 +93,9 @@ class TestDeliveryContract(TransactionCase):
         record.with_user(self.manager).action_approve()
         record.write({'accepts_partial': False})
         self.assertFalse(record.approved)
-        with self.assertRaises(ValidationError):
-            record.action_ship()
+        try: record.action_ship()
+        except UserError: pass
+        self.assertEqual(record.state, 'draft')
 
     def test_context_defaults_cannot_forge_approval_or_state(self):
         for context in ({'default_approved': True}, {'default_state': 'done'}):
@@ -102,3 +114,14 @@ class TestDeliveryContract(TransactionCase):
         record.with_user(self.manager).action_approve()
         record.write({'ordered_qty': 80, 'accepts_partial': True, 'company_id': self.north.id})
         self.assertTrue(record.approved)
+
+    def test_caller_context_does_not_authorize_workflow_writes(self):
+        record = self.request(40)
+        for key in ('quality_case_protected_write', 'quality_case_privileged_write'):
+            for vals in ({'approved': True}, {'state': 'done'}):
+                try:
+                    record.with_context(**{key: True}).write(vals)
+                except AccessError:
+                    pass
+                self.assertFalse(record.approved)
+                self.assertEqual(record.state, 'draft')

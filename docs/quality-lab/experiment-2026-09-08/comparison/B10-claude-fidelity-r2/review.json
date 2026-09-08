@@ -1,0 +1,55 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "7104e5bbca25a8ea7e30c25c59bfb48b0408384d515253fa598b3b593f799f0a",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "Client **partenaire** : remise ≤ **15 %** — Seuils 15/10 en vigueur, D-01 marquée remplacée et non amendée."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "🔄 **Revalidation requise** (hausse) — E1 à E5 conformes, avec comparaison au taux approuvé pour 16→14."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "case **« partenaire commercial »** cochée sur le **contact de facturation du devis** — Référence exacte à M-03, contact de facturation distingué du client."
+    },
+    "separation": {
+      "grade": "pass",
+      "evidence": "quand **le vendeur du devis** tente de l'approuver, alors l'action est **refusée côté serveur** — Auto-approbation interdite et critère de seuil inclusif 10/15 testé."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "**Statut : REMPLACÉE par D-02** (message client M-02 du 2026-09-08). — Provenance M-02/M-03 tracée, D-01 remplacée, état non développé/non testé consigné."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "Contenu proposé, **non écrit**. — Aucun fichier prétendu écrit ni test exécuté."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "evidence": "**le silence du client ne vaut pas validation** — H1–H5 explicitement non actées, questions Q1–Q5 maintenues ouvertes."
+    },
+    "unverified": {
+      "grade": "uncertain",
+      "evidence": "Odoo porte la remise **par ligne**. — Malgré le verdict « non établi » et l’engagement à ne pas citer de champ de mémoire, le comportement standard et `partner_invoice_id` sont affirmés sans inspection."
+    }
+  },
+  "verdict": "needs_review",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 2
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 4,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:43:03.847713+00:00"
+}

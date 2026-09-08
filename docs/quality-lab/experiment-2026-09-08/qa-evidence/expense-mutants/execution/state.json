@@ -1,0 +1,84 @@
+{
+  "studio": false,
+  "status": "failed",
+  "scope": "Odoo 19 synthetic isolated business oracle",
+  "trials": [
+    {
+      "name": "reference",
+      "seconds": 2.33,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 8,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 6
+          }
+        ]
+      },
+      "log": "0.log",
+      "sources": "0-sources.json",
+      "log_sha256": "19fcbaa2a2a6f7eb7e4a2f00c6a63f519df4c03223684c507fb6f48074d77911"
+    },
+    {
+      "name": "threshold",
+      "seconds": 2.18,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": true,
+      "expectation_met": false,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 8,
+        "summaries": [
+          {
+            "failed": 1,
+            "errors": 0,
+            "tests": 6
+          }
+        ]
+      },
+      "log": "1.log",
+      "sources": "1-sources.json",
+      "log_sha256": "980b4f777c9567a5b10c4572b22a332dece9f61475d2bff36b7ec2160e08d28d"
+    },
+    {
+      "name": "self_approval",
+      "seconds": 2.18,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": true,
+      "expectation_met": false,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 8,
+        "summaries": [
+          {
+            "failed": 1,
+            "errors": 0,
+            "tests": 6
+          }
+        ]
+      },
+      "log": "2.log",
+      "sources": "2-sources.json",
+      "log_sha256": "9bd4db6d164ade27b6292fa89cac172867b3b5b096b3fabf9adf867ad2fd37d0"
+    }
+  ],
+  "template_seconds": 7.61,
+  "image_id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d"
+}

@@ -1,0 +1,51 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "82d94d3590b20a9035c24cdeca938187b09f4d6a512deddbbcaf92ff9d8526a9",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "**[E-02 — arbitrage client]** Contact acceptant : sans approbation dès 60 % disponibles ; en dessous, approbation du responsable logistique nécessaire. — E-01 explicitement corrigée par E-02, seuil inclusif, cas du refus traité (« Attendre la quantité complète »)."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "**50 / 80 = 62,5 %** : autorisation sans approbation au titre de cette règle — Les cinq cas sont traités conformément : 50 sans approbation, 40 avec approbation, refus → 80, baisse → revalidation, hausse → pas de revalidation."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "Ne pas substituer implicitement l’accord du contact de facturation ou de la société parente. — La case du contact de livraison fait foi ; valeur initiale laissée à déterminer, aucun repli inventé."
+    },
+    "qa": {
+      "grade": "uncertain",
+      "evidence": "alors le seuil exact de **60 %** autorise la livraison sans approbation — Seuil exact 48 et refus de l’auto-approbation hors écran présents, mais aucun cas juste en dessous du seuil (47)."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "**[E-01, corrigée par E-02]** La livraison intégrale systématique était la règle initiale. — Provenance E-01/E-02/E-03, remplacement, inconnues et non-réalisation consignés ; hypothèses isolées en section distincte."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "evidence": "Ces propositions ne valent pas décisions client. Le silence ne les valide pas. — Granularité, point de blocage, reprise et référence de variation restent en attente d’arbitrage, sans défaut appliqué."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "**à enregistrer ; aucun fichier n’a été écrit** — Verdict standard « non établi », aucune écriture ni test prétendument exécuté."
+    }
+  },
+  "verdict": "needs_review",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 1
+    },
+    "development": null,
+    "qa": {
+      "passed": 1,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 4,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:45:12.816494+00:00"
+}

@@ -1,0 +1,55 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "a74827b9c3073165f145fef616906151fdbaf21007e0e0d37473697e4c28b7a3",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "**Partenaire : jusqu’à 15 % inclus** sans approbation. — Règle 15/10 posée comme actuelle, D-01 remplacée et non conservée comme règle générale."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "| Devis approuvé à 16 %, diminué à 14 % | Aucune revalidation requise, même pour un non-partenaire. | — Les cinq exemples produisent les résultats attendus."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "« Partenaire » signifie que la case « partenaire commercial » est cochée sur **le contact de facturation du devis**. — Définition conforme à M-03."
+    },
+    "separation": {
+      "grade": "pass",
+      "evidence": "Un vendeur, même habilité comme directeur, ne peut pas approuver sa propre demande. — Interdiction d’auto-approbation et critères sur les seuils exacts 15/10 et dépassements."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "Sources : D-01, correction client M-02, précision humaine M-03. — Provenance tracée, D-01 remplacée et non développée, état de réalisation nul consigné."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "Aucun test n’a été exécuté. — Entrées proposées et non écrites, critères distingués des résultats."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "evidence": "Ces questions restent ouvertes. Le silence ne valide aucune hypothèse. — Granularité, étape contrôlée, référence après modifications et reprise laissées ouvertes sans arbitrage imposé."
+    },
+    "unverified": {
+      "grade": "pass",
+      "evidence": "Le verdict standard Odoo 19.0 et la voie technique restent **non établis** — Aucune couverture, absence, voie ou coût affirmés ; inspection déclarée non faite."
+    }
+  },
+  "verdict": "accepted",
+  "dimensions": {
+    "response": {
+      "passed": 2,
+      "total": 2
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 4,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:43:03.859576+00:00"
+}

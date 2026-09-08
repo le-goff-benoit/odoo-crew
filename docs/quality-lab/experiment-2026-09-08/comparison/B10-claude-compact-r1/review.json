@@ -1,0 +1,55 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "cc9adfe97dc5a9430d35510478cb8d27088962829d3a95d0c88cc21fb92e32b7",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "Plafond **différencié** 15 % partenaire / 10 % autres, dépassement possible sur approbation du directeur — Applique bien 15/10 et marque D-01 comme remplacée."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "**Autorisé sans approbation.** Le devis peut être confirmé par le commercial seul. — Les cinq cas C-1 à C-5 donnent les résultats attendus, y compris 16→17 et 16→14."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "Partenaire = case **« partenaire commercial »** cochée sur le **contact de facturation du devis** — Reprend la définition de M-03 sans invention."
+    },
+    "separation": {
+      "grade": "pass",
+      "evidence": "A-1 : contact de facturation partenaire, remise 15,00 % → confirmation possible sans approbation. — Tests des bornes exactes 15/10 et de leur dépassement, plus A-9 à A-11 sur l'auto-approbation."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "D-01 — remise maximale de 10 % pour tous les clients. Remplacée par M-02. — Provenance D-01/M-02/M-03, règle remplacée et statut non développée/non déployée présents."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "Aucun test n'a été exécuté ; ce sont des critères à jouer. — Indique n'avoir ni écrit les fichiers ni exécuté de test et distingue critères et résultats."
+    },
+    "open_stays_open": {
+      "grade": "uncertain",
+      "evidence": "À faire confirmer, mais à implémenter par défaut. — Les questions Q-1 à Q-5 restent ouvertes, mais R-6, non issue du client, est imposée par défaut au développeur et figure dans la règle actuelle du PROJECT.md."
+    },
+    "unverified": {
+      "grade": "pass",
+      "evidence": "le verdict configuration / Studio / module reste non établi — Aucune couverture standard, voie ni chiffrage affirmés ; vérifications listées comme telles."
+    }
+  },
+  "verdict": "needs_review",
+  "dimensions": {
+    "response": {
+      "passed": 2,
+      "total": 2
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 3,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:40:11.938041+00:00"
+}

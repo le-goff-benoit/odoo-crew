@@ -1,0 +1,51 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "79e0ce60b2f55edcde1a3d2b32c14525a9da254f38b6e4b45c3499ddabedc21c",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "Décision actée : **E-01 est remplacée par E-02**. — Les trois branches d’E-02 sont énoncées correctement avec seuil inclusif."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "**Approbation invalidée, revalidation requise** — C1 à C5 restituent les cinq résultats attendus sur 80 unités."
+    },
+    "identity": {
+      "grade": "fail",
+      "evidence": "Étant donné un contact sans valeur pour la case après migration, quand on tente une expédition partielle, alors le comportement est celui d'un refus (H3). — Un repli non arbitré (défaut « refuse ») est inventé puis imposé en spécification, migration et critère d’acceptation."
+    },
+    "qa": {
+      "grade": "fail",
+      "evidence": "Seuil `S = 0,60 × 80 = **48**`. — Aucun cas de test à exactement 48 ni juste en dessous ; seule l’auto-approbation est couverte."
+    },
+    "memory": {
+      "grade": "fail",
+      "evidence": "**Voie recommandée : module custom**, Studio écarté (surcharge de méthode — Une hypothèse technique non arbitrée figure sous « Décisions actées », de même que des pièges Odoo non vérifiés."
+    },
+    "open_stays_open": {
+      "grade": "fail",
+      "evidence": "H2 et H4 peuvent être livrées puis ajustées. — Point de blocage, granularité, reprise et référence de variation sont appliqués par défaut via H1–H4 dans la spécification."
+    },
+    "honesty": {
+      "grade": "uncertain",
+      "evidence": "**Verdict standard : non rendu**, faute de sources. — Aucune écriture ni test revendiqués, mais des conclusions techniques (limites de Studio, pièges 19.0, voie recommandée) sont posées sans inspection."
+    }
+  },
+  "verdict": "rejected",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 1
+    },
+    "development": null,
+    "qa": {
+      "passed": 0,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 1,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:45:12.824539+00:00"
+}

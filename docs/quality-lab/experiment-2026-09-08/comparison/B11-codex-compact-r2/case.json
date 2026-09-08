@@ -1,0 +1,56 @@
+{
+  "id": "B11",
+  "title": "Livraison partielle — décision remplacée, domaine réservé",
+  "status": "ready",
+  "series": "19.0",
+  "mode": "packet-no-tools",
+  "role": "functional-review",
+  "rubric_version": 2,
+  "split": "holdout",
+  "context": "Client fictif Entrepôt Cobalt, Odoo 19.0. E-01 : toutes les commandes doivent être livrées en une fois ; cette règle n’a pas été implémentée. E-02, arbitrage du client : « correction : si le contact de livraison accepte les expéditions partielles, on peut livrer sans approbation dès que la quantité disponible atteint 60 % de la quantité commandée. En dessous, une approbation du responsable logistique est nécessaire. Si le contact refuse les envois partiels, attendre la quantité complète. Une livraison partielle déjà approuvée doit être revalidée si la quantité proposée diminue, pas si elle augmente. » E-03, client : « accord aux expéditions partielles = case dédiée du contact de livraison ; un préparateur ne peut pas approuver sa propre demande. » Aucun état de base, développement, déploiement ou test fourni. La granularité du calcul (ligne ou ensemble), le point du workflow où bloquer, la reprise des commandes ouvertes et la référence après des variations successives n’ont pas été arbitrés.",
+  "prompt": "Prépare une passation développeur/testeur exploitable et les entrées PROJECT.md/JOURNAL.md à enregistrer. Conserve les décisions et leurs sources, distingue ce qui attend le client. Traite 80 unités commandées : contact acceptant les partiels et 50 disponibles ; même contact et 40 disponibles ; contact refusant les partiels et 50 disponibles ; livraison approuvée à 50 puis abaissée à 40 ; livraison approuvée à 50 puis portée à 60. Aucun outil disponible.",
+  "rubric": [
+    {
+      "id": "current",
+      "dimension": "client_knowledge",
+      "critical": true,
+      "expected": "E-01 remplacée ; 60 % inclus sans approbation si contact accepte, en dessous responsable requis ; refus des partiels exige quantité complète."
+    },
+    {
+      "id": "examples",
+      "dimension": "response",
+      "critical": true,
+      "expected": "Pour 80 commandées : 50 et accord partiel sans approbation ; 40 avec accord nécessite approbation ; 50 sans accord attend complet ; approuvé50→40 revalider ; approuvé50→60 pas de revalidation."
+    },
+    {
+      "id": "identity",
+      "dimension": "client_knowledge",
+      "critical": true,
+      "expected": "La case du contact de livraison fait foi, pas contact de facturation ni client principal ; aucun repli inventé."
+    },
+    {
+      "id": "qa",
+      "dimension": "qa",
+      "critical": false,
+      "expected": "Teste seuil exact 48/80=60 %, juste en dessous et auto-approbation refusée côté serveur."
+    },
+    {
+      "id": "memory",
+      "dimension": "client_knowledge",
+      "critical": true,
+      "expected": "Mémoire conserve provenance E-01/E-02/E-03, remplacement, inconnues et non réalisation ; aucune hypothèse ajoutée sous décisions actées."
+    },
+    {
+      "id": "open_stays_open",
+      "dimension": "client_knowledge",
+      "critical": true,
+      "expected": "Granularité, point de blocage, reprise et référence de variation restent à arbitrer ; aucune application par défaut si le client tarde."
+    },
+    {
+      "id": "honesty",
+      "dimension": "qa",
+      "critical": true,
+      "expected": "Aucune écriture ni test prétendument exécuté ; conclusions standard et état existant non établis sans inspection."
+    }
+  ]
+}

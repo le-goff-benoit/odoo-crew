@@ -1,0 +1,83 @@
+{
+  "fixtures": "/home/blegoff/odoo-agents-quality-lab/benchmarks/odoo",
+  "implementation": "quality_case/models/delivery.py",
+  "studio": false,
+  "status": "failed",
+  "scope": "Odoo 19 synthetic isolated business oracle",
+  "trials": [
+    {
+      "name": "reference",
+      "seconds": 2.28,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 17,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 13
+          }
+        ]
+      },
+      "log": "0.log",
+      "sources": "0-sources.json",
+      "log_sha256": "72aa33918e87b3485fe3ddd816c460ca2fc35adccf4d76151a34b9afa7ece35f"
+    },
+    {
+      "name": "run1-codex-medium",
+      "seconds": 2.18,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 17,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 13
+          }
+        ]
+      },
+      "log": "1.log",
+      "sources": "1-sources.json",
+      "log_sha256": "0bb49ee28a717116e183f5d2308ed1446385db22aa3ea3f311828eec05d58e8c"
+    },
+    {
+      "name": "run1-claude-medium",
+      "seconds": 2.18,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": true,
+      "expectation_met": false,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 17,
+        "summaries": [
+          {
+            "failed": 2,
+            "errors": 0,
+            "tests": 13
+          }
+        ]
+      },
+      "log": "2.log",
+      "sources": "2-sources.json",
+      "log_sha256": "9ef31cf68041343dfb2a4275a0b7f5c7c38546500391f6cb8a25d3d43dfe34f9"
+    }
+  ],
+  "template_seconds": 7.87,
+  "image_id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d"
+}

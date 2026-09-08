@@ -1,0 +1,36 @@
+{
+  "studio": false,
+  "status": "error",
+  "scope": "Odoo 19 synthetic isolated business oracle",
+  "trials": [
+    {
+      "name": "reference",
+      "seconds": 2.28,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": true,
+      "expectation_met": false,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 16,
+        "summaries": [
+          {
+            "failed": 3,
+            "errors": 0,
+            "tests": 12
+          }
+        ]
+      },
+      "log": "0.log",
+      "sources": "0-sources.json",
+      "log_sha256": "e76e87531d84a8ba3cb7e6ded3189e8f5573aa214efa46eee77bbe6c19f4895a"
+    }
+  ],
+  "template_seconds": 7.92,
+  "image_id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d",
+  "error": "référence invalide : corriger le banc avant toute comparaison"
+}

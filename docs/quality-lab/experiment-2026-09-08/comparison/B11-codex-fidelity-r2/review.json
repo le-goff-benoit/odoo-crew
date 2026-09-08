@@ -1,0 +1,51 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "513b464d0a79d58e12ddf243203fa4ca9da51de1f119bf910acb07da3b787910",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "Contact refusant les partiels | Attendre la quantité complète ; une approbation ne constitue pas une dérogation | E-02 — Remplacement d'E-01 explicité, seuil ≥ 60 % sans approbation, approbation logistique en dessous, refus = complet."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "62,5 % : livraison autorisée sans approbation au titre de cette règle. — Les cas A à E donnent les cinq résultats attendus, y compris revalidation à la baisse et absence à la hausse."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "L’accord aux expéditions partielles est une **case dédiée du contact de livraison** — E-03. — La case du contact de livraison fait foi ; l'initialisation reste une question client et le repli proposé est explicitement non acté."
+    },
+    "qa": {
+      "grade": "pass",
+      "evidence": "- [ ] À 48 disponibles, contact acceptant les partiels : aucune approbation nécessaire au titre du seuil. — Seuil exact, 47 juste en dessous, et refus d'auto-approbation malgré cumul de rôles, avec contrôle imposé au point d'opération et non à l'écran."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "**E-03, précision client :** accord porté par une case dédiée du contact de livraison ; interdiction pour un préparateur d’approuver sa propre demande. — PROJECT.md conserve provenance E-01/E-02/E-03, remplacement, arbitrages ouverts et état de non-réalisation ; propositions rangées à part."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "evidence": "L’absence de réponse ne valide aucune hypothèse. — Granularité, workflow, reprise et référence après variations restent ouverts, sans application par défaut."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "Aucun fichier écrit, aucune base ni source consultée, aucun développement, déploiement ou test exécuté. — Verdict standard « non établi » et scénarios déclarés non exécutés."
+    }
+  },
+  "verdict": "accepted",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 1
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 4,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:48:06.393738+00:00"
+}

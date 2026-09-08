@@ -1,0 +1,130 @@
+{
+  "studio": false,
+  "status": "failed",
+  "scope": "Odoo 19 synthetic isolated business oracle",
+  "trials": [
+    {
+      "name": "reference",
+      "seconds": 2.18,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 16,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 12
+          }
+        ]
+      },
+      "log": "0.log",
+      "sources": "0-sources.json",
+      "log_sha256": "e5a870066d09bc9d5f68bf12bd65a6b22cf62990c92b6f18279620809fca132a"
+    },
+    {
+      "name": "run1-codex-high",
+      "seconds": 2.23,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 16,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 12
+          }
+        ]
+      },
+      "log": "1.log",
+      "sources": "1-sources.json",
+      "log_sha256": "fbe4d455ac3c1e11befa0b9a11a2ac0ff98ecbb87e3c3563ff1bda7f5e328d4c"
+    },
+    {
+      "name": "run1-claude-medium",
+      "seconds": 2.23,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": true,
+      "expectation_met": false,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 16,
+        "summaries": [
+          {
+            "failed": 3,
+            "errors": 0,
+            "tests": 12
+          }
+        ]
+      },
+      "log": "2.log",
+      "sources": "2-sources.json",
+      "log_sha256": "0d0c7ff9fca5e58dd0892a6e1cf34a043405b644c94ed873c704426877ba6385"
+    },
+    {
+      "name": "run2-codex-medium",
+      "seconds": 2.18,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 16,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 12
+          }
+        ]
+      },
+      "log": "3.log",
+      "sources": "3-sources.json",
+      "log_sha256": "920ea6882007f9cdbec557b69a2a6585bcdb30707ebef042ffd6a791787b5ae2"
+    },
+    {
+      "name": "run2-claude-high",
+      "seconds": 2.23,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": true,
+      "expectation_met": false,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 16,
+        "summaries": [
+          {
+            "failed": 3,
+            "errors": 0,
+            "tests": 12
+          }
+        ]
+      },
+      "log": "4.log",
+      "sources": "4-sources.json",
+      "log_sha256": "5de48c28334b2e136bbb51108c9248eaffe0a6c8baa6a0b695a3dca790d2fbfd"
+    }
+  ],
+  "template_seconds": 7.97,
+  "image_id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d"
+}

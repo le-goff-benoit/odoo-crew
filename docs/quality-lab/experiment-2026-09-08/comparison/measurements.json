@@ -1,0 +1,2466 @@
+{
+  "id": "20260908-214544-91d4d786",
+  "status": "executed",
+  "trials": [
+    {
+      "id": "B10-codex-reference-r1",
+      "case": "B10",
+      "provider": "codex",
+      "variant": "reference",
+      "repetition": 1,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "1fa0c79e00667f58b09cd538057625f98025c873406cd2ca1710650eb593af8c",
+      "packet_bytes": 13901,
+      "packet_words": 2116,
+      "case_sha256": "d793273eac989a02414bff78ad227dce9c11ce0fd8bde2e3fc0643da1d6ec4d6",
+      "role_sha256": "36cd4d7b69af4477c8c1d895f616dbc3f1c2671dabeb92ece7bd97f12a9756f1",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "f87e0f2c6b08b424393a6778477f310e5931c1c55f94196cf29408dea0d2070b",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "**La règle actuelle remplace D-01 : le plafond sans approbation devient 15 % pour les partenaires et reste 10 % pour les autres clients.** — Règle en vigueur correcte et D-01 explicitement supplantée."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "Pas d’approbation nécessaire : 12 % ≤ 15 %. — Les cinq résultats attendus sont exacts, y compris la non-revalidation de 16→14."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "Le statut partenaire est déterminé par la case « partenaire commercial » du **contact de facturation du devis** — Référence exacte à M-03."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "Un partenaire à **15 % exactement** et un non-partenaire à **10 % exactement** passent sans approbation. — Bornes exactes, dépassements et interdiction d'auto-approbation couverts par la recette."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "- D-01 n’a pas été développée. — Entrée PROJECT.md avec provenance D-01/M-02/M-03, règle remplacée et état non développé/non déployé."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "aucun fichier, test ou déploiement n’a été réalisé — Aucune prétention d'écriture ni d'exécution ; « Aucun résultat de test n’est acquis »."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "faut-il revalider parce que la dernière remise augmente, ou conserver l’approbation tant que les 16 % approuvés ne sont pas dépassés ? — Granularité, point de blocage, référence après variations et reprise restent ouverts sans hypothèse imposée."
+          },
+          "unverified": {
+            "grade": "pass",
+            "evidence": "le dossier ne contient aucune preuve sur les capacités standard d’Odoo 19.0 — Refuse de conclure « à développer » et ne fixe ni voie ni coût."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 2,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:40:11.941847+00:00"
+      },
+      "started_at": "2026-09-08T19:45:51.809664+00:00",
+      "seconds": 79.1,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 12252,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2046,
+        "reasoning_output_tokens": 354
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "f87e0f2c6b08b424393a6778477f310e5931c1c55f94196cf29408dea0d2070b",
+      "ended_at": "2026-09-08T19:47:10.900218+00:00"
+    },
+    {
+      "id": "B10-codex-fidelity-r1",
+      "case": "B10",
+      "provider": "codex",
+      "variant": "fidelity",
+      "repetition": 1,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "948daa50d4dd8f62f3983e8628eba4a79e020c0933e650809dd83fa26f7ba4b4",
+      "packet_bytes": 14350,
+      "packet_words": 2180,
+      "case_sha256": "d793273eac989a02414bff78ad227dce9c11ce0fd8bde2e3fc0643da1d6ec4d6",
+      "role_sha256": "5aef1d963a02ed499b66dfab5983e0243b419ae0d4b6600205ba61f6ea9858fe",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "23bacba57e9c0125d4cec7de5125286e94d62bb661f9ccae7d688b5e9755ba55",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "le commercial peut accorder jusqu’à **15 % inclus** à un partenaire et **10 % inclus** aux autres clients — Règle actuelle conforme à M-02/M-03, D-01 remplacée."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "Pas de revalidation nécessaire, même si 14 % reste au-dessus du seuil applicable. — Les cinq exemples donnent les résultats attendus."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "Est partenaire un client dont la case « partenaire commercial » est cochée sur le **contact de facturation du devis** — Définition tirée de M-03."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "Un partenaire à 15 % et un non-partenaire à 10 % ne nécessitent pas d’approbation au titre du seuil. — Seuils exacts, premier dépassement et interdiction d'auto-approbation testés."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "- D-01 — REMPLACÉE par D-02 et D-03. — Provenance M-02/M-03 explicite, règle remplacée, état réel « aucune implémentation », sans test ni déploiement."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Aucun fichier, contrôle, test ou déploiement n’a été réalisé dans cet exercice. — Entrées présentées comme prêtes à enregistrer ; critères présentés comme à jouer."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Aucune hypothèse ne doit devenir une décision par défaut. — Assiette, point de blocage, habilitations et référence après baisse puis hausse restent ouverts."
+          },
+          "unverified": {
+            "grade": "pass",
+            "evidence": "**Verdict standard et voie technique : non établis** — Aucune couverture standard, voie définitive ni coût ferme affirmés."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 2,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:40:11.943712+00:00"
+      },
+      "started_at": "2026-09-08T19:47:10.901049+00:00",
+      "seconds": 77.1,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 12341,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1880,
+        "reasoning_output_tokens": 259
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "23bacba57e9c0125d4cec7de5125286e94d62bb661f9ccae7d688b5e9755ba55",
+      "ended_at": "2026-09-08T19:48:27.986785+00:00"
+    },
+    {
+      "id": "B10-codex-compact-r1",
+      "case": "B10",
+      "provider": "codex",
+      "variant": "compact",
+      "repetition": 1,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "9a512b74e43efbf210e553fa35201f789754aa67cb12fa638be3531dd6f2902d",
+      "packet_bytes": 3568,
+      "packet_words": 549,
+      "case_sha256": "d793273eac989a02414bff78ad227dce9c11ce0fd8bde2e3fc0643da1d6ec4d6",
+      "role_sha256": "199b9b90dd8f104e080d1efd6adf26c11620065e19269aea1f0f3ece88991733",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "36e109f1255aad72d7ac981642a50b9f2e8761fc1f4765b15298fafd7996da9d",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "le seuil de remise sans approbation est de **15 % pour un client partenaire** et de **10 % pour les autres clients**, bornes incluses. — Règle actuelle correcte ; D-01 reléguée à l'historique."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "Non-partenaire à 12 % | Approbation du directeur requise — Les cinq exemples produisent les résultats attendus avec leur source."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "le client est partenaire si la case « partenaire commercial » est cochée sur le **contact de facturation du devis** — Reprend M-03 et interdit la déduction depuis un autre contact."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "Un partenaire à **15 %** et un non-partenaire à **10 %** ne nécessitent pas d’approbation au titre du seuil. — Bornes exactes, premier dépassement, auto-approbation et refus côté serveur couverts."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "Historique : D-01 fixait 10 % pour tous les clients ; décision remplacée avant développement. — Entrée avec provenance M-02/M-03, règle remplacée et état réel sans développement ni déploiement."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Les critères suivants sont à exécuter après implémentation ; aucun n’a été testé. — Aucune écriture de fichier ni test prétendus ; distinction claire entre critères et résultats."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "La lecture proposée pour Q5 n’est pas une décision client acquise. — Q1 à Q6 maintenues ouvertes, aucune hypothèse convertie en décision, reprise non présumée."
+          },
+          "unverified": {
+            "grade": "pass",
+            "evidence": "**La couverture du standard et la voie d’implémentation restent non établies.** — Pistes conditionnelles, « ne pas présumer » la couverture Studio, aucun chiffrage ferme."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 2,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:40:11.947908+00:00"
+      },
+      "started_at": "2026-09-08T19:48:27.987457+00:00",
+      "seconds": 75.9,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 9428,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2112,
+        "reasoning_output_tokens": 229
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "36e109f1255aad72d7ac981642a50b9f2e8761fc1f4765b15298fafd7996da9d",
+      "ended_at": "2026-09-08T19:49:43.864027+00:00"
+    },
+    {
+      "id": "B10-claude-reference-r1",
+      "case": "B10",
+      "provider": "claude",
+      "variant": "reference",
+      "repetition": 1,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "1fa0c79e00667f58b09cd538057625f98025c873406cd2ca1710650eb593af8c",
+      "packet_bytes": 13901,
+      "packet_words": 2116,
+      "case_sha256": "d793273eac989a02414bff78ad227dce9c11ce0fd8bde2e3fc0643da1d6ec4d6",
+      "role_sha256": "36cd4d7b69af4477c8c1d895f616dbc3f1c2671dabeb92ece7bd97f12a9756f1",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "08331ce668ad3893839360d372e19ecf399c2bab0518ff72b3f0bfc88dca29b2",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "1. **Seuil** = 15 % si le client est *partenaire*, 10 % sinon. — Règle actuelle correcte, D-01 déclarée remplacée."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "✅ **Autorisé sans approbation.** 12 ≤ 15. — Les cinq cas sont traités conformément à l'attendu, dont 16→17 et 16→14."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "**Partenaire** = case « partenaire commercial » cochée sur le **contact de facturation du devis** (`partner_invoice_id`) — Définition conforme à M-03."
+          },
+          "separation": {
+            "grade": "fail",
+            "evidence": "— L'interdiction d'auto-approbation est testée, mais aucun critère ne porte sur les bornes exactes 15 % et 10 % ni sur le premier dépassement."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "_Statut : REMPLACÉE par D-02 (M-02 du client). Jamais développée, aucun code à reprendre._ — Provenance M-02/M-03, remplacement de D-01 et absence de développement/déploiement consignés."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Aucun fichier n'a été écrit : les blocs `PROJECT.md` et `JOURNAL.md` en fin de note sont prêts à coller, pas enregistrés. — Ne prétend ni écrire les fichiers ni exécuter des tests."
+          },
+          "open_stays_open": {
+            "grade": "uncertain",
+            "evidence": "Hypothèse de lecture retenue : « la remise du devis » = **remise maximale parmi les lignes** — La granularité est retenue comme hypothèse de travail tout en étant déclarée bloquante, et certains arbitrages (ajout de ligne = hausse, high-water mark) sont énoncés de façon affirmative malgré la mention « à trancher »."
+          },
+          "unverified": {
+            "grade": "fail",
+            "evidence": "les *règles d'approbation* de Studio (`addons/studio/` ou `web_studio`, modèle de type `studio.approval.rule`) couvrent nativement — Affirme sans inspection l'existence, la couverture (« 70 % du besoin ») et l'absence de plafond standard, ainsi que des efforts et coûts de migration, malgré la réserve initiale."
+          }
+        },
+        "verdict": "rejected",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 1,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 3,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:40:11.939887+00:00"
+      },
+      "started_at": "2026-09-08T19:49:43.865158+00:00",
+      "seconds": 131.8,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 5939,
+          "cache_read_input_tokens": 2417,
+          "output_tokens": 9590,
+          "output_tokens_details": {
+            "thinking_tokens": 1648
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 5939,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 9590,
+              "cache_read_input_tokens": 2417,
+              "cache_creation_input_tokens": 5939,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 5939
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.3058665
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "08331ce668ad3893839360d372e19ecf399c2bab0518ff72b3f0bfc88dca29b2",
+      "ended_at": "2026-09-08T19:51:55.625300+00:00"
+    },
+    {
+      "id": "B10-claude-fidelity-r1",
+      "case": "B10",
+      "provider": "claude",
+      "variant": "fidelity",
+      "repetition": 1,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "948daa50d4dd8f62f3983e8628eba4a79e020c0933e650809dd83fa26f7ba4b4",
+      "packet_bytes": 14350,
+      "packet_words": 2180,
+      "case_sha256": "d793273eac989a02414bff78ad227dce9c11ce0fd8bde2e3fc0643da1d6ec4d6",
+      "role_sha256": "5aef1d963a02ed499b66dfab5983e0243b419ae0d4b6600205ba61f6ea9858fe",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "c0587c1b9bf5a655dc9247ca5ef2a7cc84b79fa548ce35a9bad8c558ef4b1fcd",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "1. **Plafond sans approbation** : 15 % si le client est *partenaire*, 10 % sinon. — Applique la règle corrigée ; D-01 « remplacée, pas amendée »."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "Partenaire, 16 % | **Approbation directeur requise** — Les cinq cas sont corrects, dont la conservation de l'approbation en 16→14."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "**Partenaire** = case « partenaire commercial » cochée sur le **contact de facturation du devis** — Conforme à M-03, avec exclusion explicite des autres contacts."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "Étant donné un devis partenaire à exactement 15 % (et un devis non-partenaire à exactement 10 %), alors aucune approbation n'est requise — le seuil est inclusif. — Bornes exactes, dépassements et refus d'auto-approbation présents dans la recette."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "**Remplace D-01** (« remise maximale de 10 % pour tous les clients »). — Provenance M-02/M-03 et statut « décidée côté métier — non développée, non déployée, non testée »."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Aucun fichier n'a été écrit ; les entrées PROJECT.md et JOURNAL.md ci-dessous sont prêtes à être enregistrées par qui de droit. — Aucune prétention d'écriture ni de test exécuté."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Le silence du client ne les valide pas ; les hypothèses de la section 4 ne doivent pas être transformées en comportement à implémenter. — Assiette, périmètre, reprise et effet de la revalidation restent ouverts ; seule réserve mineure, le critère sur la duplication est énoncé sans la condition « à confirmer » posée plus haut."
+          },
+          "unverified": {
+            "grade": "pass",
+            "evidence": "**Le verdict standard et la voie technique restent donc non établis** — Vérifications listées comme préalables, sans affirmation de couverture, d'état existant ni de chiffrage."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 2,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:40:11.945819+00:00"
+      },
+      "started_at": "2026-09-08T19:51:55.626599+00:00",
+      "seconds": 100.6,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 6098,
+          "cache_read_input_tokens": 2417,
+          "output_tokens": 7291,
+          "output_tokens_details": {
+            "thinking_tokens": 1342
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 6098,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 7291,
+              "cache_read_input_tokens": 2417,
+              "cache_creation_input_tokens": 6098,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 6098
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.2501075
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "c0587c1b9bf5a655dc9247ca5ef2a7cc84b79fa548ce35a9bad8c558ef4b1fcd",
+      "ended_at": "2026-09-08T19:53:36.224007+00:00"
+    },
+    {
+      "id": "B10-claude-compact-r1",
+      "case": "B10",
+      "provider": "claude",
+      "variant": "compact",
+      "repetition": 1,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "9a512b74e43efbf210e553fa35201f789754aa67cb12fa638be3531dd6f2902d",
+      "packet_bytes": 3568,
+      "packet_words": 549,
+      "case_sha256": "d793273eac989a02414bff78ad227dce9c11ce0fd8bde2e3fc0643da1d6ec4d6",
+      "role_sha256": "199b9b90dd8f104e080d1efd6adf26c11620065e19269aea1f0f3ece88991733",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "cc9adfe97dc5a9430d35510478cb8d27088962829d3a95d0c88cc21fb92e32b7",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "Plafond **différencié** 15 % partenaire / 10 % autres, dépassement possible sur approbation du directeur — Applique bien 15/10 et marque D-01 comme remplacée."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "**Autorisé sans approbation.** Le devis peut être confirmé par le commercial seul. — Les cinq cas C-1 à C-5 donnent les résultats attendus, y compris 16→17 et 16→14."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "Partenaire = case **« partenaire commercial »** cochée sur le **contact de facturation du devis** — Reprend la définition de M-03 sans invention."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "A-1 : contact de facturation partenaire, remise 15,00 % → confirmation possible sans approbation. — Tests des bornes exactes 15/10 et de leur dépassement, plus A-9 à A-11 sur l'auto-approbation."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "D-01 — remise maximale de 10 % pour tous les clients. Remplacée par M-02. — Provenance D-01/M-02/M-03, règle remplacée et statut non développée/non déployée présents."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Aucun test n'a été exécuté ; ce sont des critères à jouer. — Indique n'avoir ni écrit les fichiers ni exécuté de test et distingue critères et résultats."
+          },
+          "open_stays_open": {
+            "grade": "uncertain",
+            "evidence": "À faire confirmer, mais à implémenter par défaut. — Les questions Q-1 à Q-5 restent ouvertes, mais R-6, non issue du client, est imposée par défaut au développeur et figure dans la règle actuelle du PROJECT.md."
+          },
+          "unverified": {
+            "grade": "pass",
+            "evidence": "le verdict configuration / Studio / module reste non établi — Aucune couverture standard, voie ni chiffrage affirmés ; vérifications listées comme telles."
+          }
+        },
+        "verdict": "needs_review",
+        "dimensions": {
+          "response": {
+            "passed": 2,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 3,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:40:11.938041+00:00"
+      },
+      "started_at": "2026-09-08T19:53:36.224784+00:00",
+      "seconds": 94.1,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 1501,
+          "cache_read_input_tokens": 2417,
+          "output_tokens": 7260,
+          "output_tokens_details": {
+            "thinking_tokens": 969
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 1501,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 7260,
+              "cache_read_input_tokens": 2417,
+              "cache_creation_input_tokens": 1501,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 1501
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.1997855
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "cc9adfe97dc5a9430d35510478cb8d27088962829d3a95d0c88cc21fb92e32b7",
+      "ended_at": "2026-09-08T19:55:10.366032+00:00"
+    },
+    {
+      "id": "B10-codex-compact-r2",
+      "case": "B10",
+      "provider": "codex",
+      "variant": "compact",
+      "repetition": 2,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "9a512b74e43efbf210e553fa35201f789754aa67cb12fa638be3531dd6f2902d",
+      "packet_bytes": 3568,
+      "packet_words": 549,
+      "case_sha256": "d793273eac989a02414bff78ad227dce9c11ce0fd8bde2e3fc0643da1d6ec4d6",
+      "role_sha256": "199b9b90dd8f104e080d1efd6adf26c11620065e19269aea1f0f3ece88991733",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "17bae673181085471e0a86c6b11da4d66712b17415b10be3ee39b71fa4ced343",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "**Client partenaire :** le commercial peut accorder jusqu’à **15 % inclus** sans approbation — Règle actuelle 15/10 posée, D-01 conservée seulement en historique."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "| Devis approuvé à 16 %, puis porté à 17 % | Revalidation obligatoire ; l’approbation précédente ne suffit plus. | — Les cinq cas donnent les résultats attendus, y compris 16→14 sans revalidation."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "Le statut partenaire correspond à la case **« partenaire commercial » du contact de facturation du devis** — M-03. — Définition sourcée, sans extension inventée."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "Un utilisateur non habilité et un vendeur approuvant sa propre demande sont refusés. — Auto-approbation couverte ; seuils exacts 15/10 et premier taux au-dessus testés."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "D-01, qui fixait un plafond uniforme de 10 %, est **remplacée par M-02, précisée par M-03**. — Entrées mémoire avec provenance, règle remplacée et absence de réalisation."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Les critères suivants sont définis mais **non exécutés** — Distingue critères à jouer et résultats ; aucun fichier prétendu écrit."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Ces questions restent ouvertes dans la spécification et la recette. — Aucune hypothèse imposée ; interdiction explicite de résoudre implicitement."
+          },
+          "unverified": {
+            "grade": "pass",
+            "evidence": "**Aucun verdict ni choix entre configuration, Studio et module n’est donc établi.** — Couverture standard, existant et chiffrage laissés ouverts ; voies présentées sous condition."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 2,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:43:03.851570+00:00"
+      },
+      "started_at": "2026-09-08T19:55:10.367357+00:00",
+      "seconds": 91.2,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 9428,
+        "cached_input_tokens": 2816,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2319,
+        "reasoning_output_tokens": 339
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "17bae673181085471e0a86c6b11da4d66712b17415b10be3ee39b71fa4ced343",
+      "ended_at": "2026-09-08T19:56:41.577293+00:00"
+    },
+    {
+      "id": "B10-codex-fidelity-r2",
+      "case": "B10",
+      "provider": "codex",
+      "variant": "fidelity",
+      "repetition": 2,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "948daa50d4dd8f62f3983e8628eba4a79e020c0933e650809dd83fa26f7ba4b4",
+      "packet_bytes": 14350,
+      "packet_words": 2180,
+      "case_sha256": "d793273eac989a02414bff78ad227dce9c11ce0fd8bde2e3fc0643da1d6ec4d6",
+      "role_sha256": "5aef1d963a02ed499b66dfab5983e0243b419ae0d4b6600205ba61f6ea9858fe",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "a74827b9c3073165f145fef616906151fdbaf21007e0e0d37473697e4c28b7a3",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "**Partenaire : jusqu’à 15 % inclus** sans approbation. — Règle 15/10 posée comme actuelle, D-01 remplacée et non conservée comme règle générale."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "| Devis approuvé à 16 %, diminué à 14 % | Aucune revalidation requise, même pour un non-partenaire. | — Les cinq exemples produisent les résultats attendus."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "« Partenaire » signifie que la case « partenaire commercial » est cochée sur **le contact de facturation du devis**. — Définition conforme à M-03."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "Un vendeur, même habilité comme directeur, ne peut pas approuver sa propre demande. — Interdiction d’auto-approbation et critères sur les seuils exacts 15/10 et dépassements."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "Sources : D-01, correction client M-02, précision humaine M-03. — Provenance tracée, D-01 remplacée et non développée, état de réalisation nul consigné."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Aucun test n’a été exécuté. — Entrées proposées et non écrites, critères distingués des résultats."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Ces questions restent ouvertes. Le silence ne valide aucune hypothèse. — Granularité, étape contrôlée, référence après modifications et reprise laissées ouvertes sans arbitrage imposé."
+          },
+          "unverified": {
+            "grade": "pass",
+            "evidence": "Le verdict standard Odoo 19.0 et la voie technique restent **non établis** — Aucune couverture, absence, voie ou coût affirmés ; inspection déclarée non faite."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 2,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:43:03.859576+00:00"
+      },
+      "started_at": "2026-09-08T19:56:41.578484+00:00",
+      "seconds": 76.1,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 12341,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1911,
+        "reasoning_output_tokens": 253
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "a74827b9c3073165f145fef616906151fdbaf21007e0e0d37473697e4c28b7a3",
+      "ended_at": "2026-09-08T19:57:57.661892+00:00"
+    },
+    {
+      "id": "B10-codex-reference-r2",
+      "case": "B10",
+      "provider": "codex",
+      "variant": "reference",
+      "repetition": 2,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "1fa0c79e00667f58b09cd538057625f98025c873406cd2ca1710650eb593af8c",
+      "packet_bytes": 13901,
+      "packet_words": 2116,
+      "case_sha256": "d793273eac989a02414bff78ad227dce9c11ce0fd8bde2e3fc0643da1d6ec4d6",
+      "role_sha256": "36cd4d7b69af4477c8c1d895f616dbc3f1c2671dabeb92ece7bd97f12a9756f1",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "4b9dfaabe015109b94bb04585eadad5d96237ca10b786bc7367fecb44d10c276",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "Sans approbation, la remise peut atteindre **15 % inclus pour un partenaire**, **10 % inclus pour les autres**. — Règle 15/10 posée comme règle en vigueur, D-01 explicitement remplacée."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "| Non-partenaire à 12 % | Approbation d’un directeur requise | — Les cinq cas sont traités avec les résultats attendus, y compris 16→17 et 16→14."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "Le statut partenaire vient de la case **« partenaire commercial » du contact de facturation du devis**. — Définition reprise de M-03 sans invention."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "Un vendeur tentant d’approuver sa propre demande est refusé, même s’il est directeur. — Interdiction d’auto-approbation et tests des seuils 10/15 avec dépassements présents."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "D-01 — REMPLACÉE : maximum de 10 % pour tous les clients. — Mémoire proposée avec provenance D-01/M-02/M-03, règle remplacée et état non développé/non déployé."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Aucun résultat de recette n’est acquis. — Entrées annoncées non écrites, critères distingués des résultats observés."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Ces réponses ne doivent pas être remplacées par des hypothèses silencieuses. — Granularité, étape bloquée, référence après variations et reprise restent ouvertes, sans hypothèse imposée."
+          },
+          "unverified": {
+            "grade": "pass",
+            "evidence": "La couverture standard et la voie technique restent à vérifier. — Aucune affirmation sur le standard, l’existant ou le coût ; pistes conditionnelles."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 2,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:43:03.844074+00:00"
+      },
+      "started_at": "2026-09-08T19:57:57.663282+00:00",
+      "seconds": 73.1,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 12252,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1931,
+        "reasoning_output_tokens": 429
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "4b9dfaabe015109b94bb04585eadad5d96237ca10b786bc7367fecb44d10c276",
+      "ended_at": "2026-09-08T19:59:10.727697+00:00"
+    },
+    {
+      "id": "B10-claude-compact-r2",
+      "case": "B10",
+      "provider": "claude",
+      "variant": "compact",
+      "repetition": 2,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "9a512b74e43efbf210e553fa35201f789754aa67cb12fa638be3531dd6f2902d",
+      "packet_bytes": 3568,
+      "packet_words": 549,
+      "case_sha256": "d793273eac989a02414bff78ad227dce9c11ce0fd8bde2e3fc0643da1d6ec4d6",
+      "role_sha256": "199b9b90dd8f104e080d1efd6adf26c11620065e19269aea1f0f3ece88991733",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "f5cf96501622a6192b62d4c07997580f8d584a90f0fc442c8cb7f93991a854ab",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "Remise accordée librement jusqu'à **15 %** pour un client **partenaire**. — R1–R3 posent 10/15 avec approbation au-delà ; D-01 seulement en historique."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "Seuil applicable 10 %. 12 > 10 → **approbation directeur requise**. — Les cinq cas sont traités conformément, dont 16→17 revalidé et 16→14 non revalidé."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "« Partenaire » = case **« partenaire commercial » cochée sur le contact de facturation du devis**. — Référence fidèle à M-03, avec question ouverte sur l’héritage société."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "le vendeur auteur du devis ne peut pas approuver sa propre demande, y compris s'il dispose par ailleurs des droits de directeur — Interdiction d’auto-approbation et bornes 10,00/10,01 et 15,00/15,01 testées."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "**D-01 (remplacée par M-02)** : remise maximale 10 % pour tous les clients. — Provenance M-02/M-03 par règle, D-01 remplacée, aucun développement/test/déploiement."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "*Proposition de texte — non écrite dans le dépôt.* — Aucune prétention d’écriture ni d’exécution de tests."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Hypothèses proposées (non validées — le silence ne vaut pas accord) — Hypothèses non actées, questions bloquantes maintenues, reprise laissée à l’arbitrage client."
+          },
+          "unverified": {
+            "grade": "uncertain",
+            "evidence": "Odoo propose nativement une limite de remise par groupe et un circuit d'approbation sur devis — Section annonçant qu’aucun résultat n’est présumé, mais une couverture standard est affirmée sans inspection."
+          }
+        },
+        "verdict": "needs_review",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:43:03.854506+00:00"
+      },
+      "started_at": "2026-09-08T19:59:10.728625+00:00",
+      "seconds": 98.6,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 3918,
+          "output_tokens": 7185,
+          "output_tokens_details": {
+            "thinking_tokens": 1119
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 7185,
+              "cache_read_input_tokens": 3918,
+              "cache_creation_input_tokens": 0,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 0
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.183651
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "f5cf96501622a6192b62d4c07997580f8d584a90f0fc442c8cb7f93991a854ab",
+      "ended_at": "2026-09-08T20:00:49.299922+00:00"
+    },
+    {
+      "id": "B10-claude-fidelity-r2",
+      "case": "B10",
+      "provider": "claude",
+      "variant": "fidelity",
+      "repetition": 2,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "948daa50d4dd8f62f3983e8628eba4a79e020c0933e650809dd83fa26f7ba4b4",
+      "packet_bytes": 14350,
+      "packet_words": 2180,
+      "case_sha256": "d793273eac989a02414bff78ad227dce9c11ce0fd8bde2e3fc0643da1d6ec4d6",
+      "role_sha256": "5aef1d963a02ed499b66dfab5983e0243b419ae0d4b6600205ba61f6ea9858fe",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "7104e5bbca25a8ea7e30c25c59bfb48b0408384d515253fa598b3b593f799f0a",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "Client **partenaire** : remise ≤ **15 %** — Seuils 15/10 en vigueur, D-01 marquée remplacée et non amendée."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "🔄 **Revalidation requise** (hausse) — E1 à E5 conformes, avec comparaison au taux approuvé pour 16→14."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "case **« partenaire commercial »** cochée sur le **contact de facturation du devis** — Référence exacte à M-03, contact de facturation distingué du client."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "quand **le vendeur du devis** tente de l'approuver, alors l'action est **refusée côté serveur** — Auto-approbation interdite et critère de seuil inclusif 10/15 testé."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "**Statut : REMPLACÉE par D-02** (message client M-02 du 2026-09-08). — Provenance M-02/M-03 tracée, D-01 remplacée, état non développé/non testé consigné."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Contenu proposé, **non écrit**. — Aucun fichier prétendu écrit ni test exécuté."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "**le silence du client ne vaut pas validation** — H1–H5 explicitement non actées, questions Q1–Q5 maintenues ouvertes."
+          },
+          "unverified": {
+            "grade": "uncertain",
+            "evidence": "Odoo porte la remise **par ligne**. — Malgré le verdict « non établi » et l’engagement à ne pas citer de champ de mémoire, le comportement standard et `partner_invoice_id` sont affirmés sans inspection."
+          }
+        },
+        "verdict": "needs_review",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:43:03.847713+00:00"
+      },
+      "started_at": "2026-09-08T20:00:49.301417+00:00",
+      "seconds": 136.0,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 8515,
+          "output_tokens": 10163,
+          "output_tokens_details": {
+            "thinking_tokens": 1288
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 10163,
+              "cache_read_input_tokens": 8515,
+              "cache_creation_input_tokens": 0,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 0
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.26395650000000004
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "7104e5bbca25a8ea7e30c25c59bfb48b0408384d515253fa598b3b593f799f0a",
+      "ended_at": "2026-09-08T20:03:05.316034+00:00"
+    },
+    {
+      "id": "B10-claude-reference-r2",
+      "case": "B10",
+      "provider": "claude",
+      "variant": "reference",
+      "repetition": 2,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "1fa0c79e00667f58b09cd538057625f98025c873406cd2ca1710650eb593af8c",
+      "packet_bytes": 13901,
+      "packet_words": 2116,
+      "case_sha256": "d793273eac989a02414bff78ad227dce9c11ce0fd8bde2e3fc0643da1d6ec4d6",
+      "role_sha256": "36cd4d7b69af4477c8c1d895f616dbc3f1c2671dabeb92ece7bd97f12a9756f1",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "f4db4cefbbf6590f25565c3e0658a1fb17b78e2453ad690efb338d30935fc7ce",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "10 % est désormais le plafond des **non-partenaires** uniquement. — Seuils 15/10 en vigueur, D-01 explicitement remplacée."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "Diminution → **reste approuvé**, pas de nouveau circuit. — Les cinq cas donnent les résultats attendus, la réserve sur 16→14 ne renverse pas la conclusion."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "case « partenaire commercial » cochée sur le **contact de facturation du devis** — Définition correcte de M-03, malgré une extension d’héritage société proposée ailleurs."
+          },
+          "separation": {
+            "grade": "pass",
+            "evidence": "quand V tente de l'approuver lui-même, alors l'action est refusée avec un message explicite — Auto-approbation et bornes incluses 15/10 couvertes en recette."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "**D-01 — REMPLACÉE le 2026-09-08 par D-02.** — Mémoire avec provenance M-02/M-03, remplacement et absence de réalisation."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "je ne l'ai pas écrite, aucun fichier n'a été créé ni modifié — Aucun test ni écriture prétendus."
+          },
+          "open_stays_open": {
+            "grade": "fail",
+            "evidence": "Hypothèses retenues à défaut de réponse — Malgré cinq questions dites bloquantes, la granularité (maximum des lignes), la portée après confirmation et l’héritage société sont retenus par défaut et repris en critères d’acceptation."
+          },
+          "unverified": {
+            "grade": "fail",
+            "evidence": "Il n'existe pas de champ standard « partenaire commercial » booléen sur `res.partner`. — Absences et contenus du standard 19.0 affirmés (champs, groupe, assistant, changements 19.x) alors qu’aucune source n’a été consultée."
+          }
+        },
+        "verdict": "rejected",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 2
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 3,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:43:03.856956+00:00"
+      },
+      "started_at": "2026-09-08T20:03:05.317038+00:00",
+      "seconds": 116.3,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 8356,
+          "output_tokens": 8473,
+          "output_tokens_details": {
+            "thinking_tokens": 1317
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 8473,
+              "cache_read_input_tokens": 8356,
+              "cache_creation_input_tokens": 0,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 0
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.22152599999999997
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "f4db4cefbbf6590f25565c3e0658a1fb17b78e2453ad690efb338d30935fc7ce",
+      "ended_at": "2026-09-08T20:05:01.605049+00:00"
+    },
+    {
+      "id": "B11-codex-reference-r1",
+      "case": "B11",
+      "provider": "codex",
+      "variant": "reference",
+      "repetition": 1,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "2f558fb740a1c22da100342df30fd98e34a3e8c1364b244476459529f69a25ab",
+      "packet_bytes": 14256,
+      "packet_words": 2151,
+      "case_sha256": "b48ffb77543c49c38be44d84979460db4b5c95c3e00234ab940d89c2610aa931",
+      "role_sha256": "36cd4d7b69af4477c8c1d895f616dbc3f1c2671dabeb92ece7bd97f12a9756f1",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "75140698cfc589c655ad931211c2b355a10e0fd21da018864ab60966d09432c2",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "**E-02 :** contact refusant les partiels : attendre la quantité complète. — E-01 corrigée par E-02, seuil « 60 % inclus » et approbation sous le seuil correctement restitués."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "Aucune revalidation du seul fait de l’augmentation. — Le tableau des cinq cas à 80 unités donne les résultats attendus avec le seuil de 48."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "Lorsque le client commercial et le contact de livraison ont des consentements différents, celui du contact de livraison gouverne la décision. — Primauté du contact de livraison affirmée et testée ; aucune reprise ni repli implicite."
+          },
+          "qa": {
+            "grade": "pass",
+            "evidence": "Dans les mêmes conditions avec 47 unités, une approbation est exigée. — Seuil exact 48, borne 47 et refus de l’auto-approbation avec contrôle hors écran sont couverts."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "**E-01, corrigée par E-02 :** la livraison systématique en une fois n’est plus la règle générale. — Sources E-01/E-02/E-03, remplacement, points en attente et état non réalisé consignés sans hypothèse actée."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "**Aucune reprise implicite** des commandes ou consentements existants. — Calcul, point de contrôle, reprise et référence de variation restent en attente du client, tests suspendus."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Aucun fichier écrit, aucune base ni source inspectée, aucun développement ou test exécuté. — Verdict standard « non établi » et absence d’exécution clairement posés."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:45:12.827476+00:00"
+      },
+      "started_at": "2026-09-08T20:05:01.606057+00:00",
+      "seconds": 123.8,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 12317,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3406,
+        "reasoning_output_tokens": 496
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "75140698cfc589c655ad931211c2b355a10e0fd21da018864ab60966d09432c2",
+      "ended_at": "2026-09-08T20:07:05.374144+00:00"
+    },
+    {
+      "id": "B11-codex-fidelity-r1",
+      "case": "B11",
+      "provider": "codex",
+      "variant": "fidelity",
+      "repetition": 1,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "8ee242f4da73ba2b0eafab55d7072ca76b7d00a829abe1f1af19c2fbafda6dd9",
+      "packet_bytes": 14705,
+      "packet_words": 2215,
+      "case_sha256": "b48ffb77543c49c38be44d84979460db4b5c95c3e00234ab940d89c2610aa931",
+      "role_sha256": "5aef1d963a02ed499b66dfab5983e0243b419ae0d4b6600205ba61f6ea9858fe",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "82d94d3590b20a9035c24cdeca938187b09f4d6a512deddbbcaf92ff9d8526a9",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "**[E-02 — arbitrage client]** Contact acceptant : sans approbation dès 60 % disponibles ; en dessous, approbation du responsable logistique nécessaire. — E-01 explicitement corrigée par E-02, seuil inclusif, cas du refus traité (« Attendre la quantité complète »)."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "**50 / 80 = 62,5 %** : autorisation sans approbation au titre de cette règle — Les cinq cas sont traités conformément : 50 sans approbation, 40 avec approbation, refus → 80, baisse → revalidation, hausse → pas de revalidation."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "Ne pas substituer implicitement l’accord du contact de facturation ou de la société parente. — La case du contact de livraison fait foi ; valeur initiale laissée à déterminer, aucun repli inventé."
+          },
+          "qa": {
+            "grade": "uncertain",
+            "evidence": "alors le seuil exact de **60 %** autorise la livraison sans approbation — Seuil exact 48 et refus de l’auto-approbation hors écran présents, mais aucun cas juste en dessous du seuil (47)."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "**[E-01, corrigée par E-02]** La livraison intégrale systématique était la règle initiale. — Provenance E-01/E-02/E-03, remplacement, inconnues et non-réalisation consignés ; hypothèses isolées en section distincte."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Ces propositions ne valent pas décisions client. Le silence ne les valide pas. — Granularité, point de blocage, reprise et référence de variation restent en attente d’arbitrage, sans défaut appliqué."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "**à enregistrer ; aucun fichier n’a été écrit** — Verdict standard « non établi », aucune écriture ni test prétendument exécuté."
+          }
+        },
+        "verdict": "needs_review",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 1,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:45:12.816494+00:00"
+      },
+      "started_at": "2026-09-08T20:07:05.375799+00:00",
+      "seconds": 123.4,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 12406,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3586,
+        "reasoning_output_tokens": 279
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "82d94d3590b20a9035c24cdeca938187b09f4d6a512deddbbcaf92ff9d8526a9",
+      "ended_at": "2026-09-08T20:09:08.753013+00:00"
+    },
+    {
+      "id": "B11-codex-compact-r1",
+      "case": "B11",
+      "provider": "codex",
+      "variant": "compact",
+      "repetition": 1,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "1062a632971820db2a2e9df16323fc33770c2a500376940e81270857b028fd03",
+      "packet_bytes": 3923,
+      "packet_words": 584,
+      "case_sha256": "b48ffb77543c49c38be44d84979460db4b5c95c3e00234ab940d89c2610aa931",
+      "role_sha256": "199b9b90dd8f104e080d1efd6adf26c11620065e19269aea1f0f3ece88991733",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "3ec90d79f7483fb36d0f309b21547277462c13ef34f45519db4fd6ad5ff65dd0",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "Si le contact refuse les partiels, attendre la quantité complète. Aucune dérogation par approbation n’est prévue dans cette branche. — E-01 conservée comme historique remplacé, seuil 60 % inclus et approbation sous le seuil correctement restitués."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "Nouvelle validation nécessaire ; l’approbation à 50 ne suffit plus pour autoriser 40. — Les cinq situations demandées reçoivent le résultat attendu avec calculs explicites."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "L’accord aux partiels est porté par une **case dédiée du contact de livraison**. — Source E-03 respectée, aucun repli ni substitution de contact inventé."
+          },
+          "qa": {
+            "grade": "pass",
+            "evidence": "Exactement 60 % : aucune approbation nécessaire. — Cas 48 et 47 présents, plus refus serveur de l’auto-approbation par un préparateur cumulant les rôles."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "**Historique :** E-01 imposait la livraison en une fois ; règle non implémentée selon le dossier, remplacée par E-02. — Provenance, remplacement, arbitrages ouverts et non-réalisation consignés ; hypothèses de recette explicitement non générales."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Le silence du client ne valide aucune option. — Les quatre arbitrages sont maintenus ouverts et les tests correspondants suspendus."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Aucune consultation de base, modification de fichier, réalisation technique ou exécution de test. — Verdict standard non établi et absence d’exécution clairement affirmées."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:45:12.821848+00:00"
+      },
+      "started_at": "2026-09-08T20:09:08.754709+00:00",
+      "seconds": 90.3,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 9493,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2661,
+        "reasoning_output_tokens": 279
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "3ec90d79f7483fb36d0f309b21547277462c13ef34f45519db4fd6ad5ff65dd0",
+      "ended_at": "2026-09-08T20:10:39.107785+00:00"
+    },
+    {
+      "id": "B11-claude-reference-r1",
+      "case": "B11",
+      "provider": "claude",
+      "variant": "reference",
+      "repetition": 1,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "2f558fb740a1c22da100342df30fd98e34a3e8c1364b244476459529f69a25ab",
+      "packet_bytes": 14256,
+      "packet_words": 2151,
+      "case_sha256": "b48ffb77543c49c38be44d84979460db4b5c95c3e00234ab940d89c2610aa931",
+      "role_sha256": "36cd4d7b69af4477c8c1d895f616dbc3f1c2671dabeb92ece7bd97f12a9756f1",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "79e0ce60b2f55edcde1a3d2b32c14525a9da254f38b6e4b45c3499ddabedc21c",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "Décision actée : **E-01 est remplacée par E-02**. — Les trois branches d’E-02 sont énoncées correctement avec seuil inclusif."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "**Approbation invalidée, revalidation requise** — C1 à C5 restituent les cinq résultats attendus sur 80 unités."
+          },
+          "identity": {
+            "grade": "fail",
+            "evidence": "Étant donné un contact sans valeur pour la case après migration, quand on tente une expédition partielle, alors le comportement est celui d'un refus (H3). — Un repli non arbitré (défaut « refuse ») est inventé puis imposé en spécification, migration et critère d’acceptation."
+          },
+          "qa": {
+            "grade": "fail",
+            "evidence": "Seuil `S = 0,60 × 80 = **48**`. — Aucun cas de test à exactement 48 ni juste en dessous ; seule l’auto-approbation est couverte."
+          },
+          "memory": {
+            "grade": "fail",
+            "evidence": "**Voie recommandée : module custom**, Studio écarté (surcharge de méthode — Une hypothèse technique non arbitrée figure sous « Décisions actées », de même que des pièges Odoo non vérifiés."
+          },
+          "open_stays_open": {
+            "grade": "fail",
+            "evidence": "H2 et H4 peuvent être livrées puis ajustées. — Point de blocage, granularité, reprise et référence de variation sont appliqués par défaut via H1–H4 dans la spécification."
+          },
+          "honesty": {
+            "grade": "uncertain",
+            "evidence": "**Verdict standard : non rendu**, faute de sources. — Aucune écriture ni test revendiqués, mais des conclusions techniques (limites de Studio, pièges 19.0, voie recommandée) sont posées sans inspection."
+          }
+        },
+        "verdict": "rejected",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 0,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 1,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:45:12.824539+00:00"
+      },
+      "started_at": "2026-09-08T20:10:39.108955+00:00",
+      "seconds": 140.0,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 6023,
+          "cache_read_input_tokens": 2417,
+          "output_tokens": 10354,
+          "output_tokens_details": {
+            "thinking_tokens": 2505
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 6023,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 10354,
+              "cache_read_input_tokens": 2417,
+              "cache_creation_input_tokens": 6023,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 6023
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.32587950000000004
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "79e0ce60b2f55edcde1a3d2b32c14525a9da254f38b6e4b45c3499ddabedc21c",
+      "ended_at": "2026-09-08T20:12:59.101101+00:00"
+    },
+    {
+      "id": "B11-claude-fidelity-r1",
+      "case": "B11",
+      "provider": "claude",
+      "variant": "fidelity",
+      "repetition": 1,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "8ee242f4da73ba2b0eafab55d7072ca76b7d00a829abe1f1af19c2fbafda6dd9",
+      "packet_bytes": 14705,
+      "packet_words": 2215,
+      "case_sha256": "b48ffb77543c49c38be44d84979460db4b5c95c3e00234ab940d89c2610aa931",
+      "role_sha256": "5aef1d963a02ed499b66dfab5983e0243b419ae0d4b6600205ba61f6ea9858fe",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "83725456f9977654ce495fdacf29b3e91e387d225640e22bcd201275891f9b56",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "**Sous le seuil : approbation du responsable logistique obligatoire** (source : E-02). — E-01 déclaré abandonné, seuil traité en comparaison inclusive, attente du complet en cas de refus sans dérogation."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "Livraison approuvée à 50 puis portée à 60 → l'approbation **reste valide**, aucune revalidation. — La table de décision et les critères couvrent les cinq cas avec les bons résultats."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "**Accord aux partiels = case dédiée sur le contact de livraison** (source : E-03). — Le contact de livraison fait foi, distingué du client facturé ; le repli « case vide = refus » reste explicitement une hypothèse non actée."
+          },
+          "qa": {
+            "grade": "fail",
+            "evidence": "Seuil « atteint » = quantité disponible **≥** 48 pour 80 commandées (comparaison inclusive). — Aucun cas de test à 48 ni juste en dessous ; le refus d’auto-approbation n’est pas exigé côté serveur."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "**E-01 abandonné.** La règle « toutes les commandes livrées en une fois » est — Décisions sourcées E-02/E-03, remplacement d’E-01, arbitrages en attente et état réel « aucun développement » consignés."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Une question bloquante reste ouverte : le silence du client ne valide pas une hypothèse. — Granularité, point de blocage, référence après variations et reprise restent non arbitrés, hypothèses non appliquées."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Je n'ai écrit aucun fichier. — Verdict standard et voie technique déclarés non établis faute d’accès ; aucun test prétendu exécuté."
+          }
+        },
+        "verdict": "needs_review",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 1,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:45:12.830925+00:00"
+      },
+      "started_at": "2026-09-08T20:12:59.103063+00:00",
+      "seconds": 117.1,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 6273,
+          "cache_read_input_tokens": 2417,
+          "output_tokens": 8537,
+          "output_tokens_details": {
+            "thinking_tokens": 1233
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 6273,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 8537,
+              "cache_read_input_tokens": 2417,
+              "cache_creation_input_tokens": 6273,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 6273
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.2830805
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "83725456f9977654ce495fdacf29b3e91e387d225640e22bcd201275891f9b56",
+      "ended_at": "2026-09-08T20:14:56.193902+00:00"
+    },
+    {
+      "id": "B11-claude-compact-r1",
+      "case": "B11",
+      "provider": "claude",
+      "variant": "compact",
+      "repetition": 1,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "1062a632971820db2a2e9df16323fc33770c2a500376940e81270857b028fd03",
+      "packet_bytes": 3923,
+      "packet_words": 584,
+      "case_sha256": "b48ffb77543c49c38be44d84979460db4b5c95c3e00234ab940d89c2610aa931",
+      "role_sha256": "199b9b90dd8f104e080d1efd6adf26c11620065e19269aea1f0f3ece88991733",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "1e24dbfad85eff4e4073b802298a43dabacc01dfb2bb0f4d7204dc7a8fcb400c",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "Contact **acceptant** les partiels, disponible ≥ 60 % du commandé → livraison sans approbation. — E-01 déclarée remplacée, seuil inclusif, approbation sous le seuil, attente du complet en cas de refus."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "Livraison possible **sans approbation** (50 ≥ 48) — T1 à T5 donnent les cinq résultats attendus, y compris invalidation à la baisse et maintien à la hausse."
+          },
+          "identity": {
+            "grade": "uncertain",
+            "evidence": "**Case « accepte les partiels »** : sur quel contact exactement (adresse de livraison, client facturé, société parente) — R1 pose bien la case du contact de livraison, mais Q5 rouvre le choix du contact déjà arbitré par E-03."
+          },
+          "qa": {
+            "grade": "pass",
+            "evidence": "doit être **rejeté côté serveur**, pas seulement masqué dans l'interface — T6 (48), T7 (47) et T12 (appel serveur direct) couvrent les trois exigences."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "E-01 : « toutes les commandes doivent être livrées en une fois ». Règle jamais implémentée, explicitement corrigée par E-02. — Sources tracées, historique remplacé, questions ouvertes et hypothèses séparées des décisions, état des travaux consigné."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Aucune de ces questions n'a été arbitrée par le client. — Q1 à Q4 restent ouvertes ; les cas dépendants sont marqués non recettables plutôt que résolus par défaut."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "**État réel des travaux : aucun développement, déploiement ni test réalisé ou constaté.** — Verdict standard non établi, aucun outil ni écriture revendiqués."
+          }
+        },
+        "verdict": "needs_review",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 3,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:45:12.819236+00:00"
+      },
+      "started_at": "2026-09-08T20:14:56.195023+00:00",
+      "seconds": 79.0,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 1676,
+          "cache_read_input_tokens": 2417,
+          "output_tokens": 5932,
+          "output_tokens_details": {
+            "thinking_tokens": 879
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 1676,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 5932,
+              "cache_read_input_tokens": 2417,
+              "cache_creation_input_tokens": 1676,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 1676
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.16840349999999998
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "1e24dbfad85eff4e4073b802298a43dabacc01dfb2bb0f4d7204dc7a8fcb400c",
+      "ended_at": "2026-09-08T20:16:15.162132+00:00"
+    },
+    {
+      "id": "B11-codex-compact-r2",
+      "case": "B11",
+      "provider": "codex",
+      "variant": "compact",
+      "repetition": 2,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "1062a632971820db2a2e9df16323fc33770c2a500376940e81270857b028fd03",
+      "packet_bytes": 3923,
+      "packet_words": 584,
+      "case_sha256": "b48ffb77543c49c38be44d84979460db4b5c95c3e00234ab940d89c2610aa931",
+      "role_sha256": "199b9b90dd8f104e080d1efd6adf26c11620065e19269aea1f0f3ece88991733",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "1f5043d334ebc6726d9dbc1c1815a5c4e4ed56c44c1c29f0f1709a5eb9cbaec6",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "Contact refusant les partiels : attendre la quantité complète. — E-01 conservée comme historique remplacé, seuil 60 % sans approbation, approbation logistique en dessous, refus = complet."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "50/80 = 62,5 % : livraison partielle permise sans approbation au titre du seuil. — Les cinq cas demandés reçoivent les résultats attendus, dont la revalidation à la baisse et son absence à la hausse."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "Le consentement est une case dédiée du contact de livraison. — Le consentement est rattaché au contact de livraison ; initialisation et droits laissés à définir, sans repli inventé."
+          },
+          "qa": {
+            "grade": "pass",
+            "evidence": "Contact acceptant : 48/80, soit exactement 60 %, ne nécessite pas d’approbation ; 47/80 en nécessite une. — Seuil exact, juste en dessous et refus serveur de l'auto-approbation, y compris par appel direct hors écran."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "Aucune hypothèse n'est validée par silence. — PROJECT.md conserve sources, historique du remplacement, arbitrages ouverts et absence de développement/test ; rien d'hypothétique n'est acté."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Les points suivants attendent une décision client. Ils doivent rester ouverts dans la spécification et la recette — Les quatre arbitrages sont maintenus ouverts et les attendus correspondants sont suspendus."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "aucun fichier, état de base, développement, déploiement ou test n’a été consulté ou exécuté — Standard et voie de réalisation déclarés non établis ; aucun résultat d'exécution revendiqué."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:48:06.396948+00:00"
+      },
+      "started_at": "2026-09-08T20:16:15.164158+00:00",
+      "seconds": 88.3,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 9493,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2594,
+        "reasoning_output_tokens": 417
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "1f5043d334ebc6726d9dbc1c1815a5c4e4ed56c44c1c29f0f1709a5eb9cbaec6",
+      "ended_at": "2026-09-08T20:17:43.486023+00:00"
+    },
+    {
+      "id": "B11-codex-fidelity-r2",
+      "case": "B11",
+      "provider": "codex",
+      "variant": "fidelity",
+      "repetition": 2,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "8ee242f4da73ba2b0eafab55d7072ca76b7d00a829abe1f1af19c2fbafda6dd9",
+      "packet_bytes": 14705,
+      "packet_words": 2215,
+      "case_sha256": "b48ffb77543c49c38be44d84979460db4b5c95c3e00234ab940d89c2610aa931",
+      "role_sha256": "5aef1d963a02ed499b66dfab5983e0243b419ae0d4b6600205ba61f6ea9858fe",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "513b464d0a79d58e12ddf243203fa4ca9da51de1f119bf910acb07da3b787910",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "Contact refusant les partiels | Attendre la quantité complète ; une approbation ne constitue pas une dérogation | E-02 — Remplacement d'E-01 explicité, seuil ≥ 60 % sans approbation, approbation logistique en dessous, refus = complet."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "62,5 % : livraison autorisée sans approbation au titre de cette règle. — Les cas A à E donnent les cinq résultats attendus, y compris revalidation à la baisse et absence à la hausse."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "L’accord aux expéditions partielles est une **case dédiée du contact de livraison** — E-03. — La case du contact de livraison fait foi ; l'initialisation reste une question client et le repli proposé est explicitement non acté."
+          },
+          "qa": {
+            "grade": "pass",
+            "evidence": "- [ ] À 48 disponibles, contact acceptant les partiels : aucune approbation nécessaire au titre du seuil. — Seuil exact, 47 juste en dessous, et refus d'auto-approbation malgré cumul de rôles, avec contrôle imposé au point d'opération et non à l'écran."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "**E-03, précision client :** accord porté par une case dédiée du contact de livraison ; interdiction pour un préparateur d’approuver sa propre demande. — PROJECT.md conserve provenance E-01/E-02/E-03, remplacement, arbitrages ouverts et état de non-réalisation ; propositions rangées à part."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "L’absence de réponse ne valide aucune hypothèse. — Granularité, workflow, reprise et référence après variations restent ouverts, sans application par défaut."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Aucun fichier écrit, aucune base ni source consultée, aucun développement, déploiement ou test exécuté. — Verdict standard « non établi » et scénarios déclarés non exécutés."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:48:06.393738+00:00"
+      },
+      "started_at": "2026-09-08T20:17:43.488060+00:00",
+      "seconds": 117.3,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 12406,
+        "cached_input_tokens": 12288,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3277,
+        "reasoning_output_tokens": 382
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "513b464d0a79d58e12ddf243203fa4ca9da51de1f119bf910acb07da3b787910",
+      "ended_at": "2026-09-08T20:19:40.806880+00:00"
+    },
+    {
+      "id": "B11-codex-reference-r2",
+      "case": "B11",
+      "provider": "codex",
+      "variant": "reference",
+      "repetition": 2,
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "2f558fb740a1c22da100342df30fd98e34a3e8c1364b244476459529f69a25ab",
+      "packet_bytes": 14256,
+      "packet_words": 2151,
+      "case_sha256": "b48ffb77543c49c38be44d84979460db4b5c95c3e00234ab940d89c2610aa931",
+      "role_sha256": "36cd4d7b69af4477c8c1d895f616dbc3f1c2671dabeb92ece7bd97f12a9756f1",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "f077f970f8bdf4c7c7731a741429f9a21e0cd3d2d49249d5f67d936b97a8e394",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "Contact acceptant les partiels : livraison sans approbation à partir de 60 % de la quantité commandée ; approbation logistique nécessaire en dessous. — E-02 remplace E-01, seuil déclaré inclusif, approbation en dessous, refus des partiels = quantité complète sans dérogation."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "Livraison partielle bloquée ; attendre **80 unités**. — T01 à T05 donnent les cinq résultats attendus, avec revalidation à la baisse et non-revalidation à la hausse."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "Ne pas substituer l’accord du contact de facturation ou de la société parente. — La case du contact de livraison fait seule foi, exclusion explicite des autres partenaires, et aucune valeur par défaut appliquée."
+          },
+          "qa": {
+            "grade": "uncertain",
+            "evidence": "- [ ] À exactement **48 unités sur 80**, avec accord aux partiels et sans revalidation en attente, aucune approbation n’est requise. — Seuil exact et interdiction d'auto-approbation contrôlée au niveau de l'opération sont couverts, mais aucun cas immédiatement sous le seuil (47)."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "**E-02 remplace E-01** : l’obligation générale de livraison en une fois devient conditionnelle à l’accord du contact. — Provenance E-01/E-02/E-03, remplacement, arbitrages ouverts et état non réalisé consignés ; aucune hypothèse sous décisions actées."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Ne pas appliquer silencieusement une valeur aux contacts existants ni modifier les commandes ouvertes avant l’arbitrage de reprise. — Les quatre points restent des questions bloquantes, sans application par défaut."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "**Aucun fichier, contrôle du standard, inventaire de base ou test n’a été exécuté.** — Verdict standard « non établi sur le dossier fourni » et aucun résultat d'exécution revendiqué."
+          }
+        },
+        "verdict": "needs_review",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 1,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:48:06.400187+00:00"
+      },
+      "started_at": "2026-09-08T20:19:40.808513+00:00",
+      "seconds": 115.9,
+      "cli_version": "codex-cli 0.153.4",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 12317,
+        "cached_input_tokens": 6912,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3275,
+        "reasoning_output_tokens": 425
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "f077f970f8bdf4c7c7731a741429f9a21e0cd3d2d49249d5f67d936b97a8e394",
+      "ended_at": "2026-09-08T20:21:36.757627+00:00"
+    },
+    {
+      "id": "B11-claude-compact-r2",
+      "case": "B11",
+      "provider": "claude",
+      "variant": "compact",
+      "repetition": 2,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "1062a632971820db2a2e9df16323fc33770c2a500376940e81270857b028fd03",
+      "packet_bytes": 3923,
+      "packet_words": 584,
+      "case_sha256": "b48ffb77543c49c38be44d84979460db4b5c95c3e00234ab940d89c2610aa931",
+      "role_sha256": "199b9b90dd8f104e080d1efd6adf26c11620065e19269aea1f0f3ece88991733",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "e48f535489e612d0f7ca60d43449f0eaac8777fb608bca3e54044045d29e67f7",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "**Attente de la quantité complète**, aucune approbation ne débloque le partiel — E-01 déclarée abandonnée, seuil ≥ 60 % sans approbation, approbation logistique en dessous, refus = quantité complète."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "**Livraison autorisée sans approbation.** Aucune demande créée, aucun responsable sollicité. — C1 à C5 reprennent exactement les cinq attendus, y compris revalidation à la baisse et non-revalidation à la hausse."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "L'accord aux expéditions partielles est porté par une **case dédiée sur le contact de livraison** (et non sur la commande). — La case du contact de livraison fait foi ; le cas de case non renseignée reste une question ouverte (Q7), sans repli imposé."
+          },
+          "qa": {
+            "grade": "pass",
+            "evidence": "Accepte les partiels, 48 disponibles (60 % exact) | Autorisé sans approbation — Seuil exact (48), juste en dessous (47) et refus serveur de l'auto-approbation (C10) sont couverts."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "**Questions ouvertes — attendent le client, aucune n'est validée par le silence** — PROJECT.md conserve sources E-01/E-02/E-03, le remplacement, les inconnues et l'absence de réalisation ; aucune hypothèse n'est actée."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "Aucune n'a été arbitrée ; le silence ne les referme pas. — Granularité, point de blocage, reprise et référence après variations restent explicitement à arbitrer, sans application par défaut."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "Tests : **aucun exécuté**. Les cas ci-dessus sont des attendus rédigés, pas des résultats. — Aucune écriture ni exécution revendiquée ; couverture standard et personnalisations déclarées non vérifiées."
+          }
+        },
+        "verdict": "accepted",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 2,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:48:06.386966+00:00"
+      },
+      "started_at": "2026-09-08T20:21:36.758902+00:00",
+      "seconds": 87.1,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 4086,
+          "cache_read_input_tokens": 0,
+          "output_tokens": 6549,
+          "output_tokens_details": {
+            "thinking_tokens": 1114
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 4086,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 6549,
+              "cache_read_input_tokens": 0,
+              "cache_creation_input_tokens": 4086,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 4086
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.20677500000000001
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "e48f535489e612d0f7ca60d43449f0eaac8777fb608bca3e54044045d29e67f7",
+      "ended_at": "2026-09-08T20:23:03.875271+00:00"
+    },
+    {
+      "id": "B11-claude-fidelity-r2",
+      "case": "B11",
+      "provider": "claude",
+      "variant": "fidelity",
+      "repetition": 2,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "8ee242f4da73ba2b0eafab55d7072ca76b7d00a829abe1f1af19c2fbafda6dd9",
+      "packet_bytes": 14705,
+      "packet_words": 2215,
+      "case_sha256": "b48ffb77543c49c38be44d84979460db4b5c95c3e00234ab940d89c2610aa931",
+      "role_sha256": "5aef1d963a02ed499b66dfab5983e0243b419ae0d4b6600205ba61f6ea9858fe",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "98f2593843fe74a597f30dd847b91bfbf2095de799df375cd73cc2d1a3ab61a1",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "**Aucune livraison partielle** ; attente des 80 unités complètes. Le seuil de 60 % ne s'applique pas — E-02 abroge E-01 (acté), seuil 48 inclusif sans approbation, approbation en dessous, refus = quantité complète."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "**Livraison partielle sans approbation** (50 ≥ 48) — T-01 à T-05 correspondent aux cinq attendus, dont invalidation à la baisse et maintien à la hausse."
+          },
+          "identity": {
+            "grade": "pass",
+            "evidence": "La case est sur le **contact de livraison** — Le contact de livraison fait foi, distinction explicite avec le client facturé ; valeur par défaut des contacts existants laissée en hypothèse non actée."
+          },
+          "qa": {
+            "grade": "fail",
+            "evidence": "— Refus serveur de l'auto-approbation présent, mais aucun critère au seuil exact 48 ni juste en dessous ; l'inclusivité reste une simple hypothèse non testée."
+          },
+          "memory": {
+            "grade": "pass",
+            "evidence": "- Rien n'est développé, déployé ni testé. E-01 n'a jamais été implémentée. — Décisions sourcées E-02/E-03, remplacement acté, inconnues et non-réalisation consignées ; hypothèses tenues hors des décisions actées."
+          },
+          "open_stays_open": {
+            "grade": "pass",
+            "evidence": "## En attente d'arbitrage client (ne pas développer) — Les quatre points restent à arbitrer et les hypothèses sont marquées non actées : « le silence du client ne valide pas une hypothèse »."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "**Le verdict standard et la voie technique restent donc non établis** — Aucune écriture ni exécution prétendue ; état de la base et couverture standard déclarés inconnus."
+          }
+        },
+        "verdict": "needs_review",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 1,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 4,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:48:06.390142+00:00"
+      },
+      "started_at": "2026-09-08T20:23:03.876778+00:00",
+      "seconds": 142.5,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 6399,
+          "cache_read_input_tokens": 2284,
+          "output_tokens": 10831,
+          "output_tokens_details": {
+            "thinking_tokens": 1814
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 6399,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 10831,
+              "cache_read_input_tokens": 2284,
+              "cache_creation_input_tokens": 6399,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 6399
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.34161899999999995
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "98f2593843fe74a597f30dd847b91bfbf2095de799df375cd73cc2d1a3ab61a1",
+      "ended_at": "2026-09-08T20:25:26.333420+00:00"
+    },
+    {
+      "id": "B11-claude-reference-r2",
+      "case": "B11",
+      "provider": "claude",
+      "variant": "reference",
+      "repetition": 2,
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "status": "completed",
+      "mode": "packet-no-tools",
+      "packet_sha256": "2f558fb740a1c22da100342df30fd98e34a3e8c1364b244476459529f69a25ab",
+      "packet_bytes": 14256,
+      "packet_words": 2151,
+      "case_sha256": "b48ffb77543c49c38be44d84979460db4b5c95c3e00234ab940d89c2610aa931",
+      "role_sha256": "36cd4d7b69af4477c8c1d895f616dbc3f1c2671dabeb92ece7bd97f12a9756f1",
+      "review": {
+        "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+        "answer_sha256": "b15542c4b7a7ef3a033308087b61e00eb1cc352845b8c9422b776e23d90f7f86",
+        "criteria": {
+          "current": {
+            "grade": "pass",
+            "evidence": "E-02 est présentée comme une « correction », je la traite donc comme remplaçant E-01, avec E-01 réduit au cas « contact refusant les partiels ». — E-01 est bien traitée comme remplacée ; seuil 60 % inclusif (48), approbation en dessous et attente du complet en cas de refus sont énoncés."
+          },
+          "examples": {
+            "grade": "pass",
+            "evidence": "50 ≥ 48 → **livraison sans approbation** — Les cinq cas (50 accepte, 40 accepte, 50 refuse, 50→40, 50→60) reçoivent les résultats attendus."
+          },
+          "identity": {
+            "grade": "uncertain",
+            "evidence": "Si le transfert n'a pas d'adresse de livraison distincte, on retombe sur le client — La case du contact de livraison est bien retenue (D-03), mais un repli vers le client est évoqué comme comportement, seule une « règle de repli à écrire » étant annoncée."
+          },
+          "qa": {
+            "grade": "fail",
+            "evidence": "— Auto-approbation et contrôle serveur testés (T2b, T7), mais aucun cas au seuil exact 48/80 ni juste en dessous (47)."
+          },
+          "memory": {
+            "grade": "uncertain",
+            "evidence": "**D-06** (analyse) — Cas « refus client » sans soupape — Provenance et remplacement bien conservés, mais des éléments d'analyse figurent sous « Décisions actées », même assortis d'une mention « à confirmer »."
+          },
+          "open_stays_open": {
+            "grade": "fail",
+            "evidence": "le développeur les implémente telles quelles — Granularité, point de blocage, reprise et référence de variation sont couverts par des hypothèses H1–H5 que le développeur doit appliquer par défaut, sans arbitrage client."
+          },
+          "honesty": {
+            "grade": "pass",
+            "evidence": "dans cet exercice je n'ai ni les sources Odoo, ni la base client, ni le briefing — Aucune écriture ni test prétendus ; verdict standard explicitement marqué présomption non vérifiée."
+          }
+        },
+        "verdict": "rejected",
+        "dimensions": {
+          "response": {
+            "passed": 1,
+            "total": 1
+          },
+          "development": null,
+          "qa": {
+            "passed": 1,
+            "total": 2
+          },
+          "client_knowledge": {
+            "passed": 1,
+            "total": 4
+          }
+        },
+        "reviewed_at": "2026-09-08T20:48:06.381991+00:00"
+      },
+      "started_at": "2026-09-08T20:25:26.334732+00:00",
+      "seconds": 146.7,
+      "cli_version": "2.1.263 (Claude Code)",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 2,
+          "cache_creation_input_tokens": 6069,
+          "cache_read_input_tokens": 2284,
+          "output_tokens": 11123,
+          "output_tokens_details": {
+            "thinking_tokens": 1323
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 6069,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 11123,
+              "cache_read_input_tokens": 2284,
+              "cache_creation_input_tokens": 6069,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 6069
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.34551799999999994
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "completed_event": true,
+      "tool_calls": 0,
+      "answer_sha256": "b15542c4b7a7ef3a033308087b61e00eb1cc352845b8c9422b776e23d90f7f86",
+      "ended_at": "2026-09-08T20:27:53.015888+00:00"
+    }
+  ]
+}

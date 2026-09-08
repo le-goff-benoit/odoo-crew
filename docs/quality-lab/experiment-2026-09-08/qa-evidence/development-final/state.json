@@ -1,0 +1,227 @@
+{
+  "fixtures": "/home/blegoff/odoo-agents-quality-lab/benchmarks/odoo",
+  "implementation": "quality_case/models/delivery.py",
+  "studio": false,
+  "status": "failed",
+  "scope": "Odoo 19 synthetic isolated business oracle",
+  "trials": [
+    {
+      "name": "reference",
+      "seconds": 2.23,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 17,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 13
+          }
+        ]
+      },
+      "log": "0.log",
+      "sources": "0-sources.json",
+      "log_sha256": "0f19552fe5942969ad8f57adca143f3008d5fa86462284cb8e5c2beecc23cd00"
+    },
+    {
+      "name": "run1-codex-high",
+      "seconds": 2.23,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 17,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 13
+          }
+        ]
+      },
+      "log": "1.log",
+      "sources": "1-sources.json",
+      "log_sha256": "e108661f7e1ce187719952a0e45bf80503e4ea23584a117197d70d70f0130065"
+    },
+    {
+      "name": "run1-claude-medium",
+      "seconds": 2.48,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": true,
+      "expectation_met": false,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 17,
+        "summaries": [
+          {
+            "failed": 3,
+            "errors": 0,
+            "tests": 13
+          }
+        ]
+      },
+      "log": "2.log",
+      "sources": "2-sources.json",
+      "log_sha256": "bd8025315f1319caea70f3d7c3c0b83446904b52566c4f2253a371de9d33676b"
+    },
+    {
+      "name": "run2-codex-medium",
+      "seconds": 2.43,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 17,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 13
+          }
+        ]
+      },
+      "log": "3.log",
+      "sources": "3-sources.json",
+      "log_sha256": "5d9519d19b6e441f83b725811c05c7ad5d41c32d14aa43b70151ff9d6f5a0ef6"
+    },
+    {
+      "name": "run2-claude-high",
+      "seconds": 2.18,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": true,
+      "expectation_met": false,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 17,
+        "summaries": [
+          {
+            "failed": 3,
+            "errors": 0,
+            "tests": 13
+          }
+        ]
+      },
+      "log": "4.log",
+      "sources": "4-sources.json",
+      "log_sha256": "1c00b69c67a22497b0b763a612a4c29f0f017420342f8c279169c1703157d523"
+    },
+    {
+      "name": "run3-codex-medium",
+      "seconds": 2.18,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 17,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 13
+          }
+        ]
+      },
+      "log": "5.log",
+      "sources": "5-sources.json",
+      "log_sha256": "63797f007ce6d458b06d4eb0d2d8b5fef2800bf36c5868d8f64b3363f38100b7"
+    },
+    {
+      "name": "run3-claude-medium",
+      "seconds": 2.23,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": true,
+      "expectation_met": false,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 17,
+        "summaries": [
+          {
+            "failed": 2,
+            "errors": 0,
+            "tests": 13
+          }
+        ]
+      },
+      "log": "6.log",
+      "sources": "6-sources.json",
+      "log_sha256": "b7684071d0939408be87b582f6548707e805174660c9abfb4e782ada8160d96f"
+    },
+    {
+      "name": "run4-claude-medium",
+      "seconds": 2.23,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 17,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 13
+          }
+        ]
+      },
+      "log": "7.log",
+      "sources": "7-sources.json",
+      "log_sha256": "79945c1871e19533fcde8212371859405e953aeba516cc00fbf550c4818af202"
+    },
+    {
+      "name": "run4-codex-medium",
+      "seconds": 2.18,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 17,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 13
+          }
+        ]
+      },
+      "log": "8.log",
+      "sources": "8-sources.json",
+      "log_sha256": "144cddb5879568a9ebeba414805178cd008122146e52c3eef0d0dc09c149447a"
+    }
+  ],
+  "template_seconds": 6.96,
+  "image_id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d"
+}

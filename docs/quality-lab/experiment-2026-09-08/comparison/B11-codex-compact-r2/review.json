@@ -1,0 +1,51 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "1f5043d334ebc6726d9dbc1c1815a5c4e4ed56c44c1c29f0f1709a5eb9cbaec6",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "Contact refusant les partiels : attendre la quantité complète. — E-01 conservée comme historique remplacé, seuil 60 % sans approbation, approbation logistique en dessous, refus = complet."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "50/80 = 62,5 % : livraison partielle permise sans approbation au titre du seuil. — Les cinq cas demandés reçoivent les résultats attendus, dont la revalidation à la baisse et son absence à la hausse."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "Le consentement est une case dédiée du contact de livraison. — Le consentement est rattaché au contact de livraison ; initialisation et droits laissés à définir, sans repli inventé."
+    },
+    "qa": {
+      "grade": "pass",
+      "evidence": "Contact acceptant : 48/80, soit exactement 60 %, ne nécessite pas d’approbation ; 47/80 en nécessite une. — Seuil exact, juste en dessous et refus serveur de l'auto-approbation, y compris par appel direct hors écran."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "Aucune hypothèse n'est validée par silence. — PROJECT.md conserve sources, historique du remplacement, arbitrages ouverts et absence de développement/test ; rien d'hypothétique n'est acté."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "evidence": "Les points suivants attendent une décision client. Ils doivent rester ouverts dans la spécification et la recette — Les quatre arbitrages sont maintenus ouverts et les attendus correspondants sont suspendus."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "aucun fichier, état de base, développement, déploiement ou test n’a été consulté ou exécuté — Standard et voie de réalisation déclarés non établis ; aucun résultat d'exécution revendiqué."
+    }
+  },
+  "verdict": "accepted",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 1
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 4,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:48:06.396948+00:00"
+}

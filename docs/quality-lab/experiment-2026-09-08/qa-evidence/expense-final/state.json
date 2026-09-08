@@ -1,0 +1,80 @@
+{
+  "fixtures": "/home/blegoff/odoo-agents-quality-lab/benchmarks/odoo-expense",
+  "implementation": "quality_case/models/expense.py",
+  "studio": false,
+  "status": "completed",
+  "scope": "Odoo 19 synthetic isolated business oracle",
+  "trials": [
+    {
+      "name": "reference",
+      "seconds": 2.28,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 8,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 6
+          }
+        ]
+      },
+      "log": "0.log",
+      "sources": "0-sources.json",
+      "log_sha256": "d1c700c4665fa75027207359ecf12ce231be37b34103145bd5157a708fcbf5cc"
+    },
+    {
+      "name": "run1-claude-medium",
+      "seconds": 2.23,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 8,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 6
+          }
+        ]
+      },
+      "log": "1.log",
+      "sources": "1-sources.json",
+      "log_sha256": "765f48e452927b1900906c69bc806853a04cacc1d51d6d5697a2bf292b9a57fa"
+    },
+    {
+      "name": "run2-claude-medium",
+      "seconds": 2.23,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 8,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 6
+          }
+        ]
+      },
+      "log": "2.log",
+      "sources": "2-sources.json",
+      "log_sha256": "9ba1e05754b34f2506ff4abad85c259c232370a32ef946c00fd42813a123f0f3"
+    }
+  ],
+  "template_seconds": 7.51,
+  "image_id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d"
+}

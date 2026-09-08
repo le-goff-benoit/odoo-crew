@@ -39,3 +39,11 @@ Ces contrôles ont trouvé trois échecs dans la première référence du banc. 
 référence a été corrigée ; les sorties LLM restent intactes et recevront toutes
 la même version de l'oracle. La suite contient désormais huit méthodes de test
 métier et quatre de transport (les sous-cas ne sont pas douze tests indépendants).
+
+Après les premières sorties, l'audit de l'oracle a retiré une contrainte qui
+n'était pas dans S-01 : exiger une exception précise lorsque la tentative est
+bien empêchée. L'état protégé, et non le style d'implémentation, fait foi. Un test
+supplémentaire reproduit les drapeaux RPC de contournement observés dans le code.
+La version finale a neuf méthodes métier et quatre de transport. Toutes les
+versions de code (références, v1, v2) ont été réévaluées sans modification avec
+cette même version finale. Les premiers résultats restent archivés séparément.

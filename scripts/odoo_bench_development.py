@@ -18,14 +18,14 @@ def extract(answer):
     return data['code']
 
 
-def execute(runs, output):
+def execute(runs, output, case_id='B12', fixtures=None, implementation='quality_case/models/delivery.py'):
     candidates, identities, invalid = {}, {}, {}
     for number, run in enumerate(runs):
         state = bench.read_json(run / 'state.json')
         if state['status'] not in ('executed', 'executed_with_errors'):
             raise ValueError('générations encore actives : ' + str(run))
         for trial in state['trials']:
-            if trial['case'] != 'B12' or trial['status'] != 'completed':
+            if trial['case'] != case_id or trial['status'] != 'completed':
                 continue
             folder = run / trial['id']
             answer = folder / 'answer.md'
@@ -40,7 +40,7 @@ def execute(runs, output):
                 candidates[label] = path
             except (ValueError, SyntaxError) as exc:
                 invalid[label] = str(exc)
-    result = campaign(output, candidates)
+    result = campaign(output, candidates, fixtures=fixtures, implementation=implementation)
     by_name = {t['name']: t for t in result['trials']}
     for label, (run, trial) in identities.items():
         if label in invalid:
@@ -49,7 +49,7 @@ def execute(runs, output):
             observed = by_name[label]
             grade = 'pass' if observed['passed'] else 'fail'
             evidence = f"Oracle Odoo 19 réel, code inchangé : {output / observed['log']}, SHA256={observed['log_sha256']}, bilan={observed['proof']['summaries']}"
-        bench.review_trial(run, trial['id'], {'reviewer': 'oracle Odoo 19 / contrat synthétique S-01',
+        bench.review_trial(run, trial['id'], {'reviewer': f'oracle Odoo 19 / cas synthétique {case_id}',
                                             'answer_sha256': trial['answer_sha256'],
                                             'criteria': {'runtime': {'grade': grade, 'evidence': evidence}}})
     bench.atomic_json(output / 'mapping.json', {'trials': {k: {'run':str(r), 'trial':t['id']} for k,(r,t) in identities.items()}, 'invalid': invalid})
@@ -60,6 +60,9 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('runs', nargs='+', type=Path)
     parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--case', default='B12')
+    parser.add_argument('--fixtures', type=Path)
+    parser.add_argument('--implementation', default='quality_case/models/delivery.py')
     args = parser.parse_args()
-    result = execute(args.runs, args.output)
+    result = execute(args.runs, args.output, args.case, args.fixtures, args.implementation)
     print(json.dumps(result, ensure_ascii=False, indent=2))

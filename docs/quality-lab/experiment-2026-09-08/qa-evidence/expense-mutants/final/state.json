@@ -1,0 +1,86 @@
+{
+  "fixtures": "/home/blegoff/odoo-agents-quality-lab/benchmarks/odoo-expense",
+  "implementation": "quality_case/models/expense.py",
+  "studio": false,
+  "status": "failed",
+  "scope": "Odoo 19 synthetic isolated business oracle",
+  "trials": [
+    {
+      "name": "reference",
+      "seconds": 2.23,
+      "exit_code": 0,
+      "passed": true,
+      "expected_pass": true,
+      "expectation_met": true,
+      "proof": {
+        "valid": true,
+        "reasons": [],
+        "module_tests": 8,
+        "summaries": [
+          {
+            "failed": 0,
+            "errors": 0,
+            "tests": 6
+          }
+        ]
+      },
+      "log": "0.log",
+      "sources": "0-sources.json",
+      "log_sha256": "60e6507f72f57d8f0692e0451c1b4d719f1124505f519729561bc5f708630a9d"
+    },
+    {
+      "name": "threshold",
+      "seconds": 2.23,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": true,
+      "expectation_met": false,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 8,
+        "summaries": [
+          {
+            "failed": 1,
+            "errors": 0,
+            "tests": 6
+          }
+        ]
+      },
+      "log": "1.log",
+      "sources": "1-sources.json",
+      "log_sha256": "f0b1564e218432ad1c76e92839d444d251794470c1774fa5e0abeb997c1b1b81"
+    },
+    {
+      "name": "self_approval",
+      "seconds": 2.23,
+      "exit_code": 1,
+      "passed": false,
+      "expected_pass": true,
+      "expectation_met": false,
+      "proof": {
+        "valid": false,
+        "reasons": [
+          "bilan contenant des échecs ou erreurs",
+          "erreur ou module ignoré dans le log"
+        ],
+        "module_tests": 8,
+        "summaries": [
+          {
+            "failed": 1,
+            "errors": 0,
+            "tests": 6
+          }
+        ]
+      },
+      "log": "2.log",
+      "sources": "2-sources.json",
+      "log_sha256": "320f8e661fec87f3fc18d93b00b6a4880ea73073a99f9f1de9187b40cc9dfb93"
+    }
+  ],
+  "template_seconds": 9.72,
+  "image_id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d"
+}

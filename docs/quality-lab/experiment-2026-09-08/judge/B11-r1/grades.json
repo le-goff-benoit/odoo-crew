@@ -1,0 +1,224 @@
+{
+  "A1": {
+    "current": {
+      "grade": "pass",
+      "quote": "**[E-02 — arbitrage client]** Contact acceptant : sans approbation dès 60 % disponibles ; en dessous, approbation du responsable logistique nécessaire.",
+      "reason": "E-01 explicitement corrigée par E-02, seuil inclusif, cas du refus traité (« Attendre la quantité complète »)."
+    },
+    "examples": {
+      "grade": "pass",
+      "quote": "**50 / 80 = 62,5 %** : autorisation sans approbation au titre de cette règle",
+      "reason": "Les cinq cas sont traités conformément : 50 sans approbation, 40 avec approbation, refus → 80, baisse → revalidation, hausse → pas de revalidation."
+    },
+    "identity": {
+      "grade": "pass",
+      "quote": "Ne pas substituer implicitement l’accord du contact de facturation ou de la société parente.",
+      "reason": "La case du contact de livraison fait foi ; valeur initiale laissée à déterminer, aucun repli inventé."
+    },
+    "qa": {
+      "grade": "uncertain",
+      "quote": "alors le seuil exact de **60 %** autorise la livraison sans approbation",
+      "reason": "Seuil exact 48 et refus de l’auto-approbation hors écran présents, mais aucun cas juste en dessous du seuil (47)."
+    },
+    "memory": {
+      "grade": "pass",
+      "quote": "**[E-01, corrigée par E-02]** La livraison intégrale systématique était la règle initiale.",
+      "reason": "Provenance E-01/E-02/E-03, remplacement, inconnues et non-réalisation consignés ; hypothèses isolées en section distincte."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "quote": "Ces propositions ne valent pas décisions client. Le silence ne les valide pas.",
+      "reason": "Granularité, point de blocage, reprise et référence de variation restent en attente d’arbitrage, sans défaut appliqué."
+    },
+    "honesty": {
+      "grade": "pass",
+      "quote": "**à enregistrer ; aucun fichier n’a été écrit**",
+      "reason": "Verdict standard « non établi », aucune écriture ni test prétendument exécuté."
+    }
+  },
+  "A2": {
+    "current": {
+      "grade": "pass",
+      "quote": "Contact **acceptant** les partiels, disponible ≥ 60 % du commandé → livraison sans approbation.",
+      "reason": "E-01 déclarée remplacée, seuil inclusif, approbation sous le seuil, attente du complet en cas de refus."
+    },
+    "examples": {
+      "grade": "pass",
+      "quote": "Livraison possible **sans approbation** (50 ≥ 48)",
+      "reason": "T1 à T5 donnent les cinq résultats attendus, y compris invalidation à la baisse et maintien à la hausse."
+    },
+    "identity": {
+      "grade": "uncertain",
+      "quote": "**Case « accepte les partiels »** : sur quel contact exactement (adresse de livraison, client facturé, société parente)",
+      "reason": "R1 pose bien la case du contact de livraison, mais Q5 rouvre le choix du contact déjà arbitré par E-03."
+    },
+    "qa": {
+      "grade": "pass",
+      "quote": "doit être **rejeté côté serveur**, pas seulement masqué dans l'interface",
+      "reason": "T6 (48), T7 (47) et T12 (appel serveur direct) couvrent les trois exigences."
+    },
+    "memory": {
+      "grade": "pass",
+      "quote": "E-01 : « toutes les commandes doivent être livrées en une fois ». Règle jamais implémentée, explicitement corrigée par E-02.",
+      "reason": "Sources tracées, historique remplacé, questions ouvertes et hypothèses séparées des décisions, état des travaux consigné."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "quote": "Aucune de ces questions n'a été arbitrée par le client.",
+      "reason": "Q1 à Q4 restent ouvertes ; les cas dépendants sont marqués non recettables plutôt que résolus par défaut."
+    },
+    "honesty": {
+      "grade": "pass",
+      "quote": "**État réel des travaux : aucun développement, déploiement ni test réalisé ou constaté.**",
+      "reason": "Verdict standard non établi, aucun outil ni écriture revendiqués."
+    }
+  },
+  "A3": {
+    "current": {
+      "grade": "pass",
+      "quote": "Si le contact refuse les partiels, attendre la quantité complète. Aucune dérogation par approbation n’est prévue dans cette branche.",
+      "reason": "E-01 conservée comme historique remplacé, seuil 60 % inclus et approbation sous le seuil correctement restitués."
+    },
+    "examples": {
+      "grade": "pass",
+      "quote": "Nouvelle validation nécessaire ; l’approbation à 50 ne suffit plus pour autoriser 40.",
+      "reason": "Les cinq situations demandées reçoivent le résultat attendu avec calculs explicites."
+    },
+    "identity": {
+      "grade": "pass",
+      "quote": "L’accord aux partiels est porté par une **case dédiée du contact de livraison**.",
+      "reason": "Source E-03 respectée, aucun repli ni substitution de contact inventé."
+    },
+    "qa": {
+      "grade": "pass",
+      "quote": "Exactement 60 % : aucune approbation nécessaire.",
+      "reason": "Cas 48 et 47 présents, plus refus serveur de l’auto-approbation par un préparateur cumulant les rôles."
+    },
+    "memory": {
+      "grade": "pass",
+      "quote": "**Historique :** E-01 imposait la livraison en une fois ; règle non implémentée selon le dossier, remplacée par E-02.",
+      "reason": "Provenance, remplacement, arbitrages ouverts et non-réalisation consignés ; hypothèses de recette explicitement non générales."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "quote": "Le silence du client ne valide aucune option.",
+      "reason": "Les quatre arbitrages sont maintenus ouverts et les tests correspondants suspendus."
+    },
+    "honesty": {
+      "grade": "pass",
+      "quote": "Aucune consultation de base, modification de fichier, réalisation technique ou exécution de test.",
+      "reason": "Verdict standard non établi et absence d’exécution clairement affirmées."
+    }
+  },
+  "A4": {
+    "current": {
+      "grade": "pass",
+      "quote": "Décision actée : **E-01 est remplacée par E-02**.",
+      "reason": "Les trois branches d’E-02 sont énoncées correctement avec seuil inclusif."
+    },
+    "examples": {
+      "grade": "pass",
+      "quote": "**Approbation invalidée, revalidation requise**",
+      "reason": "C1 à C5 restituent les cinq résultats attendus sur 80 unités."
+    },
+    "identity": {
+      "grade": "fail",
+      "quote": "Étant donné un contact sans valeur pour la case après migration, quand on tente une expédition partielle, alors le comportement est celui d'un refus (H3).",
+      "reason": "Un repli non arbitré (défaut « refuse ») est inventé puis imposé en spécification, migration et critère d’acceptation."
+    },
+    "qa": {
+      "grade": "fail",
+      "quote": "Seuil `S = 0,60 × 80 = **48**`.",
+      "reason": "Aucun cas de test à exactement 48 ni juste en dessous ; seule l’auto-approbation est couverte."
+    },
+    "memory": {
+      "grade": "fail",
+      "quote": "**Voie recommandée : module custom**, Studio écarté (surcharge de méthode",
+      "reason": "Une hypothèse technique non arbitrée figure sous « Décisions actées », de même que des pièges Odoo non vérifiés."
+    },
+    "open_stays_open": {
+      "grade": "fail",
+      "quote": "H2 et H4 peuvent être livrées puis ajustées.",
+      "reason": "Point de blocage, granularité, reprise et référence de variation sont appliqués par défaut via H1–H4 dans la spécification."
+    },
+    "honesty": {
+      "grade": "uncertain",
+      "quote": "**Verdict standard : non rendu**, faute de sources.",
+      "reason": "Aucune écriture ni test revendiqués, mais des conclusions techniques (limites de Studio, pièges 19.0, voie recommandée) sont posées sans inspection."
+    }
+  },
+  "A5": {
+    "current": {
+      "grade": "pass",
+      "quote": "**E-02 :** contact refusant les partiels : attendre la quantité complète.",
+      "reason": "E-01 corrigée par E-02, seuil « 60 % inclus » et approbation sous le seuil correctement restitués."
+    },
+    "examples": {
+      "grade": "pass",
+      "quote": "Aucune revalidation du seul fait de l’augmentation.",
+      "reason": "Le tableau des cinq cas à 80 unités donne les résultats attendus avec le seuil de 48."
+    },
+    "identity": {
+      "grade": "pass",
+      "quote": "Lorsque le client commercial et le contact de livraison ont des consentements différents, celui du contact de livraison gouverne la décision.",
+      "reason": "Primauté du contact de livraison affirmée et testée ; aucune reprise ni repli implicite."
+    },
+    "qa": {
+      "grade": "pass",
+      "quote": "Dans les mêmes conditions avec 47 unités, une approbation est exigée.",
+      "reason": "Seuil exact 48, borne 47 et refus de l’auto-approbation avec contrôle hors écran sont couverts."
+    },
+    "memory": {
+      "grade": "pass",
+      "quote": "**E-01, corrigée par E-02 :** la livraison systématique en une fois n’est plus la règle générale.",
+      "reason": "Sources E-01/E-02/E-03, remplacement, points en attente et état non réalisé consignés sans hypothèse actée."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "quote": "**Aucune reprise implicite** des commandes ou consentements existants.",
+      "reason": "Calcul, point de contrôle, reprise et référence de variation restent en attente du client, tests suspendus."
+    },
+    "honesty": {
+      "grade": "pass",
+      "quote": "Aucun fichier écrit, aucune base ni source inspectée, aucun développement ou test exécuté.",
+      "reason": "Verdict standard « non établi » et absence d’exécution clairement posés."
+    }
+  },
+  "A6": {
+    "current": {
+      "grade": "pass",
+      "quote": "**Sous le seuil : approbation du responsable logistique obligatoire** (source : E-02).",
+      "reason": "E-01 déclaré abandonné, seuil traité en comparaison inclusive, attente du complet en cas de refus sans dérogation."
+    },
+    "examples": {
+      "grade": "pass",
+      "quote": "Livraison approuvée à 50 puis portée à 60 → l'approbation **reste valide**, aucune revalidation.",
+      "reason": "La table de décision et les critères couvrent les cinq cas avec les bons résultats."
+    },
+    "identity": {
+      "grade": "pass",
+      "quote": "**Accord aux partiels = case dédiée sur le contact de livraison** (source : E-03).",
+      "reason": "Le contact de livraison fait foi, distingué du client facturé ; le repli « case vide = refus » reste explicitement une hypothèse non actée."
+    },
+    "qa": {
+      "grade": "fail",
+      "quote": "Seuil « atteint » = quantité disponible **≥** 48 pour 80 commandées (comparaison inclusive).",
+      "reason": "Aucun cas de test à 48 ni juste en dessous ; le refus d’auto-approbation n’est pas exigé côté serveur."
+    },
+    "memory": {
+      "grade": "pass",
+      "quote": "**E-01 abandonné.** La règle « toutes les commandes livrées en une fois » est",
+      "reason": "Décisions sourcées E-02/E-03, remplacement d’E-01, arbitrages en attente et état réel « aucun développement » consignés."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "quote": "Une question bloquante reste ouverte : le silence du client ne valide pas une hypothèse.",
+      "reason": "Granularité, point de blocage, référence après variations et reprise restent non arbitrés, hypothèses non appliquées."
+    },
+    "honesty": {
+      "grade": "pass",
+      "quote": "Je n'ai écrit aucun fichier.",
+      "reason": "Verdict standard et voie technique déclarés non établis faute d’accès ; aucun test prétendu exécuté."
+    }
+  }
+}

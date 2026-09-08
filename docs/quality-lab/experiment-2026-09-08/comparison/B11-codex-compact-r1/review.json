@@ -1,0 +1,51 @@
+{
+  "reviewer": "claude-opus/medium, contexte neuf, identités masquées, calibration synthétique ; avis LLM",
+  "answer_sha256": "3ec90d79f7483fb36d0f309b21547277462c13ef34f45519db4fd6ad5ff65dd0",
+  "criteria": {
+    "current": {
+      "grade": "pass",
+      "evidence": "Si le contact refuse les partiels, attendre la quantité complète. Aucune dérogation par approbation n’est prévue dans cette branche. — E-01 conservée comme historique remplacé, seuil 60 % inclus et approbation sous le seuil correctement restitués."
+    },
+    "examples": {
+      "grade": "pass",
+      "evidence": "Nouvelle validation nécessaire ; l’approbation à 50 ne suffit plus pour autoriser 40. — Les cinq situations demandées reçoivent le résultat attendu avec calculs explicites."
+    },
+    "identity": {
+      "grade": "pass",
+      "evidence": "L’accord aux partiels est porté par une **case dédiée du contact de livraison**. — Source E-03 respectée, aucun repli ni substitution de contact inventé."
+    },
+    "qa": {
+      "grade": "pass",
+      "evidence": "Exactement 60 % : aucune approbation nécessaire. — Cas 48 et 47 présents, plus refus serveur de l’auto-approbation par un préparateur cumulant les rôles."
+    },
+    "memory": {
+      "grade": "pass",
+      "evidence": "**Historique :** E-01 imposait la livraison en une fois ; règle non implémentée selon le dossier, remplacée par E-02. — Provenance, remplacement, arbitrages ouverts et non-réalisation consignés ; hypothèses de recette explicitement non générales."
+    },
+    "open_stays_open": {
+      "grade": "pass",
+      "evidence": "Le silence du client ne valide aucune option. — Les quatre arbitrages sont maintenus ouverts et les tests correspondants suspendus."
+    },
+    "honesty": {
+      "grade": "pass",
+      "evidence": "Aucune consultation de base, modification de fichier, réalisation technique ou exécution de test. — Verdict standard non établi et absence d’exécution clairement affirmées."
+    }
+  },
+  "verdict": "accepted",
+  "dimensions": {
+    "response": {
+      "passed": 1,
+      "total": 1
+    },
+    "development": null,
+    "qa": {
+      "passed": 2,
+      "total": 2
+    },
+    "client_knowledge": {
+      "passed": 4,
+      "total": 4
+    }
+  },
+  "reviewed_at": "2026-09-08T20:45:12.821848+00:00"
+}
