@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "release": "execution-passee",
+  "created_at": "2026-09-09T18:51:43.859587+00:00",
+  "updated_at": "2026-09-09T18:53:24.616393+00:00",
+  "tasks": {
+    "E02-D": "Intervention et relecture des sources déléguée"
+  },
+  "estimates": [],
+  "entries": [
+    {
+      "provider": "codex",
+      "thread_id": "01a0874d-42fb-75a3-a9f6-748a09424a4b",
+      "model": "gpt-6-astra",
+      "started_at": "2026-09-09T17:53:02.718000+00:00",
+      "ended_at": "2026-09-09T17:56:29.664000+00:00",
+      "elapsed_seconds": 206.946,
+      "active_seconds": 206.901,
+      "complete": true,
+      "tokens": {
+        "input_tokens": 387382,
+        "cached_input_tokens": 370688,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5718,
+        "total_tokens": 393100
+      },
+      "provider_cost": null,
+      "source_sha256": "5d624b1f588bc2ebb2641d14c6f64234f0b33a54c1b7f997361b8feddcfb8642",
+      "warnings": [],
+      "identities": [
+        "resp_08efa1160cf1e9bb016aa19d00e32887d282e3f575a503fc18",
+        "resp_08efa1160cf1e9bb016aa19d05ed5c87d2a7309db2bed1b766",
+        "resp_08efa1160cf1e9bb016aa19d0c174487d29792c1e7d7fdd06d",
+        "resp_08efa1160cf1e9bb016aa19d13bcec87d2af58b36591ed4015",
+        "resp_08efa1160cf1e9bb016aa19d1ef9dc87d2a81eb575499ec8b1",
+        "resp_08efa1160cf1e9bb016aa19d256fa087d2bbab3139924f860b",
+        "resp_08efa1160cf1e9bb016aa19d350a9487d2a6c5ea83bde307a5",
+        "resp_08efa1160cf1e9bb016aa19d3be26487d2a6c6a5ed4ff53633",
+        "resp_08efa1160cf1e9bb016aa19d48489c87d29d375312485544b1",
+        "resp_08efa1160cf1e9bb016aa19d4e2ec887d293a32e9a164c6a8b",
+        "resp_08efa1160cf1e9bb016aa19d5e675887d2a5df49798ebd9907",
+        "resp_08efa1160cf1e9bb016aa19db0e35887d28d93e60a214d5bbe",
+        "resp_08efa1160cf1e9bb016aa19dc7f6ac87d2a02e7aa856a02d01"
+      ],
+      "id": "2238c8119aaf",
+      "task": "E02-D",
+      "agent": "codex-principal",
+      "basis": "native",
+      "since": null,
+      "until": null,
+      "status": "complete",
+      "seconds": 206.901,
+      "observed_at": "2026-09-09T18:53:24.609800+00:00",
+      "estimate_revision": null
+    },
+    {
+      "provider": "codex",
+      "thread_id": "01a0874d-bf02-7072-aba1-bd6a063c3167",
+      "model": "gpt-6-astra",
+      "started_at": "2026-09-09T17:53:34.470000+00:00",
+      "ended_at": "2026-09-09T17:54:35+00:00",
+      "elapsed_seconds": 60.53,
+      "active_seconds": 60.487,
+      "complete": true,
+      "tokens": {
+        "input_tokens": 177195,
+        "cached_input_tokens": 163840,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1420,
+        "total_tokens": 178615
+      },
+      "provider_cost": null,
+      "source_sha256": "4e162d7e2df44052d890f875035d5b578c537e66f3e0bdebf30f9a62095dafe3",
+      "warnings": [],
+      "identities": [
+        "resp_097af7c1e0dbf391016aa19d207dc887d2aa8b3af2cae8b807",
+        "resp_097af7c1e0dbf391016aa19d263f8887d2b30eea2fd657f946",
+        "resp_097af7c1e0dbf391016aa19d2a51d087d28aa4a0fe3dc573c6",
+        "resp_097af7c1e0dbf391016aa19d30157c87d29caec7369b19edcf",
+        "resp_097af7c1e0dbf391016aa19d37c4f087d29217c3c6788b9227",
+        "resp_097af7c1e0dbf391016aa19d3ec1f487d2b2eb9be4b178fa96",
+        "resp_097af7c1e0dbf391016aa19d4416e887d2a25e5f3276e22f9e"
+      ],
+      "id": "36427a7b1cf1",
+      "task": "E02-D",
+      "agent": "codex-relecture-sources",
+      "basis": "native",
+      "since": null,
+      "until": null,
+      "status": "complete",
+      "seconds": 60.487,
+      "observed_at": "2026-09-09T18:53:24.616085+00:00",
+      "estimate_revision": null
+    }
+  ],
+  "rate_cards": []
+}

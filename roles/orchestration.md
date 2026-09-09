@@ -19,6 +19,16 @@ désinstallation, mise à niveau sur la copie du client, captures, guide,
 communication — se joue **une fois, à la clôture de la release** (`/odoo-close`).
 Cette chaîne ne clôture jamais une release : c'est un acte de l'humain.
 
+Une fois la release et la tâche identifiées, applique `roles/estimation.md`
+au travail à venir avant l'implémentation. Si la release porte déjà une prévision,
+réutilise-la ; motive les changements de périmètre sans effacer l'historique.
+L'orchestrateur seul tient `effort.json` : `odoo_effort.py start` au départ de
+chaque rôle, `stop` au retour sur la même session, nouvelle entrée à chaque
+reprise. Transmets aux sous-agents la tâche et demande leur référence de session,
+sans leur faire écrire le registre partagé. Lis `docs/EFFORT.md` pour attribuer
+les jetons et éviter les doubles comptes. L'analyse déjà passée sans mesure
+reste signalée comme telle ; l'absence de trace ancienne ne bloque pas la QA.
+
 Exception : une demande qui touche aux droits, à la comptabilité, à la
 facturation ou aux données existantes est validée **immédiatement** au niveau
 nécessaire (recette sur la copie du client comprise), release ouverte ou pas.

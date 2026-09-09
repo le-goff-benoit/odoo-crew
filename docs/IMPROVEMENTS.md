@@ -85,3 +85,12 @@ d’options, conséquences et recommandation, sans approbation répétée. Trois
 figés, dont une contre-épreuve technique, obtiennent 30/30 avant comme après :
 non-régression bornée, aucun gain comportemental déclaré. Prochain retour utile :
 compréhension et facilité de décision observées par un chef de projet en usage réel.
+
+**Prévision et mesure par agent — adopté** : `/odoo-estimate`, registre des
+minutes par tâche, prévision initiale conservée et révisions motivées, imports
+Codex/Claude et chronomètres, comparaison à la clôture avec jetons/coût IA
+disponibles. Aucun temps humain ni barème d'offre. La [campagne d'effort](quality-lab/effort-2026-09-09/README.md)
+conserve les anomalies et contre-épreuves : 251 tests, revue indépendante et
+essai d'utilisation, import d'une délégation réelle. Le build produit désormais
+28 sorties pour 14 profils. La précision des prévisions reste à calibrer sur
+les futures releases ; le mécanisme de calcul est validé, pas un gain prédictif.

@@ -1,0 +1,470 @@
+{
+  "verdict": "PASS",
+  "checks": {
+    "no_estimates": true,
+    "actual_known": true,
+    "forecast_unknown": true,
+    "variance_unknown": true,
+    "different_title_rejected": true,
+    "rejected_title_preserves_state": true,
+    "task_outside_plan_rejected": true
+  },
+  "calls": [
+    {
+      "args": [
+        "init",
+        "/tmp/odoo-effort-review-20260909/add-task-cli/without-plan/changelog/R"
+      ],
+      "exit": 0,
+      "stdout": {
+        "schema": 1,
+        "release": "R",
+        "created_at": "2026-09-09T18:53:42.758114+00:00",
+        "updated_at": "2026-09-09T18:53:42.836935+00:00",
+        "tasks": {
+          "PAST": "Past synthetic execution"
+        },
+        "estimates": [],
+        "entries": [
+          {
+            "provider": "codex",
+            "thread_id": "partial",
+            "model": "synthetic-model",
+            "started_at": "2026-09-09T00:00:00+00:00",
+            "ended_at": "2026-09-09T00:00:30+00:00",
+            "elapsed_seconds": 30.0,
+            "active_seconds": null,
+            "complete": true,
+            "tokens": {
+              "input_tokens": 20,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 20,
+              "total_tokens": 40
+            },
+            "provider_cost": null,
+            "source_sha256": "1f24acac96417573b34063bf6e0acd14ca17311b6a669c614669f1d5a60fedb1",
+            "warnings": [
+              "completed_turn_durations_unavailable",
+              "some_completed_turn_durations_missing",
+              "Temps mobilis\u00e9 non mesur\u00e9 ; enveloppe disponible s\u00e9par\u00e9ment, pas substitu\u00e9e au temps actif."
+            ],
+            "identities": [
+              "a",
+              "b"
+            ],
+            "id": "8c81957b058b",
+            "task": "PAST",
+            "agent": "odoo-developer",
+            "basis": "native",
+            "since": null,
+            "until": null,
+            "status": "complete",
+            "seconds": null,
+            "observed_at": "2026-09-09T18:53:42.836858+00:00",
+            "estimate_revision": null
+          }
+        ],
+        "rate_cards": []
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add-task",
+        "/tmp/odoo-effort-review-20260909/add-task-cli/without-plan/changelog/R",
+        "--task",
+        "PAST",
+        "--title",
+        "Past synthetic execution"
+      ],
+      "exit": 0,
+      "stdout": {
+        "schema": 1,
+        "release": "R",
+        "created_at": "2026-09-09T18:53:42.758114+00:00",
+        "updated_at": "2026-09-09T18:54:13.436981+00:00",
+        "tasks": {
+          "PAST": "Past synthetic execution"
+        },
+        "estimates": [],
+        "entries": [
+          {
+            "provider": "codex",
+            "thread_id": "partial",
+            "model": "synthetic-model",
+            "started_at": "2026-09-09T00:00:00+00:00",
+            "ended_at": "2026-09-09T00:00:30+00:00",
+            "elapsed_seconds": 30.0,
+            "active_seconds": null,
+            "complete": true,
+            "tokens": {
+              "input_tokens": 20,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 20,
+              "total_tokens": 40
+            },
+            "provider_cost": null,
+            "source_sha256": "1f24acac96417573b34063bf6e0acd14ca17311b6a669c614669f1d5a60fedb1",
+            "warnings": [
+              "completed_turn_durations_unavailable",
+              "some_completed_turn_durations_missing",
+              "Temps mobilis\u00e9 non mesur\u00e9 ; enveloppe disponible s\u00e9par\u00e9ment, pas substitu\u00e9e au temps actif."
+            ],
+            "identities": [
+              "a",
+              "b"
+            ],
+            "id": "8c81957b058b",
+            "task": "PAST",
+            "agent": "odoo-developer",
+            "basis": "native",
+            "since": null,
+            "until": null,
+            "status": "complete",
+            "seconds": null,
+            "observed_at": "2026-09-09T18:53:42.836858+00:00",
+            "estimate_revision": null
+          }
+        ],
+        "rate_cards": []
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "import-usage",
+        "/tmp/odoo-effort-review-20260909/add-task-cli/without-plan/changelog/R",
+        "--task",
+        "PAST",
+        "--agent",
+        "odoo-developer",
+        "--provider",
+        "codex",
+        "--source",
+        "/tmp/odoo-effort-review-20260909/partial-duration.jsonl"
+      ],
+      "exit": 0,
+      "stdout": {
+        "provider": "codex",
+        "thread_id": "partial",
+        "model": "synthetic-model",
+        "started_at": "2026-09-09T00:00:00+00:00",
+        "ended_at": "2026-09-09T00:00:30+00:00",
+        "elapsed_seconds": 30.0,
+        "active_seconds": null,
+        "complete": true,
+        "tokens": {
+          "input_tokens": 20,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 20,
+          "total_tokens": 40
+        },
+        "provider_cost": null,
+        "source_sha256": "1f24acac96417573b34063bf6e0acd14ca17311b6a669c614669f1d5a60fedb1",
+        "warnings": [
+          "completed_turn_durations_unavailable",
+          "some_completed_turn_durations_missing",
+          "Temps mobilis\u00e9 non mesur\u00e9 ; enveloppe disponible s\u00e9par\u00e9ment, pas substitu\u00e9e au temps actif."
+        ],
+        "identities": [
+          "a",
+          "b"
+        ],
+        "id": "8c81957b058b",
+        "task": "PAST",
+        "agent": "odoo-developer",
+        "basis": "native",
+        "since": null,
+        "until": null,
+        "status": "complete",
+        "seconds": null,
+        "observed_at": "2026-09-09T18:53:42.836858+00:00",
+        "estimate_revision": null
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "init",
+        "/tmp/odoo-effort-review-20260909/add-task-cli/known-time/changelog/R"
+      ],
+      "exit": 0,
+      "stdout": {
+        "schema": 1,
+        "release": "R",
+        "created_at": "2026-09-09T18:53:42.878668+00:00",
+        "updated_at": "2026-09-09T18:53:43.029427+00:00",
+        "tasks": {
+          "PAST": "Past synthetic execution"
+        },
+        "estimates": [],
+        "entries": [
+          {
+            "provider": "codex",
+            "thread_id": "child",
+            "model": "synthetic-model",
+            "started_at": "2026-09-09T00:00:00+00:00",
+            "ended_at": "2026-09-09T00:00:10+00:00",
+            "elapsed_seconds": 10.0,
+            "active_seconds": 6.0,
+            "complete": true,
+            "tokens": {
+              "input_tokens": 10,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 10,
+              "total_tokens": 20
+            },
+            "provider_cost": null,
+            "source_sha256": "5f86e18799243fbc9096485334e28469f7c512768c961d6340405448b6be285d",
+            "warnings": [],
+            "identities": [
+              "child-response"
+            ],
+            "id": "2a39f6388db3",
+            "task": "PAST",
+            "agent": "odoo-developer",
+            "basis": "native",
+            "since": null,
+            "until": null,
+            "status": "complete",
+            "seconds": 6.0,
+            "observed_at": "2026-09-09T18:53:42.947860+00:00",
+            "estimate_revision": null
+          }
+        ],
+        "rate_cards": []
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add-task",
+        "/tmp/odoo-effort-review-20260909/add-task-cli/known-time/changelog/R",
+        "--task",
+        "PAST",
+        "--title",
+        "Past synthetic execution"
+      ],
+      "exit": 0,
+      "stdout": {
+        "schema": 1,
+        "release": "R",
+        "created_at": "2026-09-09T18:53:42.878668+00:00",
+        "updated_at": "2026-09-09T18:54:13.536789+00:00",
+        "tasks": {
+          "PAST": "Past synthetic execution"
+        },
+        "estimates": [],
+        "entries": [
+          {
+            "provider": "codex",
+            "thread_id": "child",
+            "model": "synthetic-model",
+            "started_at": "2026-09-09T00:00:00+00:00",
+            "ended_at": "2026-09-09T00:00:10+00:00",
+            "elapsed_seconds": 10.0,
+            "active_seconds": 6.0,
+            "complete": true,
+            "tokens": {
+              "input_tokens": 10,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 10,
+              "total_tokens": 20
+            },
+            "provider_cost": null,
+            "source_sha256": "5f86e18799243fbc9096485334e28469f7c512768c961d6340405448b6be285d",
+            "warnings": [],
+            "identities": [
+              "child-response"
+            ],
+            "id": "2a39f6388db3",
+            "task": "PAST",
+            "agent": "odoo-developer",
+            "basis": "native",
+            "since": null,
+            "until": null,
+            "status": "complete",
+            "seconds": 6.0,
+            "observed_at": "2026-09-09T18:53:42.947860+00:00",
+            "estimate_revision": null
+          }
+        ],
+        "rate_cards": []
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "import-usage",
+        "/tmp/odoo-effort-review-20260909/add-task-cli/known-time/changelog/R",
+        "--task",
+        "PAST",
+        "--agent",
+        "odoo-developer",
+        "--provider",
+        "codex",
+        "--source",
+        "/tmp/odoo-effort-review-20260909/inherited.jsonl"
+      ],
+      "exit": 0,
+      "stdout": {
+        "provider": "codex",
+        "thread_id": "child",
+        "model": "synthetic-model",
+        "started_at": "2026-09-09T00:00:00+00:00",
+        "ended_at": "2026-09-09T00:00:10+00:00",
+        "elapsed_seconds": 10.0,
+        "active_seconds": 6.0,
+        "complete": true,
+        "tokens": {
+          "input_tokens": 10,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 10,
+          "total_tokens": 20
+        },
+        "provider_cost": null,
+        "source_sha256": "5f86e18799243fbc9096485334e28469f7c512768c961d6340405448b6be285d",
+        "warnings": [],
+        "identities": [
+          "child-response"
+        ],
+        "id": "2a39f6388db3",
+        "task": "PAST",
+        "agent": "odoo-developer",
+        "basis": "native",
+        "since": null,
+        "until": null,
+        "status": "complete",
+        "seconds": 6.0,
+        "observed_at": "2026-09-09T18:53:42.947860+00:00",
+        "estimate_revision": null
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "report",
+        "/tmp/odoo-effort-review-20260909/add-task-cli/known-time/changelog/R"
+      ],
+      "exit": 0,
+      "stdout": {
+        "schema": 1,
+        "release": "R",
+        "generated_at": "2026-09-09T18:54:13.607748+00:00",
+        "state_sha256": "d865e7cb5efb47443b69df1b5f122a0404ac41e6bb81d1db8f492ea71a93c365",
+        "contracts_sha256": "4531cd286b521a4968043714ed459b71d1f96ac1874efc09ba3a9c6a090cc46d",
+        "initial_revision": null,
+        "latest_revision": null,
+        "rows": [
+          {
+            "task": "PAST",
+            "title": "Past synthetic execution",
+            "agent": "odoo-developer",
+            "initial": null,
+            "revised": null,
+            "actual_minutes": 0.1,
+            "known_minutes": 0.1,
+            "time_complete": true,
+            "tokens": {
+              "input_tokens": 10,
+              "cached_input_tokens": 0,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 10,
+              "total_tokens": 20
+            },
+            "known_tokens": 20,
+            "token_complete": true,
+            "delta_minutes": null,
+            "delta_percent": null,
+            "retrospective": false,
+            "scope_changed": false,
+            "entries": [
+              "2a39f6388db3"
+            ],
+            "costs": [
+              {
+                "entry": "2a39f6388db3",
+                "cost": null
+              }
+            ],
+            "warnings": []
+          }
+        ],
+        "missing_tasks": [],
+        "totals": {
+          "planned_initial_minutes": null,
+          "planned_revised_minutes": null,
+          "actual_minutes": 0.1,
+          "known_minutes": 0.1,
+          "tokens": 20,
+          "known_tokens": 20,
+          "envelope_minutes": 0.16666666666666666,
+          "covered_interval_minutes": 0.16666666666666666,
+          "known_costs": {},
+          "unpriced_entries": 1
+        },
+        "limitations": [
+          "Estimation de minutes d\u2019ex\u00e9cution des agents, aucun temps humain ni bar\u00e8me client.",
+          "Temps des outils et attentes internes inclus ; les attentes humaines ne sont pas isol\u00e9es automatiquement.",
+          "Somme des temps par agent distincte de l\u2019enveloppe calendaire ; les intervalles peuvent se chevaucher.",
+          "Compteurs absents et lignes non mesur\u00e9es restent inconnus. Les sous-totaux connus ne sont pas des totaux complets.",
+          "L\u2019attribution t\u00e2che/agent est d\u00e9clar\u00e9e explicitement ; le contenu m\u00e9tier des conversations n\u2019est pas inspect\u00e9."
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add-task",
+        "/tmp/odoo-effort-review-20260909/add-task-cli/known-time/changelog/R",
+        "--task",
+        "PAST",
+        "--title",
+        "Unexpected different title"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Suivi des agents : t\u00e2che d\u00e9j\u00e0 d\u00e9clar\u00e9e avec un autre titre\n"
+    },
+    {
+      "args": [
+        "init",
+        "/tmp/odoo-effort-review-20260909/add-task-cli/with-plan/changelog/R"
+      ],
+      "exit": 0,
+      "stdout": {
+        "schema": 1,
+        "release": "R",
+        "created_at": "2026-09-09T18:53:43.067086+00:00",
+        "updated_at": "2026-09-09T18:53:43.069302+00:00",
+        "tasks": {
+          "T01": "Plan task"
+        },
+        "estimates": [],
+        "entries": [],
+        "rate_cards": []
+      },
+      "stderr": ""
+    },
+    {
+      "args": [
+        "add-task",
+        "/tmp/odoo-effort-review-20260909/add-task-cli/with-plan/changelog/R",
+        "--task",
+        "OUTSIDE",
+        "--title",
+        "Outside"
+      ],
+      "exit": 1,
+      "stdout": "",
+      "stderr": "Suivi des agents : t\u00e2che absente du plan\n"
+    }
+  ],
+  "script_sha256": "9aa5579b65dd5313b3d8c23fe92f2b289cf4d7046cb61d7b49d2b6d5a898548a"
+}

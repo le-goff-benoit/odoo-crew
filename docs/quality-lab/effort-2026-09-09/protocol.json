@@ -1,0 +1,7 @@
+{
+ "reference":"86b12c0f8c76ddc215d919f4df0a2b2db7bb7ae8",
+ "request":"Estimation du temps d'exécution par agent et lot de travail ; bilan par release prévu/réel, jetons et coût IA. Aucun barème d'offre ni heures humaines.",
+ "acceptance":["Estimation initiale immuable et révisions motivées", "Minutes par tâche et agent, hypothèses et fourchette, calcul central transparent", "Attribution explicite et refus du double comptage, reprises conservées", "Compteurs natifs sans contenu privé, cache compté une fois, manquant distinct de zéro", "Chronomètres et import de sessions/fenêtres, durées cumulées distinctes de durée totale", "Coût déclaré ou calculé avec tarif daté explicite ; aucun tarif par défaut", "Clôture liée à un bilan frais si suivi activé, ancienne release compatible", "Exports Markdown JSON CSV réutilisables par le PM", "Estimation tardive signalée, pas de fausse mesure prospective"],
+ "validation":"Tests déterministes adversariaux et parcours CLI sur release synthétique ; relecture indépendante puis contre-épreuve avec sessions imbriquées/reprise/tarif absent. Aucun modèle payant ni production.",
+ "limits":"Pas de prédiction apprise ou précision historique démontrée ; temps d'outils inclus dans temps mobilisé, attente humaine non automatiquement isolée ; tarif API calculé distinct de facture/abonnement."
+}

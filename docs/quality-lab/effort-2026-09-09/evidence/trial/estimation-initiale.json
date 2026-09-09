@@ -1,0 +1,114 @@
+{
+  "lines": [
+    {
+      "task": "T01",
+      "title": "Référence de livraison",
+      "agent": "odoo-developer",
+      "optimistic_minutes": 8,
+      "likely_minutes": 14,
+      "pessimistic_minutes": 28,
+      "assumptions": [
+        "Analyse reçue, un module Odoo 19",
+        "Champ texte sans reprise ni nouvelle règle de droits",
+        "Inclut implémentation et tests ciblés du développeur"
+      ],
+      "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+      "confidence": "low"
+    },
+    {
+      "task": "T01",
+      "title": "Référence de livraison",
+      "agent": "odoo-tester",
+      "optimistic_minutes": 5,
+      "likely_minutes": 9,
+      "pessimistic_minutes": 18,
+      "assumptions": [
+        "Copie locale disponible selon scénario",
+        "QA ciblée ; recette complète exclue de cette ligne"
+      ],
+      "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+      "confidence": "low"
+    },
+    {
+      "task": "T01",
+      "title": "Référence de livraison",
+      "agent": "orchestrateur",
+      "optimistic_minutes": 2,
+      "likely_minutes": 4,
+      "pessimistic_minutes": 8,
+      "assumptions": [
+        "Transmission et réception des preuves de la tâche"
+      ],
+      "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+      "confidence": "low"
+    },
+    {
+      "task": "T02",
+      "title": "Filtre de recherche",
+      "agent": "odoo-developer",
+      "optimistic_minutes": 5,
+      "likely_minutes": 10,
+      "pessimistic_minutes": 22,
+      "assumptions": [
+        "Cause et domaine déjà identifiés",
+        "Correction limitée et test de régression, une reprise plausible"
+      ],
+      "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+      "confidence": "low"
+    },
+    {
+      "task": "T02",
+      "title": "Filtre de recherche",
+      "agent": "odoo-tester",
+      "optimistic_minutes": 4,
+      "likely_minutes": 7,
+      "pessimistic_minutes": 15,
+      "assumptions": [
+        "Copie disponible selon scénario",
+        "Recherche simple et combinée ; QA ciblée uniquement"
+      ],
+      "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+      "confidence": "low"
+    },
+    {
+      "task": "T02",
+      "title": "Filtre de recherche",
+      "agent": "orchestrateur",
+      "optimistic_minutes": 2,
+      "likely_minutes": 3,
+      "pessimistic_minutes": 6,
+      "assumptions": [
+        "Transmission et réception de la tâche"
+      ],
+      "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+      "confidence": "low"
+    },
+    {
+      "task": "RELEASE",
+      "title": "Recette et consolidation communes",
+      "agent": "odoo-tester",
+      "optimistic_minutes": 12,
+      "likely_minutes": 20,
+      "pessimistic_minutes": 40,
+      "assumptions": [
+        "Suite complète unique",
+        "Restauration disponible selon scénario, aucun environnement réel vérifié"
+      ],
+      "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+      "confidence": "low"
+    },
+    {
+      "task": "RELEASE",
+      "title": "Recette et consolidation communes",
+      "agent": "orchestrateur",
+      "optimistic_minutes": 5,
+      "likely_minutes": 9,
+      "pessimistic_minutes": 18,
+      "assumptions": [
+        "Consolidation et bilan de release une seule fois"
+      ],
+      "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+      "confidence": "low"
+    }
+  ]
+}

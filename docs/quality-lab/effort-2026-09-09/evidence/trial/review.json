@@ -1,0 +1,27 @@
+{
+  "scenario": "Synthétique, sans développement ni appels payants",
+  "verdict": "PASS",
+  "checks": {
+    "initial_revision_unchanged": true,
+    "two_revisions": true,
+    "eight_lines_preserved": true,
+    "seven_untouched_lines_identical": true,
+    "revision_reason_preserved": true,
+    "only_agent_minutes_no_rates": true,
+    "missing_actual_unknown": true,
+    "all_initial_low_confidence": true,
+    "qa_release_once": true,
+    "no_analysis_reestimated": true,
+    "four_reports_exist": true
+  },
+  "commands": 7,
+  "initial_central_minutes": 83.66666666666667,
+  "revised_central_minutes": 87.33333333333333,
+  "limits": [
+    "Aucune précision prédictive démontrée : jugement initial et confiance faible",
+    "Disponibilité de copie et analyse reçue sont des hypothèses du scénario, non une vérification Odoo",
+    "Aucune mesure native importée dans cet essai de préparation",
+    "CLI verbeuse en JSON ; Markdown affiche encore low au lieu de faible",
+    "Briefing offline ne reconnaît pas la release synthétique sans état du gestionnaire ; chemin explicite accepté et aucune commande de développement lancée"
+  ]
+}

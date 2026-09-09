@@ -23,6 +23,14 @@ def artifact_hash(path):
 REQUIRED = ('README.md', 'demande.md', 'doc.md', 'recette.md', 'tests_navigateur.md', 'consolidation.md', 'controls.json')
 
 
+def required_artifacts(release):
+    if (release / 'effort.json').exists():
+        from odoo_effort import REPORT_FILES, check_report
+        check_report(release)
+        return REQUIRED + ('effort.json',) + REPORT_FILES
+    return REQUIRED
+
+
 def prepare(module):
     path = Path(module).resolve() / '__manifest__.py'
     source = path.read_text()
@@ -106,7 +114,7 @@ def seal(release, scopes, proofs):
         if bad:
             raise ValueError('tâches non réceptionnées : ' + ', '.join(bad))
     artifacts = {}
-    for name in REQUIRED:
+    for name in required_artifacts(release):
         path = release / name
         if not path.is_file() or not path.read_text().strip():
             raise ValueError('livrable obligatoire absent/vide : ' + name)
@@ -150,7 +158,7 @@ def check(release):
         raise ValueError('plan ajouté, supprimé ou changé après scellement')
     if fingerprint(project, record['scopes']) != record['sources']:
         raise ValueError('code changé après recette')
-    if set(record['artifacts']) != set(REQUIRED):
+    if set(record['artifacts']) != set(required_artifacts(release)):
         raise ValueError('liste documentaire incomplète')
     for name, sha in record['artifacts'].items():
         if artifact_hash(release / name) != sha:

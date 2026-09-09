@@ -1,0 +1,97 @@
+{
+  "schema": 1,
+  "release": "execution-passee",
+  "generated_at": "2026-09-09T18:53:24.616824+00:00",
+  "state_sha256": "e28879e06ceb5bbf32112b91f8bfc07522fc46a7467558846c0fa8d0e1521658",
+  "contracts_sha256": "8e04cf544b02e0b96cdcdcbc67f8be98c61504c3701cb86cfad4010c5799bd98",
+  "initial_revision": null,
+  "latest_revision": null,
+  "rows": [
+    {
+      "task": "E02-D",
+      "title": "Intervention et relecture des sources déléguée",
+      "agent": "codex-principal",
+      "initial": null,
+      "revised": null,
+      "actual_minutes": 3.44835,
+      "known_minutes": 3.44835,
+      "time_complete": true,
+      "tokens": {
+        "input_tokens": 387382,
+        "cached_input_tokens": 370688,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 5718,
+        "total_tokens": 393100
+      },
+      "known_tokens": 393100,
+      "token_complete": true,
+      "delta_minutes": null,
+      "delta_percent": null,
+      "retrospective": false,
+      "scope_changed": false,
+      "entries": [
+        "2238c8119aaf"
+      ],
+      "costs": [
+        {
+          "entry": "2238c8119aaf",
+          "cost": null
+        }
+      ],
+      "warnings": []
+    },
+    {
+      "task": "E02-D",
+      "title": "Intervention et relecture des sources déléguée",
+      "agent": "codex-relecture-sources",
+      "initial": null,
+      "revised": null,
+      "actual_minutes": 1.0081166666666668,
+      "known_minutes": 1.0081166666666668,
+      "time_complete": true,
+      "tokens": {
+        "input_tokens": 177195,
+        "cached_input_tokens": 163840,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1420,
+        "total_tokens": 178615
+      },
+      "known_tokens": 178615,
+      "token_complete": true,
+      "delta_minutes": null,
+      "delta_percent": null,
+      "retrospective": false,
+      "scope_changed": false,
+      "entries": [
+        "36427a7b1cf1"
+      ],
+      "costs": [
+        {
+          "entry": "36427a7b1cf1",
+          "cost": null
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "missing_tasks": [],
+  "totals": {
+    "planned_initial_minutes": null,
+    "planned_revised_minutes": null,
+    "actual_minutes": 4.456466666666667,
+    "known_minutes": 4.456466666666667,
+    "tokens": 571715,
+    "known_tokens": 571715,
+    "envelope_minutes": 3.4491000016530355,
+    "covered_interval_minutes": 3.4491000016530355,
+    "known_costs": {},
+    "unpriced_entries": 2
+  },
+  "limitations": [
+    "Estimation de minutes d’exécution des agents, aucun temps humain ni barème client.",
+    "Temps des outils et attentes internes inclus ; les attentes humaines ne sont pas isolées automatiquement.",
+    "Somme des temps par agent distincte de l’enveloppe calendaire ; les intervalles peuvent se chevaucher.",
+    "Compteurs absents et lignes non mesurées restent inconnus. Les sous-totaux connus ne sont pas des totaux complets.",
+    "L’attribution tâche/agent est déclarée explicitement ; le contenu métier des conversations n’est pas inspecté."
+  ]
+}

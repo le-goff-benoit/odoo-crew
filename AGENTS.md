@@ -18,7 +18,7 @@ référentiel, scripts, stack). L'aiguillage Odoo de `~/.claude/CLAUDE.md` et
   de commiter.
 - Les noms : rôles `odoo-analyst`, `odoo-developer`, `odoo-tester`,
   `odoo-support` ; commandes `/odoo-new`, `/odoo-close`, `/odoo-feedback`, `/odoo-plan`,
-  `/odoo-start`, `/odoo-improve` ;
+  `/odoo-start`, `/odoo-improve`, `/odoo-estimate` ;
   skill `camptocamp-docs`. Le vocabulaire est « release », pas « lot ».
 - Un renommage passe par `build.sh` (liste des anciens noms à retirer) et par
   les `AGENTS.md` des projets qui citent les commandes.

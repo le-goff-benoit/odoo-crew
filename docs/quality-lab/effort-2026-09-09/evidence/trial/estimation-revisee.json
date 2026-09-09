@@ -1,0 +1,20 @@
+{
+  "lines": [
+    {
+      "task": "T01",
+      "title": "Référence de livraison",
+      "agent": "odoo-developer",
+      "optimistic_minutes": 10,
+      "likely_minutes": 18,
+      "pessimistic_minutes": 32,
+      "assumptions": [
+        "Analyse reçue, un module Odoo 19",
+        "Champ texte sans reprise ni nouvelle règle de droits",
+        "Inclut implémentation et tests ciblés du développeur",
+        "Réévaluation avant exécution : couvrir aussi le cas de saisie vide, sans nouveau périmètre métier"
+      ],
+      "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+      "confidence": "low"
+    }
+  ]
+}

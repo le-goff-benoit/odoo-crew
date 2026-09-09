@@ -41,6 +41,12 @@ git -C <racine> status --short                           # fichiers non suivis d
 Annonce : **projet, série, release, points (réalisés / à faire), tickets de
 support traités, modules touchés, copie client disponible ou non.**
 
+Lis `effort.json` et `docs/EFFORT.md`. Estime seulement le travail de clôture
+encore à venir s'il manque à la prévision ; ne reconstruis pas celle des tâches
+terminées. Mesure recette, reprises et consolidation avec `odoo_effort.py start`
+puis `stop` par tâche et rôle, sur la session réelle de l'exécutant. Les anciennes
+mesures indisponibles sont une réserve de bilan, sans bloquer une QA verte.
+
 Les points `[support #NNNN]` font partie de la livraison : une réponse, une
 réparation de données confirmée ou une correction de code. Leur diagnostic est
 dans `support/` ; le test `test_support_NNNN.py` fait partie de la suite jouée
@@ -124,6 +130,14 @@ ne bloque pas la livraison ; aucun envoi ni déploiement n'est implicite.
 
 ## Étape 4 — README final, version, commit proposé
 
+Ferme les mesures terminées, importe les consommations attribuables et lance
+`odoo_effort.py report "$RELEASE"`. Référence `bilan-effort.md` dans le README :
+prévu/réel par tâche et agent, reprises comprises, jetons et coût IA sourcé ou
+calculé sur un tarif technique daté. Montre la couverture et les absences ;
+un montant inconnu ne vaut pas zéro. Distingue les minutes d'agent cumulées,
+la durée calendaire et les chevauchements, ainsi que coûts déclarés et calculés.
+Régénère le bilan après les dernières mesures de clôture.
+
 Réécris `$RELEASE/README.md` dans sa forme finale, d'après le gabarit
 `~/.odoo19-agents/docs/templates/changelog/README.md` :
 
@@ -172,7 +186,9 @@ déploies pas sans qu'on te le demande.
 
 1. **Journal** : une entrée de release dans `<projet>/.odoo-agents/JOURNAL.md`,
    quinze lignes au plus — les entrées de tâche existent déjà, celle-ci dit ce
-   que la recette complète a révélé et ce qui part.
+   que la recette complète a révélé et ce qui part. Référence le bilan d'effort
+   et les causes d'écart utiles aux futures tâches comparables ; aucune conversion
+   en travail humain.
 2. **`PROJECT.md`** : pièges durables, décisions actées, compréhension métier
    acquise pendant la release. Puis `odoo_project_scan.py <racine>` pour
    rafraîchir le relevé.

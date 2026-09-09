@@ -1,0 +1,35 @@
+{
+  "verdict": "PASS_WITH_LIMITS",
+  "checks": {
+    "partial_duration_unknown": true,
+    "timer_duplicate_rejected": true,
+    "native_cost_delta": true,
+    "standalone_scope_freshness": true,
+    "revision_attribution": true,
+    "late_model": true,
+    "equivalent_tariff_dates": true,
+    "adjacent_windows": true,
+    "inheritance": true,
+    "native_cli": true,
+    "closure_exports": true,
+    "plan_scope_freshness": true,
+    "resume": true,
+    "cache_cost": true,
+    "partial_revision": true,
+    "effort_cli_report_check": true
+  },
+  "source_hashes": {
+    "odoo_effort.py": "8c36fba72f7b46b30f28b643c20c2a1f00e84951285e51c4be6c3d04034b99d4",
+    "odoo_usage.py": "56a82de110cf64efc75b46f8ebf2b305b289fd6e1390a044a6e6da7d6f20b5ff",
+    "odoo_release_guard.py": "d7587c91ebbf863ce97f626772c7e1f761d61aa42d9aa5b5d78188ddff7b1339"
+  },
+  "evidence": "results.json",
+  "initial_failures": "results-before-fixes.json",
+  "scope": "Independent synthetic native JSONL + real CLI/API, no live models, API, private client traces or repository edits",
+  "limits": [
+    "Full release seal/check with QA proof chain not executed; only required_artifacts integration and export freshness tested.",
+    "Source fixture formats are synthetic, not broad cross-version native-session compatibility evidence.",
+    "Native missing duration is now conservatively entirely unknown; measured partial duration subtotal is not retained.",
+    "Direct private session discovery and usability of finding executing subagent trace path were not tested."
+  ]
+}

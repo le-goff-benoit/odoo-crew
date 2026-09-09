@@ -79,6 +79,7 @@ empêche de poursuivre correctement.
 |---|---|
 | Développer ou configurer une évolution | `/odoo-new` |
 | Organiser plusieurs demandes avant de commencer | `/odoo-plan` |
+| Estimer les minutes d'exécution par agent et lot de travail | `/odoo-estimate` |
 | Lancer ou reprendre les tâches du plan | `/odoo-start` |
 | Vérifier l’ensemble et préparer la livraison | `/odoo-close` |
 | Signaler une règle client ou une leçon à retenir | `/odoo-feedback "votre remarque"` |
@@ -87,6 +88,13 @@ empêche de poursuivre correctement.
 
 Vous pouvez aussi poser une question fonctionnelle, confier un ticket de support
 ou demander une relecture en langage naturel. Le rôle adapté est alors mobilisé.
+
+L'[estimation des agents](docs/EFFORT.md) donne une fourchette par tâche et rôle,
+avec hypothèses et niveau de confiance. À la clôture, un bilan compare prévision
+et durées mesurées, reprend les jetons et les coûts IA disponibles et s'exporte
+en CSV. Les prévisions initiales restent conservées ; vous appliquez vos propres
+barèmes. Les premières estimations reposent sur un jugement explicite, à calibrer
+avec les releases exécutées.
 
 ## Des contrôles adaptés au moment du projet
 

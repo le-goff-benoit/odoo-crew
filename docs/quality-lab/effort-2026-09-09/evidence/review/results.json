@@ -1,0 +1,334 @@
+[
+  {
+    "case": "partial-duration",
+    "native": {
+      "provider": "codex",
+      "thread_id": "partial",
+      "model": "synthetic-model",
+      "started_at": "2026-09-09T00:00:00+00:00",
+      "ended_at": "2026-09-09T00:00:30+00:00",
+      "elapsed_seconds": 30.0,
+      "active_seconds": null,
+      "complete": true,
+      "tokens": {
+        "input_tokens": 20,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 20,
+        "total_tokens": 40
+      },
+      "provider_cost": null,
+      "source_sha256": "1f24acac96417573b34063bf6e0acd14ca17311b6a669c614669f1d5a60fedb1",
+      "warnings": [
+        "completed_turn_durations_unavailable",
+        "some_completed_turn_durations_missing"
+      ],
+      "identities": [
+        "a",
+        "b"
+      ]
+    },
+    "reported": {
+      "task": "T01",
+      "title": "Synthetic task",
+      "agent": "odoo-developer",
+      "initial": {
+        "task": "T01",
+        "title": "Synthetic task",
+        "agent": "odoo-developer",
+        "optimistic_minutes": 1.0,
+        "likely_minutes": 2.0,
+        "pessimistic_minutes": 3.0,
+        "expected_minutes": 2.0,
+        "assumptions": [
+          "synthetic"
+        ],
+        "basis": "synthetic",
+        "confidence": "low",
+        "contract_sha256": "849be854320ecf1c0a3f91bc10f9783ad2ad5101b5d7ccf199f5a92fbe3aa886"
+      },
+      "revised": {
+        "task": "T01",
+        "title": "Synthetic task",
+        "agent": "odoo-developer",
+        "optimistic_minutes": 1.0,
+        "likely_minutes": 2.0,
+        "pessimistic_minutes": 3.0,
+        "expected_minutes": 2.0,
+        "assumptions": [
+          "synthetic"
+        ],
+        "basis": "synthetic",
+        "confidence": "low",
+        "contract_sha256": "849be854320ecf1c0a3f91bc10f9783ad2ad5101b5d7ccf199f5a92fbe3aa886"
+      },
+      "actual_minutes": null,
+      "known_minutes": 0.0,
+      "time_complete": false,
+      "tokens": {
+        "input_tokens": 20,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 20,
+        "total_tokens": 40
+      },
+      "known_tokens": 40,
+      "token_complete": true,
+      "delta_minutes": null,
+      "delta_percent": null,
+      "retrospective": false,
+      "scope_changed": false,
+      "entries": [
+        "6a30c5e3f662"
+      ],
+      "costs": [
+        {
+          "entry": "6a30c5e3f662",
+          "cost": null
+        }
+      ],
+      "warnings": [
+        "completed_turn_durations_unavailable",
+        "some_completed_turn_durations_missing",
+        "Temps mobilis\u00e9 non mesur\u00e9 ; enveloppe disponible s\u00e9par\u00e9ment, pas substitu\u00e9e au temps actif."
+      ]
+    },
+    "guard_accepted": true
+  },
+  {
+    "case": "timer-duplicate",
+    "timer": {
+      "id": "a9513751c5e8",
+      "task": "T01",
+      "agent": "odoo-developer",
+      "provider": "codex",
+      "thread_id": "parent",
+      "model": "synthetic-model",
+      "started_at": "2026-09-09T00:00:03Z",
+      "ended_at": "2026-09-09T00:00:11Z",
+      "status": "complete",
+      "basis": "timer",
+      "baseline": {
+        "provider": "codex",
+        "thread_id": "parent",
+        "model": "synthetic-model",
+        "started_at": "2026-09-09T00:00:00+00:00",
+        "ended_at": "2026-09-09T00:00:02+00:00",
+        "elapsed_seconds": 2.0,
+        "active_seconds": null,
+        "complete": false,
+        "tokens": {
+          "input_tokens": 10,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 10,
+          "total_tokens": 20
+        },
+        "provider_cost": null,
+        "source_sha256": "1a20ad9dec09d330c2ccf2f53789bb97fc5c7ce0c6ddb42e97ce6a90da23e387",
+        "warnings": [
+          "completed_turn_durations_unavailable",
+          "session_or_window_incomplete"
+        ],
+        "identities": [
+          "base"
+        ]
+      },
+      "tokens": {
+        "input_tokens": 10,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 10,
+        "total_tokens": 20
+      },
+      "seconds": 8.0,
+      "identities": [
+        "base",
+        "shared-response"
+      ],
+      "warnings": [
+        "Chronom\u00e8tre de p\u00e9rim\u00e8tre : outils et attentes internes inclus ; bornes des jetons aux r\u00e9ponses d\u00e9j\u00e0 enregistr\u00e9es."
+      ],
+      "estimate_revision": 1,
+      "source_sha256": "c6bfcadd79ab8a141287ff5799e2f4ebdb05eea1f9294b1f58a7fea8a22ce29f",
+      "provider_cost": null,
+      "observed_at": "2026-09-09T00:00:11Z"
+    },
+    "child": "r\u00e9ponses d\u00e9j\u00e0 compt\u00e9es dans une autre attribution",
+    "rejected": true,
+    "reported_total": 20
+  },
+  {
+    "case": "timer-native-cost",
+    "baseline": {
+      "amount": 1,
+      "currency": "USD",
+      "basis": "native_result_total_cost_usd"
+    },
+    "final_native": {
+      "amount": 3,
+      "currency": "USD",
+      "basis": "native_result_total_cost_usd"
+    },
+    "timer_provider_cost": {
+      "amount": 2.0,
+      "currency": "USD",
+      "basis": "native_result_total_cost_usd"
+    },
+    "report_cost": [
+      {
+        "entry": "42a09fdba729",
+        "cost": {
+          "amount": 2.0,
+          "currency": "USD",
+          "kind": "declared",
+          "basis": "native_result_total_cost_usd"
+        }
+      }
+    ]
+  },
+  {
+    "case": "scope-no-plan",
+    "check_accepted": false,
+    "scope_changed": true
+  },
+  {
+    "case": "revision-entry",
+    "entry_keys": [
+      "id",
+      "task",
+      "agent",
+      "provider",
+      "thread_id",
+      "model",
+      "started_at",
+      "ended_at",
+      "status",
+      "basis",
+      "baseline",
+      "tokens",
+      "seconds",
+      "identities",
+      "warnings",
+      "estimate_revision",
+      "source_sha256",
+      "provider_cost",
+      "observed_at"
+    ],
+    "initial_revision": 1,
+    "latest_revision": 2
+  },
+  {
+    "case": "late-model",
+    "baseline_model": null,
+    "final_model": "synthetic-model",
+    "entry_model": "synthetic-model",
+    "warnings": [
+      "Chronom\u00e8tre de p\u00e9rim\u00e8tre : outils et attentes internes inclus ; bornes des jetons aux r\u00e9ponses d\u00e9j\u00e0 enregistr\u00e9es."
+    ]
+  },
+  {
+    "case": "equivalent-tariff-instant",
+    "accepted_cards": [
+      {
+        "provider": "codex",
+        "model": "synthetic-model",
+        "effective_at": "2026-01-01T00:00:00+00:00",
+        "currency": "USD",
+        "basis": "api_equivalent",
+        "source": "synthetic rate fixture only",
+        "scope": "synthetic",
+        "input_per_million": "1",
+        "cached_input_per_million": "1",
+        "cache_write_input_per_million": "1",
+        "output_per_million": "1"
+      }
+    ],
+    "conflict_rejected": true
+  },
+  {
+    "case": "windows",
+    "first_tokens": 20,
+    "second_tokens": 20,
+    "total": 40,
+    "overlap_rejected": true
+  },
+  {
+    "case": "inheritance",
+    "native": {
+      "provider": "codex",
+      "thread_id": "child",
+      "model": "synthetic-model",
+      "started_at": "2026-09-09T00:00:00+00:00",
+      "ended_at": "2026-09-09T00:00:10+00:00",
+      "elapsed_seconds": 10.0,
+      "active_seconds": 6.0,
+      "complete": true,
+      "tokens": {
+        "input_tokens": 10,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 10,
+        "total_tokens": 20
+      },
+      "provider_cost": null,
+      "source_sha256": "5f86e18799243fbc9096485334e28469f7c512768c961d6340405448b6be285d",
+      "warnings": [],
+      "identities": [
+        "child-response"
+      ]
+    }
+  },
+  {
+    "case": "cli-native",
+    "exit": 0,
+    "tokens": 20
+  },
+  {
+    "case": "closure-export-integrity",
+    "checks": [
+      {
+        "file": "estimation.md",
+        "rejected": true
+      },
+      {
+        "file": "bilan-effort.md",
+        "rejected": true
+      },
+      {
+        "file": "bilan-effort.json",
+        "rejected": true
+      },
+      {
+        "file": "bilan-effort.csv",
+        "rejected": true
+      }
+    ]
+  },
+  {
+    "case": "scope-plan",
+    "stale_rejected": true,
+    "scope_changed": true
+  },
+  {
+    "case": "resume",
+    "same_id": true,
+    "entries": 1,
+    "history": 1,
+    "seconds": 18.0,
+    "tokens": 40
+  },
+  {
+    "case": "native-cache-cost",
+    "cost": 0.00885,
+    "expected": 0.00885
+  },
+  {
+    "case": "partial-revision",
+    "initial_unchanged": true,
+    "latest_roles": [
+      "odoo-developer",
+      "odoo-tester"
+    ]
+  }
+]

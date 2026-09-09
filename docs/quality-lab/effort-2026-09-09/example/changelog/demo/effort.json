@@ -1,0 +1,282 @@
+{
+  "schema": 1,
+  "release": "demo",
+  "created_at": "2026-09-09T18:51:43.384975+00:00",
+  "updated_at": "2026-09-09T18:52:37.830000+00:00",
+  "tasks": {
+    "T01": "Référence de livraison",
+    "T02": "Filtre de recherche",
+    "RELEASE": "Recette et consolidation communes"
+  },
+  "estimates": [
+    {
+      "revision": 1,
+      "at": "2026-09-09T18:51:43.416940+00:00",
+      "reason": "estimation initiale",
+      "lines": [
+        {
+          "task": "T01",
+          "title": "Référence de livraison",
+          "agent": "odoo-developer",
+          "optimistic_minutes": 8.0,
+          "likely_minutes": 14.0,
+          "pessimistic_minutes": 28.0,
+          "expected_minutes": 15.333333333333334,
+          "assumptions": [
+            "Analyse reçue, un module Odoo 19",
+            "Champ texte sans reprise ni nouvelle règle de droits",
+            "Inclut implémentation et tests ciblés du développeur"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "c508e81bb1cf06c36a59b76cf1a191c2b3669a9184503d3a6bc600124246eb70"
+        },
+        {
+          "task": "T01",
+          "title": "Référence de livraison",
+          "agent": "odoo-tester",
+          "optimistic_minutes": 5.0,
+          "likely_minutes": 9.0,
+          "pessimistic_minutes": 18.0,
+          "expected_minutes": 9.833333333333334,
+          "assumptions": [
+            "Copie locale disponible selon scénario",
+            "QA ciblée ; recette complète exclue de cette ligne"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "c508e81bb1cf06c36a59b76cf1a191c2b3669a9184503d3a6bc600124246eb70"
+        },
+        {
+          "task": "T01",
+          "title": "Référence de livraison",
+          "agent": "orchestrateur",
+          "optimistic_minutes": 2.0,
+          "likely_minutes": 4.0,
+          "pessimistic_minutes": 8.0,
+          "expected_minutes": 4.333333333333333,
+          "assumptions": [
+            "Transmission et réception des preuves de la tâche"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "c508e81bb1cf06c36a59b76cf1a191c2b3669a9184503d3a6bc600124246eb70"
+        },
+        {
+          "task": "T02",
+          "title": "Filtre de recherche",
+          "agent": "odoo-developer",
+          "optimistic_minutes": 5.0,
+          "likely_minutes": 10.0,
+          "pessimistic_minutes": 22.0,
+          "expected_minutes": 11.166666666666666,
+          "assumptions": [
+            "Cause et domaine déjà identifiés",
+            "Correction limitée et test de régression, une reprise plausible"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "5e0aab2679f516f9458c91156ab4d276eac9da7f9e78896f94dcfd75d0db3c47"
+        },
+        {
+          "task": "T02",
+          "title": "Filtre de recherche",
+          "agent": "odoo-tester",
+          "optimistic_minutes": 4.0,
+          "likely_minutes": 7.0,
+          "pessimistic_minutes": 15.0,
+          "expected_minutes": 7.833333333333333,
+          "assumptions": [
+            "Copie disponible selon scénario",
+            "Recherche simple et combinée ; QA ciblée uniquement"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "5e0aab2679f516f9458c91156ab4d276eac9da7f9e78896f94dcfd75d0db3c47"
+        },
+        {
+          "task": "T02",
+          "title": "Filtre de recherche",
+          "agent": "orchestrateur",
+          "optimistic_minutes": 2.0,
+          "likely_minutes": 3.0,
+          "pessimistic_minutes": 6.0,
+          "expected_minutes": 3.3333333333333335,
+          "assumptions": [
+            "Transmission et réception de la tâche"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "5e0aab2679f516f9458c91156ab4d276eac9da7f9e78896f94dcfd75d0db3c47"
+        },
+        {
+          "task": "RELEASE",
+          "title": "Recette et consolidation communes",
+          "agent": "odoo-tester",
+          "optimistic_minutes": 12.0,
+          "likely_minutes": 20.0,
+          "pessimistic_minutes": 40.0,
+          "expected_minutes": 22.0,
+          "assumptions": [
+            "Suite complète unique",
+            "Restauration disponible selon scénario, aucun environnement réel vérifié"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "674e59a8d97c3315a7acb20b2bc32d6ad433dd9415bf7ea54eb0dd6ff037f59f"
+        },
+        {
+          "task": "RELEASE",
+          "title": "Recette et consolidation communes",
+          "agent": "orchestrateur",
+          "optimistic_minutes": 5.0,
+          "likely_minutes": 9.0,
+          "pessimistic_minutes": 18.0,
+          "expected_minutes": 9.833333333333334,
+          "assumptions": [
+            "Consolidation et bilan de release une seule fois"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "674e59a8d97c3315a7acb20b2bc32d6ad433dd9415bf7ea54eb0dd6ff037f59f"
+        }
+      ]
+    },
+    {
+      "revision": 2,
+      "at": "2026-09-09T18:52:37.829982+00:00",
+      "reason": "Réévaluation du test de saisie vide avant tout travail",
+      "lines": [
+        {
+          "task": "T01",
+          "title": "Référence de livraison",
+          "agent": "odoo-developer",
+          "optimistic_minutes": 10.0,
+          "likely_minutes": 18.0,
+          "pessimistic_minutes": 32.0,
+          "expected_minutes": 19.0,
+          "assumptions": [
+            "Analyse reçue, un module Odoo 19",
+            "Champ texte sans reprise ni nouvelle règle de droits",
+            "Inclut implémentation et tests ciblés du développeur",
+            "Réévaluation avant exécution : couvrir aussi le cas de saisie vide, sans nouveau périmètre métier"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "c508e81bb1cf06c36a59b76cf1a191c2b3669a9184503d3a6bc600124246eb70"
+        },
+        {
+          "task": "T01",
+          "title": "Référence de livraison",
+          "agent": "odoo-tester",
+          "optimistic_minutes": 5.0,
+          "likely_minutes": 9.0,
+          "pessimistic_minutes": 18.0,
+          "expected_minutes": 9.833333333333334,
+          "assumptions": [
+            "Copie locale disponible selon scénario",
+            "QA ciblée ; recette complète exclue de cette ligne"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "c508e81bb1cf06c36a59b76cf1a191c2b3669a9184503d3a6bc600124246eb70"
+        },
+        {
+          "task": "T01",
+          "title": "Référence de livraison",
+          "agent": "orchestrateur",
+          "optimistic_minutes": 2.0,
+          "likely_minutes": 4.0,
+          "pessimistic_minutes": 8.0,
+          "expected_minutes": 4.333333333333333,
+          "assumptions": [
+            "Transmission et réception des preuves de la tâche"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "c508e81bb1cf06c36a59b76cf1a191c2b3669a9184503d3a6bc600124246eb70"
+        },
+        {
+          "task": "T02",
+          "title": "Filtre de recherche",
+          "agent": "odoo-developer",
+          "optimistic_minutes": 5.0,
+          "likely_minutes": 10.0,
+          "pessimistic_minutes": 22.0,
+          "expected_minutes": 11.166666666666666,
+          "assumptions": [
+            "Cause et domaine déjà identifiés",
+            "Correction limitée et test de régression, une reprise plausible"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "5e0aab2679f516f9458c91156ab4d276eac9da7f9e78896f94dcfd75d0db3c47"
+        },
+        {
+          "task": "T02",
+          "title": "Filtre de recherche",
+          "agent": "odoo-tester",
+          "optimistic_minutes": 4.0,
+          "likely_minutes": 7.0,
+          "pessimistic_minutes": 15.0,
+          "expected_minutes": 7.833333333333333,
+          "assumptions": [
+            "Copie disponible selon scénario",
+            "Recherche simple et combinée ; QA ciblée uniquement"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "5e0aab2679f516f9458c91156ab4d276eac9da7f9e78896f94dcfd75d0db3c47"
+        },
+        {
+          "task": "T02",
+          "title": "Filtre de recherche",
+          "agent": "orchestrateur",
+          "optimistic_minutes": 2.0,
+          "likely_minutes": 3.0,
+          "pessimistic_minutes": 6.0,
+          "expected_minutes": 3.3333333333333335,
+          "assumptions": [
+            "Transmission et réception de la tâche"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "5e0aab2679f516f9458c91156ab4d276eac9da7f9e78896f94dcfd75d0db3c47"
+        },
+        {
+          "task": "RELEASE",
+          "title": "Recette et consolidation communes",
+          "agent": "odoo-tester",
+          "optimistic_minutes": 12.0,
+          "likely_minutes": 20.0,
+          "pessimistic_minutes": 40.0,
+          "expected_minutes": 22.0,
+          "assumptions": [
+            "Suite complète unique",
+            "Restauration disponible selon scénario, aucun environnement réel vérifié"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "674e59a8d97c3315a7acb20b2bc32d6ad433dd9415bf7ea54eb0dd6ff037f59f"
+        },
+        {
+          "task": "RELEASE",
+          "title": "Recette et consolidation communes",
+          "agent": "orchestrateur",
+          "optimistic_minutes": 5.0,
+          "likely_minutes": 9.0,
+          "pessimistic_minutes": 18.0,
+          "expected_minutes": 9.833333333333334,
+          "assumptions": [
+            "Consolidation et bilan de release une seule fois"
+          ],
+          "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+          "confidence": "low",
+          "contract_sha256": "674e59a8d97c3315a7acb20b2bc32d6ad433dd9415bf7ea54eb0dd6ff037f59f"
+        }
+      ]
+    }
+  ],
+  "entries": [],
+  "rate_cards": []
+}

@@ -1,0 +1,444 @@
+{
+  "schema": 1,
+  "release": "demo",
+  "generated_at": "2026-09-09T18:54:38.841574+00:00",
+  "state_sha256": "4301391b24d869d573b881e7085217e76ad010fcf82feb9554e523c9ce9573df",
+  "contracts_sha256": "c9c610e272c97fc77ec2459cad90906cf8f5fbc7e5733ed3cf30fa9d39bafeee",
+  "initial_revision": 1,
+  "latest_revision": 2,
+  "rows": [
+    {
+      "task": "RELEASE",
+      "title": "Recette et consolidation communes",
+      "agent": "odoo-tester",
+      "initial": {
+        "task": "RELEASE",
+        "title": "Recette et consolidation communes",
+        "agent": "odoo-tester",
+        "optimistic_minutes": 12.0,
+        "likely_minutes": 20.0,
+        "pessimistic_minutes": 40.0,
+        "expected_minutes": 22.0,
+        "assumptions": [
+          "Suite complète unique",
+          "Restauration disponible selon scénario, aucun environnement réel vérifié"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "674e59a8d97c3315a7acb20b2bc32d6ad433dd9415bf7ea54eb0dd6ff037f59f"
+      },
+      "revised": {
+        "task": "RELEASE",
+        "title": "Recette et consolidation communes",
+        "agent": "odoo-tester",
+        "optimistic_minutes": 12.0,
+        "likely_minutes": 20.0,
+        "pessimistic_minutes": 40.0,
+        "expected_minutes": 22.0,
+        "assumptions": [
+          "Suite complète unique",
+          "Restauration disponible selon scénario, aucun environnement réel vérifié"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "674e59a8d97c3315a7acb20b2bc32d6ad433dd9415bf7ea54eb0dd6ff037f59f"
+      },
+      "actual_minutes": null,
+      "known_minutes": 0.0,
+      "time_complete": false,
+      "tokens": null,
+      "known_tokens": 0,
+      "token_complete": false,
+      "delta_minutes": null,
+      "delta_percent": null,
+      "retrospective": false,
+      "scope_changed": false,
+      "entries": [],
+      "costs": [],
+      "warnings": [
+        "Aucune mesure importée pour cette ligne."
+      ]
+    },
+    {
+      "task": "RELEASE",
+      "title": "Recette et consolidation communes",
+      "agent": "orchestrateur",
+      "initial": {
+        "task": "RELEASE",
+        "title": "Recette et consolidation communes",
+        "agent": "orchestrateur",
+        "optimistic_minutes": 5.0,
+        "likely_minutes": 9.0,
+        "pessimistic_minutes": 18.0,
+        "expected_minutes": 9.833333333333334,
+        "assumptions": [
+          "Consolidation et bilan de release une seule fois"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "674e59a8d97c3315a7acb20b2bc32d6ad433dd9415bf7ea54eb0dd6ff037f59f"
+      },
+      "revised": {
+        "task": "RELEASE",
+        "title": "Recette et consolidation communes",
+        "agent": "orchestrateur",
+        "optimistic_minutes": 5.0,
+        "likely_minutes": 9.0,
+        "pessimistic_minutes": 18.0,
+        "expected_minutes": 9.833333333333334,
+        "assumptions": [
+          "Consolidation et bilan de release une seule fois"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "674e59a8d97c3315a7acb20b2bc32d6ad433dd9415bf7ea54eb0dd6ff037f59f"
+      },
+      "actual_minutes": null,
+      "known_minutes": 0.0,
+      "time_complete": false,
+      "tokens": null,
+      "known_tokens": 0,
+      "token_complete": false,
+      "delta_minutes": null,
+      "delta_percent": null,
+      "retrospective": false,
+      "scope_changed": false,
+      "entries": [],
+      "costs": [],
+      "warnings": [
+        "Aucune mesure importée pour cette ligne."
+      ]
+    },
+    {
+      "task": "T01",
+      "title": "Référence de livraison",
+      "agent": "odoo-developer",
+      "initial": {
+        "task": "T01",
+        "title": "Référence de livraison",
+        "agent": "odoo-developer",
+        "optimistic_minutes": 8.0,
+        "likely_minutes": 14.0,
+        "pessimistic_minutes": 28.0,
+        "expected_minutes": 15.333333333333334,
+        "assumptions": [
+          "Analyse reçue, un module Odoo 19",
+          "Champ texte sans reprise ni nouvelle règle de droits",
+          "Inclut implémentation et tests ciblés du développeur"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "c508e81bb1cf06c36a59b76cf1a191c2b3669a9184503d3a6bc600124246eb70"
+      },
+      "revised": {
+        "task": "T01",
+        "title": "Référence de livraison",
+        "agent": "odoo-developer",
+        "optimistic_minutes": 10.0,
+        "likely_minutes": 18.0,
+        "pessimistic_minutes": 32.0,
+        "expected_minutes": 19.0,
+        "assumptions": [
+          "Analyse reçue, un module Odoo 19",
+          "Champ texte sans reprise ni nouvelle règle de droits",
+          "Inclut implémentation et tests ciblés du développeur",
+          "Réévaluation avant exécution : couvrir aussi le cas de saisie vide, sans nouveau périmètre métier"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "c508e81bb1cf06c36a59b76cf1a191c2b3669a9184503d3a6bc600124246eb70"
+      },
+      "actual_minutes": null,
+      "known_minutes": 0.0,
+      "time_complete": false,
+      "tokens": null,
+      "known_tokens": 0,
+      "token_complete": false,
+      "delta_minutes": null,
+      "delta_percent": null,
+      "retrospective": false,
+      "scope_changed": false,
+      "entries": [],
+      "costs": [],
+      "warnings": [
+        "Aucune mesure importée pour cette ligne."
+      ]
+    },
+    {
+      "task": "T01",
+      "title": "Référence de livraison",
+      "agent": "odoo-tester",
+      "initial": {
+        "task": "T01",
+        "title": "Référence de livraison",
+        "agent": "odoo-tester",
+        "optimistic_minutes": 5.0,
+        "likely_minutes": 9.0,
+        "pessimistic_minutes": 18.0,
+        "expected_minutes": 9.833333333333334,
+        "assumptions": [
+          "Copie locale disponible selon scénario",
+          "QA ciblée ; recette complète exclue de cette ligne"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "c508e81bb1cf06c36a59b76cf1a191c2b3669a9184503d3a6bc600124246eb70"
+      },
+      "revised": {
+        "task": "T01",
+        "title": "Référence de livraison",
+        "agent": "odoo-tester",
+        "optimistic_minutes": 5.0,
+        "likely_minutes": 9.0,
+        "pessimistic_minutes": 18.0,
+        "expected_minutes": 9.833333333333334,
+        "assumptions": [
+          "Copie locale disponible selon scénario",
+          "QA ciblée ; recette complète exclue de cette ligne"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "c508e81bb1cf06c36a59b76cf1a191c2b3669a9184503d3a6bc600124246eb70"
+      },
+      "actual_minutes": null,
+      "known_minutes": 0.0,
+      "time_complete": false,
+      "tokens": null,
+      "known_tokens": 0,
+      "token_complete": false,
+      "delta_minutes": null,
+      "delta_percent": null,
+      "retrospective": false,
+      "scope_changed": false,
+      "entries": [],
+      "costs": [],
+      "warnings": [
+        "Aucune mesure importée pour cette ligne."
+      ]
+    },
+    {
+      "task": "T01",
+      "title": "Référence de livraison",
+      "agent": "orchestrateur",
+      "initial": {
+        "task": "T01",
+        "title": "Référence de livraison",
+        "agent": "orchestrateur",
+        "optimistic_minutes": 2.0,
+        "likely_minutes": 4.0,
+        "pessimistic_minutes": 8.0,
+        "expected_minutes": 4.333333333333333,
+        "assumptions": [
+          "Transmission et réception des preuves de la tâche"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "c508e81bb1cf06c36a59b76cf1a191c2b3669a9184503d3a6bc600124246eb70"
+      },
+      "revised": {
+        "task": "T01",
+        "title": "Référence de livraison",
+        "agent": "orchestrateur",
+        "optimistic_minutes": 2.0,
+        "likely_minutes": 4.0,
+        "pessimistic_minutes": 8.0,
+        "expected_minutes": 4.333333333333333,
+        "assumptions": [
+          "Transmission et réception des preuves de la tâche"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "c508e81bb1cf06c36a59b76cf1a191c2b3669a9184503d3a6bc600124246eb70"
+      },
+      "actual_minutes": null,
+      "known_minutes": 0.0,
+      "time_complete": false,
+      "tokens": null,
+      "known_tokens": 0,
+      "token_complete": false,
+      "delta_minutes": null,
+      "delta_percent": null,
+      "retrospective": false,
+      "scope_changed": false,
+      "entries": [],
+      "costs": [],
+      "warnings": [
+        "Aucune mesure importée pour cette ligne."
+      ]
+    },
+    {
+      "task": "T02",
+      "title": "Filtre de recherche",
+      "agent": "odoo-developer",
+      "initial": {
+        "task": "T02",
+        "title": "Filtre de recherche",
+        "agent": "odoo-developer",
+        "optimistic_minutes": 5.0,
+        "likely_minutes": 10.0,
+        "pessimistic_minutes": 22.0,
+        "expected_minutes": 11.166666666666666,
+        "assumptions": [
+          "Cause et domaine déjà identifiés",
+          "Correction limitée et test de régression, une reprise plausible"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "5e0aab2679f516f9458c91156ab4d276eac9da7f9e78896f94dcfd75d0db3c47"
+      },
+      "revised": {
+        "task": "T02",
+        "title": "Filtre de recherche",
+        "agent": "odoo-developer",
+        "optimistic_minutes": 5.0,
+        "likely_minutes": 10.0,
+        "pessimistic_minutes": 22.0,
+        "expected_minutes": 11.166666666666666,
+        "assumptions": [
+          "Cause et domaine déjà identifiés",
+          "Correction limitée et test de régression, une reprise plausible"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "5e0aab2679f516f9458c91156ab4d276eac9da7f9e78896f94dcfd75d0db3c47"
+      },
+      "actual_minutes": null,
+      "known_minutes": 0.0,
+      "time_complete": false,
+      "tokens": null,
+      "known_tokens": 0,
+      "token_complete": false,
+      "delta_minutes": null,
+      "delta_percent": null,
+      "retrospective": false,
+      "scope_changed": false,
+      "entries": [],
+      "costs": [],
+      "warnings": [
+        "Aucune mesure importée pour cette ligne."
+      ]
+    },
+    {
+      "task": "T02",
+      "title": "Filtre de recherche",
+      "agent": "odoo-tester",
+      "initial": {
+        "task": "T02",
+        "title": "Filtre de recherche",
+        "agent": "odoo-tester",
+        "optimistic_minutes": 4.0,
+        "likely_minutes": 7.0,
+        "pessimistic_minutes": 15.0,
+        "expected_minutes": 7.833333333333333,
+        "assumptions": [
+          "Copie disponible selon scénario",
+          "Recherche simple et combinée ; QA ciblée uniquement"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "5e0aab2679f516f9458c91156ab4d276eac9da7f9e78896f94dcfd75d0db3c47"
+      },
+      "revised": {
+        "task": "T02",
+        "title": "Filtre de recherche",
+        "agent": "odoo-tester",
+        "optimistic_minutes": 4.0,
+        "likely_minutes": 7.0,
+        "pessimistic_minutes": 15.0,
+        "expected_minutes": 7.833333333333333,
+        "assumptions": [
+          "Copie disponible selon scénario",
+          "Recherche simple et combinée ; QA ciblée uniquement"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "5e0aab2679f516f9458c91156ab4d276eac9da7f9e78896f94dcfd75d0db3c47"
+      },
+      "actual_minutes": null,
+      "known_minutes": 0.0,
+      "time_complete": false,
+      "tokens": null,
+      "known_tokens": 0,
+      "token_complete": false,
+      "delta_minutes": null,
+      "delta_percent": null,
+      "retrospective": false,
+      "scope_changed": false,
+      "entries": [],
+      "costs": [],
+      "warnings": [
+        "Aucune mesure importée pour cette ligne."
+      ]
+    },
+    {
+      "task": "T02",
+      "title": "Filtre de recherche",
+      "agent": "orchestrateur",
+      "initial": {
+        "task": "T02",
+        "title": "Filtre de recherche",
+        "agent": "orchestrateur",
+        "optimistic_minutes": 2.0,
+        "likely_minutes": 3.0,
+        "pessimistic_minutes": 6.0,
+        "expected_minutes": 3.3333333333333335,
+        "assumptions": [
+          "Transmission et réception de la tâche"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "5e0aab2679f516f9458c91156ab4d276eac9da7f9e78896f94dcfd75d0db3c47"
+      },
+      "revised": {
+        "task": "T02",
+        "title": "Filtre de recherche",
+        "agent": "orchestrateur",
+        "optimistic_minutes": 2.0,
+        "likely_minutes": 3.0,
+        "pessimistic_minutes": 6.0,
+        "expected_minutes": 3.3333333333333335,
+        "assumptions": [
+          "Transmission et réception de la tâche"
+        ],
+        "basis": "Jugement initial ; aucun historique comparable mesuré dans ce projet synthétique",
+        "confidence": "low",
+        "contract_sha256": "5e0aab2679f516f9458c91156ab4d276eac9da7f9e78896f94dcfd75d0db3c47"
+      },
+      "actual_minutes": null,
+      "known_minutes": 0.0,
+      "time_complete": false,
+      "tokens": null,
+      "known_tokens": 0,
+      "token_complete": false,
+      "delta_minutes": null,
+      "delta_percent": null,
+      "retrospective": false,
+      "scope_changed": false,
+      "entries": [],
+      "costs": [],
+      "warnings": [
+        "Aucune mesure importée pour cette ligne."
+      ]
+    }
+  ],
+  "missing_tasks": [],
+  "totals": {
+    "planned_initial_minutes": 83.66666666666667,
+    "planned_revised_minutes": 87.33333333333333,
+    "actual_minutes": null,
+    "known_minutes": 0.0,
+    "tokens": null,
+    "known_tokens": 0,
+    "envelope_minutes": null,
+    "covered_interval_minutes": null,
+    "known_costs": {},
+    "unpriced_entries": 0
+  },
+  "limitations": [
+    "Estimation de minutes d’exécution des agents, aucun temps humain ni barème client.",
+    "Temps des outils et attentes internes inclus ; les attentes humaines ne sont pas isolées automatiquement.",
+    "Somme des temps par agent distincte de l’enveloppe calendaire ; les intervalles peuvent se chevaucher.",
+    "Compteurs absents et lignes non mesurées restent inconnus. Les sous-totaux connus ne sont pas des totaux complets.",
+    "L’attribution tâche/agent est déclarée explicitement ; le contenu métier des conversations n’est pas inspecté."
+  ]
+}

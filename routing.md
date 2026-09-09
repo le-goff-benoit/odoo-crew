@@ -59,6 +59,7 @@ le chemin du fichier où la décision est consignée ; les protections de
 | **Ticket de support** — « l'utilisateur voit… », « ça ne marche plus », « pourquoi… », un numéro de ticket | `odoo-support` **seul** : diagnostic prouvé, classement, contournement, réponse client ; passe la main selon le verdict (voir ci-dessous) |
 | **Développement ou configuration** — créer, modifier, corriger, étendre (module ou Studio) | **`/odoo-new`** : fonctionnel → `odoo-developer` **ou** `odoo-studio` selon la voie choisie par l'analyste → QA de tâche → journal, dans la release ouverte (ouverte au besoin) |
 | **Préparation multi-demandes** — préparer et découper une release | **`/odoo-plan`** : analyse globale, tâches et critères ; ne démarre pas le dev |
+| **Estimation et suivi du temps des agents** — chiffrer les durées, comparer prévu/réalisé | **`/odoo-estimate`** : minutes par tâche et agent, hypothèses ; bilan de clôture temps/jetons/coûts IA sourcés, sans barème client |
 | **Exécution / reprise du plan** — lancer les tâches préparées | **`/odoo-start`** : dépendances, flows, preuves et consolidation |
 | **Clôture / livraison** — « ferme la release », « prépare la livraison », « recette complète » | **`/odoo-close`** : recette entière, doc.md métier, consolidation, README ; guide et communication sur demande |
 | **Validation seule** — « relis », « valide », « ce module est-il propre ? » | `odoo-tester` **seul** (mode release) |

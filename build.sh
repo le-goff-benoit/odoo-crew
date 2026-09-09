@@ -269,6 +269,10 @@ emit_command "odoo-improve" "quality-improve" "<défaut ou proposition à améli
     "Tester, corriger et adopter les améliorations des agents Odoo" \
     "Pilote une boucle neutre d’essais et de rétroaction sur les agents et skills Odoo : référence, reproduction, correction, contre-épreuve, adoption et livraison."
 
+emit_command "odoo-estimate" "estimation" "<release à estimer>" 'Release : $ARGUMENTS' \
+    "Estimer les minutes par agent et tâche, puis comparer au réalisé" \
+    "Estime le temps d’exécution des agents par lot de travail d’une release, avec hypothèses et fourchettes. Préserve les prévisions, mesure temps et jetons, puis compare prévu/réalisé à la clôture ; aucun barème d’offre ni temps humain."
+
 python3 "$HERE/scripts/odoo_loaded_instructions.py" "$DEST_ROOT"
 
 # Tous les profils, commandes, skills et blocs de routing sont vérifiés.

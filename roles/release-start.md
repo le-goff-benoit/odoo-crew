@@ -3,6 +3,13 @@
 Lis `docs/RELEASE_PLAN.md`, le briefing, `plan.json` et la revue de la release.
 `odoo_plan.py status <release>` distingue dépendances et périmètres occupés.
 
+Avant de lancer les tâches, lis `effort.json` et `estimation.md`. S'ils manquent,
+applique `roles/estimation.md` au travail encore à venir ; ne fabrique pas de
+prévision initiale pour les tâches déjà exécutées. Selon `docs/EFFORT.md`,
+l'orchestrateur ouvre une mesure `odoo_effort.py start` pour chaque passage de
+rôle et la ferme avec `stop` sur la même session. Les reprises ont leurs propres
+entrées ; les attentes humaines sont hors chronomètre.
+
 Pour une tâche prête, `odoo_plan.py start <release> --task ID` réserve son
 périmètre et ouvre son flow. Applique `roles/orchestration.md` sur **ce flow** :
 ne crée pas un deuxième run, ne rejoue pas une analyse déjà arbitrée sans raison.

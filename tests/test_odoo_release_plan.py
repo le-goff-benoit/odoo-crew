@@ -127,6 +127,38 @@ class ReleasePlanTests(unittest.TestCase):
         (self.root / 'a/code.py').write_text('a=3')
         with self.assertRaises(ValueError): guard.check(self.release)
 
+    def test_effort_report_is_sealed_even_when_measurements_are_missing(self):
+        import odoo_effort as effort
+        proof = self.proof()
+        for name in guard.REQUIRED:
+            if name != 'README.md':
+                (self.release / name).write_text('preuve synthétique')
+        controls = {'schema': 1, 'risk': 'normal', 'route': 'studio', 'controls': [
+            {'id': name, 'status': 'passed', 'proof': proof}
+            for name in ('installation', 'update', 'tests', 'client_copy', 'browser', 'uninstall')]}
+        (self.release / 'controls.json').write_text(json.dumps(controls))
+        effort.init(self.release)
+        with self.assertRaises(FileNotFoundError):
+            guard.seal(self.release, ['a'], [proof])
+        effort.report(self.release)
+        sealed = guard.seal(self.release, ['a'], [proof])
+        guard.check(self.release)
+        self.assertTrue(set(effort.REPORT_FILES) <= set(sealed['artifacts']))
+        for name in ('effort.json',) + effort.REPORT_FILES:
+            path = self.release / name
+            original = path.read_bytes()
+            path.write_bytes(original + b'\n')
+            with self.assertRaises(ValueError):
+                guard.check(self.release)
+            path.write_bytes(original)
+        registry = self.release / 'effort.json'
+        original = registry.read_bytes()
+        registry.unlink()
+        with self.assertRaises(ValueError):
+            guard.check(self.release)
+        registry.write_bytes(original)
+        guard.check(self.release)
+
     def test_dependency_rereception_does_not_revalidate_child(self):
         self.init(); self.finish_a()
         path = Path(plan.mutate(self.release, 'start', 'B'))

@@ -1,0 +1,25 @@
+test_downgrade_rejected_by_transition (test_odoo_release_plan.PlanHighRiskTests) ... ok
+test_add_tasks_preserves_receipt_and_rejects_forgery (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_changed_request_invalidates_receipt (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_close_shell_refuses_missing_seal (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_cyclic_and_outside_definitions_rejected (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_dependency_receipt_and_stale_code (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_dependency_rereception_does_not_revalidate_child (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_effort_report_is_sealed_even_when_measurements_are_missing (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_existing_plan_and_fake_import_refused (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_finish_requires_terminal_and_memory (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_high_risk_cannot_waive_client_copy (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_loaded_instructions_migration_keeps_user_text_and_backup (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_missing_local_flow_is_not_green (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_module_plan_cannot_claim_studio_controls (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_overlapping_tasks_wait_but_independent_ready (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_release_identity_and_plan_presence_are_sealed (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_reopen_preserves_history_and_defer_is_not_dependency (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_seal_requires_documents_and_invalidates_mutation (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_start_empty_module_and_deleted_snapshot (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_version_prepare_idempotent_preserves_source (test_odoo_release_plan.ReleasePlanTests) ... ok
+
+----------------------------------------------------------------------
+Ran 20 tests in 0.259s
+
+OK

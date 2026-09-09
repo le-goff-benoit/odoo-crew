@@ -14,7 +14,11 @@ fondée sur une réponse inventée.
 
 Valide la définition avec `odoo_plan.py init <release> --file <définition>`.
 Le fichier versionné `plan.json` est le plan ; les flows restent l'autorité des
-étapes exécutées. Présente les tâches prêtes et les arbitrages restants.
+étapes exécutées. Applique `roles/estimation.md` avant l'exécution : chaque tâche
+reçoit une prévision en minutes par rôle, avec fourchette et hypothèses ; le
+travail commun de clôture est compté une seule fois. `odoo_effort.py init`
+reprend les identifiants du plan, puis `estimate` et `report` produisent
+`estimation.md`. Présente les tâches prêtes, leur prévision et les arbitrages restants.
 Préparer ou ouvrir un document ne démarre pas l'exécution. Si l'utilisateur a
 explicitement demandé d'exécuter aussi, continue avec `/odoo-start`.
 
@@ -23,3 +27,5 @@ Pour une nouvelle demande dans un plan existant, `odoo_plan.py add <release>
 réinitialise pas le plan et ne remplace pas un identifiant existant. Les nouvelles
 dépendances restent explicites et les tâches déjà reçues ne sont pas rejouées
 sans changement de contrat, de preuve ou de dépendance.
+Ajoute la prévision des nouvelles tâches et motive toute révision des autres ;
+conserve l'estimation initiale et les mesures déjà enregistrées.
