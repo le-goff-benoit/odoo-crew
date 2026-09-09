@@ -22,6 +22,10 @@ def inventory(project):
     return sorted(set(found))
 
 
+def catalog_hashes(project, paths):
+    return {name: hashlib.sha256((project / name).read_bytes()).hexdigest() for name in paths}
+
+
 def context(project, query='', budget=12000):
     project = Path(project).resolve()
     if budget < 1000:
@@ -63,6 +67,7 @@ def context(project, query='', budget=12000):
         out += ['\nBlocs non inclus (aucune exception tronquée ; les lire si nécessaires) :', *['- ' + name for name in omitted]]
     result = {'schema': 1, 'project': str(project), 'query': query, 'budget_characters': budget,
               'text': '\n'.join(out) + '\n', 'sources': refs, 'catalog_paths': catalog_paths,
+              'catalog_sha256': catalog_hashes(project, catalog_paths),
               'limitation': 'Sélection lexicale, sans garantie de rappel exhaustif. Sources non sélectionnées toujours consultables.'}
     result['context_sha256'] = hashlib.sha256(result['text'].encode()).hexdigest()
     return result
@@ -70,8 +75,12 @@ def context(project, query='', budget=12000):
 
 def verify_context(record, project):
     project = Path(project).resolve()
+    if record.get('project') != str(project):
+        raise ValueError('contexte d’un autre projet : régénérer dans ce checkout')
     if record.get('catalog_paths') != inventory(project):
         raise ValueError('catalogue de connaissances changé : nouvelle source ou suppression')
+    if record.get('catalog_sha256') != catalog_hashes(project, record['catalog_paths']):
+        raise ValueError('catalogue de connaissances changé : contenu potentiellement pertinent')
     if hashlib.sha256(record['text'].encode()).hexdigest() != record['context_sha256']:
         raise ValueError('texte du contexte changé')
     for item in record['sources']:

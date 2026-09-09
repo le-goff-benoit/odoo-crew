@@ -268,6 +268,10 @@ class Lab:
                     pos += 1
                 r = execute(['bash', str(self.backend / 'scripts/odoo-test.sh'), *args[1:], '--keep'],
                             cwd=self.backend, env=dict(self.env, ODOO_TEST_DB='lab_qa', ODOO_TEST_DB_EXPLICIT='1'))
+            elif args == ['lint', self.case['module']] and self.case['module']:
+                r = execute(['bash', str(self.pack / 'scripts/odoo-lint.sh'),
+                             str(self.backend / 'addons' / self.case['module'])],
+                            cwd=self.backend, env=self.env)
             elif args == ['update'] and self.case['module']:
                 r = self.odoo(['-u', self.case['module']])
             elif args[0] == 'shell' and len(args) == 2:
@@ -276,7 +280,7 @@ class Lab:
                     raise ValueError('script trop volumineux')
                 r = self.odoo([], script.read_text())
             else:
-                raise ValueError('actions autorisées : qa MODULE [options], update, shell FICHIER')
+                raise ValueError('actions autorisées : qa MODULE [options], lint MODULE, update, shell FICHIER')
             index = len(self.events)
             log = f'bridge-{index:03d}.log'
             (self.folder / log).write_text(r.stdout)
@@ -343,6 +347,21 @@ class Handler(socketserver.StreamRequestHandler):
 
 
 def trial(folder, pack, case, provider, config, timeout):
+    try:
+        return _trial(folder, pack, case, provider, config, timeout)
+    except Exception as exc:
+        # Une préparation/fermeture ratée ne doit pas effacer les autres essais.
+        folder.mkdir(parents=True, exist_ok=True)
+        statefile = folder / 'state.json'
+        state = json.loads(statefile.read_text()) if statefile.exists() else {
+            'case': case['id'], 'provider': provider, 'config': config, 'turns': []}
+        state.update(status='incident', error=str(exc))
+        atomic_json(statefile, state)
+        print(json.dumps({'trial': folder.name, 'error': str(exc)}), flush=True)
+        return state
+
+
+def _trial(folder, pack, case, provider, config, timeout):
     folder.mkdir()
     project = folder / 'project'
     copy_project(ROOT / 'benchmarks/native/cases' / case['id'] / 'project', project)
@@ -372,6 +391,8 @@ def trial(folder, pack, case, provider, config, timeout):
                        'Docker est supervisé hors du sandbox. Utilise `/bridge/labctl qa MODULE --quick` '
                        '(options --tags, --fresh, --no-template, --update disponibles) : cette commande appelle '
                        'le vrai odoo-test.sh de ta version sur une base QA séparée. '
+                       'Utilise `/bridge/labctl lint MODULE` pour le lint complet avec Ruff disponible dans l’image QA ; '
+                       'les écarts de dette antérieure restent à distinguer du diff de la tâche. '
                        'Utilise `/bridge/labctl update` pour mettre à niveau le module sur la copie existante lab_client. '
                        'Utilise `/bridge/labctl shell CHEMIN.py` pour exécuter un fichier de /work dans le vrai shell Odoo '
                        'sur lab_client ; env est disponible, appelle env.cr.commit() pour conserver les écritures voulues. '
@@ -428,7 +449,7 @@ def trial(folder, pack, case, provider, config, timeout):
             print(json.dumps({'trial': folder.name, 'turn': index, **item}), flush=True)
             if outcome != 'completed' or not parsed['completed_event']:
                 break
-        state['status'] = 'executed' if len(state['turns']) == len(prompts) and all(t['status'] == 'completed' for t in state['turns']) else 'incident'
+        state['status'] = 'executed' if len(state['turns']) == len(prompts) and all(t['status'] == 'completed' and t['provider_completed'] for t in state['turns']) else 'incident'
         state['oracle'] = lab.oracle()
         state['review'] = None
     except Exception as exc:

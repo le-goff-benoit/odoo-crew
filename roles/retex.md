@@ -24,7 +24,7 @@ Si l'argument n'est ni vide, ni une période, ni un nom de projet, mais une
    ```
 3. Si la règle est durable pour ce projet, ajoute-la à « Pièges connus » ou
    « Décisions actées » de `PROJECT.md`.
-4. Si elle dépasse le projet, dis-le : elle sera promue au prochain retex complet.
+4. Si elle dépasse le projet, dis-le : elle sera évaluée au prochain retex complet, sans promotion automatique.
 
 Trois lignes de compte-rendu : où c'est écrit, la règle retenue, candidate ou non.
 Les corrections de l'humain sont la matière première la plus fiable du
@@ -111,6 +111,16 @@ Trois effets possibles, à choisir selon la nature :
 | Un outil du dispositif qui a menti ou manqué (script, stack, image) | correction du script, et le cas dans « Pièges déjà traités » du `README.md` |
 | Un comportement d'hébergement (déploiement, restauration, exploitation) | une entrée dans `PLATEFORMES.md`, avec sa provenance `[vérifié]` ou `[doc]` |
 
+Une occurrence coûteuse ou récurrente justifie un essai, pas une règle générale
+installée d'office. Pour une modification des rôles, du contexte ou des outils,
+applique la boucle de `roles/quality-improve.md` : reproduction synthétique,
+correction, contre-épreuve, non-régression et décision d'adoption avec lien vers
+les preuves. Les règles client restent locales tant que leur généralisation
+n'est pas justifiée. Une correction factuelle du référentiel peut être prouvée
+directement dans les sources de la série ; elle n'exige pas une campagne LLM.
+Si les preuves manquent, conserve la leçon comme candidate, sans la charger dans
+les profils actifs. Ne déclare promues que les corrections validées.
+
 Un motif de lint ajouté est **vérifié dans les deux séries concernées** avant
 d'être considéré comme vrai :
 
@@ -124,6 +134,8 @@ Un motif qui produit un faux positif est retiré immédiatement : un contrôle q
 trompe fait plus de dégâts qu'un contrôle absent.
 
 ## 4. Reconstruire et vérifier
+
+Après décision d’adoption, intégrer les sources retenues puis reconstruire.
 
 ```bash
 # Dater le passage : le compteur de /odoo-close et la prochaine relecture partent d'ici

@@ -28,8 +28,8 @@ réalisable. Pour une remarque propre à un client, utiliser `/odoo-feedback`.
    risques résiduels et dimensions non mesurées. Actualiser le suivi des propositions
    et le README pour le fonctionnement réellement livré, sans classement global
    des modèles sur quelques essais.
-7. Valider graphe, tests, build isolé et parité. Installer par `build.sh`, intégrer
-   et publier selon l'autorisation de la session, vérifier la CI et mettre à jour
+7. Valider graphe, tests, build isolé et parité. Intégrer la version retenue, installer par `build.sh`,
+   puis publier selon l'autorisation de la session, vérifier la CI et mettre à jour
    la mémoire du dispositif. Les nouvelles instructions deviennent les profils
    actifs seulement à cette étape. Conserver la référence Git pour revenir en arrière.
 

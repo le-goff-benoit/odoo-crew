@@ -3,12 +3,15 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+import threading
+from types import SimpleNamespace
 import unittest
+from unittest.mock import patch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import odoo_context as context
 import odoo_scenarios as scenarios
-from odoo_bench_native import inside, copy_project, native_command
+from odoo_bench_native import inside, copy_project, native_command, trial, Lab
 
 
 class ContextScenarioTests(unittest.TestCase):
@@ -50,6 +53,19 @@ class ContextScenarioTests(unittest.TestCase):
         self.assertIn('NOUVELLE RÈGLE', rendered); self.assertNotIn('ANCIENNE RÈGLE', rendered)
         self.assertIn('QUESTION OUVERTE', rendered)
 
+    def test_context_cannot_claim_another_project(self):
+        record = context.context(self.root)
+        record['project'] = '/another-project'
+        with self.assertRaisesRegex(ValueError, 'autre projet'):
+            context.verify_context(record, self.root)
+
+    def test_unselected_source_becoming_relevant_invalidates_context(self):
+        record = context.context(self.root, query='livraison')
+        self.assertNotIn('decisions/D1.md', [r['path'] for r in record['sources']])
+        self.source.write_text('La livraison suit une nouvelle règle.')
+        with self.assertRaisesRegex(ValueError, 'catalogue'):
+            context.verify_context(record, self.root)
+
     def test_unknown_change_expands_selection_and_stale_source_blocks(self):
         second = dict(self.catalog['scenarios'][0], id='S2', triggers=['other/*'], group='browser')
         self.catalog['scenarios'].append(second)
@@ -82,6 +98,28 @@ class ContextScenarioTests(unittest.TestCase):
             target = Path(dest) / 'snapshot'; copy_project(self.root, target)
             self.assertTrue((target / 'module/main.py').is_file())
             self.assertFalse((target / '.odoo-agents/tooling-venv').exists())
+
+    def test_lint_bridge_is_bounded_and_records_real_command_result(self):
+        lab = Lab.__new__(Lab)
+        lab.lock = threading.Lock(); lab.case = {'module': 'module'}
+        lab.folder = self.root; lab.project = self.root; lab.pack = self.root / 'pack'
+        lab.backend = self.root / 'backend'; lab.env = {}; lab.events = []
+        with patch.object(lab, 'sync'), patch('odoo_bench_native.execute', return_value=SimpleNamespace(stdout='ruff passed', returncode=0)) as execute:
+            with self.assertRaises(ValueError): lab.handle(['lint', 'another_module'])
+            execute.assert_not_called()
+            result = lab.handle(['lint', 'module'])
+        self.assertEqual(result['exit_code'], 0)
+        self.assertEqual(execute.call_args.args[0], ['bash', str(lab.pack / 'scripts/odoo-lint.sh'), str(lab.backend / 'addons/module')])
+        self.assertEqual(lab.events[0]['args'], ['lint', 'module'])
+        self.assertEqual((self.root / 'bridge-000.log').read_text(), 'ruff passed')
+
+    def test_failed_native_setup_is_preserved_as_incident(self):
+        with patch('odoo_bench_native._trial', side_effect=RuntimeError('build failed')):
+            folder = self.root / 'trial'
+            result = trial(folder, self.root, {'id': 'N00'}, 'codex', {}, 1)
+        self.assertEqual(result['status'], 'incident')
+        self.assertEqual(result['turns'], [])
+        self.assertEqual(json.loads((folder / 'state.json').read_text()), result)
 
     def test_native_cli_enables_tools_but_not_delegation(self):
         cmd = native_command('codex', {'model':'fixture', 'effort':'high'})
