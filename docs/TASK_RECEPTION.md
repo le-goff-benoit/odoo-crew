@@ -7,16 +7,12 @@ Il ne juge pas le sens des textes, ne prouve pas l’identité du relecteur et n
 remplace ni la couverture des critères ni la QA technique. Son périmètre est
 coopératif ; l’édition directe du flow n’est pas une frontière de sécurité.
 
-## Périmètre expérimental
+## Périmètre et reprise
 
-`prepare-reception` refuse explicitement les flows portant `plan_task`, issus de
-l’exécution d’un plan de release. Une modification concurrente de mémoire après
-le pass pourrait sinon bloquer définitivement leur publication et la suite du
-plan, sans transition de reprise appropriée dans le graphe actuel. Ces tâches
-peuvent recevoir la même **réception documentaire indépendante sans activer ce
-garde**. Aucun nœud, mécanisme d’annulation ni comportement de plan n’est modifié.
-Le garde reste limité aux tâches autonomes avec sources disponibles ; cette
-campagne ne qualifie pas son emploi dans les plans de release.
+Le garde est disponible pour les tâches directes et celles d'un plan dont le
+snapshot possède la porte `reception_recovery_gate`. Le plan conserve sa
+réservation pendant la reprise ; sa réception finale reste obligatoire. Les
+anciens snapshots exigent une migration explicite, décrite plus bas.
 
 ## Préparer avant la réception QA
 
@@ -49,10 +45,12 @@ de code est facultatif, mais doit être indiqué quand du code est contrôlé ; 
 exclut les documents et les sorties du dossier.
 
 La préparation se fait sous verrou du flow, actif et sans revendication d’un
-autre propriétaire, avant tout `pass` d’une des trois jointures QA de tâche.
+autre propriétaire, avant tout `pass` d’une des trois jointures QA de tâche,
+ou pendant la revendication de `reception_recovery_gate` par cet owner.
 Le dossier `odoo-task-reception-bundle/1` contient les chemins relatifs et hashes
 SHA-256 des groupes `source`, `spec`, `evidence`, les deux couples cible/draft avec
-le hash antérieur de la cible (`null` si absente), et l’empreinte du code. Le flow
+le hash antérieur de la cible (`null` si absente), une copie de chaque base
+existante dans un fichier neuf adjacent au bundle, et l’empreinte du code. Le flow
 épingle le chemin et le hash du dossier dans `task_reception`.
 
 Si un contrat QA est lié, le chemin et le hash de la spécification du dossier
@@ -121,7 +119,10 @@ Les citations sont des sous-chaînes exactes, non vides, des fichiers gelés.
 Chaque axe doit citer au moins un fichier de chacun des deux groupes confrontés :
 source/spec, spec/evidence, source/draft. Le relecteur doit couvrir **toutes les
 obligations et modifications pertinentes** : ce minimum mécanique de deux
-groupes ne démontre pas l’exhaustivité sémantique. Une explication non vide est
+groupes ne démontre pas l’exhaustivité sémantique. Lorsque les entrées mémoire
+contiennent `base`, `source_memory` doit aussi citer chacune de ces copies contenant du texte non blanc et
+vérifier la conservation des contributions antérieures. Les bundles historiques
+sans copie de base restent lisibles. Une explication non vide est
 requise ; son exactitude demeure une responsabilité de la relecture.
 
 Les trois clés d’axes sont obligatoires exactement. Les statuts sont `pass|fail`,
@@ -149,27 +150,73 @@ fragment. Un refus ne consomme ni claim, ni verrou, ni jeton. `retry` et `blocke
 restent accessibles avec un constat même si le dossier est périmé ; le nœud
 `journal_task_blocked` permet de consigner cet échec.
 
-Au nœud `journal_task`, l’orchestrateur, propriétaire du verrou mémoire, publie
-les **octets exacts** des deux drafts approuvés, puis termine avec `done`. La
-publication n’est pas automatisée par ce garde. Après la revendication de
-`journal_task`, vérifier les bases et la fraîcheur en lecture seule, puis garder
-le verrou mémoire pendant la copie :
+Au nœud `journal_task`, l'orchestrateur revendique le verrou mémoire puis publie
+les **octets exacts** des deux drafts approuvés :
 
 ```bash
-python3 ~/.odoo19-agents/scripts/odoo_reception.py check-bases /chemin/projet/changelog/RELEASE/reception/bundle-1.json
+python3 ~/.odoo19-agents/scripts/odoo_flow.py publish-memory FLOW.json --owner codex-orchestrateur
+python3 ~/.odoo19-agents/scripts/odoo_flow.py complete FLOW.json journal_task \
+  --owner codex-orchestrateur --outcome done --evidence changelog/RELEASE/publication.md
 ```
 
-Un code de sortie non nul interdit de poursuivre la copie. Ce contrôle relit les
-hashes antérieurs des cibles et les fichiers référencés par le bundle fourni ;
-le lien au hash épinglé par le flow reste vérifié à `complete`.
-Les hashes antérieurs doivent encore correspondre : une tâche concurrente peut avoir écrit entre la
-réception QA et la prise du verrou mémoire. Ne pas écraser ce travail ; préparer
-une nouvelle réception dans un nouveau flow si le premier a déjà passé sa QA.
-À `done`, le garde revalide le fragment, le dossier, ses sources et le code, puis
-exige l’identité des cibles publiées avec les drafts approuvés.
+Le publieur valide le bundle et le reçu épinglés, les sources, les preuves, le
+code et **les deux cibles avant toute écriture**. Chaque cible doit être encore
+à sa base ou déjà identique au draft accepté. Une autre valeur interdit la
+publication. Chaque remplacement de fichier est atomique ; l'ensemble des deux
+fichiers ne constitue pas une transaction atomique. Une interruption de processus
+après le premier remplacement se reprend en relançant la même commande : le
+fichier déjà publié n'est pas réécrit et le journal n'est pas ajouté deux fois.
+Le verrou coopératif ne protège pas contre un processus externe qui l'ignore.
+À `done`, le garde vérifie de nouveau l'identité des cibles et la fraîcheur.
 
-Le hash porte sur **tout** PROJECT/JOURNAL. Cela peut imposer une nouvelle
-réception après une modification concurrente sans rapport avec la tâche. Cette
-limite est conservatrice et explicite ; ce garde ne réalise pas une fusion de
-régions ni une comparaison métier. Les flows historiques sans `task_reception`,
-les parcours sans jointure QA et le graphe existant restent inchangés.
+Si le contexte précédent est arrêté, consigner ce constat puis utiliser les API
+`release --reason` et `claim` pour transférer sa revendication. Ne jamais modifier
+le registre ni les JSON d'état directement. `check-bases` reste un diagnostic en
+lecture seule exigeant les bases initiales ; ce n'est pas la commande de reprise
+d'une publication partielle.
+
+## Conflit après QA : nouvelle réception dans le même flow
+
+Une modification concurrente de PROJECT ou JOURNAL rend la proposition obsolète,
+y compris si elle concerne une autre tâche. Garder ces fichiers et consigner le
+refus du publieur dans une preuve isolée, puis :
+
+1. Compléter `journal_task` avec `--outcome retry` et cette preuve.
+2. Revendiquer `reception_recovery_gate` ; son verrou mémoire protège la préparation.
+3. Préparer de nouveaux drafts depuis la mémoire courante, en conservant le travail
+   déjà publié. Appeler `prepare-reception` avec une sortie neuve et les **mêmes**
+   sources, spécification, preuves et périmètres de code que la réception acceptée.
+4. Faire relire ce nouveau bundle dans un contexte indépendant. Le relecteur compare
+   aussi les bases figées aux drafts et cite les contributions à conserver.
+5. Compléter la porte avec `--outcome pass --evidence NOUVEAU_RECU`, puis revendiquer
+   le journal, exécuter `publish-memory` et terminer le journal.
+
+L'ancienne réception reste conservée ; seule une nouvelle réception acceptée
+remplace la réception active. Le cycle ne permet pas de blanchir une modification
+du code, des sources ou des preuves. Leur péremption exige un arrêt explicite et
+une nouvelle tentative avec la QA appropriée. Au plus deux retours de reprise
+sont autorisés. En cas d'impossibilité, compléter le journal ou la porte avec
+`blocked`, puis terminer `memory_task_blocked` avec le constat d'échec mémoire.
+Il s'agit d'un arrêt de publication, pas d'une déclaration de QA rouge. Le plan
+peut ensuite utiliser `reopen --reason` et conserver l'ancienne tentative.
+
+## Migration bornée des anciens snapshots
+
+Avant la première exécution du journal, sur un flow actif sans revendication :
+
+```bash
+python3 ~/.odoo19-agents/scripts/odoo_flow.py upgrade-recovery FLOW.json \
+  --owner codex-orchestrateur --from-graph /archive/odoo-workflow-original.json
+```
+
+`--from-graph` fournit les octets exacts du graphe historique lorsque son chemin
+d'origine a été remplacé. L'outil vérifie son hash et son snapshot, puis exige
+l'ajout exact du sous-graphe connu : les anciens nœuds et transitions restent
+identiques. L'historique et les jetons sont conservés, la migration est consignée.
+Tout autre changement, un flow terminal, une revendication active ou un journal
+déjà exécuté entraîne un refus. Cette commande n'assouplit pas la migration
+générique. Conserver l'archive historique ; ne pas reconstruire un état à la main.
+
+Les flows sans `task_reception` gardent leur publication habituelle. Le garde
+contrôle des hashes et citations ; la fidélité métier et la réalité de la
+délégation exigent toujours une relecture et une trace indépendante.

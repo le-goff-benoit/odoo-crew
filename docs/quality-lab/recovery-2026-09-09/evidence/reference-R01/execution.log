@@ -1,0 +1,278 @@
+$ cat HANDOFF.md
+# Passation du banc
+
+Frontière QA synthétique amorcée par le matérialiseur. Le reçu initial est une fixture, sans agent indépendant réel. Le contrôle du fichier texte est réel ; aucun test Odoo.
+
+Flow : `.odoo-agents/flows/recovery-a.json`.
+Owner interrompu : `codex-context-interrompu`.
+Pack fourni : `/tmp/odoo-recovery-20260909/reference`.
+
+Une autre tâche a ajouté sa décision et son journal depuis le pass. Ses sources sont dans demande-B.md.
+
+exit=0
+$ sed -n 210,330p /tmp/odoo-recovery-20260909/reference/roles/orchestration.md
+```
+
+La version du manifest **ne bouge pas à chaque tâche** : elle s'incrémente une
+fois par release, à la clôture — sauf si la release est constituée d'une seule tâche à
+livrer tout de suite, auquel cas le développeur l'incrémente maintenant.
+
+## Étape 3 — QA de tâche (`odoo-tester`, mode tâche)
+
+Rôle : `~/.odoo19-agents/roles/qa-review.md`, **mode tâche**. Le graphe sépare
+la relecture/lint et l'installation/tests ciblés dans deux fragments qui
+peuvent être produits en parallèle. Pour le niveau renforcé, une troisième
+voie valide la copie client. La jointure contrôle tous les fragments ;
+l'orchestrateur écrit ensuite le verdict unique dans `qa.md`.
+
+Pour une revue dont la section « Critères d'acceptation » utilise les cases
+`- [ ]`, active la réception structurée avant de consolider :
+`odoo_flow.py bind-criteria <flow> --source <revue> --output <coverage.json> --owner <orchestrateur>`.
+Le fichier produit conserve les critères originaux, initialement `missing`.
+Renseigne `covered`, `partial`, `missing` ou `failed` d'après les preuves ;
+`covered` exige toutes les conditions du critère. Chaque preuve porte `path`
+(dans le projet) et `sha256`. Génère le verdict de réception depuis cette couverture :
+`odoo_flow.py qa-report <flow> <jointure> --coverage <coverage.json> --outcome <pass|retry|blocked> --output <nouveau-rapport-qa.md> --owner <propriétaire-de-la-jointure>`.
+Présente le rapport généré et le JSON à `complete --evidence` avec la même issue.
+Si `qa.md` existe déjà, référence ce nouveau rapport depuis la section de tâche,
+sans réécrire son verdict. Le rendu conserve les critères et les références ;
+les notes libres ne deviennent pas des attestations de build ou d'environnement.
+Si les preuves ont changé, régénère la couverture et un nouveau rapport ;
+un constat libre du manque permet toujours `retry` ou `blocked` sans le rapport périmé.
+Le flow refuse `pass` si la couverture est absente, partielle ou modifiée ;
+`retry` et `blocked` restent accessibles. Ce garde ne juge pas le sens des
+preuves : un statut `covered` doit toujours être justifié par leur contenu.
+Les formats et limites sont dans `docs/QA_COVERAGE.md` du référentiel.
+
+**Réception de la demande et de la mémoire avant `pass`.** Prépare deux fichiers
+neufs contenant les versions complètes proposées de `PROJECT.md` et `JOURNAL.md`
+(contenu existant conservé, corrections nécessaires et entrée de quinze lignes
+au plus). Ne les publie pas encore. Lorsque les sous-agents sont disponibles
+et que la tâche est directe (sans `plan_task`), active le garde de réception
+avec `odoo_flow.py prepare-reception <flow>` :
+`--source` pour la demande originale et chaque décision applicable, `--spec`
+pour la revue, `--evidence` pour la couverture et les fragments/logs QA,
+`--scope` pour les répertoires de code concernés, puis
+`--memory .odoo-agents/PROJECT.md=<proposition-project>` et
+`--memory .odoo-agents/JOURNAL.md=<proposition-journal>`, `--output <nouveau-bundle>`
+et `--owner <orchestrateur>`. Les chemins sont relatifs au projet ; le format
+et un exemple complet sont dans `docs/TASK_RECEPTION.md` du référentiel.
+
+Délègue une **nouvelle conversation** à `odoo-tester`, mode réception
+documentaire, avec le bundle et un fichier de retour isolé. Ne réutilise pas
+un agent auteur de la revue, de la QA ou de la mémoire et ne lui fournis pas
+le verdict attendu. Ce relecteur confronte demande, contrat, preuves et mémoire
+proposée ; il ne modifie aucun de ces fichiers. Joins sa réception JSON aux
+preuves de `complete --outcome pass`, avec le rapport QA et la couverture.
+Le garde contrôle les empreintes et la publication, pas la justesse du jugement
+ni l'identité réelle du contexte : conserve aussi la trace de la délégation.
+
+Sur défaut de preuve, utilise les issues `retry`/`blocked` existantes. Sur
+défaut du texte proposé, corrige seulement ce texte puis prépare un nouveau
+bundle et une nouvelle réception ; conserve les tests toujours valides.
+Deux reprises au plus. Un contrat lié erroné exige une correction tracée et un
+nouveau flow/contrat, pas son affaiblissement pour obtenir le vert. Une erreur
+de transcription de l'agent n'exige pas une nouvelle permission ; une vraie
+ambiguïté métier suit l'arbitrage déjà prévu. Sans mécanisme de délégation,
+effectue cette relecture toi-même et annonce son caractère non indépendant ;
+n'active pas le garde qui exige une réception indépendante.
+
+Pour une tâche pilotée par `/odoo-start`, effectue la même réception documentaire
+en fragment Markdown, sans ce garde expérimental : un conflit mémoire après QA
+n'a pas encore de voie d'arrêt/reprise compatible avec le plan. La réception du
+plan existante reste applicable ; ne crée pas un flow extérieur pour contourner
+ses réservations.
+
+```bash
+export ODOO_ADDONS_DIR=<répertoire contenant le module>
+~/.odoo19-agents/scripts/odoo-test.sh <module> --quick --tags /<module>:<TestClasse>   # un seul chargement
+```
+
+Pour un point `[studio]`, la QA de tâche est : `odoo_pack.py diff` sans écart
+sur la copie, scénarios `studio/test_<point>.py` verts, écran vérifié
+(`odoo-shot.sh`) si une vue change — pas de `odoo-test.sh`.
+
+Le testeur décide en plus d'un **point de contrôle** (suite complète du module,
+base chaude) quand le diff croise un autre point de la release, touche un
+modèle partagé, ou tous les trois points — en arrière-plan sur Claude, lu à la
+tâche suivante. Les durées affichées (`⏱`) alimentent tes lignes d'état.
+
+Le QA écrit son verdict dans `$RELEASE/qa.md` (une section datée par tâche) et
+vérifie explicitement chaque critère d'acceptation de la spec. Il marque le
+point dans le suivi de la release :
+
+```bash
+~/.odoo19-agents/scripts/odoo-release.sh done "$RELEASE" <n°> "<verdict — test ciblé>"
+```
+
+**Interdit à ce stade : captures, guide, communication client, skill
+`camptocamp-docs`.** C'est la clôture (`/odoo-close`) qui les produit, une fois
+pour tout la release, sur l'état qui part réellement. Si un écran change, note-le
+dans « Ce que l'utilisateur verra » de la revue, c'est ce que la clôture lira.
+Seule exception : l'humain le demande explicitement.
+
+## Étape 4 — Capitaliser (deux minutes, ne se saute pas)
+
+Une chaîne qui ne laisse pas de trace oblige la suivante à tout redécouvrir.
+
+Si une réception est liée au flow, après `claim journal_task`, exécute
+`python3 ~/.odoo19-agents/scripts/odoo_reception.py check-bases <bundle>`
+sous ce verrou pour vérifier les cibles et les pièces, puis publie **exactement**
+les deux propositions approuvées. Ne les paraphrase pas à ce stade : le garde
+de `complete journal_task --outcome done` vérifie leur identité avec les
+propositions. Si une autre tâche a changé la mémoire depuis sa préparation,
+ne l'écrase pas ; consigne l'incident, libère la revendication et reprends dans
+un nouveau flow avec une nouvelle réception, puisque le premier a déjà passé
+sa QA. Ne déclare pas le premier terminé. Le
+contrôle porte sur les fichiers complets et peut donc invalider une proposition
+pour une modification concurrente pourtant indépendante. Les points ci-dessous
+décrivent le contenu préparé à l'étape 3 ; sans réception liée, écris-le ici.
+
+1. **Entrée de journal** dans `<projet>/.odoo-agents/JOURNAL.md` — **quinze
+   lignes au plus** : date, demande, fait, verdict, **Appris**, reste ouvert.
+   Le détail est dans la release ; le journal est la mémoire courte, pas l'archive.
+2. **Fiche projet** : si le métier ou un piège durable a été éclairci, complète
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-recovery-20260909/reference-R01/project/.odoo-agents/flows/recovery-a.json
+ODOO FLOW · recovery-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/reference-R01/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ module_task_gate → pass
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: done · Preuve: entrée JOURNAL.md
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/reference/scripts/odoo_flow.py ready /tmp/odoo-recovery-20260909/reference-R01/project/.odoo-agents/flows/recovery-a.json
+ODOO FLOW · recovery-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/reference-R01/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ module_task_gate → pass
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: done · Preuve: entrée JOURNAL.md
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/reference/scripts/odoo_flow.py --help
+usage: odoo_flow.py [-h] [--graph GRAPH]
+                    {validate,analyze,render,start,ready,status,complete,bind-criteria,prepare-reception,qa-report,claim,release,migrate}
+                    ...
+
+Valide et pilote le graphe de travail des agents Odoo. Le script ne réalise
+aucune opération Odoo. Il conserve seulement l'état du workflow, contrôle les
+transitions, expose les nœuds prêts et empêche les boucles de reprise non
+bornées. L'orchestrateur principal est l'unique écrivain du fichier d'état ;
+les agents spécialisés écrivent leurs preuves dans les chemins distincts qu'il
+leur donne. Exemples : odoo_flow.py validate odoo_flow.py analyze odoo_flow.py
+render --format mermaid odoo_flow.py start ~/projet --kind development --id
+ajout-reference odoo_flow.py ready ~/projet/.odoo-agents/flows/ajout-
+reference.json odoo_flow.py complete <état.json> briefing --outcome
+development --evidence /tmp/briefing.txt
+
+positional arguments:
+  {validate,analyze,render,start,ready,status,complete,bind-criteria,prepare-reception,qa-report,claim,release,migrate}
+    validate            valider la définition
+    analyze             mesurer la structure
+    render              rendre le graphe
+    start               ouvrir un état persistant
+    ready               afficher ready
+    status              afficher status
+    complete            terminer un nœud prêt
+    bind-criteria       lier un contrat QA et générer sa couverture manquante
+    prepare-reception   figer le dossier de réception et la mémoire proposée
+    qa-report           rendre un rapport QA lié à sa couverture et à son
+                        issue
+    claim               revendiquer un nœud et ses verrous
+    release             libérer un nœud sans le terminer
+    migrate             rattacher explicitement un run à une nouvelle version
+                        compatible du graphe
+
+options:
+  -h, --help            show this help message and exit
+  --graph GRAPH
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/reference/scripts/odoo_flow.py claim /tmp/odoo-recovery-20260909/reference-R01/project/.odoo-agents/flows/recovery-a.json journal_task --owner codex-reprise-reference
+▶ journal_task · ORCHESTRATEUR
+  Démarré par codex-reprise-reference
+  Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/reference/scripts/odoo_reception.py check-bases /tmp/odoo-recovery-20260909/reference-R01/project/changelog/recovery/initial/bundle.json
+mémoire modifiée depuis préparation : .odoo-agents/PROJECT.md
+
+exit=2
+$ python3 /tmp/odoo-recovery-20260909/reference/scripts/odoo_evidence.py verify /tmp/odoo-recovery-20260909/reference-R01/project/changelog/recovery/initial/documentary-proof.json
+Preuve valide et périmètre inchangé.
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/reference/scripts/odoo_flow.py prepare-reception /tmp/odoo-recovery-20260909/reference-R01/project/.odoo-agents/flows/recovery-a.json --source changelog/recovery/demande-A.md --source changelog/recovery/demande-B.md --spec changelog/recovery/spec.md --evidence changelog/recovery/initial/documentary-proof.json --memory .odoo-agents/PROJECT.md=changelog/recovery/initial/PROJECT-propose.md --memory .odoo-agents/JOURNAL.md=changelog/recovery/initial/JOURNAL-propose.md --scope documentary --output changelog/recovery/reception-retry.json --owner codex-reprise-reference
+ERREUR: préparation impossible après réception QA
+
+exit=2
+$ python3 /tmp/odoo-recovery-20260909/reference/scripts/odoo_flow.py complete /tmp/odoo-recovery-20260909/reference-R01/project/.odoo-agents/flows/recovery-a.json journal_task --outcome done --evidence /tmp/odoo-recovery-20260909/reference-R01/project/changelog/recovery/initial/documentary-proof.json --owner codex-reprise-reference
+ERREUR: réception de tâche refusée : publication différente du draft approuvé : .odoo-agents/PROJECT.md
+
+exit=2
+$ python3 /tmp/odoo-recovery-20260909/reference/scripts/odoo_flow.py release /tmp/odoo-recovery-20260909/reference-R01/project/.odoo-agents/flows/recovery-a.json journal_task --owner codex-reprise-reference --reason 'Mémoire concurrente détectée après pass ; aucune publication ni modification des pièces reçues. Reprise du même flow indisponible dans cette référence.'
+■ journal_task · verrou libéré par codex-reprise-reference
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-recovery-20260909/reference-R01/project/.odoo-agents/flows/recovery-a.json
+ODOO FLOW · recovery-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/reference-R01/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ module_task_gate → pass
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: done · Preuve: entrée JOURNAL.md
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+
+exit=0
+Écriture locale isolée : changelog/recovery/reprise-proposee/PROJECT-propose.md ; ajout A à la mémoire B reçue, sans publication.
+Écriture locale isolée : changelog/recovery/reprise-proposee/JOURNAL-propose.md ; ajout A à la mémoire B reçue, sans publication.
+Incident du relevé final : KeyError outcomes en lecture de journal_task ; les propositions isolées ont été écrites, aucun état modifié. Le schéma des issues doit être lu dans les arêtes du graphe.
+Contrôle final en lecture seule :
+{
+  "received_bundle_references_unchanged": {
+    "changelog/recovery/demande-A.md": true,
+    "changelog/recovery/spec.md": true,
+    "changelog/recovery/initial/documentary-proof.json": true,
+    "changelog/recovery/initial/PROJECT-propose.md": true,
+    "changelog/recovery/initial/JOURNAL-propose.md": true
+  },
+  "flow_status": "active",
+  "claims": {},
+  "registry_claims": []
+}
+Écriture finale : project/result.md ; verdict bloqué, sans publication.

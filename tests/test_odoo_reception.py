@@ -54,6 +54,8 @@ class ReceptionTests(unittest.TestCase):
         groups = {'request_contract': ['request.md', 'spec.md'],
                   'contract_evidence': ['spec.md', 'runtime.log'],
                   'source_memory': ['request.md', 'project-draft.md', 'journal-draft.md']}
+        bundle = json.loads((self.root / pinned['path']).read_text())
+        groups['source_memory'].extend(row['base']['path'] for row in bundle['memory'] if row.get('base'))
         for axis, names in groups.items():
             review['checks'][axis] = {'status': 'pass', 'explanation': 'Portée conservée dans les passages cités.',
                                      'citations': [{'path': p, 'quote': (self.root / p).read_text()} for p in names]}
@@ -223,22 +225,16 @@ class ReceptionTests(unittest.TestCase):
         with self.assertRaises(flow.FlowError): self.prepare(path, 'too-late.json')
         self.assertFalse((self.root / 'too-late.json').exists())
 
-    def test_planned_task_explicitly_excluded_without_mutation(self):
+    def test_planned_task_enabled_with_recovery_graph(self):
         path = self.ready()
         state = flow.load_json(path)
-        # Métadonnées produites par odoo_plan, fixture d'entrée uniquement.
         state['plan_task'] = {'release': str(self.root / 'changelog/release'), 'id': 'T01', 'risk': 'normal'}
         flow.write_state(path, state)
-        before = path.read_bytes()
-        registry = flow.registry_path(state)
-        before_registry = registry.read_bytes()
-        with self.assertRaisesRegex(flow.FlowError, 'tâches planifiées'):
-            self.prepare(path)
-        self.assertEqual(path.read_bytes(), before)
-        self.assertEqual(registry.read_bytes(), before_registry)
-        self.assertFalse((self.root / 'bundle.json').exists())
-        # La réception documentaire conventionnelle n'active aucun garde.
-        self.finish(path, 'module_task_gate', [self.root / 'runtime.log'])
+        review, _ = self.receipt(self.prepare(path))
+        self.finish(path, 'module_task_gate', [review])
+        flow.claim_node(path, self.graph, 'journal_task', self.owner)
+        flow.publish_memory(path, self.graph, self.owner)
+        self.finish(path, 'journal_task', [self.root / '.odoo-agents/JOURNAL.md'], 'done')
 
     def test_prepare_rejects_owner_aliases_missing_targets_and_overwrites(self):
         path = self.ready()

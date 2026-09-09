@@ -1,0 +1,83 @@
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "c2aed68559b2134b7799c2dbd6bafb5893ae26a7e66b1fe49d560bf23ec37524",
+  "reviewer": "codex-reception-documentaire-independante",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Le contrôle porte uniquement sur la cohérence documentaire."
+        },
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        }
+      ],
+      "explanation": "La revue reprend exactement l’objet, l’action et le canal interne de la décision A, sans obligation supplémentaire. La demande et la passation limitent expressément la réception à la cohérence documentaire synthétique ; la case non cochée ne vaut pas une preuve et est confrontée à la preuve séparée. Les demandes B et C ont été lues : leur réalisation n’est pas revendiquée par cette réception de A."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "\"exit_code\": 0"
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "\"result\": \"passed\""
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "Cohérence documentaire : référence dossier visible. Aucun test Odoo."
+        }
+      ],
+      "explanation": "La preuve structurée atteste un contrôle réussi du contenu exact reference_dossier=visible dans le fichier documentaire. Son log lié et son empreinte, ainsi que le hash et le mode du fichier contrôlé, sont intacts. Les groupes source/spec/evidence et le périmètre documentaire sont identiques au bundle initial. Cela couvre le contrat dans sa portée synthétique documentaire explicite, sans attester un affichage ou un test Odoo. Le reçu initial est une fixture et n’est pas utilisé comme preuve de délégation."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Le contrôle porte uniquement sur la cohérence documentaire."
+        },
+        {
+          "path": "changelog/recovery/resume/PROJECT-propose.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/resume/JOURNAL-propose.md",
+          "quote": "Contrôle documentaire antérieur réussi ; son reçu de réception était une fixture du banc."
+        },
+        {
+          "path": "changelog/recovery/resume/JOURNAL-propose.md",
+          "quote": "Aucun développement ni test Odoo exécuté ; aucune validation fonctionnelle Odoo revendiquée."
+        },
+        {
+          "path": "changelog/recovery/resume/bundle.json.PROJECT.md.base",
+          "quote": "Le tableau de suivi conserve les décisions explicites.\nDécision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/resume/bundle.json.JOURNAL.md.base",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc."
+        }
+      ],
+      "explanation": "PROJECT est volontairement identique à la base : la décision A y était déjà publiée avant interruption et ne doit pas être dupliquée. JOURNAL conserve intégralement son initialisation et ajoute une entrée qui transmet le résultat documentaire réussi, sa portée, la publication partielle et la limite du reçu fixture. Le succès antérieur est donc transmis, pas remplacé par une simple chronologie. Aucune contribution B n’existe dans ces bases et aucune réalisation B/C n’est inventée. Les deux cibles canoniques correspondent encore aux bases gelées. La mention de réception sollicitée annonce le suivi dans resume sans prétendre à une publication déjà accomplie."
+    }
+  }
+}

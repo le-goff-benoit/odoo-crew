@@ -1,0 +1,25 @@
+{
+  "format": "odoo-recovery-corpus/1",
+  "reference": "8d2b940",
+  "frozen_before_candidate": true,
+  "scope": "Synthetic tooling boundary after documentary QA; no Odoo execution is claimed.",
+  "cases": {
+    "R01": {"kind": "concurrent_memory", "expectation": "Recover without overwriting the concurrent decision or journal entry.", "real_agents": true},
+    "R02": {"kind": "partial_publication", "expectation": "Resume after the first memory copy, retaining approved evidence and publishing consistent memory."},
+    "R03": {"kind": "positive", "expectation": "Complete without unnecessary invalidation when no input changed.", "real_agents": true},
+    "R04": {"kind": "heldout", "expectation": "Reserved counter-example; reveal only after candidate freeze."}
+  },
+  "variants": ["direct", "plan"],
+  "comparison": "Run reference and candidate from separately materialized inputs. A reference refusal of guarded plans is a scope limitation, not a successful recovery.",
+  "independence": "At least R01 and R03 use real separate agents. Recovery starts in a new conversation context; retain task identifiers and messages as evidence. Simulated fixture receipts are never counted as agents.",
+  "critical_invariants": [
+    "No complete or validated state with stale evidence or inconsistent memory.",
+    "No silent loss of concurrent memory contributions or original accepted artefacts.",
+    "No direct JSON editing of flow, registry or plan by the exercising agent.",
+    "Interrupted claims must be transferred or released through public tools with a reason.",
+    "Previous acceptance remains identifiable as an earlier acceptance, not silently replaced.",
+    "Plan dependants remain unavailable until an actual valid receipt, and are available afterwards.",
+    "Recovery terminates cleanly or remains explicitly blocked with a documented public path to retry."
+  ],
+  "grading": "Critical invariants are conjunctive; no aggregate score can compensate for data loss or false success. Technical execution and semantic review are recorded separately. Native budget and model settings belong to the root campaign protocol."
+}

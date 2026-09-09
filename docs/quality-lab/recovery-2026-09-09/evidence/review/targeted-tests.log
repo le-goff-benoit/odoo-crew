@@ -1,0 +1,21 @@
+test_changed_sources_contract_proof_code_never_recovery (test_odoo_recovery.RecoveryTests) ... ok
+test_cli_publish_requires_accepted_claim_and_keeps_journal_active (test_odoo_recovery.RecoveryTests) ... ok
+test_conflict_three_gates_reception_preserves_other_task (test_odoo_recovery.RecoveryTests) ... ok
+test_legacy_guard_absent_cannot_take_new_exits (test_odoo_recovery.RecoveryTests) ... ok
+test_new_recovery_graph_cannot_weaken_extension (test_odoo_recovery.RecoveryTests) ... ok
+test_prevalidation_all_targets_and_bad_owner_never_write (test_odoo_recovery.RecoveryTests) ... ok
+test_previous_drafts_may_be_stale_but_bases_stay_pinned (test_odoo_recovery.RecoveryTests) ... ok
+test_publish_interruption_is_idempotent_without_state_edit (test_odoo_recovery.RecoveryTests) ... ok
+test_receipt_requires_all_preserved_bases (test_odoo_recovery.RecoveryTests) ... ok
+test_two_flow_memory_claims_and_owner_transfer (test_odoo_recovery.RecoveryTests) ... ok
+test_two_retries_then_real_block_allows_plan_reopen (test_odoo_recovery.RecoveryTests) ... ok
+test_upgrade_exact_addition_preserves_tokens_events_and_contract (test_odoo_recovery.RecoveryTests) ... ok
+test_upgrade_rejects_tampered_claimed_finished_and_other_delta (test_odoo_recovery.RecoveryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.429s
+
+OK
+Mémoire published : .odoo-agents/PROJECT.md
+Mémoire published : .odoo-agents/JOURNAL.md
+Publication vérifiée ; journal_task reste revendiqué et doit être complété.

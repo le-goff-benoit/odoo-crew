@@ -1,0 +1,27 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/odoo-recovery-20260909/candidate-R01-v2/project",
+  "scopes": [
+    "documentary"
+  ],
+  "sources": {
+    "documentary/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  },
+  "command": [
+    "python3",
+    "-c",
+    "from pathlib import Path; p=Path('documentary/reference.txt'); assert p.read_bytes() == b'reference_dossier=visible'+bytes([10]); print('Contrôle documentaire exécuté dans le contexte de reprise : référence dossier visible ; aucun test Odoo.'); print('Fichier documentaire vérifié :', p)"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 0.017,
+  "log": {
+    "path": "/tmp/odoo-recovery-20260909/candidate-R01-v2/project/changelog/recovery/reprise-finale/plan-proof-v2.log",
+    "sha256": "e44f063c4f238fec87b96d841bd994192ebe274bded4af261fbf7c3e4c7317ae"
+  }
+}

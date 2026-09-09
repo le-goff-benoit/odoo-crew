@@ -1,0 +1,7 @@
+Trace des opérations de cette réception (lecture seule sur le projet).
+1. exec_command : cat /tmp/odoo-recovery-20260909/candidate-v2/roles/qa-review.md /tmp/odoo-recovery-20260909/candidate-v2/docs/TASK_RECEPTION.md
+2. exec_command : cat /tmp/odoo-recovery-20260909/candidate-R02/project/changelog/recovery/resume/bundle.json
+3. exec_command / python3 : lecture JSON du bundle ; lecture numérotée de chaque fichier groups/source, groups/spec, groups/evidence, memory/base, memory/draft et code référencé.
+4. exec_command / python3 : calcul SHA-256 du bundle, groupes, bases, drafts, code ; comparaison des cibles avec drafts ; lecture et hash du log référencé par documentary-proof.json. Résultat : tous conformes ; deux cibles égales aux drafts.
+5. exec_command / python3 : création exclusive du dossier v2-counter-review ; écriture review.json, notes.md et présente trace. Chaque citation JSON contrôlée comme sous-chaîne exacte du fichier cité avant écriture.
+Aucun outil du home actif utilisé. Aucun briefing ni nouvelle QA Odoo ; pas de lecture du reçu ancien, de result.md, corpus, oracle, audit ou autres cas. Aucune écriture de projet, transition de flow ou consultation de flow.

@@ -1,0 +1,942 @@
++ cat HANDOFF.md changelog/recovery/demande-A.md changelog/recovery/demande-B.md changelog/recovery/demande-C.md changelog/recovery/spec.md changelog/recovery/reprise-A-preparation/PASSATION.md changelog/recovery/writer-B/resultat.md changelog/recovery/writer-B/fin.md
+# Passation du banc
+
+Frontière QA synthétique amorcée par le matérialiseur. Le reçu initial est une fixture, sans agent indépendant réel. Le contrôle du fichier texte est réel ; aucun test Odoo.
+
+Flow : `.odoo-agents/flows/plan-a-45ac8dd2.json`.
+Owner interrompu : `codex-context-interrompu`.
+Pack fourni : `/tmp/odoo-recovery-20260909/candidate`.
+
+Une autre tâche a ajouté sa décision et son journal depuis le pass. Ses sources sont dans demande-B.md.
+
+Le banc a différé l’écriture B pour la confier à un véritable agent avant la reprise.
+Décision A : afficher la référence dossier dans la fiche interne.
+Le contrôle porte uniquement sur la cohérence documentaire.
+Décision B : conserver la priorité manuelle dans le tableau de suivi.
+Tâche B : priorité manuelle conservée ; aucun tri automatique demandé.
+Recevoir la décision A avant de préparer la suite documentaire.
+# Revue synthétique
+## Critères d’acceptation
+- [ ] Décision A : afficher la référence dossier dans la fiche interne.
+# Passation A — préparation seulement
+
+Projet unique : `/tmp/odoo-recovery-20260909/candidate-R01-v2/project`.
+Pack figé : `/tmp/odoo-recovery-20260909/candidate` ; rôle `roles/orchestration.md` et contrat `docs/TASK_RECEPTION.md` lus.
+Auteur : `codex-r01-writer-a`.
+
+## Compréhension et contrôles
+
+- Demande originale A : « Décision A : afficher la référence dossier dans la fiche interne. » Le contrôle porte uniquement sur la cohérence documentaire.
+- La revue `changelog/recovery/spec.md` reprend ce critère sans étendre son périmètre.
+- `documentary/reference.txt` contient `reference_dossier=visible` ; le log initial indique « Cohérence documentaire : référence dossier visible. Aucun test Odoo. »
+- Le reçu initial `initial/review.json` déclare explicitement son caractère de fixture ; son mode « independent » ne démontre pas une relecture par un agent réel.
+- `odoo_reception.py check-bases .../initial/bundle.json` a répondu : bases mémoire inchangées et dossier frais. Ce diagnostic précède la fin de cette préparation et ne vaut pas verrou ni garantie future.
+- APIs publiques `odoo_flow.py status` et `ready` : pass initial de `module_task_gate`, aucun owner actif, prochaine étape `journal_task` avec sorties blocked/done/retry.
+- API `odoo_plan.py status` : A running ; C pending et dépend de A. Aucun achèvement ni lancement de C effectué.
+- Briefing : série 19.0 par défaut, aucun module ; il ne détecte pas de release ouverte alors que le README dit « Release synthétique ouverte ». La portée ici reste documentaire, dans le dossier recovery fourni.
+- Demande B lue : priorité manuelle conservée dans le tableau de suivi ; aucun tri automatique demandé.
+
+## Fichiers neufs
+
+- `PROJECT-propose.md` et `JOURNAL-propose.md` sont des propositions complètes, pas des fichiers publiés ni reçus.
+- `PROJECT-observe.md` et `JOURNAL-observe.md` figent la mémoire effectivement lue pour cette préparation. Les propositions en conservent intégralement les octets, puis ajoutent seulement A.
+- L’entrée A du journal comporte huit lignes, sous la limite de quinze.
+
+## Reprise par un nouveau contexte
+
+1. Relire HANDOFF, les sources originales, ce dossier, la mémoire canonique courante et les statuts publics flow/plan. Ne pas considérer les drafts préparatoires comme une base toujours actuelle.
+2. Conserver toute décision et toute entrée B publiée entre-temps. Si la mémoire a changé, rédiger de nouveaux drafts complets dans un autre dossier ; ne pas réécrire ces archives et ne pas restaurer les anciennes cibles.
+3. Ce contexte n’a revendiqué ni journal ni gate, n’a préparé aucun bundle et n’a complété aucun nœud. L’orchestrateur de reprise doit piloter les transitions avec les API publiques et les verrous appropriés.
+4. Si le publieur signale un conflit mémoire, isoler son constat, terminer journal_task en retry, revendiquer reception_recovery_gate, puis préparer une nouvelle réception avec les mêmes sources A, spec, preuve initiale et scope documentary, sous réserve de leur fraîcheur. Les nouveaux drafts doivent préserver B. Suivre le contrat du pack ; ne pas éditer les états/registre/plan JSON.
+5. Déléguer une réception à un contexte réellement indépendant de l’auteur des propositions et garder sa trace. Ne pas utiliser la fixture initiale comme preuve de cette indépendance.
+6. Si sources, spec, preuve ou périmètre ont changé, ne pas traiter cela comme un simple conflit mémoire : appliquer l’arrêt prévu par le contrat. Le conflit textuel seul ne justifie aucun test Odoo.
+7. Après réception, seulement alors poursuivre publication et réception du plan selon leurs contrats. Cette préparation ne constitue ni un accomplissement de A ni une clôture de release.
+
+## Limites et trace
+
+Aucun développement ni test Odoo exécuté. Aucun accès à un corpus/oracle, à un autre dossier de campagne ou au code candidat en chantier. Aucun fichier existant du projet modifié par cet écrivain ; seuls les fichiers de ce dossier neuf sont créés.
+Une première commande Python de préparation a échoué à l’analyse syntaxique avant toute exécution ; sa version corrigée a créé ces fichiers.
+Trace : `/tmp/odoo-recovery-20260909/candidate-R01-v2/writer-A.log`.
+
+## Capture de la base
+
+- Date UTC : 2026-09-09T16:06:47.015542+00:00.
+- Présence B dans les deux mémoires à la capture : True.
+- Base observée PROJECT : SHA-256 `30d40a9037ae3c074fcc06297ef39a48e4a84a0203306e10df6e7fd6f4e686c0`.
+- Base observée JOURNAL : SHA-256 `02d2c5a11e22359296897b524057b2a4f1332928a2aa683330608e52fcc7f558`.
+# Résultat B
+
+Décision B : conserver la priorité manuelle dans le tableau de suivi.
+Tâche B : priorité manuelle conservée ; aucun tri automatique demandé.
+
+Écriture sous revendication journal_task du flow writer-b-documentation, propriétaire Codex-B-orchestrateur, verrou project_memory en écriture.
+
+.odoo-agents/PROJECT.md: contenu antérieur conservé octet pour octet ; contribution B unique ; SHA256 f0a64083612d8335596c76a166392d62f87af4c0706542716d3c800405ccf3d9 → 30d40a9037ae3c074fcc06297ef39a48e4a84a0203306e10df6e7fd6f4e686c0
+.odoo-agents/JOURNAL.md: contenu antérieur conservé octet pour octet ; contribution B unique ; SHA256 7d1446fb6dbb77a0b3220391f10c6ba00187bbbc7c1c80f866b3d463b665be7d → 02d2c5a11e22359296897b524057b2a4f1332928a2aa683330608e52fcc7f558
+
+Essai de textes uniquement ; aucune QA Odoo exécutée ni prétendue.
+Le premier parcours writer-b (feedback) a été libéré avant toute écriture partagée : son verrou agent_repository était inadapté.
+# Fin de contribution B
+
+- writer-b : active, aucune revendication restante.
+- writer-b-documentation : complete, aucune revendication restante.
+
+Le parcours feedback initial reste prêt sans propriétaire après release motivé. Aucun résultat feedback accompli n’est prétendu. Le parcours documentaire est terminé.
+Preuve des écritures et conservation : resultat.md ; snapshots antérieurs : PROJECT.md.before, JOURNAL.md.before.
+Log : /tmp/odoo-recovery-20260909/candidate-R01-v2/writer-B.log.
+Aucune modification du flow A ou de ses preuves.
++ cat .odoo-agents/PROJECT.md .odoo-agents/JOURNAL.md changelog/recovery/reprise-A-preparation/PROJECT-propose.md changelog/recovery/reprise-A-preparation/JOURNAL-propose.md
+# Projet synthétique
+Le tableau de suivi conserve les décisions explicites.
+
+Décision B : conserver la priorité manuelle dans le tableau de suivi.
+# Journal synthétique
+Initialisation documentaire du banc.
+
+Tâche B : priorité manuelle conservée ; aucun tri automatique demandé.
+# Projet synthétique
+Le tableau de suivi conserve les décisions explicites.
+
+Décision B : conserver la priorité manuelle dans le tableau de suivi.
+
+## Décision A — référence dossier
+Décision A : afficher la référence dossier dans la fiche interne.
+Source : `changelog/recovery/demande-A.md` ; critère repris dans `changelog/recovery/spec.md`.
+Le contrôle porte uniquement sur la cohérence documentaire ; aucun comportement Odoo réel n’est attesté.
+# Journal synthétique
+Initialisation documentaire du banc.
+
+Tâche B : priorité manuelle conservée ; aucun tri automatique demandé.
+
+## 2026-09-09 — Préparation documentaire A
+- Demande : afficher la référence dossier dans la fiche interne.
+- Fait : demande A, revue et preuve textuelle confrontées ; proposition mémoire A préparée.
+- Constat : `documentary/reference.txt` indique `reference_dossier=visible` ; le log initial confirme cette cohérence documentaire.
+- Verdict : préparation documentaire seulement ; reçu initial synthétique, aucune réception indépendante réelle dans ce tour.
+- Appris : le périmètre A reste la fiche interne ; cette preuve ne démontre pas un affichage dans Odoo.
+- Reste ouvert : réception indépendante, publication et réception du plan ; conserver les contributions concurrentes de B.
+- Aucun développement ni test Odoo exécuté. Détail : `changelog/recovery/reprise-A-preparation/PASSATION.md`.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/plan-a-45ac8dd2.json
+ODOO FLOW · plan-a-45ac8dd2
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ module_task_gate → pass
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: blocked, done, retry · Preuve: entrée JOURNAL.md
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py ready .odoo-agents/flows/plan-a-45ac8dd2.json
+ODOO FLOW · plan-a-45ac8dd2
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ module_task_gate → pass
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: blocked, done, retry · Preuve: entrée JOURNAL.md
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py status changelog/recovery
+A · running · .odoo-agents/flows/plan-a-45ac8dd2.json · Tâche documentaire A
+C · pending · dépendances : A · Tâche documentaire C
++ cat /tmp/odoo-recovery-20260909/candidate/docs/RELEASE_PLAN.md
+# Préparer, exécuter, reprendre, clôturer
+
+`/odoo-new demande` conserve sa chaîne directe. Pour préparer plusieurs demandes :
+`/odoo-plan`, puis `/odoo-start`. Les commandes courtes `/new` et `/start` ne sont
+pas installées : le préfixe évite les collisions avec les outils hôtes.
+
+Définition minimale, stockée dans la release :
+
+```json
+{"schema":1,"tasks":[{"id":"T01","title":"Résultat métier",
+ "request":"changelog/RELEASE/demande.md","route":"module","risk":"normal",
+ "acceptance":["L’acteur obtient le résultat convenu à la borne incluse"],
+ "scopes":["module_custom"],"depends_on":[]}]}
+```
+
+Les périmètres peuvent désigner un futur module. Pour Studio, utiliser le dossier
+versionné du pack et de ses scénarios. Ne pas employer tout le projet comme
+périmètre : le plan et les journaux évoluent pendant la tâche.
+
+```bash
+python3 scripts/odoo_plan.py init PROJET/changelog/RELEASE --file definition.json
+python3 scripts/odoo_plan.py status PROJET/changelog/RELEASE
+python3 scripts/odoo_plan.py start PROJET/changelog/RELEASE --task T01
+# Piloter le flow rendu avec odoo_flow.py, appliquer les rôles et la QA.
+python3 scripts/odoo_plan.py finish PROJET/changelog/RELEASE --task T01 \
+  --proof changelog/RELEASE/preuves/T01.json \
+  --acceptance changelog/RELEASE/reception-T01.md \
+  --memory changelog/RELEASE/consolidation-T01.md
+```
+
+Les chemins des preuves sont relatifs au projet. `plan.json` est versionné ; les
+étapes du flow sont locales. Une réception durable valide survit à un checkout
+synchronisé si le code et les preuves sont présents et vérifiables. Les anciennes
+preuves contenant des chemins absolus d’un autre poste demandent une nouvelle
+vérification locale : le plan ne les transforme pas silencieusement en vert.
+
+`reopen --task T01 --reason "décision D-03 remplace D-02"` garde l’historique.
+`defer --task T01 --reason "décision de périmètre et sa source"` retire la tâche
+de la livraison, mais ne satisfait pas les dépendances d’une autre tâche.
+Ne pas différer un critère obligatoire pour faire passer la clôture.
+
+La disponibilité tient compte des dépendances et des périmètres des tâches actives.
+Les étapes du graphe conservent leurs propres verrous : certains travaux restent
+sérialisés. Le plan n’est pas un ordonnanceur distribué ni une allocation automatique
+de machines. Les ressources partagées entre projets se déclarent via
+`.odoo-agents/resources.json`.
+
+À la clôture, préparer les versions **avant** la recette :
+
+```bash
+python3 scripts/odoo_release_guard.py prepare PROJET/changelog/RELEASE --module module_custom
+```
+
+Le manifeste déjà différent de la base de release conserve sa version. La préparation
+est idempotente grâce à `versions.json`. Produire ensuite les preuves sur l’état final,
+`doc.md` métier, `consolidation.md`, les autres livrables et le sceau :
+
+```bash
+python3 scripts/odoo_release_guard.py seal PROJET/changelog/RELEASE \
+  --scope module_custom --proof changelog/RELEASE/preuves/recette.json
+python3 scripts/odoo-release.sh close PROJET/changelog/RELEASE
+```
+
+Le sceau refuse code, documents ou preuves modifiés après contrôle. La fermeture
+retire ensuite le marqueur d’ouverture ; le sceau conserve l’empreinte du README
+final fermé. DOCX/PDF et communication ne sont pas des prérequis : ils sont générés
+sur demande pour la release identifiée, sans refaire le développement ni déployer.
+
+`controls.json` liste les contrôles attendus et leurs preuves, par exemple :
+
+```json
+{"schema":1,"risk":"high","route":"module","controls":[
+ {"id":"installation","status":"passed","proof":"changelog/RELEASE/preuves/recette.json"},
+ {"id":"update","status":"passed","proof":"changelog/RELEASE/preuves/recette.json"},
+ {"id":"tests","status":"passed","proof":"changelog/RELEASE/preuves/recette.json"},
+ {"id":"client_copy","status":"passed","proof":"changelog/RELEASE/preuves/copie.json"},
+ {"id":"browser","status":"not_applicable","reason":"Aucun écran/parcours modifié"},
+ {"id":"uninstall","status":"passed","proof":"changelog/RELEASE/preuves/recette.json"}]}
+```
+
+Les états rouge, absent, incomplet ou une dispense de copie en risque élevé
+bloquent le sceau. En voie module, le contrôle `tests` doit pointer vers une preuve
+Odoo avec module et nombre de tests positif. En voie Studio, les contrôles
+installation/update/uninstall peuvent être non applicables avec justification ;
+les scénarios RPC et la copie restent obligatoires. Un `passed` exige une preuve
+vérifiée. La relecture du log et de ses critères est nécessaire : une commande
+réussie ne prouve pas à elle seule toutes les affirmations du déclarant.
+
+
+## Nouvelle demande dans une release préparée
+
+Conserver le plan et ses réceptions ; ajouter les nouvelles tâches avec un fichier
+`{"schema": 1, "tasks": [...]}` de même format que la définition initiale :
+
+```bash
+python3 ~/.odoo19-agents/scripts/odoo_plan.py add changelog/<release> --file nouvelles-demandes.json
+```
+
+Les identifiants existants ne sont pas remplaçables. Les dépendances peuvent viser
+les tâches existantes ou les nouvelles ; cycles, références inconnues et état
+validé importé sont refusés. Une modification du contrat d'une tâche existante
+exige une réconciliation explicite et une nouvelle réception. Un module futur ou
+encore vide peut démarrer ; sa preuve de réception doit couvrir des fichiers réels.
+
+## Continuer un run commencé avec l'ancien graphe
+
+Un changement de graphe ne doit pas changer silencieusement le sens d'un run.
+Finir les travaux des propriétaires actifs avant de libérer leurs revendications.
+Pour poursuivre avec le graphe historique conservé dans l'état :
+
+```bash
+FLOW=/chemin/projet/.odoo-agents/flows/run.json
+SNAPSHOT=/chemin/projet/.odoo-agents/flows/graphe-historique.json
+FLOW_TOOL=~/.odoo19-agents/scripts/odoo_flow.py
+python3 - "$FLOW" "$SNAPSHOT" <<'PY'
+import json, pathlib, sys
+state = json.loads(pathlib.Path(sys.argv[1]).read_text())
+snapshot = state.get('graph_snapshot')
+if not snapshot:
+    raise SystemExit('Snapshot absent : retrouver le fichier du graphe original.')
+with pathlib.Path(sys.argv[2]).open('x') as stream:
+    json.dump(snapshot, stream, ensure_ascii=False, indent=2)
+    stream.write('\n')
+PY
+# Pour chaque revendication encore présente, avec son propriétaire réel :
+python3 "$FLOW_TOOL" --graph "$SNAPSHOT" release "$FLOW" <noeud> \
+  --owner <proprietaire> --reason 'Continuation avec le graphe historique'
+python3 "$FLOW_TOOL" --graph "$SNAPSHOT" migrate "$FLOW"
+python3 "$FLOW_TOOL" --graph "$SNAPSHOT" status "$FLOW"
+```
+
+Conserver `--graph "$SNAPSHOT"` pour la suite des commandes du run. La migration
+réconcilie l'empreinte des octets réexportés avec le même graphe sémantique ; ne
+jamais éditer le hash à la main. Une migration vers le nouveau graphe dont les
+étapes ont changé peut être refusée : ce refus protège les preuves existantes.
+Les commandes de release courantes peuvent imposer de nouveaux contrôles à la
+clôture ; reprendre leurs preuves explicitement, sans convertir un ancien vert.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_briefing.py .
+
+— briefing : 3 Ko. Détail : `/tmp/odoo-recovery-20260909/candidate-R01-v2/project/.odoo-agents/`, `/tmp/odoo-recovery-20260909/candidate/LESSONS.md`, `/tmp/odoo-recovery-20260909/candidate/SERIES_MATRIX.md`.
+# Briefing — project
+
+- **Série** : **19.0** (origine : défaut) · sources `/home/blegoff/odoo-sources/19.0` + `19.0-enterprise`
+- **Racine** : `/tmp/odoo-recovery-20260909/candidate-R01-v2/project`
+- **Release** : aucune release ouverte — s'ouvre après le verdict de l'analyste ou du support (`odoo-release.sh open <projet> "<titre>"`)
+- **Instances déclarées** : Aucun environnement déclaré pour project. → odoo_instance.py add /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+- **Bases sur le stack 19.0** : stucki_test, neca_products_qa, rubix_20260904_project_planning, odoo_qa_19_0, neca_l1_pristine, odoo_qa_19_0_tpl_vertical_construction_software_excel, odoo_qa_19_0_tpl_vertical_construction, odoo_qa_19_0_tpl_odoo_rubixcomm_customisation, odoo_qa_19_0_tpl_vertical_construction_project_manage, odoo_qa_19_0_tpl_vertical_construction_payment_schedu, odoo_qa_19_0_56dfa754_tpl_odoo_rubixcomm_customisa, rubix_qa_blprep4, rubix_20260909_test, rubix_20260906_release_20260907, odoo_qa_19_0_56dfa754_odoo_rubixcomm_customisation, rubix_qa_blprep4_tpl, odoo_qa_19_0_35d33b66_tpl_odoo_rubixcomm_customisa, odoo_qa_19_0_35d33b66_odoo_rubixcomm_customisation, odoo_qa4_nonreg, odoo_qa_19_0_odoo_rubixcomm_customisation, odoo_qa4_prev, neca_20260908_ticket, neca_20260906_test, odoo_qa4_prev_r2
+
+## Formes attendues en 19.0
+
+**Différences avec le guide 19.0** : `ir.model.access.csv` + `ir.rule`
+Formes en vigueur : `invisible="expr"` (plus d'`attrs`/`states`) · `_compute_display_name` (plus de `name_get`) · `<list>` (plus de `<tree>`) · `<chatter/>` · `self.env._()` disponible · `@api.readonly` disponible · `models.Constraint` (plus de `_sql_constraints`) · objet `Domain` · `res.groups.privilege` (plus de `category_id`) · `res.users.group_ids` (et non `groups_id`) · `self.env.cr` obligatoire (plus de `self._cr`) · `hr.version` (plus de `hr.contract`)
+
+## Modules (relevé)
+
+*(relevé vide — relancer le scan)*
+
+## Ce que le projet sait déjà (PROJECT.md, écrit à la main)
+
+# Projet synthétique
+Le tableau de suivi conserve les décisions explicites.
+
+Décision B : conserver la priorité manuelle dans le tableau de suivi.
+
+## Journal — 0 entrée(s), les 0 dernières
+
+
+## Leçons du dispositif applicables en 19.0 (LESSONS.md)
+
+- **L1 — La série d'un module n'est jamais supposée, elle est lue** [universelle] — avant de lire ou d'écrire une ligne, établir la série cible du module et n'appliquer que les règles de cette série.
+- **L2 — « Odoo 19 » ne désigne pas une seule version** [hébergement Odoo Online / SaaS — voir `PLATEFORMES.md`] — pour un projet Odoo Online / SaaS, viser la dernière `saas~19.x`, pas la 19.0 ; vérifier la forme de la sécurité dans les sources de **la** série visée.
+- **L3 — Un contrôle qui se trompe de série est pire que pas de contrôle** [universelle] — tout motif ajouté à `odoo_lint.py` porte sa portée (`since` / `before`) et est vérifié par comptage dans les sources des deux séries concernées avant d'être considéré comme vrai.
+- **L4 — Une option qui n'existe pas est ignorée sans erreur** [universelle] — vérifier toute option Odoo dans les sources de la série avant de la lancer, et ne jamais détruire avant d'avoir prouvé que la réparation marche.
+- **L5 — Reproduire dans l'outil du système cible, jamais dans le sien** [universelle] — reproduire avec l'outil du système cible ; quand un test contredit une preuve prise sur ce système, suspecter le test avant de se rétracter.
+- **L6 — Un relevé qui avale les sources vendorisées fabrique de la dette imaginaire** [universelle] — un relevé ne recense que le code dont le projet est responsable ; toute copie de sources Odoo en est écartée, et le nombre d'écartés est annoncé pour que l'omission reste visible.
++ cat changelog/recovery/initial/bundle.json changelog/recovery/initial/documentary-proof.json changelog/recovery/initial/documentary-proof.log changelog/recovery/initial/review.json changelog/recovery/plan.json
+{
+  "format": "odoo-task-reception-bundle/1",
+  "project": "/tmp/odoo-recovery-20260909/candidate-R01-v2/project",
+  "owner": "codex-context-interrompu",
+  "groups": {
+    "source": [
+      {
+        "path": "changelog/recovery/demande-A.md",
+        "sha256": "427d4b048996ed2340033209a419a0bd57dd0099e57ee821612ff48d365a841a"
+      }
+    ],
+    "spec": [
+      {
+        "path": "changelog/recovery/spec.md",
+        "sha256": "eac5a65e924df65d9bd4ced8a32373ed69e2bf22a7d8e1389d905783898a2d03"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "changelog/recovery/initial/documentary-proof.json",
+        "sha256": "de92986fe25efafae91ed61124f7f30bd5281d4455fb7c6994126868320935f1"
+      }
+    ]
+  },
+  "memory": [
+    {
+      "target": ".odoo-agents/PROJECT.md",
+      "before_sha256": "f0a64083612d8335596c76a166392d62f87af4c0706542716d3c800405ccf3d9",
+      "draft": {
+        "path": "changelog/recovery/initial/PROJECT-propose.md",
+        "sha256": "1f39dd98766c2629869461fbed9f33814ede249a7fdcd9479384755c1dd3aabf"
+      },
+      "base": {
+        "path": "changelog/recovery/initial/bundle.json.PROJECT.md.base",
+        "sha256": "f0a64083612d8335596c76a166392d62f87af4c0706542716d3c800405ccf3d9"
+      }
+    },
+    {
+      "target": ".odoo-agents/JOURNAL.md",
+      "before_sha256": "7d1446fb6dbb77a0b3220391f10c6ba00187bbbc7c1c80f866b3d463b665be7d",
+      "draft": {
+        "path": "changelog/recovery/initial/JOURNAL-propose.md",
+        "sha256": "28e87c6ecf9fe2a8acbf5a6a8bafe436ebdcf31686f4a0a520152a161d156148"
+      },
+      "base": {
+        "path": "changelog/recovery/initial/bundle.json.JOURNAL.md.base",
+        "sha256": "7d1446fb6dbb77a0b3220391f10c6ba00187bbbc7c1c80f866b3d463b665be7d"
+      }
+    }
+  ],
+  "scopes": [
+    "documentary"
+  ],
+  "code": {
+    "documentary/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  }
+}
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/odoo-recovery-20260909/candidate-R01-v2/project",
+  "scopes": [
+    "documentary"
+  ],
+  "sources": {
+    "documentary/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  },
+  "command": [
+    "/usr/bin/python3",
+    "-c",
+    "from pathlib import Path; assert Path('documentary/reference.txt').read_text() == 'reference_dossier=visible\\n'; print('Cohérence documentaire : référence dossier visible. Aucun test Odoo.')"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 0.016,
+  "log": {
+    "path": "/tmp/odoo-recovery-20260909/candidate-R01-v2/project/changelog/recovery/initial/documentary-proof.log",
+    "sha256": "7de39f9ce5bf1eed1a1d175acdebd23ab08280be78d02c9dcd84d4bd19245641"
+  }
+}
+Cohérence documentaire : référence dossier visible. Aucun test Odoo.
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "5e78dc2e756d5ac6bb05c71ca6f999ab98724d1235100f5eee38aa878744a320",
+  "reviewer": "fixture-reviewer-not-a-real-agent",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "explanation": "Fixture documentaire synthétique ; aucune relecture agent prétendue.",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne.\nLe contrôle porte uniquement sur la cohérence documentaire.\n"
+        },
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "# Revue synthétique\n## Critères d’acceptation\n- [ ] Décision A : afficher la référence dossier dans la fiche interne.\n"
+        }
+      ]
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "explanation": "Fixture documentaire synthétique ; aucune relecture agent prétendue.",
+      "citations": [
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "# Revue synthétique\n## Critères d’acceptation\n- [ ] Décision A : afficher la référence dossier dans la fiche interne.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "{\n  \"format\": \"odoo-evidence/1\",\n  \"project\": \"/tmp/odoo-recovery-20260909/candidate-R01-v2/project\",\n  \"scopes\": [\n    \"documentary\"\n  ],\n  \"sources\": {\n    \"documentary/reference.txt\": {\n      \"sha256\": \"8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96\",\n      \"mode\": 436\n    }\n  },\n  \"command\": [\n    \"/usr/bin/python3\",\n    \"-c\",\n    \"from pathlib import Path; assert Path('documentary/reference.txt').read_text() == 'reference_dossier=visible\\\\n'; print('Cohérence documentaire : référence dossier visible. Aucun test Odoo.')\"\n  ],\n  \"exit_code\": 0,\n  \"result\": \"passed\",\n  \"module\": null,\n  \"error\": null,\n  \"seconds\": 0.016,\n  \"log\": {\n    \"path\": \"/tmp/odoo-recovery-20260909/candidate-R01-v2/project/changelog/recovery/initial/documentary-proof.log\",\n    \"sha256\": \"7de39f9ce5bf1eed1a1d175acdebd23ab08280be78d02c9dcd84d4bd19245641\"\n  }\n}\n"
+        }
+      ]
+    },
+    "source_memory": {
+      "status": "pass",
+      "explanation": "Fixture documentaire synthétique ; aucune relecture agent prétendue.",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne.\nLe contrôle porte uniquement sur la cohérence documentaire.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/PROJECT-propose.md",
+          "quote": "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\nDécision A : afficher la référence dossier dans la fiche interne.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/JOURNAL-propose.md",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc.\nTâche A : cohérence documentaire de la référence dossier vérifiée.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/bundle.json.PROJECT.md.base",
+          "quote": "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/bundle.json.JOURNAL.md.base",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc.\n"
+        }
+      ]
+    }
+  }
+}
+{
+  "history": [
+    {
+      "action": "prepared",
+      "at": "2026-09-09T16:02:59+00:00"
+    },
+    {
+      "action": "start",
+      "at": "2026-09-09T16:02:59+00:00",
+      "reason": null,
+      "task_id": "A"
+    }
+  ],
+  "schema": 1,
+  "tasks": [
+    {
+      "acceptance": [
+        "Décision A : afficher la référence dossier dans la fiche interne."
+      ],
+      "attempts": [
+        {
+          "at": "2026-09-09T16:02:59+00:00",
+          "flow": ".odoo-agents/flows/plan-a-45ac8dd2.json",
+          "sources_before": {
+            "documentary/reference.txt": {
+              "mode": 436,
+              "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96"
+            }
+          }
+        }
+      ],
+      "depends_on": [],
+      "id": "A",
+      "request": "changelog/recovery/demande-A.md",
+      "risk": "normal",
+      "route": "module",
+      "scopes": [
+        "documentary"
+      ],
+      "title": "Tâche documentaire A"
+    },
+    {
+      "acceptance": [
+        "A réceptionnée"
+      ],
+      "depends_on": [
+        "A"
+      ],
+      "id": "C",
+      "request": "changelog/recovery/demande-C.md",
+      "risk": "normal",
+      "route": "module",
+      "scopes": [
+        "future-documentary"
+      ],
+      "title": "Tâche documentaire C"
+    }
+  ],
+  "updated_at": "2026-09-09T16:02:59+00:00"
+}
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim .odoo-agents/flows/plan-a-45ac8dd2.json journal_task --owner codex-r01-reprise-orchestrateur
+▶ journal_task · ORCHESTRATEUR
+  Démarré par codex-r01-reprise-orchestrateur
+  Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
++ mkdir -p changelog/recovery/reprise-finale
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py publish-memory .odoo-agents/flows/plan-a-45ac8dd2.json --owner codex-r01-reprise-orchestrateur
++ tee changelog/recovery/reprise-finale/publication-refusee.log
+ERREUR: publication mémoire refusée : mémoire modifiée depuis préparation : .odoo-agents/PROJECT.md
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_evidence.py --help
+usage: odoo_evidence.py [-h] {run,verify} ...
+
+Exécuter un contrôle et lier son résultat au contenu réellement contrôlé.
+
+positional arguments:
+  {run,verify}
+
+options:
+  -h, --help    show this help message and exit
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete .odoo-agents/flows/plan-a-45ac8dd2.json journal_task --owner codex-r01-reprise-orchestrateur --outcome retry --evidence changelog/recovery/reprise-finale/publication-refusee.log
+ODOO FLOW · plan-a-45ac8dd2
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → retry
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ reception_recovery_gate
+    ORCHESTRATEUR
+    Recevoir à nouveau les propositions mémoire depuis les bases actuelles, à contrat et preuves inchangés.
+    Sorties: blocked, pass · Preuve: réception indépendante renouvelée ou motif de blocage mémoire
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/plan-a-45ac8dd2.json
+ODOO FLOW · plan-a-45ac8dd2
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → retry
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ reception_recovery_gate
+    ORCHESTRATEUR
+    Recevoir à nouveau les propositions mémoire depuis les bases actuelles, à contrat et preuves inchangés.
+    Sorties: blocked, pass · Preuve: réception indépendante renouvelée ou motif de blocage mémoire
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → retry
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim .odoo-agents/flows/plan-a-45ac8dd2.json reception_recovery_gate --owner codex-r01-reprise-orchestrateur
+▶ reception_recovery_gate · ORCHESTRATEUR
+  Démarré par codex-r01-reprise-orchestrateur
+  Recevoir à nouveau les propositions mémoire depuis les bases actuelles, à contrat et preuves inchangés.
++ python3 -
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py prepare-reception .odoo-agents/flows/plan-a-45ac8dd2.json --source changelog/recovery/demande-A.md --spec changelog/recovery/spec.md --evidence changelog/recovery/initial/documentary-proof.json --scope documentary --memory .odoo-agents/PROJECT.md=changelog/recovery/reprise-finale/PROJECT-propose.md --memory .odoo-agents/JOURNAL.md=changelog/recovery/reprise-finale/JOURNAL-propose.md --output changelog/recovery/reprise-finale/bundle.json --owner codex-r01-reprise-orchestrateur
+Dossier de réception : changelog/recovery/reprise-finale/bundle.json · 556c0821514a
+Réception indépendante positive requise avant pass ; publier ensuite les drafts exacts.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_evidence.py run --help
+usage: odoo_evidence.py run [-h] --project PROJECT --scope SCOPE --output
+                            OUTPUT [--module MODULE] [--timeout TIMEOUT]
+                            ...
+
+positional arguments:
+  command
+
+options:
+  -h, --help         show this help message and exit
+  --project PROJECT
+  --scope SCOPE
+  --output OUTPUT
+  --module MODULE
+  --timeout TIMEOUT
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py finish --help
+usage: odoo_plan.py [-h] [--file FILE] [--task TASK] [--proof PROOF]
+                    [--acceptance ACCEPTANCE] [--memory MEMORY]
+                    [--reason REASON]
+                    {init,add,status,changed,start,finish,reopen,defer}
+                    release
+
+Plan de release versionné ; le graphe reste l'autorité des étapes d'exécution.
+
+positional arguments:
+  {init,add,status,changed,start,finish,reopen,defer}
+  release
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE
+  --task TASK
+  --proof PROOF
+  --acceptance ACCEPTANCE
+  --memory MEMORY
+  --reason REASON
++ python3 -
+'reference_dossier=visible\n'
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_evidence.py verify changelog/recovery/initial/documentary-proof.json
+Preuve valide et périmètre inchangé.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_evidence.py run --project . --scope documentary --output changelog/recovery/reprise-finale/plan-proof.json -- python3 -c 'from pathlib import Path; p=Path('\''documentary/reference.txt'\''); assert p.read_bytes() == b'\''reference_dossier=visible'\''+bytes([92,110]); print('\''Contrôle documentaire exécuté dans le contexte de reprise : référence dossier visible ; aucun test Odoo.'\''); print('\''Fichier documentaire vérifié :'\'', p)'
+failed
++ python3 -
++ cat changelog/recovery/reprise-finale/plan-proof.json changelog/recovery/reprise-finale/plan-proof.log
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/odoo-recovery-20260909/candidate-R01-v2/project",
+  "scopes": [
+    "documentary"
+  ],
+  "sources": {
+    "documentary/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  },
+  "command": [
+    "python3",
+    "-c",
+    "from pathlib import Path; p=Path('documentary/reference.txt'); assert p.read_bytes() == b'reference_dossier=visible'+bytes([92,110]); print('Contrôle documentaire exécuté dans le contexte de reprise : référence dossier visible ; aucun test Odoo.'); print('Fichier documentaire vérifié :', p)"
+  ],
+  "exit_code": 1,
+  "result": "failed",
+  "module": null,
+  "error": null,
+  "seconds": 0.065,
+  "log": {
+    "path": "/tmp/odoo-recovery-20260909/candidate-R01-v2/project/changelog/recovery/reprise-finale/plan-proof.log",
+    "sha256": "09a596a85bd2c6b81ed1c4f1519e29c8f5cdb5b6a1f7e3b5bde6b48fad697970"
+  }
+}
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+AssertionError
++ rg -n 'REMAINDER|args.command|command\[|subprocess|cwd=' /tmp/odoo-recovery-20260909/candidate/scripts/odoo_evidence.py
+9:import subprocess
+66:            process = subprocess.Popen(argv, cwd=root, stdout=stream, stderr=subprocess.STDOUT, start_new_session=True)
+69:            except subprocess.TimeoutExpired:
+73:        except (subprocess.TimeoutExpired, OSError) as exc:
+100:    run.add_argument('command', nargs=argparse.REMAINDER)
+109:            argv = args.command[1:] if args.command[:1] == ['--'] else args.command
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_evidence.py run --project . --scope documentary --output changelog/recovery/reprise-finale/plan-proof-v2.json -- python3 -c 'from pathlib import Path; p=Path('\''documentary/reference.txt'\''); assert p.read_bytes() == b'\''reference_dossier=visible'\''+bytes([10]); print('\''Contrôle documentaire exécuté dans le contexte de reprise : référence dossier visible ; aucun test Odoo.'\''); print('\''Fichier documentaire vérifié :'\'', p)'
+passed
++ python3 -
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py status changelog/recovery
+A · running · .odoo-agents/flows/plan-a-45ac8dd2.json · Tâche documentaire A
+C · pending · dépendances : A · Tâche documentaire C
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_evidence.py verify changelog/recovery/reprise-finale/plan-proof-v2.json
+Preuve valide et périmètre inchangé.
++ python3 -
+.odoo-agents/PROJECT.md base intégralement conservée ; proposition gelée d3e1b39feae2f1159dfef145d83fd57cc269c852bee9ec9923781c8ca460618b
+.odoo-agents/JOURNAL.md base intégralement conservée ; proposition gelée 1f989ca46a19078abc8e9bedf8c4b8e9c410deda6db2b5b5ef5c7c6d76f4efa7
++ cat changelog/recovery/reprise-finale/review.json changelog/recovery/reprise-finale/review-notes.md
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "556c0821514a7aebf94ea5f2c51019afb97d4744e7bc8c2ebb028c9f56744c6a",
+  "reviewer": "codex-r01-review-reception-independent",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne.\nLe contrôle porte uniquement sur la cohérence documentaire."
+        },
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "- [ ] Décision A : afficher la référence dossier dans la fiche interne."
+        }
+      ],
+      "explanation": "Le critère reprend exactement l’unique décision A : référence dossier et fiche interne, sans ajout de canal, acteur ou comportement. La limitation documentaire explicite de la demande gouverne cette revue synthétique ; elle interdit d’interpréter le critère comme une démonstration d’affichage dans Odoo. B reste une contribution antérieure à conserver, contrôlée séparément sur ses sources et les deux bases."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "- [ ] Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "\"scopes\": [\n    \"documentary\"\n  ]"
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "from pathlib import Path; assert Path('documentary/reference.txt').read_text() == 'reference_dossier=visible\\\\n'; print('Cohérence documentaire : référence dossier visible. Aucun test Odoo.')"
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "\"exit_code\": 0,\n  \"result\": \"passed\""
+        }
+      ],
+      "explanation": "Dans le seul périmètre documentaire demandé, la commande enregistrée confronte exactement reference_dossier=visible suivi d’un saut de ligne au contenu de documentary/reference.txt ; son code retour est 0 et son log annonce explicitement aucun test Odoo. J’ai lu le fichier et le log, vérifié leurs empreintes et celle de la preuve. Groupes source/spec/evidence, périmètre et empreinte du fichier sont identiques au bundle initial. Aucun nouveau test exécuté. Le reçu initial est une fixture selon HANDOFF et sa propre explication ; son mode déclaré independent ne constitue aucune preuve d’indépendance et ne fonde pas ce verdict."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne.\nLe contrôle porte uniquement sur la cohérence documentaire."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/bundle.json.PROJECT.md.base",
+          "quote": "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\n\nDécision B : conserver la priorité manuelle dans le tableau de suivi.\n"
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/bundle.json.JOURNAL.md.base",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc.\n\nTâche B : priorité manuelle conservée ; aucun tri automatique demandé.\n"
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/PROJECT-propose.md",
+          "quote": "Décision B : conserver la priorité manuelle dans le tableau de suivi."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/PROJECT-propose.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/PROJECT-propose.md",
+          "quote": "Le contrôle porte uniquement sur la cohérence documentaire ; aucun comportement Odoo réel n’est attesté."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/JOURNAL-propose.md",
+          "quote": "Tâche B : priorité manuelle conservée ; aucun tri automatique demandé."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/JOURNAL-propose.md",
+          "quote": "- Constat : le fichier documentaire porte `reference_dossier=visible` ; aucun affichage Odoo réel attesté."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/JOURNAL-propose.md",
+          "quote": "- Reprise : ancien reçu synthétique ; publication refusée car la mémoire a reçu B entre-temps."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/JOURNAL-propose.md",
+          "quote": "- Limite : aucun développement ni test Odoo exécuté."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/JOURNAL-propose.md",
+          "quote": "- Réception indépendante, publication et réception du plan : résultats détaillés dans `changelog/recovery/reprise-finale/result.md`."
+        }
+      ],
+      "explanation": "Chaque draft commence par les octets intégraux de sa base respective : en-têtes et historique initial conservés, décision B dans PROJECT et entrée B avec aucun tri automatique demandé dans JOURNAL. La demande originale B lue séparément confirme exactement ces deux phrases : portée tableau de suivi et priorité manuelle inchangées. L’ajout A correspond à la demande et la preuve textuelle ; les limites excluent toute prétention de comportement Odoo, test ou développement. Le refus de publication est attesté par publication-refusee.log et le caractère synthétique du reçu initial par HANDOFF. Le lien result.md désigne la consolidation ultérieure de la réception/publication du plan, sans annoncer leur succès à ce stade. Aucun fait antérieur n’est remplacé ou supprimé. Les hashes des deux bases et drafts ainsi que des cibles courantes ont été vérifiés ; cette réception porte sur ces octets, avant publication."
+    }
+  }
+}
+# Réception documentaire indépendante — 2026-09-09
+
+Projet synthétique R01-v2 ; module et série Odoo sans objet : dossier de textes uniquement.
+
+Verdict : **pass**, sur les trois axes de réception. Relecture effectuée dans le contexte délégué `review_reception`, distinct de l’orchestrateur auteur des propositions. Le reçu initial reste une fixture et n’est pas une preuve de délégation réelle.
+
+La demande A borne expressément le contrôle à la cohérence documentaire. Le contrat reprend sa décision sans obligation supplémentaire. La preuve initiale, son log et `documentary/reference.txt` attestent cette cohérence ; leurs hashes sont intacts. Aucune démonstration d’interface, aucun test ni développement Odoo n’est prétendu ou exécuté par cette réception.
+
+La demande originale `changelog/recovery/demande-B.md` porte exactement : « Décision B : conserver la priorité manuelle dans le tableau de suivi. » et « Tâche B : priorité manuelle conservée ; aucun tri automatique demandé. ». Ces contributions apparaissent respectivement dans les bases PROJECT et JOURNAL et sont conservées à l’identique dans les drafts. Les deux bases complètes sont les préfixes exacts des propositions : l’historique initial est également préservé.
+
+Vérifications en lecture seule : hashes de tous les groupes, bases, drafts, cibles, fichier documentaire et log ; mode du fichier documentaire ; égalité des groupes/périmètres/empreinte avec le bundle initial ; citations exactes dans le reçu. Aucun flow, draft, source ou fichier mémoire canonique modifié.
+
+La mention de `result.md` renvoie à la consolidation ultérieure par l’orchestrateur ; cette revue ne certifie ni publication déjà effectuée ni réception finale déjà acquise du plan. Les résultats devront y être consignés selon les opérations effectives.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete .odoo-agents/flows/plan-a-45ac8dd2.json reception_recovery_gate --owner codex-r01-reprise-orchestrateur --outcome pass --evidence changelog/recovery/reprise-finale/review.json
+ODOO FLOW · plan-a-45ac8dd2
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ reception_recovery_gate → pass
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: blocked, done, retry · Preuve: entrée JOURNAL.md
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/plan-a-45ac8dd2.json
+ODOO FLOW · plan-a-45ac8dd2
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ reception_recovery_gate → pass
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: blocked, done, retry · Preuve: entrée JOURNAL.md
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → retry
+  ✓ reception_recovery_gate → pass
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim .odoo-agents/flows/plan-a-45ac8dd2.json journal_task --owner codex-r01-reprise-orchestrateur
+▶ journal_task · ORCHESTRATEUR
+  Démarré par codex-r01-reprise-orchestrateur
+  Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py publish-memory .odoo-agents/flows/plan-a-45ac8dd2.json --owner codex-r01-reprise-orchestrateur
+Mémoire published : .odoo-agents/PROJECT.md
+Mémoire published : .odoo-agents/JOURNAL.md
+Publication vérifiée ; journal_task reste revendiqué et doit être complété.
++ python3 -
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete .odoo-agents/flows/plan-a-45ac8dd2.json journal_task --owner codex-r01-reprise-orchestrateur --outcome done --evidence changelog/recovery/reprise-finale/publication.md
+ODOO FLOW · plan-a-45ac8dd2
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 4 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → done
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ task_done
+    ORCHESTRATEUR
+    Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
+    Sorties: done · Preuve: compte-rendu final
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py finish changelog/recovery --task A --proof changelog/recovery/reprise-finale/plan-proof-v2.json --acceptance changelog/recovery/reprise-finale/reception-plan.md --memory changelog/recovery/reprise-finale/consolidation-plan.md
+le graphe doit être terminé avant la réception
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py status changelog/recovery
+A · running · .odoo-agents/flows/plan-a-45ac8dd2.json · Tâche documentaire A
+C · pending · dépendances : A · Tâche documentaire C
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/plan-a-45ac8dd2.json
+ODOO FLOW · plan-a-45ac8dd2
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 4 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → done
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ task_done
+    ORCHESTRATEUR
+    Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
+    Sorties: done · Preuve: compte-rendu final
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → retry
+  ✓ reception_recovery_gate → pass
+  ✓ journal_task → done
++ python3 -
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim .odoo-agents/flows/plan-a-45ac8dd2.json task_done --owner codex-r01-reprise-orchestrateur
+▶ task_done · ORCHESTRATEUR
+  Démarré par codex-r01-reprise-orchestrateur
+  Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete .odoo-agents/flows/plan-a-45ac8dd2.json task_done --owner codex-r01-reprise-orchestrateur --outcome done --evidence changelog/recovery/reprise-finale/fin-flow.md
+ODOO FLOW · plan-a-45ac8dd2
+────────────────────────────────────────────────────────────────────────
+État       TERMINÉ
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 5 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ task_done → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py finish changelog/recovery --task A --proof changelog/recovery/reprise-finale/plan-proof-v2.json --acceptance changelog/recovery/reprise-finale/reception-plan.md --memory changelog/recovery/reprise-finale/consolidation-plan.md
+validé ; contenu métier de la réception à relire par l’orchestrateur
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py status changelog/recovery
+A · validated · preuve et passation toujours valides · Tâche documentaire A
+C · pending · PRÊT · Tâche documentaire C
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/plan-a-45ac8dd2.json
+ODOO FLOW · plan-a-45ac8dd2
+────────────────────────────────────────────────────────────────────────
+État       TERMINÉ
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 5 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ task_done → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → retry
+  ✓ reception_recovery_gate → pass
+  ✓ journal_task → done
+  ✓ task_done → done
++ python3 -
+result.md et changelog/recovery/reprise-finale/result.md écrits.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py status changelog/recovery
+A · validated · preuve et passation toujours valides · Tâche documentaire A
+C · pending · PRÊT · Tâche documentaire C

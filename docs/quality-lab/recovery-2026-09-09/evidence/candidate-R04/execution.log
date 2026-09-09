@@ -1,0 +1,351 @@
+Reprise réelle Codex R04. Lectures préalables: HANDOFF.md, profils orchestration.md/release-start.md, docs/TASK_RECEPTION.md ; inventaire du projet et aide publique flow/plan. Aucun état modifié.
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status /tmp/odoo-recovery-20260909/candidate-R04/project/.odoo-agents/flows/plan-a-9f0e799a.json
+ODOO FLOW · plan-a-9f0e799a
+────────────────────────────────────────────────────────────────────────
+État       EN COURS
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R04/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ module_task_gate → pass
+
+POSITION DANS LE GRAPHE
+  EN COURS
+  ▶ journal_task
+    ORCHESTRATEUR · propriétaire: codex-context-interrompu
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py status /tmp/odoo-recovery-20260909/candidate-R04/project/changelog/recovery
+A · running · .odoo-agents/flows/plan-a-9f0e799a.json · Tâche documentaire A
+C · pending · dépendances : A · Tâche documentaire C
+
+exit=0
+$ cat /tmp/odoo-recovery-20260909/candidate-R04/project/changelog/recovery/plan.json /tmp/odoo-recovery-20260909/candidate-R04/project/changelog/recovery/initial/review.json
+{
+  "history": [
+    {
+      "action": "prepared",
+      "at": "2026-09-09T16:03:05+00:00"
+    },
+    {
+      "action": "start",
+      "at": "2026-09-09T16:03:05+00:00",
+      "reason": null,
+      "task_id": "A"
+    }
+  ],
+  "schema": 1,
+  "tasks": [
+    {
+      "acceptance": [
+        "Décision A : afficher la référence dossier dans la fiche interne."
+      ],
+      "attempts": [
+        {
+          "at": "2026-09-09T16:03:05+00:00",
+          "flow": ".odoo-agents/flows/plan-a-9f0e799a.json",
+          "sources_before": {
+            "documentary/reference.txt": {
+              "mode": 436,
+              "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96"
+            }
+          }
+        }
+      ],
+      "depends_on": [],
+      "id": "A",
+      "request": "changelog/recovery/demande-A.md",
+      "risk": "normal",
+      "route": "module",
+      "scopes": [
+        "documentary"
+      ],
+      "title": "Tâche documentaire A"
+    },
+    {
+      "acceptance": [
+        "A réceptionnée"
+      ],
+      "depends_on": [
+        "A"
+      ],
+      "id": "C",
+      "request": "changelog/recovery/demande-C.md",
+      "risk": "normal",
+      "route": "module",
+      "scopes": [
+        "future-documentary"
+      ],
+      "title": "Tâche documentaire C"
+    }
+  ],
+  "updated_at": "2026-09-09T16:03:05+00:00"
+}
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "96a8a49a1034e1527e18099bf1e651339a1c0bcdd263420ebab3d9e190911dd1",
+  "reviewer": "fixture-reviewer-not-a-real-agent",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "explanation": "Fixture documentaire synthétique ; aucune relecture agent prétendue.",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne.\nLe contrôle porte uniquement sur la cohérence documentaire.\n"
+        },
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "# Revue synthétique\n## Critères d’acceptation\n- [ ] Décision A : afficher la référence dossier dans la fiche interne.\n"
+        }
+      ]
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "explanation": "Fixture documentaire synthétique ; aucune relecture agent prétendue.",
+      "citations": [
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "# Revue synthétique\n## Critères d’acceptation\n- [ ] Décision A : afficher la référence dossier dans la fiche interne.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "{\n  \"format\": \"odoo-evidence/1\",\n  \"project\": \"/tmp/odoo-recovery-20260909/candidate-R04/project\",\n  \"scopes\": [\n    \"documentary\"\n  ],\n  \"sources\": {\n    \"documentary/reference.txt\": {\n      \"sha256\": \"8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96\",\n      \"mode\": 436\n    }\n  },\n  \"command\": [\n    \"/usr/bin/python3\",\n    \"-c\",\n    \"from pathlib import Path; assert Path('documentary/reference.txt').read_text() == 'reference_dossier=visible\\\\n'; print('Cohérence documentaire : référence dossier visible. Aucun test Odoo.')\"\n  ],\n  \"exit_code\": 0,\n  \"result\": \"passed\",\n  \"module\": null,\n  \"error\": null,\n  \"seconds\": 0.016,\n  \"log\": {\n    \"path\": \"/tmp/odoo-recovery-20260909/candidate-R04/project/changelog/recovery/initial/documentary-proof.log\",\n    \"sha256\": \"7de39f9ce5bf1eed1a1d175acdebd23ab08280be78d02c9dcd84d4bd19245641\"\n  }\n}\n"
+        }
+      ]
+    },
+    "source_memory": {
+      "status": "pass",
+      "explanation": "Fixture documentaire synthétique ; aucune relecture agent prétendue.",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne.\nLe contrôle porte uniquement sur la cohérence documentaire.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/PROJECT-propose.md",
+          "quote": "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\nDécision A : afficher la référence dossier dans la fiche interne.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/JOURNAL-propose.md",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc.\nTâche A : cohérence documentaire de la référence dossier vérifiée.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/bundle.json.PROJECT.md.base",
+          "quote": "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/bundle.json.JOURNAL.md.base",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc.\n"
+        }
+      ]
+    }
+  }
+}
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py release --help
+usage: odoo_flow.py release [-h] [--owner OWNER] --reason REASON state node
+
+positional arguments:
+  state
+  node
+
+options:
+  -h, --help       show this help message and exit
+  --owner OWNER
+  --reason REASON
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete --help
+usage: odoo_flow.py complete [-h] --outcome OUTCOME [--evidence EVIDENCE]
+                             [--note NOTE] [--owner OWNER] [--human-confirmed]
+                             state node
+
+positional arguments:
+  state
+  node
+
+options:
+  -h, --help           show this help message and exit
+  --outcome OUTCOME
+  --evidence EVIDENCE
+  --note NOTE
+  --owner OWNER
+  --human-confirmed
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_evidence.py --help
+usage: odoo_evidence.py [-h] {run,verify} ...
+
+Exécuter un contrôle et lier son résultat au contenu réellement contrôlé.
+
+positional arguments:
+  {run,verify}
+
+options:
+  -h, --help    show this help message and exit
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py ready /tmp/odoo-recovery-20260909/candidate-R04/project/.odoo-agents/flows/plan-a-9f0e799a.json
+ODOO FLOW · plan-a-9f0e799a
+────────────────────────────────────────────────────────────────────────
+État       EN COURS
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R04/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ module_task_gate → pass
+
+POSITION DANS LE GRAPHE
+  EN COURS
+  ▶ journal_task
+    ORCHESTRATEUR · propriétaire: codex-context-interrompu
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+
+exit=0
+Création de recovery-R04/interruption.md : constat de transfert, aucune ancienne preuve modifiée.
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py release /tmp/odoo-recovery-20260909/candidate-R04/project/.odoo-agents/flows/plan-a-9f0e799a.json journal_task --owner codex-context-interrompu --reason 'Contexte interrompu selon HANDOFF.md ; reprise réelle documentée dans changelog/recovery/recovery-R04/interruption.md'
+■ journal_task · verrou libéré par codex-context-interrompu
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim /tmp/odoo-recovery-20260909/candidate-R04/project/.odoo-agents/flows/plan-a-9f0e799a.json journal_task --owner codex-r04-orchestrateur
+▶ journal_task · ORCHESTRATEUR
+  Démarré par codex-r04-orchestrateur
+  Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py publish-memory /tmp/odoo-recovery-20260909/candidate-R04/project/.odoo-agents/flows/plan-a-9f0e799a.json --owner codex-r04-orchestrateur
+ERREUR: publication mémoire refusée : code changé depuis le contrôle
+
+exit=2
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_evidence.py verify --help
+usage: odoo_evidence.py verify [-h] proof
+
+positional arguments:
+  proof
+
+options:
+  -h, --help  show this help message and exit
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_evidence.py verify /tmp/odoo-recovery-20260909/candidate-R04/project/changelog/recovery/initial/documentary-proof.json
+code changé depuis le contrôle
+
+exit=2
+Ajout au JOURNAL canonique de 7 lignes factuelles d’arrêt, distinct de la publication des drafts acceptés ; contenu initial conservé.
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete /tmp/odoo-recovery-20260909/candidate-R04/project/.odoo-agents/flows/plan-a-9f0e799a.json journal_task --owner codex-r04-orchestrateur --outcome blocked --evidence changelog/recovery/recovery-R04/blocked.md --evidence changelog/recovery/recovery-R04/publication-refused.log
+ERREUR: preuve introuvable : changelog/recovery/recovery-R04/blocked.md
+
+exit=2
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete /tmp/odoo-recovery-20260909/candidate-R04/project/.odoo-agents/flows/plan-a-9f0e799a.json journal_task --owner codex-r04-orchestrateur --outcome blocked --evidence /tmp/odoo-recovery-20260909/candidate-R04/project/changelog/recovery/recovery-R04/blocked.md --evidence /tmp/odoo-recovery-20260909/candidate-R04/project/changelog/recovery/recovery-R04/publication-refused.log
+ODOO FLOW · plan-a-9f0e799a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R04/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → blocked
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ memory_task_blocked
+    ORCHESTRATEUR
+    Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée.
+    Sorties: done · Preuve: motif de blocage mémoire et état de publication réel
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status /tmp/odoo-recovery-20260909/candidate-R04/project/.odoo-agents/flows/plan-a-9f0e799a.json
+ODOO FLOW · plan-a-9f0e799a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R04/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → blocked
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ memory_task_blocked
+    ORCHESTRATEUR
+    Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée.
+    Sorties: done · Preuve: motif de blocage mémoire et état de publication réel
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → blocked
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim /tmp/odoo-recovery-20260909/candidate-R04/project/.odoo-agents/flows/plan-a-9f0e799a.json memory_task_blocked --owner codex-r04-orchestrateur
+▶ memory_task_blocked · ORCHESTRATEUR
+  Démarré par codex-r04-orchestrateur
+  Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée.
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete /tmp/odoo-recovery-20260909/candidate-R04/project/.odoo-agents/flows/plan-a-9f0e799a.json memory_task_blocked --owner codex-r04-orchestrateur --outcome done --evidence /tmp/odoo-recovery-20260909/candidate-R04/project/changelog/recovery/recovery-R04/blocked.md --evidence /tmp/odoo-recovery-20260909/candidate-R04/project/.odoo-agents/JOURNAL.md
+ODOO FLOW · plan-a-9f0e799a
+────────────────────────────────────────────────────────────────────────
+État       ARRÊTÉ
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-R04/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ memory_task_blocked → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
+
+exit=0
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py status /tmp/odoo-recovery-20260909/candidate-R04/project/changelog/recovery
+A · blocked · blocked · Tâche documentaire A
+C · pending · dépendances : A · Tâche documentaire C
+
+exit=0
+Contrôle final SHA-256 des pièces initiales par rapport au bundle et préservation mémoire:
+[
+  [
+    "changelog/recovery/demande-A.md",
+    true
+  ],
+  [
+    "changelog/recovery/spec.md",
+    true
+  ],
+  [
+    "changelog/recovery/initial/documentary-proof.json",
+    true
+  ],
+  [
+    "changelog/recovery/initial/PROJECT-propose.md",
+    true
+  ],
+  [
+    "changelog/recovery/initial/bundle.json.PROJECT.md.base",
+    true
+  ],
+  [
+    "changelog/recovery/initial/JOURNAL-propose.md",
+    true
+  ],
+  [
+    "changelog/recovery/initial/bundle.json.JOURNAL.md.base",
+    true
+  ],
+  [
+    "PROJECT canonique conserve sa base",
+    true
+  ],
+  [
+    "JOURNAL conserve son contenu initial",
+    true
+  ]
+]
+Création de project/result.md : arrêt explicite, provenance des preuves, actions réelles et suite non validée.

@@ -2,6 +2,7 @@
 """Réception documentaire coopérative : intégrité et citations, pas jugement métier."""
 import argparse
 import json
+import tempfile
 from pathlib import Path
 
 from odoo_coverage import digest, project_file
@@ -70,8 +71,13 @@ def draft(bundle_sha256, reviewer, mode='independent'):
             'checks': {axis: {'status': 'fail', 'citations': [], 'explanation': ''} for axis in AXES}}
 
 
-def check_ref(root, item):
-    path = project_file(root, item['path'])
+def check_ref(root, item, allow_empty=False):
+    if allow_empty:
+        path = (root / item['path']).resolve()
+        if not path.is_relative_to(root) or not path.is_file():
+            raise ValueError('fichier attendu dans le projet : ' + item['path'])
+    else:
+        path = project_file(root, item['path'])
     if digest(path.read_bytes()) != item['sha256']:
         raise ValueError('fichier modifié depuis préparation : ' + item['path'])
     return path
@@ -98,7 +104,7 @@ def check_execution(root, path, seen=None):
                 check_execution(root, check_ref(root, item), seen)
 
 
-def verify_bundle(project, pinned, published=False):
+def verify_bundle(project, pinned, published=False, memory_policy=None):
     root = Path(project).resolve()
     path = check_ref(root, pinned)
     bundle = json.loads(path.read_bytes())
@@ -110,11 +116,18 @@ def verify_bundle(project, pinned, published=False):
             if group == 'evidence':
                 check_execution(root, source)
     for row in bundle['memory']:
+        if row.get('base'):
+            check_ref(root, row['base'], allow_empty=True)
+    policy = memory_policy or ('published' if published else 'before')
+    if policy not in {'before', 'published', 'publishable', 'ignore'}:
+        raise ValueError('politique mémoire inconnue')
+    for row in ([] if policy == 'ignore' else bundle['memory']):
         proposed = check_ref(root, row['draft'])
         target = memory_path(root, row['target'])
         current = digest(target.read_bytes()) if target.exists() else None
-        expected = digest(proposed.read_bytes()) if published else row['before_sha256']
-        if current != expected:
+        expected = row['draft']['sha256'] if policy == 'published' else row['before_sha256']
+        valid = current in {row['before_sha256'], row['draft']['sha256']} if policy == 'publishable' else current == expected
+        if not valid:
             message = 'publication différente du draft approuvé' if published else 'mémoire modifiée depuis préparation'
             raise ValueError(message + ' : ' + row['target'])
     if (fingerprint(root, bundle['scopes']) if bundle['scopes'] else {}) != bundle['code']:
@@ -122,8 +135,8 @@ def verify_bundle(project, pinned, published=False):
     return bundle
 
 
-def verify(review, pinned, project, require_pass=True, published=False):
-    bundle = verify_bundle(project, pinned, published)
+def verify(review, pinned, project, require_pass=True, published=False, memory_policy=None):
+    bundle = verify_bundle(project, pinned, published, memory_policy)
     if review.get('format') != FORMAT or review.get('bundle_sha256') != pinned['sha256']:
         raise ValueError('réception absente ou liée à un autre dossier')
     reviewer = review.get('reviewer')
@@ -138,6 +151,8 @@ def verify(review, pinned, project, require_pass=True, published=False):
         raise ValueError('les trois axes de réception sont requis exactement')
     groups = {key: {item['path'] for item in refs} for key, refs in bundle['groups'].items()}
     groups['draft'] = {row['draft']['path'] for row in bundle['memory']}
+    groups['base'] = {row['base']['path'] for row in bundle['memory'] if row.get('base')
+                      and check_ref(Path(project).resolve(), row['base'], allow_empty=True).read_text().strip()}
     frozen = set().union(*groups.values())
     for axis, needed in AXES.items():
         check = checks[axis]
@@ -158,6 +173,8 @@ def verify(review, pinned, project, require_pass=True, published=False):
             if quote not in project_file(project, source).read_text():
                 raise ValueError(axis + ' : citation introuvable dans ' + source)
             cited.add(source)
+        if axis == 'source_memory' and not groups['base'] <= cited:
+            raise ValueError('source_memory : citer toutes les bases mémoire conservées')
         if any(not (cited & groups[group]) for group in needed):
             raise ValueError(axis + ' : citer les deux groupes confrontés')
         if require_pass and check['status'] != 'pass':
@@ -165,6 +182,41 @@ def verify(review, pinned, project, require_pass=True, published=False):
     if require_pass and review['verdict'] != 'pass':
         raise ValueError('réception non conforme')
     return bundle
+
+
+def atomic_publish(path, content):
+    """Remplacement atomique d'un fichier ; aucune transaction entre les deux cibles."""
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = None
+    try:
+        with tempfile.NamedTemporaryFile('wb', dir=path.parent, delete=False) as stream:
+            temporary = Path(stream.name)
+            stream.write(content)
+        if path.exists():
+            temporary.chmod(path.stat().st_mode & 0o777)
+        temporary.replace(path)
+    finally:
+        if temporary is not None:
+            temporary.unlink(missing_ok=True)
+
+
+def publish(project, pinned, review):
+    root = Path(project).resolve()
+    bundle = verify(review, pinned, root, memory_policy='publishable')
+    result = []
+    for row in bundle['memory']:
+        # Prévalidation globale répétée avant chaque remplacement : un tiers peut
+        # néanmoins ignorer le protocole entre cette lecture et replace().
+        verify(review, pinned, root, memory_policy='publishable')
+        target = memory_path(root, row['target'])
+        current = digest(target.read_bytes()) if target.exists() else None
+        if current == row['draft']['sha256']:
+            result.append({'target': row['target'], 'action': 'already_published'})
+        else:
+            atomic_publish(target, check_ref(root, row['draft']).read_bytes())
+            result.append({'target': row['target'], 'action': 'published'})
+    verify(review, pinned, root, published=True)
+    return result
 
 
 def main(argv=None):

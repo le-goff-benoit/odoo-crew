@@ -268,3 +268,26 @@ Dans cette campagne, les états bruts sont préservés et les événements de g�
 et d'erreur sont classés séparément. Le code de sortie, l'absence de terminaison
 métier et le message de quota font foi pour l'incident ; aucun coût manquant ne
 devient zéro par déduction.
+
+
+## Reprise après publication partielle ou mémoire concurrente
+
+Le corpus `benchmarks/recovery/` sépare la frontière QA synthétique des actions
+réellement exécutées ensuite. Une fixture de reçu initial ne prouve jamais une
+délégation. R01 fait intervenir deux écrivains puis un contexte de reprise neuf ;
+R02 reprend une publication partielle ; R03 contrôle le positif ; R04 confronte
+une preuve périmée après gel du candidat. Le juge conserve les archives, vérifie
+les mémoires et états, et réserve l'usage des APIs et l'indépendance aux traces.
+
+Conserver séparément le protocole initial, les incidents d'amorçage et leurs
+amendements. Ajouter les citations des bases à un reçu synthétique est une
+adaptation du banc, pas une réussite comportementale. Les observations de l'outil
+collaboration attestent des contextes distincts ; elles ne donnent ni coût détaillé
+ni gain de vitesse. Résultats et limites dans la [campagne de reprise](recovery-2026-09-09/README.md).
+
+Une phrase attendue absente peut être une reformulation fidèle ou une perte de
+résultat. Conserver le refus brut, puis confronter décision, résultat accepté et
+mémoire publiée avec citations. La conservation d'une preuve ne transmet pas son
+verdict. Une contre-relecture du texte incomplet et un nouveau parcours positif
+précèdent l'adoption d'une consigne corrigée ; ne pas modifier l'oracle pour
+reclasser automatiquement les sorties déjà observées.

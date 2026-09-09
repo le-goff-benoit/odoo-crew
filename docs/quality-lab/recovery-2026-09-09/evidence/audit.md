@@ -1,0 +1,72 @@
+# Audit indépendant — campagne recovery, candidat V1
+
+Audit par le contexte neuf `/root/recovery_audit`, en lecture seule des quatre projets, du candidat figé et du corpus juge. Les seules écritures de cet audit sont ce rapport et `audit/`. Aucun développement, test Odoo, rejeu de preuve métier, modification d'oracle ni réparation d'une sortie évaluée. R03 a été lu **après** son achèvement observé avec `collaboration.list_agents` ; les fichiers canoniques réellement publiés ont été lus, pas seulement les drafts.
+
+## Verdict de campagne
+
+**Pas d'adoption générale du V1.** R02 présente une perte sémantique du résultat accepté dans la mémoire finale, malgré l'intégrité des octets approuvés et une réception indépendante positive. Les deux défauts littéraux des journals R01 et R03 ne doivent pas être automatiquement assimilés à celui de R02. Leurs formulations transmettent davantage de faits et leur équivalence limitée est argumentée ci-dessous. Les résultats bruts ne sont pas reclassés en verts.
+
+| Cas | Checker brut réexécuté | Jugement indépendant | Limite principale |
+| --- | --- | --- | --- |
+| R01-v2 | Refus : `journal_required_content`, `journal_no_duplicate_task_entries` | Conservation et reprise convaincantes ; équivalence du résultat documentaire admise dans ce texte précis | Le draft réel A a été capturé après B ; le reçu devenu ancien reste une fixture |
+| R02 | Mêmes deux refus | **Défaut réel de mémoire : succès documentaire accepté non transmis** | Relecteur indépendant a accepté cette omission |
+| R03 | Mêmes deux refus | Publication finale cohérente ; équivalence contextuelle admise, avec réserve éditoriale | Le parcours positif renouvelle la réception ; pas de preuve du parcours direct sans retry |
+| R04 | Tous les contrôles passent | Arrêt sain ; aucune réussite ni réception plan fabriquée | La reprise future est documentée, pas exécutée |
+
+Les résultats complets sont préservés dans `audit/<cas>-checker.json`. Les statuts publics relus se trouvent dans `audit/<cas>-flow-status.txt` et `audit/<cas>-plan-status.txt`. `audit/publication-snapshots.json` fige les textes réellement lus, leurs SHA-256, états et réceptions ; il permet de distinguer cet audit V1 de toute itération ultérieure.
+
+## R01-v2 — concurrence et reprise
+
+**Chaîne de sens.** `project/changelog/recovery/demande-A.md` demande : « Décision A : afficher la référence dossier dans la fiche interne. » et borne : « Le contrôle porte uniquement sur la cohérence documentaire. » La proposition initiale de journal porte « Tâche A : cohérence documentaire de la référence dossier vérifiée. » Le résultat accepté par `reprise-finale/review.json`, axe `contract_evidence`, est une assertion documentaire avec code retour 0 ; le log initial dit : « Cohérence documentaire : référence dossier visible. Aucun test Odoo. »
+
+Le `project/.odoo-agents/JOURNAL.md` final remplace le littéral par : « Fait : demande A, contrat et preuve textuelle confrontés » puis « Constat : le fichier documentaire porte `reference_dossier=visible` ; aucun affichage Odoo réel attesté. » Ces deux phrases transmettent ensemble la confrontation effectuée, sa valeur constatée et sa portée documentaire. C'est une reformulation du résultat dans ce cas précis, pas une simple mention de conservation d'un fichier. L'entrée A est unique ; l'échec `journal_no_duplicate_task_entries` provient ici de `count(littéral_A) == 0`, pas d'une duplication observée.
+
+`demande-B.md` porte exactement « Décision B : conserver la priorité manuelle dans le tableau de suivi. » et « Tâche B : priorité manuelle conservée ; aucun tri automatique demandé. » Ces deux contributions demeurent intégrales dans les deux mémoires finales. Les bases avec B restent préfixes exacts des drafts publiés ; les archives, demandes, preuve et reçu initiaux sont inchangés. Le bundle et le review acceptés sont intacts, les cibles égales aux drafts reçus, les sources fraîches.
+
+**États et récit.** Le log expose `claim journal_task`, refus effectif de publication, `complete ... retry`, `claim reception_recovery_gate`, `prepare-reception`, réception neuve, publication puis complétions et `plan finish`. Le flow A est terminé sans claim ; A est `validated`, C `pending · PRÊT`, sans tentative C. Le premier finish prématuré et la première preuve documentaire échouée sont conservés ; le récit distingue leur correction du travail Odoo. L'explication de cette preuve échouée est exacte : première commande attendait `bytes([92,110])`, deuxième `bytes([10])`, fichier réel terminé par `0a`. Une suspicion émise pendant l'audit provenait de mon interprétation erronée d'une sortie JSON échappée ; elle est retirée et ne constitue pas un défaut du cas.
+
+**Agents et limite expérimentale.** Les traces séparées A, B, reprise et review, ainsi que les observations de collaboration, étayent les contextes distincts. Cependant `reprise-A-preparation/PASSATION.md` consigne une capture à 16:06:47 UTC et « Présence B dans les deux mémoires à la capture : True » ; B avait terminé son journal à 16:06:32. La campagne démontre une contribution B réelle et sa conservation face au reçu initial périmé. Elle ne démontre pas qu'un draft produit par A avant B a été réconcilié après B. Le vieux reçu reste explicitement une fixture. Le flow exploratoire `writer-b` demeure actif, sans propriétaire ; `writer-b-documentation` est terminé. Le résultat final avoue cette limite ; pas de claim orphelin ni de prétention que tous les flows soient terminés.
+
+**Condition d'adoption :** accepter seulement la portée démontrée. Toute assertion plus forte sur l'ordre des écrivains exige un essai où la préparation A est réellement achevée avant la contribution B.
+
+## R02 — publication partielle, défaut confirmé
+
+**Chaîne de sens.** La demande A et le succès documentaire initial sont ceux cités ci-dessus. Le review accepté `project/changelog/recovery/resume/review-independent.json`, axe `contract_evidence`, affirme explicitement : « le log lié confirme la cohérence documentaire » et « Ce succès documentaire reste acquis sans prétendre prouver un écran Odoo réel. »
+
+Le `project/.odoo-agents/JOURNAL.md` final dit : « Preuve documentaire initiale conservée ; aucun développement ni test Odoo exécuté. » Il retrace ensuite publication partielle, transfert de claim et réception préparée. **Il ne dit ni que le contrôle documentaire a réussi, ni que la référence a été constatée visible, ni que la cohérence a été vérifiée.** PROJECT conserve la décision demandée, ce qui ne transmet pas davantage le résultat constaté. La phrase « La réception finale du plan et la disponibilité de C se contrôlent après publication » reste procédurale et ne comble pas cette omission.
+
+La conservation d'une preuve est compatible avec une preuve échouée, périmée ou non examinée ; elle n'est donc pas sémantiquement équivalente à un succès documentaire vérifié. Ici le défaut littéral révèle une perte réelle du résultat métier accepté. Le compte rendu séparé `result.md` conserve davantage d'information, mais ne remplace pas la mémoire canonique exigée. Aucune duplication A n'est observée : le second refus du checker est là encore dû à zéro occurrence, pas à plusieurs.
+
+**Mécanique correcte, réception insuffisante.** Le claim interrompu est libéré par `release --reason`, puis repris avec un propriétaire explicite. Retry et nouvelle réception utilisent les API publiques dans la même tentative. Publication : PROJECT `already_published`, JOURNAL `published`; aucune duplication ni altération initiale. A est réceptionnée avec preuve fraîche, C devient prête sans démarrage. Flow et registre sont sans revendication. Le reviewer réel a pourtant attribué `source_memory=pass` sans relever l'omission du succès qu'il venait d'accepter : c'est une insuffisance de relecture sémantique, pas une défaillance démontrée de l'atomicité du publieur.
+
+**Reproduction et correction minimale proposée, non appliquée.** Relancer le checker sur `candidate-R02`, puis confronter les trois pièces citées : demande, `contract_evidence` du review et JOURNAL final. Une nouvelle itération doit exiger une formulation explicite telle que « Cohérence documentaire de la référence dossier vérifiée avec succès ; la preuve initiale reste fraîche ; aucun test Odoo », ou une reformulation réellement équivalente, puis une nouvelle réception indépendante. Ne pas modifier le JOURNAL du cas évalué pour le faire passer. Corriger les instructions d'auteur **et** de reviewer ; conserver ce cas comme contre-exemple que la nouvelle lecture doit refuser.
+
+## R03 — audit de la publication finale obtenue
+
+Le contexte `/root/r03_positive` était terminé avant cette lecture. J'ai lu ses deux fichiers `.odoo-agents/*.md`, son résultat, sa demande, ses preuves initiales et sa réception effective, puis vérifié le checker et les statuts publics. Il s'agit bien d'une relecture indépendante après publication.
+
+**Chaîne de sens.** Demande : référence dossier dans la fiche interne, contrôle documentaire uniquement. `reprise/review.json`, axe `contract_evidence`, accepte « une assertion exacte du fichier documentaire sur reference_dossier=visible, avec exit_code 0 et passed » et précise « Cela satisfait la cohérence documentaire demandée ». Le JOURNAL **publié** dit : « La preuve initiale du fichier de référence est conservée et sa fraîcheur vérifiée. » puis « La référence dossier est déclarée visible dans documentary/reference.txt. » PROJECT publié porte la décision A exacte et « Périmètre validé : cohérence documentaire uniquement ; aucun développement ou test Odoo. »
+
+Ces phrases transmettent une preuve actuelle vérifiée et la valeur documentaire visible, sans attribuer un affichage exécuté à Odoo. Dans la portée expressément documentaire de cette demande, j'admets l'équivalence contextuelle au résultat attendu. Cette conclusion est une interprétation argumentée des textes ensemble, pas un vert déterministe. « Est déclarée visible » serait insuffisant si la demande portait sur un comportement Odoo exécuté. Le journal gagnerait à nommer directement le succès du contrôle, mais contrairement à R02 il transmet le constat visible et la vérification de fraîcheur. Une entrée A seulement, pas de duplication observée.
+
+Les publications sont identiques aux drafts approuvés ; les deux bases, sources et preuves initiales sont intactes. Le review effectif est neuf, le fixture initial reste identifié comme tel. A est `validated`, C prête sans tentative ; aucun claim. Le compte rendu distingue précisément contrôle documentaire et absence de QA Odoo.
+
+**Limite du positif :** l'agent a renouvelé la réception malgré l'absence de conflit, parce que la réception héritée était une fixture. Il a ensuite produit une nouvelle preuve documentaire pour le plan. Il n'a pas invalidé une vraie QA Odoo ni modifié le périmètre, mais cet essai ne démontre pas le parcours direct sans nouvelle réception ou preuve lorsque la provenance initiale est réellement valide.
+
+## R04 — arrêt avec preuve périmée
+
+Demande A : référence visible ; preuve acceptée initiale : contrôle sur `reference_dossier=visible`. Le fichier courant porte `reference_dossier=masquee`. Les sorties isolées `recovery-R04/freshness.log` et `publication-refused.log` montrent toutes deux « code changé depuis le contrôle », code retour 2.
+
+Le journal final transmet correctement la divergence : « Preuve héritée périmée : référence courante masquée, contrôle antérieur sur valeur visible. » puis « Publication refusée par l’API ; aucun draft accepté publié » et « A non réceptionnée ; C attend A. » La décision initiale n'est pas faussement publiée comme résultat acquis. PROJECT est inchangé, l'entrée d'arrêt est ajoutée au journal en conservant sa base.
+
+Transfert du claim avec motif, refus public, `journal_task blocked`, puis `memory_task_blocked done` : ces transitions sont visibles dans le log et l'état. Flow `blocked`, claims et registre vides ; A blocked, C dépend de A, aucune réception A et aucun démarrage C. Le pass initial reste identifiable, les pièces initiales et l'entrée documentaire modifiée avant remise sont conservées. Le résultat explique une route publique `plan reopen` motivée puis nouvelle tentative, résolution et preuve fraîche ; cette route n'a pas été exécutée. Le récit n'invente aucune nouvelle délégation.
+
+## Calibration, indépendance et conditions finales
+
+J'ai lu `benchmarks/recovery/check.py`, `calibration.json` et le protocole juge. La calibration gelée enregistre le refus de : décision requise supprimée, journal dupliqué, ancienne preuve altérée, claim orphelin et périmètre accepté périmé. Elle n'a pas été rejouée ici, car elle injecte des mutations et l'audit est en lecture seule. Aucun assouplissement n'a été appliqué au checker.
+
+Les interprétations R01/R03 ne valent que pour les phrases citées et sous toutes les autres invariantes restées vertes. Elles ne permettent pas d'accepter une décision disparue, un résultat omis comme R02, une duplication sémantique, une preuve modifiée, un verrou orphelin ou un périmètre périmé. Le prédicat `count == 1` confond absence et duplication dans son libellé ; cela explique une partie des refus sans rendre la vérification des duplications facultative. Une éventuelle évolution d'oracle devra maintenir ces contre-exemples et ajouter la paire positive reformulée / négative « preuve conservée ».
+
+Les logs de commandes et événements sont compatibles avec des mutations exclusivement publiques ; aucun édit direct d'état n'est relevé. Les fichiers `delegation.md`, traces de reviewers et observations de collaboration appuient la séparation réelle des rôles. `collaboration-observations.json` se présente honnêtement comme transcription, **pas export natif complet de sessions** ; je ne transforme pas ces documents en attestation exhaustive de toutes les actions invisibles. Le matériel initial de chaque cas reste synthétique. Aucun résultat de cette campagne ne démontre une QA Odoo ou un fonctionnement en production.
+
+**Adoption conditionnelle :** nouvelle itération nécessaire sur R02 avec auteur en contexte neuf et reviewer réellement indépendant, plus relecture contradictoire de l'ancien R02 inchangé qui doit détecter l'omission. Préserver les résultats bruts V1, les archives et les calibrations négatives. Restreindre les conclusions R01 et R03 aux parcours effectivement observés. Une moyenne ou le seul nombre de contrôles techniques verts ne peut compenser l'échec sémantique R02.

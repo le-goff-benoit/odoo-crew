@@ -1,0 +1,52 @@
+{
+  "format": "odoo-task-reception-bundle/1",
+  "project": "/tmp/odoo-recovery-20260909/reference-R01/project",
+  "owner": "codex-context-interrompu",
+  "groups": {
+    "source": [
+      {
+        "path": "changelog/recovery/demande-A.md",
+        "sha256": "427d4b048996ed2340033209a419a0bd57dd0099e57ee821612ff48d365a841a"
+      }
+    ],
+    "spec": [
+      {
+        "path": "changelog/recovery/spec.md",
+        "sha256": "eac5a65e924df65d9bd4ced8a32373ed69e2bf22a7d8e1389d905783898a2d03"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "changelog/recovery/initial/documentary-proof.json",
+        "sha256": "cb4a420f7cb23837a97aa2f0f0999bec4cb09cbc005cf9ce86c65d18f4c44c4d"
+      }
+    ]
+  },
+  "memory": [
+    {
+      "target": ".odoo-agents/PROJECT.md",
+      "before_sha256": "f0a64083612d8335596c76a166392d62f87af4c0706542716d3c800405ccf3d9",
+      "draft": {
+        "path": "changelog/recovery/initial/PROJECT-propose.md",
+        "sha256": "1f39dd98766c2629869461fbed9f33814ede249a7fdcd9479384755c1dd3aabf"
+      }
+    },
+    {
+      "target": ".odoo-agents/JOURNAL.md",
+      "before_sha256": "7d1446fb6dbb77a0b3220391f10c6ba00187bbbc7c1c80f866b3d463b665be7d",
+      "draft": {
+        "path": "changelog/recovery/initial/JOURNAL-propose.md",
+        "sha256": "28e87c6ecf9fe2a8acbf5a6a8bafe436ebdcf31686f4a0a520152a161d156148"
+      }
+    }
+  ],
+  "scopes": [
+    "documentary"
+  ],
+  "code": {
+    "documentary/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  }
+}

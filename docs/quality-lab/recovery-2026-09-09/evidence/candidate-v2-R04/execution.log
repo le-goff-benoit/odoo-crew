@@ -1,0 +1,559 @@
++ find /tmp/odoo-recovery-20260909/candidate-v2-R04/project -type f
++ sort
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/.odoo-agents/JOURNAL.md
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/.odoo-agents/PROJECT.md
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/.odoo-agents/flow-artifacts/.gitignore
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/.odoo-agents/flows/.gitignore
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/.odoo-agents/flows/.plan-a-6a1f5bfd.json.lock
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/.odoo-agents/flows/.resource-locks.json.lock
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/.odoo-agents/flows/plan-a-6a1f5bfd.json
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/.odoo-agents/flows/resource-locks.json
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/HANDOFF.md
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/.plan.json.lock
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/README.md
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/demande-A.md
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/demande-B.md
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/demande-C.md
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/initial/JOURNAL-propose.md
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/initial/PROJECT-propose.md
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/initial/bundle.json
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/initial/bundle.json.JOURNAL.md.base
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/initial/bundle.json.PROJECT.md.base
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/initial/documentary-proof.json
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/initial/documentary-proof.log
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/initial/review.json
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/plan.json
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/spec.md
+/tmp/odoo-recovery-20260909/candidate-v2-R04/project/documentary/reference.txt
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py status /tmp/odoo-recovery-20260909/candidate-v2-R04/project/.odoo-agents/flows/plan-a-6a1f5bfd.json
+ODOO FLOW · plan-a-6a1f5bfd
+────────────────────────────────────────────────────────────────────────
+État       EN COURS
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-v2-R04/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ module_task_gate → pass
+
+POSITION DANS LE GRAPHE
+  EN COURS
+  ▶ journal_task
+    ORCHESTRATEUR · propriétaire: codex-context-interrompu
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py --help
+usage: odoo_flow.py [-h] [--graph GRAPH]
+                    {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+                    ...
+
+Valide et pilote le graphe de travail des agents Odoo. Le script ne réalise
+aucune opération Odoo. Il conserve seulement l'état du workflow, contrôle les
+transitions, expose les nœuds prêts et empêche les boucles de reprise non
+bornées. L'orchestrateur principal est l'unique écrivain du fichier d'état ;
+les agents spécialisés écrivent leurs preuves dans les chemins distincts qu'il
+leur donne. Exemples : odoo_flow.py validate odoo_flow.py analyze odoo_flow.py
+render --format mermaid odoo_flow.py start ~/projet --kind development --id
+ajout-reference odoo_flow.py ready ~/projet/.odoo-agents/flows/ajout-
+reference.json odoo_flow.py complete <état.json> briefing --outcome
+development --evidence /tmp/briefing.txt
+
+positional arguments:
+  {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+    validate            valider la définition
+    analyze             mesurer la structure
+    render              rendre le graphe
+    start               ouvrir un état persistant
+    ready               afficher ready
+    status              afficher status
+    complete            terminer un nœud prêt
+    bind-criteria       lier un contrat QA et générer sa couverture manquante
+    publish-memory      publier les deux drafts approuvés de façon reprenable
+    upgrade-recovery    ajouter explicitement la reprise mémoire à un ancien
+                        run
+    prepare-reception   figer le dossier de réception et la mémoire proposée
+    qa-report           rendre un rapport QA lié à sa couverture et à son
+                        issue
+    claim               revendiquer un nœud et ses verrous
+    release             libérer un nœud sans le terminer
+    migrate             rattacher explicitement un run à une nouvelle version
+                        compatible du graphe
+
+options:
+  -h, --help            show this help message and exit
+  --graph GRAPH
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_plan.py --help
+usage: odoo_plan.py [-h] [--file FILE] [--task TASK] [--proof PROOF]
+                    [--acceptance ACCEPTANCE] [--memory MEMORY]
+                    [--reason REASON]
+                    {init,add,status,changed,start,finish,reopen,defer}
+                    release
+
+Plan de release versionné ; le graphe reste l'autorité des étapes d'exécution.
+
+positional arguments:
+  {init,add,status,changed,start,finish,reopen,defer}
+  release
+
+options:
+  -h, --help            show this help message and exit
+  --file FILE
+  --task TASK
+  --proof PROOF
+  --acceptance ACCEPTANCE
+  --memory MEMORY
+  --reason REASON
++ cat HANDOFF.md changelog/recovery/demande-A.md changelog/recovery/demande-B.md changelog/recovery/demande-C.md changelog/recovery/spec.md documentary/reference.txt .odoo-agents/PROJECT.md .odoo-agents/JOURNAL.md changelog/recovery/initial/bundle.json changelog/recovery/initial/documentary-proof.json changelog/recovery/initial/documentary-proof.log changelog/recovery/initial/review.json changelog/recovery/plan.json
+# Passation du banc
+
+Frontière QA synthétique amorcée par le matérialiseur. Le reçu initial est une fixture, sans agent indépendant réel. Le contrôle du fichier texte est réel ; aucun test Odoo.
+
+Flow : `.odoo-agents/flows/plan-a-6a1f5bfd.json`.
+Owner interrompu : `codex-context-interrompu`.
+Pack fourni : `/tmp/odoo-recovery-20260909/candidate-v2`.
+
+Le contexte précédent a été interrompu après le pass. Inspecter la fraîcheur réelle des pièces avant toute publication.
+Décision A : afficher la référence dossier dans la fiche interne.
+Le contrôle porte uniquement sur la cohérence documentaire.
+Décision B : conserver la priorité manuelle dans le tableau de suivi.
+Tâche B : priorité manuelle conservée ; aucun tri automatique demandé.
+Recevoir la décision A avant de préparer la suite documentaire.
+# Revue synthétique
+## Critères d’acceptation
+- [ ] Décision A : afficher la référence dossier dans la fiche interne.
+reference_dossier=masquee
+# Projet synthétique
+Le tableau de suivi conserve les décisions explicites.
+# Journal synthétique
+Initialisation documentaire du banc.
+{
+  "format": "odoo-task-reception-bundle/1",
+  "project": "/tmp/odoo-recovery-20260909/candidate-v2-R04/project",
+  "owner": "codex-context-interrompu",
+  "groups": {
+    "source": [
+      {
+        "path": "changelog/recovery/demande-A.md",
+        "sha256": "427d4b048996ed2340033209a419a0bd57dd0099e57ee821612ff48d365a841a"
+      }
+    ],
+    "spec": [
+      {
+        "path": "changelog/recovery/spec.md",
+        "sha256": "eac5a65e924df65d9bd4ced8a32373ed69e2bf22a7d8e1389d905783898a2d03"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "changelog/recovery/initial/documentary-proof.json",
+        "sha256": "e8ae5c304a0c65735b90cc6878d16c694b36722472eaa5f3b1f4c58fdef6498a"
+      }
+    ]
+  },
+  "memory": [
+    {
+      "target": ".odoo-agents/PROJECT.md",
+      "before_sha256": "f0a64083612d8335596c76a166392d62f87af4c0706542716d3c800405ccf3d9",
+      "draft": {
+        "path": "changelog/recovery/initial/PROJECT-propose.md",
+        "sha256": "1f39dd98766c2629869461fbed9f33814ede249a7fdcd9479384755c1dd3aabf"
+      },
+      "base": {
+        "path": "changelog/recovery/initial/bundle.json.PROJECT.md.base",
+        "sha256": "f0a64083612d8335596c76a166392d62f87af4c0706542716d3c800405ccf3d9"
+      }
+    },
+    {
+      "target": ".odoo-agents/JOURNAL.md",
+      "before_sha256": "7d1446fb6dbb77a0b3220391f10c6ba00187bbbc7c1c80f866b3d463b665be7d",
+      "draft": {
+        "path": "changelog/recovery/initial/JOURNAL-propose.md",
+        "sha256": "28e87c6ecf9fe2a8acbf5a6a8bafe436ebdcf31686f4a0a520152a161d156148"
+      },
+      "base": {
+        "path": "changelog/recovery/initial/bundle.json.JOURNAL.md.base",
+        "sha256": "7d1446fb6dbb77a0b3220391f10c6ba00187bbbc7c1c80f866b3d463b665be7d"
+      }
+    }
+  ],
+  "scopes": [
+    "documentary"
+  ],
+  "code": {
+    "documentary/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  }
+}
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/odoo-recovery-20260909/candidate-v2-R04/project",
+  "scopes": [
+    "documentary"
+  ],
+  "sources": {
+    "documentary/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  },
+  "command": [
+    "/usr/bin/python3",
+    "-c",
+    "from pathlib import Path; assert Path('documentary/reference.txt').read_text() == 'reference_dossier=visible\\n'; print('Cohérence documentaire : référence dossier visible. Aucun test Odoo.')"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 0.032,
+  "log": {
+    "path": "/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/initial/documentary-proof.log",
+    "sha256": "7de39f9ce5bf1eed1a1d175acdebd23ab08280be78d02c9dcd84d4bd19245641"
+  }
+}
+Cohérence documentaire : référence dossier visible. Aucun test Odoo.
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "cde482bed7835353508b0a97e3bb8aa7a7dac1ccaf891aa45574fa3eabae6da2",
+  "reviewer": "fixture-reviewer-not-a-real-agent",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "explanation": "Fixture documentaire synthétique ; aucune relecture agent prétendue.",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne.\nLe contrôle porte uniquement sur la cohérence documentaire.\n"
+        },
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "# Revue synthétique\n## Critères d’acceptation\n- [ ] Décision A : afficher la référence dossier dans la fiche interne.\n"
+        }
+      ]
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "explanation": "Fixture documentaire synthétique ; aucune relecture agent prétendue.",
+      "citations": [
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "# Revue synthétique\n## Critères d’acceptation\n- [ ] Décision A : afficher la référence dossier dans la fiche interne.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "{\n  \"format\": \"odoo-evidence/1\",\n  \"project\": \"/tmp/odoo-recovery-20260909/candidate-v2-R04/project\",\n  \"scopes\": [\n    \"documentary\"\n  ],\n  \"sources\": {\n    \"documentary/reference.txt\": {\n      \"sha256\": \"8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96\",\n      \"mode\": 436\n    }\n  },\n  \"command\": [\n    \"/usr/bin/python3\",\n    \"-c\",\n    \"from pathlib import Path; assert Path('documentary/reference.txt').read_text() == 'reference_dossier=visible\\\\n'; print('Cohérence documentaire : référence dossier visible. Aucun test Odoo.')\"\n  ],\n  \"exit_code\": 0,\n  \"result\": \"passed\",\n  \"module\": null,\n  \"error\": null,\n  \"seconds\": 0.032,\n  \"log\": {\n    \"path\": \"/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/initial/documentary-proof.log\",\n    \"sha256\": \"7de39f9ce5bf1eed1a1d175acdebd23ab08280be78d02c9dcd84d4bd19245641\"\n  }\n}\n"
+        }
+      ]
+    },
+    "source_memory": {
+      "status": "pass",
+      "explanation": "Fixture documentaire synthétique ; aucune relecture agent prétendue.",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne.\nLe contrôle porte uniquement sur la cohérence documentaire.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/PROJECT-propose.md",
+          "quote": "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\nDécision A : afficher la référence dossier dans la fiche interne.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/JOURNAL-propose.md",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc.\nTâche A : cohérence documentaire de la référence dossier vérifiée.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/bundle.json.PROJECT.md.base",
+          "quote": "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/bundle.json.JOURNAL.md.base",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc.\n"
+        }
+      ]
+    }
+  }
+}
+{
+  "history": [
+    {
+      "action": "prepared",
+      "at": "2026-09-09T16:20:30+00:00"
+    },
+    {
+      "action": "start",
+      "at": "2026-09-09T16:20:30+00:00",
+      "reason": null,
+      "task_id": "A"
+    }
+  ],
+  "schema": 1,
+  "tasks": [
+    {
+      "acceptance": [
+        "Décision A : afficher la référence dossier dans la fiche interne."
+      ],
+      "attempts": [
+        {
+          "at": "2026-09-09T16:20:30+00:00",
+          "flow": ".odoo-agents/flows/plan-a-6a1f5bfd.json",
+          "sources_before": {
+            "documentary/reference.txt": {
+              "mode": 436,
+              "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96"
+            }
+          }
+        }
+      ],
+      "depends_on": [],
+      "id": "A",
+      "request": "changelog/recovery/demande-A.md",
+      "risk": "normal",
+      "route": "module",
+      "scopes": [
+        "documentary"
+      ],
+      "title": "Tâche documentaire A"
+    },
+    {
+      "acceptance": [
+        "A réceptionnée"
+      ],
+      "depends_on": [
+        "A"
+      ],
+      "id": "C",
+      "request": "changelog/recovery/demande-C.md",
+      "risk": "normal",
+      "route": "module",
+      "scopes": [
+        "future-documentary"
+      ],
+      "title": "Tâche documentaire C"
+    }
+  ],
+  "updated_at": "2026-09-09T16:20:30+00:00"
+}
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_plan.py status changelog/recovery
+A · running · .odoo-agents/flows/plan-a-6a1f5bfd.json · Tâche documentaire A
+C · pending · dépendances : A · Tâche documentaire C
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py release --help
+usage: odoo_flow.py release [-h] [--owner OWNER] --reason REASON state node
+
+positional arguments:
+  state
+  node
+
+options:
+  -h, --help       show this help message and exit
+  --owner OWNER
+  --reason REASON
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py complete --help
+usage: odoo_flow.py complete [-h] --outcome OUTCOME [--evidence EVIDENCE]
+                             [--note NOTE] [--owner OWNER] [--human-confirmed]
+                             state node
+
+positional arguments:
+  state
+  node
+
+options:
+  -h, --help           show this help message and exit
+  --outcome OUTCOME
+  --evidence EVIDENCE
+  --note NOTE
+  --owner OWNER
+  --human-confirmed
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_evidence.py --help
+usage: odoo_evidence.py [-h] {run,verify} ...
+
+Exécuter un contrôle et lier son résultat au contenu réellement contrôlé.
+
+positional arguments:
+  {run,verify}
+
+options:
+  -h, --help    show this help message and exit
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_evidence.py verify --help
+usage: odoo_evidence.py verify [-h] proof
+
+positional arguments:
+  proof
+
+options:
+  -h, --help  show this help message and exit
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py release .odoo-agents/flows/plan-a-6a1f5bfd.json journal_task --owner codex-context-interrompu --reason 'HANDOFF.md atteste interruption ; reprise documentaire par codex-r04-orchestrateur.'
+■ journal_task · verrou libéré par codex-context-interrompu
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py claim .odoo-agents/flows/plan-a-6a1f5bfd.json journal_task --owner codex-r04-orchestrateur
+▶ journal_task · ORCHESTRATEUR
+  Démarré par codex-r04-orchestrateur
+  Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py publish-memory .odoo-agents/flows/plan-a-6a1f5bfd.json --owner codex-r04-orchestrateur
+ERREUR: publication mémoire refusée : code changé depuis le contrôle
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py ready .odoo-agents/flows/plan-a-6a1f5bfd.json --json
+{
+  "run_id": "plan-a-6a1f5bfd",
+  "project": "/tmp/odoo-recovery-20260909/candidate-v2-R04/project",
+  "kind": "development",
+  "status": "running",
+  "ready": [],
+  "parallel_waves": [],
+  "running": [
+    "journal_task"
+  ],
+  "completed_events": 1,
+  "nodes": {},
+  "running_nodes": {
+    "journal_task": {
+      "description": "Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.",
+      "executor": "orchestrator",
+      "role": null,
+      "mode": null,
+      "owner": "codex-r04-orchestrateur",
+      "claimed_at": "2026-09-09T16:21:39+00:00",
+      "locks": [
+        {
+          "mode": "write",
+          "resource": "project_memory"
+        }
+      ]
+    }
+  }
+}
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_evidence.py run --help
+usage: odoo_evidence.py run [-h] --project PROJECT --scope SCOPE --output
+                            OUTPUT [--module MODULE] [--timeout TIMEOUT]
+                            ...
+
+positional arguments:
+  command
+
+options:
+  -h, --help         show this help message and exit
+  --project PROJECT
+  --scope SCOPE
+  --output OUTPUT
+  --module MODULE
+  --timeout TIMEOUT
++ mkdir -p changelog/recovery/reprise-r04
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_evidence.py verify changelog/recovery/initial/documentary-proof.json
+code changé depuis le contrôle
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_evidence.py run --project /tmp/odoo-recovery-20260909/candidate-v2-R04/project --scope documentary --output changelog/recovery/reprise-r04/controle-documentaire.json -- python3 -c 'from pathlib import Path; value=Path('\''documentary/reference.txt'\'').read_text(); print('\''Contrôle documentaire réel, aucun test Odoo. Valeur actuelle :'\'', repr(value), flush=True); assert value == '\''reference_dossier=visible\n'\'', '\''Référence dossier masquée : critère A non satisfait'\'''
+failed
++ python3 -
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py complete .odoo-agents/flows/plan-a-6a1f5bfd.json journal_task --owner codex-r04-orchestrateur --outcome blocked --evidence changelog/recovery/reprise-r04/blocage.md --evidence changelog/recovery/reprise-r04/controle-documentaire.json
+ODOO FLOW · plan-a-6a1f5bfd
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-v2-R04/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → blocked
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ memory_task_blocked
+    ORCHESTRATEUR
+    Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée.
+    Sorties: done · Preuve: motif de blocage mémoire et état de publication réel
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py status .odoo-agents/flows/plan-a-6a1f5bfd.json
+ODOO FLOW · plan-a-6a1f5bfd
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-v2-R04/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → blocked
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ memory_task_blocked
+    ORCHESTRATEUR
+    Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée.
+    Sorties: done · Preuve: motif de blocage mémoire et état de publication réel
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → blocked
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py ready .odoo-agents/flows/plan-a-6a1f5bfd.json --json
+{
+  "run_id": "plan-a-6a1f5bfd",
+  "project": "/tmp/odoo-recovery-20260909/candidate-v2-R04/project",
+  "kind": "development",
+  "status": "active",
+  "ready": [
+    "memory_task_blocked"
+  ],
+  "parallel_waves": [
+    [
+      "memory_task_blocked"
+    ]
+  ],
+  "running": [],
+  "completed_events": 2,
+  "nodes": {
+    "memory_task_blocked": {
+      "description": "Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée.",
+      "executor": "orchestrator",
+      "role": null,
+      "mode": null,
+      "outcomes": [
+        "done"
+      ],
+      "evidence": [
+        "motif de blocage mémoire et état de publication réel"
+      ],
+      "locks": [],
+      "claimable": true,
+      "reason": "revendicable",
+      "blockers": []
+    }
+  },
+  "running_nodes": {}
+}
++ python3 -
+PROJECT.md publication refusée sans remplacement : True f0a64083612d8335596c76a166392d62f87af4c0706542716d3c800405ccf3d9
+JOURNAL.md publication refusée sans remplacement : True 7d1446fb6dbb77a0b3220391f10c6ba00187bbbc7c1c80f866b3d463b665be7d
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py claim .odoo-agents/flows/plan-a-6a1f5bfd.json memory_task_blocked --owner codex-r04-orchestrateur
+▶ memory_task_blocked · ORCHESTRATEUR
+  Démarré par codex-r04-orchestrateur
+  Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée.
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py complete .odoo-agents/flows/plan-a-6a1f5bfd.json memory_task_blocked --owner codex-r04-orchestrateur --outcome done --evidence changelog/recovery/reprise-r04/blocage.md --evidence .odoo-agents/JOURNAL.md
+ODOO FLOW · plan-a-6a1f5bfd
+────────────────────────────────────────────────────────────────────────
+État       ARRÊTÉ
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-v2-R04/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ memory_task_blocked → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_plan.py status changelog/recovery
+A · blocked · blocked · Tâche documentaire A
+C · pending · dépendances : A · Tâche documentaire C
++ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py status .odoo-agents/flows/plan-a-6a1f5bfd.json
+ODOO FLOW · plan-a-6a1f5bfd
+────────────────────────────────────────────────────────────────────────
+État       ARRÊTÉ
+Flux       development
+Projet     /tmp/odoo-recovery-20260909/candidate-v2-R04/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ memory_task_blocked → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → blocked
+  ✓ memory_task_blocked → done
++ python3 -

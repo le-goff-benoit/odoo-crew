@@ -1,0 +1,107 @@
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "ee8d87d2bb6fbf7e9fbdbd20b8b4333f8f7235cdb099c012b649ed66b02a92d2",
+  "reviewer": "codex-tester-r03-reception",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Le contrôle porte uniquement sur la cohérence documentaire."
+        },
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "- [ ] Décision A : afficher la référence dossier dans la fiche interne."
+        }
+      ],
+      "explanation": "La spécification reprend exactement l’unique obligation A. La restriction documentaire de la source borne le contrôle : aucun comportement réel Odoo ni écran exécuté ne fait partie de cette réception. Aucun besoin supplémentaire introduit par la spécification."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "\"result\": \"passed\""
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "\"exit_code\": 0"
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "reference_dossier=visible"
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "Cohérence documentaire : référence dossier visible. Aucun test Odoo."
+        }
+      ],
+      "explanation": "La preuve structurée rapporte une assertion exacte du fichier documentaire sur reference_dossier=visible, avec exit_code 0 et passed. Le contenu actuel du fichier, son empreinte et mode ainsi que le hash du log ont été vérifiés ; odoo_evidence.verify(require_success=True) réussit. Cela satisfait la cohérence documentaire demandée et ne constitue pas une preuve d’affichage dans une instance Odoo."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Le contrôle porte uniquement sur la cohérence documentaire."
+        },
+        {
+          "path": "changelog/recovery/reprise/PROJECT-propose.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/reprise/PROJECT-propose.md",
+          "quote": "Périmètre validé : cohérence documentaire uniquement ; aucun développement ou test Odoo."
+        },
+        {
+          "path": "changelog/recovery/reprise/JOURNAL-propose.md",
+          "quote": "Le reçu initial du banc est synthétique, sans délégation passée attestée."
+        },
+        {
+          "path": "changelog/recovery/reprise/JOURNAL-propose.md",
+          "quote": "La preuve initiale du fichier de référence est conservée et sa fraîcheur vérifiée."
+        },
+        {
+          "path": "changelog/recovery/reprise/JOURNAL-propose.md",
+          "quote": "La référence dossier est déclarée visible dans documentary/reference.txt."
+        },
+        {
+          "path": "changelog/recovery/reprise/JOURNAL-propose.md",
+          "quote": "Aucun développement ni test Odoo ; la release reste ouverte."
+        },
+        {
+          "path": "changelog/recovery/reprise/bundle.json.PROJECT.md.base",
+          "quote": "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\n"
+        },
+        {
+          "path": "changelog/recovery/reprise/PROJECT-propose.md",
+          "quote": "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\n"
+        },
+        {
+          "path": "changelog/recovery/reprise/bundle.json.JOURNAL.md.base",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc.\n"
+        },
+        {
+          "path": "changelog/recovery/reprise/JOURNAL-propose.md",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc.\n"
+        }
+      ],
+      "explanation": "Les deux bases entières sont conservées comme préfixes exacts des drafts ; leurs cibles actuelles restent identiques aux bases. PROJECT ajoute uniquement A et sa limitation documentaire. JOURNAL décrit honnêtement la reprise et la preuve documentaire fraîche ; HANDOFF confirme le caractère synthétique du reçu initial, qui ne prouve aucune délégation passée. La présente relecture est effectuée dans un sous-agent distinct réel. Aucune contribution antérieure des bases n’est perdue, aucune réalisation Odoo ou clôture n’est revendiquée."
+    }
+  }
+}

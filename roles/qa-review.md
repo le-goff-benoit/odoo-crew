@@ -49,6 +49,16 @@ Examine ensemble trois axes, en citant les passages des deux côtés :
   distingue résultat local, livraison et historique réellement disponible.
   Vérifie les remplacements nécessaires, pas seulement les ajouts.
 
+En reprise après conflit mémoire, compare aussi les copies de base figées aux
+nouveaux drafts : les contributions déjà publiées par les autres tâches doivent
+rester présentes et garder leur sens. Vérifie également que la nouvelle entrée
+transmet le résultat effectivement reçu (réussite, échec ou limite), pas seulement
+l'existence ou la conservation d'une preuve. Une chronologie de reprise ne
+remplace pas ce résultat. Refuse cette perte même si tous les hashes sont frais.
+Cite ces bases lorsqu'elles figurent dans le bundle. Le code et la QA reçus auparavant restent acquis seulement si leurs
+empreintes et leur contrat sont inchangés ; le renouvellement de la mémoire ne
+permet pas de les requalifier.
+
 Avec un bundle de réception, lis `docs/TASK_RECEPTION.md` du référentiel et
 produis le JSON `odoo-task-reception/1` dans le fichier isolé demandé. Le helper
 `python3 ~/.odoo19-agents/scripts/odoo_reception.py draft <bundle> --reviewer <identité>`

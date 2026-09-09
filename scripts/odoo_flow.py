@@ -739,21 +739,149 @@ def bind_criteria(state_path, graph_path, source, output, owner):
     return pinned
 
 
+RECOVERY_GATE = 'reception_recovery_gate'
+RECOVERY_NODES = {'reception_recovery_gate', 'memory_task_blocked'}
+RECOVERY_EDGES = {'journal-memory-retry', 'journal-memory-blocked',
+                  'reception-memory-pass', 'reception-memory-blocked'}
+
+
+RECOVERY_EXTENSION = {'nodes': {'reception_recovery_gate': {'description': 'Recevoir à nouveau les propositions mémoire depuis '
+                                                      'les bases actuelles, à contrat et preuves inchangés.',
+                                       'executor': 'orchestrator',
+                                       'join': 'any',
+                                       'evidence': ['réception indépendante renouvelée ou motif de blocage '
+                                                    'mémoire'],
+                                       'max_outcome_uses': {'pass': 2},
+                                       'locks': [{'resource': 'project_memory', 'mode': 'write'}]},
+           'memory_task_blocked': {'description': 'Intervention arrêtée sur la réception ou la publication '
+                                                  'mémoire ; la QA passée reste conservée.',
+                                   'executor': 'orchestrator',
+                                   'join': 'any',
+                                   'terminal': 'blocked',
+                                   'outcomes': ['done'],
+                                   'evidence': ['motif de blocage mémoire et état de publication réel'],
+                                   'locks': []}},
+ 'edges': [{'id': 'journal-memory-retry',
+            'from': 'journal_task',
+            'outcome': 'retry',
+            'to': 'reception_recovery_gate'},
+           {'id': 'journal-memory-blocked',
+            'from': 'journal_task',
+            'outcome': 'blocked',
+            'to': 'memory_task_blocked'},
+           {'id': 'reception-memory-pass',
+            'from': 'reception_recovery_gate',
+            'outcome': 'pass',
+            'to': 'journal_task'},
+           {'id': 'reception-memory-blocked',
+            'from': 'reception_recovery_gate',
+            'outcome': 'blocked',
+            'to': 'memory_task_blocked'}]}
+
+
+def recovery_available(graph):
+    return (all(graph['nodes'].get(name) == node for name, node in RECOVERY_EXTENSION['nodes'].items())
+            and [edge for edge in graph['edges'] if edge['id'] in RECOVERY_EDGES] == RECOVERY_EXTENSION['edges'])
+
+
+def accepted_bundle(state, memory_policy='ignore'):
+    from odoo_coverage import GATES
+    from odoo_reception import check_ref, verify_bundle, verify_contract
+    accepted = state.get('accepted_reception')
+    if state.get('status') != 'active' or not accepted or not any(
+            event['node'] in GATES and event['outcome'] == 'pass' for event in state['events']):
+        raise ValueError('réception QA acceptée préalable requise')
+    pins = [state.get('task_reception', {})] + state.get('task_reception_history', [])
+    pinned = next((pin for pin in pins if pin.get('sha256') == accepted['bundle_sha256']), None)
+    if not pinned:
+        raise ValueError('dossier de réception accepté introuvable')
+    root = Path(state['project']).resolve()
+    check_ref(root, accepted)
+    bundle = verify_bundle(root, pinned, memory_policy=memory_policy)
+    verify_contract(bundle, state.get('qa_contract'))
+    return pinned, bundle
+
+
+def upgrade_recovery(state_path, graph_path, owner, from_graph=None):
+    """Ajout connu seulement ; aucune relaxation de validate_migration."""
+    import copy
+    with exclusive_lock(state_path):
+        state = load_json(state_path)
+        graph = load_json(graph_path)
+        old = state.get('graph_snapshot')
+        if not owner.strip() or state.get('status') != 'active' or state.get('claims'):
+            raise FlowError('migration de reprise : flow actif sans revendication requis')
+        if not old or any(e['node'] == 'journal_task' for e in state['events']):
+            raise FlowError('migration de reprise : snapshot requis et journal jamais exécuté')
+        # L’empreinte d’origine reste vérifiable sur le fichier déclaré du run.
+        original = Path(from_graph) if from_graph else Path(state.get('graph', ''))
+        if (not original.is_file() or graph_hash(original) != state.get('graph_sha256')
+                or load_json(original) != old):
+            raise FlowError('migration de reprise : fournir le graphe original intact au chemin déclaré')
+        if validate_graph(graph) or not recovery_available(graph):
+            raise FlowError('sous-graphe de reprise absent ou invalide')
+        stripped = copy.deepcopy(graph)
+        for name in RECOVERY_NODES:
+            stripped['nodes'].pop(name)
+        stripped['edges'] = [edge for edge in stripped['edges'] if edge['id'] not in RECOVERY_EDGES]
+        if old != stripped:
+            raise FlowError('migration de reprise limitée aux seuls ajouts mémoire prévus')
+        previous = state['graph_sha256']
+        state.update(graph=str(graph_path), graph_sha256=graph_hash(graph_path), graph_snapshot=graph)
+        state.setdefault('migrations', []).append({'at': now(), 'from': previous,
+            'to': state['graph_sha256'], 'kind': 'memory-recovery', 'owner': owner})
+        write_state(state_path, state)
+        return state
+
+
+def publish_memory(state_path, graph_path, owner):
+    from odoo_reception import check_ref, publish
+    with exclusive_lock(state_path):
+        state, graph = load_state(state_path, graph_path)
+        claim = state.get('claims', {}).get('journal_task')
+        if not claim or claim.get('owner') != owner:
+            raise FlowError('publication : revendication journal_task du propriétaire requise')
+        lock_registry = registry_path(state)
+        with exclusive_lock(lock_registry):
+            registry = load_registry(lock_registry)
+            if not any(item == claim for item in registry['claims']):
+                raise FlowError('publication : verrou mémoire du registre absent')
+            if any(item != claim and not locks_compatible(claim['locks'], item.get('locks', []))
+                   for item in registry['claims']):
+                raise FlowError('publication : verrou mémoire concurrent')
+            try:
+                pinned, _ = accepted_bundle(state)
+                if pinned != state.get('task_reception'):
+                    raise ValueError('nouveau dossier non encore accepté')
+                review = json.loads(check_ref(Path(state['project']).resolve(), state['accepted_reception']).read_bytes())
+                if review['reviewer'].strip() == owner.strip():
+                    raise ValueError('relecteur identique au propriétaire de publication')
+                return publish(state['project'], pinned, review)
+            except (ValueError, KeyError, TypeError, OSError) as exc:
+                raise FlowError(f'publication mémoire refusée : {exc}') from exc
+
+
 def prepare_reception(state_path, graph_path, sources, spec, evidence, memories, scopes, output, owner):
     from odoo_coverage import GATES, digest
     from odoo_reception import prepare, verify_contract
     with exclusive_lock(state_path):
         state, graph = load_state(state_path, graph_path)
-        if state.get('plan_task'):
-            raise FlowError('garde expérimental indisponible pour les tâches planifiées ; réception documentaire sans garde permise')
+        if state.get('plan_task') and not recovery_available(graph):
+            raise FlowError('tâches planifiées : graphe avec reprise mémoire requis')
         if state['status'] != 'active' or any(c['owner'] != owner for c in state.get('claims', {}).values()):
             raise FlowError('réception impossible : flow terminé ou revendications d’un autre propriétaire')
-        if any(e['node'] in GATES and e['outcome'] == 'pass' for e in state['events']):
-            raise FlowError('préparation impossible après réception QA')
+        recovering = any(e['node'] in GATES and e['outcome'] == 'pass' for e in state['events'])
+        if recovering and (not recovery_available(graph) or
+                           state.get('claims', {}).get(RECOVERY_GATE, {}).get('owner') != owner):
+            raise FlowError('préparation après QA : revendiquez reception_recovery_gate')
         try:
             root = Path(state['project']).resolve()
             bundle = prepare(root, sources, spec, evidence, memories, scopes, owner)
             verify_contract(bundle, state.get('qa_contract'))
+            if recovering:
+                _, previous = accepted_bundle(state)
+                if any(bundle[key] != previous[key] for key in ('groups', 'scopes', 'code')):
+                    raise ValueError('reprise mémoire : sources, spécification, preuves et code doivent rester identiques')
             target = (root / output).resolve()
             if not target.is_relative_to(root) or target.exists() or target.is_symlink():
                 raise ValueError('nouveau fichier de dossier requis dans le projet')
@@ -761,7 +889,21 @@ def prepare_reception(state_path, graph_path, sources, spec, evidence, memories,
                 raise ValueError('sortie distincte des cibles mémoire requise')
             if any(target == (root / scope).resolve() or target.is_relative_to((root / scope).resolve()) for scope in scopes):
                 raise ValueError('dossier hors périmètre de code requis')
+            bases = []
+            for row in bundle['memory']:
+                if row['before_sha256'] is not None:
+                    base = target.with_name(target.name + '.' + Path(row['target']).name + '.base')
+                    if base.exists() or base.is_symlink():
+                        raise ValueError('nouveau fichier de base mémoire requis : ' + str(base))
+                    content = (root / row['target']).read_bytes()
+                    if digest(content) != row['before_sha256']:
+                        raise ValueError('mémoire changée pendant préparation : ' + row['target'])
+                    bases.append((row, base, content))
             target.parent.mkdir(parents=True, exist_ok=True)
+            for row, base, content in bases:
+                with base.open('xb') as stream:
+                    stream.write(content)
+                row['base'] = {'path': str(base.relative_to(root)), 'sha256': digest(content)}
             with target.open('x', encoding='utf-8') as stream:
                 json.dump(bundle, stream, ensure_ascii=False, indent=2)
                 stream.write('\n')
@@ -780,10 +922,24 @@ def verify_task_reception(state, checked_evidence, node_name, outcome, owner):
     from odoo_coverage import GATES, digest, project_file
     from odoo_reception import FORMAT, check_ref, verify, verify_contract
     pinned = state.get('task_reception')
+    recovery_exit = node_name == 'journal_task' and outcome in {'retry', 'blocked'}
+    if not pinned and (recovery_exit or node_name == RECOVERY_GATE):
+        raise FlowError('reprise mémoire réservée aux tâches avec réception liée')
     if not pinned:
         return None
     try:
-        if node_name in GATES and outcome == 'pass':
+        if recovery_exit and outcome == 'retry' and state['outcome_counts'].get('journal_task:retry', 0) >= 2:
+            raise ValueError('deux reprises mémoire déjà ouvertes ; choisir blocked')
+        if recovery_exit or node_name == RECOVERY_GATE:
+            if outcome == 'blocked':
+                # Une preuve devenue périmée doit encore permettre l’arrêt réel.
+                if not state.get('accepted_reception'):
+                    raise ValueError('réception QA acceptée préalable requise')
+            else:
+                accepted_bundle(state)
+        if node_name in GATES | {RECOVERY_GATE} and outcome == 'pass':
+            if node_name == RECOVERY_GATE and pinned['sha256'] == state['accepted_reception']['bundle_sha256']:
+                raise ValueError('nouveau dossier de réception requis pour la reprise')
             reviews = []
             for value in checked_evidence:
                 try:
@@ -930,6 +1086,8 @@ def complete_claimed_node(
             complete_node(state, graph, node_name, outcome, checked_evidence, note)
             state["events"][-1]["evidence_sha256"] = evidence_digests
             if accepted_reception:
+                if state.get("accepted_reception"):
+                    state.setdefault("accepted_reception_history", []).append(state["accepted_reception"])
                 state["accepted_reception"] = accepted_reception
         except Exception:
             if not is_human:
@@ -1150,6 +1308,13 @@ def build_parser() -> argparse.ArgumentParser:
     binding.add_argument('--output', type=Path, required=True)
     binding.add_argument('--owner', required=True)
 
+    for name, help_text in [('publish-memory', 'publier les deux drafts approuvés de façon reprenable'),
+                            ('upgrade-recovery', 'ajouter explicitement la reprise mémoire à un ancien run')]:
+        command = subparsers.add_parser(name, help=help_text)
+        command.add_argument('state', type=Path)
+        command.add_argument('--owner', required=True)
+        if name == 'upgrade-recovery':
+            command.add_argument('--from-graph', type=Path)
     reception = subparsers.add_parser('prepare-reception', help='figer le dossier de réception et la mémoire proposée')
     reception.add_argument('state', type=Path)
     reception.add_argument('--source', action='append', required=True)
@@ -1287,6 +1452,15 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         state_path = args.state.resolve()
+        if args.command == 'upgrade-recovery':
+            state = upgrade_recovery(state_path, graph_path, args.owner, args.from_graph)
+            print(f"Reprise mémoire ajoutée : {state['graph_sha256'][:12]} ; historique conservé.")
+            return 0
+        if args.command == 'publish-memory':
+            for row in publish_memory(state_path, graph_path, args.owner):
+                print(f"Mémoire {row['action']} : {row['target']}")
+            print('Publication vérifiée ; journal_task reste revendiqué et doit être complété.')
+            return 0
         if args.command == 'prepare-reception':
             receipt = prepare_reception(state_path, graph_path, args.source, args.spec, args.evidence,
                                         args.memory, args.scope, args.output, args.owner)

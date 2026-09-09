@@ -1,0 +1,2365 @@
+Initial read-only discovery (before log creation)
+$ pwd (cwd project)
+/tmp/odoo-recovery-20260909/candidate-R01-v2/project
+$ cat demande-B.md
+cat: demande-B.md: No such file or directory (exit 1)
+$ ls /tmp/odoo-recovery-20260909/candidate
+AGENTS.md CLAUDE.md INSTALL.md LESSONS.md ODOO19_STYLE_GUIDE.md PLATEFORMES.md README.md SERIES_MATRIX.md benchmarks build.sh docs roles routing.md scripts stack tests workflows
+$ rg --files -g demande-B.md -g AGENTS.md -g PROJECT.md -g JOURNAL.md -g *flow* .
+./changelog/recovery/demande-B.md
+$ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py --help
+Available commands: validate analyze render start ready status complete bind-criteria publish-memory upgrade-recovery prepare-reception qa-report claim release migrate. Exit 0. Full help repeated below for complete transcript.
++ cat changelog/recovery/demande-B.md
+Décision B : conserver la priorité manuelle dans le tableau de suivi.
+Tâche B : priorité manuelle conservée ; aucun tri automatique demandé.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py --help
+usage: odoo_flow.py [-h] [--graph GRAPH]
+                    {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+                    ...
+
+Valide et pilote le graphe de travail des agents Odoo. Le script ne réalise
+aucune opération Odoo. Il conserve seulement l'état du workflow, contrôle les
+transitions, expose les nœuds prêts et empêche les boucles de reprise non
+bornées. L'orchestrateur principal est l'unique écrivain du fichier d'état ;
+les agents spécialisés écrivent leurs preuves dans les chemins distincts qu'il
+leur donne. Exemples : odoo_flow.py validate odoo_flow.py analyze odoo_flow.py
+render --format mermaid odoo_flow.py start ~/projet --kind development --id
+ajout-reference odoo_flow.py ready ~/projet/.odoo-agents/flows/ajout-
+reference.json odoo_flow.py complete <état.json> briefing --outcome
+development --evidence /tmp/briefing.txt
+
+positional arguments:
+  {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+    validate            valider la définition
+    analyze             mesurer la structure
+    render              rendre le graphe
+    start               ouvrir un état persistant
+    ready               afficher ready
+    status              afficher status
+    complete            terminer un nœud prêt
+    bind-criteria       lier un contrat QA et générer sa couverture manquante
+    publish-memory      publier les deux drafts approuvés de façon reprenable
+    upgrade-recovery    ajouter explicitement la reprise mémoire à un ancien
+                        run
+    prepare-reception   figer le dossier de réception et la mémoire proposée
+    qa-report           rendre un rapport QA lié à sa couverture et à son
+                        issue
+    claim               revendiquer un nœud et ses verrous
+    release             libérer un nœud sans le terminer
+    migrate             rattacher explicitement un run à une nouvelle version
+                        compatible du graphe
+
+options:
+  -h, --help            show this help message and exit
+  --graph GRAPH
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py start --help
+usage: odoo_flow.py start [-h] --kind
+                          {close,development,development_complex,documentation,environment,feedback,functional,support,technical,validation}
+                          [--id ID]
+                          project
+
+positional arguments:
+  project
+
+options:
+  -h, --help            show this help message and exit
+  --kind {close,development,development_complex,documentation,environment,feedback,functional,support,technical,validation}
+  --id ID
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim --help
+usage: odoo_flow.py claim [-h] [--owner OWNER] state node
+
+positional arguments:
+  state
+  node
+
+options:
+  -h, --help     show this help message and exit
+  --owner OWNER
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete --help
+usage: odoo_flow.py complete [-h] --outcome OUTCOME [--evidence EVIDENCE]
+                             [--note NOTE] [--owner OWNER] [--human-confirmed]
+                             state node
+
+positional arguments:
+  state
+  node
+
+options:
+  -h, --help           show this help message and exit
+  --outcome OUTCOME
+  --evidence EVIDENCE
+  --note NOTE
+  --owner OWNER
+  --human-confirmed
++ ls -la .odoo-agents
+total 24
+drwxrwxr-x 4 blegoff blegoff 4096 Sep  9 18:02 .
+drwxrwxr-x 5 blegoff blegoff 4096 Sep  9 18:02 ..
+-rw-rw-r-- 1 blegoff blegoff   60 Sep  9 18:02 JOURNAL.md
+-rw-rw-r-- 1 blegoff blegoff   78 Sep  9 18:02 PROJECT.md
+drwxrwxr-x 2 blegoff blegoff 4096 Sep  9 18:02 flow-artifacts
+drwxrwxr-x 2 blegoff blegoff 4096 Sep  9 18:02 flows
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py render --format mermaid
+flowchart TD
+    briefing["Situer le projet, la série, la release, les modules et les données disponibles."]
+    functional_review["Produire la revue fonctionnelle contradictoire et choisir la voie."]
+    functional_review_high_risk["Revoir un correctif sensible sans perdre l'obligation de validation sur copie client."]
+    analyst_standard_lane["Voie parallèle en lecture seule : vérifier le standard et les sources de la série."]
+    analyst_project_lane["Voie parallèle en lecture seule : inspecter le custom, le projet et ses décisions."]
+    analyst_data_lane["Voie parallèle en lecture seule : inspecter la configuration et les données de la copie client."]
+    functional_synthesis["Fusionner les voies d'analyse dans une seule revue et décider de la suite."]
+    human_scope_gate{"Attendre une décision humaine qui change le périmètre ou la voie de réalisation."}
+    human_high_risk_scope_gate{"Attendre un arbitrage humain sans perdre l'obligation de QA sur copie client."}
+    configuration_record["Enregistrer la solution standard ou de configuration sans développer."]
+    module_implementation["Implémenter le module et ses tests dans le périmètre de la revue."]
+    module_implementation_high_risk["Implémenter un changement sensible dont la QA sur copie client est obligatoire."]
+    studio_implementation["Construire la configuration Studio et son pack versionné sur la copie client."]
+    human_implementation_gate{"Arbitrer une limite découverte pendant l'implémentation."}
+    module_static_qa["Voie QA normale : relire le diff et exécuter le lint ciblé."]
+    module_runtime_qa["Voie QA normale : installer, mettre à jour et exécuter les tests ciblés."]
+    module_task_gate["Fusionner les preuves QA normales et rendre un verdict unique."]
+    module_high_static_qa["Voie QA renforcée : conformité statique et revue du diff."]
+    module_high_runtime_qa["Voie QA renforcée : installation, mise à jour et tests ciblés."]
+    module_client_copy_qa["Voie QA renforcée : vérifier immédiatement les droits, la compta, la facturation ou les données existantes sur la copie client."]
+    module_high_gate["Fusionner les trois preuves QA renforcées et rendre un verdict unique."]
+    studio_diff_qa["Voie QA Studio : vérifier que le pack et la copie ne divergent pas."]
+    studio_scenario_qa["Voie QA Studio : jouer les scénarios RPC et vérifier l'écran concerné."]
+    studio_task_gate["Fusionner les preuves Studio et rendre un verdict unique."]
+    support_diagnosis["Reproduire, prouver la cause, classer et préparer la suite du ticket."]
+    bug_handoff_gate["Vérifier que le diagnostic de bug porte une cause prouvée et un test rouge avant correction."]
+    bug_sensitive_handoff_gate["Vérifier le diagnostic et le test rouge d'un bug sensible avant une revue qui conserve la QA sur copie client."]
+    data_repair_copy["Prouver une réparation idempotente sur la copie client, avec comptages avant et après."]
+    human_production_gate{"Attendre la confirmation humaine explicite d'une opération précise en production."}
+    production_write["Exécuter uniquement l'opération de production explicitement confirmée."]
+    standalone_validation["Valider un module seul en mode QA de release."]
+    environment_action["Déclarer ou vérifier un environnement sans exposer de secret."]
+    feedback_action["Exécuter le retour d'expérience et reconstruire les profils si une leçon est promue."]
+    documentation_action["Produire les livrables documentaires explicitement demandés."]
+    technical_answer(["Répondre directement à une question technique située dans la bonne série."])
+    close_precheck["Vérifier le périmètre et préparer les versions avant la recette."]
+    release_technical_qa["Exécuter la recette complète sur l'état exact à livrer, module par module."]
+    release_repair["Corriger une anomalie bloquante de recette dans le périmètre de la release."]
+    browser_qa["Rejouer les critères utilisateur et prendre les captures finales sur la copie client."]
+    client_docs["Produire doc.md métier et consolidation depuis les preuves validées ; guide DOCX/PDF sur demande."]
+    release_finalize["Finaliser README, versions, périmètre et proposition de commit, puis retirer le marqueur d'ouverture."]
+    journal_task["Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire."]
+    reception_recovery_gate["Recevoir à nouveau les propositions mémoire depuis les bases actuelles, à contrat et preuves inchangés."]
+    memory_task_blocked(["Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée."])
+    journal_task_blocked["Consigner l'échec de QA et les anomalies restantes avant l'arrêt."]
+    journal_cancelled["Consigner la décision humaine et l'état réel avant l'arrêt."]
+    release_journal["Capitaliser ce que la recette de release a révélé."]
+    release_blocked_journal["Consigner les contrôles rouges ou manquants avant d'arrêter la clôture."]
+    task_done(["Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain."])
+    task_blocked(["Intervention arrêtée avec une QA encore rouge après deux reprises, état réel consigné."])
+    feedback_done(["Retour d'expérience terminé."])
+    release_closed(["Release clôturée et prête pour l'action humaine suivante."])
+    release_blocked(["Clôture arrêtée avec les contrôles rouges ou manquants explicitement consignés."])
+    cancelled(["Intervention arrêtée après décision humaine, avec état réel consigné."])
+    briefing -->|development| functional_review
+    briefing -->|development_complex| analyst_standard_lane
+    briefing -->|development_complex| analyst_project_lane
+    briefing -->|development_complex| analyst_data_lane
+    briefing -->|functional| functional_review
+    briefing -->|support| support_diagnosis
+    briefing -->|close| close_precheck
+    briefing -->|validation| standalone_validation
+    briefing -->|environment| environment_action
+    briefing -->|feedback| feedback_action
+    briefing -->|documentation| documentation_action
+    briefing -->|technical| technical_answer
+    analyst_standard_lane -->|done| functional_synthesis
+    analyst_project_lane -->|done| functional_synthesis
+    analyst_data_lane -->|done| functional_synthesis
+    functional_review -->|exists| configuration_record
+    functional_review -->|blocked| human_scope_gate
+    functional_review -->|contradiction| journal_task
+    functional_review -->|answer| journal_task
+    functional_review -->|module| module_implementation
+    functional_review -->|module_high_risk| module_implementation_high_risk
+    functional_review -->|studio| studio_implementation
+    functional_review_high_risk -->|exists| configuration_record
+    functional_review_high_risk -->|blocked| human_high_risk_scope_gate
+    functional_review_high_risk -->|contradiction| journal_task
+    functional_review_high_risk -->|answer| journal_task
+    functional_review_high_risk -->|module| module_implementation_high_risk
+    functional_review_high_risk -->|studio| studio_implementation
+    functional_synthesis -->|exists| configuration_record
+    functional_synthesis -->|blocked| human_scope_gate
+    functional_synthesis -->|contradiction| journal_task
+    functional_synthesis -->|module| module_implementation
+    functional_synthesis -->|module_high_risk| module_implementation_high_risk
+    functional_synthesis -->|studio| studio_implementation
+    human_scope_gate -->|module| module_implementation
+    human_scope_gate -->|module_high_risk| module_implementation_high_risk
+    human_scope_gate -->|studio| studio_implementation
+    human_scope_gate -->|exists| configuration_record
+    human_scope_gate -->|review| functional_review
+    human_scope_gate -->|cancel| journal_cancelled
+    human_high_risk_scope_gate -->|module| module_implementation_high_risk
+    human_high_risk_scope_gate -->|studio| studio_implementation
+    human_high_risk_scope_gate -->|exists| configuration_record
+    human_high_risk_scope_gate -->|review| functional_review_high_risk
+    human_high_risk_scope_gate -->|cancel| journal_cancelled
+    configuration_record -->|done| journal_task
+    module_implementation -->|done| module_static_qa
+    module_implementation -->|done| module_runtime_qa
+    module_implementation_high_risk -->|done| module_high_static_qa
+    module_implementation_high_risk -->|done| module_high_runtime_qa
+    module_implementation_high_risk -->|done| module_client_copy_qa
+    module_implementation_high_risk -->|blocked| human_high_risk_scope_gate
+    module_implementation -->|blocked| human_implementation_gate
+    human_implementation_gate -->|module| module_implementation
+    human_implementation_gate -->|studio| studio_implementation
+    human_implementation_gate -->|cancel| journal_cancelled
+    module_static_qa -->|done| module_task_gate
+    module_runtime_qa -->|done| module_task_gate
+    module_task_gate -->|pass| journal_task
+    module_task_gate -->|retry| module_implementation
+    module_task_gate -->|blocked| journal_task_blocked
+    module_high_static_qa -->|done| module_high_gate
+    module_high_runtime_qa -->|done| module_high_gate
+    module_client_copy_qa -->|done| module_high_gate
+    module_high_gate -->|pass| journal_task
+    module_high_gate -->|retry| module_implementation_high_risk
+    module_high_gate -->|blocked| journal_task_blocked
+    studio_implementation -->|done| studio_diff_qa
+    studio_implementation -->|done| studio_scenario_qa
+    studio_implementation -->|blocked| human_high_risk_scope_gate
+    studio_diff_qa -->|done| studio_task_gate
+    studio_scenario_qa -->|done| studio_task_gate
+    studio_task_gate -->|pass| journal_task
+    studio_task_gate -->|retry| studio_implementation
+    studio_task_gate -->|blocked| journal_task_blocked
+    support_diagnosis -->|usage| journal_task
+    support_diagnosis -->|configuration| journal_task
+    support_diagnosis -->|data| data_repair_copy
+    support_diagnosis -->|bug| bug_handoff_gate
+    support_diagnosis -->|bug_sensitive| bug_sensitive_handoff_gate
+    support_diagnosis -->|evolution| functional_review
+    support_diagnosis -->|unknown| journal_task
+    bug_handoff_gate -->|module| module_implementation
+    bug_handoff_gate -->|review| functional_review
+    bug_handoff_gate -->|review_high_risk| functional_review_high_risk
+    bug_handoff_gate -->|blocked| journal_task_blocked
+    bug_sensitive_handoff_gate -->|review_high_risk| functional_review_high_risk
+    bug_sensitive_handoff_gate -->|blocked| journal_task_blocked
+    data_repair_copy -->|production_proposed| human_production_gate
+    data_repair_copy -->|local_only| journal_task
+    data_repair_copy -->|blocked| journal_task
+    human_production_gate -->|no_write| journal_task
+    human_production_gate -->|write_confirmed| production_write
+    production_write -->|done| journal_task
+    standalone_validation -->|pass| journal_task
+    standalone_validation -->|fail| journal_task
+    environment_action -->|done| journal_task
+    feedback_action -->|done| feedback_done
+    documentation_action -->|done| journal_task
+    close_precheck -->|green| release_technical_qa
+    close_precheck -->|blocked| release_blocked_journal
+    release_technical_qa -->|green| browser_qa
+    release_technical_qa -->|red| release_repair
+    release_technical_qa -->|exhausted| release_blocked_journal
+    release_repair -->|fixed| release_technical_qa
+    release_repair -->|failed| release_blocked_journal
+    browser_qa -->|green| client_docs
+    browser_qa -->|red| release_blocked_journal
+    client_docs -->|done| release_finalize
+    release_finalize -->|done| release_journal
+    release_journal -->|done| release_closed
+    journal_task -->|retry| reception_recovery_gate
+    journal_task -->|blocked| memory_task_blocked
+    reception_recovery_gate -->|pass| journal_task
+    reception_recovery_gate -->|blocked| memory_task_blocked
+    journal_task -->|done| task_done
+    journal_task_blocked -->|done| task_blocked
+    journal_cancelled -->|done| cancelled
+    release_blocked_journal -->|done| release_blocked
++ cat .odoo-agents/PROJECT.md .odoo-agents/JOURNAL.md
+# Projet synthétique
+Le tableau de suivi conserve les décisions explicites.
+# Journal synthétique
+Initialisation documentaire du banc.
++ rg -n 'project_memory|feedback_record|technical_answer|documentation|feedback' /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py
+43:    "documentation",
+45:    "feedback",
+755:                                       'locks': [{'resource': 'project_memory', 'mode': 'write'}]},
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py start . --kind feedback --id writer-B
+/tmp/odoo-recovery-20260909/candidate-R01-v2/project/.odoo-agents/flows/writer-b.json
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/writer-B.json
+ERREUR: fichier introuvable : /tmp/odoo-recovery-20260909/candidate-R01-v2/project/.odoo-agents/flows/writer-B.json
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py ready .odoo-agents/flows/writer-B.json
+ERREUR: fichier introuvable : /tmp/odoo-recovery-20260909/candidate-R01-v2/project/.odoo-agents/flows/writer-B.json
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim .odoo-agents/flows/writer-B.json briefing --owner Codex-B-orchestrateur
+ERREUR: fichier introuvable : /tmp/odoo-recovery-20260909/candidate-R01-v2/project/.odoo-agents/flows/writer-B.json
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/writer-b.json
+ODOO FLOW · writer-b
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       feedback
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 0 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ briefing
+    ORCHESTRATEUR
+    Situer le projet, la série, la release, les modules et les données disponibles.
+    Sorties: close, development, development_complex, documentation, environment, feedback, functional, support, technical, validation · Preuve: sortie de odoo_briefing.py
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py ready .odoo-agents/flows/writer-b.json
+ODOO FLOW · writer-b
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       feedback
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 0 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ briefing
+    ORCHESTRATEUR
+    Situer le projet, la série, la release, les modules et les données disponibles.
+    Sorties: close, development, development_complex, documentation, environment, feedback, functional, support, technical, validation · Preuve: sortie de odoo_briefing.py
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim .odoo-agents/flows/writer-b.json briefing --owner Codex-B-orchestrateur
+▶ briefing · ORCHESTRATEUR
+  Démarré par Codex-B-orchestrateur
+  Situer le projet, la série, la release, les modules et les données disponibles.
++ mkdir -p changelog/recovery/writer-B
++ python3 -
+# Contribution B — briefing synthétique
+
+Projet documentaire synthétique, sans lecture ou modification de code Odoo.
+Demande source : changelog/recovery/demande-B.md.
+Décision B : conserver la priorité manuelle dans le tableau de suivi.
+Tâche B : priorité manuelle conservée ; aucun tri automatique demandé.
+Voie feedback : consigner cette décision dans PROJECT.md et JOURNAL.md avec verrou project_memory.
+Aucune QA Odoo exécutée ou revendiquée.
+
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete .odoo-agents/flows/writer-b.json briefing --outcome feedback --evidence changelog/recovery/writer-B/briefing.md --owner Codex-B-orchestrateur
+ODOO FLOW · writer-b
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       feedback
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 1 prêt(s)
+Dernière   ✓ briefing → feedback
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ feedback_action
+    AGENT · odoo-feedback
+    Exécuter le retour d'expérience et reconstruire les profils si une leçon est promue.
+    Sorties: done · Preuve: compte-rendu du retour d'expérience
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/writer-b.json
+ODOO FLOW · writer-b
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       feedback
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 1 prêt(s)
+Dernière   ✓ briefing → feedback
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ feedback_action
+    AGENT · odoo-feedback
+    Exécuter le retour d'expérience et reconstruire les profils si une leçon est promue.
+    Sorties: done · Preuve: compte-rendu du retour d'expérience
+
+HISTORIQUE RÉCENT
+  ✓ briefing → feedback
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py ready .odoo-agents/flows/writer-b.json
+ODOO FLOW · writer-b
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       feedback
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 1 prêt(s)
+Dernière   ✓ briefing → feedback
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ feedback_action
+    AGENT · odoo-feedback
+    Exécuter le retour d'expérience et reconstruire les profils si une leçon est promue.
+    Sorties: done · Preuve: compte-rendu du retour d'expérience
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim .odoo-agents/flows/writer-b.json feedback_action --owner Codex-B-orchestrateur
+▶ feedback_action · AGENT · odoo-feedback
+  Démarré par Codex-B-orchestrateur
+  Exécuter le retour d'expérience et reconstruire les profils si une leçon est promue.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status --help
+usage: odoo_flow.py status [-h] [--json] state
+
+positional arguments:
+  state
+
+options:
+  -h, --help  show this help message and exit
+  --json
++ python3 -
+38: DEFAULT_GRAPH = HERE / "workflows" / "odoo-workflow.json"
+61: def load_json(path: Path) -> dict[str, Any]:
+363: def load_state(path: Path, graph_path: Path) -> tuple[dict[str, Any], dict[str, Any]]:
+430: def load_registry(path: Path) -> dict[str, Any]:
+1274:     parser.add_argument("--graph", type=Path, default=DEFAULT_GRAPH)
++ cat .odoo-agents/flows/writer-b.json
+{
+  "claims": {
+    "feedback_action": {
+      "at": "2026-09-09T16:05:00+00:00",
+      "locks": [
+        {
+          "mode": "write",
+          "resource": "agent_repository"
+        }
+      ],
+      "node": "feedback_action",
+      "owner": "Codex-B-orchestrateur",
+      "state": "/tmp/odoo-recovery-20260909/candidate-R01-v2/project/.odoo-agents/flows/writer-b.json"
+    }
+  },
+  "created_at": "2026-09-09T16:04:41+00:00",
+  "events": [
+    {
+      "at": "2026-09-09T16:05:00+00:00",
+      "emitted": [
+        "feedback_action"
+      ],
+      "evidence": [
+        "/tmp/odoo-recovery-20260909/candidate-R01-v2/project/changelog/recovery/writer-B/briefing.md"
+      ],
+      "evidence_sha256": {
+        "/tmp/odoo-recovery-20260909/candidate-R01-v2/project/changelog/recovery/writer-B/briefing.md": "b4aebb1c6c84df90652777b5eaf8fd1c1ee46d40e20ae2dc90926ae5659f5474"
+      },
+      "node": "briefing",
+      "note": "",
+      "outcome": "feedback"
+    }
+  ],
+  "graph": "/tmp/odoo-recovery-20260909/candidate/workflows/odoo-workflow.json",
+  "graph_sha256": "bdf9ff2771a08189ce7559d869dfe9f370503086e1b493077a1bc0c5d879cef9",
+  "graph_snapshot": {
+    "description": "Graphe de traitement d'une demande Odoo, de la qualification à la clôture de release.",
+    "edges": [
+      {
+        "from": "briefing",
+        "id": "brief-development",
+        "outcome": "development",
+        "to": "functional_review"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-development-complex-standard",
+        "outcome": "development_complex",
+        "to": "analyst_standard_lane"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-development-complex-project",
+        "outcome": "development_complex",
+        "to": "analyst_project_lane"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-development-complex-data",
+        "outcome": "development_complex",
+        "to": "analyst_data_lane"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-functional",
+        "outcome": "functional",
+        "to": "functional_review"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-support",
+        "outcome": "support",
+        "to": "support_diagnosis"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-close",
+        "outcome": "close",
+        "to": "close_precheck"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-validation",
+        "outcome": "validation",
+        "to": "standalone_validation"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-environment",
+        "outcome": "environment",
+        "to": "environment_action"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-feedback",
+        "outcome": "feedback",
+        "to": "feedback_action"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-documentation",
+        "outcome": "documentation",
+        "to": "documentation_action"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-technical",
+        "outcome": "technical",
+        "to": "technical_answer"
+      },
+      {
+        "from": "analyst_standard_lane",
+        "id": "lane-standard-synthesis",
+        "outcome": "done",
+        "to": "functional_synthesis"
+      },
+      {
+        "from": "analyst_project_lane",
+        "id": "lane-project-synthesis",
+        "outcome": "done",
+        "to": "functional_synthesis"
+      },
+      {
+        "from": "analyst_data_lane",
+        "id": "lane-data-synthesis",
+        "outcome": "done",
+        "to": "functional_synthesis"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-blocked",
+        "outcome": "blocked",
+        "to": "human_scope_gate"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-contradiction",
+        "outcome": "contradiction",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-answer",
+        "outcome": "answer",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-module-high-risk",
+        "outcome": "module_high_risk",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-blocked",
+        "outcome": "blocked",
+        "to": "human_high_risk_scope_gate"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-contradiction",
+        "outcome": "contradiction",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-answer",
+        "outcome": "answer",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-module",
+        "outcome": "module",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-blocked",
+        "outcome": "blocked",
+        "to": "human_scope_gate"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-contradiction",
+        "outcome": "contradiction",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-module-high-risk",
+        "outcome": "module_high_risk",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-module-high-risk",
+        "outcome": "module_high_risk",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-review",
+        "outcome": "review",
+        "to": "functional_review"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-cancel",
+        "outcome": "cancel",
+        "to": "journal_cancelled"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-module",
+        "outcome": "module",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-review",
+        "outcome": "review",
+        "to": "functional_review_high_risk"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-cancel",
+        "outcome": "cancel",
+        "to": "journal_cancelled"
+      },
+      {
+        "from": "configuration_record",
+        "id": "configuration-journal",
+        "outcome": "done",
+        "to": "journal_task"
+      },
+      {
+        "from": "module_implementation",
+        "id": "module-static",
+        "outcome": "done",
+        "to": "module_static_qa"
+      },
+      {
+        "from": "module_implementation",
+        "id": "module-runtime",
+        "outcome": "done",
+        "to": "module_runtime_qa"
+      },
+      {
+        "from": "module_implementation_high_risk",
+        "id": "module-high-static",
+        "outcome": "done",
+        "to": "module_high_static_qa"
+      },
+      {
+        "from": "module_implementation_high_risk",
+        "id": "module-high-runtime",
+        "outcome": "done",
+        "to": "module_high_runtime_qa"
+      },
+      {
+        "from": "module_implementation_high_risk",
+        "id": "module-high-client",
+        "outcome": "done",
+        "to": "module_client_copy_qa"
+      },
+      {
+        "from": "module_implementation_high_risk",
+        "id": "module-high-blocked",
+        "outcome": "blocked",
+        "to": "human_high_risk_scope_gate"
+      },
+      {
+        "from": "module_implementation",
+        "id": "module-blocked",
+        "outcome": "blocked",
+        "to": "human_implementation_gate"
+      },
+      {
+        "from": "human_implementation_gate",
+        "id": "implementation-gate-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "human_implementation_gate",
+        "id": "implementation-gate-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "human_implementation_gate",
+        "id": "implementation-gate-cancel",
+        "outcome": "cancel",
+        "to": "journal_cancelled"
+      },
+      {
+        "from": "module_static_qa",
+        "id": "module-static-gate",
+        "outcome": "done",
+        "to": "module_task_gate"
+      },
+      {
+        "from": "module_runtime_qa",
+        "id": "module-runtime-gate",
+        "outcome": "done",
+        "to": "module_task_gate"
+      },
+      {
+        "from": "module_task_gate",
+        "id": "module-gate-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "module_task_gate",
+        "id": "module-gate-retry",
+        "outcome": "retry",
+        "to": "module_implementation"
+      },
+      {
+        "from": "module_task_gate",
+        "id": "module-gate-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "module_high_static_qa",
+        "id": "module-high-static-gate",
+        "outcome": "done",
+        "to": "module_high_gate"
+      },
+      {
+        "from": "module_high_runtime_qa",
+        "id": "module-high-runtime-gate",
+        "outcome": "done",
+        "to": "module_high_gate"
+      },
+      {
+        "from": "module_client_copy_qa",
+        "id": "module-client-gate",
+        "outcome": "done",
+        "to": "module_high_gate"
+      },
+      {
+        "from": "module_high_gate",
+        "id": "module-high-gate-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "module_high_gate",
+        "id": "module-high-gate-retry",
+        "outcome": "retry",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "module_high_gate",
+        "id": "module-high-gate-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "studio_implementation",
+        "id": "studio-diff",
+        "outcome": "done",
+        "to": "studio_diff_qa"
+      },
+      {
+        "from": "studio_implementation",
+        "id": "studio-scenarios",
+        "outcome": "done",
+        "to": "studio_scenario_qa"
+      },
+      {
+        "from": "studio_implementation",
+        "id": "studio-blocked",
+        "outcome": "blocked",
+        "to": "human_high_risk_scope_gate"
+      },
+      {
+        "from": "studio_diff_qa",
+        "id": "studio-diff-gate",
+        "outcome": "done",
+        "to": "studio_task_gate"
+      },
+      {
+        "from": "studio_scenario_qa",
+        "id": "studio-scenario-gate",
+        "outcome": "done",
+        "to": "studio_task_gate"
+      },
+      {
+        "from": "studio_task_gate",
+        "id": "studio-gate-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "studio_task_gate",
+        "id": "studio-gate-retry",
+        "outcome": "retry",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "studio_task_gate",
+        "id": "studio-gate-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-usage",
+        "outcome": "usage",
+        "to": "journal_task"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-configuration",
+        "outcome": "configuration",
+        "to": "journal_task"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-data",
+        "outcome": "data",
+        "to": "data_repair_copy"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-bug",
+        "outcome": "bug",
+        "to": "bug_handoff_gate"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-bug-sensitive",
+        "outcome": "bug_sensitive",
+        "to": "bug_sensitive_handoff_gate"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-evolution",
+        "outcome": "evolution",
+        "to": "functional_review"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-unknown",
+        "outcome": "unknown",
+        "to": "journal_task"
+      },
+      {
+        "from": "bug_handoff_gate",
+        "id": "bug-handoff-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "bug_handoff_gate",
+        "id": "bug-handoff-review",
+        "outcome": "review",
+        "to": "functional_review"
+      },
+      {
+        "from": "bug_handoff_gate",
+        "id": "bug-handoff-review-high",
+        "outcome": "review_high_risk",
+        "to": "functional_review_high_risk"
+      },
+      {
+        "from": "bug_handoff_gate",
+        "id": "bug-handoff-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "bug_sensitive_handoff_gate",
+        "id": "bug-sensitive-handoff-review",
+        "outcome": "review_high_risk",
+        "to": "functional_review_high_risk"
+      },
+      {
+        "from": "bug_sensitive_handoff_gate",
+        "id": "bug-sensitive-handoff-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "data_repair_copy",
+        "id": "repair-proposed",
+        "outcome": "production_proposed",
+        "to": "human_production_gate"
+      },
+      {
+        "from": "data_repair_copy",
+        "id": "repair-local",
+        "outcome": "local_only",
+        "to": "journal_task"
+      },
+      {
+        "from": "data_repair_copy",
+        "id": "repair-blocked",
+        "outcome": "blocked",
+        "to": "journal_task"
+      },
+      {
+        "from": "human_production_gate",
+        "id": "production-no-write",
+        "outcome": "no_write",
+        "to": "journal_task"
+      },
+      {
+        "from": "human_production_gate",
+        "id": "production-confirmed",
+        "outcome": "write_confirmed",
+        "to": "production_write"
+      },
+      {
+        "from": "production_write",
+        "id": "production-journal",
+        "outcome": "done",
+        "to": "journal_task"
+      },
+      {
+        "from": "standalone_validation",
+        "id": "validation-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "standalone_validation",
+        "id": "validation-fail",
+        "outcome": "fail",
+        "to": "journal_task"
+      },
+      {
+        "from": "environment_action",
+        "id": "environment-journal",
+        "outcome": "done",
+        "to": "journal_task"
+      },
+      {
+        "from": "feedback_action",
+        "id": "feedback-finished",
+        "outcome": "done",
+        "to": "feedback_done"
+      },
+      {
+        "from": "documentation_action",
+        "id": "documentation-journal",
+        "outcome": "done",
+        "to": "journal_task"
+      },
+      {
+        "from": "close_precheck",
+        "id": "close-green",
+        "outcome": "green",
+        "to": "release_technical_qa"
+      },
+      {
+        "from": "close_precheck",
+        "id": "close-blocked",
+        "outcome": "blocked",
+        "to": "release_blocked_journal"
+      },
+      {
+        "from": "release_technical_qa",
+        "id": "release-qa-green",
+        "outcome": "green",
+        "to": "browser_qa"
+      },
+      {
+        "from": "release_technical_qa",
+        "id": "release-qa-red",
+        "outcome": "red",
+        "to": "release_repair"
+      },
+      {
+        "from": "release_technical_qa",
+        "id": "release-qa-exhausted",
+        "outcome": "exhausted",
+        "to": "release_blocked_journal"
+      },
+      {
+        "from": "release_repair",
+        "id": "release-repair-fixed",
+        "outcome": "fixed",
+        "to": "release_technical_qa"
+      },
+      {
+        "from": "release_repair",
+        "id": "release-repair-failed",
+        "outcome": "failed",
+        "to": "release_blocked_journal"
+      },
+      {
+        "from": "browser_qa",
+        "id": "browser-green",
+        "outcome": "green",
+        "to": "client_docs"
+      },
+      {
+        "from": "browser_qa",
+        "id": "browser-red",
+        "outcome": "red",
+        "to": "release_blocked_journal"
+      },
+      {
+        "from": "client_docs",
+        "id": "docs-finalize",
+        "outcome": "done",
+        "to": "release_finalize"
+      },
+      {
+        "from": "release_finalize",
+        "id": "finalize-journal",
+        "outcome": "done",
+        "to": "release_journal"
+      },
+      {
+        "from": "release_journal",
+        "id": "release-journal-closed",
+        "outcome": "done",
+        "to": "release_closed"
+      },
+      {
+        "from": "journal_task",
+        "id": "journal-memory-retry",
+        "outcome": "retry",
+        "to": "reception_recovery_gate"
+      },
+      {
+        "from": "journal_task",
+        "id": "journal-memory-blocked",
+        "outcome": "blocked",
+        "to": "memory_task_blocked"
+      },
+      {
+        "from": "reception_recovery_gate",
+        "id": "reception-memory-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "reception_recovery_gate",
+        "id": "reception-memory-blocked",
+        "outcome": "blocked",
+        "to": "memory_task_blocked"
+      },
+      {
+        "from": "journal_task",
+        "id": "journal-task-done",
+        "outcome": "done",
+        "to": "task_done"
+      },
+      {
+        "from": "journal_task_blocked",
+        "id": "journal-task-blocked",
+        "outcome": "done",
+        "to": "task_blocked"
+      },
+      {
+        "from": "journal_cancelled",
+        "id": "journal-cancelled",
+        "outcome": "done",
+        "to": "cancelled"
+      },
+      {
+        "from": "release_blocked_journal",
+        "id": "journal-release-blocked",
+        "outcome": "done",
+        "to": "release_blocked"
+      }
+    ],
+    "name": "odoo-delivery",
+    "nodes": {
+      "analyst_data_lane": {
+        "description": "Voie parallèle en lecture seule : inspecter la configuration et les données de la copie client.",
+        "evidence": [
+          "fragment données"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:data"
+          }
+        ],
+        "mode": "graph-lane",
+        "role": "odoo-analyst"
+      },
+      "analyst_project_lane": {
+        "description": "Voie parallèle en lecture seule : inspecter le custom, le projet et ses décisions.",
+        "evidence": [
+          "fragment projet"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          },
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:project"
+          }
+        ],
+        "mode": "graph-lane",
+        "role": "odoo-analyst"
+      },
+      "analyst_standard_lane": {
+        "description": "Voie parallèle en lecture seule : vérifier le standard et les sources de la série.",
+        "evidence": [
+          "fragment standard"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "odoo_sources"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:standard"
+          }
+        ],
+        "mode": "graph-lane",
+        "role": "odoo-analyst"
+      },
+      "briefing": {
+        "description": "Situer le projet, la série, la release, les modules et les données disponibles.",
+        "evidence": [
+          "sortie de odoo_briefing.py"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          }
+        ]
+      },
+      "browser_qa": {
+        "description": "Rejouer les critères utilisateur et prendre les captures finales sur la copie client.",
+        "evidence": [
+          "tests_navigateur.md et captures"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "browser"
+          },
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "mode": "release-browser",
+        "role": "odoo-tester"
+      },
+      "bug_handoff_gate": {
+        "description": "Vérifier que le diagnostic de bug porte une cause prouvée et un test rouge avant correction.",
+        "evidence": [
+          "diagnostic et test rouge"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ]
+      },
+      "bug_sensitive_handoff_gate": {
+        "description": "Vérifier le diagnostic et le test rouge d'un bug sensible avant une revue qui conserve la QA sur copie client.",
+        "evidence": [
+          "diagnostic sensible et test rouge"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ]
+      },
+      "cancelled": {
+        "description": "Intervention arrêtée après décision humaine, avec état réel consigné.",
+        "evidence": [
+          "raison de l'arrêt"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "cancelled"
+      },
+      "client_docs": {
+        "description": "Produire doc.md métier et consolidation depuis les preuves validées ; guide DOCX/PDF sur demande.",
+        "evidence": [
+          "doc.md et consolidation.md"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "release_artifacts"
+          },
+          {
+            "mode": "write",
+            "resource": "release_docs"
+          }
+        ]
+      },
+      "close_precheck": {
+        "description": "Vérifier le périmètre et préparer les versions avant la recette.",
+        "evidence": [
+          "points, modules, copie client et statut git"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          },
+          {
+            "mode": "read",
+            "resource": "release_artifacts"
+          },
+          {
+            "mode": "write",
+            "resource": "module_code"
+          }
+        ]
+      },
+      "configuration_record": {
+        "description": "Enregistrer la solution standard ou de configuration sans développer.",
+        "evidence": [
+          "demande et revue enregistrées"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ]
+      },
+      "data_repair_copy": {
+        "description": "Prouver une réparation idempotente sur la copie client, avec comptages avant et après.",
+        "evidence": [
+          "preuve de réparation sur copie"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          }
+        ],
+        "role": "odoo-support"
+      },
+      "documentation_action": {
+        "description": "Produire les livrables documentaires explicitement demandés.",
+        "evidence": [
+          "livrables documentaires"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_docs"
+          }
+        ],
+        "role": "camptocamp-docs"
+      },
+      "environment_action": {
+        "description": "Déclarer ou vérifier un environnement sans exposer de secret.",
+        "evidence": [
+          "résultat de vérification de l'instance"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_instances"
+          }
+        ],
+        "role": "odoo-env"
+      },
+      "feedback_action": {
+        "description": "Exécuter le retour d'expérience et reconstruire les profils si une leçon est promue.",
+        "evidence": [
+          "compte-rendu du retour d'expérience"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "agent_repository"
+          }
+        ],
+        "role": "odoo-feedback"
+      },
+      "feedback_done": {
+        "description": "Retour d'expérience terminé.",
+        "evidence": [
+          "référentiel validé"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "complete"
+      },
+      "functional_review": {
+        "description": "Produire la revue fonctionnelle contradictoire et choisir la voie.",
+        "evidence": [
+          "revue_fonctionnelle.md ou revue_en_cours.md"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          },
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "role": "odoo-analyst"
+      },
+      "functional_review_high_risk": {
+        "description": "Revoir un correctif sensible sans perdre l'obligation de validation sur copie client.",
+        "evidence": [
+          "revue fonctionnelle sensible"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          },
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "role": "odoo-analyst"
+      },
+      "functional_synthesis": {
+        "description": "Fusionner les voies d'analyse dans une seule revue et décider de la suite.",
+        "evidence": [
+          "revue_fonctionnelle.md ou revue_en_cours.md"
+        ],
+        "executor": "orchestrator",
+        "join": "all",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ]
+      },
+      "human_high_risk_scope_gate": {
+        "description": "Attendre un arbitrage humain sans perdre l'obligation de QA sur copie client.",
+        "evidence": [
+          "décision sensible consignée dans la revue"
+        ],
+        "executor": "human",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "max_outcome_uses": {
+          "module": 2,
+          "review": 2,
+          "studio": 2
+        }
+      },
+      "human_implementation_gate": {
+        "description": "Arbitrer une limite découverte pendant l'implémentation.",
+        "evidence": [
+          "arbitrage humain consigné"
+        ],
+        "executor": "human",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "max_outcome_uses": {
+          "module": 2,
+          "studio": 2
+        }
+      },
+      "human_production_gate": {
+        "description": "Attendre la confirmation humaine explicite d'une opération précise en production.",
+        "evidence": [
+          "confirmation de l'opération précise"
+        ],
+        "executor": "human",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "production"
+          }
+        ]
+      },
+      "human_scope_gate": {
+        "description": "Attendre une décision humaine qui change le périmètre ou la voie de réalisation.",
+        "evidence": [
+          "décision consignée dans la revue"
+        ],
+        "executor": "human",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "max_outcome_uses": {
+          "review": 2
+        }
+      },
+      "journal_cancelled": {
+        "description": "Consigner la décision humaine et l'état réel avant l'arrêt.",
+        "evidence": [
+          "entrée JOURNAL.md avec raison de l'arrêt"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "journal_task": {
+        "description": "Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.",
+        "evidence": [
+          "entrée JOURNAL.md"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "journal_task_blocked": {
+        "description": "Consigner l'échec de QA et les anomalies restantes avant l'arrêt.",
+        "evidence": [
+          "entrée JOURNAL.md avec contrôles rouges"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "memory_task_blocked": {
+        "description": "Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée.",
+        "evidence": [
+          "motif de blocage mémoire et état de publication réel"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "blocked"
+      },
+      "module_client_copy_qa": {
+        "description": "Voie QA renforcée : vérifier immédiatement les droits, la compta, la facturation ou les données existantes sur la copie client.",
+        "evidence": [
+          "fragment QA copie client"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_client"
+          }
+        ],
+        "mode": "graph-lane-client-copy",
+        "role": "odoo-tester"
+      },
+      "module_high_gate": {
+        "description": "Fusionner les trois preuves QA renforcées et rendre un verdict unique.",
+        "evidence": [
+          "qa.md et critères d'acceptation"
+        ],
+        "executor": "orchestrator",
+        "join": "all",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "max_outcome_uses": {
+          "retry": 2
+        }
+      },
+      "module_high_runtime_qa": {
+        "description": "Voie QA renforcée : installation, mise à jour et tests ciblés.",
+        "evidence": [
+          "fragment QA d'exécution renforcée"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "qa_db_module"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_high_runtime"
+          }
+        ],
+        "mode": "graph-lane-runtime",
+        "role": "odoo-tester"
+      },
+      "module_high_static_qa": {
+        "description": "Voie QA renforcée : conformité statique et revue du diff.",
+        "evidence": [
+          "fragment QA statique renforcée"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_high_static"
+          }
+        ],
+        "mode": "graph-lane-static",
+        "role": "odoo-tester"
+      },
+      "module_implementation": {
+        "description": "Implémenter le module et ses tests dans le périmètre de la revue.",
+        "evidence": [
+          "diff du code et tests",
+          "lint ciblé"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "module_code"
+          }
+        ],
+        "role": "odoo-developer"
+      },
+      "module_implementation_high_risk": {
+        "description": "Implémenter un changement sensible dont la QA sur copie client est obligatoire.",
+        "evidence": [
+          "diff du code et tests sensibles",
+          "lint ciblé"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "module_code"
+          }
+        ],
+        "role": "odoo-developer"
+      },
+      "module_runtime_qa": {
+        "description": "Voie QA normale : installer, mettre à jour et exécuter les tests ciblés.",
+        "evidence": [
+          "fragment QA d'exécution"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "qa_db_module"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_runtime"
+          }
+        ],
+        "mode": "graph-lane-runtime",
+        "role": "odoo-tester"
+      },
+      "module_static_qa": {
+        "description": "Voie QA normale : relire le diff et exécuter le lint ciblé.",
+        "evidence": [
+          "fragment QA statique"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_static"
+          }
+        ],
+        "mode": "graph-lane-static",
+        "role": "odoo-tester"
+      },
+      "module_task_gate": {
+        "description": "Fusionner les preuves QA normales et rendre un verdict unique.",
+        "evidence": [
+          "qa.md et critères d'acceptation"
+        ],
+        "executor": "orchestrator",
+        "join": "all",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "max_outcome_uses": {
+          "retry": 2
+        }
+      },
+      "production_write": {
+        "description": "Exécuter uniquement l'opération de production explicitement confirmée.",
+        "evidence": [
+          "résultat et comptage de l'opération"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "production"
+          }
+        ]
+      },
+      "reception_recovery_gate": {
+        "description": "Recevoir à nouveau les propositions mémoire depuis les bases actuelles, à contrat et preuves inchangés.",
+        "evidence": [
+          "réception indépendante renouvelée ou motif de blocage mémoire"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ],
+        "max_outcome_uses": {
+          "pass": 2
+        }
+      },
+      "release_blocked": {
+        "description": "Clôture arrêtée avec les contrôles rouges ou manquants explicitement consignés.",
+        "evidence": [
+          "réserves et contrôles rouges"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "blocked"
+      },
+      "release_blocked_journal": {
+        "description": "Consigner les contrôles rouges ou manquants avant d'arrêter la clôture.",
+        "evidence": [
+          "entrée de release dans JOURNAL.md avec réserves"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "release_closed": {
+        "description": "Release clôturée et prête pour l'action humaine suivante.",
+        "evidence": [
+          "compte-rendu de clôture"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "complete"
+      },
+      "release_finalize": {
+        "description": "Finaliser README, versions, périmètre et proposition de commit, puis retirer le marqueur d'ouverture.",
+        "evidence": [
+          "README final et release fermée"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ]
+      },
+      "release_journal": {
+        "description": "Capitaliser ce que la recette de release a révélé.",
+        "evidence": [
+          "entrée de release dans JOURNAL.md"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "release_repair": {
+        "description": "Corriger une anomalie bloquante de recette dans le périmètre de la release.",
+        "evidence": [
+          "correction et tests ciblés"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "module_code"
+          }
+        ],
+        "max_outcome_uses": {
+          "fixed": 2
+        },
+        "role": "odoo-developer"
+      },
+      "release_technical_qa": {
+        "description": "Exécuter la recette complète sur l'état exact à livrer, module par module.",
+        "evidence": [
+          "recette.md"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "qa_stack"
+          },
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "max_outcome_uses": {
+          "red": 2
+        },
+        "mode": "release",
+        "role": "odoo-tester"
+      },
+      "standalone_validation": {
+        "description": "Valider un module seul en mode QA de release.",
+        "evidence": [
+          "verdict de validation"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "qa_db_module"
+          }
+        ],
+        "role": "odoo-tester"
+      },
+      "studio_diff_qa": {
+        "description": "Voie QA Studio : vérifier que le pack et la copie ne divergent pas.",
+        "evidence": [
+          "fragment diff Studio"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "read",
+            "resource": "studio_pack"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:studio_diff"
+          }
+        ],
+        "mode": "graph-lane-studio-diff",
+        "role": "odoo-tester"
+      },
+      "studio_implementation": {
+        "description": "Construire la configuration Studio et son pack versionné sur la copie client.",
+        "evidence": [
+          "pack Studio et scénarios RPC"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "studio_pack"
+          }
+        ],
+        "role": "odoo-studio"
+      },
+      "studio_scenario_qa": {
+        "description": "Voie QA Studio : jouer les scénarios RPC et vérifier l'écran concerné.",
+        "evidence": [
+          "fragment scénarios Studio"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "browser"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:studio_runtime"
+          }
+        ],
+        "mode": "graph-lane-studio-runtime",
+        "role": "odoo-tester"
+      },
+      "studio_task_gate": {
+        "description": "Fusionner les preuves Studio et rendre un verdict unique.",
+        "evidence": [
+          "qa.md et critères d'acceptation"
+        ],
+        "executor": "orchestrator",
+        "join": "all",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "max_outcome_uses": {
+          "retry": 2
+        }
+      },
+      "support_diagnosis": {
+        "description": "Reproduire, prouver la cause, classer et préparer la suite du ticket.",
+        "evidence": [
+          "diagnostic de support"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "support_artifact"
+          }
+        ],
+        "role": "odoo-support"
+      },
+      "task_blocked": {
+        "description": "Intervention arrêtée avec une QA encore rouge après deux reprises, état réel consigné.",
+        "evidence": [
+          "anomalies restantes et contrôles rouges"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "blocked"
+      },
+      "task_done": {
+        "description": "Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.",
+        "evidence": [
+          "compte-rendu final"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "complete"
+      },
+      "technical_answer": {
+        "description": "Répondre directement à une question technique située dans la bonne série.",
+        "evidence": [
+          "réponse avec références de source"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "odoo_sources"
+          }
+        ],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "complete"
+      }
+    },
+    "schema_version": 1,
+    "start": "briefing"
+  },
+  "kind": "feedback",
+  "node_counts": {
+    "briefing": 1
+  },
+  "outcome_counts": {
+    "briefing:feedback": 1
+  },
+  "project": "/tmp/odoo-recovery-20260909/candidate-R01-v2/project",
+  "run_id": "writer-b",
+  "schema_version": 1,
+  "start_pending": false,
+  "status": "active",
+  "tokens": {
+    "brief-feedback": 1
+  },
+  "updated_at": "2026-09-09T16:05:00+00:00"
+}
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py release --help
+usage: odoo_flow.py release [-h] [--owner OWNER] --reason REASON state node
+
+positional arguments:
+  state
+  node
+
+options:
+  -h, --help       show this help message and exit
+  --owner OWNER
+  --reason REASON
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py release .odoo-agents/flows/writer-b.json feedback_action --owner Codex-B-orchestrateur
+usage: odoo_flow.py release [-h] [--owner OWNER] --reason REASON state node
+odoo_flow.py release: error: the following arguments are required: --reason
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py release .odoo-agents/flows/writer-b.json feedback_action --owner Codex-B-orchestrateur --reason 'Verrou agent_repository inadapté ; aucune écriture mémoire ; reprise en parcours documentation distinct.'
+■ feedback_action · verrou libéré par Codex-B-orchestrateur
++ python3 -
+documentation_action {"description": "Produire les livrables documentaires explicitement demandés.", "evidence": ["livrables documentaires"], "executor": "agent", "join": "any", "locks": [{"mode": "write", "resource": "release_docs"}], "role": "camptocamp-docs"}
+journal_task {"description": "Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.", "evidence": ["entrée JOURNAL.md"], "executor": "orchestrator", "join": "any", "locks": [{"mode": "write", "resource": "project_memory"}]}
+feedback_action {"description": "Exécuter le retour d'expérience et reconstruire les profils si une leçon est promue.", "evidence": ["compte-rendu du retour d'expérience"], "executor": "agent", "join": "any", "locks": [{"mode": "write", "resource": "agent_repository"}], "role": "odoo-feedback"}
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py start . --kind documentation --id writer-b-documentation
+/tmp/odoo-recovery-20260909/candidate-R01-v2/project/.odoo-agents/flows/writer-b-documentation.json
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/writer-b-documentation.json
+ODOO FLOW · writer-b-documentation
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       documentation
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 0 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ briefing
+    ORCHESTRATEUR
+    Situer le projet, la série, la release, les modules et les données disponibles.
+    Sorties: close, development, development_complex, documentation, environment, feedback, functional, support, technical, validation · Preuve: sortie de odoo_briefing.py
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim .odoo-agents/flows/writer-b-documentation.json briefing --owner Codex-B-orchestrateur
+▶ briefing · ORCHESTRATEUR
+  Démarré par Codex-B-orchestrateur
+  Situer le projet, la série, la release, les modules et les données disponibles.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete .odoo-agents/flows/writer-b-documentation.json briefing --outcome documentation --evidence changelog/recovery/writer-B/briefing.md --note 'Routage documentaire : feedback libéré car son verrou porte agent_repository, aucune mémoire partagée écrite.' --owner Codex-B-orchestrateur
+ODOO FLOW · writer-b-documentation
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       documentation
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 1 prêt(s)
+Dernière   ✓ briefing → documentation
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ documentation_action
+    AGENT · camptocamp-docs
+    Produire les livrables documentaires explicitement demandés.
+    Sorties: done · Preuve: livrables documentaires
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/writer-b-documentation.json
+ODOO FLOW · writer-b-documentation
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       documentation
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 1 prêt(s)
+Dernière   ✓ briefing → documentation
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ documentation_action
+    AGENT · camptocamp-docs
+    Produire les livrables documentaires explicitement demandés.
+    Sorties: done · Preuve: livrables documentaires
+
+HISTORIQUE RÉCENT
+  ✓ briefing → documentation
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim .odoo-agents/flows/writer-b-documentation.json documentation_action --owner Codex-B-orchestrateur
+▶ documentation_action · AGENT · camptocamp-docs
+  Démarré par Codex-B-orchestrateur
+  Produire les livrables documentaires explicitement demandés.
++ python3 -
+# Contribution documentaire B
+
+Décision B : conserver la priorité manuelle dans le tableau de suivi.
+Tâche B : priorité manuelle conservée ; aucun tri automatique demandé.
+
+Essai documentaire synthétique uniquement ; aucune QA Odoo.
+
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete .odoo-agents/flows/writer-b-documentation.json documentation_action --outcome done --evidence changelog/recovery/writer-B/contribution.md --owner Codex-B-orchestrateur
+ODOO FLOW · writer-b-documentation
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       documentation
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ documentation_action → done
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: blocked, done, retry · Preuve: entrée JOURNAL.md
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/writer-b-documentation.json
+ODOO FLOW · writer-b-documentation
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       documentation
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ documentation_action → done
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: blocked, done, retry · Preuve: entrée JOURNAL.md
+
+HISTORIQUE RÉCENT
+  ✓ briefing → documentation
+  ✓ documentation_action → done
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py ready .odoo-agents/flows/writer-b-documentation.json
+ODOO FLOW · writer-b-documentation
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       documentation
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ documentation_action → done
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: blocked, done, retry · Preuve: entrée JOURNAL.md
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim .odoo-agents/flows/writer-b-documentation.json journal_task --owner Codex-B-orchestrateur
+▶ journal_task · ORCHESTRATEUR
+  Démarré par Codex-B-orchestrateur
+  Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
++ python3 -
+Verrou détenu : {"at": "2026-09-09T16:06:02+00:00", "locks": [{"mode": "write", "resource": "project_memory"}], "node": "journal_task", "owner": "Codex-B-orchestrateur", "state": "/tmp/odoo-recovery-20260909/candidate-R01-v2/project/.odoo-agents/flows/writer-b-documentation.json"}
+.odoo-agents/PROJECT.md: contenu antérieur conservé octet pour octet ; contribution B unique ; SHA256 f0a64083612d8335596c76a166392d62f87af4c0706542716d3c800405ccf3d9 → 30d40a9037ae3c074fcc06297ef39a48e4a84a0203306e10df6e7fd6f4e686c0
+# Projet synthétique
+Le tableau de suivi conserve les décisions explicites.
+
+Décision B : conserver la priorité manuelle dans le tableau de suivi.
+
+.odoo-agents/JOURNAL.md: contenu antérieur conservé octet pour octet ; contribution B unique ; SHA256 7d1446fb6dbb77a0b3220391f10c6ba00187bbbc7c1c80f866b3d463b665be7d → 02d2c5a11e22359296897b524057b2a4f1332928a2aa683330608e52fcc7f558
+# Journal synthétique
+Initialisation documentaire du banc.
+
+Tâche B : priorité manuelle conservée ; aucun tri automatique demandé.
+
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete .odoo-agents/flows/writer-b-documentation.json journal_task --outcome done --evidence changelog/recovery/writer-B/resultat.md --owner Codex-B-orchestrateur
+ODOO FLOW · writer-b-documentation
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       documentation
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → done
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ task_done
+    ORCHESTRATEUR
+    Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
+    Sorties: done · Preuve: compte-rendu final
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/writer-b-documentation.json
+ODOO FLOW · writer-b-documentation
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       documentation
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → done
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ task_done
+    ORCHESTRATEUR
+    Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
+    Sorties: done · Preuve: compte-rendu final
+
+HISTORIQUE RÉCENT
+  ✓ briefing → documentation
+  ✓ documentation_action → done
+  ✓ journal_task → done
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py claim .odoo-agents/flows/writer-b-documentation.json task_done --owner Codex-B-orchestrateur
+▶ task_done · ORCHESTRATEUR
+  Démarré par Codex-B-orchestrateur
+  Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py complete .odoo-agents/flows/writer-b-documentation.json task_done --outcome done --evidence changelog/recovery/writer-B/resultat.md --owner Codex-B-orchestrateur
+ODOO FLOW · writer-b-documentation
+────────────────────────────────────────────────────────────────────────
+État       TERMINÉ
+Flux       documentation
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 4 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ task_done → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
++ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py status .odoo-agents/flows/writer-b-documentation.json
+ODOO FLOW · writer-b-documentation
+────────────────────────────────────────────────────────────────────────
+État       TERMINÉ
+Flux       documentation
+Projet     /tmp/odoo-recovery-20260909/candidate-R01-v2/project
+Progression 4 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ task_done → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
+
+HISTORIQUE RÉCENT
+  ✓ briefing → documentation
+  ✓ documentation_action → done
+  ✓ journal_task → done
+  ✓ task_done → done
++ python3 -
+writer-b status=active aucune revendication restante
+writer-b-documentation status=complete aucune revendication restante
++ python3 -
+# Fin de contribution B
+
+- writer-b : active, aucune revendication restante.
+- writer-b-documentation : complete, aucune revendication restante.
+
+Le parcours feedback initial reste prêt sans propriétaire après release motivé. Aucun résultat feedback accompli n’est prétendu. Le parcours documentaire est terminé.
+Preuve des écritures et conservation : resultat.md ; snapshots antérieurs : PROJECT.md.before, JOURNAL.md.before.
+Log : /tmp/odoo-recovery-20260909/candidate-R01-v2/writer-B.log.
+Aucune modification du flow A ou de ses preuves.
+

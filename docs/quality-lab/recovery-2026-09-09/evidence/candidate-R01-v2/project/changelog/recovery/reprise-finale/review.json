@@ -1,0 +1,95 @@
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "556c0821514a7aebf94ea5f2c51019afb97d4744e7bc8c2ebb028c9f56744c6a",
+  "reviewer": "codex-r01-review-reception-independent",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne.\nLe contrôle porte uniquement sur la cohérence documentaire."
+        },
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "- [ ] Décision A : afficher la référence dossier dans la fiche interne."
+        }
+      ],
+      "explanation": "Le critère reprend exactement l’unique décision A : référence dossier et fiche interne, sans ajout de canal, acteur ou comportement. La limitation documentaire explicite de la demande gouverne cette revue synthétique ; elle interdit d’interpréter le critère comme une démonstration d’affichage dans Odoo. B reste une contribution antérieure à conserver, contrôlée séparément sur ses sources et les deux bases."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "- [ ] Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "\"scopes\": [\n    \"documentary\"\n  ]"
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "from pathlib import Path; assert Path('documentary/reference.txt').read_text() == 'reference_dossier=visible\\\\n'; print('Cohérence documentaire : référence dossier visible. Aucun test Odoo.')"
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "\"exit_code\": 0,\n  \"result\": \"passed\""
+        }
+      ],
+      "explanation": "Dans le seul périmètre documentaire demandé, la commande enregistrée confronte exactement reference_dossier=visible suivi d’un saut de ligne au contenu de documentary/reference.txt ; son code retour est 0 et son log annonce explicitement aucun test Odoo. J’ai lu le fichier et le log, vérifié leurs empreintes et celle de la preuve. Groupes source/spec/evidence, périmètre et empreinte du fichier sont identiques au bundle initial. Aucun nouveau test exécuté. Le reçu initial est une fixture selon HANDOFF et sa propre explication ; son mode déclaré independent ne constitue aucune preuve d’indépendance et ne fonde pas ce verdict."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne.\nLe contrôle porte uniquement sur la cohérence documentaire."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/bundle.json.PROJECT.md.base",
+          "quote": "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\n\nDécision B : conserver la priorité manuelle dans le tableau de suivi.\n"
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/bundle.json.JOURNAL.md.base",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc.\n\nTâche B : priorité manuelle conservée ; aucun tri automatique demandé.\n"
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/PROJECT-propose.md",
+          "quote": "Décision B : conserver la priorité manuelle dans le tableau de suivi."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/PROJECT-propose.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/PROJECT-propose.md",
+          "quote": "Le contrôle porte uniquement sur la cohérence documentaire ; aucun comportement Odoo réel n’est attesté."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/JOURNAL-propose.md",
+          "quote": "Tâche B : priorité manuelle conservée ; aucun tri automatique demandé."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/JOURNAL-propose.md",
+          "quote": "- Constat : le fichier documentaire porte `reference_dossier=visible` ; aucun affichage Odoo réel attesté."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/JOURNAL-propose.md",
+          "quote": "- Reprise : ancien reçu synthétique ; publication refusée car la mémoire a reçu B entre-temps."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/JOURNAL-propose.md",
+          "quote": "- Limite : aucun développement ni test Odoo exécuté."
+        },
+        {
+          "path": "changelog/recovery/reprise-finale/JOURNAL-propose.md",
+          "quote": "- Réception indépendante, publication et réception du plan : résultats détaillés dans `changelog/recovery/reprise-finale/result.md`."
+        }
+      ],
+      "explanation": "Chaque draft commence par les octets intégraux de sa base respective : en-têtes et historique initial conservés, décision B dans PROJECT et entrée B avec aucun tri automatique demandé dans JOURNAL. La demande originale B lue séparément confirme exactement ces deux phrases : portée tableau de suivi et priorité manuelle inchangées. L’ajout A correspond à la demande et la preuve textuelle ; les limites excluent toute prétention de comportement Odoo, test ou développement. Le refus de publication est attesté par publication-refusee.log et le caractère synthétique du reçu initial par HANDOFF. Le lien result.md désigne la consolidation ultérieure de la réception/publication du plan, sans annoncer leur succès à ce stade. Aucun fait antérieur n’est remplacé ou supprimé. Les hashes des deux bases et drafts ainsi que des cibles courantes ont été vérifiés ; cette réception porte sur ces octets, avant publication."
+    }
+  }
+}

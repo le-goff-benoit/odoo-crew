@@ -1,0 +1,34 @@
+{
+  "case": "R04",
+  "planned": true,
+  "flow": ".odoo-agents/flows/plan-a-6a1f5bfd.json",
+  "initial_error": null,
+  "immutable": {
+    "changelog/recovery/spec.md": "eac5a65e924df65d9bd4ced8a32373ed69e2bf22a7d8e1389d905783898a2d03",
+    "changelog/recovery/demande-C.md": "0d5c75d4bdfd6c3e657ee1f36131ca21260d43d2c58b06abf7869d50e2ae820a",
+    "changelog/recovery/demande-B.md": "6d6ca0611681f40af92f99565c66acb5a199e2b6327873fe919bc2c40121ae39",
+    "changelog/recovery/demande-A.md": "427d4b048996ed2340033209a419a0bd57dd0099e57ee821612ff48d365a841a",
+    "changelog/recovery/initial/bundle.json": "cde482bed7835353508b0a97e3bb8aa7a7dac1ccaf891aa45574fa3eabae6da2",
+    "changelog/recovery/initial/documentary-proof.json": "e8ae5c304a0c65735b90cc6878d16c694b36722472eaa5f3b1f4c58fdef6498a",
+    "changelog/recovery/initial/documentary-proof.log": "7de39f9ce5bf1eed1a1d175acdebd23ab08280be78d02c9dcd84d4bd19245641",
+    "changelog/recovery/initial/bundle.json.PROJECT.md.base": "f0a64083612d8335596c76a166392d62f87af4c0706542716d3c800405ccf3d9",
+    "changelog/recovery/initial/bundle.json.JOURNAL.md.base": "7d1446fb6dbb77a0b3220391f10c6ba00187bbbc7c1c80f866b3d463b665be7d",
+    "changelog/recovery/initial/review.json": "cd4934e7b7694c3a6651761f99597f0dbaa6a1e88f620ffecd3061ef1ac7b99e",
+    "changelog/recovery/initial/JOURNAL-propose.md": "28e87c6ecf9fe2a8acbf5a6a8bafe436ebdcf31686f4a0a520152a161d156148",
+    "changelog/recovery/initial/PROJECT-propose.md": "1f39dd98766c2629869461fbed9f33814ede249a7fdcd9479384755c1dd3aabf"
+  },
+  "expected_project": [
+    "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.",
+    "Décision A : afficher la référence dossier dans la fiche interne."
+  ],
+  "expected_journal": [
+    "# Journal synthétique\nInitialisation documentaire du banc.",
+    "Tâche A : cohérence documentaire de la référence dossier vérifiée."
+  ],
+  "safe_stop_expected": true,
+  "original_proof": "changelog/recovery/initial/documentary-proof.json",
+  "documentary_before": "e7fef3fa04a82e8d4537c145e61b49c9eeeb066e5ce23bf5696b597ea440bf0e",
+  "initial_claim_owner": "codex-context-interrompu",
+  "publication_partial_at_handoff": false,
+  "deferred_concurrent_injection": false
+}

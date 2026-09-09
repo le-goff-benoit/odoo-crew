@@ -243,8 +243,8 @@ Les formats et limites sont dans `docs/QA_COVERAGE.md` du référentiel.
 **Réception de la demande et de la mémoire avant `pass`.** Prépare deux fichiers
 neufs contenant les versions complètes proposées de `PROJECT.md` et `JOURNAL.md`
 (contenu existant conservé, corrections nécessaires et entrée de quinze lignes
-au plus). Ne les publie pas encore. Lorsque les sous-agents sont disponibles
-et que la tâche est directe (sans `plan_task`), active le garde de réception
+au plus). Ne les publie pas encore. Lorsque les sous-agents sont disponibles,
+sur une tâche directe ou un flow du plan équipé de la reprise de réception, active le garde
 avec `odoo_flow.py prepare-reception <flow>` :
 `--source` pour la demande originale et chaque décision applicable, `--spec`
 pour la revue, `--evidence` pour la couverture et les fragments/logs QA,
@@ -273,11 +273,13 @@ ambiguïté métier suit l'arbitrage déjà prévu. Sans mécanisme de délégat
 effectue cette relecture toi-même et annonce son caractère non indépendant ;
 n'active pas le garde qui exige une réception indépendante.
 
-Pour une tâche pilotée par `/odoo-start`, effectue la même réception documentaire
-en fragment Markdown, sans ce garde expérimental : un conflit mémoire après QA
-n'a pas encore de voie d'arrêt/reprise compatible avec le plan. La réception du
-plan existante reste applicable ; ne crée pas un flow extérieur pour contourner
-ses réservations.
+Un ancien snapshot ne gagne pas silencieusement ces transitions. Avant sa première
+publication mémoire, sans revendication active, `odoo_flow.py upgrade-recovery
+<flow> --owner <orchestrateur>` installe uniquement le sous-graphe de reprise
+prévu et conserve l'historique. Si le fichier de graphe historique a été remplacé,
+fournis son archive exacte avec `--from-graph`. En cas de refus, lis sa cause ; ne modifie jamais
+le JSON pour forcer la migration. La réception du plan reste applicable après
+le flow ; ne crée pas un run extérieur pour contourner ses réservations.
 
 ```bash
 export ODOO_ADDONS_DIR=<répertoire contenant le module>
@@ -311,17 +313,33 @@ Seule exception : l'humain le demande explicitement.
 
 Une chaîne qui ne laisse pas de trace oblige la suivante à tout redécouvrir.
 
-Si une réception est liée au flow, après `claim journal_task`, exécute
-`python3 ~/.odoo19-agents/scripts/odoo_reception.py check-bases <bundle>`
-sous ce verrou pour vérifier les cibles et les pièces, puis publie **exactement**
-les deux propositions approuvées. Ne les paraphrase pas à ce stade : le garde
-de `complete journal_task --outcome done` vérifie leur identité avec les
-propositions. Si une autre tâche a changé la mémoire depuis sa préparation,
-ne l'écrase pas ; consigne l'incident, libère la revendication et reprends dans
-un nouveau flow avec une nouvelle réception, puisque le premier a déjà passé
-sa QA. Ne déclare pas le premier terminé. Le
-contrôle porte sur les fichiers complets et peut donc invalider une proposition
-pour une modification concurrente pourtant indépendante. Les points ci-dessous
+Si une réception est liée, après `claim journal_task`, utilise
+`odoo_flow.py publish-memory <flow> --owner <orchestrateur>`, puis
+`complete journal_task --outcome done` avec la preuve de publication. La commande
+vérifie toutes les pièces et les deux cibles avant d'écrire les propositions
+approuvées. Après interruption, elle reconnaît chaque fichier encore à sa base
+ou déjà publié : relance-la sous la même revendication, sans restaurer les anciennes
+valeurs ni ajouter deux fois l'entrée du journal. Un changement d'owner passe par
+`release --reason` puis `claim`, après constat d'arrêt de l'ancien exécutant.
+
+Si une autre tâche a modifié la mémoire, conserve son travail et un constat isolé.
+Termine le journal avec `--outcome retry --evidence <constat>`, puis revendique
+`reception_recovery_gate`. Prépare deux nouveaux drafts à partir de la mémoire
+courante en y conservant les contributions déjà publiées ; seuls les changements
+de cette tâche s'y ajoutent. Prépare un nouveau bundle avec les mêmes sources,
+spec, preuves et code, puis délègue une nouvelle réception documentaire. La nouvelle entrée mémoire conserve explicitement
+le résultat déjà reçu, sa portée et ses limites : raconter la reprise ou dire
+« preuve conservée » ne transmet pas que le contrôle a réussi ou échoué. Distingue
+ce résultat acquis des étapes encore à venir. Le
+relecteur compare aussi les bases mémoire figées aux propositions ; aucune fusion
+sémantique n'est faite automatiquement. Le pass de cette porte retourne au journal
+pour publication. Les anciens bundles et réceptions restent en historique.
+
+Cette reprise ne revalide pas un code, une décision ou une preuve modifiés : dans
+ce cas, ou après deux retours infructueux, choisis `blocked` avec un constat puis
+termine `memory_task_blocked`. Le plan peut alors être rouvert avec une raison,
+sans perdre l'ancienne tentative. Aucun test Odoo n'est à rejouer pour un simple
+conflit de texte si ses preuves sont restées valables. Les points ci-dessous
 décrivent le contenu préparé à l'étape 3 ; sans réception liée, écris-le ici.
 
 1. **Entrée de journal** dans `<projet>/.odoo-agents/JOURNAL.md` — **quinze

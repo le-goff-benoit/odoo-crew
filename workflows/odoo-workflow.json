@@ -411,6 +411,23 @@
       "evidence": ["entrée JOURNAL.md"],
       "locks": [{"resource": "project_memory", "mode": "write"}]
     },
+    "reception_recovery_gate": {
+      "description": "Recevoir à nouveau les propositions mémoire depuis les bases actuelles, à contrat et preuves inchangés.",
+      "executor": "orchestrator",
+      "join": "any",
+      "evidence": ["réception indépendante renouvelée ou motif de blocage mémoire"],
+      "max_outcome_uses": {"pass": 2},
+      "locks": [{"resource": "project_memory", "mode": "write"}]
+    },
+    "memory_task_blocked": {
+      "description": "Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée.",
+      "executor": "orchestrator",
+      "join": "any",
+      "terminal": "blocked",
+      "outcomes": ["done"],
+      "evidence": ["motif de blocage mémoire et état de publication réel"],
+      "locks": []
+    },
     "journal_task_blocked": {
       "description": "Consigner l'échec de QA et les anomalies restantes avant l'arrêt.",
       "executor": "orchestrator",
@@ -615,6 +632,10 @@
     {"id": "finalize-journal", "from": "release_finalize", "outcome": "done", "to": "release_journal"},
     {"id": "release-journal-closed", "from": "release_journal", "outcome": "done", "to": "release_closed"},
 
+    {"id": "journal-memory-retry", "from": "journal_task", "outcome": "retry", "to": "reception_recovery_gate"},
+    {"id": "journal-memory-blocked", "from": "journal_task", "outcome": "blocked", "to": "memory_task_blocked"},
+    {"id": "reception-memory-pass", "from": "reception_recovery_gate", "outcome": "pass", "to": "journal_task"},
+    {"id": "reception-memory-blocked", "from": "reception_recovery_gate", "outcome": "blocked", "to": "memory_task_blocked"},
     {"id": "journal-task-done", "from": "journal_task", "outcome": "done", "to": "task_done"},
     {"id": "journal-task-blocked", "from": "journal_task_blocked", "outcome": "done", "to": "task_blocked"},
     {"id": "journal-cancelled", "from": "journal_cancelled", "outcome": "done", "to": "cancelled"},

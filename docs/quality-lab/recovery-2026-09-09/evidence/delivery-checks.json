@@ -1,0 +1,26 @@
+{
+  "phase": "pre-publication",
+  "tests": 192,
+  "new_recovery_tests": 16,
+  "graph": {
+    "nodes": 54,
+    "edges": 119,
+    "bounded_cycles": 5
+  },
+  "lint": "pass",
+  "isolated_build_v1": "pass",
+  "isolated_build_v2": "pass",
+  "active_build": "pass",
+  "parity": "26 files + 2 routing blocks + personal pointer",
+  "skills_validated": [
+    "odoo-new",
+    "odoo-start",
+    "odoo-tester"
+  ],
+  "independent_adoption": "V2 exact, bounded; audit-v2.md",
+  "behavioral_execution_contexts": 8,
+  "auxiliary_contexts": 7,
+  "cli_calls": 0,
+  "cost_and_tokens": "not measured",
+  "ci": "verified separately on the published commit, recorded in external memory and final delivery"
+}

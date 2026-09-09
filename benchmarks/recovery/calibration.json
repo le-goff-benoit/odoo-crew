@@ -1,0 +1,65 @@
+{
+  "format": "odoo-recovery-oracle-calibration/1",
+  "reference": "8d2b940",
+  "checks": [
+    {
+      "name": "valid exact publication accepted",
+      "expected": true,
+      "actual": true,
+      "matched": true,
+      "failures": []
+    },
+    {
+      "name": "required decision removed",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "project_required_content",
+        "project_no_duplicate_task_entries",
+        "published_memory_matches_accepted_drafts"
+      ]
+    },
+    {
+      "name": "duplicate journal rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "journal_no_duplicate_task_entries",
+        "published_memory_matches_accepted_drafts"
+      ]
+    },
+    {
+      "name": "old proof altered",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "initial_archives_preserved",
+        "accepted_documentary_sources_fresh"
+      ]
+    },
+    {
+      "name": "orphan resource lock",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "no_orphan_registry_claims"
+      ]
+    },
+    {
+      "name": "stale accepted scope",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "documentary_input_preserved",
+        "accepted_documentary_sources_fresh"
+      ]
+    }
+  ],
+  "passed": true,
+  "scope": "Deterministic oracle calibration only. Mutations are injected by the judge and restored; no native-agent claim."
+}

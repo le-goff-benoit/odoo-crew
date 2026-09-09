@@ -1,0 +1,1 @@
+Le calcul conserve jours multipliés par tarif.

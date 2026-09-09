@@ -1,0 +1,63 @@
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "0b7951b8e7ecc756236440c5213417cd072976ed330816d8ba75dd997e58b2c7",
+  "reviewer": "fixture-reviewer-not-a-real-agent",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "explanation": "Fixture documentaire synthétique ; aucune relecture agent prétendue.",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne.\nLe contrôle porte uniquement sur la cohérence documentaire.\n"
+        },
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "# Revue synthétique\n## Critères d’acceptation\n- [ ] Décision A : afficher la référence dossier dans la fiche interne.\n"
+        }
+      ]
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "explanation": "Fixture documentaire synthétique ; aucune relecture agent prétendue.",
+      "citations": [
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "# Revue synthétique\n## Critères d’acceptation\n- [ ] Décision A : afficher la référence dossier dans la fiche interne.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "{\n  \"format\": \"odoo-evidence/1\",\n  \"project\": \"/tmp/odoo-recovery-20260909/candidate-R02/project\",\n  \"scopes\": [\n    \"documentary\"\n  ],\n  \"sources\": {\n    \"documentary/reference.txt\": {\n      \"sha256\": \"8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96\",\n      \"mode\": 436\n    }\n  },\n  \"command\": [\n    \"/usr/bin/python3\",\n    \"-c\",\n    \"from pathlib import Path; assert Path('documentary/reference.txt').read_text() == 'reference_dossier=visible\\\\n'; print('Cohérence documentaire : référence dossier visible. Aucun test Odoo.')\"\n  ],\n  \"exit_code\": 0,\n  \"result\": \"passed\",\n  \"module\": null,\n  \"error\": null,\n  \"seconds\": 0.032,\n  \"log\": {\n    \"path\": \"/tmp/odoo-recovery-20260909/candidate-R02/project/changelog/recovery/initial/documentary-proof.log\",\n    \"sha256\": \"7de39f9ce5bf1eed1a1d175acdebd23ab08280be78d02c9dcd84d4bd19245641\"\n  }\n}\n"
+        }
+      ]
+    },
+    "source_memory": {
+      "status": "pass",
+      "explanation": "Fixture documentaire synthétique ; aucune relecture agent prétendue.",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne.\nLe contrôle porte uniquement sur la cohérence documentaire.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/PROJECT-propose.md",
+          "quote": "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\nDécision A : afficher la référence dossier dans la fiche interne.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/JOURNAL-propose.md",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc.\nTâche A : cohérence documentaire de la référence dossier vérifiée.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/bundle.json.PROJECT.md.base",
+          "quote": "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\n"
+        },
+        {
+          "path": "changelog/recovery/initial/bundle.json.JOURNAL.md.base",
+          "quote": "# Journal synthétique\nInitialisation documentaire du banc.\n"
+        }
+      ]
+    }
+  }
+}

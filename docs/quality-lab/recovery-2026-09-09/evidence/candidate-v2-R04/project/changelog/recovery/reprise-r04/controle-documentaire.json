@@ -1,0 +1,27 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/odoo-recovery-20260909/candidate-v2-R04/project",
+  "scopes": [
+    "documentary"
+  ],
+  "sources": {
+    "documentary/reference.txt": {
+      "sha256": "e7fef3fa04a82e8d4537c145e61b49c9eeeb066e5ce23bf5696b597ea440bf0e",
+      "mode": 436
+    }
+  },
+  "command": [
+    "python3",
+    "-c",
+    "from pathlib import Path; value=Path('documentary/reference.txt').read_text(); print('Contrôle documentaire réel, aucun test Odoo. Valeur actuelle :', repr(value), flush=True); assert value == 'reference_dossier=visible\\n', 'Référence dossier masquée : critère A non satisfait'"
+  ],
+  "exit_code": 1,
+  "result": "failed",
+  "module": null,
+  "error": null,
+  "seconds": 0.065,
+  "log": {
+    "path": "/tmp/odoo-recovery-20260909/candidate-v2-R04/project/changelog/recovery/reprise-r04/controle-documentaire.log",
+    "sha256": "665745a42f0bbda73d8c9f29d58a6667c3478910ddb75e31b341987e8f820adf"
+  }
+}

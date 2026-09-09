@@ -1,0 +1,52 @@
+{
+  "format": "odoo-task-reception-bundle/1",
+  "project": "/tmp/odoo-recovery-20260909/design/project",
+  "owner": "codex-orchestration",
+  "groups": {
+    "source": [
+      {
+        "path": "request.md",
+        "sha256": "5341f2b2c20881b22ab30b84331a4c17bc985e1447bbe81d144639b0b24c4a6b"
+      }
+    ],
+    "spec": [
+      {
+        "path": "spec.md",
+        "sha256": "447669b663b8392e94d012d2e70347687163c4d34087c1cf933fc14016b9e5fe"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "runtime.log",
+        "sha256": "6d97a943eb3adf3d08bac69bdeae420a035ace06f0f331f803ed18f034af118f"
+      }
+    ]
+  },
+  "memory": [
+    {
+      "target": ".odoo-agents/PROJECT.md",
+      "before_sha256": "94baa6a002bcae0e9191418c68f19c71610d39f3c59df97c07aeef8b69b93d3d",
+      "draft": {
+        "path": "project-draft.md",
+        "sha256": "353e6b5bad9adf9620a7b52936cb749406185210994d9a6317958e93324b69ad"
+      }
+    },
+    {
+      "target": ".odoo-agents/JOURNAL.md",
+      "before_sha256": "070f7bac811071fc4e5c88d5f56c383f12d5412adc199eaba91f426bcf25d438",
+      "draft": {
+        "path": "journal-draft.md",
+        "sha256": "81c7edd7e6320030e47f95e9082b21c7f552e2d244bda219141736e7aba2e996"
+      }
+    }
+  ],
+  "scopes": [
+    "module"
+  ],
+  "code": {
+    "module/business.py": {
+      "sha256": "d968173bbd0a92c6662aec8bb02b568a5b6b22cbc29ebb127d35fdf3b42a4ff8",
+      "mode": 436
+    }
+  }
+}

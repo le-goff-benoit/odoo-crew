@@ -1,0 +1,21 @@
+{
+  "reference": "8d2b9403ae38b9d619f95c5f55ed3cce20dfc938",
+  "frozen_at": "2026-09-09T15:54:54.591389+00:00",
+  "objective": "Reprise après conflit mémoire post-QA et publication interrompue, compatible plans sans perte ou faux succès",
+  "treatment": "Porte de réception dédiée dans même flow, publication idempotente sous verrou, arrêt borné, migration additive explicite des anciens snapshots",
+  "models": "Codex collaboration inherited model/effort, no overrides",
+  "cli_calls": 0,
+  "max_execution_contexts": 8,
+  "max_children_reviewers_writers": 8,
+  "minutes_per_execution_context": 10,
+  "max_candidate_revisions_without_progress": 2,
+  "jobs": [
+    "référence R01 direct blocage + refus plan",
+    "candidat R01 plan, écrivain concurrent réel, réception neuve",
+    "candidat R02 plan, reprise depuis contexte neuf",
+    "candidat R03 plan positif",
+    "candidat R04 inédit après gel"
+  ],
+  "evidence": "Frontière QA initiale synthétique explicite ; pas de nouveau test Odoo ni qualification du développement. Corpus/oracles indépendants figés avant candidat. États modifiés seulement par APIs publiques pendant exercice.",
+  "adoption": "Garde étendu aux plans seulement après défaut, positif, inédit, concurrence et interruption ; contrôle technique indépendant, tests/build/install/push/CI/mémoire."
+}

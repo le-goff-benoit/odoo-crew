@@ -1,0 +1,30 @@
+--- a/roles/orchestration.md
++++ b/roles/orchestration.md
+@@ -327,7 +327,10 @@
+ `reception_recovery_gate`. Prépare deux nouveaux drafts à partir de la mémoire
+ courante en y conservant les contributions déjà publiées ; seuls les changements
+ de cette tâche s'y ajoutent. Prépare un nouveau bundle avec les mêmes sources,
+-spec, preuves et code, puis délègue une nouvelle réception documentaire. Le
++spec, preuves et code, puis délègue une nouvelle réception documentaire. La nouvelle entrée mémoire conserve explicitement
++le résultat déjà reçu, sa portée et ses limites : raconter la reprise ou dire
++« preuve conservée » ne transmet pas que le contrôle a réussi ou échoué. Distingue
++ce résultat acquis des étapes encore à venir. Le
+ relecteur compare aussi les bases mémoire figées aux propositions ; aucune fusion
+ sémantique n'est faite automatiquement. Le pass de cette porte retourne au journal
+ pour publication. Les anciens bundles et réceptions restent en historique.
+--- a/roles/qa-review.md
++++ b/roles/qa-review.md
+@@ -51,8 +51,11 @@
+ 
+ En reprise après conflit mémoire, compare aussi les copies de base figées aux
+ nouveaux drafts : les contributions déjà publiées par les autres tâches doivent
+-rester présentes et garder leur sens. Cite ces bases lorsqu'elles figurent dans
+-le bundle. Le code et la QA reçus auparavant restent acquis seulement si leurs
++rester présentes et garder leur sens. Vérifie également que la nouvelle entrée
++transmet le résultat effectivement reçu (réussite, échec ou limite), pas seulement
++l'existence ou la conservation d'une preuve. Une chronologie de reprise ne
++remplace pas ce résultat. Refuse cette perte même si tous les hashes sont frais.
++Cite ces bases lorsqu'elles figurent dans le bundle. Le code et la QA reçus auparavant restent acquis seulement si leurs
+ empreintes et leur contrat sont inchangés ; le renouvellement de la mémoire ne
+ permet pas de les requalifier.
+ 

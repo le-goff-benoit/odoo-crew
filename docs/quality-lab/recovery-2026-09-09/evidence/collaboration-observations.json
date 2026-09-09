@@ -1,0 +1,182 @@
+{
+  "source": "Transcription des appels collaboration observ\u00e9s dans cette conversation ; pas export natif de sessions",
+  "observations": [
+    {
+      "at": "2026-09-09T16:04:16.892785+00:00",
+      "running": [
+        "/root/r01_writer_a",
+        "/root/r01_writer_b",
+        "/root/r02_resume"
+      ]
+    },
+    {
+      "at": "2026-09-09T16:08:05.684439+00:00",
+      "running": [
+        "/root/r01_resume",
+        "/root/r02_resume",
+        "/root/r02_resume/reception"
+      ],
+      "completed": [
+        "/root/r01_writer_a",
+        "/root/r01_writer_b"
+      ]
+    },
+    {
+      "at": "2026-09-09T16:10:29.398639+00:00",
+      "running": [
+        "/root/r01_resume",
+        "/root/r01_resume/review_reception",
+        "/root/r02_resume"
+      ],
+      "completed": [
+        "/root/r02_resume/reception"
+      ]
+    },
+    {
+      "at": "2026-09-09T16:13:44.020025+00:00",
+      "running": [
+        "/root/r03_positive",
+        "/root/r03_positive/r03_reception",
+        "/root/r04_heldout"
+      ],
+      "completed": [
+        "/root/r01_resume",
+        "/root/r01_resume/review_reception",
+        "/root/r02_resume"
+      ]
+    },
+    {
+      "at": "2026-09-09T16:15:17.323494+00:00",
+      "running": [
+        "/root/r03_positive",
+        "/root/r04_heldout",
+        "/root/recovery_audit"
+      ],
+      "completed": [
+        "/root/r03_positive/r03_reception"
+      ]
+    },
+    {
+      "at": "2026-09-09T16:18:22.972988+00:00",
+      "running": [
+        "/root/recovery_audit",
+        "/root/r02_v2_resume",
+        "/root/v2_counter_review"
+      ],
+      "completed": [
+        "/root/r03_positive",
+        "/root/r04_heldout"
+      ]
+    },
+    {
+      "at": "2026-09-09T16:22:01.022542+00:00",
+      "running": [
+        "/root/r02_v2_resume",
+        "/root/r02_v2_resume/documentary_reception",
+        "/root/r04_v2_regression"
+      ],
+      "completed": [
+        "/root/recovery_audit",
+        "/root/v2_counter_review"
+      ]
+    },
+    {
+      "at": "2026-09-09T16:26:28.272295+00:00",
+      "completed": [
+        "/root/r02_v2_resume",
+        "/root/r02_v2_resume/documentary_reception",
+        "/root/r04_v2_regression",
+        "/root/recovery_audit"
+      ]
+    }
+  ],
+  "delegations": [
+    {
+      "name": "r01_writer_a",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "r01_writer_b",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "r02_resume",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "r01_resume",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "r02_resume/reception",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "r01_resume/review_reception",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "r03_positive",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "r03_positive/r03_reception",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "r04_heldout",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "recovery_audit",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "r02_v2_resume",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "v2_counter_review",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "r02_v2_resume/documentary_reception",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    },
+    {
+      "name": "r04_v2_regression",
+      "fork_turns": "none",
+      "model": "inherited",
+      "effort": "inherited"
+    }
+  ],
+  "execution_contexts": 8,
+  "auxiliary_contexts": 7,
+  "note": "Includes reference execution in reused corpus-author context, plus fresh writer-A preparation; implementation and design are outside behavioral execution counts. One spawn refused at active thread limit, then succeeded after slot release."
+}

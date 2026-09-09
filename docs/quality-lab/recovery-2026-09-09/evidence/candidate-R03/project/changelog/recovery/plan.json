@@ -1,0 +1,83 @@
+{
+  "history": [
+    {
+      "action": "prepared",
+      "at": "2026-09-09T16:03:05+00:00"
+    },
+    {
+      "action": "start",
+      "at": "2026-09-09T16:03:05+00:00",
+      "reason": null,
+      "task_id": "A"
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-09T16:15:05+00:00",
+      "reason": null,
+      "task_id": "A"
+    }
+  ],
+  "schema": 1,
+  "tasks": [
+    {
+      "acceptance": [
+        "Décision A : afficher la référence dossier dans la fiche interne."
+      ],
+      "attempts": [
+        {
+          "at": "2026-09-09T16:03:05+00:00",
+          "flow": ".odoo-agents/flows/plan-a-2844b487.json",
+          "sources_before": {
+            "documentary/reference.txt": {
+              "mode": 436,
+              "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96"
+            }
+          }
+        }
+      ],
+      "depends_on": [],
+      "id": "A",
+      "receipt": {
+        "acceptance": {
+          "path": "changelog/recovery/reprise/acceptance-plan.md",
+          "sha256": "561e21aeb5d3e73a26a7c2cad86d3443470941c210c6b59d7c5f83cffa9be269"
+        },
+        "at": "2026-09-09T16:15:05+00:00",
+        "contract_sha256": "914cbf9e2ebfbbe153c78226cc871f543afb035b5554cd8a6ab1368fa7bbbc1e",
+        "dependencies": {},
+        "memory": {
+          "path": "changelog/recovery/reprise/consolidation.md",
+          "sha256": "1365ce1edd2b4b6c6eb1c950d2863a800e777b930c6aaf4ec0c4d69e249aac9c"
+        },
+        "proof": {
+          "path": "changelog/recovery/reprise/documentary-proof.json",
+          "sha256": "16e4581422bf3880548a46f9b79fbc9bb2d995642298eacd0f355caa3251eb29"
+        }
+      },
+      "request": "changelog/recovery/demande-A.md",
+      "risk": "normal",
+      "route": "module",
+      "scopes": [
+        "documentary"
+      ],
+      "title": "Tâche documentaire A"
+    },
+    {
+      "acceptance": [
+        "A réceptionnée"
+      ],
+      "depends_on": [
+        "A"
+      ],
+      "id": "C",
+      "request": "changelog/recovery/demande-C.md",
+      "risk": "normal",
+      "route": "module",
+      "scopes": [
+        "future-documentary"
+      ],
+      "title": "Tâche documentaire C"
+    }
+  ],
+  "updated_at": "2026-09-09T16:15:05+00:00"
+}

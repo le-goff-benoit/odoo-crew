@@ -1,0 +1,1015 @@
+--- a/docs/TASK_RECEPTION.md
++++ b/docs/TASK_RECEPTION.md
+@@ -7,16 +7,12 @@
+ remplace ni la couverture des critères ni la QA technique. Son périmètre est
+ coopératif ; l’édition directe du flow n’est pas une frontière de sécurité.
+ 
+-## Périmètre expérimental
+-
+-`prepare-reception` refuse explicitement les flows portant `plan_task`, issus de
+-l’exécution d’un plan de release. Une modification concurrente de mémoire après
+-le pass pourrait sinon bloquer définitivement leur publication et la suite du
+-plan, sans transition de reprise appropriée dans le graphe actuel. Ces tâches
+-peuvent recevoir la même **réception documentaire indépendante sans activer ce
+-garde**. Aucun nœud, mécanisme d’annulation ni comportement de plan n’est modifié.
+-Le garde reste limité aux tâches autonomes avec sources disponibles ; cette
+-campagne ne qualifie pas son emploi dans les plans de release.
++## Périmètre et reprise
++
++Le garde est disponible pour les tâches directes et celles d'un plan dont le
++snapshot possède la porte `reception_recovery_gate`. Le plan conserve sa
++réservation pendant la reprise ; sa réception finale reste obligatoire. Les
++anciens snapshots exigent une migration explicite, décrite plus bas.
+ 
+ ## Préparer avant la réception QA
+ 
+@@ -49,10 +45,12 @@
+ exclut les documents et les sorties du dossier.
+ 
+ La préparation se fait sous verrou du flow, actif et sans revendication d’un
+-autre propriétaire, avant tout `pass` d’une des trois jointures QA de tâche.
++autre propriétaire, avant tout `pass` d’une des trois jointures QA de tâche,
++ou pendant la revendication de `reception_recovery_gate` par cet owner.
+ Le dossier `odoo-task-reception-bundle/1` contient les chemins relatifs et hashes
+ SHA-256 des groupes `source`, `spec`, `evidence`, les deux couples cible/draft avec
+-le hash antérieur de la cible (`null` si absente), et l’empreinte du code. Le flow
++le hash antérieur de la cible (`null` si absente), une copie de chaque base
++existante dans un fichier neuf adjacent au bundle, et l’empreinte du code. Le flow
+ épingle le chemin et le hash du dossier dans `task_reception`.
+ 
+ Si un contrat QA est lié, le chemin et le hash de la spécification du dossier
+@@ -121,7 +119,10 @@
+ Chaque axe doit citer au moins un fichier de chacun des deux groupes confrontés :
+ source/spec, spec/evidence, source/draft. Le relecteur doit couvrir **toutes les
+ obligations et modifications pertinentes** : ce minimum mécanique de deux
+-groupes ne démontre pas l’exhaustivité sémantique. Une explication non vide est
++groupes ne démontre pas l’exhaustivité sémantique. Lorsque les entrées mémoire
++contiennent `base`, `source_memory` doit aussi citer chacune de ces copies contenant du texte non blanc et
++vérifier la conservation des contributions antérieures. Les bundles historiques
++sans copie de base restent lisibles. Une explication non vide est
+ requise ; son exactitude demeure une responsabilité de la relecture.
+ 
+ Les trois clés d’axes sont obligatoires exactement. Les statuts sont `pass|fail`,
+@@ -149,27 +150,73 @@
+ restent accessibles avec un constat même si le dossier est périmé ; le nœud
+ `journal_task_blocked` permet de consigner cet échec.
+ 
+-Au nœud `journal_task`, l’orchestrateur, propriétaire du verrou mémoire, publie
+-les **octets exacts** des deux drafts approuvés, puis termine avec `done`. La
+-publication n’est pas automatisée par ce garde. Après la revendication de
+-`journal_task`, vérifier les bases et la fraîcheur en lecture seule, puis garder
+-le verrou mémoire pendant la copie :
+-
+-```bash
+-python3 ~/.odoo19-agents/scripts/odoo_reception.py check-bases /chemin/projet/changelog/RELEASE/reception/bundle-1.json
+-```
+-
+-Un code de sortie non nul interdit de poursuivre la copie. Ce contrôle relit les
+-hashes antérieurs des cibles et les fichiers référencés par le bundle fourni ;
+-le lien au hash épinglé par le flow reste vérifié à `complete`.
+-Les hashes antérieurs doivent encore correspondre : une tâche concurrente peut avoir écrit entre la
+-réception QA et la prise du verrou mémoire. Ne pas écraser ce travail ; préparer
+-une nouvelle réception dans un nouveau flow si le premier a déjà passé sa QA.
+-À `done`, le garde revalide le fragment, le dossier, ses sources et le code, puis
+-exige l’identité des cibles publiées avec les drafts approuvés.
+-
+-Le hash porte sur **tout** PROJECT/JOURNAL. Cela peut imposer une nouvelle
+-réception après une modification concurrente sans rapport avec la tâche. Cette
+-limite est conservatrice et explicite ; ce garde ne réalise pas une fusion de
+-régions ni une comparaison métier. Les flows historiques sans `task_reception`,
+-les parcours sans jointure QA et le graphe existant restent inchangés.
++Au nœud `journal_task`, l'orchestrateur revendique le verrou mémoire puis publie
++les **octets exacts** des deux drafts approuvés :
++
++```bash
++python3 ~/.odoo19-agents/scripts/odoo_flow.py publish-memory FLOW.json --owner codex-orchestrateur
++python3 ~/.odoo19-agents/scripts/odoo_flow.py complete FLOW.json journal_task \
++  --owner codex-orchestrateur --outcome done --evidence changelog/RELEASE/publication.md
++```
++
++Le publieur valide le bundle et le reçu épinglés, les sources, les preuves, le
++code et **les deux cibles avant toute écriture**. Chaque cible doit être encore
++à sa base ou déjà identique au draft accepté. Une autre valeur interdit la
++publication. Chaque remplacement de fichier est atomique ; l'ensemble des deux
++fichiers ne constitue pas une transaction atomique. Une interruption de processus
++après le premier remplacement se reprend en relançant la même commande : le
++fichier déjà publié n'est pas réécrit et le journal n'est pas ajouté deux fois.
++Le verrou coopératif ne protège pas contre un processus externe qui l'ignore.
++À `done`, le garde vérifie de nouveau l'identité des cibles et la fraîcheur.
++
++Si le contexte précédent est arrêté, consigner ce constat puis utiliser les API
++`release --reason` et `claim` pour transférer sa revendication. Ne jamais modifier
++le registre ni les JSON d'état directement. `check-bases` reste un diagnostic en
++lecture seule exigeant les bases initiales ; ce n'est pas la commande de reprise
++d'une publication partielle.
++
++## Conflit après QA : nouvelle réception dans le même flow
++
++Une modification concurrente de PROJECT ou JOURNAL rend la proposition obsolète,
++y compris si elle concerne une autre tâche. Garder ces fichiers et consigner le
++refus du publieur dans une preuve isolée, puis :
++
++1. Compléter `journal_task` avec `--outcome retry` et cette preuve.
++2. Revendiquer `reception_recovery_gate` ; son verrou mémoire protège la préparation.
++3. Préparer de nouveaux drafts depuis la mémoire courante, en conservant le travail
++   déjà publié. Appeler `prepare-reception` avec une sortie neuve et les **mêmes**
++   sources, spécification, preuves et périmètres de code que la réception acceptée.
++4. Faire relire ce nouveau bundle dans un contexte indépendant. Le relecteur compare
++   aussi les bases figées aux drafts et cite les contributions à conserver.
++5. Compléter la porte avec `--outcome pass --evidence NOUVEAU_RECU`, puis revendiquer
++   le journal, exécuter `publish-memory` et terminer le journal.
++
++L'ancienne réception reste conservée ; seule une nouvelle réception acceptée
++remplace la réception active. Le cycle ne permet pas de blanchir une modification
++du code, des sources ou des preuves. Leur péremption exige un arrêt explicite et
++une nouvelle tentative avec la QA appropriée. Au plus deux retours de reprise
++sont autorisés. En cas d'impossibilité, compléter le journal ou la porte avec
++`blocked`, puis terminer `memory_task_blocked` avec le constat d'échec mémoire.
++Il s'agit d'un arrêt de publication, pas d'une déclaration de QA rouge. Le plan
++peut ensuite utiliser `reopen --reason` et conserver l'ancienne tentative.
++
++## Migration bornée des anciens snapshots
++
++Avant la première exécution du journal, sur un flow actif sans revendication :
++
++```bash
++python3 ~/.odoo19-agents/scripts/odoo_flow.py upgrade-recovery FLOW.json \
++  --owner codex-orchestrateur --from-graph /archive/odoo-workflow-original.json
++```
++
++`--from-graph` fournit les octets exacts du graphe historique lorsque son chemin
++d'origine a été remplacé. L'outil vérifie son hash et son snapshot, puis exige
++l'ajout exact du sous-graphe connu : les anciens nœuds et transitions restent
++identiques. L'historique et les jetons sont conservés, la migration est consignée.
++Tout autre changement, un flow terminal, une revendication active ou un journal
++déjà exécuté entraîne un refus. Cette commande n'assouplit pas la migration
++générique. Conserver l'archive historique ; ne pas reconstruire un état à la main.
++
++Les flows sans `task_reception` gardent leur publication habituelle. Le garde
++contrôle des hashes et citations ; la fidélité métier et la réalité de la
++délégation exigent toujours une relecture et une trace indépendante.
+--- a/roles/orchestration.md
++++ b/roles/orchestration.md
+@@ -243,8 +243,8 @@
+ **Réception de la demande et de la mémoire avant `pass`.** Prépare deux fichiers
+ neufs contenant les versions complètes proposées de `PROJECT.md` et `JOURNAL.md`
+ (contenu existant conservé, corrections nécessaires et entrée de quinze lignes
+-au plus). Ne les publie pas encore. Lorsque les sous-agents sont disponibles
+-et que la tâche est directe (sans `plan_task`), active le garde de réception
++au plus). Ne les publie pas encore. Lorsque les sous-agents sont disponibles,
++sur une tâche directe ou un flow du plan équipé de la reprise de réception, active le garde
+ avec `odoo_flow.py prepare-reception <flow>` :
+ `--source` pour la demande originale et chaque décision applicable, `--spec`
+ pour la revue, `--evidence` pour la couverture et les fragments/logs QA,
+@@ -273,11 +273,13 @@
+ effectue cette relecture toi-même et annonce son caractère non indépendant ;
+ n'active pas le garde qui exige une réception indépendante.
+ 
+-Pour une tâche pilotée par `/odoo-start`, effectue la même réception documentaire
+-en fragment Markdown, sans ce garde expérimental : un conflit mémoire après QA
+-n'a pas encore de voie d'arrêt/reprise compatible avec le plan. La réception du
+-plan existante reste applicable ; ne crée pas un flow extérieur pour contourner
+-ses réservations.
++Un ancien snapshot ne gagne pas silencieusement ces transitions. Avant sa première
++publication mémoire, sans revendication active, `odoo_flow.py upgrade-recovery
++<flow> --owner <orchestrateur>` installe uniquement le sous-graphe de reprise
++prévu et conserve l'historique. Si le fichier de graphe historique a été remplacé,
++fournis son archive exacte avec `--from-graph`. En cas de refus, lis sa cause ; ne modifie jamais
++le JSON pour forcer la migration. La réception du plan reste applicable après
++le flow ; ne crée pas un run extérieur pour contourner ses réservations.
+ 
+ ```bash
+ export ODOO_ADDONS_DIR=<répertoire contenant le module>
+@@ -311,17 +313,30 @@
+ 
+ Une chaîne qui ne laisse pas de trace oblige la suivante à tout redécouvrir.
+ 
+-Si une réception est liée au flow, après `claim journal_task`, exécute
+-`python3 ~/.odoo19-agents/scripts/odoo_reception.py check-bases <bundle>`
+-sous ce verrou pour vérifier les cibles et les pièces, puis publie **exactement**
+-les deux propositions approuvées. Ne les paraphrase pas à ce stade : le garde
+-de `complete journal_task --outcome done` vérifie leur identité avec les
+-propositions. Si une autre tâche a changé la mémoire depuis sa préparation,
+-ne l'écrase pas ; consigne l'incident, libère la revendication et reprends dans
+-un nouveau flow avec une nouvelle réception, puisque le premier a déjà passé
+-sa QA. Ne déclare pas le premier terminé. Le
+-contrôle porte sur les fichiers complets et peut donc invalider une proposition
+-pour une modification concurrente pourtant indépendante. Les points ci-dessous
++Si une réception est liée, après `claim journal_task`, utilise
++`odoo_flow.py publish-memory <flow> --owner <orchestrateur>`, puis
++`complete journal_task --outcome done` avec la preuve de publication. La commande
++vérifie toutes les pièces et les deux cibles avant d'écrire les propositions
++approuvées. Après interruption, elle reconnaît chaque fichier encore à sa base
++ou déjà publié : relance-la sous la même revendication, sans restaurer les anciennes
++valeurs ni ajouter deux fois l'entrée du journal. Un changement d'owner passe par
++`release --reason` puis `claim`, après constat d'arrêt de l'ancien exécutant.
++
++Si une autre tâche a modifié la mémoire, conserve son travail et un constat isolé.
++Termine le journal avec `--outcome retry --evidence <constat>`, puis revendique
++`reception_recovery_gate`. Prépare deux nouveaux drafts à partir de la mémoire
++courante en y conservant les contributions déjà publiées ; seuls les changements
++de cette tâche s'y ajoutent. Prépare un nouveau bundle avec les mêmes sources,
++spec, preuves et code, puis délègue une nouvelle réception documentaire. Le
++relecteur compare aussi les bases mémoire figées aux propositions ; aucune fusion
++sémantique n'est faite automatiquement. Le pass de cette porte retourne au journal
++pour publication. Les anciens bundles et réceptions restent en historique.
++
++Cette reprise ne revalide pas un code, une décision ou une preuve modifiés : dans
++ce cas, ou après deux retours infructueux, choisis `blocked` avec un constat puis
++termine `memory_task_blocked`. Le plan peut alors être rouvert avec une raison,
++sans perdre l'ancienne tentative. Aucun test Odoo n'est à rejouer pour un simple
++conflit de texte si ses preuves sont restées valables. Les points ci-dessous
+ décrivent le contenu préparé à l'étape 3 ; sans réception liée, écris-le ici.
+ 
+ 1. **Entrée de journal** dans `<projet>/.odoo-agents/JOURNAL.md` — **quinze
+--- a/roles/qa-review.md
++++ b/roles/qa-review.md
+@@ -48,6 +48,13 @@
+   décisions et preuves. Préserve portée, négations, exclusions et formules ;
+   distingue résultat local, livraison et historique réellement disponible.
+   Vérifie les remplacements nécessaires, pas seulement les ajouts.
++
++En reprise après conflit mémoire, compare aussi les copies de base figées aux
++nouveaux drafts : les contributions déjà publiées par les autres tâches doivent
++rester présentes et garder leur sens. Cite ces bases lorsqu'elles figurent dans
++le bundle. Le code et la QA reçus auparavant restent acquis seulement si leurs
++empreintes et leur contrat sont inchangés ; le renouvellement de la mémoire ne
++permet pas de les requalifier.
+ 
+ Avec un bundle de réception, lis `docs/TASK_RECEPTION.md` du référentiel et
+ produis le JSON `odoo-task-reception/1` dans le fichier isolé demandé. Le helper
+--- a/roles/release-start.md
++++ b/roles/release-start.md
+@@ -13,6 +13,16 @@
+ checkout demande une réconciliation depuis les preuves durables, jamais une
+ recréation silencieuse de statut vert. Une tâche bloquée ou périmée est rouverte
+ explicitement avec une raison (`reopen`) ; les anciens essais restent en historique.
++
++Les flows équipés de la reprise de réception utilisent le même garde que les
++tâches directes. Un conflit de mémoire après QA passe par `journal_task retry`
++puis `reception_recovery_gate` dans **la même tentative** ; les périmètres du
++plan restent réservés. Une publication interrompue se reprend avec
++`publish-memory`, après reprise légitime de la revendication. Lis
++`docs/TASK_RECEPTION.md` pour la migration explicite des anciens snapshots.
++Après l'arrêt terminal `memory_task_blocked`, `reopen --reason` ouvre la voie à
++une nouvelle tentative et conserve l'historique ; ne rouvre pas une tâche encore
++active, ne supprime pas ses verrous à la main et ne déclare pas ses dépendants prêts.
+ 
+ Des tâches indépendantes peuvent être préparées en parallèle quand le moteur de
+ sous-agents est disponible. L'orchestrateur demeure l'unique écrivain de la
+--- a/scripts/odoo_flow.py
++++ b/scripts/odoo_flow.py
+@@ -739,21 +739,149 @@
+     return pinned
+ 
+ 
++RECOVERY_GATE = 'reception_recovery_gate'
++RECOVERY_NODES = {'reception_recovery_gate', 'memory_task_blocked'}
++RECOVERY_EDGES = {'journal-memory-retry', 'journal-memory-blocked',
++                  'reception-memory-pass', 'reception-memory-blocked'}
++
++
++RECOVERY_EXTENSION = {'nodes': {'reception_recovery_gate': {'description': 'Recevoir à nouveau les propositions mémoire depuis '
++                                                      'les bases actuelles, à contrat et preuves inchangés.',
++                                       'executor': 'orchestrator',
++                                       'join': 'any',
++                                       'evidence': ['réception indépendante renouvelée ou motif de blocage '
++                                                    'mémoire'],
++                                       'max_outcome_uses': {'pass': 2},
++                                       'locks': [{'resource': 'project_memory', 'mode': 'write'}]},
++           'memory_task_blocked': {'description': 'Intervention arrêtée sur la réception ou la publication '
++                                                  'mémoire ; la QA passée reste conservée.',
++                                   'executor': 'orchestrator',
++                                   'join': 'any',
++                                   'terminal': 'blocked',
++                                   'outcomes': ['done'],
++                                   'evidence': ['motif de blocage mémoire et état de publication réel'],
++                                   'locks': []}},
++ 'edges': [{'id': 'journal-memory-retry',
++            'from': 'journal_task',
++            'outcome': 'retry',
++            'to': 'reception_recovery_gate'},
++           {'id': 'journal-memory-blocked',
++            'from': 'journal_task',
++            'outcome': 'blocked',
++            'to': 'memory_task_blocked'},
++           {'id': 'reception-memory-pass',
++            'from': 'reception_recovery_gate',
++            'outcome': 'pass',
++            'to': 'journal_task'},
++           {'id': 'reception-memory-blocked',
++            'from': 'reception_recovery_gate',
++            'outcome': 'blocked',
++            'to': 'memory_task_blocked'}]}
++
++
++def recovery_available(graph):
++    return (all(graph['nodes'].get(name) == node for name, node in RECOVERY_EXTENSION['nodes'].items())
++            and [edge for edge in graph['edges'] if edge['id'] in RECOVERY_EDGES] == RECOVERY_EXTENSION['edges'])
++
++
++def accepted_bundle(state, memory_policy='ignore'):
++    from odoo_coverage import GATES
++    from odoo_reception import check_ref, verify_bundle, verify_contract
++    accepted = state.get('accepted_reception')
++    if state.get('status') != 'active' or not accepted or not any(
++            event['node'] in GATES and event['outcome'] == 'pass' for event in state['events']):
++        raise ValueError('réception QA acceptée préalable requise')
++    pins = [state.get('task_reception', {})] + state.get('task_reception_history', [])
++    pinned = next((pin for pin in pins if pin.get('sha256') == accepted['bundle_sha256']), None)
++    if not pinned:
++        raise ValueError('dossier de réception accepté introuvable')
++    root = Path(state['project']).resolve()
++    check_ref(root, accepted)
++    bundle = verify_bundle(root, pinned, memory_policy=memory_policy)
++    verify_contract(bundle, state.get('qa_contract'))
++    return pinned, bundle
++
++
++def upgrade_recovery(state_path, graph_path, owner, from_graph=None):
++    """Ajout connu seulement ; aucune relaxation de validate_migration."""
++    import copy
++    with exclusive_lock(state_path):
++        state = load_json(state_path)
++        graph = load_json(graph_path)
++        old = state.get('graph_snapshot')
++        if not owner.strip() or state.get('status') != 'active' or state.get('claims'):
++            raise FlowError('migration de reprise : flow actif sans revendication requis')
++        if not old or any(e['node'] == 'journal_task' for e in state['events']):
++            raise FlowError('migration de reprise : snapshot requis et journal jamais exécuté')
++        # L’empreinte d’origine reste vérifiable sur le fichier déclaré du run.
++        original = Path(from_graph) if from_graph else Path(state.get('graph', ''))
++        if (not original.is_file() or graph_hash(original) != state.get('graph_sha256')
++                or load_json(original) != old):
++            raise FlowError('migration de reprise : fournir le graphe original intact au chemin déclaré')
++        if validate_graph(graph) or not recovery_available(graph):
++            raise FlowError('sous-graphe de reprise absent ou invalide')
++        stripped = copy.deepcopy(graph)
++        for name in RECOVERY_NODES:
++            stripped['nodes'].pop(name)
++        stripped['edges'] = [edge for edge in stripped['edges'] if edge['id'] not in RECOVERY_EDGES]
++        if old != stripped:
++            raise FlowError('migration de reprise limitée aux seuls ajouts mémoire prévus')
++        previous = state['graph_sha256']
++        state.update(graph=str(graph_path), graph_sha256=graph_hash(graph_path), graph_snapshot=graph)
++        state.setdefault('migrations', []).append({'at': now(), 'from': previous,
++            'to': state['graph_sha256'], 'kind': 'memory-recovery', 'owner': owner})
++        write_state(state_path, state)
++        return state
++
++
++def publish_memory(state_path, graph_path, owner):
++    from odoo_reception import check_ref, publish
++    with exclusive_lock(state_path):
++        state, graph = load_state(state_path, graph_path)
++        claim = state.get('claims', {}).get('journal_task')
++        if not claim or claim.get('owner') != owner:
++            raise FlowError('publication : revendication journal_task du propriétaire requise')
++        lock_registry = registry_path(state)
++        with exclusive_lock(lock_registry):
++            registry = load_registry(lock_registry)
++            if not any(item == claim for item in registry['claims']):
++                raise FlowError('publication : verrou mémoire du registre absent')
++            if any(item != claim and not locks_compatible(claim['locks'], item.get('locks', []))
++                   for item in registry['claims']):
++                raise FlowError('publication : verrou mémoire concurrent')
++            try:
++                pinned, _ = accepted_bundle(state)
++                if pinned != state.get('task_reception'):
++                    raise ValueError('nouveau dossier non encore accepté')
++                review = json.loads(check_ref(Path(state['project']).resolve(), state['accepted_reception']).read_bytes())
++                if review['reviewer'].strip() == owner.strip():
++                    raise ValueError('relecteur identique au propriétaire de publication')
++                return publish(state['project'], pinned, review)
++            except (ValueError, KeyError, TypeError, OSError) as exc:
++                raise FlowError(f'publication mémoire refusée : {exc}') from exc
++
++
+ def prepare_reception(state_path, graph_path, sources, spec, evidence, memories, scopes, output, owner):
+     from odoo_coverage import GATES, digest
+     from odoo_reception import prepare, verify_contract
+     with exclusive_lock(state_path):
+         state, graph = load_state(state_path, graph_path)
+-        if state.get('plan_task'):
+-            raise FlowError('garde expérimental indisponible pour les tâches planifiées ; réception documentaire sans garde permise')
++        if state.get('plan_task') and not recovery_available(graph):
++            raise FlowError('tâches planifiées : graphe avec reprise mémoire requis')
+         if state['status'] != 'active' or any(c['owner'] != owner for c in state.get('claims', {}).values()):
+             raise FlowError('réception impossible : flow terminé ou revendications d’un autre propriétaire')
+-        if any(e['node'] in GATES and e['outcome'] == 'pass' for e in state['events']):
+-            raise FlowError('préparation impossible après réception QA')
++        recovering = any(e['node'] in GATES and e['outcome'] == 'pass' for e in state['events'])
++        if recovering and (not recovery_available(graph) or
++                           state.get('claims', {}).get(RECOVERY_GATE, {}).get('owner') != owner):
++            raise FlowError('préparation après QA : revendiquez reception_recovery_gate')
+         try:
+             root = Path(state['project']).resolve()
+             bundle = prepare(root, sources, spec, evidence, memories, scopes, owner)
+             verify_contract(bundle, state.get('qa_contract'))
++            if recovering:
++                _, previous = accepted_bundle(state)
++                if any(bundle[key] != previous[key] for key in ('groups', 'scopes', 'code')):
++                    raise ValueError('reprise mémoire : sources, spécification, preuves et code doivent rester identiques')
+             target = (root / output).resolve()
+             if not target.is_relative_to(root) or target.exists() or target.is_symlink():
+                 raise ValueError('nouveau fichier de dossier requis dans le projet')
+@@ -761,7 +889,21 @@
+                 raise ValueError('sortie distincte des cibles mémoire requise')
+             if any(target == (root / scope).resolve() or target.is_relative_to((root / scope).resolve()) for scope in scopes):
+                 raise ValueError('dossier hors périmètre de code requis')
++            bases = []
++            for row in bundle['memory']:
++                if row['before_sha256'] is not None:
++                    base = target.with_name(target.name + '.' + Path(row['target']).name + '.base')
++                    if base.exists() or base.is_symlink():
++                        raise ValueError('nouveau fichier de base mémoire requis : ' + str(base))
++                    content = (root / row['target']).read_bytes()
++                    if digest(content) != row['before_sha256']:
++                        raise ValueError('mémoire changée pendant préparation : ' + row['target'])
++                    bases.append((row, base, content))
+             target.parent.mkdir(parents=True, exist_ok=True)
++            for row, base, content in bases:
++                with base.open('xb') as stream:
++                    stream.write(content)
++                row['base'] = {'path': str(base.relative_to(root)), 'sha256': digest(content)}
+             with target.open('x', encoding='utf-8') as stream:
+                 json.dump(bundle, stream, ensure_ascii=False, indent=2)
+                 stream.write('\n')
+@@ -780,10 +922,24 @@
+     from odoo_coverage import GATES, digest, project_file
+     from odoo_reception import FORMAT, check_ref, verify, verify_contract
+     pinned = state.get('task_reception')
++    recovery_exit = node_name == 'journal_task' and outcome in {'retry', 'blocked'}
++    if not pinned and (recovery_exit or node_name == RECOVERY_GATE):
++        raise FlowError('reprise mémoire réservée aux tâches avec réception liée')
+     if not pinned:
+         return None
+     try:
+-        if node_name in GATES and outcome == 'pass':
++        if recovery_exit and outcome == 'retry' and state['outcome_counts'].get('journal_task:retry', 0) >= 2:
++            raise ValueError('deux reprises mémoire déjà ouvertes ; choisir blocked')
++        if recovery_exit or node_name == RECOVERY_GATE:
++            if outcome == 'blocked':
++                # Une preuve devenue périmée doit encore permettre l’arrêt réel.
++                if not state.get('accepted_reception'):
++                    raise ValueError('réception QA acceptée préalable requise')
++            else:
++                accepted_bundle(state)
++        if node_name in GATES | {RECOVERY_GATE} and outcome == 'pass':
++            if node_name == RECOVERY_GATE and pinned['sha256'] == state['accepted_reception']['bundle_sha256']:
++                raise ValueError('nouveau dossier de réception requis pour la reprise')
+             reviews = []
+             for value in checked_evidence:
+                 try:
+@@ -930,6 +1086,8 @@
+             complete_node(state, graph, node_name, outcome, checked_evidence, note)
+             state["events"][-1]["evidence_sha256"] = evidence_digests
+             if accepted_reception:
++                if state.get("accepted_reception"):
++                    state.setdefault("accepted_reception_history", []).append(state["accepted_reception"])
+                 state["accepted_reception"] = accepted_reception
+         except Exception:
+             if not is_human:
+@@ -1150,6 +1308,13 @@
+     binding.add_argument('--output', type=Path, required=True)
+     binding.add_argument('--owner', required=True)
+ 
++    for name, help_text in [('publish-memory', 'publier les deux drafts approuvés de façon reprenable'),
++                            ('upgrade-recovery', 'ajouter explicitement la reprise mémoire à un ancien run')]:
++        command = subparsers.add_parser(name, help=help_text)
++        command.add_argument('state', type=Path)
++        command.add_argument('--owner', required=True)
++        if name == 'upgrade-recovery':
++            command.add_argument('--from-graph', type=Path)
+     reception = subparsers.add_parser('prepare-reception', help='figer le dossier de réception et la mémoire proposée')
+     reception.add_argument('state', type=Path)
+     reception.add_argument('--source', action='append', required=True)
+@@ -1287,6 +1452,15 @@
+             return 0
+ 
+         state_path = args.state.resolve()
++        if args.command == 'upgrade-recovery':
++            state = upgrade_recovery(state_path, graph_path, args.owner, args.from_graph)
++            print(f"Reprise mémoire ajoutée : {state['graph_sha256'][:12]} ; historique conservé.")
++            return 0
++        if args.command == 'publish-memory':
++            for row in publish_memory(state_path, graph_path, args.owner):
++                print(f"Mémoire {row['action']} : {row['target']}")
++            print('Publication vérifiée ; journal_task reste revendiqué et doit être complété.')
++            return 0
+         if args.command == 'prepare-reception':
+             receipt = prepare_reception(state_path, graph_path, args.source, args.spec, args.evidence,
+                                         args.memory, args.scope, args.output, args.owner)
+--- a/scripts/odoo_reception.py
++++ b/scripts/odoo_reception.py
+@@ -2,6 +2,7 @@
+ """Réception documentaire coopérative : intégrité et citations, pas jugement métier."""
+ import argparse
+ import json
++import tempfile
+ from pathlib import Path
+ 
+ from odoo_coverage import digest, project_file
+@@ -70,8 +71,13 @@
+             'checks': {axis: {'status': 'fail', 'citations': [], 'explanation': ''} for axis in AXES}}
+ 
+ 
+-def check_ref(root, item):
+-    path = project_file(root, item['path'])
++def check_ref(root, item, allow_empty=False):
++    if allow_empty:
++        path = (root / item['path']).resolve()
++        if not path.is_relative_to(root) or not path.is_file():
++            raise ValueError('fichier attendu dans le projet : ' + item['path'])
++    else:
++        path = project_file(root, item['path'])
+     if digest(path.read_bytes()) != item['sha256']:
+         raise ValueError('fichier modifié depuis préparation : ' + item['path'])
+     return path
+@@ -98,7 +104,7 @@
+                 check_execution(root, check_ref(root, item), seen)
+ 
+ 
+-def verify_bundle(project, pinned, published=False):
++def verify_bundle(project, pinned, published=False, memory_policy=None):
+     root = Path(project).resolve()
+     path = check_ref(root, pinned)
+     bundle = json.loads(path.read_bytes())
+@@ -110,11 +116,18 @@
+             if group == 'evidence':
+                 check_execution(root, source)
+     for row in bundle['memory']:
++        if row.get('base'):
++            check_ref(root, row['base'], allow_empty=True)
++    policy = memory_policy or ('published' if published else 'before')
++    if policy not in {'before', 'published', 'publishable', 'ignore'}:
++        raise ValueError('politique mémoire inconnue')
++    for row in ([] if policy == 'ignore' else bundle['memory']):
+         proposed = check_ref(root, row['draft'])
+         target = memory_path(root, row['target'])
+         current = digest(target.read_bytes()) if target.exists() else None
+-        expected = digest(proposed.read_bytes()) if published else row['before_sha256']
+-        if current != expected:
++        expected = row['draft']['sha256'] if policy == 'published' else row['before_sha256']
++        valid = current in {row['before_sha256'], row['draft']['sha256']} if policy == 'publishable' else current == expected
++        if not valid:
+             message = 'publication différente du draft approuvé' if published else 'mémoire modifiée depuis préparation'
+             raise ValueError(message + ' : ' + row['target'])
+     if (fingerprint(root, bundle['scopes']) if bundle['scopes'] else {}) != bundle['code']:
+@@ -122,8 +135,8 @@
+     return bundle
+ 
+ 
+-def verify(review, pinned, project, require_pass=True, published=False):
+-    bundle = verify_bundle(project, pinned, published)
++def verify(review, pinned, project, require_pass=True, published=False, memory_policy=None):
++    bundle = verify_bundle(project, pinned, published, memory_policy)
+     if review.get('format') != FORMAT or review.get('bundle_sha256') != pinned['sha256']:
+         raise ValueError('réception absente ou liée à un autre dossier')
+     reviewer = review.get('reviewer')
+@@ -138,6 +151,8 @@
+         raise ValueError('les trois axes de réception sont requis exactement')
+     groups = {key: {item['path'] for item in refs} for key, refs in bundle['groups'].items()}
+     groups['draft'] = {row['draft']['path'] for row in bundle['memory']}
++    groups['base'] = {row['base']['path'] for row in bundle['memory'] if row.get('base')
++                      and check_ref(Path(project).resolve(), row['base'], allow_empty=True).read_text().strip()}
+     frozen = set().union(*groups.values())
+     for axis, needed in AXES.items():
+         check = checks[axis]
+@@ -158,6 +173,8 @@
+             if quote not in project_file(project, source).read_text():
+                 raise ValueError(axis + ' : citation introuvable dans ' + source)
+             cited.add(source)
++        if axis == 'source_memory' and not groups['base'] <= cited:
++            raise ValueError('source_memory : citer toutes les bases mémoire conservées')
+         if any(not (cited & groups[group]) for group in needed):
+             raise ValueError(axis + ' : citer les deux groupes confrontés')
+         if require_pass and check['status'] != 'pass':
+@@ -165,6 +182,41 @@
+     if require_pass and review['verdict'] != 'pass':
+         raise ValueError('réception non conforme')
+     return bundle
++
++
++def atomic_publish(path, content):
++    """Remplacement atomique d'un fichier ; aucune transaction entre les deux cibles."""
++    path.parent.mkdir(parents=True, exist_ok=True)
++    temporary = None
++    try:
++        with tempfile.NamedTemporaryFile('wb', dir=path.parent, delete=False) as stream:
++            temporary = Path(stream.name)
++            stream.write(content)
++        if path.exists():
++            temporary.chmod(path.stat().st_mode & 0o777)
++        temporary.replace(path)
++    finally:
++        if temporary is not None:
++            temporary.unlink(missing_ok=True)
++
++
++def publish(project, pinned, review):
++    root = Path(project).resolve()
++    bundle = verify(review, pinned, root, memory_policy='publishable')
++    result = []
++    for row in bundle['memory']:
++        # Prévalidation globale répétée avant chaque remplacement : un tiers peut
++        # néanmoins ignorer le protocole entre cette lecture et replace().
++        verify(review, pinned, root, memory_policy='publishable')
++        target = memory_path(root, row['target'])
++        current = digest(target.read_bytes()) if target.exists() else None
++        if current == row['draft']['sha256']:
++            result.append({'target': row['target'], 'action': 'already_published'})
++        else:
++            atomic_publish(target, check_ref(root, row['draft']).read_bytes())
++            result.append({'target': row['target'], 'action': 'published'})
++    verify(review, pinned, root, published=True)
++    return result
+ 
+ 
+ def main(argv=None):
+--- a/tests/test_odoo_reception.py
++++ b/tests/test_odoo_reception.py
+@@ -54,6 +54,8 @@
+         groups = {'request_contract': ['request.md', 'spec.md'],
+                   'contract_evidence': ['spec.md', 'runtime.log'],
+                   'source_memory': ['request.md', 'project-draft.md', 'journal-draft.md']}
++        bundle = json.loads((self.root / pinned['path']).read_text())
++        groups['source_memory'].extend(row['base']['path'] for row in bundle['memory'] if row.get('base'))
+         for axis, names in groups.items():
+             review['checks'][axis] = {'status': 'pass', 'explanation': 'Portée conservée dans les passages cités.',
+                                      'citations': [{'path': p, 'quote': (self.root / p).read_text()} for p in names]}
+@@ -223,22 +225,16 @@
+         with self.assertRaises(flow.FlowError): self.prepare(path, 'too-late.json')
+         self.assertFalse((self.root / 'too-late.json').exists())
+ 
+-    def test_planned_task_explicitly_excluded_without_mutation(self):
++    def test_planned_task_enabled_with_recovery_graph(self):
+         path = self.ready()
+         state = flow.load_json(path)
+-        # Métadonnées produites par odoo_plan, fixture d'entrée uniquement.
+         state['plan_task'] = {'release': str(self.root / 'changelog/release'), 'id': 'T01', 'risk': 'normal'}
+         flow.write_state(path, state)
+-        before = path.read_bytes()
+-        registry = flow.registry_path(state)
+-        before_registry = registry.read_bytes()
+-        with self.assertRaisesRegex(flow.FlowError, 'tâches planifiées'):
+-            self.prepare(path)
+-        self.assertEqual(path.read_bytes(), before)
+-        self.assertEqual(registry.read_bytes(), before_registry)
+-        self.assertFalse((self.root / 'bundle.json').exists())
+-        # La réception documentaire conventionnelle n'active aucun garde.
+-        self.finish(path, 'module_task_gate', [self.root / 'runtime.log'])
++        review, _ = self.receipt(self.prepare(path))
++        self.finish(path, 'module_task_gate', [review])
++        flow.claim_node(path, self.graph, 'journal_task', self.owner)
++        flow.publish_memory(path, self.graph, self.owner)
++        self.finish(path, 'journal_task', [self.root / '.odoo-agents/JOURNAL.md'], 'done')
+ 
+     def test_prepare_rejects_owner_aliases_missing_targets_and_overwrites(self):
+         path = self.ready()
+--- a/workflows/odoo-workflow.json
++++ b/workflows/odoo-workflow.json
+@@ -410,6 +410,23 @@
+       "join": "any",
+       "evidence": ["entrée JOURNAL.md"],
+       "locks": [{"resource": "project_memory", "mode": "write"}]
++    },
++    "reception_recovery_gate": {
++      "description": "Recevoir à nouveau les propositions mémoire depuis les bases actuelles, à contrat et preuves inchangés.",
++      "executor": "orchestrator",
++      "join": "any",
++      "evidence": ["réception indépendante renouvelée ou motif de blocage mémoire"],
++      "max_outcome_uses": {"pass": 2},
++      "locks": [{"resource": "project_memory", "mode": "write"}]
++    },
++    "memory_task_blocked": {
++      "description": "Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée.",
++      "executor": "orchestrator",
++      "join": "any",
++      "terminal": "blocked",
++      "outcomes": ["done"],
++      "evidence": ["motif de blocage mémoire et état de publication réel"],
++      "locks": []
+     },
+     "journal_task_blocked": {
+       "description": "Consigner l'échec de QA et les anomalies restantes avant l'arrêt.",
+@@ -615,6 +632,10 @@
+     {"id": "finalize-journal", "from": "release_finalize", "outcome": "done", "to": "release_journal"},
+     {"id": "release-journal-closed", "from": "release_journal", "outcome": "done", "to": "release_closed"},
+ 
++    {"id": "journal-memory-retry", "from": "journal_task", "outcome": "retry", "to": "reception_recovery_gate"},
++    {"id": "journal-memory-blocked", "from": "journal_task", "outcome": "blocked", "to": "memory_task_blocked"},
++    {"id": "reception-memory-pass", "from": "reception_recovery_gate", "outcome": "pass", "to": "journal_task"},
++    {"id": "reception-memory-blocked", "from": "reception_recovery_gate", "outcome": "blocked", "to": "memory_task_blocked"},
+     {"id": "journal-task-done", "from": "journal_task", "outcome": "done", "to": "task_done"},
+     {"id": "journal-task-blocked", "from": "journal_task_blocked", "outcome": "done", "to": "task_blocked"},
+     {"id": "journal-cancelled", "from": "journal_cancelled", "outcome": "done", "to": "cancelled"},
+--- a/tests/test_odoo_recovery.py
++++ b/tests/test_odoo_recovery.py
+@@ -0,0 +1,306 @@
++"""Reprise mémoire sur projets jetables ; les jetons initiaux sont des fixtures QA."""
++import copy
++import json
++from pathlib import Path
++import unittest
++from unittest.mock import patch
++
++import test_odoo_reception as fixtures
++
++flow = fixtures.flow
++reception = fixtures.reception
++
++
++class RecoveryTests(unittest.TestCase):
++    setUp = fixtures.ReceptionTests.setUp
++    ready = fixtures.ReceptionTests.ready
++    prepare = fixtures.ReceptionTests.prepare
++    receipt = fixtures.ReceptionTests.receipt
++    finish = fixtures.ReceptionTests.finish
++    assert_rejected_unchanged = fixtures.ReceptionTests.assert_rejected_unchanged
++
++    def accepted(self, gate='module_task_gate'):
++        path = self.ready(gate)
++        review, _ = self.receipt(self.prepare(path))
++        self.finish(path, gate, [review])
++        flow.claim_node(path, self.graph, 'journal_task', self.owner)
++        return path, review
++
++    def retry(self, path):
++        self.finish(path, 'journal_task', [self.root / 'runtime.log'], 'retry')
++        flow.claim_node(path, self.graph, flow.RECOVERY_GATE, self.owner)
++
++    def renew(self, path, number=1):
++        # Nouveaux fichiers : l'ancien dossier et ses propositions restent archivés.
++        for prefix, target in [('project', 'PROJECT'), ('journal', 'JOURNAL')]:
++            (self.root / f'{prefix}-{number}.md').write_text(
++                (self.root / f'.odoo-agents/{target}.md').read_text() + f'\nTâche reprise {number}.')
++        pin = self.prepare(path, f'bundle-{number}.json', memories=[
++            f'.odoo-agents/PROJECT.md=project-{number}.md',
++            f'.odoo-agents/JOURNAL.md=journal-{number}.md'])
++        review_path, review = self.receipt(pin, f'review-{number}.json')
++        bundle = json.loads((self.root / pin['path']).read_text())
++        review['checks']['source_memory']['citations'] = [
++            {'path': name, 'quote': (self.root / name).read_text()} for name in
++            ['request.md'] + [row['draft']['path'] for row in bundle['memory']] +
++            [row['base']['path'] for row in bundle['memory'] if row.get('base')]]
++        review_path.write_text(json.dumps(review))
++        return review_path
++
++    def test_conflict_three_gates_reception_preserves_other_task(self):
++        for gate in sorted(fixtures.GATES):
++            with self.subTest(gate=gate):
++                path, old = self.accepted(gate)
++                for target in reception.TARGETS:
++                    (self.root / target).write_text('Mémoire publiée par tâche B.')
++                before = {target: (self.root / target).read_bytes() for target in reception.TARGETS}
++                with self.assertRaises(flow.FlowError): flow.publish_memory(path, self.graph, self.owner)
++                self.assertEqual(before, {target: (self.root / target).read_bytes() for target in reception.TARGETS})
++                self.retry(path)
++                fresh = self.renew(path)
++                self.assert_rejected_unchanged(path, flow.RECOVERY_GATE, [old])
++                self.finish(path, flow.RECOVERY_GATE, [fresh])
++                self.assertEqual(len(flow.load_json(path)['accepted_reception_history']), 1)
++                flow.claim_node(path, self.graph, 'journal_task', self.owner)
++                flow.publish_memory(path, self.graph, self.owner)
++                self.assertTrue(all((self.root / t).read_text().startswith('Mémoire publiée par tâche B.') for t in reception.TARGETS))
++                self.finish(path, 'journal_task', [fresh], 'done')
++                # Les noms suivants sont nouveaux dans chaque sous-cas.
++                for p in self.root.glob('bundle*'): p.unlink()
++                for p in self.root.glob('review*'): p.unlink()
++
++    def test_publish_interruption_is_idempotent_without_state_edit(self):
++        path, _ = self.accepted()
++        before_state = path.read_bytes()
++        original = reception.atomic_publish
++        calls = []
++        def interrupt(target, content):
++            original(target, content)
++            calls.append(target)
++            raise OSError('interruption après premier replace')
++        with patch.object(reception, 'atomic_publish', interrupt):
++            with self.assertRaises(flow.FlowError): flow.publish_memory(path, self.graph, self.owner)
++        self.assertEqual(path.read_bytes(), before_state)
++        self.assertEqual(len(calls), 1)
++        result = flow.publish_memory(path, self.graph, self.owner)
++        self.assertEqual([r['action'] for r in result], ['already_published', 'published'])
++        self.assertTrue(all(r['action'] == 'already_published' for r in flow.publish_memory(path, self.graph, self.owner)))
++        self.assertEqual(path.read_bytes(), before_state)
++        self.finish(path, 'journal_task', [self.root / '.odoo-agents/JOURNAL.md'], 'done')
++
++    def test_prevalidation_all_targets_and_bad_owner_never_write(self):
++        path, _ = self.accepted()
++        (self.root / '.odoo-agents/JOURNAL.md').write_text('Valeur tierce.')
++        before = {target: (self.root / target).read_bytes() for target in reception.TARGETS}
++        state = path.read_bytes()
++        for owner in [self.owner, 'autre propriétaire']:
++            with self.assertRaises(flow.FlowError): flow.publish_memory(path, self.graph, owner)
++            self.assertEqual(before, {target: (self.root / target).read_bytes() for target in reception.TARGETS})
++            self.assertEqual(path.read_bytes(), state)
++
++    def test_changed_sources_contract_proof_code_never_recovery(self):
++        path, _ = self.accepted()
++        for name in ['request.md', 'spec.md', 'runtime.log', 'module/business.py']:
++            target = self.root / name
++            original = target.read_bytes(); target.write_bytes(original + b'\nchange')
++            self.assert_rejected_unchanged(path, 'journal_task', [self.root / 'runtime.log'], 'retry')
++            target.write_bytes(original)
++        self.retry(path)
++        for name in ['request.md', 'spec.md', 'runtime.log', 'module/business.py']:
++            target = self.root / name
++            original = target.read_bytes(); target.write_bytes(original + b'\nchange')
++            before = path.read_bytes()
++            with self.assertRaises(flow.FlowError): self.prepare(path, 'refused.json')
++            self.assertFalse((self.root / 'refused.json').exists())
++            self.assertEqual(path.read_bytes(), before)
++            target.write_bytes(original)
++        with self.assertRaises(flow.FlowError): self.prepare(path, 'refused.json', scopes=[])
++        fresh = self.renew(path)
++        (self.root / 'runtime.log').write_text('preuve remplacée après préparation')
++        self.assert_rejected_unchanged(path, flow.RECOVERY_GATE, [fresh])
++        self.finish(path, flow.RECOVERY_GATE, [self.root / 'runtime.log'], 'blocked')
++
++    def test_previous_drafts_may_be_stale_but_bases_stay_pinned(self):
++        path, _ = self.accepted()
++        (self.root / 'project-draft.md').write_text('ancien brouillon périmé')
++        self.retry(path)
++        fresh = self.renew(path)
++        self.finish(path, flow.RECOVERY_GATE, [fresh])
++        flow.claim_node(path, self.graph, 'journal_task', self.owner)
++        flow.publish_memory(path, self.graph, self.owner)
++        base = self.root / 'bundle-1.json.PROJECT.md.base'
++        base.write_text('base falsifiée')
++        self.assert_rejected_unchanged(path, 'journal_task', [fresh], 'retry')
++
++    def test_receipt_requires_all_preserved_bases(self):
++        path = self.ready()
++        review_path, review = self.receipt(self.prepare(path))
++        review['checks']['source_memory']['citations'] = [c for c in review['checks']['source_memory']['citations'] if not c['path'].endswith('.base')]
++        review_path.write_text(json.dumps(review))
++        self.assert_rejected_unchanged(path, 'module_task_gate', [review_path])
++
++    def test_two_retries_then_real_block_allows_plan_reopen(self):
++        import odoo_plan as plan
++        release = self.root / 'changelog/test'; release.mkdir(parents=True)
++        (release / 'README.md').write_text('<!-- release ouverte -->')
++        definition = {'schema': 1, 'tasks': [{'id': 'A', 'title': 'A', 'request': 'request.md',
++            'route': 'module', 'risk': 'normal', 'acceptance': ['calcul conservé'], 'scopes': ['module'], 'depends_on': []}]}
++        plan.initialise(release, definition)
++        path = Path(plan.mutate(release, 'start', 'A'))
++        state = flow.load_json(path)
++        state['start_pending'] = False
++        state['tokens'] = {e['id']: 1 for e in flow.incoming_edges(state['graph_snapshot'], 'module_task_gate')}
++        flow.write_state(path, state)  # Seule fixture : entrée QA, puis transitions publiques.
++        flow.claim_node(path, self.graph, 'module_task_gate', self.owner)
++        review, _ = self.receipt(self.prepare(path))
++        self.finish(path, 'module_task_gate', [review])
++        flow.claim_node(path, self.graph, 'journal_task', self.owner)
++        for number in (1, 2):
++            self.retry(path)
++            with self.assertRaises(ValueError): plan.mutate(release, 'reopen', 'A', reason='encore actif')
++            fresh = self.renew(path, number)
++            self.finish(path, flow.RECOVERY_GATE, [fresh])
++            flow.claim_node(path, self.graph, 'journal_task', self.owner)
++        self.assert_rejected_unchanged(path, 'journal_task', [review], 'retry')
++        self.finish(path, 'journal_task', [review], 'blocked')
++        flow.claim_node(path, self.graph, 'memory_task_blocked', self.owner)
++        self.finish(path, 'memory_task_blocked', [review], 'done')
++        self.assertEqual(plan.task_status(plan.read(release)[0]['tasks'][0], self.root)[0], 'blocked')
++        plan.mutate(release, 'reopen', 'A', reason='nouvelle tentative explicite')
++        current = plan.read(release)[0]
++        self.assertEqual(plan.task_status(current['tasks'][0], self.root)[0], 'pending')
++        self.assertTrue(any(e['action'] == 'previous_attempt' for e in current['history']))
++
++    def test_legacy_guard_absent_cannot_take_new_exits(self):
++        path = self.ready()
++        self.finish(path, 'module_task_gate', [self.root / 'runtime.log'])
++        flow.claim_node(path, self.graph, 'journal_task', self.owner)
++        for outcome in ['retry', 'blocked']:
++            self.assert_rejected_unchanged(path, 'journal_task', [self.root / 'runtime.log'], outcome)
++        with self.assertRaises(flow.FlowError): flow.publish_memory(path, self.graph, self.owner)
++        self.finish(path, 'journal_task', [self.root / 'runtime.log'], 'done')
++
++    def test_two_flow_memory_claims_and_owner_transfer(self):
++        first, _ = self.accepted()
++        second = self.ready('studio_task_gate')
++        review, _ = self.receipt(self.prepare(second, 'second-bundle.json'), 'second-review.json')
++        self.finish(second, 'studio_task_gate', [review])
++        with self.assertRaises(flow.FlowError): flow.claim_node(second, self.graph, 'journal_task', self.owner)
++        flow.release_claim(first, self.graph, 'journal_task', self.owner, 'transfert explicite')
++        with self.assertRaises(flow.FlowError): flow.publish_memory(first, self.graph, self.owner)
++        new_owner = 'codex-reprise'
++        flow.claim_node(first, self.graph, 'journal_task', new_owner)
++        with self.assertRaises(flow.FlowError): flow.publish_memory(first, self.graph, self.owner)
++        flow.publish_memory(first, self.graph, new_owner)
++        flow.complete_claimed_node(first, self.graph, 'journal_task', 'done',
++            [str(self.root / '.odoo-agents/JOURNAL.md')], None, new_owner, False)
++        flow.claim_node(second, self.graph, 'journal_task', self.owner)
++        # Les deux intentions sont identiques dans cette fixture : rien à réécrire.
++        self.assertTrue(all(row['action'] == 'already_published' for row in flow.publish_memory(second, self.graph, self.owner)))
++        self.retry(second)
++
++    def test_new_recovery_graph_cannot_weaken_extension(self):
++        old = self.old_graph()
++        path = self.root / 'historical.json'
++        state = flow.new_state(self.root, 'development', 'old', old)
++        flow.write_state(path, state)
++        for kind in ['lock', 'limit', 'edge', 'description']:
++            candidate = flow.load_json(self.graph)
++            if kind == 'lock': candidate['nodes'][flow.RECOVERY_GATE]['locks'] = []
++            if kind == 'limit': candidate['nodes'][flow.RECOVERY_GATE]['max_outcome_uses']['pass'] = 3
++            if kind == 'description': candidate['nodes']['memory_task_blocked']['description'] = 'QA rouge'
++            if kind == 'edge':
++                for edge in candidate['edges']:
++                    if edge['id'] == 'reception-memory-blocked': edge['to'] = 'task_done'
++            wrong = self.root / 'weakened.json'; wrong.write_text(json.dumps(candidate))
++            before = path.read_bytes()
++            with self.assertRaises(flow.FlowError): flow.upgrade_recovery(path, wrong, self.owner)
++            self.assertEqual(path.read_bytes(), before)
++
++    def test_cli_publish_requires_accepted_claim_and_keeps_journal_active(self):
++        path, _ = self.accepted()
++        self.assertEqual(flow.main(['--graph', str(self.graph), 'publish-memory', str(path), '--owner', self.owner]), 0)
++        self.assertIn('journal_task', flow.load_json(path)['claims'])
++
++    def test_empty_and_whitespace_memory_have_preserved_bases_without_impossible_quote(self):
++        for name, text in zip(sorted(reception.TARGETS), ['', ' \n\t ']):
++            (self.root / name).write_text(text)
++        path = self.ready()
++        pinned = self.prepare(path)
++        review_path, review = self.receipt(pinned)
++        review['checks']['source_memory']['citations'] = [citation for citation in review['checks']['source_memory']['citations'] if citation['quote'].strip()]
++        review_path.write_text(json.dumps(review))
++        self.finish(path, 'module_task_gate', [review_path])
++        flow.claim_node(path, self.graph, 'journal_task', self.owner)
++        flow.publish_memory(path, self.graph, self.owner)
++
++    def test_old_accepted_flow_upgrades_then_recovers_without_replaying_qa(self):
++        new = self.graph
++        self.graph = self.old_graph()
++        path, _ = self.accepted()
++        flow.release_claim(path, self.graph, 'journal_task', self.owner, 'migration explicite')
++        old_events = flow.load_json(path)['events']
++        flow.upgrade_recovery(path, new, self.owner, self.graph)
++        self.graph = new
++        flow.claim_node(path, self.graph, 'journal_task', self.owner)
++        (self.root / '.odoo-agents/PROJECT.md').write_text('autre tâche préservée')
++        self.retry(path)
++        fresh = self.renew(path)
++        self.finish(path, flow.RECOVERY_GATE, [fresh])
++        flow.claim_node(path, self.graph, 'journal_task', self.owner)
++        flow.publish_memory(path, self.graph, self.owner)
++        self.finish(path, 'journal_task', [fresh], 'done')
++        self.assertEqual(flow.load_json(path)['events'][:len(old_events)], old_events)
++        self.assertEqual(flow.load_json(path)['node_counts']['module_task_gate'], 1)
++
++    def test_old_graph_plan_guard_still_refused(self):
++        self.graph = self.old_graph()
++        path = self.ready()
++        state = flow.load_json(path)
++        state['plan_task'] = {'id': 'A'}
++        flow.write_state(path, state)
++        before = path.read_bytes()
++        with self.assertRaises(flow.FlowError): self.prepare(path)
++        self.assertEqual(path.read_bytes(), before)
++
++    def old_graph(self):
++        graph = copy.deepcopy(flow.load_json(self.graph))
++        for node in flow.RECOVERY_NODES: graph['nodes'].pop(node)
++        graph['edges'] = [e for e in graph['edges'] if e['id'] not in flow.RECOVERY_EDGES]
++        path = self.root / 'old-graph.json'; path.write_text(json.dumps(graph))
++        return path
++
++    def test_upgrade_exact_addition_preserves_tokens_events_and_contract(self):
++        old = self.old_graph()
++        path = self.root / 'historical.json'
++        state = flow.new_state(self.root, 'development', 'old', old)
++        state['start_pending'] = False; state['tokens'] = {'module-gate-pass': 1}
++        state['events'] = [{'node': 'module_task_gate', 'outcome': 'pass'}]
++        flow.write_state(path, state)
++        with self.assertRaises(flow.FlowError): flow.validate_migration(state, flow.load_json(self.graph))
++        changed = flow.upgrade_recovery(path, self.graph, self.owner)
++        self.assertEqual(changed['events'], state['events'])
++        self.assertEqual(changed['tokens'], state['tokens'])
++        self.assertEqual(changed['migrations'][-1]['from'], flow.graph_hash(old))
++        self.assertEqual(flow.ready_nodes(changed, changed['graph_snapshot']), ['journal_task'])
++
++    def test_upgrade_rejects_tampered_claimed_finished_and_other_delta(self):
++        old = self.old_graph()
++        state = flow.new_state(self.root, 'development', 'old', old)
++        variants = []
++        item = copy.deepcopy(state); item['status'] = 'complete'; variants.append(item)
++        item = copy.deepcopy(state); item['claims'] = {'x': {'owner': self.owner}}; variants.append(item)
++        item = copy.deepcopy(state); item['events'] = [{'node': 'journal_task', 'outcome': 'done'}]; variants.append(item)
++        item = copy.deepcopy(state); item['graph_snapshot']['nodes']['journal_task']['locks'] = []; variants.append(item)
++        item = copy.deepcopy(state); item['graph_sha256'] = 'wrong'; variants.append(item)
++        path = self.root / 'historical.json'
++        for item in variants:
++            flow.write_state(path, item); before = path.read_bytes()
++            with self.assertRaises(flow.FlowError): flow.upgrade_recovery(path, self.graph, self.owner)
++            self.assertEqual(path.read_bytes(), before)
++        candidate = flow.load_json(self.graph)
++        candidate['nodes']['module_task_gate']['description'] += ' changed'
++        wrong = self.root / 'wrong-graph.json'; wrong.write_text(json.dumps(candidate))
++        flow.write_state(path, state); before = path.read_bytes()
++        with self.assertRaises(flow.FlowError): flow.upgrade_recovery(path, wrong, self.owner)
++        self.assertEqual(path.read_bytes(), before)

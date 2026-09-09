@@ -1,0 +1,14 @@
+Réception documentaire indépendante — codex-r02-reception
+Écritures limitées à review-independent.json et reviewer-execution.log.
+Commandes exécutées via exec_command, toutes exit_code=0 :
+1. cat candidate/roles/qa-review.md candidate/docs/TASK_RECEPTION.md : lecture du mandat réception et du schéma.
+2. python3 pathlib rglob HANDOFF.md + lecture resume/bundle.json : passation et inventaire des pièces.
+3. python3 json/hashlib : lecture de tous les groupes, bases et drafts du bundle et des demandes A/B/C ; les sept hashes des pièces sont conformes.
+4. rg --files project/changelog/recovery project/.odoo-agents/flows : inventaire borné des documents du projet autorisé.
+5. python3 lecture initial/documentary-proof.log, initial/bundle.json, plan.json, resume/reprise.md et consolidation-A.md ; comparaison groupes/scopes/code initial/nouveau = True/True/True ; hash fichier documentaire = True ; hash log = True.
+6. python3 lecture history du flow : aucune clé history, sortie vide ; aucune mutation.
+7. python3 lecture clés, claims et events du flow : owner actuel codex-r02-orchestrateur sur reception_recovery_gate ; journal_task retry enregistré.
+8. python3 lecture claim_events : release codex-context-interrompu avec motif d’interruption attestée.
+9. python3 construction du reçu et assertions des citations exactes dans les fichiers : toutes conformes ; écriture de ces deux seuls livrables.
+Résultat : pass sur demande/contrat, contrat/preuves et sources/mémoire ; conservation des deux bases vérifiée.
+Portée : essai synthétique documentaire. Aucun test Odoo, aucun développement, aucune délégation supplémentaire. Le reçu initial fixture ne démontre aucune délégation passée. Aucun oracle, corpus, autre cas ni source Odoo consulté. Le fichier documentaire figé a été uniquement hashé, non exécuté ni modifié.

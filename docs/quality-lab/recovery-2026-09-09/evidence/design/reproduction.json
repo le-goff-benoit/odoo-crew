@@ -1,0 +1,45 @@
+{
+  "reference": "8d2b940",
+  "fixture": "synthetic ready-gate tokens, no Odoo execution",
+  "state": "/tmp/odoo-recovery-20260909/design/project/module_task_gate.json",
+  "check_bases_after_concurrent_publication": {
+    "error": "mémoire modifiée depuis préparation : .odoo-agents/JOURNAL.md",
+    "state_unchanged": true
+  },
+  "complete_journal_after_concurrent_publication": {
+    "error": "réception de tâche refusée : publication différente du draft approuvé : .odoo-agents/PROJECT.md",
+    "state_unchanged": true
+  },
+  "prepare_new_reception_after_pass": {
+    "error": "préparation impossible après réception QA",
+    "state_unchanged": true
+  },
+  "complete_journal_blocked_outcome": {
+    "error": "issue invalide pour journal_task: blocked; attendue parmi done",
+    "state_unchanged": true
+  },
+  "plan_reopen_running_flow": {
+    "error": "libérer/terminer le graphe avant de modifier le plan",
+    "state_unchanged": true
+  },
+  "check_bases_after_one_copy": {
+    "error": "mémoire modifiée depuis préparation : .odoo-agents/PROJECT.md",
+    "state_unchanged": true
+  },
+  "complete_journal_after_one_copy": {
+    "error": "réception de tâche refusée : publication différente du draft approuvé : .odoo-agents/JOURNAL.md",
+    "state_unchanged": true
+  },
+  "position": {
+    "run_id": "module_task_gate",
+    "project": "/tmp/odoo-recovery-20260909/design/project",
+    "kind": "development",
+    "status": "running",
+    "ready": [],
+    "parallel_waves": [],
+    "running": [
+      "journal_task"
+    ],
+    "completed_events": 1
+  }
+}

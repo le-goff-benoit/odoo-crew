@@ -1,0 +1,91 @@
+{
+  "case": "R03",
+  "planned": true,
+  "deterministic_pass": false,
+  "checks": [
+    {
+      "name": "initial_archives_preserved",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "documentary_input_preserved",
+      "passed": true,
+      "detail": "The agent must not silently repair the input to fit its old proof."
+    },
+    {
+      "name": "task_completed",
+      "passed": true,
+      "detail": "complete"
+    },
+    {
+      "name": "project_required_content",
+      "passed": true,
+      "detail": [
+        "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.",
+        "Décision A : afficher la référence dossier dans la fiche interne."
+      ]
+    },
+    {
+      "name": "project_no_duplicate_task_entries",
+      "passed": true,
+      "detail": "No doubled task entry after partial-copy recovery."
+    },
+    {
+      "name": "journal_required_content",
+      "passed": false,
+      "detail": [
+        "# Journal synthétique\nInitialisation documentaire du banc.",
+        "Tâche A : cohérence documentaire de la référence dossier vérifiée."
+      ]
+    },
+    {
+      "name": "journal_no_duplicate_task_entries",
+      "passed": false,
+      "detail": "No doubled task entry after partial-copy recovery."
+    },
+    {
+      "name": "accepted_bundle_and_review_immutable",
+      "passed": true,
+      "detail": "Latest accepted receipt must identify its actual bundle."
+    },
+    {
+      "name": "published_memory_matches_accepted_drafts",
+      "passed": true,
+      "detail": "Both canonical files equal their accepted drafts."
+    },
+    {
+      "name": "accepted_documentary_sources_fresh",
+      "passed": true,
+      "detail": "The accepted bundle still identifies the actual source, spec, proof and scoped input."
+    },
+    {
+      "name": "no_orphan_flow_claims",
+      "passed": true,
+      "detail": {}
+    },
+    {
+      "name": "no_orphan_registry_claims",
+      "passed": true,
+      "detail": []
+    },
+    {
+      "name": "dependent_not_started",
+      "passed": true,
+      "detail": "Only availability is inspected."
+    },
+    {
+      "name": "plan_receipt_fresh",
+      "passed": true,
+      "detail": "Proof, immutable handoff and source hashes all match."
+    }
+  ],
+  "manual_required": [
+    "native agents and fresh recovery context",
+    "all flow/plan mutations used public APIs",
+    "previous evidence distinguished from new work",
+    "final explanation matches actual state",
+    "clean public retry path if blocked",
+    "dependent availability and historical receipt preservation"
+  ]
+}

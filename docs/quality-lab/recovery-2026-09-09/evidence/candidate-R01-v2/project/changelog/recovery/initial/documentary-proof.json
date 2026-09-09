@@ -1,0 +1,27 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/odoo-recovery-20260909/candidate-R01-v2/project",
+  "scopes": [
+    "documentary"
+  ],
+  "sources": {
+    "documentary/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  },
+  "command": [
+    "/usr/bin/python3",
+    "-c",
+    "from pathlib import Path; assert Path('documentary/reference.txt').read_text() == 'reference_dossier=visible\\n'; print('Cohérence documentaire : référence dossier visible. Aucun test Odoo.')"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 0.016,
+  "log": {
+    "path": "/tmp/odoo-recovery-20260909/candidate-R01-v2/project/changelog/recovery/initial/documentary-proof.log",
+    "sha256": "7de39f9ce5bf1eed1a1d175acdebd23ab08280be78d02c9dcd84d4bd19245641"
+  }
+}

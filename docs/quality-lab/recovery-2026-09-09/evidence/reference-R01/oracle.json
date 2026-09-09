@@ -1,0 +1,34 @@
+{
+  "case": "R01",
+  "planned": false,
+  "flow": ".odoo-agents/flows/recovery-a.json",
+  "initial_error": null,
+  "immutable": {
+    "changelog/recovery/spec.md": "eac5a65e924df65d9bd4ced8a32373ed69e2bf22a7d8e1389d905783898a2d03",
+    "changelog/recovery/demande-C.md": "0d5c75d4bdfd6c3e657ee1f36131ca21260d43d2c58b06abf7869d50e2ae820a",
+    "changelog/recovery/demande-B.md": "6d6ca0611681f40af92f99565c66acb5a199e2b6327873fe919bc2c40121ae39",
+    "changelog/recovery/demande-A.md": "427d4b048996ed2340033209a419a0bd57dd0099e57ee821612ff48d365a841a",
+    "changelog/recovery/initial/bundle.json": "37dfe655ecfddb9206bf57dd653a0d0a45ea4905c86594d4d4cfb029231746f6",
+    "changelog/recovery/initial/documentary-proof.json": "cb4a420f7cb23837a97aa2f0f0999bec4cb09cbc005cf9ce86c65d18f4c44c4d",
+    "changelog/recovery/initial/documentary-proof.log": "7de39f9ce5bf1eed1a1d175acdebd23ab08280be78d02c9dcd84d4bd19245641",
+    "changelog/recovery/initial/review.json": "cd2f09ab8b3d7486d8d39e9540e618607744217bf842c85ad15ad05f9dfe9ae3",
+    "changelog/recovery/initial/JOURNAL-propose.md": "28e87c6ecf9fe2a8acbf5a6a8bafe436ebdcf31686f4a0a520152a161d156148",
+    "changelog/recovery/initial/PROJECT-propose.md": "1f39dd98766c2629869461fbed9f33814ede249a7fdcd9479384755c1dd3aabf"
+  },
+  "expected_project": [
+    "# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.",
+    "Décision A : afficher la référence dossier dans la fiche interne.",
+    "Décision B : conserver la priorité manuelle dans le tableau de suivi."
+  ],
+  "expected_journal": [
+    "# Journal synthétique\nInitialisation documentaire du banc.",
+    "Tâche A : cohérence documentaire de la référence dossier vérifiée.",
+    "Tâche B : priorité manuelle conservée ; aucun tri automatique demandé."
+  ],
+  "safe_stop_expected": false,
+  "original_proof": "changelog/recovery/initial/documentary-proof.json",
+  "documentary_before": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+  "initial_claim_owner": "codex-context-interrompu",
+  "publication_partial_at_handoff": false,
+  "deferred_concurrent_injection": false
+}

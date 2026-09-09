@@ -141,9 +141,11 @@ distingue ces témoins des chaînes natives et garde les limites et incidents vi
 La [campagne de fidélité](docs/quality-lab/fidelity-2026-09-09/README.md) confronte
 ensuite la demande originale, les critères, les preuves et la mémoire. Elle
 introduit une réception documentaire en contexte neuf et un
-[garde expérimental pour les tâches directes](docs/TASK_RECEPTION.md).
+[garde de publication exacte](docs/TASK_RECEPTION.md).
 Les examens sur pièces, les parcours complets et les interruptions fournisseur
-y sont évalués séparément ; le garde reste indisponible dans les plans de release.
+y sont évalués séparément. La [campagne de reprise](docs/quality-lab/recovery-2026-09-09/README.md)
+éprouve ensuite les conflits mémoire, les publications interrompues et les plans,
+avec des contextes Codex distincts sur des tâches documentaires synthétiques.
 
 ## Pour aller plus loin
 

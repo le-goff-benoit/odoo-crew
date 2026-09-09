@@ -1,0 +1,1 @@
+Le prêt conserve jours multipliés par tarif.

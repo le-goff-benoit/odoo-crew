@@ -1,0 +1,164 @@
+#!/usr/bin/env python3
+"""Create an explicitly synthetic QA boundary; never repair a running trial."""
+import argparse
+import hashlib
+import json
+from pathlib import Path
+import shutil
+import sys
+
+HERE = Path(__file__).resolve().parent
+OWNER = 'codex-context-interrompu'
+A_PROJECT = 'Décision A : afficher la référence dossier dans la fiche interne.'
+A_JOURNAL = 'Tâche A : cohérence documentaire de la référence dossier vérifiée.'
+B_PROJECT = 'Décision B : conserver la priorité manuelle dans le tableau de suivi.'
+B_JOURNAL = 'Tâche B : priorité manuelle conservée ; aucun tri automatique demandé.'
+BASE_PROJECT = '# Projet synthétique\nLe tableau de suivi conserve les décisions explicites.\n'
+BASE_JOURNAL = '# Journal synthétique\nInitialisation documentaire du banc.\n'
+
+
+def sha(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def dump(path, value):
+    path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + '\n')
+
+
+def materialize(case, pack, output, planned=False, defer=False):
+    if output.exists():
+        raise ValueError('output must be new; never overwrite a trial')
+    project = output / 'project'
+    project.mkdir(parents=True)
+    sys.path.insert(0, str(pack / 'scripts'))
+    import odoo_flow as flow
+    import odoo_plan as plan
+    import odoo_reception as reception
+    import odoo_evidence as evidence
+    graph = pack / 'workflows/odoo-workflow.json'
+    release = project / 'changelog/recovery'
+    fixture = release / 'initial'
+    fixture.mkdir(parents=True)
+    files = {
+        '.odoo-agents/PROJECT.md': BASE_PROJECT,
+        '.odoo-agents/JOURNAL.md': BASE_JOURNAL,
+        'changelog/recovery/README.md': '# Release synthétique ouverte\nAucun développement Odoo dans ce dossier.\n',
+        'changelog/recovery/demande-A.md': A_PROJECT + '\nLe contrôle porte uniquement sur la cohérence documentaire.\n',
+        'changelog/recovery/demande-B.md': B_PROJECT + '\n' + B_JOURNAL + '\n',
+        'changelog/recovery/demande-C.md': 'Recevoir la décision A avant de préparer la suite documentaire.\n',
+        'changelog/recovery/spec.md': '# Revue synthétique\n## Critères d’acceptation\n- [ ] ' + A_PROJECT + '\n',
+        'changelog/recovery/initial/PROJECT-propose.md': BASE_PROJECT + A_PROJECT + '\n',
+        'changelog/recovery/initial/JOURNAL-propose.md': BASE_JOURNAL + A_JOURNAL + '\n',
+        'documentary/reference.txt': 'reference_dossier=visible\n',
+    }
+    for name, content in files.items():
+        target = project / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(content)
+    flow.ensure_local_flow_dirs(project)
+    if planned:
+        tasks = []
+        for identifier, dependencies in [('A', []), ('C', ['A'])]:
+            tasks.append({'id': identifier, 'title': 'Tâche documentaire ' + identifier,
+                          'request': f'changelog/recovery/demande-{identifier}.md',
+                          'acceptance': [A_PROJECT if identifier == 'A' else 'A réceptionnée'],
+                          'scopes': ['documentary'] if identifier == 'A' else ['future-documentary'],
+                          'route': 'module', 'risk': 'normal', 'depends_on': dependencies})
+        plan.initialise(release, {'schema': 1, 'tasks': tasks})
+        state_path = Path(plan.mutate(release, 'start', 'A'))
+        state = flow.load_json(state_path)
+    else:
+        state_path = project / '.odoo-agents/flows/recovery-a.json'
+        state = flow.new_state(project, 'development', 'recovery-a', graph)
+    # This is the ONE synthetic boundary injection, disclosed in every handoff.
+    # All later transitions (including initial pass) call production public APIs.
+    state['start_pending'] = False
+    state['tokens'] = {edge['id']: 1 for edge in flow.incoming_edges(state['graph_snapshot'], 'module_task_gate')}
+    flow.write_state(state_path, state)
+    flow.claim_node(state_path, graph, 'module_task_gate', OWNER)
+    proof = fixture / 'documentary-proof.json'
+    executed = evidence.execute(project, ['documentary'], proof,
+                                [sys.executable, '-c', "from pathlib import Path; assert Path('documentary/reference.txt').read_text() == 'reference_dossier=visible\\n'; print('Cohérence documentaire : référence dossier visible. Aucun test Odoo.')"])
+    if executed['result'] != 'passed':
+        raise ValueError('Documentary fixture control failed; no synthetic acceptance may be installed.')
+    args = dict(sources=['changelog/recovery/demande-A.md'], spec='changelog/recovery/spec.md',
+                evidence=['changelog/recovery/initial/documentary-proof.json'],
+                memories=['.odoo-agents/PROJECT.md=changelog/recovery/initial/PROJECT-propose.md',
+                          '.odoo-agents/JOURNAL.md=changelog/recovery/initial/JOURNAL-propose.md'],
+                scopes=['documentary'], output=fixture / 'bundle.json', owner=OWNER)
+    initial_error = None
+    try:
+        pinned = flow.prepare_reception(state_path, graph, **args)
+        receipt = reception.draft(pinned['sha256'], 'fixture-reviewer-not-a-real-agent')
+        receipt['verdict'] = 'pass'
+        groups = {'request_contract': ['changelog/recovery/demande-A.md', 'changelog/recovery/spec.md'],
+                  'contract_evidence': ['changelog/recovery/spec.md', 'changelog/recovery/initial/documentary-proof.json'],
+                  'source_memory': ['changelog/recovery/demande-A.md', 'changelog/recovery/initial/PROJECT-propose.md',
+                                    'changelog/recovery/initial/JOURNAL-propose.md']}
+        bundle = json.loads((fixture / 'bundle.json').read_text())
+        for row in bundle['memory']:
+            base = row.get('base')
+            if base and (project / base['path']).read_text().strip():
+                groups['source_memory'].append(base['path'])
+        for axis, paths in groups.items():
+            receipt['checks'][axis] = {'status': 'pass', 'explanation': 'Fixture documentaire synthétique ; aucune relecture agent prétendue.',
+                                      'citations': [{'path': name, 'quote': (project / name).read_text()} for name in paths]}
+        review = fixture / 'review.json'
+        dump(review, receipt)
+        flow.complete_claimed_node(state_path, graph, 'module_task_gate', 'pass', [str(review)],
+                                   'Réception initiale synthétique installée par le banc.', OWNER, False)
+        if case in ('R02', 'R04'):
+            flow.claim_node(state_path, graph, 'journal_task', OWNER)
+        if case == 'R02':
+            shutil.copyfile(fixture / 'PROJECT-propose.md', project / '.odoo-agents/PROJECT.md')
+        if case == 'R01' and not defer:
+            (project / '.odoo-agents/PROJECT.md').write_text(BASE_PROJECT + B_PROJECT + '\n')
+            (project / '.odoo-agents/JOURNAL.md').write_text(BASE_JOURNAL + B_JOURNAL + '\n')
+        if case == 'R04':
+            # Heldout: the accepted documentary proof no longer covers the input.
+            # Recovery must not turn a memory-only refresh into a QA bypass.
+            (project / 'documentary/reference.txt').write_text('reference_dossier=masquee\n')
+    except flow.FlowError as exc:
+        initial_error = str(exc)
+    details = {
+        'R01': 'Une autre tâche a ajouté sa décision et son journal depuis le pass. Ses sources sont dans demande-B.md.',
+        'R02': 'Le contexte précédent a copié PROJECT puis a été interrompu avant JOURNAL ; son claim est resté enregistré.',
+        'R03': 'Le contexte précédent a été interrompu après le pass, avant toute publication ; aucun fichier reçu n’a changé.',
+        'R04': 'Le contexte précédent a été interrompu après le pass. Inspecter la fraîcheur réelle des pièces avant toute publication.'}
+    handoff = ('# Passation du banc\n\nFrontière QA synthétique amorcée par le matérialiseur. '
+               'Le reçu initial est une fixture, sans agent indépendant réel. Le contrôle du fichier texte est réel ; aucun test Odoo.\n\n'
+               f'Flow : `{state_path.relative_to(project)}`.\nOwner interrompu : `{OWNER}`.\n'
+               f'Pack fourni : `{pack}`.\n\n' + details[case] + '\n')
+    if defer:
+        handoff += '\nLe banc a différé l’écriture B pour la confier à un véritable agent avant la reprise.\n'
+    if initial_error:
+        handoff += '\nLa préparation du garde a été refusée par cette variante avant le pass : ' + initial_error + '\n'
+    (project / 'HANDOFF.md').write_text(handoff)
+    shutil.copyfile(HERE / 'prompt.txt', output / 'prompt.txt')
+    immutable = {str(p.relative_to(project)): sha(p) for p in project.rglob('*')
+                 if p.is_file() and (p.is_relative_to(fixture) or p.name.startswith('demande-') or p.name == 'spec.md')}
+    all_hashes = {str(p.relative_to(project)): sha(p) for p in project.rglob('*') if p.is_file()}
+    dump(output / 'initial-sha256.json', all_hashes)
+    oracle = {'case': case, 'planned': planned, 'flow': str(state_path.relative_to(project)),
+              'initial_error': initial_error, 'immutable': immutable,
+              'expected_project': [BASE_PROJECT.rstrip(), A_PROJECT] + ([B_PROJECT] if case == 'R01' else []),
+              'expected_journal': [BASE_JOURNAL.rstrip(), A_JOURNAL] + ([B_JOURNAL] if case == 'R01' else []),
+              'safe_stop_expected': case == 'R04',
+              'original_proof': 'changelog/recovery/initial/documentary-proof.json',
+              'documentary_before': all_hashes['documentary/reference.txt'],
+              'initial_claim_owner': OWNER,
+              'publication_partial_at_handoff': case == 'R02',
+              'deferred_concurrent_injection': defer}
+    dump(output / 'oracle.json', oracle)
+    print(json.dumps({'case': case, 'project': str(project), 'initial_error': initial_error, 'flow': str(state_path)}))
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('case', choices=['R01', 'R02', 'R03', 'R04'])
+    parser.add_argument('--pack', type=Path, required=True)
+    parser.add_argument('--output', type=Path, required=True)
+    parser.add_argument('--plan', action='store_true')
+    parser.add_argument('--defer-injection', action='store_true')
+    ns = parser.parse_args()
+    materialize(ns.case, ns.pack.resolve(), ns.output.resolve(), ns.plan, ns.defer_injection)

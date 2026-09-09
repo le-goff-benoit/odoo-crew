@@ -14,6 +14,16 @@ checkout demande une réconciliation depuis les preuves durables, jamais une
 recréation silencieuse de statut vert. Une tâche bloquée ou périmée est rouverte
 explicitement avec une raison (`reopen`) ; les anciens essais restent en historique.
 
+Les flows équipés de la reprise de réception utilisent le même garde que les
+tâches directes. Un conflit de mémoire après QA passe par `journal_task retry`
+puis `reception_recovery_gate` dans **la même tentative** ; les périmètres du
+plan restent réservés. Une publication interrompue se reprend avec
+`publish-memory`, après reprise légitime de la revendication. Lis
+`docs/TASK_RECEPTION.md` pour la migration explicite des anciens snapshots.
+Après l'arrêt terminal `memory_task_blocked`, `reopen --reason` ouvre la voie à
+une nouvelle tentative et conserve l'historique ; ne rouvre pas une tâche encore
+active, ne supprime pas ses verrous à la main et ne déclare pas ses dépendants prêts.
+
 Des tâches indépendantes peuvent être préparées en parallèle quand le moteur de
 sous-agents est disponible. L'orchestrateur demeure l'unique écrivain de la
 release et du journal. Les agents produisent des fragments isolés ; les verrous

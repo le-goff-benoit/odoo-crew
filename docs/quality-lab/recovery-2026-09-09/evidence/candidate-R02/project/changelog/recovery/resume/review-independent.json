@@ -1,0 +1,79 @@
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "074ef1e730ba0ff58d86669619396cdae0848a836b54cb717b4f5c00c7c53fff",
+  "reviewer": "codex-r02-reception",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Le contrôle porte uniquement sur la cohérence documentaire."
+        },
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        }
+      ],
+      "explanation": "La revue reproduit exactement l’unique obligation A : objet référence dossier, opération afficher, canal fiche interne. Aucun acteur supplémentaire, borne, exception ou effet interdit ajouté. La portée documentaire explicite de la demande gouverne le critère ; elle ne constitue pas une restriction inventée pour les résultats. Les demandes B et C ont été lues : B est absente du plan actif A/C et non déclarée réalisée ; C dépend de la réception A, restant à contrôler ultérieurement."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/spec.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "\"result\": \"passed\""
+        },
+        {
+          "path": "changelog/recovery/initial/documentary-proof.json",
+          "quote": "Cohérence documentaire : référence dossier visible. Aucun test Odoo."
+        }
+      ],
+      "explanation": "Dans cet essai explicitement documentaire, la preuve structurée atteste une assertion sur reference_dossier=visible et un code retour zéro ; le log lié confirme la cohérence documentaire et exclut tout test Odoo. Empreintes de toutes les pièces du bundle, du fichier documentaire lié et du log conformes ; groupes source/spec/evidence, scopes et empreinte de code identiques au bundle initial. Ce succès documentaire reste acquis sans prétendre prouver un écran Odoo réel. Aucun développement, test Odoo ou nouvelle exécution de la commande de preuve par le relecteur."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/recovery/demande-A.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/resume/PROJECT-propose.md",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/resume/JOURNAL-propose.md",
+          "quote": "Preuve documentaire initiale conservée ; aucun développement ni test Odoo exécuté."
+        },
+        {
+          "path": "changelog/recovery/resume/JOURNAL-propose.md",
+          "quote": "Le reçu initial est une fixture du banc, sans délégation passée démontrée."
+        },
+        {
+          "path": "changelog/recovery/resume/bundle.json.PROJECT.md.base",
+          "quote": "Le tableau de suivi conserve les décisions explicites."
+        },
+        {
+          "path": "changelog/recovery/resume/bundle.json.PROJECT.md.base",
+          "quote": "Décision A : afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/recovery/resume/bundle.json.JOURNAL.md.base",
+          "quote": "Initialisation documentaire du banc."
+        }
+      ],
+      "explanation": "PROJECT proposé est strictement identique à sa base figée : décision A déjà publiée et phrase antérieure intégralement conservées, aucune modification nécessaire. JOURNAL conserve intégralement sa base et ajoute une seule entrée de reprise, sans déclarer livraison ni réception finale du plan déjà accomplies. HANDOFF corrobore la publication partielle PROJECT puis interruption avant JOURNAL ; les événements du flow montrent release de l’ancien owner, retry du journal et revendication de la porte de reprise par codex-r02-orchestrateur. Le texte distingue correctement preuve documentaire, absence de tests Odoo, reçu initial fixture et réception actuelle indépendante. Aucune contribution B publiée ne figure dans ces bases, et B n’est pas revendiquée. La disponibilité C et réception du plan demeurent explicitement futures. Aucune négation ni exclusion perdue."
+    }
+  }
+}

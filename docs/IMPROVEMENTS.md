@@ -44,7 +44,7 @@ comportemental. Les rapports des 8 et 9 septembre distinguent ces preuves.
 
 | Proposition | Réalisation / limite |
 |---|---|
-| M01–M03 — apprentissages perdus | Extraction complète avec provenance, zéro explicite ; [réception documentaire de fidélité](quality-lab/fidelity-2026-09-09/README.md) confrontant aussi la mémoire proposée aux décisions. Garde expérimental de publication exacte pour tâches directes ; aucune garantie sémantique automatique ni reprise des plans après conflit mémoire |
+| M01–M03 — apprentissages perdus | Extraction complète avec provenance, zéro explicite ; [réception documentaire de fidélité](quality-lab/fidelity-2026-09-09/README.md) confrontant aussi la mémoire proposée aux décisions. [Reprise après conflit et interruption, y compris dans les plans](quality-lab/recovery-2026-09-09/README.md), avec nouvelle réception indépendante et publication idempotente ; aucune garantie sémantique automatique |
 | M04 — anciennes règles prises pour actuelles | Décisions structurées optionnelles et remplacements ; contexte courant distinct des archives. Pas d'arbitrage automatique de vieux journaux |
 | M05 — consolidation peu contrôlée | Réception de tâche et clôture portent un fragment de consolidation haché ; l'orchestrateur relit sa pertinence |
 | M06 — synchronisation/passation | Plan et réceptions versionnés, contexte sourcé vérifiable ; checkout sans état local signalé, jamais déclaré vert silencieusement |
