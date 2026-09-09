@@ -1,0 +1,201 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-b300dadd04-db-1  Running
+
+══ 1. Installation de lab_rental sur lab_qa ═══════════════════════════════════════════════════
+2026-09-09 01:10:08,738 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:10:08,738 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:10:08,738 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:10:08,738 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:10:08,738 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:10:08,738 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:10:08,921 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:10:08,923 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:10:08,947 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-09 01:10:08,949 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:10:09,789 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:10:09,790 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:10:10,221 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:10:10,271 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:10:10,386 1 INFO lab_qa odoo.modules.loading: Loading module lab_rental (21/21) 
+2026-09-09 01:10:10,411 1 INFO lab_qa odoo.registry: module lab_rental: creating or updating database tables 
+2026-09-09 01:10:10,447 1 INFO lab_qa odoo.modules.loading: loading lab_rental/security/ir.model.access.csv 
+2026-09-09 01:10:10,460 1 INFO lab_qa odoo.modules.loading: Module lab_rental loaded in 0.07s, 68 queries (+68 other) 
+2026-09-09 01:10:10,460 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.19s, 68 queries (+68 extra) 
+2026-09-09 01:10:10,606 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-09 01:10:10,609 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:10:10,609 1 INFO lab_qa odoo.registry: Registry loaded in 1.704s 
+2026-09-09 01:10:10,609 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-09 01:10:10,609 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:10:10,609 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+✅ installation OK
+   ⏱ 2s
+
+══ 3. Tests (--test-tags /lab_rental:TestPreparation) ═══════════════════════════════════════════════════
+2026-09-09 01:10:11,196 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:10:11,196 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:10:11,196 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:10:11,196 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:10:11,196 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:10:11,367 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on d2ec7d4abb17:8069 
+2026-09-09 01:10:11,377 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-09 01:10:11,398 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:10:11,401 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:10:11,417 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-09 01:10:11,418 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:10:12,263 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:10:12,263 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:10:12,766 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:10:12,766 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:10:13,430 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:10:13,736 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:10:13,752 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:10:13,752 1 INFO lab_qa odoo.modules.loading: Loading module lab_rental (2/21) 
+2026-09-09 01:10:13,756 1 INFO lab_qa odoo.registry: module lab_rental: creating or updating database tables 
+2026-09-09 01:10:13,782 1 INFO lab_qa odoo.modules.loading: loading lab_rental/security/ir.model.access.csv 
+2026-09-09 01:10:13,797 1 INFO lab_qa odoo.modules.loading: Module lab_rental loaded in 0.05s, 50 queries (+50 other) 
+2026-09-09 01:10:13,908 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.16s, 50 queries (+50 extra) 
+2026-09-09 01:10:13,985 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-09 01:10:14,088 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-09 01:10:14,090 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:10:14,091 1 INFO lab_qa odoo.registry: Registry loaded in 2.723s 
+2026-09-09 01:10:14,091 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-09 01:10:14,092 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_days_recompute_both_directions ... 
+2026-09-09 01:10:14,095 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_kind_recompute_batch ... 
+2026-09-09 01:10:14,102 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_loans_excluded ... 
+2026-09-09 01:10:14,105 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_migration_existing_totals_idempotent ... 
+2026-09-09 01:10:14,110 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_negative_inputs_rejected ... 
+2026-09-09 01:10:14,113 1 ERROR lab_qa odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T01:10:14.092201\'::timestamp, 1, 0.0,  -1, \'rental\', \'Invalide\', \'2026-09-09T01:10:14.092201\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_rental" violates check constraint "lab_rental_days_nonnegative"
+DETAIL:  Failing row contains (10, -1, 1, 1, Invalide, rental, 2026-09-09 01:10:14.092201, 2026-09-09 01:10:14.092201, 0, null).
+ 
+2026-09-09 01:10:14,122 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: ====================================================================== 
+2026-09-09 01:10:14,122 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: ERROR: Subtest TestPreparation.test_negative_inputs_rejected (field='days', operation='create')
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation.py", line 79, in test_negative_inputs_rejected
+    self.env['lab.rental'].create({'name': 'Invalide', field: -1})
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 369, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4711, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4887, in _create
+    cr.execute(SQL(
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 440, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.CheckViolation: new row for relation "lab_rental" violates check constraint "lab_rental_days_nonnegative"
+DETAIL:  Failing row contains (10, -1, 1, 1, Invalide, rental, 2026-09-09 01:10:14.092201, 2026-09-09 01:10:14.092201, 0, null).
+
+ 
+2026-09-09 01:10:14,124 1 ERROR lab_qa odoo.sql_db: bad query: b' UPDATE "lab_rental"\n                    SET "days" = "__tmp"."days"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (9,  -1, \'2026-09-09T01:10:14.092201\'::timestamp, 1)) AS "__tmp"("id", "days", "write_date", "write_uid")\n                    WHERE "lab_rental"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_rental" violates check constraint "lab_rental_days_nonnegative"
+DETAIL:  Failing row contains (9, -1, 1, 1, Zéro autorisé, rental, 2026-09-09 01:10:14.092201, 2026-09-09 01:10:14.092201, 0, 0).
+ 
+2026-09-09 01:10:14,126 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: ====================================================================== 
+2026-09-09 01:10:14,126 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: ERROR: Subtest TestPreparation.test_negative_inputs_rejected (field='days', operation='write')
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation.py", line 83, in test_negative_inputs_rejected
+    record.flush_recordset()
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6385, in flush_recordset
+    self._flush()
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6432, in _flush
+    model.browse(some_ids)._write_multi(vals_list)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4594, in _write_multi
+    self.env.execute_query(SQL(
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 534, in execute_query
+    self.cr.execute(query)
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 440, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.CheckViolation: new row for relation "lab_rental" violates check constraint "lab_rental_days_nonnegative"
+DETAIL:  Failing row contains (9, -1, 1, 1, Zéro autorisé, rental, 2026-09-09 01:10:14.092201, 2026-09-09 01:10:14.092201, 0, 0).
+
+ 
+2026-09-09 01:10:14,127 1 ERROR lab_qa odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T01:10:14.092201\'::timestamp, 1,  -1.0, 0, \'rental\', \'Invalide\', \'2026-09-09T01:10:14.092201\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_rental" violates check constraint "lab_rental_daily_rate_nonnegative"
+DETAIL:  Failing row contains (11, 0, 1, 1, Invalide, rental, 2026-09-09 01:10:14.092201, 2026-09-09 01:10:14.092201, -1, null).
+ 
+2026-09-09 01:10:14,128 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: ====================================================================== 
+2026-09-09 01:10:14,128 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: ERROR: Subtest TestPreparation.test_negative_inputs_rejected (field='daily_rate', operation='create')
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation.py", line 79, in test_negative_inputs_rejected
+    self.env['lab.rental'].create({'name': 'Invalide', field: -1})
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 369, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4711, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4887, in _create
+    cr.execute(SQL(
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 440, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.CheckViolation: new row for relation "lab_rental" violates check constraint "lab_rental_daily_rate_nonnegative"
+DETAIL:  Failing row contains (11, 0, 1, 1, Invalide, rental, 2026-09-09 01:10:14.092201, 2026-09-09 01:10:14.092201, -1, null).
+
+ 
+2026-09-09 01:10:14,129 1 ERROR lab_qa odoo.sql_db: bad query: b' UPDATE "lab_rental"\n                    SET "daily_rate" = "__tmp"."daily_rate"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (9,  -1.0, \'2026-09-09T01:10:14.092201\'::timestamp, 1)) AS "__tmp"("id", "daily_rate", "write_date", "write_uid")\n                    WHERE "lab_rental"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_rental" violates check constraint "lab_rental_daily_rate_nonnegative"
+DETAIL:  Failing row contains (9, 0, 1, 1, Zéro autorisé, rental, 2026-09-09 01:10:14.092201, 2026-09-09 01:10:14.092201, -1, 0).
+ 
+2026-09-09 01:10:14,130 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: ====================================================================== 
+2026-09-09 01:10:14,130 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: ERROR: Subtest TestPreparation.test_negative_inputs_rejected (field='daily_rate', operation='write')
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation.py", line 83, in test_negative_inputs_rejected
+    record.flush_recordset()
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6385, in flush_recordset
+    self._flush()
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6432, in _flush
+    model.browse(some_ids)._write_multi(vals_list)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4594, in _write_multi
+    self.env.execute_query(SQL(
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 534, in execute_query
+    self.cr.execute(query)
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 440, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.CheckViolation: new row for relation "lab_rental" violates check constraint "lab_rental_daily_rate_nonnegative"
+DETAIL:  Failing row contains (9, 0, 1, 1, Zéro autorisé, rental, 2026-09-09 01:10:14.092201, 2026-09-09 01:10:14.092201, -1, 0).
+
+ 
+2026-09-09 01:10:14,130 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_rate_recompute ... 
+2026-09-09 01:10:14,134 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_rental_threshold ... 
+2026-09-09 01:10:14,136 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_zero_and_decimal_amounts ... 
+2026-09-09 01:10:14,140 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 01:10:14,140 1 INFO lab_qa odoo.service.server: 8 post-tests in 0.05s, 132 queries 
+2026-09-09 01:10:14,140 1 INFO lab_qa odoo.tests.stats: lab_rental: 10 tests 0.05s 132 queries 
+2026-09-09 01:10:14,140 1 ERROR lab_qa odoo.tests.result: 0 failed, 4 error(s) of 8 tests when loading database 'lab_qa' 
+2026-09-09 01:10:14,140 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-09 01:10:14,140 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:10:14,381 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+❌ tests en échec
+   ⏱ 4s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 9
+tests échoués  : 4
+tests ignorés  : 0
+WARNING liés à lab_rental : 5
+
+── extraits ──
+59:2026-09-09 01:10:14,113 1 ERROR lab_qa odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T01:10:14.092201\'::timestamp, 1, 0.0,  -1, \'rental\', \'Invalide\', \'2026-09-09T01:10:14.092201\'::timestamp, 1) RETURNING "id"'
+64:2026-09-09 01:10:14,122 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: ERROR: Subtest TestPreparation.test_negative_inputs_rejected (field='days', operation='create')
+82:2026-09-09 01:10:14,124 1 ERROR lab_qa odoo.sql_db: bad query: b' UPDATE "lab_rental"\n                    SET "days" = "__tmp"."days"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (9,  -1, \'2026-09-09T01:10:14.092201\'::timestamp, 1)) AS "__tmp"("id", "days", "write_date", "write_uid")\n                    WHERE "lab_rental"."id" = "__tmp"."id"\n                '
+87:2026-09-09 01:10:14,126 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: ERROR: Subtest TestPreparation.test_negative_inputs_rejected (field='days', operation='write')
+105:2026-09-09 01:10:14,127 1 ERROR lab_qa odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T01:10:14.092201\'::timestamp, 1,  -1.0, 0, \'rental\', \'Invalide\', \'2026-09-09T01:10:14.092201\'::timestamp, 1) RETURNING "id"'
+110:2026-09-09 01:10:14,128 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: ERROR: Subtest TestPreparation.test_negative_inputs_rejected (field='daily_rate', operation='create')
+128:2026-09-09 01:10:14,129 1 ERROR lab_qa odoo.sql_db: bad query: b' UPDATE "lab_rental"\n                    SET "daily_rate" = "__tmp"."daily_rate"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (9,  -1.0, \'2026-09-09T01:10:14.092201\'::timestamp, 1)) AS "__tmp"("id", "daily_rate", "write_date", "write_uid")\n                    WHERE "lab_rental"."id" = "__tmp"."id"\n                '
+133:2026-09-09 01:10:14,130 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: ERROR: Subtest TestPreparation.test_negative_inputs_rejected (field='daily_rate', operation='write')
+157:2026-09-09 01:10:14,140 1 ERROR lab_qa odoo.tests.result: 0 failed, 4 error(s) of 8 tests when loading database 'lab_qa' 
+
+── avertissements liés au module (à traiter) ──
+2026-09-09 01:10:09,789 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:10:09,790 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:10:12,263 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:10:12,263 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:10:13,430 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+RECETTE module=lab_rental db=lab_qa install=ok update=n.a. uninstall=n.a. tests="0 failed, 4 error(s) of 8 tests" errors=9 failed=4 skipped=0 warnings=5 total=6s install=2s tests=4s
+
+Log complet   : /home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-reference/backend/stack/artifacts/lab_rental-20260909-031008.log
+Captures      : /home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-reference/backend/stack/artifacts/
+❌ lab_rental : voir ci-dessus

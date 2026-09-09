@@ -1,0 +1,42 @@
+{
+  "case": "N04",
+  "provider": "codex",
+  "config": {
+    "model": "gpt-6-astra",
+    "effort": "high"
+  },
+  "status": "executed",
+  "turns": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 808.67,
+      "usage": {
+        "input_tokens": 1512620,
+        "cached_input_tokens": 1444608,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 12648,
+        "reasoning_output_tokens": 765
+      },
+      "actual_model": null,
+      "tool_calls": 40,
+      "provider_completed": true,
+      "error": null,
+      "answer_sha256": "7c26c7d5626ce4fcaefafd54ee5195e3eb930f1ca8477a4bc2b3eadbdbfdc58c"
+    }
+  ],
+  "active_turn": 0,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "zero_allowed": true,
+      "negative_create": true,
+      "negative_write": true,
+      "valid_record_preserved": true
+    },
+    "passed": true,
+    "log_sha256": "2b1443940e6e2af647afccabb10e40623d8b57577f4010e3d5516ad40ee79d14",
+    "log": "oracle-000.log"
+  },
+  "review": null
+}

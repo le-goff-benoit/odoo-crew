@@ -1,0 +1,28 @@
+2026-09-09 01:30:11,325 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:30:11,325 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:30:11,325 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:30:11,325 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:30:11,325 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:30:11,488 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:30:11,488 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:30:11,504 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:30:11,507 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:30:11,509 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:30:11,510 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:30:11,614 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.10s, 0 queries (+0 extra) 
+2026-09-09 01:30:11,635 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:30:11,642 1 INFO lab_client odoo.registry: Registry loaded in 0.155s 
+2026-09-09 01:30:11,650 1 ERROR lab_client odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T01:30:11.647502\'::timestamp, 1, 20.0,  -1, \'rental\', \'QA \xe2\x80\x94 refus attendu\', \'2026-09-09T01:30:11.647502\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_rental" violates check constraint "lab_rental_days_positive"
+DETAIL:  Failing row contains (3, -1, 1, 1, QA — refus attendu, rental, 2026-09-09 01:30:11.647502, 2026-09-09 01:30:11.647502, 20, null).
+ 
+2026-09-09 01:30:11,653 1 ERROR lab_client odoo.sql_db: bad query: b' UPDATE "lab_rental"\n                    SET "amount_total" = "__tmp"."amount_total"::double precision, "days" = "__tmp"."days"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (1,  -80.0,  -4, \'2026-09-09T01:30:11.647502\'::timestamp, 1)) AS "__tmp"("id", "amount_total", "days", "write_date", "write_uid")\n                    WHERE "lab_rental"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_rental" violates check constraint "lab_rental_days_positive"
+DETAIL:  Failing row contains (1, -4, 1, 1, QA — location de trois jours, rental, 2026-09-09 01:29:58.142544, 2026-09-09 01:30:11.647502, 20, -80).
+ 
+CHECK [('lab_rental_days_positive', 'CHECK ((days >= 0))')]
+DONNEE 1 QA — location de trois jours 3 60.0
+DONNEE 2 QA — prêt à zéro jour 0 0.0
+REFUS create: OUI — new row for relation "lab_rental" violates check constraint "lab_rental_days_positive"
+REFUS write: OUI — new row for relation "lab_rental" violates check constraint "lab_rental_days_positive"
+APRES REJET QA — location de trois jours 3 60.0 | total lignes 2

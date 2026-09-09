@@ -1,0 +1,19 @@
+ERROR lab_qa odoo.addons.lab_dispatch.tests.test_dispatch_recalculate: FAIL: TestDispatchRecalculate.test_done_is_never_written
+AssertionError: datetime.datetime(2026, 9, 9, 1, 7, 24, 75033) != datetime.datetime(2000, 1, 1, 0, 0)
+ERROR lab_qa odoo.addons.lab_dispatch.tests.test_dispatch_recalculate: FAIL: TestDispatchRecalculate.test_done_total_is_frozen
+AssertionError: 110.0 != 777.0
+ERROR lab_qa odoo.addons.lab_dispatch.tests.test_dispatch_recalculate: FAIL: TestDispatchRecalculate.test_draft_excludes_cancelled_lines
+AssertionError: 110.0 != 20.0
+ERROR lab_qa odoo.addons.lab_dispatch.tests.test_dispatch_recalculate: FAIL: TestDispatchRecalculate.test_draft_fully_cancelled
+AssertionError: 110.0 != 0.0
+ERROR lab_qa odoo.addons.lab_dispatch.tests.test_dispatch_recalculate: FAIL: TestDispatchRecalculate.test_mixed_selection
+AssertionError: 110.0 != 20.0
+ERROR lab_qa odoo.addons.lab_dispatch.tests.test_dispatch_recalculate: FAIL: TestDispatchRecalculate.test_recalculate_is_idempotent
+AssertionError: 110.0 != 20.0
+250:2026-09-09 01:07:24,079 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_dispatch_recalculate: FAIL: TestDispatchRecalculate.test_done_is_never_written
+258:2026-09-09 01:07:24,080 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_dispatch_recalculate: FAIL: TestDispatchRecalculate.test_done_total_is_frozen
+266:2026-09-09 01:07:24,081 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_dispatch_recalculate: FAIL: TestDispatchRecalculate.test_draft_excludes_cancelled_lines
+274:2026-09-09 01:07:24,083 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_dispatch_recalculate: FAIL: TestDispatchRecalculate.test_draft_fully_cancelled
+283:2026-09-09 01:07:24,085 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_dispatch_recalculate: FAIL: TestDispatchRecalculate.test_mixed_selection
+291:2026-09-09 01:07:24,086 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_dispatch_recalculate: FAIL: TestDispatchRecalculate.test_recalculate_is_idempotent
+RECETTE module=lab_dispatch db=lab_qa install=ok update=n.a. uninstall=n.a. tests="6 failed, 0 error(s) of 7 tests" errors=7 failed=6 skipped=0 warnings=6 total=15s base=0s install=11s tests=4s

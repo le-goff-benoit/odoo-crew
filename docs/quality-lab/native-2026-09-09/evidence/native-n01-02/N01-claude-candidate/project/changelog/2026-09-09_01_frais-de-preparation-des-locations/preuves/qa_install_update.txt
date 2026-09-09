@@ -1,0 +1,12 @@
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+══ 1. Installation de lab_rental sur lab_qa ═══════════════════════════════════════════════════
+✅ installation OK
+══ 2. Mise à jour (-u lab_rental) ═══════════════════════════════════════════════════
+✅ mise à jour OK
+══ 3. Tests (--test-tags /lab_rental:TestPreparationFee) ═══════════════════════════════════════════════════
+✅ tests OK
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 0
+tests échoués  : 0
+RECETTE module=lab_rental db=lab_qa install=ok update=ok uninstall=n.a. tests="0 failed, 0 error(s) of 9 tests" errors=0 failed=0 skipped=0 warnings=0 total=12s install=2s update=4s tests=5s
+✅ lab_rental : installation, tests et logs propres

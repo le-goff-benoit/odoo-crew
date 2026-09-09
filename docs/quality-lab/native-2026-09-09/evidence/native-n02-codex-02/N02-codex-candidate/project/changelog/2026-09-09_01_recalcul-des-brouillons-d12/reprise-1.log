@@ -1,0 +1,14 @@
+2026-09-09 01:25:14,885 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:25:14,885 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:25:14,885 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:25:14,885 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:25:14,885 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:25:15,045 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:25:15,045 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:25:15,060 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:25:15,064 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:25:15,069 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:25:15,180 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.11s, 0 queries (+0 extra) 
+2026-09-09 01:25:15,201 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:25:15,210 1 INFO lab_client odoo.registry: Registry loaded in 0.165s 
+REPRISE_D12 {"after": [{"id": 1, "line_ids": [1, 2], "name": "LEGACY_DRAFT", "snapshot_total": 20.0, "state": "draft", "write_date": "2026-09-09 01:25:15.215244", "write_uid": [1, "System"]}, {"id": 2, "line_ids": [3, 4], "name": "LEGACY_DONE", "snapshot_total": 777.0, "state": "done", "write_date": "2026-09-09 01:18:42.431641", "write_uid": [1, "System"]}], "before": [{"id": 1, "line_ids": [1, 2], "name": "LEGACY_DRAFT", "snapshot_total": 999.0, "state": "draft", "write_date": "2026-09-09 01:18:42.431641", "write_uid": [1, "System"]}, {"id": 2, "line_ids": [3, 4], "name": "LEGACY_DONE", "snapshot_total": 777.0, "state": "done", "write_date": "2026-09-09 01:18:42.431641", "write_uid": [1, "System"]}], "changed_count": 1, "changed_ids": [1], "committed": true, "database": "lab_client", "draft_count": 1, "frozen_count": 1, "lines_unchanged": true}

@@ -1,0 +1,37 @@
+▶ briefing · ORCHESTRATEUR
+  Démarré par codex-probe
+  Situer le projet, la série, la release, les modules et les données disponibles.
+■ briefing · verrou libéré par codex-probe
+Run migré vers 59ca818e3266 : /tmp/forward-release-plan-auvQFI/final-edges/snapshot-demo/project/.odoo-agents/flows/snapshot-demo.json
+ODOO FLOW · snapshot-demo
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/forward-release-plan-auvQFI/final-edges/snapshot-demo/project
+Progression 0 étape(s) franchie(s)
+Agents délégués 0 actif(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ briefing
+    ORCHESTRATEUR
+    Situer le projet, la série, la release, les modules et les données disponibles.
+    Sorties: close, development, development_complex, documentation, environment, feedback, functional, support, technical, validation · Preuve: sortie de odoo_briefing.py
+▶ briefing · ORCHESTRATEUR
+  Démarré par codex-probe
+  Situer le projet, la série, la release, les modules et les données disponibles.
+ODOO FLOW · snapshot-demo
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/forward-release-plan-auvQFI/final-edges/snapshot-demo/project
+Progression 1 étape(s) franchie(s)
+Agents délégués 0 actif(s) · 1 prêt(s)
+Dernière   ✓ briefing → development
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ functional_review
+    AGENT · odoo-analyst
+    Produire la revue fonctionnelle contradictoire et choisir la voie.
+    Sorties: answer, blocked, contradiction, exists, module, module_high_risk, studio · Preuve: revue_fonctionnelle.md ou revue_en_cours.md

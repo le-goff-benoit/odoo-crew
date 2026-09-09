@@ -1,0 +1,304 @@
+2026-09-09 01:08:08,050 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/enterprise-addons', skipped 
+2026-09-09 01:08:08,050 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:08:08,050 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/enterprise-addons', skipped 
+2026-09-09 01:08:08,050 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:08:08,050 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:08:08,050 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:08:08,050 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:08:08,050 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:08:08,242 1 INFO quality_empty_baseline odoo.modules.loading: Initializing database quality_empty_baseline 
+2026-09-09 01:08:08,694 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-09 01:08:08,695 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-09 01:08:08,695 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-09 01:08:08,696 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-09 01:08:08,915 1 INFO quality_empty_baseline odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:08:08,915 1 INFO quality_empty_baseline odoo.modules.loading: Loading module base (1/1) 
+2026-09-09 01:08:08,930 1 INFO quality_empty_baseline odoo.registry: module base: creating or updating database tables 
+2026-09-09 01:08:09,086 1 INFO quality_empty_baseline odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-09 01:08:09,086 1 INFO quality_empty_baseline odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-09 01:08:09,087 1 INFO quality_empty_baseline odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-09 01:08:09,141 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.partner.user_id 
+2026-09-09 01:08:09,142 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-09 01:08:09,142 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-09 01:08:09,142 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.partner.lang 
+2026-09-09 01:08:09,142 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-09 01:08:09,142 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-09 01:08:09,142 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.partner.properties 
+2026-09-09 01:08:09,142 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-09 01:08:09,165 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-09 01:08:09,179 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-09 01:08:09,179 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.company.logo_web 
+2026-09-09 01:08:09,180 1 INFO quality_empty_baseline odoo.models: Computing parent_path for table res_company... 
+2026-09-09 01:08:09,198 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.users.signature 
+2026-09-09 01:08:09,198 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.users.share 
+2026-09-09 01:08:09,964 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-09 01:08:09,968 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-09 01:08:10,003 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-09 01:08:10,030 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-09-09 01:08:10,068 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-09-09 01:08:10,452 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-09-09 01:08:10,461 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-09-09 01:08:11,068 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-09-09 01:08:11,075 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-09-09 01:08:11,437 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-09-09 01:08:11,445 1 INFO quality_empty_baseline odoo.modules.loading: loading base/security/base_groups.xml 
+2026-09-09 01:08:11,562 1 INFO quality_empty_baseline odoo.modules.loading: loading base/security/base_security.xml 
+2026-09-09 01:08:11,679 1 INFO quality_empty_baseline odoo.modules.loading: loading base/wizard/wizard_ir_model_menu_create_views.xml 
+2026-09-09 01:08:11,687 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/base_menus.xml 
+2026-09-09 01:08:11,724 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-09-09 01:08:11,734 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-09-09 01:08:11,739 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-09-09 01:08:11,938 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-09-09 01:08:12,029 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-09-09 01:08:12,039 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-09-09 01:08:12,050 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-09-09 01:08:12,069 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-09-09 01:08:12,079 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-09-09 01:08:12,093 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-09-09 01:08:12,109 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-09-09 01:08:12,197 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-09-09 01:08:12,212 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-09-09 01:08:12,224 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-09-09 01:08:12,239 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-09-09 01:08:12,252 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-09-09 01:08:12,284 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-09-09 01:08:12,298 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/ir_config_parameter_data.xml 
+2026-09-09 01:08:12,300 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-09-09 01:08:12,308 1 INFO quality_empty_baseline odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-09-09 01:08:12,311 1 INFO quality_empty_baseline odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-09-09 01:08:12,316 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-09-09 01:08:12,329 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-09-09 01:08:12,339 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-09-09 01:08:12,373 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-09-09 01:08:12,396 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-09-09 01:08:12,440 1 INFO quality_empty_baseline odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-09-09 01:08:12,442 1 INFO quality_empty_baseline odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-09-09 01:08:12,446 1 INFO quality_empty_baseline odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-09-09 01:08:12,455 1 INFO quality_empty_baseline odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-09-09 01:08:12,467 1 INFO quality_empty_baseline odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-09-09 01:08:12,474 1 INFO quality_empty_baseline odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-09-09 01:08:12,483 1 INFO quality_empty_baseline odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-09-09 01:08:12,489 1 INFO quality_empty_baseline odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-09-09 01:08:12,496 1 INFO quality_empty_baseline odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-09-09 01:08:12,504 1 INFO quality_empty_baseline odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-09-09 01:08:12,514 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-09-09 01:08:12,529 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-09-09 01:08:12,543 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-09-09 01:08:12,556 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-09-09 01:08:12,613 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-09-09 01:08:12,634 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-09-09 01:08:12,659 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-09-09 01:08:12,683 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_groups_views.xml 
+2026-09-09 01:08:12,713 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-09-09 01:08:12,788 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_users_apikeys_views.xml 
+2026-09-09 01:08:12,792 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_device_views.xml 
+2026-09-09 01:08:12,806 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-09-09 01:08:12,810 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-09-09 01:08:12,818 1 INFO quality_empty_baseline odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-09-09 01:08:12,840 1 INFO quality_empty_baseline odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-09-09 01:08:12,940 1 INFO quality_empty_baseline odoo.modules.loading: Module base loaded in 4.03s, 8454 queries (+8454 other) 
+2026-09-09 01:08:12,940 1 INFO quality_empty_baseline odoo.modules.loading: 1 modules loaded in 4.03s, 8454 queries (+8454 extra) 
+2026-09-09 01:08:12,943 1 INFO quality_empty_baseline odoo.modules.loading: updating modules list 
+2026-09-09 01:08:12,944 1 INFO quality_empty_baseline odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:08:13,418 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-09 01:08:13,418 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-09 01:08:13,504 1 INFO quality_empty_baseline odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Quality Lab Independent Business Oracle'] to user __system__ #1 via n/a 
+2026-09-09 01:08:13,538 1 INFO quality_empty_baseline odoo.modules.loading: loading 16 modules... 
+2026-09-09 01:08:13,538 1 INFO quality_empty_baseline odoo.modules.loading: Loading module quality_case (2/16) 
+2026-09-09 01:08:13,541 1 INFO quality_empty_baseline odoo.registry: module quality_case: creating or updating database tables 
+2026-09-09 01:08:13,561 1 INFO quality_empty_baseline odoo.modules.loading: loading quality_case/security/groups.xml 
+2026-09-09 01:08:13,567 1 INFO quality_empty_baseline odoo.modules.loading: loading quality_case/security/ir.model.access.csv 
+2026-09-09 01:08:13,573 1 INFO quality_empty_baseline odoo.modules.loading: Module quality_case loaded in 0.03s, 69 queries (+69 other) 
+2026-09-09 01:08:13,573 1 INFO quality_empty_baseline odoo.modules.loading: Loading module rpc (3/16) 
+2026-09-09 01:08:13,582 1 INFO quality_empty_baseline odoo.modules.loading: Module rpc loaded in 0.01s, 10 queries (+10 other) 
+2026-09-09 01:08:13,582 1 INFO quality_empty_baseline odoo.modules.loading: Loading module web (4/16) 
+2026-09-09 01:08:13,600 1 INFO quality_empty_baseline odoo.registry: module web: creating or updating database tables 
+2026-09-09 01:08:13,894 1 INFO quality_empty_baseline odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-09-09 01:08:13,902 1 INFO quality_empty_baseline odoo.modules.loading: loading web/security/web_security.xml 
+2026-09-09 01:08:13,912 1 INFO quality_empty_baseline odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-09-09 01:08:13,966 1 INFO quality_empty_baseline odoo.modules.loading: loading web/views/report_templates.xml 
+2026-09-09 01:08:14,047 1 INFO quality_empty_baseline odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-09-09 01:08:14,063 1 INFO quality_empty_baseline odoo.modules.loading: loading web/views/partner_view.xml 
+2026-09-09 01:08:14,069 1 INFO quality_empty_baseline odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-09-09 01:08:14,073 1 INFO quality_empty_baseline odoo.modules.loading: loading web/views/memory_template.xml 
+2026-09-09 01:08:14,078 1 INFO quality_empty_baseline odoo.modules.loading: loading web/views/speedscope_config_wizard.xml 
+2026-09-09 01:08:14,085 1 INFO quality_empty_baseline odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-09-09 01:08:14,091 1 INFO quality_empty_baseline odoo.modules.loading: loading web/views/ir_ui_view_views.xml 
+2026-09-09 01:08:14,100 1 INFO quality_empty_baseline odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-09-09 01:08:14,104 1 INFO quality_empty_baseline odoo.modules.loading: loading web/data/report_layout.xml 
+2026-09-09 01:08:14,147 1 INFO quality_empty_baseline odoo.modules.loading: Module web loaded in 0.56s, 1237 queries (+1237 other) 
+2026-09-09 01:08:14,147 1 INFO quality_empty_baseline odoo.modules.loading: Loading module api_doc (5/16) 
+2026-09-09 01:08:14,153 1 INFO quality_empty_baseline odoo.registry: module api_doc: creating or updating database tables 
+2026-09-09 01:08:14,169 1 INFO quality_empty_baseline odoo.modules.loading: loading api_doc/security/res_groups.xml 
+2026-09-09 01:08:14,189 1 INFO quality_empty_baseline odoo.modules.loading: loading api_doc/views/docclient.xml 
+2026-09-09 01:08:14,203 1 INFO quality_empty_baseline odoo.modules.loading: Module api_doc loaded in 0.06s, 63 queries (+63 other) 
+2026-09-09 01:08:14,203 1 INFO quality_empty_baseline odoo.modules.loading: Loading module auth_totp (6/16) 
+2026-09-09 01:08:14,217 1 INFO quality_empty_baseline odoo.registry: module auth_totp: creating or updating database tables 
+2026-09-09 01:08:14,266 1 INFO quality_empty_baseline odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-09-09 01:08:14,286 1 INFO quality_empty_baseline odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-09-09 01:08:14,291 1 INFO quality_empty_baseline odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-09-09 01:08:14,298 1 INFO quality_empty_baseline odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-09-09 01:08:14,322 1 INFO quality_empty_baseline odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-09-09 01:08:14,331 1 INFO quality_empty_baseline odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-09-09 01:08:14,350 1 INFO quality_empty_baseline odoo.modules.loading: Module auth_totp loaded in 0.15s, 218 queries (+218 other) 
+2026-09-09 01:08:14,350 1 INFO quality_empty_baseline odoo.modules.loading: Loading module base_import (7/16) 
+2026-09-09 01:08:14,374 1 INFO quality_empty_baseline odoo.registry: module base_import: creating or updating database tables 
+2026-09-09 01:08:14,656 1 INFO quality_empty_baseline odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-09-09 01:08:14,665 1 INFO quality_empty_baseline odoo.modules.loading: Module base_import loaded in 0.31s, 961 queries (+961 other) 
+2026-09-09 01:08:14,665 1 INFO quality_empty_baseline odoo.modules.loading: Loading module base_import_module (8/16) 
+2026-09-09 01:08:14,672 1 INFO quality_empty_baseline odoo.registry: module base_import_module: creating or updating database tables 
+2026-09-09 01:08:14,712 1 INFO quality_empty_baseline odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-09-09 01:08:14,717 1 INFO quality_empty_baseline odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-09-09 01:08:14,736 1 INFO quality_empty_baseline odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-09-09 01:08:14,774 1 INFO quality_empty_baseline odoo.modules.loading: Module base_import_module loaded in 0.11s, 172 queries (+172 other) 
+2026-09-09 01:08:14,774 1 INFO quality_empty_baseline odoo.modules.loading: Loading module base_setup (9/16) 
+2026-09-09 01:08:14,780 1 INFO quality_empty_baseline odoo.registry: module base_setup: creating or updating database tables 
+2026-09-09 01:08:14,811 1 INFO quality_empty_baseline odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-09-09 01:08:14,815 1 INFO quality_empty_baseline odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-09-09 01:08:14,835 1 INFO quality_empty_baseline odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-09-09 01:08:14,849 1 INFO quality_empty_baseline odoo.modules.loading: Module base_setup loaded in 0.07s, 152 queries (+152 other) 
+2026-09-09 01:08:14,849 1 INFO quality_empty_baseline odoo.modules.loading: Loading module bus (10/16) 
+2026-09-09 01:08:14,860 1 INFO quality_empty_baseline odoo.registry: module bus: creating or updating database tables 
+2026-09-09 01:08:14,910 1 INFO quality_empty_baseline odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-09-09 01:08:14,919 1 INFO quality_empty_baseline odoo.modules.loading: Module bus loaded in 0.07s, 159 queries (+159 other) 
+2026-09-09 01:08:14,919 1 INFO quality_empty_baseline odoo.modules.loading: Loading module quality_oracle (11/16) 
+2026-09-09 01:08:14,932 1 INFO quality_empty_baseline odoo.modules.loading: Module quality_oracle loaded in 0.01s, 10 queries (+10 other) 
+2026-09-09 01:08:14,932 1 INFO quality_empty_baseline odoo.modules.loading: Loading module web_tour (12/16) 
+2026-09-09 01:08:14,939 1 INFO quality_empty_baseline odoo.registry: module web_tour: creating or updating database tables 
+2026-09-09 01:08:14,943 1 INFO quality_empty_baseline odoo.models: Prepare computation of res.users.tour_enabled 
+2026-09-09 01:08:15,022 1 INFO quality_empty_baseline odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-09-09 01:08:15,027 1 INFO quality_empty_baseline odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-09-09 01:08:15,061 1 INFO quality_empty_baseline odoo.modules.loading: Module web_tour loaded in 0.13s, 180 queries (+180 other) 
+2026-09-09 01:08:15,061 1 INFO quality_empty_baseline odoo.modules.loading: Loading module auth_passkey (13/16) 
+2026-09-09 01:08:15,092 1 INFO quality_empty_baseline odoo.registry: module auth_passkey: creating or updating database tables 
+2026-09-09 01:08:15,134 1 INFO quality_empty_baseline odoo.modules.loading: loading auth_passkey/views/auth_passkey_key_views.xml 
+2026-09-09 01:08:15,157 1 INFO quality_empty_baseline odoo.modules.loading: loading auth_passkey/views/auth_passkey_login_templates.xml 
+2026-09-09 01:08:15,173 1 INFO quality_empty_baseline odoo.modules.loading: loading auth_passkey/views/res_users_identitycheck_views.xml 
+2026-09-09 01:08:15,182 1 INFO quality_empty_baseline odoo.modules.loading: loading auth_passkey/views/res_users_views.xml 
+2026-09-09 01:08:15,198 1 INFO quality_empty_baseline odoo.modules.loading: loading auth_passkey/security/ir.model.access.csv 
+2026-09-09 01:08:15,203 1 INFO quality_empty_baseline odoo.modules.loading: loading auth_passkey/security/security.xml 
+2026-09-09 01:08:15,221 1 INFO quality_empty_baseline odoo.modules.loading: Module auth_passkey loaded in 0.16s, 218 queries (+218 other) 
+2026-09-09 01:08:15,221 1 INFO quality_empty_baseline odoo.modules.loading: Loading module html_editor (14/16) 
+2026-09-09 01:08:15,329 1 INFO quality_empty_baseline odoo.registry: module html_editor: creating or updating database tables 
+2026-09-09 01:08:15,611 1 INFO quality_empty_baseline odoo.modules.loading: loading html_editor/security/ir.model.access.csv 
+2026-09-09 01:08:15,618 1 INFO quality_empty_baseline odoo.modules.loading: Module html_editor loaded in 0.40s, 1039 queries (+1039 other) 
+2026-09-09 01:08:15,618 1 INFO quality_empty_baseline odoo.modules.loading: Loading module iap (15/16) 
+2026-09-09 01:08:15,619 1 INFO quality_empty_baseline odoo.registry: module iap: creating or updating database tables 
+2026-09-09 01:08:15,651 1 INFO quality_empty_baseline odoo.modules.loading: loading iap/data/services.xml 
+2026-09-09 01:08:15,655 1 INFO quality_empty_baseline odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-09-09 01:08:15,658 1 INFO quality_empty_baseline odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-09-09 01:08:15,662 1 INFO quality_empty_baseline odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-09-09 01:08:15,675 1 INFO quality_empty_baseline odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-09-09 01:08:15,687 1 INFO quality_empty_baseline odoo.modules.loading: Module iap loaded in 0.07s, 182 queries (+182 other) 
+2026-09-09 01:08:15,687 1 INFO quality_empty_baseline odoo.modules.loading: Loading module web_unsplash (16/16) 
+2026-09-09 01:08:15,692 1 INFO quality_empty_baseline odoo.registry: module web_unsplash: creating or updating database tables 
+2026-09-09 01:08:15,708 1 INFO quality_empty_baseline odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-09-09 01:08:15,723 1 INFO quality_empty_baseline odoo.modules.loading: Module web_unsplash loaded in 0.04s, 93 queries (+93 other) 
+2026-09-09 01:08:15,723 1 INFO quality_empty_baseline odoo.modules.loading: 16 modules loaded in 2.18s, 4763 queries (+4763 extra) 
+2026-09-09 01:08:15,822 1 INFO quality_empty_baseline odoo.modules.loading: Modules loaded. 
+2026-09-09 01:08:15,825 1 INFO quality_empty_baseline odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:08:15,825 1 INFO quality_empty_baseline odoo.registry: Registry loaded in 7.602s 
+2026-09-09 01:08:15,825 1 INFO quality_empty_baseline odoo.service.server: Initiating shutdown 
+2026-09-09 01:08:15,825 1 INFO quality_empty_baseline odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:08:15,825 1 INFO quality_empty_baseline odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+2026-09-09 01:08:17,180 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/enterprise-addons', skipped 
+2026-09-09 01:08:17,180 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/enterprise-addons', skipped 
+2026-09-09 01:08:17,180 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:08:17,180 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:08:17,181 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:08:17,181 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:08:17,181 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:08:17,436 1 INFO quality_empty_baseline odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:08:17,441 1 INFO quality_empty_baseline odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-09 01:08:17,468 1 INFO quality_empty_baseline odoo.modules.loading: updating modules list 
+2026-09-09 01:08:17,469 1 INFO quality_empty_baseline odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:08:18,186 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-09 01:08:18,187 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-09 01:08:18,187 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-09 01:08:18,188 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-09 01:08:18,348 1 INFO quality_empty_baseline odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Quality Lab Independent Business Oracle'] to user __system__ #1 via n/a 
+2026-09-09 01:08:18,349 1 INFO quality_empty_baseline odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Quality Lab Independent Business Oracle'] to user __system__ #1 via n/a 
+2026-09-09 01:08:18,782 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-09 01:08:18,782 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-09 01:08:18,881 1 INFO quality_empty_baseline odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:08:18,895 1 INFO quality_empty_baseline odoo.modules.loading: loading 16 modules... 
+2026-09-09 01:08:18,915 1 INFO quality_empty_baseline odoo.modules.loading: Loading module quality_oracle (11/16) 
+2026-09-09 01:08:18,953 1 INFO quality_empty_baseline odoo.modules.loading: Module quality_oracle loaded in 0.04s, 11 queries (+11 other) 
+2026-09-09 01:08:19,086 1 INFO quality_empty_baseline odoo.modules.loading: 16 modules loaded in 0.19s, 11 queries (+11 extra) 
+2026-09-09 01:08:19,228 1 INFO quality_empty_baseline odoo.modules.loading: Modules loaded. 
+2026-09-09 01:08:19,231 1 INFO quality_empty_baseline odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:08:19,232 1 INFO quality_empty_baseline odoo.registry: Registry loaded in 1.818s 
+2026-09-09 01:08:19,232 1 INFO quality_empty_baseline odoo.service.server: Initiating shutdown 
+2026-09-09 01:08:19,232 1 INFO quality_empty_baseline odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:08:19,232 1 INFO quality_empty_baseline odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+2026-09-09 01:08:19,970 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/enterprise-addons', skipped 
+2026-09-09 01:08:19,970 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/enterprise-addons', skipped 
+2026-09-09 01:08:19,970 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:08:19,970 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:08:19,970 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:08:19,970 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:08:19,970 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:08:20,234 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on ab8da7233566:8069 
+2026-09-09 01:08:20,248 1 INFO quality_empty_baseline odoo.tests.common: Importing test framework 
+2026-09-09 01:08:20,273 1 INFO quality_empty_baseline odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:08:20,278 1 INFO quality_empty_baseline odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-09 01:08:20,301 1 INFO quality_empty_baseline odoo.modules.loading: updating modules list 
+2026-09-09 01:08:20,302 1 INFO quality_empty_baseline odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:08:20,953 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-09 01:08:20,953 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-09 01:08:20,953 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-09 01:08:20,953 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-09 01:08:21,101 1 INFO quality_empty_baseline odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Quality Lab Independent Business Oracle'] to user __system__ #1 via n/a 
+2026-09-09 01:08:21,101 1 INFO quality_empty_baseline odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Quality Lab Independent Business Oracle'] to user __system__ #1 via n/a 
+2026-09-09 01:08:21,886 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_case', defaulting to '' 
+2026-09-09 01:08:21,887 1 WARNING quality_empty_baseline odoo.modules.module: Missing `author` key in manifest for 'quality_oracle', defaulting to '' 
+2026-09-09 01:08:22,078 1 INFO quality_empty_baseline odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:08:22,102 1 INFO quality_empty_baseline odoo.modules.loading: loading 16 modules... 
+2026-09-09 01:08:22,143 1 INFO quality_empty_baseline odoo.modules.loading: Loading module quality_oracle (11/16) 
+2026-09-09 01:08:22,228 1 INFO quality_empty_baseline odoo.modules.loading: Module quality_oracle loaded in 0.09s, 11 queries (+11 other) 
+2026-09-09 01:08:22,390 1 INFO quality_empty_baseline odoo.modules.loading: 16 modules loaded in 0.29s, 11 queries (+11 extra) 
+2026-09-09 01:08:22,590 1 INFO quality_empty_baseline odoo.modules.loading: Modules loaded. 
+2026-09-09 01:08:22,593 1 INFO quality_empty_baseline odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:08:22,594 1 INFO quality_empty_baseline odoo.registry: Registry loaded in 2.359s 
+2026-09-09 01:08:22,594 1 INFO quality_empty_baseline odoo.service.server: Starting post tests 
+2026-09-09 01:08:22,736 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_approval_revalidation_and_increase ... 
+2026-09-09 01:08:22,768 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_caller_context_does_not_authorize_workflow_writes ... 
+2026-09-09 01:08:22,773 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_changed_customer_policy_invalidates_approval ... 
+2026-09-09 01:08:22,783 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_context_defaults_cannot_forge_approval_or_state ... 
+2026-09-09 01:08:22,785 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_no_forged_approval_or_state ... 
+2026-09-09 01:08:22,796 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_no_self_approval_even_as_manager ... 
+2026-09-09 01:08:22,812 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_other_company_denied_on_direct_access ... 
+2026-09-09 01:08:22,825 1 INFO quality_empty_baseline odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [6], uid: 7, model: quality_case.delivery 
+2026-09-09 01:08:22,834 1 INFO quality_empty_baseline odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [6], uid: 7, model: quality_case.delivery 
+2026-09-09 01:08:22,840 1 INFO quality_empty_baseline odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [6], uid: 7, model: quality_case.delivery 
+2026-09-09 01:08:22,850 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_threshold_and_full_delivery ... 
+2026-09-09 01:08:22,866 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_delivery: Starting TestDeliveryContract.test_unchanged_policy_keeps_approval ... 
+2026-09-09 01:08:22,880 1 INFO quality_empty_baseline odoo.addons.base.models.ir_attachment: filestore gc 6 checked, 3 removed 
+2026-09-09 01:08:22,881 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_pack: Starting TestPackContract.test_failed_import_does_not_leave_xmlid_or_row ... 
+2026-09-09 01:08:22,900 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_pack: Starting TestPackContract.test_import_has_identity_and_second_apply_is_unchanged ... 
+2026-09-09 01:08:22,926 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_pack: Starting TestPackContract.test_new_model_field_and_record_dependency_order ... 
+2026-09-09 01:08:22,951 1 INFO quality_empty_baseline odoo.registry: module studio_customization: creating or updating database tables 
+2026-09-09 01:08:23,005 1 INFO quality_empty_baseline odoo.registry: module studio_customization: creating or updating database tables 
+2026-09-09 01:08:23,049 1 INFO quality_empty_baseline odoo.registry: module studio_customization: creating or updating database tables 
+2026-09-09 01:08:23,082 1 INFO quality_empty_baseline odoo.addons.quality_oracle.tests.test_pack: Starting TestPackContract.test_unknown_field_rejected_before_any_creation ... 
+2026-09-09 01:08:23,125 1 INFO quality_empty_baseline odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 01:08:23,126 1 INFO quality_empty_baseline odoo.service.server: 13 post-tests in 0.53s, 606 queries 
+2026-09-09 01:08:23,126 1 INFO quality_empty_baseline odoo.tests.stats: quality_oracle: 17 tests 0.53s 606 queries 
+2026-09-09 01:08:23,126 1 INFO quality_empty_baseline odoo.tests.result: 0 failed, 0 error(s) of 13 tests when loading database 'quality_empty_baseline' 
+2026-09-09 01:08:23,126 1 INFO quality_empty_baseline odoo.service.server: Initiating shutdown 
+2026-09-09 01:08:23,126 1 INFO quality_empty_baseline odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:08:23,252 1 INFO quality_empty_baseline odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+  + res.partner studio_customization.quality_contact
+1 / 0 / 0 créés / modifiés / inchangés sur synthetic ORM oracle
+0 / 0 / 1 créés / modifiés / inchangés sur synthetic ORM oracle
+  + ir.model studio_customization.dynamic_model
+  + ir.model.fields studio_customization.dynamic_field
+  + ir.model.fields studio_customization.dynamic_name
+  + x_quality_dynamic studio_customization.dynamic_row
+4 / 0 / 0 à créer / à modifier / inchangés sur synthetic ORM oracle
+  + ir.model studio_customization.dynamic_model
+  + ir.model.fields studio_customization.dynamic_field
+  + ir.model.fields studio_customization.dynamic_name
+  + x_quality_dynamic studio_customization.dynamic_row
+4 / 0 / 0 créés / modifiés / inchangés sur synthetic ORM oracle
+0 / 0 / 4 créés / modifiés / inchangés sur synthetic ORM oracle

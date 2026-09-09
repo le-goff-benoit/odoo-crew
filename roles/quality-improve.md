@@ -18,8 +18,8 @@ réalisable. Pour une remarque propre à un client, utiliser `/odoo-feedback`.
    Un oracle défectueux se corrige séparément, puis tous les candidats concernés
    se rejouent sur le même oracle, sans retoucher leurs réponses ou leur code.
 4. Modifier la source canonique `roles/*.md`, les outils ou une référence selon
-   la cause observée. Pour un skill, suivre `skill-creator` : précision utile,
-   pas d'accumulation de règles génériques. Ne jamais éditer les profils générés.
+   la cause observée. Pour un skill, appliquer `skill-creator` s’il est disponible ; sinon conserver
+   cette méthode explicite : précision utile, pas d'accumulation de règles génériques. Ne jamais éditer les profils générés.
 5. Rejouer le défaut et la contre-épreuve, à réglages constants, puis les contrôles
    de non-régression pertinents. Un échec critique ne se compense pas par la vitesse.
    Un incident du banc ou fournisseur reste séparé d'un échec métier. Arrêter une

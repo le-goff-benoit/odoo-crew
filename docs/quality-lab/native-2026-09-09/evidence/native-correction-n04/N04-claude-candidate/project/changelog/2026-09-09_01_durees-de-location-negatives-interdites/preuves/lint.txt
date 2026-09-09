@@ -1,0 +1,15 @@
+Série cible : 19.0  (__manifest__.py)
+Périmètre --changed (84708b474ce74713ff2d16cbf203d998ca33a119) : 3 fichier(s)
+══ 1/3  ruff — règles bloquantes (config Odoo 19.0) ══
+IGNORÉ : ruff introuvable (ni sur l'hôte, ni dans l'image odoo-qa:19.0).
+         pip install --user ruff   OU   odoo-stack.sh build
+
+══ 3/3  contrôles Odoo (manifest, XML, sécurité, tests) ═════════════════
+── lab_rental  (/work/lab_rental)
+   série cible : 19.0  (source : __manifest__.py)
+ERREUR         /work/lab_rental/__manifest__.py
+               clé obligatoire manquante : `author`
+
+1 erreur(s), 0 avertissement(s), 0 info(s)
+
+❌ lint en échec

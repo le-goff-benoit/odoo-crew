@@ -1,0 +1,14 @@
+2026-09-09 00:59:55,129 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 00:59:55,129 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 00:59:55,129 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 00:59:55,129 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 00:59:55,129 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 00:59:55,285 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 00:59:55,285 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 00:59:55,297 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 00:59:55,299 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 00:59:55,302 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 00:59:55,405 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.10s, 0 queries (+0 extra) 
+2026-09-09 00:59:55,425 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 00:59:55,432 1 INFO lab_client odoo.registry: Registry loaded in 0.146s 
+LAB_INVENTORY {"records": [{"id": 1, "name": "D02 témoin location 3", "days": 3, "daily_rate": 10.0, "kind": "rental", "amount_total": 30.0}, {"id": 2, "name": "D02 témoin location 4", "days": 4, "daily_rate": 10.0, "kind": "rental", "amount_total": 40.0}, {"id": 3, "name": "D02 témoin location 5", "days": 5, "daily_rate": 10.0, "kind": "rental", "amount_total": 50.0}, {"id": 4, "name": "D02 témoin prêt 4", "days": 4, "daily_rate": 10.0, "kind": "loan", "amount_total": 40.0}], "fields": [{"id": 1574, "name": "amount_total", "state": "base", "compute": false, "store": true}, {"id": 1576, "name": "create_date", "state": "base", "compute": false, "store": true}, {"id": 1575, "name": "create_uid", "state": "base", "compute": false, "store": true}, {"id": 1572, "name": "daily_rate", "state": "base", "compute": false, "store": true}, {"id": 1571, "name": "days", "state": "base", "compute": false, "store": true}, {"id": 1569, "name": "display_name", "state": "base", "compute": false, "store": false}, {"id": 1568, "name": "id", "state": "base", "compute": false, "store": true}, {"id": 1573, "name": "kind", "state": "base", "compute": false, "store": true}, {"id": 1570, "name": "name", "state": "base", "compute": false, "store": true}, {"id": 1578, "name": "write_date", "state": "base", "compute": false, "store": true}, {"id": 1577, "name": "write_uid", "state": "base", "compute": false, "store": true}], "server_actions": [], "studio_installed": false}

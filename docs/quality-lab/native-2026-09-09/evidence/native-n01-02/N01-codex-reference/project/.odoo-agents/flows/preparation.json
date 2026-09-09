@@ -1,0 +1,157 @@
+{
+  "claims": {},
+  "created_at": "2026-09-09T01:04:13+00:00",
+  "events": [
+    {
+      "at": "2026-09-09T01:04:59+00:00",
+      "emitted": [
+        "functional_review"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/preparation/briefing.md"
+      ],
+      "node": "briefing",
+      "note": "",
+      "outcome": "development"
+    },
+    {
+      "at": "2026-09-09T01:06:18+00:00",
+      "emitted": [
+        "module_implementation_high_risk"
+      ],
+      "evidence": [
+        "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/revue_fonctionnelle.md"
+      ],
+      "node": "functional_review",
+      "note": "",
+      "outcome": "module_high_risk"
+    },
+    {
+      "at": "2026-09-09T01:11:25+00:00",
+      "emitted": [
+        "module_high_static_qa",
+        "module_high_runtime_qa",
+        "module_client_copy_qa"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/preparation/implementation.md"
+      ],
+      "node": "module_implementation_high_risk",
+      "note": "",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:12:40+00:00",
+      "emitted": [
+        "module_high_gate"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/preparation/static.md"
+      ],
+      "node": "module_high_static_qa",
+      "note": "",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:12:40+00:00",
+      "emitted": [
+        "module_high_gate"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/preparation/runtime.md"
+      ],
+      "node": "module_high_runtime_qa",
+      "note": "",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:12:40+00:00",
+      "emitted": [
+        "module_high_gate"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/preparation/client-copy.md"
+      ],
+      "node": "module_client_copy_qa",
+      "note": "",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:13:48+00:00",
+      "emitted": [
+        "journal_task"
+      ],
+      "evidence": [
+        "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/qa.md"
+      ],
+      "node": "module_high_gate",
+      "note": "",
+      "outcome": "pass"
+    },
+    {
+      "at": "2026-09-09T01:14:07+00:00",
+      "emitted": [
+        "task_done"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/JOURNAL.md"
+      ],
+      "node": "journal_task",
+      "note": "",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:14:47+00:00",
+      "emitted": [],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/preparation/final.md"
+      ],
+      "node": "task_done",
+      "note": "",
+      "outcome": "done"
+    }
+  ],
+  "graph": "/home/blegoff/.odoo19-agents/workflows/odoo-workflow.json",
+  "graph_sha256": "83cd9b08dc9ee2c7abcd320afe5a899e73e7a7fc8757072ba03aca0ea5cca715",
+  "kind": "development",
+  "node_counts": {
+    "briefing": 1,
+    "functional_review": 1,
+    "journal_task": 1,
+    "module_client_copy_qa": 1,
+    "module_high_gate": 1,
+    "module_high_runtime_qa": 1,
+    "module_high_static_qa": 1,
+    "module_implementation_high_risk": 1,
+    "task_done": 1
+  },
+  "outcome_counts": {
+    "briefing:development": 1,
+    "functional_review:module_high_risk": 1,
+    "journal_task:done": 1,
+    "module_client_copy_qa:done": 1,
+    "module_high_gate:pass": 1,
+    "module_high_runtime_qa:done": 1,
+    "module_high_static_qa:done": 1,
+    "module_implementation_high_risk:done": 1,
+    "task_done:done": 1
+  },
+  "project": "/work",
+  "run_id": "preparation",
+  "schema_version": 1,
+  "start_pending": false,
+  "status": "complete",
+  "tokens": {
+    "brief-development": 0,
+    "journal-task-done": 0,
+    "module-client-gate": 0,
+    "module-high-client": 0,
+    "module-high-gate-pass": 0,
+    "module-high-runtime": 0,
+    "module-high-runtime-gate": 0,
+    "module-high-static": 0,
+    "module-high-static-gate": 0,
+    "review-module-high-risk": 0
+  },
+  "updated_at": "2026-09-09T01:14:47+00:00"
+}

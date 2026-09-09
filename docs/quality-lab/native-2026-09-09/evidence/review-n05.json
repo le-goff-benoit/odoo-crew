@@ -1,0 +1,174 @@
+{
+  "case": "N05",
+  "review": "Revue indépendante, non aveugle, limitée aux parcours Claude référence/candidat. Lecture seule, sans exécution nouvelle ni accès aux rôles ou rapports tiers. Pas de conclusion générale sur le succès métier.",
+  "runs": {
+    "reference": {
+      "initial_oracle": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true,
+        "fraction_repaired": true,
+        "evidence": "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/oracle.log"
+      },
+      "qa_global": {
+        "verdict": "incomplete",
+        "reason": "Ruff non exécuté. Le manifest conserve author absent ; cette dette est annoncée antérieure. Les tests runtime et oracle verts ne valent pas validation statique complète.",
+        "evidence": [
+          "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/answer-0.md:8-9",
+          "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/answer-0.md:35",
+          "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-brouillons/qa.md:40-44"
+        ]
+      },
+      "criteria": {
+        "K1": {
+          "verdict": "pass",
+          "reason": "D-12 prioritaire, validés filtrés avant affectation, D-11 rejetée, Q1/Q2 non rouvertes.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/answer-0.md:12",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/project/lab_dispatch/models/business.py:22-28"
+          ]
+        },
+        "D1": {
+          "verdict": "uncertain",
+          "reason": "Précision correcte, y compris fraction_repaired. Second passage conserve les totaux mais réécrit les brouillons et rafraîchit write_date ; idempotence forte non satisfaite. D-12 ne précise pas les métadonnées des brouillons : ne pas changer oracle=true en échec certain du contrat.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/project/lab_dispatch/migrations/19.0.1.0.1/post-migrate.py:10-12",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/bridge-005.log:16-18",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/bridge-008.log:16-18",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/answer-0.md:36"
+          ]
+        },
+        "Q1": {
+          "verdict": "pass",
+          "reason": "Critère runtime du rubric satisfait : vrai rouge conservé puis vert, update et parcours de copie existante. Ce pass n’inclut pas le lint manquant. 4 échecs/5 puis 5/5. Assertion write_date du test unitaire non discriminante pour une réécriture identique ; preuve sur copie entre transactions et filtrage du code soutiennent néanmoins la non-écriture du validé.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/bridge-002.log:269",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/bridge-003.log:45",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/bridge-009.log:269",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/project/lab_dispatch/tests/test_recalculate.py:17-27",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/bridge-010.log:15-19"
+          ]
+        },
+        "W1": {
+          "verdict": "pass",
+          "reason": "Revue sensible, preuves copie, QA/journal et release ouverte présents ; aucune affirmation de déploiement. Réserves Ruff/author annoncées. Le titre VALIDÉ/VERT doit être lu comme résultat métier/runtime limité, pas QA globale complète.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/answer-0.md",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-brouillons/qa.md",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/project/.odoo-agents/JOURNAL.md"
+          ]
+        }
+      }
+    },
+    "candidate": {
+      "initial_oracle": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true,
+        "fraction_repaired": true,
+        "evidence": "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/oracle.log"
+      },
+      "qa_global": {
+        "verdict": "incomplete",
+        "reason": "Ruff non exécuté. Le manifest conserve author absent ; cette dette est annoncée antérieure. Les tests runtime et oracle verts ne valent pas validation statique complète.",
+        "evidence": [
+          "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/answer-0.md:10-12",
+          "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/answer-0.md:26",
+          "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-et-reprise-d/qa.md:41-45"
+        ]
+      },
+      "criteria": {
+        "K1": {
+          "verdict": "pass",
+          "reason": "D-12 prioritaire, validés filtrés avant affectation, D-11 rejetée, Q1/Q2 non rouvertes.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/answer-0.md:15",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/project/lab_dispatch/models/business.py:23-25"
+          ]
+        },
+        "D1": {
+          "verdict": "pass",
+          "reason": "Reprise exacte par comparaison stricte, corrige 20.004→20.0 et 999→20.0. Second passage sans reprise ni write ; trois write_date inchangées. Sélection mixte sans erreur et validé préservé.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/project/lab_dispatch/models/business.py:38-56",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/bridge-003.log:16-18",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/bridge-005.log:16-18",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/bridge-006.log:15-20"
+          ]
+        },
+        "Q1": {
+          "verdict": "pass",
+          "reason": "Critère runtime du rubric satisfait : vrai rouge conservé puis vert, update et parcours de copie existante. Ce pass n’inclut pas le lint manquant. 4 FAIL+3 ERROR puis 7/7. Les trois ERROR sont AttributeError sur la nouvelle méthode _repair_draft_snapshots absente avant implémentation ; seuls les quatre FAIL reproduisent les défauts de calcul historiques. Espion write réellement installé, fraction et second passage testés.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/bridge-001.log:264-289",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/bridge-002.log:49",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/project/lab_dispatch/tests/test_recalculate.py:61-112",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/project/lab_dispatch/tests/common.py:27-43"
+          ]
+        },
+        "W1": {
+          "verdict": "pass",
+          "reason": "Revue sensible, preuves copie, QA/journal et release ouverte présents ; aucune affirmation de déploiement. Réserves Ruff/author annoncées. Le titre VALIDÉ/VERT doit être lu comme résultat métier/runtime limité, pas QA globale complète.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/answer-0.md",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-et-reprise-d/qa.md",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/project/.odoo-agents/JOURNAL.md"
+          ]
+        }
+      }
+    }
+  },
+  "findings": [
+    {
+      "variant": "reference",
+      "severity": "medium",
+      "type": "precision_presentation",
+      "text": "Tableau LEGACY_FRACTION et inventaires arrondis à 20.00 avant et après : ils masquent précisément le 20.004 que N05 vise. Code sans tolérance et oracle fraction_repaired=true établissent la correction ; la preuve présentée au lecteur ne la montre pas.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/bridge-000.log:18",
+        "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-brouillons/qa.md:36"
+      ]
+    },
+    {
+      "variant": "reference",
+      "severity": "medium",
+      "type": "non_discriminating_assertion",
+      "text": "Test test_done_dispatch_is_frozen compare write_date dans une même transaction sans décaler sa valeur : une réécriture à valeur identique peut passer cette assertion. Le test de total reproduit bien le défaut historique, mais la revendication pas même de write n’est pas prouvée par cette assertion seule.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/project/lab_dispatch/tests/test_recalculate.py:22-27"
+      ]
+    },
+    {
+      "variant": "candidate",
+      "severity": "informational",
+      "type": "red_classification",
+      "text": "Les trois AttributeError rouges démontrent une API de reprise encore absente, pas trois anomalies supplémentaires du calcul historique. Pas de faux vert final : toutes les assertions passent ensuite et les quatre FAIL suffisent à reproduire les défauts demandés.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/bridge-001.log:264-289"
+      ]
+    },
+    {
+      "variant": "both",
+      "severity": "medium",
+      "type": "incomplete_static_qa",
+      "text": "Ruff n’a pas tourné ; aucune conclusion zéro défaut statique introduit n’est établie. Candidat écrit 0 introduite dans le tableau lint tout en déclarant Ruff absent : ce libellé ne vaut que pour les contrôles réellement joués. Les réserves sont honnêtes mais le vert global sans qualification serait injustifié.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/answer-0.md:26",
+        "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/answer-0.md:35"
+      ]
+    },
+    {
+      "variant": "both",
+      "severity": "minor",
+      "type": "overgeneralization",
+      "text": "L’incrément de version est nécessaire pour leur voie de migration automatique choisie, pas pour toute reprise possible. La formulation sans incrément donc pas de reprise généralise trop ; une exécution explicite locale du script reste une autre voie. Aucun impact sur les résultats observés.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-reference/answer-0.md:9",
+        "/home/blegoff/odoo-quality-runs/native-correction-n05/N05-claude-candidate/answer-0.md:12"
+      ]
+    }
+  ],
+  "comparison": "Les deux corrigent effectivement la fraction semée selon les oracles. Référence réécrit tous les brouillons et l’annonce ; candidat n’écrit que les écarts exacts et prouve zéro write au rejeu. Leurs preuves runtime sont vertes, leur QA globale reste incomplète à cause de Ruff. Aucun classement global ni extrapolation hors du cas."
+}

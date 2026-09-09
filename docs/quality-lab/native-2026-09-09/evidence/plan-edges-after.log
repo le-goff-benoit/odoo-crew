@@ -1,0 +1,108 @@
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py init /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --file /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01/definition.json
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01
+T01 · pending · PRÊT · Définir un seuil de réapprovisionnement
+T02 · pending · PRÊT · Choisir le canal de notification
+T03 · pending · dépendances : T01, T02 · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T03
+dépendances : T01, T02
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T01
+/tmp/forward-release-plan-auvQFI/final-edges/project/.odoo-agents/flows/plan-t01-26d78137.json
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T02
+/tmp/forward-release-plan-auvQFI/final-edges/project/.odoo-agents/flows/plan-t02-f0118698.json
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01
+T01 · running · .odoo-agents/flows/plan-t01-26d78137.json · Définir un seuil de réapprovisionnement
+T02 · running · .odoo-agents/flows/plan-t02-f0118698.json · Choisir le canal de notification
+T03 · pending · dépendances : T01, T02 · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01
+T01 · running · .odoo-agents/flows/plan-t01-26d78137.json · Définir un seuil de réapprovisionnement
+T02 · interrupted · état local absent : réception durable non validée ; réconcilier explicitement · Choisir le canal de notification
+T03 · pending · dépendances : T01, T02 · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T02
+état local absent : réception durable non validée ; réconcilier explicitement
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py reopen /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T02 --reason Réconciliation explicite après interruption du checkout
+reopen
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T02
+/tmp/forward-release-plan-auvQFI/final-edges/project/.odoo-agents/flows/plan-t02-f1a4d997.json
+EXIT 0
+FIXTURE ONLY: flow status complete for T01
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/final-edges/project --scope module_1 --output /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01/T01.json -- /usr/bin/python3 -c from pathlib import Path; assert all(p.read_text().strip() for p in Path('.').glob('module_*/feature.txt')); print('synthetic source integrity passed')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T01 --proof changelog/R01/T01.json --acceptance changelog/R01/T01-acceptance.md --memory changelog/R01/T01-memory.md
+validé ; contenu métier de la réception à relire par l’orchestrateur
+EXIT 0
+FIXTURE ONLY: flow status complete for T02
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/final-edges/project --scope module_2 --output /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01/T02.json -- /usr/bin/python3 -c from pathlib import Path; assert all(p.read_text().strip() for p in Path('.').glob('module_*/feature.txt')); print('synthetic source integrity passed')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T02 --proof changelog/R01/T02.json --acceptance changelog/R01/T02-acceptance.md --memory changelog/R01/T02-memory.md
+validé ; contenu métier de la réception à relire par l’orchestrateur
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T03
+/tmp/forward-release-plan-auvQFI/final-edges/project/.odoo-agents/flows/plan-t03-1a9d9d02.json
+EXIT 0
+FIXTURE ONLY: flow status complete for T03
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/final-edges/project --scope module_3 --output /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01/T03.json -- /usr/bin/python3 -c from pathlib import Path; assert all(p.read_text().strip() for p in Path('.').glob('module_*/feature.txt')); print('synthetic source integrity passed')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T03 --proof changelog/R01/T03.json --acceptance changelog/R01/T03-acceptance.md --memory changelog/R01/T03-memory.md
+validé ; contenu métier de la réception à relire par l’orchestrateur
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01
+T01 · validated · preuve et passation toujours valides · Définir un seuil de réapprovisionnement
+T02 · validated · preuve et passation toujours valides · Choisir le canal de notification
+T03 · validated · preuve et passation toujours valides · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py add /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --file /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01/addition.json
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01
+T01 · validated · preuve et passation toujours valides · Définir un seuil de réapprovisionnement
+T02 · validated · preuve et passation toujours valides · Choisir le canal de notification
+T03 · validated · preuve et passation toujours valides · Afficher la synthèse seuil et canal
+T04 · pending · PRÊT · Create empty
+T05 · pending · PRÊT · Create future
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T04
+/tmp/forward-release-plan-auvQFI/final-edges/project/.odoo-agents/flows/plan-t04-97167319.json
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T05
+/tmp/forward-release-plan-auvQFI/final-edges/project/.odoo-agents/flows/plan-t05-15cb0bbd.json
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py changed /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T04
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py changed /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T05
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py add /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --file /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01/addition.json
+identifiants uniques et stables requis
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py add /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --file /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01/addition.json
+une définition ne peut importer un état validé
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py add /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --file /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01/addition.json
+une définition ne peut importer un état validé
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py add /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --file /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01/addition.json
+une définition ne peut importer un état validé
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py add /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --file /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01/addition.json
+cycle dans les dépendances
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py add /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --file /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01/addition.json
+dépendance inconnue ou réflexive
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/final-edges/project --scope empty --output /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01/empty-proof.json -- /usr/bin/python3 -c print('not a code test')
+périmètre de code vide
+EXIT 2
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py changed /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T04
+empty/new.py
+EXIT 0
+ALL FINAL EDGE ASSERTIONS PASSED

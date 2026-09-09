@@ -1,0 +1,167 @@
+[
+  {
+    "args": [
+      "shell",
+      "tools/inventaire.py"
+    ],
+    "seconds": 0.86,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "f76e612ec9963389b8400594218dd87d76eb7be3faeb62ad117215c3898cc122",
+    "project_sha256": "a738a13c3b1eaf5600f23bb382a57a576bf60ca51029f3a75f48a9b0c1ce8d13"
+  },
+  {
+    "args": [
+      "shell",
+      "tools/inventaire.py"
+    ],
+    "seconds": 1.86,
+    "exit_code": 0,
+    "log": "bridge-001.log",
+    "sha256": "b09a6cda5c82156500f499165c59b86ab8fcdf564d51d99d933f9133ef2b27eb",
+    "project_sha256": "6678ed7c1e866aa9a37725bb3cf8322ee31665a60cb6e846cdabb76e0488d1b3"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick",
+      "--tags",
+      "/lab_dispatch:TestLabDispatchRecalculate"
+    ],
+    "seconds": 13.9,
+    "exit_code": 1,
+    "log": "bridge-002.log",
+    "sha256": "d04a8bb7fb970fe714a1ce0eddc805abc17d18e7de80d423e1d1d504f66621c1",
+    "project_sha256": "2bf56ab6a43d81dee68a05171990727231dac4425dcac26d757257bd76c257d7",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 7,
+      "summaries": [
+        {
+          "failed": 4,
+          "errors": 0,
+          "tests": 5
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick",
+      "--tags",
+      "/lab_dispatch:TestLabDispatchRecalculate"
+    ],
+    "seconds": 6.67,
+    "exit_code": 0,
+    "log": "bridge-003.log",
+    "sha256": "d88e895c5966f8f73568d169040e6972c727efe760eb21942ced235bd36620bf",
+    "project_sha256": "6f1a8ec2f1db0d54baac864f486422dd3125e3714ab7583681a9eda337073ccf",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 7,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 5
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 4.36,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "fe734f2417012af33d18c325e5df06867da4a9f1eadb8a7d6eebdc1af84fa258",
+    "project_sha256": "3be1a975f0a88a15fdc7b0647b9bdfd7b557e745aeb5ceb1325c670248c2cf2b"
+  },
+  {
+    "args": [
+      "shell",
+      "tools/inventaire.py"
+    ],
+    "seconds": 1.2,
+    "exit_code": 0,
+    "log": "bridge-005.log",
+    "sha256": "45b5491babe39bc38215558a1e6417fb362d71a68d816cea84281283129a7397",
+    "project_sha256": "d19cd5a7c93e9a5c3b2ca0f06a6c83cbf154e69566f1f42175d4479610a7559e"
+  },
+  {
+    "args": [
+      "shell",
+      "tools/rejouer_reprise.py"
+    ],
+    "seconds": 0.93,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "6a90d0ab4ef1d8ab68fff4022862a78a45741a75e4f94e5b8b14c60498834028",
+    "project_sha256": "e959c63b11b2a7c30fc8191948f4122dc1c163eeca9e083f95f5552941bb9c39"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 4.25,
+    "exit_code": 0,
+    "log": "bridge-007.log",
+    "sha256": "851cde901dbd21cb51eee36dce0133f4e0621a241755d16d525ca9185a13264e",
+    "project_sha256": "d968b4ca6bbd89fb687e9134a94206b0d96abf39ada2c62107c9f25ffbd4e201"
+  },
+  {
+    "args": [
+      "shell",
+      "tools/inventaire.py"
+    ],
+    "seconds": 0.9,
+    "exit_code": 0,
+    "log": "bridge-008.log",
+    "sha256": "194d2a12941600b0e3184accd541a68c96fde5f104ac360e6358e50ce1d44397",
+    "project_sha256": "381e1d9b3ec1457fc726bc17ef1e045292dc8a3a81b7f8e461962f811adc5996"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--fresh"
+    ],
+    "seconds": 22.45,
+    "exit_code": 0,
+    "log": "bridge-009.log",
+    "sha256": "699427b551ddc30d608c17753dfae7af2d19c2a9bc185e1d5599e80ae642b8f6",
+    "project_sha256": "7049c825ed1f5edf404eb45ade25810196a1d0745b66a310e23b85af516eb5ad",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 7,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 5
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "tools/controle_copie.py"
+    ],
+    "seconds": 1.12,
+    "exit_code": 0,
+    "log": "bridge-010.log",
+    "sha256": "6083e7a298023a55d9000a9006ec56df76c159418dc58823c503c483125c1a25",
+    "project_sha256": "f7fbe40e89cc5d91c5eed0e5711be58fcc068066ca7205c7b1b5b54d398e98c8"
+  }
+]

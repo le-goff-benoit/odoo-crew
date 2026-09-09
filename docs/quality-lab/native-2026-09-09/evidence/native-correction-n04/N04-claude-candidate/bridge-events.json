@@ -1,0 +1,82 @@
+[
+  {
+    "args": [
+      "shell",
+      "_probe.py"
+    ],
+    "seconds": 1.43,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "44bbba12f1a81b99bfda1bd6bd87f81954fcd34e2f96eb72ab729050cbde4fba",
+    "project_sha256": "d3e8f682f8f7bb33edb6c0021ae62ea6744069fe97acab5667d3e4adac565a93"
+  },
+  {
+    "args": [
+      "shell",
+      "_probe.py"
+    ],
+    "seconds": 1.36,
+    "exit_code": 0,
+    "log": "bridge-001.log",
+    "sha256": "a040bdfe7d238155dc5dc993820b3a877fc8e5388640d642cc09f5eddcdb17fb",
+    "project_sha256": "6ca0981e568406900c418d25dd9d9560f41649c5c13d1851983d19535d6538d5"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestDaysConstraint"
+    ],
+    "seconds": 13.44,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "e9dc84c85e741d0d693a120cb5bbf63769242eaa80d1bb3dd268b47e9a31422e",
+    "project_sha256": "da0d797ab7035e16d4b60e166362daa576828f50382ef83a6716a62b6a7a8fef",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 9,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 7
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "_seed.py"
+    ],
+    "seconds": 0.91,
+    "exit_code": 0,
+    "log": "bridge-003.log",
+    "sha256": "7868e00ca8c2d7dfaab5c54e259d37f5d8b181bd0e3f006330fde1e98e01618e",
+    "project_sha256": "876d94955f8020dda2c5cde6ebbe32fbc521c385a5921f6c70c996c593d70f24"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.37,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "4aeb8db55a9630af48e5397a0ebee9a58a2fcbc5ab4401a53907ecb6677ae686",
+    "project_sha256": "876d94955f8020dda2c5cde6ebbe32fbc521c385a5921f6c70c996c593d70f24"
+  },
+  {
+    "args": [
+      "shell",
+      "_verif.py"
+    ],
+    "seconds": 0.88,
+    "exit_code": 0,
+    "log": "bridge-005.log",
+    "sha256": "bb4dbac340c2fca602bca0e4526cbc6a04bb7de3a3c53dd556fb899266d5678e",
+    "project_sha256": "476c8f284039a8ef6d2b9d153f463d272b45b99dc6a03f360d602ef6e2002f18"
+  }
+]

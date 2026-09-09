@@ -1,0 +1,5 @@
+# Demande
+
+<!-- Copier chaque demande telle quelle, datée. Ne pas reformuler. -->
+
+Applique /odoo-new : corrige action_recalculate de lab.dispatch et reprends les brouillons existants sur la copie synthétique. Le montant stocké inclut actuellement les lignes annulées et l'action écrase les dossiers validés. Le contrat est dans decisions/2026-09-08.md. Tu es autorisé à corriger et rejouer la reprise sur cette copie locale uniquement. Produis le test rouge du défaut, la correction, une preuve de reprise idempotente, la QA sensible et le journal ; laisse la release ouverte.

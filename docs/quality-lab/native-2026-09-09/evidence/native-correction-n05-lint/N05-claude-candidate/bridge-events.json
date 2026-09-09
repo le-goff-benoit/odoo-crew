@@ -1,0 +1,190 @@
+[
+  {
+    "args": [
+      "shell",
+      "tools/inventaire.py"
+    ],
+    "seconds": 1.44,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "ef123b350264a31b272ce55bf44d3640ebb8cec62a0109a1f55eb365e20acadf",
+    "project_sha256": "a5160dde904fa11ec1f486681f2d05942b850a889127685d3f13443968296bdb"
+  },
+  {
+    "args": [
+      "shell",
+      "tools/lignes.py"
+    ],
+    "seconds": 1.35,
+    "exit_code": 0,
+    "log": "bridge-001.log",
+    "sha256": "742dd3a8a5258f0ff92da866187b5c4cbdc17fa19737679feb3976dbb3611a55",
+    "project_sha256": "2be5ed0804e3a1d102d0fbda07690170f6e92129b9e97c42f1ca414a69f04d92"
+  },
+  {
+    "args": [
+      "shell",
+      "tools/inventaire.py"
+    ],
+    "seconds": 0.99,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "753ec8b65d5c472dd546c1bb5f8cc3dab7d3675d48ecd3717538f9168c247e86",
+    "project_sha256": "3afa92c7a460ad7ed02df4f9dda08390b38a883cbb65f4659c38741464118bda"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick",
+      "--tags",
+      "/lab_dispatch:TestRecalculate,/lab_dispatch:TestReprise"
+    ],
+    "seconds": 14.04,
+    "exit_code": 1,
+    "log": "bridge-003.log",
+    "sha256": "2a823c2795ea6d8beb5ff2cd6467935da0c912575263146921aa71eb1eee68a8",
+    "project_sha256": "39258f85a75fabf48e663651e7213ea843a15fdf03d9bbcb0e205d94f077b085",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 11,
+      "summaries": [
+        {
+          "failed": 3,
+          "errors": 3,
+          "tests": 7
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "lint",
+      "lab_dispatch"
+    ],
+    "seconds": 0.7,
+    "exit_code": 1,
+    "log": "bridge-004.log",
+    "sha256": "744bd5cf414d01f38823ee28c4f2e1a286484991d2b080f27dce9c70fa49f1c3",
+    "project_sha256": "70aa46a03df59449ca5cc39fc012ddd00a8579a70ad0d83d4725eda363366926"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_dispatch"
+    ],
+    "seconds": 0.66,
+    "exit_code": 1,
+    "log": "bridge-005.log",
+    "sha256": "f84276cd53e5d7ac686f8a927c8aebe8cb2a5735101fa7575bc68b6f513fc8be",
+    "project_sha256": "622fceb4d93e6d753aa8ec92ff99a0adaca0b0a9d639d891a74ab4763637c5f0"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick",
+      "--tags",
+      "/lab_dispatch:TestRecalculate,/lab_dispatch:TestReprise"
+    ],
+    "seconds": 5.42,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "e536c2073e36cf576f2ac02b61c315e38107dcbd6c3837de1722e9c1661a681b",
+    "project_sha256": "622fceb4d93e6d753aa8ec92ff99a0adaca0b0a9d639d891a74ab4763637c5f0",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 11,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 7
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "tools/etat.py"
+    ],
+    "seconds": 0.87,
+    "exit_code": 0,
+    "log": "bridge-007.log",
+    "sha256": "573189f7449415d307656dfb88f0bdc82ae721c939371413a8df53d138459dbc",
+    "project_sha256": "0b3187d5dc0d9c6d1aa08bb19fffa3b0ce093890d8a31dc6876915c669a73b13"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.31,
+    "exit_code": 0,
+    "log": "bridge-008.log",
+    "sha256": "54408fd276fc8297e63ba176987c58f5aedce1e5c6799d0560c09da1d0b1760b",
+    "project_sha256": "0b3187d5dc0d9c6d1aa08bb19fffa3b0ce093890d8a31dc6876915c669a73b13"
+  },
+  {
+    "args": [
+      "shell",
+      "tools/etat.py"
+    ],
+    "seconds": 0.87,
+    "exit_code": 0,
+    "log": "bridge-009.log",
+    "sha256": "855adfa087737e1b1bbb08595f4fc8ec2a05e08d78e3327ba874712d9b265b16",
+    "project_sha256": "0b3187d5dc0d9c6d1aa08bb19fffa3b0ce093890d8a31dc6876915c669a73b13"
+  },
+  {
+    "args": [
+      "shell",
+      "tools/rejeu.py"
+    ],
+    "seconds": 0.87,
+    "exit_code": 0,
+    "log": "bridge-010.log",
+    "sha256": "5cb8e68a836be27ba111871b3e5ab84994ab5261dea62b1045e5b24874c86af5",
+    "project_sha256": "091f9fe3431eb46e0fa0d07065ee0b3698677e44c69515569e93d73d36a78e0f"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--fresh"
+    ],
+    "seconds": 19.26,
+    "exit_code": 0,
+    "log": "bridge-011.log",
+    "sha256": "af068d15d41cb22ac444ce2633c2122562c2314b7127ade73726c6282a424651",
+    "project_sha256": "30908c39abe9b863324b6032cac65069521bb303db99e7ff763f67cfa3326018",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 11,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 7
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "changelog/2026-09-09_01_recalcul-fiable-des-dossiers-de-dispatch/preuves/scripts/controle_final.py"
+    ],
+    "seconds": 0.94,
+    "exit_code": 0,
+    "log": "bridge-012.log",
+    "sha256": "c1c9a54ee1380540a40d95e41e747843af69bc79449b29d407639dbe63870299",
+    "project_sha256": "d39e28a7ebd3180bf3ffcc242729bd76f6090effc3b4243f7979bd4f4ab10299"
+  }
+]

@@ -1,0 +1,140 @@
+{
+  "claims": {},
+  "created_at": "2026-09-09T01:37:26+00:00",
+  "events": [
+    {
+      "at": "2026-09-09T01:37:38+00:00",
+      "emitted": [
+        "functional_review"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/frais-preparation-d03/briefing.md"
+      ],
+      "node": "briefing",
+      "note": "D-03 remplace D-02 dans la release ouverte 2026-09-09_01",
+      "outcome": "development"
+    },
+    {
+      "at": "2026-09-09T01:39:24+00:00",
+      "emitted": [
+        "module_implementation"
+      ],
+      "evidence": [
+        "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/revue_fonctionnelle.md"
+      ],
+      "node": "functional_review",
+      "note": "Point n°2 : D-03, voie module, QA normale (0 enregistrement recompté sur lab_client)",
+      "outcome": "module"
+    },
+    {
+      "at": "2026-09-09T01:40:33+00:00",
+      "emitted": [
+        "module_static_qa",
+        "module_runtime_qa"
+      ],
+      "evidence": [
+        "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/preuves/lint_changed_d03.log"
+      ],
+      "node": "module_implementation",
+      "note": "Constantes D-03 (15 EUR / 5 jours), 11 tests réécrits, rouge prouvé 6/11 avant correctif",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:41:51+00:00",
+      "emitted": [
+        "module_task_gate"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/frais-preparation-d03/module_static_qa.md"
+      ],
+      "node": "module_static_qa",
+      "note": "lint 0 erreur, diff conforme au périmètre",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:41:51+00:00",
+      "emitted": [
+        "module_task_gate"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/frais-preparation-d03/module_runtime_qa.md"
+      ],
+      "node": "module_runtime_qa",
+      "note": "11/11 verts, 6/11 rouges avant correctif, 5/5 témoins sur lab_client",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:42:25+00:00",
+      "emitted": [
+        "journal_task"
+      ],
+      "evidence": [
+        "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/qa.md"
+      ],
+      "node": "module_task_gate",
+      "note": "10/10 critères, 11/11 tests, verdict VALIDÉ pour D-03",
+      "outcome": "pass"
+    },
+    {
+      "at": "2026-09-09T01:43:04+00:00",
+      "emitted": [
+        "task_done"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/JOURNAL.md"
+      ],
+      "node": "journal_task",
+      "note": "Entrée de journal + PROJECT.md : D-03 en vigueur, D-02 morte, 2 pièges ajoutés",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:43:04+00:00",
+      "emitted": [],
+      "evidence": [
+        "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/qa.md"
+      ],
+      "node": "task_done",
+      "note": "Point n°2 VALIDÉ, release laissée ouverte",
+      "outcome": "done"
+    }
+  ],
+  "graph": "/home/blegoff/.odoo19-agents/workflows/odoo-workflow.json",
+  "graph_sha256": "83cd9b08dc9ee2c7abcd320afe5a899e73e7a7fc8757072ba03aca0ea5cca715",
+  "kind": "development",
+  "node_counts": {
+    "briefing": 1,
+    "functional_review": 1,
+    "journal_task": 1,
+    "module_implementation": 1,
+    "module_runtime_qa": 1,
+    "module_static_qa": 1,
+    "module_task_gate": 1,
+    "task_done": 1
+  },
+  "outcome_counts": {
+    "briefing:development": 1,
+    "functional_review:module": 1,
+    "journal_task:done": 1,
+    "module_implementation:done": 1,
+    "module_runtime_qa:done": 1,
+    "module_static_qa:done": 1,
+    "module_task_gate:pass": 1,
+    "task_done:done": 1
+  },
+  "project": "/work",
+  "run_id": "frais-preparation-d03",
+  "schema_version": 1,
+  "start_pending": false,
+  "status": "complete",
+  "tokens": {
+    "brief-development": 0,
+    "journal-task-done": 0,
+    "module-gate-pass": 0,
+    "module-runtime": 0,
+    "module-runtime-gate": 0,
+    "module-static": 0,
+    "module-static-gate": 0,
+    "review-module": 0
+  },
+  "updated_at": "2026-09-09T01:43:04+00:00"
+}

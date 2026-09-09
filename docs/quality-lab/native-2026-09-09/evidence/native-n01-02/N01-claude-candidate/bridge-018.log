@@ -1,0 +1,259 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-5622f025d0-db-1  Running
+
+══ 0b. Base neuve : lab_qa ═══════════════════════════════════════════════════
+   ⏱ 1s
+
+══ 1. QA de tâche : -i lab_rental + tests (/lab_rental:TestPreparationFee) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-09 01:37:22,783 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:37:22,783 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:37:22,783 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:37:22,783 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:37:22,784 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:37:22,784 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:37:22,956 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on ae0671315fa8:8069 
+2026-09-09 01:37:22,967 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-09 01:37:22,985 1 INFO lab_qa odoo.modules.loading: Initializing database lab_qa 
+2026-09-09 01:37:24,163 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:37:24,163 1 INFO lab_qa odoo.modules.loading: Loading module base (1/1) 
+2026-09-09 01:37:24,181 1 INFO lab_qa odoo.registry: module base: creating or updating database tables 
+2026-09-09 01:37:24,310 1 INFO lab_qa odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-09 01:37:24,311 1 INFO lab_qa odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-09 01:37:24,311 1 INFO lab_qa odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-09 01:37:24,353 1 INFO lab_qa odoo.models: Prepare computation of res.partner.user_id 
+2026-09-09 01:37:24,354 1 INFO lab_qa odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-09 01:37:24,354 1 INFO lab_qa odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-09 01:37:24,354 1 INFO lab_qa odoo.models: Prepare computation of res.partner.lang 
+2026-09-09 01:37:24,354 1 INFO lab_qa odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-09 01:37:24,354 1 INFO lab_qa odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-09 01:37:24,354 1 INFO lab_qa odoo.models: Prepare computation of res.partner.properties 
+2026-09-09 01:37:24,354 1 INFO lab_qa odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-09 01:37:24,368 1 INFO lab_qa odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-09 01:37:24,377 1 INFO lab_qa odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-09 01:37:24,378 1 INFO lab_qa odoo.models: Prepare computation of res.company.logo_web 
+2026-09-09 01:37:24,378 1 INFO lab_qa odoo.models: Computing parent_path for table res_company... 
+2026-09-09 01:37:24,389 1 INFO lab_qa odoo.models: Prepare computation of res.users.signature 
+2026-09-09 01:37:24,389 1 INFO lab_qa odoo.models: Prepare computation of res.users.share 
+2026-09-09 01:37:25,104 1 INFO lab_qa odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-09 01:37:25,107 1 INFO lab_qa odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-09 01:37:25,127 1 INFO lab_qa odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-09 01:37:25,144 1 INFO lab_qa odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-09-09 01:37:25,165 1 INFO lab_qa odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-09-09 01:37:25,388 1 INFO lab_qa odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-09-09 01:37:25,393 1 INFO lab_qa odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-09-09 01:37:25,950 1 INFO lab_qa odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-09-09 01:37:25,957 1 INFO lab_qa odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-09-09 01:37:26,293 1 INFO lab_qa odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-09-09 01:37:26,300 1 INFO lab_qa odoo.modules.loading: loading base/security/base_groups.xml 
+2026-09-09 01:37:26,453 1 INFO lab_qa odoo.modules.loading: loading base/security/base_security.xml 
+2026-09-09 01:37:26,596 1 INFO lab_qa odoo.modules.loading: loading base/wizard/wizard_ir_model_menu_create_views.xml 
+2026-09-09 01:37:26,603 1 INFO lab_qa odoo.modules.loading: loading base/views/base_menus.xml 
+2026-09-09 01:37:26,636 1 INFO lab_qa odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-09-09 01:37:26,644 1 INFO lab_qa odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-09-09 01:37:26,647 1 INFO lab_qa odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-09-09 01:37:26,816 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-09-09 01:37:26,905 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-09-09 01:37:26,915 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-09-09 01:37:26,924 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-09-09 01:37:26,942 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-09-09 01:37:26,951 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-09-09 01:37:26,964 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-09-09 01:37:26,978 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-09-09 01:37:27,062 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-09-09 01:37:27,080 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-09-09 01:37:27,093 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-09-09 01:37:27,112 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-09-09 01:37:27,124 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-09-09 01:37:27,154 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-09-09 01:37:27,168 1 INFO lab_qa odoo.modules.loading: loading base/data/ir_config_parameter_data.xml 
+2026-09-09 01:37:27,171 1 INFO lab_qa odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-09-09 01:37:27,181 1 INFO lab_qa odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-09-09 01:37:27,186 1 INFO lab_qa odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-09-09 01:37:27,195 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-09-09 01:37:27,211 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-09-09 01:37:27,223 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-09-09 01:37:27,266 1 INFO lab_qa odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-09-09 01:37:27,299 1 INFO lab_qa odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-09-09 01:37:27,322 1 INFO lab_qa odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-09-09 01:37:27,325 1 INFO lab_qa odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-09-09 01:37:27,330 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-09-09 01:37:27,341 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-09-09 01:37:27,352 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-09-09 01:37:27,362 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-09-09 01:37:27,374 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-09-09 01:37:27,380 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-09-09 01:37:27,387 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-09-09 01:37:27,397 1 INFO lab_qa odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-09-09 01:37:27,406 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-09-09 01:37:27,417 1 INFO lab_qa odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-09-09 01:37:27,429 1 INFO lab_qa odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-09-09 01:37:27,442 1 INFO lab_qa odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-09-09 01:37:27,516 1 INFO lab_qa odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-09-09 01:37:27,544 1 INFO lab_qa odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-09-09 01:37:27,576 1 INFO lab_qa odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-09-09 01:37:27,610 1 INFO lab_qa odoo.modules.loading: loading base/views/res_groups_views.xml 
+2026-09-09 01:37:27,645 1 INFO lab_qa odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-09-09 01:37:27,720 1 INFO lab_qa odoo.modules.loading: loading base/views/res_users_apikeys_views.xml 
+2026-09-09 01:37:27,725 1 INFO lab_qa odoo.modules.loading: loading base/views/res_device_views.xml 
+2026-09-09 01:37:27,744 1 INFO lab_qa odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-09-09 01:37:27,750 1 INFO lab_qa odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-09-09 01:37:27,757 1 INFO lab_qa odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-09-09 01:37:27,780 1 INFO lab_qa odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-09-09 01:37:27,944 1 INFO lab_qa odoo.modules.loading: Module base loaded in 3.78s, 8374 queries (+8374 other) 
+2026-09-09 01:37:27,944 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 3.78s, 8374 queries (+8374 extra) 
+2026-09-09 01:37:27,946 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-09 01:37:27,947 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:37:29,141 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:37:29,201 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:37:29,201 1 INFO lab_qa odoo.modules.loading: Loading module lab_rental (2/21) 
+2026-09-09 01:37:29,205 1 INFO lab_qa odoo.registry: module lab_rental: creating or updating database tables 
+2026-09-09 01:37:29,235 1 INFO lab_qa odoo.modules.loading: loading lab_rental/security/ir.model.access.csv 
+2026-09-09 01:37:29,249 1 INFO lab_qa odoo.modules.loading: Module lab_rental loaded in 0.05s, 53 queries (+53 other) 
+2026-09-09 01:37:29,249 1 INFO lab_qa odoo.modules.loading: Loading module rpc (3/21) 
+2026-09-09 01:37:29,264 1 INFO lab_qa odoo.modules.loading: Module rpc loaded in 0.01s, 10 queries (+10 other) 
+2026-09-09 01:37:29,264 1 INFO lab_qa odoo.modules.loading: Loading module web (4/21) 
+2026-09-09 01:37:29,291 1 INFO lab_qa odoo.registry: module web: creating or updating database tables 
+2026-09-09 01:37:29,584 1 INFO lab_qa odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-09-09 01:37:29,591 1 INFO lab_qa odoo.modules.loading: loading web/security/web_security.xml 
+2026-09-09 01:37:29,600 1 INFO lab_qa odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-09-09 01:37:29,651 1 INFO lab_qa odoo.modules.loading: loading web/views/report_templates.xml 
+2026-09-09 01:37:29,735 1 INFO lab_qa odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-09-09 01:37:29,749 1 INFO lab_qa odoo.modules.loading: loading web/views/partner_view.xml 
+2026-09-09 01:37:29,755 1 INFO lab_qa odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-09-09 01:37:29,759 1 INFO lab_qa odoo.modules.loading: loading web/views/memory_template.xml 
+2026-09-09 01:37:29,764 1 INFO lab_qa odoo.modules.loading: loading web/views/speedscope_config_wizard.xml 
+2026-09-09 01:37:29,770 1 INFO lab_qa odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-09-09 01:37:29,778 1 INFO lab_qa odoo.modules.loading: loading web/views/ir_ui_view_views.xml 
+2026-09-09 01:37:29,787 1 INFO lab_qa odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-09-09 01:37:29,790 1 INFO lab_qa odoo.modules.loading: loading web/data/report_layout.xml 
+2026-09-09 01:37:29,833 1 INFO lab_qa odoo.modules.loading: Module web loaded in 0.57s, 1237 queries (+1237 other) 
+2026-09-09 01:37:29,833 1 INFO lab_qa odoo.modules.loading: Loading module api_doc (5/21) 
+2026-09-09 01:37:29,837 1 INFO lab_qa odoo.registry: module api_doc: creating or updating database tables 
+2026-09-09 01:37:29,851 1 INFO lab_qa odoo.modules.loading: loading api_doc/security/res_groups.xml 
+2026-09-09 01:37:29,870 1 INFO lab_qa odoo.modules.loading: loading api_doc/views/docclient.xml 
+2026-09-09 01:37:29,886 1 INFO lab_qa odoo.modules.loading: Module api_doc loaded in 0.05s, 63 queries (+63 other) 
+2026-09-09 01:37:29,886 1 INFO lab_qa odoo.modules.loading: Loading module auth_totp (6/21) 
+2026-09-09 01:37:29,899 1 INFO lab_qa odoo.registry: module auth_totp: creating or updating database tables 
+2026-09-09 01:37:29,953 1 INFO lab_qa odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-09-09 01:37:29,971 1 INFO lab_qa odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-09-09 01:37:29,976 1 INFO lab_qa odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-09-09 01:37:29,983 1 INFO lab_qa odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-09-09 01:37:30,008 1 INFO lab_qa odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-09-09 01:37:30,013 1 INFO lab_qa odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-09-09 01:37:30,034 1 INFO lab_qa odoo.modules.loading: Module auth_totp loaded in 0.15s, 218 queries (+218 other) 
+2026-09-09 01:37:30,034 1 INFO lab_qa odoo.modules.loading: Loading module base_import (7/21) 
+2026-09-09 01:37:30,054 1 INFO lab_qa odoo.registry: module base_import: creating or updating database tables 
+2026-09-09 01:37:30,314 1 INFO lab_qa odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-09-09 01:37:30,322 1 INFO lab_qa odoo.modules.loading: Module base_import loaded in 0.29s, 961 queries (+961 other) 
+2026-09-09 01:37:30,322 1 INFO lab_qa odoo.modules.loading: Loading module base_import_module (8/21) 
+2026-09-09 01:37:30,327 1 INFO lab_qa odoo.registry: module base_import_module: creating or updating database tables 
+2026-09-09 01:37:30,367 1 INFO lab_qa odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-09-09 01:37:30,370 1 INFO lab_qa odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-09-09 01:37:30,380 1 INFO lab_qa odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-09-09 01:37:30,407 1 INFO lab_qa odoo.modules.loading: Module base_import_module loaded in 0.08s, 172 queries (+172 other) 
+2026-09-09 01:37:30,407 1 INFO lab_qa odoo.modules.loading: Loading module base_setup (9/21) 
+2026-09-09 01:37:30,412 1 INFO lab_qa odoo.registry: module base_setup: creating or updating database tables 
+2026-09-09 01:37:30,435 1 INFO lab_qa odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-09-09 01:37:30,438 1 INFO lab_qa odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-09-09 01:37:30,455 1 INFO lab_qa odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-09-09 01:37:30,466 1 INFO lab_qa odoo.modules.loading: Module base_setup loaded in 0.06s, 152 queries (+152 other) 
+2026-09-09 01:37:30,466 1 INFO lab_qa odoo.modules.loading: Loading module bus (10/21) 
+2026-09-09 01:37:30,475 1 INFO lab_qa odoo.registry: module bus: creating or updating database tables 
+2026-09-09 01:37:30,524 1 INFO lab_qa odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-09-09 01:37:30,532 1 INFO lab_qa odoo.modules.loading: Module bus loaded in 0.07s, 159 queries (+159 other) 
+2026-09-09 01:37:30,532 1 INFO lab_qa odoo.modules.loading: Loading module web_cohort (11/21) 
+2026-09-09 01:37:30,553 1 INFO lab_qa odoo.registry: module web_cohort: creating or updating database tables 
+2026-09-09 01:37:30,793 1 INFO lab_qa odoo.modules.loading: Module web_cohort loaded in 0.26s, 947 queries (+947 other) 
+2026-09-09 01:37:30,794 1 INFO lab_qa odoo.modules.loading: Loading module web_gantt (12/21) 
+2026-09-09 01:37:30,815 1 INFO lab_qa odoo.registry: module web_gantt: creating or updating database tables 
+2026-09-09 01:37:31,024 1 INFO lab_qa odoo.modules.loading: Module web_gantt loaded in 0.23s, 943 queries (+943 other) 
+2026-09-09 01:37:31,024 1 INFO lab_qa odoo.modules.loading: Loading module web_grid (13/21) 
+2026-09-09 01:37:31,045 1 INFO lab_qa odoo.registry: module web_grid: creating or updating database tables 
+2026-09-09 01:37:31,259 1 INFO lab_qa odoo.modules.loading: Module web_grid loaded in 0.23s, 943 queries (+943 other) 
+2026-09-09 01:37:31,259 1 INFO lab_qa odoo.modules.loading: Loading module web_tour (14/21) 
+2026-09-09 01:37:31,263 1 INFO lab_qa odoo.registry: module web_tour: creating or updating database tables 
+2026-09-09 01:37:31,265 1 INFO lab_qa odoo.models: Prepare computation of res.users.tour_enabled 
+2026-09-09 01:37:31,304 1 INFO lab_qa odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-09-09 01:37:31,307 1 INFO lab_qa odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-09-09 01:37:31,330 1 INFO lab_qa odoo.modules.loading: Module web_tour loaded in 0.07s, 180 queries (+180 other) 
+2026-09-09 01:37:31,330 1 INFO lab_qa odoo.modules.loading: Loading module auth_passkey (15/21) 
+2026-09-09 01:37:31,348 1 INFO lab_qa odoo.registry: module auth_passkey: creating or updating database tables 
+2026-09-09 01:37:31,380 1 INFO lab_qa odoo.modules.loading: loading auth_passkey/views/auth_passkey_key_views.xml 
+2026-09-09 01:37:31,390 1 INFO lab_qa odoo.modules.loading: loading auth_passkey/views/auth_passkey_login_templates.xml 
+2026-09-09 01:37:31,398 1 INFO lab_qa odoo.modules.loading: loading auth_passkey/views/res_users_identitycheck_views.xml 
+2026-09-09 01:37:31,404 1 INFO lab_qa odoo.modules.loading: loading auth_passkey/views/res_users_views.xml 
+2026-09-09 01:37:31,414 1 INFO lab_qa odoo.modules.loading: loading auth_passkey/security/ir.model.access.csv 
+2026-09-09 01:37:31,417 1 INFO lab_qa odoo.modules.loading: loading auth_passkey/security/security.xml 
+2026-09-09 01:37:31,429 1 INFO lab_qa odoo.modules.loading: Module auth_passkey loaded in 0.10s, 218 queries (+218 other) 
+2026-09-09 01:37:31,429 1 INFO lab_qa odoo.modules.loading: Loading module html_editor (16/21) 
+2026-09-09 01:37:31,525 1 INFO lab_qa odoo.registry: module html_editor: creating or updating database tables 
+2026-09-09 01:37:31,837 1 INFO lab_qa odoo.modules.loading: loading html_editor/security/ir.model.access.csv 
+2026-09-09 01:37:31,846 1 INFO lab_qa odoo.modules.loading: Module html_editor loaded in 0.42s, 1035 queries (+1035 other) 
+2026-09-09 01:37:31,846 1 INFO lab_qa odoo.modules.loading: Loading module iap (17/21) 
+2026-09-09 01:37:31,848 1 INFO lab_qa odoo.registry: module iap: creating or updating database tables 
+2026-09-09 01:37:31,880 1 INFO lab_qa odoo.modules.loading: loading iap/data/services.xml 
+2026-09-09 01:37:31,882 1 INFO lab_qa odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-09-09 01:37:31,886 1 INFO lab_qa odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-09-09 01:37:31,890 1 INFO lab_qa odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-09-09 01:37:31,904 1 INFO lab_qa odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-09-09 01:37:31,916 1 INFO lab_qa odoo.modules.loading: Module iap loaded in 0.07s, 182 queries (+182 other) 
+2026-09-09 01:37:31,916 1 INFO lab_qa odoo.modules.loading: Loading module web_enterprise (18/21) 
+2026-09-09 01:37:31,922 1 INFO lab_qa odoo.registry: module web_enterprise: creating or updating database tables 
+2026-09-09 01:37:31,943 1 INFO lab_qa odoo.modules.loading: loading web_enterprise/views/webclient_templates.xml 
+2026-09-09 01:37:31,951 1 INFO lab_qa odoo.modules.loading: loading web_enterprise/views/res_users_views.xml 
+2026-09-09 01:37:31,968 1 INFO lab_qa odoo.modules.loading: Module web_enterprise loaded in 0.05s, 113 queries (+113 other) 
+2026-09-09 01:37:31,968 1 INFO lab_qa odoo.modules.loading: Loading module web_map (19/21) 
+2026-09-09 01:37:31,995 1 INFO lab_qa odoo.registry: module web_map: creating or updating database tables 
+2026-09-09 01:37:32,002 1 INFO lab_qa odoo.models: Prepare computation of res.partner.contact_address_complete 
+2026-09-09 01:37:32,240 1 INFO lab_qa odoo.modules.loading: loading web_map/views/res_config_settings.xml 
+2026-09-09 01:37:32,250 1 INFO lab_qa odoo.modules.loading: loading web_map/views/res_partner_views.xml 
+2026-09-09 01:37:32,265 1 INFO lab_qa odoo.modules.loading: Module web_map loaded in 0.30s, 1064 queries (+1064 other) 
+2026-09-09 01:37:32,265 1 INFO lab_qa odoo.modules.loading: Loading module web_mobile (20/21) 
+2026-09-09 01:37:32,270 1 INFO lab_qa odoo.registry: module web_mobile: creating or updating database tables 
+2026-09-09 01:37:32,297 1 INFO lab_qa odoo.modules.loading: loading web_mobile/views/views.xml 
+2026-09-09 01:37:32,319 1 INFO lab_qa odoo.modules.loading: Module web_mobile loaded in 0.05s, 83 queries (+83 other) 
+2026-09-09 01:37:32,319 1 INFO lab_qa odoo.modules.loading: Loading module web_unsplash (21/21) 
+2026-09-09 01:37:32,324 1 INFO lab_qa odoo.registry: module web_unsplash: creating or updating database tables 
+2026-09-09 01:37:32,345 1 INFO lab_qa odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-09-09 01:37:32,363 1 INFO lab_qa odoo.modules.loading: Module web_unsplash loaded in 0.04s, 93 queries (+93 other) 
+2026-09-09 01:37:32,363 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 3.16s, 8826 queries (+8826 extra) 
+2026-09-09 01:37:32,472 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-09 01:37:32,475 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:37:32,475 1 INFO lab_qa odoo.registry: Registry loaded in 9.518s 
+2026-09-09 01:37:32,475 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-09 01:37:32,487 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_fee_amount_and_threshold_are_the_ones_of_d03 ... 
+2026-09-09 01:37:32,487 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_fee_does_not_depend_on_the_daily_rate ... 
+2026-09-09 01:37:32,490 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_fee_follows_days_and_kind_changes ... 
+2026-09-09 01:37:32,492 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_fee_is_flat_not_proportional ... 
+2026-09-09 01:37:32,493 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_loan_at_threshold_never_carries_the_fee ... 
+2026-09-09 01:37:32,494 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_loan_never_carries_the_fee ... 
+2026-09-09 01:37:32,495 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_rental_above_threshold_carries_the_fee ... 
+2026-09-09 01:37:32,496 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_rental_at_former_threshold_is_free_of_fee ... 
+2026-09-09 01:37:32,497 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_rental_below_threshold_is_free_of_fee ... 
+2026-09-09 01:37:32,498 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_rental_well_above_threshold_carries_the_fee ... 
+2026-09-09 01:37:32,500 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_stored_value_is_written_in_database ... 
+2026-09-09 01:37:32,502 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 10 checked, 0 removed 
+2026-09-09 01:37:32,502 1 INFO lab_qa odoo.service.server: 11 post-tests in 0.03s, 69 queries 
+2026-09-09 01:37:32,502 1 INFO lab_qa odoo.tests.stats: lab_rental: 13 tests 0.02s 69 queries 
+2026-09-09 01:37:32,502 1 INFO lab_qa odoo.tests.result: 0 failed, 0 error(s) of 11 tests when loading database 'lab_qa' 
+2026-09-09 01:37:32,502 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-09 01:37:32,502 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:37:32,514 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+{"valid": true, "reasons": [], "module_tests": 13, "summaries": [{"failed": 0, "errors": 0, "tests": 11}]}
+✅ -i + tests OK
+   ⏱ 10s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 0
+tests échoués  : 0
+tests ignorés  : 0
+WARNING liés à lab_rental : 0
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": true, "reasons": [], "module_tests": 13, "summaries": [{"failed": 0, "errors": 0, "tests": 11}]}
+RECETTE module=lab_rental db=lab_qa install=ok update=n.a. uninstall=n.a. tests="0 failed, 0 error(s) of 11 tests" errors=0 failed=0 skipped=0 warnings=0 total=11s base=1s quick=10s
+
+Log complet   : /home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-candidate/backend/stack/artifacts/lab_rental-20260909-033721.1rYDVL.log
+Captures      : /home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-candidate/backend/stack/artifacts/
+✅ lab_rental : installation, tests et logs propres

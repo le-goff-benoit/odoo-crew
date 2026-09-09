@@ -1,0 +1,115 @@
+{
+  "case": "N03",
+  "run": "N03-claude-candidate",
+  "review": "Revue indépendante de contexte, non aveugle. Lecture seule du contrat, des artefacts du run et du rejeu externe autorisé. Aucun rôle, rapport tiers ni code exécuté ; aucune modification du banc.",
+  "criteria": {
+    "K1": {
+      "verdict": "pass",
+      "reason": "D-22 (7 inclus et rental seulement) remplace D-21 ; seul le champ demandé est ajouté, les trois champs antérieurs restent présents. Aucun arbitrage Q1/Q2 redemandé.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/studio/pack.json:9-39",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/revue_fonctionnelle.md:66",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/qa/1_etat_final.log:1-8"
+      ]
+    },
+    "D1": {
+      "verdict": "pass",
+      "reason": "Compute boolean stocké exact, dépendances days/kind déclarées. Table de vérité et changements des dépendances exécutés en ORM ; rejeu externe du pack confirme bornes 5/6/7/8, prêt 9, stockage et dépendances. Aucun module custom ajouté par le pack, aucune vue.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/studio/pack.json:37-39",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/bridge-007.log:17-34",
+        "/home/blegoff/odoo-quality-runs/native-pack-replay-01/results.json"
+      ]
+    },
+    "Q1": {
+      "verdict": "pass",
+      "reason": "XML-RPC réellement joué pour la configuration (12 contrôles), export par XML ID et deux apply sans doublon prouvés. La table de vérité métier a été jouée en ORM superutilisateur, pas via RPC, car ACL absentes ; limite explicitement annoncée. Rejeu indépendant du pack inchangé sur base fraîche : création puis inchangé et oracles vrais deux fois.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/qa/1_rpc_apres.log:1-17",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/qa/1_pack_double_application.log:7-18",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/studio/build_1_needs_review.py:84-98",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/studio/rpc_common.py:33-42",
+        "/home/blegoff/odoo-quality-runs/native-pack-replay-01/apply-1.log",
+        "/home/blegoff/odoo-quality-runs/native-pack-replay-01/apply-2.log",
+        "/home/blegoff/odoo-quality-runs/native-pack-replay-01/results.json"
+      ]
+    },
+    "W1": {
+      "verdict": "pass",
+      "reason": "Revue de voie Studio, contrainte safe_eval, QA/journal et flow réels, release ouverte. Réponse distingue RPC configuration et ORM métier, absence ACL et écran ; aucune capture/guide ni déploiement revendiqué. Réserve sur robustesse des scénarios livrés ci-dessous.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/revue_fonctionnelle.md:58-71",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/answer-0.md:21-40",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/qa.md:68-79",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/.odoo-agents/JOURNAL.md:11-30",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/.odoo-agents/flows/needs-review.json"
+      ]
+    }
+  },
+  "pack_portability": {
+    "verdict": "pass_with_prerequisite",
+    "records": 1,
+    "relation": "model_id = {ref: studio_customization.lab_seed_model}",
+    "numeric_database_references": false,
+    "existing_model_prerequisite": "La cible doit déjà porter le modèle et ses champs initiaux, avec XML ID studio_customization.lab_seed_model. C’est la précondition explicite du cas, pas un pack créant le modèle.",
+    "external_pack_identical": true,
+    "external_apply_1": "1 créé / 0 modifié / 0 inchangé",
+    "external_apply_2": "0 créé / 0 modifié / 1 inchangé",
+    "external_oracles": "Les dix checks sont vrais après chacun des deux apply ; résultats séparés de la revue.",
+    "evidence": [
+      "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/studio/pack.json:10-18",
+      "/home/blegoff/odoo-quality-runs/native-pack-replay-01/pack.json",
+      "/home/blegoff/odoo-quality-runs/native-pack-replay-01/results.json"
+    ]
+  },
+  "findings": [
+    {
+      "severity": "medium",
+      "type": "test_exit_status",
+      "text": "Scénario ORM imprime ROUGE mais ne lève aucune erreur et ne retourne pas de code non nul. Le premier passage champ absent est rouge dans bridge-001.log mais exit_code=0 dans bridge-events.json. Le parcours a lu les logs et n’en tire pas un faux vert final ; une automatisation fondée seulement sur le code retour manquerait un échec futur.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/studio/test_1_needs_review_orm.py:40-43",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/studio/test_1_needs_review_orm.py:106-108",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/bridge-001.log:16-18",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/bridge-events.json"
+      ]
+    },
+    {
+      "severity": "medium",
+      "type": "rpc_failure_masking",
+      "text": "Le scénario XML-RPC attrape tout Exception de search_count et saute les scénarios métier ; seule une AccessError attendue devrait déclencher cette voie. Le log observé montre bien le refus ACL attendu, donc pas un problème métier caché dans ce run, mais une panne différente serait aussi traitée comme limite ACL lors d’un rejeu.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/studio/test_1_needs_review.py:97-105",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/qa/1_rpc_apres.log:14-17"
+      ]
+    },
+    {
+      "severity": "minor",
+      "type": "cleanup_scope",
+      "text": "Le nettoyage ORM supprime aussi tout enregistrement dont le nom contient reprise ou — recette, pas seulement les IDs créés par ce test. Aucun dommage constaté sur la copie synthétique vide initialement ; script à restreindre avant emploi sur un autre jeu de données.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/studio/test_1_needs_review_orm.py:97-101"
+      ]
+    },
+    {
+      "severity": "limit_disclosed",
+      "type": "access",
+      "text": "Pas d’ACL ni de vue sur le modèle : indicateur vérifié côté serveur et ORM administrateur, pas utilisable par les utilisateurs normaux dans un écran. Conforme à la demande de ne changer ni droits ni écrans ; ce n’est pas une mise en service.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/answer-0.md:11-13",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/qa.md:70-79"
+      ]
+    },
+    {
+      "severity": "minor",
+      "type": "initial_field_assertion_scope",
+      "text": "RPC confirme unicité, noms et XML IDs des champs initiaux, mais son assertion ne compare pas toutes leurs propriétés initiales (ttype/store récupérés mais non vérifiés). Le pack n’écrit aucun de ces champs et le rejeu externe original_fields=true soutient leur préservation.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/studio/test_1_needs_review.py:82-95",
+        "/home/blegoff/odoo-quality-runs/native-main-01/N03-claude-candidate/project/changelog/2026-09-09_01_indicateur-de-revue-requise-sur-les-dema/studio/pack.json",
+        "/home/blegoff/odoo-quality-runs/native-pack-replay-01/results.json"
+      ]
+    }
+  ],
+  "conclusion": "Pack métier correct et réellement rejouable dans la précondition du cas ; preuves indépendantes après deux applications. Réserves de qualité des scénarios de test (sortie ORM, catch RPC, nettoyage), sans les confondre avec les oracles verts ou une validation utilisateur en production."
+}

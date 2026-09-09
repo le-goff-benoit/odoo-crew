@@ -1,0 +1,28 @@
+2026-09-09 01:35:36,795 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:35:36,796 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:35:36,796 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:35:36,796 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:35:36,796 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:35:36,955 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:35:36,955 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:35:36,970 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:35:36,974 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:35:36,979 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:35:37,085 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.11s, 0 queries (+0 extra) 
+2026-09-09 01:35:37,109 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:35:37,118 1 INFO lab_client odoo.registry: Registry loaded in 0.163s 
+id | name | kind | days | rate | amount_total
+1 | Location 5 jours | rental | 5 | 10.0 | 62.0
+2 | Location 4 jours (borne) | rental | 4 | 10.0 | 52.0
+3 | Location 3 jours | rental | 3 | 10.0 | 30.0
+4 | Location 4 jours tarif nul | rental | 4 | 0.0 | 12.0
+5 | Pret 10 jours | loan | 10 | 10.0 | 100.0
+6 | Pret 4 jours (borne) | loan | 4 | 10.0 | 40.0
+7 | Location 0 jour | rental | 0 | 10.0 | 0.0
+total_general = 296.0
+nb = 7
+attendu: enregistrements impactes = 3 delta = -21.0
+   (1, 'Location 5 jours', 5, 12.0, 15.0, 3.0)
+   (2, 'Location 4 jours (borne)', 4, 12.0, 0.0, -12.0)
+   (4, 'Location 4 jours tarif nul', 4, 12.0, 0.0, -12.0)
+version installee du module: 19.0.1.1.0

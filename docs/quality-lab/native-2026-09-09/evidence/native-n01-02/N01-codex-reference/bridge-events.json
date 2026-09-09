@@ -1,0 +1,326 @@
+[
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/preparation/inventory.py"
+    ],
+    "seconds": 0.97,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "c01748729396f7e70fd7d964adde11fda5137571d57fa7b9502a808e224d56af",
+    "project_sha256": "1c884a1370cacf966b39fb6f05d3eca2702e9267b54811f4af12fc4daf9d98d0"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/preuves/prepare_copy.py"
+    ],
+    "seconds": 0.92,
+    "exit_code": 1,
+    "log": "bridge-001.log",
+    "sha256": "e33583607667c2df51306864e3465767b5d9cf66d6d7b7cbabf2c098fffbb63e",
+    "project_sha256": "c35245971bc0afe7aa2cfc7075653a04864a856639163f29afc4eb53e3750917"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/preuves/prepare_copy.py"
+    ],
+    "seconds": 0.99,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "720086a8238003dfe0c5aed88037230262f248ad8d17ea2e4ff094792c20fde1",
+    "project_sha256": "0ec5ab23b2c2a4e793899a8b26699b6bcd970fa324a58d32e3a426776cefac59"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestPreparation"
+    ],
+    "seconds": 13.37,
+    "exit_code": 0,
+    "log": "bridge-003.log",
+    "sha256": "5d28e5d611717aa94fdb66056cb3a103dcb5bb487d7a3d39ea2aa2d65320c95e",
+    "project_sha256": "3c9ade0eaaefe49396986775d0e57276452bbe4fb73c2cd5ed57c0859047da9e",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "zéro test exécuté",
+        "aucun test du module cible prouvé"
+      ],
+      "module_tests": 0,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 0
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--fresh",
+      "--tags",
+      "/lab_rental:TestPreparation"
+    ],
+    "seconds": 11.61,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "e88f4802210964c40b7dd5c731d49b5389f4823cd09c272e27ce2f8ccef06a34",
+    "project_sha256": "e2e56634b7d197ef12719f427d6717d1e45f50788f89141faa0a3d1b737ca65e",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "zéro test exécuté",
+        "aucun test du module cible prouvé"
+      ],
+      "module_tests": 0,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 0
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--tags",
+      "/lab_rental:TestPreparation"
+    ],
+    "seconds": 6.47,
+    "exit_code": 1,
+    "log": "bridge-005.log",
+    "sha256": "a77baa147366ad904ace4091a42c5e571d59caf5fe3db5151f4299b7f4b736cf",
+    "project_sha256": "f02e844d7416e834f15d3042d58a35d16fdc914bbba203f13abfcf08b15dd0f1",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 10,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 4,
+          "tests": 8
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestPreparation"
+    ],
+    "seconds": 4.12,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "1378cf9b7822941d0a8091aa64f177226ee805ac26366ed15e1bef5bc1492a50",
+    "project_sha256": "bd69c843409c3fc82a6bbf6737d3ef6fb50dae48058d0d8a0711e134b902debd",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 10,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 8
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.46,
+    "exit_code": 0,
+    "log": "bridge-007.log",
+    "sha256": "84f7ae21697518a174573cc914ebd595c803fae16e05d0d8c3ec7863a39445b6",
+    "project_sha256": "15a43360218687fb8c9e450790c2bbc400002b2928c493886d72c9ffa6b4cfd0"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/preuves/validate_copy.py"
+    ],
+    "seconds": 0.92,
+    "exit_code": 0,
+    "log": "bridge-008.log",
+    "sha256": "b41ee640006642e1d4600e60a689d886cda02337f7afe21cfa0cc090001b9b2f",
+    "project_sha256": "861ca97a519c041efd6a90fa6c63226314ae9c9657096b2441091bf908c7a095"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/preuves/verify_copy.py"
+    ],
+    "seconds": 0.91,
+    "exit_code": 0,
+    "log": "bridge-009.log",
+    "sha256": "001fc86f2eb61d2e09e0273674beebeb382467bd48f4a4306914f9264763ff2e",
+    "project_sha256": "3d55c5e1515a197a17a1996dc8b8950dac1361883219dea7d129e10fecbffad6"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/preuves/d03/inventory.py"
+    ],
+    "seconds": 0.9,
+    "exit_code": 0,
+    "log": "bridge-010.log",
+    "sha256": "43cdf8ba81bb0b042a5c93d6f00738f638d41e7a05f309699a43669e5ce3becc",
+    "project_sha256": "af5e9f1d3e4f0895ebbad7d52568d6e2c27462fd12ccb842647a9d86051bb799"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/preuves/d03/prepare_copy.py"
+    ],
+    "seconds": 0.96,
+    "exit_code": 0,
+    "log": "bridge-011.log",
+    "sha256": "90ea02a3ecea8019bfe6bfc5a956185fa3cfcbea6dd713aff3e3ba721d2631ea",
+    "project_sha256": "5a0e1535af0006b53a3de274343b94d347715ff7011e4e7af109efb0e48b6f9a"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestPreparation"
+    ],
+    "seconds": 6.58,
+    "exit_code": 1,
+    "log": "bridge-012.log",
+    "sha256": "c1417ab0d5624c397a86442ac4551cf61d3105f2ca473f01c03ba5c4a6c11195",
+    "project_sha256": "1d0e1aaf78e33f3743f321ff9e68e23777215910e234bdc48ea8c921b496b01b",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 10,
+      "summaries": [
+        {
+          "failed": 7,
+          "errors": 0,
+          "tests": 8
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestPreparation"
+    ],
+    "seconds": 4.12,
+    "exit_code": 0,
+    "log": "bridge-013.log",
+    "sha256": "de93079f614c2a35ac6ff63d29d5b0318132a3b84ccd9c19dfa5d864bbdf8738",
+    "project_sha256": "73e41d4ea8e3f58487634e081cecf641afecd23ac65c050e40908fa6dfb33350",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 10,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 8
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 6.14,
+    "exit_code": 0,
+    "log": "bridge-014.log",
+    "sha256": "2d9524ac5f9079e32b70e4d84e4bca23dcc99cd93dc59f3278b1a128e39d0fd4",
+    "project_sha256": "b662e946abc1261443e966d93505cbb47dfa669238e4c4b2d829fc09199dc3c3"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/preuves/d03/validate_copy.py"
+    ],
+    "seconds": 0.88,
+    "exit_code": 1,
+    "log": "bridge-015.log",
+    "sha256": "f4d9fcc5d5a4ff958e5e08caae62761d60d7ce981eb1d8d44a819978c5000c33",
+    "project_sha256": "c99d8a3ba4dc366271ab0ca28857bb4f61f7f4d1f9492471a2ea5244454ef1be"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestPreparation"
+    ],
+    "seconds": 7.14,
+    "exit_code": 0,
+    "log": "bridge-016.log",
+    "sha256": "c4c73f0a89103ec381bfc9800a1ac8070eced676d99295c9ea5da0dd4125c229",
+    "project_sha256": "2e374e11ff239cf5585fb1ca2bbd919b72d907442013b4ecea40c265c1e2907a",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 10,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 8
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/preuves/d03/validate_copy_v2.py"
+    ],
+    "seconds": 1.1,
+    "exit_code": 0,
+    "log": "bridge-017.log",
+    "sha256": "38eacd8c3643f70037fbbeb5715586196626a74c057c7f85deae00c7a5059f2e",
+    "project_sha256": "01cf5b731929bff440b21db3e18673542b0e14047f3aaa908309326504150f98"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/preuves/d03/verify_copy_v2.py"
+    ],
+    "seconds": 1.23,
+    "exit_code": 0,
+    "log": "bridge-018.log",
+    "sha256": "a2675d188660ce4b762ca4504fe04bf44598381c73d01a082fbf7b022079aa28",
+    "project_sha256": "c246e57678a0ce4c0cb546fd74baf490a1cde793efefdd2851d3d53c73c4be07"
+  }
+]

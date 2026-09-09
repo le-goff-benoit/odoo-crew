@@ -1,0 +1,62 @@
+{
+  "case": "N01",
+  "provider": "codex",
+  "config": {
+    "model": "gpt-6-astra",
+    "effort": "high"
+  },
+  "status": "executed",
+  "turns": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 520.34,
+      "usage": {
+        "input_tokens": 1418782,
+        "cached_input_tokens": 1345024,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 14346,
+        "reasoning_output_tokens": 972
+      },
+      "actual_model": null,
+      "tool_calls": 54,
+      "provider_completed": true,
+      "error": null,
+      "answer_sha256": "d38e38c3087bf87595cf980000a298350f9caf3ea3b53cebbc43628386101711"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 545.42,
+      "usage": {
+        "input_tokens": 1975547,
+        "cached_input_tokens": 1897856,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 14015,
+        "reasoning_output_tokens": 367
+      },
+      "actual_model": null,
+      "tool_calls": 39,
+      "provider_completed": true,
+      "error": null,
+      "answer_sha256": "ca56308c530fd259a3cb2389b79dbda12bca69715d1237fc1955d7f36e1b8c20"
+    }
+  ],
+  "active_turn": 1,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "4_rental": true,
+      "5_rental": true,
+      "6_rental": true,
+      "7_loan": true,
+      "0_rental": true,
+      "dependencies": true,
+      "stored": true
+    },
+    "passed": true,
+    "log_sha256": "02b398d6aaa524e448bf6affc8751c043dc0d24824f10f75f49d6b8d8aa0c5b5",
+    "log": "oracle-000.log"
+  },
+  "review": null
+}

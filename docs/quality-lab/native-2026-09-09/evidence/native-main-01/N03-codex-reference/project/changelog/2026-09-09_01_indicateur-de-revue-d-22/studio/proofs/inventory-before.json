@@ -1,0 +1,247 @@
+{
+  "version": {
+    "server_version": "19.0+e-20260817",
+    "server_version_info": [
+      19,
+      0,
+      0,
+      "final",
+      0,
+      "e"
+    ],
+    "server_serie": "19.0",
+    "protocol_version": 1
+  },
+  "models": [
+    {
+      "id": 422,
+      "model": "x_lab_request",
+      "state": "manual",
+      "name": "Demande Aster"
+    }
+  ],
+  "fields": [
+    {
+      "id": 3731,
+      "name": "create_date",
+      "ttype": "datetime",
+      "state": "base",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "model_id": [
+        422,
+        "Demande Aster"
+      ],
+      "readonly": true,
+      "field_description": "Created on"
+    },
+    {
+      "id": 3730,
+      "name": "create_uid",
+      "ttype": "many2one",
+      "state": "base",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "model_id": [
+        422,
+        "Demande Aster"
+      ],
+      "readonly": true,
+      "field_description": "Created by"
+    },
+    {
+      "id": 3729,
+      "name": "display_name",
+      "ttype": "char",
+      "state": "base",
+      "store": false,
+      "compute": false,
+      "depends": false,
+      "model_id": [
+        422,
+        "Demande Aster"
+      ],
+      "readonly": true,
+      "field_description": "Display Name"
+    },
+    {
+      "id": 3728,
+      "name": "id",
+      "ttype": "integer",
+      "state": "base",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "model_id": [
+        422,
+        "Demande Aster"
+      ],
+      "readonly": true,
+      "field_description": "ID"
+    },
+    {
+      "id": 3733,
+      "name": "write_date",
+      "ttype": "datetime",
+      "state": "base",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "model_id": [
+        422,
+        "Demande Aster"
+      ],
+      "readonly": true,
+      "field_description": "Last Updated on"
+    },
+    {
+      "id": 3732,
+      "name": "write_uid",
+      "ttype": "many2one",
+      "state": "base",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "model_id": [
+        422,
+        "Demande Aster"
+      ],
+      "readonly": true,
+      "field_description": "Last Updated by"
+    },
+    {
+      "id": 3734,
+      "name": "x_name",
+      "ttype": "char",
+      "state": "manual",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "model_id": [
+        422,
+        "Demande Aster"
+      ],
+      "readonly": false,
+      "field_description": "x_name"
+    },
+    {
+      "id": 3736,
+      "name": "x_studio_days",
+      "ttype": "integer",
+      "state": "manual",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "model_id": [
+        422,
+        "Demande Aster"
+      ],
+      "readonly": false,
+      "field_description": "x_studio_days"
+    },
+    {
+      "id": 3738,
+      "name": "x_studio_kind",
+      "ttype": "selection",
+      "state": "manual",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "model_id": [
+        422,
+        "Demande Aster"
+      ],
+      "readonly": false,
+      "field_description": "x_studio_kind"
+    }
+  ],
+  "xmlids": [
+    {
+      "id": 26984,
+      "module": "studio_customization",
+      "name": "lab_seed_model",
+      "model": "ir.model",
+      "res_id": 422,
+      "studio": true,
+      "noupdate": true
+    },
+    {
+      "id": 26981,
+      "module": "studio_customization",
+      "name": "lab_seed_x_name",
+      "model": "ir.model.fields",
+      "res_id": 3734,
+      "studio": true,
+      "noupdate": true
+    },
+    {
+      "id": 26982,
+      "module": "studio_customization",
+      "name": "lab_seed_x_studio_days",
+      "model": "ir.model.fields",
+      "res_id": 3736,
+      "studio": true,
+      "noupdate": true
+    },
+    {
+      "id": 26983,
+      "module": "studio_customization",
+      "name": "lab_seed_x_studio_kind",
+      "model": "ir.model.fields",
+      "res_id": 3738,
+      "studio": true,
+      "noupdate": true
+    }
+  ],
+  "access": [],
+  "field_metadata": {
+    "id": {
+      "required": false,
+      "type": "integer"
+    },
+    "display_name": {
+      "required": false,
+      "type": "char"
+    },
+    "create_uid": {
+      "required": false,
+      "type": "many2one"
+    },
+    "create_date": {
+      "required": false,
+      "type": "datetime"
+    },
+    "write_uid": {
+      "required": false,
+      "type": "many2one"
+    },
+    "write_date": {
+      "required": false,
+      "type": "datetime"
+    },
+    "x_name": {
+      "required": false,
+      "type": "char"
+    },
+    "x_studio_days": {
+      "required": false,
+      "type": "integer"
+    },
+    "x_studio_kind": {
+      "required": false,
+      "selection": [
+        [
+          "rental",
+          "Location"
+        ],
+        [
+          "loan",
+          "Prêt"
+        ]
+      ],
+      "type": "selection"
+    }
+  }
+}

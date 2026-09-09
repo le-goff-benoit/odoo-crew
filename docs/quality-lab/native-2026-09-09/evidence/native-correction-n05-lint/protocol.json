@@ -1,0 +1,92 @@
+{
+  "schema": 1,
+  "created_at": "2026-09-09T01:32:02.536504+00:00",
+  "revisions": {
+    "reference": "5868225db499eeeaa3fa26ba56b12145d0463aeb",
+    "candidate": "c1eb5e8bc9434e5158012f6f0bcbcbfdb6657263"
+  },
+  "config": {
+    "codex": {
+      "model": "gpt-6-astra",
+      "effort": "high"
+    },
+    "claude": {
+      "model": "opus",
+      "effort": "medium"
+    }
+  },
+  "timeout": 900,
+  "workers": 2,
+  "cases": {
+    "N05": "f28a8fc671b8824976bac153f76a3b98c65f167b0b14d351298e9b31fd3280e3"
+  },
+  "runner": "48f32643bee748265452e62826a709fcd48510f9d34fa885ae26a882f03f2084",
+  "corpus": {
+    "cases/N01/case.json": "de4bb4de81f13d0ac84a6f471e6dc8efddae199f5e452cc4993deefa6e47fbf6",
+    "cases/N01/project/.odoo-agents/JOURNAL.md": "22fd4e7efe03b0267ce0cf6f9709f4e6ae4325ab617425ae53a3fcc770977cc2",
+    "cases/N01/project/.odoo-agents/PROJECT.md": "4e824ec0e023ee0b66d78f1b97b8ef3bcec3cd5ccc43ec43cfa4e834e6ee8e0d",
+    "cases/N01/project/.odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+    "cases/N01/project/decisions/2026-09-08.md": "bb2f63985c09f27d7c8ee0905c8b2e4f61e04ebd52ef24dd7eb67e1d5b93b54d",
+    "cases/N01/project/demande.md": "2e327e1632435465f914a10c56c0bf09197426c407fab2ed682af2ff39dcf9ac",
+    "cases/N01/project/lab_rental/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+    "cases/N01/project/lab_rental/__manifest__.py": "5e7900398e39fce48777430bdba33f779ed11406b13f1e46129535bae60dec1f",
+    "cases/N01/project/lab_rental/models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+    "cases/N01/project/lab_rental/models/business.py": "7a5269e82a4ce89491978f1363fcc49099690df7800a4a30685de240a336ace4",
+    "cases/N01/project/lab_rental/security/ir.model.access.csv": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6",
+    "cases/N02/case.json": "28eb2ff8c676a9edd7d7d4cb233824ec4368c3518e0dec6ae075f326bb77a958",
+    "cases/N02/project/.odoo-agents/JOURNAL.md": "655427224b8f43de3aa1a62eef464eb23d3508bcf6dfedb88f5539413021e3b4",
+    "cases/N02/project/.odoo-agents/PROJECT.md": "b86546ed890c9bf3882c5a7c589bb6261c862119fa601acf867c3a83d934f9e0",
+    "cases/N02/project/.odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+    "cases/N02/project/decisions/2026-09-08.md": "18ba37af061018954610d27966fe905c581d9e4d44915d85aead55364cab425c",
+    "cases/N02/project/demande.md": "9a8d8d7065d1602e22dde763afd55e378dc434dba9352727f8c32dcb8c36d970",
+    "cases/N02/project/lab_dispatch/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+    "cases/N02/project/lab_dispatch/__manifest__.py": "15d10346f456fc9f1091f1da7237f52812753e3607dac87dfe4a0a301dbbf1cd",
+    "cases/N02/project/lab_dispatch/models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+    "cases/N02/project/lab_dispatch/models/business.py": "705c54b0a448aa5cdef23f25176699b5c3d9ea3a0bdf12ce991303acf6bf8912",
+    "cases/N02/project/lab_dispatch/security/ir.model.access.csv": "7b0b268f572e338740e60a7bb5cc40ecfb1bb106cccb356ffaaf014c92d3ee90",
+    "cases/N03/case.json": "e9ac6ca8f7edba320df82d247fa9b81f78215a4a783085ce14392c8ec6c87fa0",
+    "cases/N03/project/.odoo-agents/JOURNAL.md": "7b1f07157126aed21f02ecd5a6321e3f8c0b3cdf31456846aa70431503e9625b",
+    "cases/N03/project/.odoo-agents/PROJECT.md": "75e69609c6b01a908b66efcac397370544709d28ed5a29d3a9ba9559addb9dee",
+    "cases/N03/project/.odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+    "cases/N03/project/decisions/2026-09-08.md": "a3f3586292c3e2e7c6fb6e3257f2871c3fb9c4695cb149996eb84e9bc219c2cf",
+    "cases/N03/project/demande.md": "24d789353edb5886464f4aa4867c991a3f58f56383e70fffca6e782fad95dc7f",
+    "cases/N04/case.json": "3122dc20f77f6939efff18a590fad661670fe0255fe60c2ebb42db600b19b07e",
+    "cases/N04/project/.odoo-agents/JOURNAL.md": "881feeed0c11b67ff12d77371f83cde50092fe8f3852b9294e4ef789501fb673",
+    "cases/N04/project/.odoo-agents/PROJECT.md": "f6f6efeddfe014910db47507c58b0f994382de8f712a246a259de31c1203e996",
+    "cases/N04/project/.odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+    "cases/N04/project/decisions/2026-09-08.md": "51e298ea60157466a088a8116cc7dc5404ebb87da0784293005b4bcc120b752b",
+    "cases/N04/project/demande.md": "581abfa49072bf81ec2d0a3e40892a181ba7c0e2a556ae2f6a44369939331496",
+    "cases/N04/project/lab_rental/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+    "cases/N04/project/lab_rental/__manifest__.py": "5e7900398e39fce48777430bdba33f779ed11406b13f1e46129535bae60dec1f",
+    "cases/N04/project/lab_rental/models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+    "cases/N04/project/lab_rental/models/business.py": "7a5269e82a4ce89491978f1363fcc49099690df7800a4a30685de240a336ace4",
+    "cases/N04/project/lab_rental/security/ir.model.access.csv": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6",
+    "cases/N05/case.json": "3ed95c51e5298dbf07866d96264fcaf0e60e3a2ae8fada46eecb87ce50c90403",
+    "cases/N05/project/.odoo-agents/JOURNAL.md": "655427224b8f43de3aa1a62eef464eb23d3508bcf6dfedb88f5539413021e3b4",
+    "cases/N05/project/.odoo-agents/PROJECT.md": "b86546ed890c9bf3882c5a7c589bb6261c862119fa601acf867c3a83d934f9e0",
+    "cases/N05/project/.odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+    "cases/N05/project/decisions/2026-09-08.md": "18ba37af061018954610d27966fe905c581d9e4d44915d85aead55364cab425c",
+    "cases/N05/project/demande.md": "9a8d8d7065d1602e22dde763afd55e378dc434dba9352727f8c32dcb8c36d970",
+    "cases/N05/project/lab_dispatch/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+    "cases/N05/project/lab_dispatch/__manifest__.py": "15d10346f456fc9f1091f1da7237f52812753e3607dac87dfe4a0a301dbbf1cd",
+    "cases/N05/project/lab_dispatch/models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+    "cases/N05/project/lab_dispatch/models/business.py": "705c54b0a448aa5cdef23f25176699b5c3d9ea3a0bdf12ce991303acf6bf8912",
+    "cases/N05/project/lab_dispatch/security/ir.model.access.csv": "7b0b268f572e338740e60a7bb5cc40ecfb1bb106cccb356ffaaf014c92d3ee90",
+    "oracles/N01_check.py": "1a801a780805093de207b40de27768a52dc56b39abd938fd7fcca9c98c2df0ad",
+    "oracles/N01_seed.py": "9a131f2665ed879d27ade811fb46aea10df28d828eaeb21cec58895c54a2b59b",
+    "oracles/N02_check.py": "254c39fb72ea58e25f5d7812127ba18d8fb704de586b298ea9f86ff36b499d61",
+    "oracles/N02_seed.py": "aa4e87f3a5f6c31b6aed46fc2cdcdb00ba9919fdb25e8f7bb803410d1bb2e852",
+    "oracles/N03_check.py": "4580171f4667ee2dda8ee5105a92369df2bdbe89ac90efe2bf715b65e9213b0f",
+    "oracles/N03_seed.py": "4c560afd82de44411aa0396b3e43f0c91441ceb0ece209586ed238694ca82dda",
+    "oracles/N04_check.py": "87448f4b5fe1dfc441e700508b36f5446141646c0a75355993e762c18a0c3792",
+    "oracles/N04_seed.py": "9a131f2665ed879d27ade811fb46aea10df28d828eaeb21cec58895c54a2b59b",
+    "oracles/N05_check.py": "65f8d1d2ff5273134b93db9b304a445b7119d1affecdaa0cf9400ec89aeb5597",
+    "oracles/N05_seed.py": "a0fb181c063882958119cca01df57ad3f357188862519765b56e32665697c507"
+  },
+  "limitations": [
+    "Un orchestrateur applique les rôles, délégation non mesurée.",
+    "Transport Odoo via pont supervisé ; accès aux profils et outils natifs.",
+    "Une répétition, comparaison du lot complet, pas effet causal de chaque correction.",
+    "Clôture et navigateur hors de ces tâches ; pas de production."
+  ]
+}

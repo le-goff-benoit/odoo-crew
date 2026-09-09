@@ -1,0 +1,106 @@
+{
+  "case": "N01",
+  "run": "N01-codex-candidate",
+  "review": "Revue indépendante de contexte, non aveugle, sans classement. Lecture seule du contrat et des artefacts du run ; aucun code candidat exécuté, aucun rôle ni rapport externe consulté.",
+  "criteria": {
+    "K1": {
+      "verdict": "pass",
+      "reason": "D-03 remplace explicitement D-02 qui remplace D-01 ; le seuil courant est 5 inclus, forfait 15, prêts exclus. Questions déjà tranchées non rouvertes dans les livrables. QA locale nettement distinguée du déploiement.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/.odoo-agents/PROJECT.md:44-48",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/changelog/2026-09-09_01_frais-de-preparation-des-locations/revue_fonctionnelle.md:51-69",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/answer-1.md:1-13"
+      ]
+    },
+    "D1": {
+      "verdict": "pass",
+      "reason": "Compute stocké et dépendances days/daily_rate/kind corrects. Tests vérifient notamment 4→40, 5→65, 6→75, prêts sans frais, variations indépendantes des trois dépendances et décimales. Assertions de stockage après flush et invalidation. Reprise réelle des témoins D-02 persistés, puis relecture en sessions distinctes.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/lab_rental/models/business.py:12-20",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/lab_rental/tests/test_preparation_fee.py:9-88",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/lab_rental/tests/common.py:12-19",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/bridge-015.log:14",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/bridge-017.log:14",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/oracle.log:14"
+      ]
+    },
+    "Q1": {
+      "verdict": "pass",
+      "reason": "D-03 possède un vrai rouge contre D-02 (11 échecs d’assertions/subtests dans 8 méthodes), puis 8/8 verts sur installation fraîche et 8/8 lors de update/suite du module. Ce ne sont pas les preuves D-02 recyclées. Lint complet disponible, update lab_client et deux reprises contrôlées.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/bridge-011.log:143-172",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/bridge-012.log:237-252",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/bridge-013.log:44-59",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/.odoo-agents/flow-artifacts/preparation-d03/lint-green.log",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/bridge-016.log:14",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/bridge-018.log:14",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/changelog/2026-09-09_01_frais-de-preparation-des-locations/qa.md:43-62"
+      ]
+    },
+    "W1": {
+      "verdict": "pass",
+      "reason": "Revue, code, QA et journal présents. Deux points dans la même release toujours ouverte. Deux flows terminés, le premier conservé intact. Réponse finale fidèle aux résultats ; aucune prétention de livraison. Nettoyage annoncé confirmé par suppression puis inventaire vide.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/changelog/2026-09-09_01_frais-de-preparation-des-locations/README.md:9-16",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/.odoo-agents/JOURNAL.md:23-32",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/.odoo-agents/flows/preparation.json",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/.odoo-agents/flows/preparation-d03.json",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/answer-1.md:1-13",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/bridge-020.log:14-15",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/bridge-021.log:14"
+      ]
+    }
+  },
+  "initial_oracle": {
+    "4_rental": true,
+    "5_rental": true,
+    "6_rental": true,
+    "7_loan": true,
+    "0_rental": true,
+    "dependencies": true,
+    "stored": true,
+    "evidence": "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/oracle.log:14"
+  },
+  "archive_verification": {
+    "method": "Comparaison byte-à-byte en lecture seule, effectuée par le relecteur.",
+    "observed": "30 fichiers de after-0/.odoo-agents/flow-artifacts/preparation inchangés dans project. Ancien flow preparation.json identique. business-d02.py, tests-d02.py et recompute-d02.py correspondent exactement aux trois fichiers actifs de after-0.",
+    "evidence": [
+      "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/after-0/.odoo-agents/flow-artifacts/preparation",
+      "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/.odoo-agents/flow-artifacts/preparation",
+      "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/.odoo-agents/flow-artifacts/preparation-d03/business-d02.py",
+      "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/.odoo-agents/flow-artifacts/preparation-d03/tests-d02.py",
+      "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/.odoo-agents/flow-artifacts/preparation-d03/recompute-d02.py"
+    ],
+    "interpretation": "Conservation réelle de D-02, pas seulement affirmation narrative. Le code actif et les mémoires désignent D-03 ; preuves historiques explicitement marquées."
+  },
+  "findings": [
+    {
+      "severity": "minor",
+      "type": "wording",
+      "text": "Un libellé de critère indique passages 4→5 et 5→4 retirent/ajoutent le forfait : ordre verbal inversé. La formule immédiatement précédente, les tests et la réponse finale sont corrects ; aucune erreur métier effective.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/changelog/2026-09-09_01_frais-de-preparation-des-locations/revue_fonctionnelle.md:67",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/lab_rental/tests/test_preparation_fee.py:57-59"
+      ]
+    },
+    {
+      "severity": "limit_explicitly_disclosed",
+      "text": "Copie initialement vide ; preuves de reprise sur sept témoins synthétiques créés sous D-02, aucune validation de données client réelles. Conformité au banc, pas un défaut.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/changelog/2026-09-09_01_frais-de-preparation-des-locations/qa.md:77",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/bridge-010.log:14"
+      ]
+    },
+    {
+      "severity": "limit_explicitly_disclosed",
+      "text": "Le vert est une QA de tâche locale ; recette de clôture, tours, captures, désinstallation et livraison restent hors de ce résultat. Les warnings du pont sont explicitement distingués du compteur filtré warnings=0.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/project/changelog/2026-09-09_01_frais-de-preparation-des-locations/qa.md:75-79",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/answer-1.md:13"
+      ]
+    }
+  ],
+  "false_green": "Aucun faux vert final constaté. Les 11 échecs du rouge sont compatibles avec des subtests dans 8 méthodes, pas un compte inventé. Le lint partiel initial est conservé puis remplacé par un vrai lint complet.",
+  "cost": "Aucune procédure coûteuse inutile démontrée. La nouvelle QA après changement D-03 et la reprise explicite sont justifiées ; le log après update prouve que les totaux D-02 subsistaient.",
+  "context_limit": "Les artefacts établissent une seconde exécution/flow et une mémoire reprise correctement ; la création effective d’un contexte modèle neuf relève du lanceur, pas prouvable indépendamment à partir des seuls artefacts métier lus."
+}

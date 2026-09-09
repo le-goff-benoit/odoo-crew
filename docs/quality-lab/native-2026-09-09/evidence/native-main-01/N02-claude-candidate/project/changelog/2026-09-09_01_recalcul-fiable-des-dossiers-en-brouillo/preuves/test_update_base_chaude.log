@@ -1,0 +1,61 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-7b75baa1b9-db-1  Running
+
+══ 1. QA de tâche : -u lab_dispatch + tests (/lab_dispatch:TestLabDispatchRecalculate) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-09 01:06:46,934 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:06:46,934 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:06:46,935 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:06:46,935 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:06:46,935 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:06:46,935 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:06:47,122 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 8a0d712693f9:8069 
+2026-09-09 01:06:47,133 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-09 01:06:47,148 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:06:47,153 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:06:47,167 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-09 01:06:47,168 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:06:48,335 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Entrepôt Silex — recalcul des demandes en cours'] to user __system__ #1 via n/a 
+2026-09-09 01:06:48,336 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Entrepôt Silex — recalcul des demandes en cours'] to user __system__ #1 via n/a 
+2026-09-09 01:06:49,379 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:06:49,398 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:06:49,398 1 INFO lab_qa odoo.modules.loading: Loading module lab_dispatch (2/21) 
+2026-09-09 01:06:49,403 1 INFO lab_qa odoo.registry: module lab_dispatch: creating or updating database tables 
+2026-09-09 01:06:49,427 1 INFO lab_qa odoo.modules.loading: loading lab_dispatch/security/ir.model.access.csv 
+2026-09-09 01:06:49,437 1 INFO lab_qa odoo.modules.loading: Module lab_dispatch loaded in 0.04s, 49 queries (+49 other) 
+2026-09-09 01:06:49,547 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.15s, 49 queries (+49 extra) 
+2026-09-09 01:06:49,625 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-09 01:06:49,734 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-09 01:06:49,738 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:06:49,738 1 INFO lab_qa odoo.registry: Registry loaded in 2.616s 
+2026-09-09 01:06:49,738 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-09 01:06:49,740 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestLabDispatchRecalculate.test_done_is_never_written ... 
+2026-09-09 01:06:49,744 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestLabDispatchRecalculate.test_draft_excludes_cancelled_lines ... 
+2026-09-09 01:06:49,747 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestLabDispatchRecalculate.test_empty_and_fully_cancelled ... 
+2026-09-09 01:06:49,750 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestLabDispatchRecalculate.test_empty_recordset_does_not_fail ... 
+2026-09-09 01:06:49,751 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestLabDispatchRecalculate.test_mixed_selection ... 
+2026-09-09 01:06:49,754 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestLabDispatchRecalculate.test_recalculate_is_idempotent ... 
+2026-09-09 01:06:49,758 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 01:06:49,758 1 INFO lab_qa odoo.service.server: 6 post-tests in 0.02s, 49 queries 
+2026-09-09 01:06:49,758 1 INFO lab_qa odoo.tests.stats: lab_dispatch: 8 tests 0.02s 49 queries 
+2026-09-09 01:06:49,758 1 INFO lab_qa odoo.tests.result: 0 failed, 0 error(s) of 6 tests when loading database 'lab_qa' 
+2026-09-09 01:06:49,758 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-09 01:06:49,758 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:06:50,137 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+{"valid": true, "reasons": [], "module_tests": 8, "summaries": [{"failed": 0, "errors": 0, "tests": 6}]}
+✅ -u + tests OK
+   ⏱ 4s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 0
+tests échoués  : 0
+tests ignorés  : 0
+WARNING liés à lab_dispatch : 0
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": true, "reasons": [], "module_tests": 8, "summaries": [{"failed": 0, "errors": 0, "tests": 6}]}
+RECETTE module=lab_dispatch db=lab_qa install=ok update=ok uninstall=n.a. tests="0 failed, 0 error(s) of 6 tests" errors=0 failed=0 skipped=0 warnings=0 total=4s quick=4s
+
+Log complet   : /home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/backend/stack/artifacts/lab_dispatch-20260909-030646.1sgXnx.log
+Captures      : /home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/backend/stack/artifacts/
+✅ lab_dispatch : installation, tests et logs propres

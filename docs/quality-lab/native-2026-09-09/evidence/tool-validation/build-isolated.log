@@ -1,0 +1,62 @@
+Validation du graphe Odoo…
+Graphe valide : 52 nœuds, 115 arêtes, 4 forks, 4 jointures, 4 cycles bornés.
+ODOO BENCH 20260909-034125-f40a5ac7 · executed · 1/1 exécutés
+  B06-codex        completed    fixture / high · 0 s · qualité non évaluée
+ODOO BENCH 20260909-034126-2b46ddf6 · running · 0/1 exécutés
+  B06-codex        running      fixture / high · 0 s · qualité non évaluée
+ODOO BENCH 20260909-034126-2b46ddf6 · executed · 1/1 exécutés
+  B06-codex        completed    fixture / high · 0.2 s · qualité non évaluée
+ODOO BENCH 20260909-034126-881a8f1d · running · 0/1 exécutés
+  B06-codex        running      fixture / high · 0 s · qualité non évaluée
+ODOO BENCH 20260909-034126-881a8f1d · executed_with_errors · 1/1 exécutés
+  B06-codex        error        fixture / high · 0.2 s · qualité non évaluée
+ODOO BENCH 20260909-034126-a9339eab · running · 0/1 exécutés
+  B06-codex        running      fixture / high · 0 s · qualité non évaluée
+ODOO BENCH 20260909-034126-a9339eab · executed_with_errors · 1/1 exécutés
+  B06-codex        error        fixture / high · 0.2 s · qualité non évaluée
+ODOO BENCH 20260909-034126-ecb34f15 · interrupted · 0/1 exécutés
+  B06-codex        pending      fixture / high · 0 s · qualité non évaluée
+{"trial": "trial", "error": "build failed"}
+⚠️  ÉCRITURE EN PRODUCTION confirmée : x.synthetic.write
+----------------------------------------------------------------------
+Ran 124 tests in 3.484s
+
+OK
+  + x.synthetic studio_customization.one
+1 / 0 / 0 à créer / à modifier / inchangés sur synthetic
+  + x.synthetic studio_customization.one
+1 / 0 / 0 créés / modifiés / inchangés sur synthetic
+0 / 0 / 1 créés / modifiés / inchangés sur synthetic
+  + x.synthetic studio_customization.one
+0 / 0 / 1 créés / modifiés / inchangés sur synthetic
+Génération des profils d'agents Odoo…
+  ✓ /tmp/odoo-native-dist/.claude/agents/odoo-analyst.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/odoo-analyst/SKILL.md
+  ✓ /tmp/odoo-native-dist/.claude/agents/odoo-developer.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/odoo-developer/SKILL.md
+  ✓ /tmp/odoo-native-dist/.claude/agents/odoo-studio.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/odoo-studio/SKILL.md
+  ✓ /tmp/odoo-native-dist/.claude/agents/odoo-support.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/odoo-support/SKILL.md
+  ✓ /tmp/odoo-native-dist/.claude/agents/odoo-tester.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/odoo-tester/SKILL.md
+  ✓ /tmp/odoo-native-dist/.claude/CLAUDE.md
+  ✓ /tmp/odoo-native-dist/.codex/AGENTS.md
+  ✓ /tmp/odoo-native-dist/.claude/commands/odoo-new.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/odoo-new/SKILL.md
+  ✓ /tmp/odoo-native-dist/.claude/commands/odoo-close.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/odoo-close/SKILL.md
+  ✓ /tmp/odoo-native-dist/.claude/commands/odoo-env.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/odoo-env/SKILL.md
+  ✓ /tmp/odoo-native-dist/.claude/commands/odoo-feedback.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/odoo-feedback/SKILL.md
+  ✓ /tmp/odoo-native-dist/.claude/skills/camptocamp-docs/SKILL.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/camptocamp-docs/SKILL.md
+  ✓ /tmp/odoo-native-dist/.claude/commands/odoo-plan.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/odoo-plan/SKILL.md
+  ✓ /tmp/odoo-native-dist/.claude/commands/odoo-start.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/odoo-start/SKILL.md
+  ✓ /tmp/odoo-native-dist/.claude/commands/odoo-improve.md
+  ✓ /tmp/odoo-native-dist/.codex/skills/odoo-improve/SKILL.md
+Génération conforme : 26 fichiers + 2 blocs d’aiguillage et pointeur personnel.
+Terminé. Sources partagées : /home/blegoff/odoo-agents-native-lab/roles/, /home/blegoff/odoo-agents-native-lab/routing.md

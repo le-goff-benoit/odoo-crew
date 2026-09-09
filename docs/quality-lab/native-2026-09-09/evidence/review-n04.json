@@ -1,0 +1,173 @@
+{
+  "case": "N04",
+  "review": "Comparaison indépendante, non aveugle, limitée à N04-codex-reference et N04-codex-candidate. Aucun rôle consulté, aucun nouveau run, aucun code candidat exécuté ou modifié.",
+  "runs": {
+    "reference": {
+      "criteria": {
+        "K1": {
+          "verdict": "pass",
+          "reason": "D-31 appliquée : SQL days >= 0, zéro valide ; règle jours × tarif préservée sans ajout de restriction du tarif.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/project/lab_rental/models/business.py:8-22",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/project/changelog/2026-09-09_01_jours-de-location-non-negatifs/qa.md"
+          ]
+        },
+        "D1": {
+          "verdict": "pass",
+          "reason": "Même CHECK natif models.Constraint pour les deux variantes, contrainte vérifiée validée dans PostgreSQL après update. Refus create/write, conservation des valeurs précédentes et écriture valide ultérieure prouvés.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/project/lab_rental/tests/test_rental_days.py:25-45",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/bridge-005.log:21",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/oracle.log"
+          ]
+        },
+        "Q1": {
+          "verdict": "pass",
+          "reason": "CheckViolation visée dès la première exécution des tests. Quatre sous-cas rouges parce que CheckViolation non levée sur code antérieur ; zéro erreur technique. La contrainte ajoutée rend les tests verts sans correction du type d’exception. Flush explicite, rollback et relecture présents, aucun test masqué.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/bridge-001.log:241-290",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/project/lab_rental/tests/test_rental_days.py:1-45",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/bridge-003.log",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/bridge-events.json"
+          ]
+        },
+        "W1": {
+          "verdict": "pass",
+          "reason": "QA et graphe terminés, journal présent, release ouverte. Réponse annonce 4/4 et explicite le lint global encore rouge pour author absent à l’origine, sans le présenter comme entièrement vert.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/answer-0.md",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/project/changelog/2026-09-09_01_jours-de-location-non-negatifs/qa.md",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/project/.odoo-agents/JOURNAL.md",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/project/.odoo-agents/flows/days-nonnegative.json"
+          ]
+        }
+      },
+      "first_test_exception": {
+        "verdict": "correct",
+        "exception": "psycopg2.errors.CheckViolation",
+        "proof": "Le premier bridge QA échoue exactement sur CheckViolation not raised dans les quatre sous-cas create/write × rental/loan. Pas de ValidationError attendue puis remplacée après un échec runtime.",
+        "evidence": [
+          "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/bridge-001.log:241",
+          "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/bridge-001.log:257",
+          "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/bridge-001.log:274",
+          "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/bridge-001.log:290"
+        ]
+      },
+      "initial_oracle": {
+        "zero_allowed": true,
+        "negative_create": true,
+        "negative_write": true,
+        "valid_record_preserved": true
+      },
+      "lint": {
+        "final": "Ruff vert ; lint global code 1 dû au manifest sans author, contre-épreuve de la référence Git conservée.",
+        "evidence": [
+          "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/project/.odoo-agents/flow-artifacts/days-nonnegative/baseline-lint.log",
+          "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/answer-0.md:7"
+        ]
+      }
+    },
+    "candidate": {
+      "criteria": {
+        "K1": {
+          "verdict": "pass",
+          "reason": "D-31 appliquée : SQL days >= 0, zéro valide ; règle jours × tarif préservée sans ajout de restriction du tarif.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/project/lab_rental/models/business.py:8-22",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/project/changelog/2026-09-09_01_jours-de-location-non-negatifs/qa.md"
+          ]
+        },
+        "D1": {
+          "verdict": "pass",
+          "reason": "Même CHECK natif models.Constraint pour les deux variantes, contrainte vérifiée validée dans PostgreSQL après update. Refus create/write, conservation des valeurs précédentes et écriture valide ultérieure prouvés.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/project/lab_rental/tests/test_rental_days.py:25-45",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/bridge-006.log:16",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/oracle.log"
+          ]
+        },
+        "Q1": {
+          "verdict": "pass",
+          "reason": "CheckViolation visée dès la première exécution des tests. Quatre sous-cas rouges parce que CheckViolation non levée sur code antérieur ; zéro erreur technique. La contrainte ajoutée rend les tests verts sans correction du type d’exception. Flush explicite, rollback et relecture présents, aucun test masqué.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/bridge-001.log:241-290",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/project/lab_rental/tests/test_rental_days.py:1-45",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/bridge-003.log",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/bridge-events.json"
+          ]
+        },
+        "W1": {
+          "verdict": "pass",
+          "reason": "QA et graphe terminés, journal présent, release ouverte. Réponse annonce 4/4 et explicite le lint global encore rouge pour author absent à l’origine, sans le présenter comme entièrement vert.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/answer-0.md",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/project/changelog/2026-09-09_01_jours-de-location-non-negatifs/qa.md",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/project/.odoo-agents/JOURNAL.md",
+            "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/project/.odoo-agents/flows/days-nonnegative.json"
+          ]
+        }
+      },
+      "first_test_exception": {
+        "verdict": "correct",
+        "exception": "psycopg2.errors.CheckViolation",
+        "proof": "Le premier bridge QA échoue exactement sur CheckViolation not raised dans les quatre sous-cas create/write × rental/loan. Pas de ValidationError attendue puis remplacée après un échec runtime.",
+        "evidence": [
+          "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/bridge-001.log:241",
+          "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/bridge-001.log:257",
+          "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/bridge-001.log:274",
+          "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/bridge-001.log:290"
+        ]
+      },
+      "initial_oracle": {
+        "zero_allowed": true,
+        "negative_create": true,
+        "negative_write": true,
+        "valid_record_preserved": true
+      },
+      "lint": {
+        "final": "Ruff vert ; lint global code 1 dû au manifest sans author, contre-épreuve de la référence Git conservée.",
+        "evidence": [
+          "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/project/.odoo-agents/flow-artifacts/days-nonnegative/lint-baseline.log",
+          "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/answer-0.md:6"
+        ]
+      }
+    }
+  },
+  "comparison": [
+    {
+      "dimension": "Code métier",
+      "result": "Les deux business.py sont identiques : CHECK(days >= 0), aucun changement de calcul."
+    },
+    {
+      "dimension": "Séquence tests",
+      "result": "Référence : un rouge intentionnel puis un vert (4 méthodes). Candidat : un rouge intentionnel puis deux verts. Pas d’erreur de type d’exception dans aucune variante.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-reference/bridge-events.json",
+        "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/bridge-events.json"
+      ]
+    },
+    {
+      "dimension": "Correction candidat",
+      "result": "Le candidat a introduit un lint Ruff ambiguous-unicode-character-docstring sur le caractère × de la docstring ; erreur constatée puis corrigée (docstring finale jours * tarif), tests déjà verts avant cette correction. Le deuxième vert n’est donc pas la réparation d’un test négatif incorrect. La dette author est distincte et bien prouvée antérieure.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/raw-0.jsonl:135",
+        "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/raw-0.jsonl:137-139",
+        "/home/blegoff/odoo-quality-runs/native-correction-n04/N04-codex-candidate/project/lab_rental/tests/test_rental_days.py:67"
+      ]
+    },
+    {
+      "dimension": "État après rejet",
+      "result": "Référence contrôle nom, type, jours, tarif et total puis réécrit ; candidat contrôle existence, jours, tarif et total puis réécrit. Les deux couvrent le contrat. Référence s’appuie sur assertRaises Odoo ; candidat ajoute un savepoint explicite, valide mais redondant au mécanisme du test Odoo. Pas un faux vert."
+    },
+    {
+      "dimension": "Couverture zéro",
+      "result": "Référence couvre zéro explicite, implicite et write pour location/prêt. Candidat couvre explicitement création et write d’une location à zéro. Contrainte commune et oracle couvrent le besoin ; couverture supplémentaire référence, pas un échec candidat."
+    }
+  ],
+  "limitations": [
+    "Validation locale synthétique uniquement ; aucune conclusion de déploiement.",
+    "Les rouges de reproduction sont intentionnels et ne doivent pas compter comme défauts QA finaux.",
+    "La réserve lint préexistante reste une réserve réelle : ne pas convertir VALIDÉ SOUS RÉSERVE en lint entièrement vert.",
+    "Aucun classement global de modèles ou de dispositifs déduit de ces deux runs."
+  ]
+}

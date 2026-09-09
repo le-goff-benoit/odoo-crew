@@ -1,0 +1,200 @@
+{
+  "case": "N02",
+  "review": "Indépendante de contexte, non aveugle : identités visibles. Aucun classement global des modèles. Lecture des artefacts autorisés uniquement ; aucun code candidat exécuté. Les verdicts portent sur le contrat et distinguent observation de la copie et généralisation.",
+  "runs": {
+    "reference": {
+      "criteria": {
+        "K1": {
+          "verdict": "pass",
+          "reason": "D-12 prime explicitement sur D-11 ; Q1/Q2 ne sont pas rouvertes ; aucune écriture des validés dans la méthode ou la reprise.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/revue_fonctionnelle.md:52-64",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/.odoo-agents/PROJECT.md:7-11",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/lab_dispatch/models/business.py:22-28"
+          ]
+        },
+        "D1": {
+          "verdict": "fail",
+          "reason": "La méthode est exacte et la copie synthétique passe, mais la reprise introduit une tolérance à deux décimales non décidée : un brouillon stocké à 20.004 pour une somme active 20.0 est exclu des divergents et déclaré convergé. Ce contre-exemple découle de la lecture du filtre, sans exécution ; il ne décrit pas un échec observé sur LEGACY_DRAFT. Le critère exige un recalcul exact, sans règle monétaire ni arrondi dans D-12.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/reprise/reprise_brouillons.py:39-44",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/reprise/reprise_brouillons.py:57-65",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/lab_dispatch/models/business.py:10",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/bridge-013.log:17-30",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/bridge-014.log:17-29",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/oracle.log:15"
+          ]
+        },
+        "Q1": {
+          "verdict": "pass",
+          "reason": "Rouge réel conservé (6/7), puis 7/7 verts ; mise à niveau et parcours de la copie existante, deux reprises et sélection mixte. Les premiers faux verts zéro test ont été détectés et contournés. Lint partiel signalé, sans nier le manque de ruff.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/bridge-008.log:263-313",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/bridge-010.log:271-295",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/bridge-011.log:303-330",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/bridge-events.json:270-311",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/qa.md:12-21",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/qa.md:41-44"
+          ]
+        },
+        "W1": {
+          "verdict": "pass",
+          "reason": "Revue sensible, avant/après, QA et journal présents, release ouverte, aucune affirmation de déploiement. Réserve : vert général trop large pour la tolérance non validée de la reprise, non signalée en réponse finale.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/revue_fonctionnelle.md:111-112",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/.odoo-agents/JOURNAL.md:11-24",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/answer-0.md:25-40",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/README.md:1-7"
+          ]
+        }
+      },
+      "findings": [
+        {
+          "severity": "major",
+          "type": "latent_contract_defect",
+          "text": "Tolérance arbitraire precision_digits=2 dans la reprise : faux convergé possible pour une erreur sous-centime. Aucune anomalie de ce type dans les deux lignes semées ; oracle insuffisant pour ce cas.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/reprise/reprise_brouillons.py:39",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/reprise/reprise_brouillons.py:57"
+          ]
+        },
+        {
+          "severity": "major_detected_and_recovered",
+          "type": "tool_false_green",
+          "text": "Trois exécutions QA affichent installation/tests propres avec zéro test. Le parcours les rejette ensuite et obtient rouge puis vert authentiques ; ce ne sont pas des faux verts finaux sur les tests.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/bridge-002.log:239-243",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/bridge-003.log:44-48",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/bridge-004.log:242-246",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/answer-0.md:10"
+          ]
+        },
+        {
+          "severity": "minor",
+          "type": "qa_limit",
+          "text": "ruff absent, contrôle statique incomplet explicitement annoncé ; aucune preuve de lint intégral.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/answer-0.md:11",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/qa.md:13"
+          ]
+        },
+        {
+          "severity": "minor",
+          "type": "report_inconsistency",
+          "text": "Revue parle d’un bouton existant alors qu’elle constate aucune vue/écran ; aucun dommage fonctionnel, mais description UI inventée.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/revue_fonctionnelle.md:59-61",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/revue_fonctionnelle.md:114-117"
+          ]
+        }
+      ],
+      "flow": {
+        "path": "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-reference/project/.odoo-agents/flows/recalcul-dispatch.json",
+        "observation": "Événements : functional_review -> module_implementation_high_risk -> QA statique/runtime/copie -> module_high_gate pass -> journal_task -> task_done. Statut complete ; README conserve release ouverte. Le statut du flow ne vaut pas preuve indépendante du calcul."
+      },
+      "initial_oracle": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true,
+        "note": "Résultat N02 initial inchangé ; distinct du verdict humain de généralisation du contrat."
+      }
+    },
+    "candidate": {
+      "criteria": {
+        "K1": {
+          "verdict": "pass",
+          "reason": "D-12 explicitement prioritaire, Q1/Q2 déjà tranchées, gel des validés et sélection mixte respectés, aucun changement de droits.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/revue_fonctionnelle.md:55-68",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/.odoo-agents/PROJECT.md:7-17",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/lab_dispatch/models/business.py:20-26"
+          ]
+        },
+        "D1": {
+          "verdict": "uncertain",
+          "reason": "Recalcul exact et validés préservés, reprise deux fois sur copie et oracle verts. Idempotence des valeurs prouvée ; idempotence de tout l’état non satisfaite car le script réécrit chaque brouillon et change write_date à chaque exécution. D-12 dit reprise idempotente mais réserve explicitement l’absence de toute écriture aux validés : le contrat ne précise pas si la métadonnée des brouillons est incluse. Ne pas convertir ce point en échec certain, ni annoncer une idempotence forte.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/lab_dispatch/models/business.py:20-26",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/reprise/reprise_brouillons.py:14-30",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/bridge-006.log:14-17",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/bridge-007.log:14-17",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/bridge-009.log:14-15",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/oracle.log:14",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/answer-0.md:9"
+          ]
+        },
+        "Q1": {
+          "verdict": "pass",
+          "reason": "Vrai rouge 5/6 puis vert 6/6 en installation et mise à jour ; lab_client mis à niveau et repris deux fois, contrôle discriminant du validé. Tests avec espion write. Aucune acceptation d’un zéro test observée.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/bridge-001.log:228-277",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/bridge-002.log:235-254",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/bridge-003.log:42-61",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/bridge-events.json:107-159",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/lab_dispatch/tests/test_recalculate.py:12-22",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/lab_dispatch/tests/test_recalculate.py:49-67"
+          ]
+        },
+        "W1": {
+          "verdict": "pass",
+          "reason": "Revue sensible, preuves avant/après, QA et journal, release ouverte et aucune affirmation de déploiement. Réécriture au deuxième passage annoncée franchement ; modifies=0 décrit les montants uniquement. Formulation reprise idempotente doit conserver cette réserve.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/revue_fonctionnelle.md:104-107",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/.odoo-agents/JOURNAL.md:11-16",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/answer-0.md:9",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/answer-0.md:24-37"
+          ]
+        }
+      },
+      "findings": [
+        {
+          "severity": "interpretation_required",
+          "type": "idempotence_scope",
+          "text": "modifies=0 ne signifie pas zéro écriture : comparaison des snapshot_total seuls après un appel inconditionnel sur tous les brouillons. Le compte rendu ne cache pas cette limite.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/reprise/reprise_brouillons.py:17-30",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/qa.md:40-43",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/answer-0.md:9"
+          ]
+        },
+        {
+          "severity": "minor",
+          "type": "business_wording",
+          "text": "La revue qualifie les deux snapshots (999 et 777) de faux hérités, alors que D-12 fait de 777 une référence à conserver. La spécification et le code corrigent bien uniquement le brouillon : pas de violation effective du gel.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/revue_fonctionnelle.md:24-25",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/revue_fonctionnelle.md:55-58"
+          ]
+        },
+        {
+          "severity": "minor",
+          "type": "out_of_scope_change",
+          "text": "author Camptocamp ajouté sans validation de sa valeur pour satisfaire le lint ; explicité à l’humain, aucun effet sur calcul/données.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/answer-0.md:8",
+            "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/qa.md:37-39"
+          ]
+        }
+      ],
+      "flow": {
+        "path": "/home/blegoff/odoo-quality-runs/native-main-01/N02-claude-candidate/project/.odoo-agents/flows/recalcul-brouillons.json",
+        "observation": "Événements : functional_review -> module_implementation_high_risk -> QA statique/runtime/copie -> module_high_gate pass -> journal_task -> task_done. Statut complete ; README conserve release ouverte. Le statut du flow ne vaut pas preuve indépendante du calcul."
+      },
+      "initial_oracle": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true,
+        "note": "Résultat N02 initial inchangé ; distinct du verdict humain de généralisation du contrat."
+      }
+    }
+  },
+  "cost": "Aucune procédure coûteuse inutile démontrée. Les trois essais QA zéro test de référence représentent un coût d’outillage réel (24.93 s cumulés dans bridge-events), suivi de diagnostic et récupération ; on ne peut les attribuer à une lourdeur inutile de la revue métier. Pas de recette de clôture ni de livrables documentaires lancés.",
+  "limits": [
+    "Revue statique et examen des logs conservés ; aucune nouvelle exécution ni mutation de base.",
+    "Oracle existant confirme les cas semés, pas tous les sous-centimes ni une définition forte de l’idempotence.",
+    "Lecture des flows demandés ; pas de lecture des fichiers de rôles, profils, conclusions du parent ou rapports d’autres évaluateurs."
+  ],
+  "precision_contract": "case.json et décisions D-12 : aucune monnaie ni précision. Les trois champs snapshot_total, quantity et price sont fields.Float() sans digits. La précision 2 est ajoutée par le script de reprise référence, pas par le contrat."
+}

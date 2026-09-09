@@ -1,0 +1,15 @@
+D = env['lab.dispatch'].with_context(active_test=False).search([])
+L = env['lab.dispatch.line'].with_context(active_test=False).search([])
+print("dispatch total:", len(D), "lignes total:", len(L))
+for st in ('draft', 'done'):
+    sub = D.filtered(lambda r: r.state == st)
+    print(f"  state={st}: {len(sub)}")
+print("lignes annulees:", len(L.filtered('cancelled')))
+print("--- detail (max 40) ---")
+for r in D[:40]:
+    attendu = sum(l.quantity * l.price for l in r.line_ids if not l.cancelled)
+    brut = sum(l.quantity * l.price for l in r.line_ids)
+    print(f"id={r.id:4} state={r.state:5} snapshot={r.snapshot_total:12.2f} attendu={attendu:12.2f} brut={brut:12.2f} lignes={len(r.line_ids)} annulees={len(r.line_ids.filtered('cancelled'))} ecart={'OUI' if abs(r.snapshot_total-attendu)>1e-6 else 'non'}")
+drafts = D.filtered(lambda r: r.state == 'draft')
+ecart = drafts.filtered(lambda r: abs(r.snapshot_total - sum(l.quantity*l.price for l in r.line_ids if not l.cancelled)) > 1e-6)
+print("brouillons a reprendre:", len(ecart), "/", len(drafts))

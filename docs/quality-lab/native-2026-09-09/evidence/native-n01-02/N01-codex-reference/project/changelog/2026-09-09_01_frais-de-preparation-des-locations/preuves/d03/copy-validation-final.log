@@ -1,0 +1,18 @@
+2026-09-09 01:23:31,896 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:23:31,896 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:23:31,896 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:23:31,896 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:23:31,896 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:23:32,101 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:23:32,101 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:23:32,117 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:23:32,119 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:23:32,121 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:23:32,123 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:23:32,249 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.13s, 0 queries (+0 extra) 
+2026-09-09 01:23:32,273 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:23:32,287 1 INFO lab_client odoo.registry: Registry loaded in 0.186s 
+UPDATE_ONLY: valeurs D-02 conservées, reprise nécessaire.
+MIGRATION_PASS=1 SQL/ORM/entrées métier OK
+MIGRATION_PASS=2 SQL/ORM/entrées métier OK
+COPY_AFTER=[{"id": 9, "name": "QA D-03 rental 3", "kind": "rental", "days": 3, "daily_rate": 10.0, "write_date": "2026-09-09 01:17:56.286905", "amount_total": 30.0}, {"id": 10, "name": "QA D-03 rental 4", "kind": "rental", "days": 4, "daily_rate": 10.0, "write_date": "2026-09-09 01:23:32.294508", "amount_total": 40.0}, {"id": 11, "name": "QA D-03 rental 5", "kind": "rental", "days": 5, "daily_rate": 10.0, "write_date": "2026-09-09 01:23:32.294508", "amount_total": 65.0}, {"id": 12, "name": "QA D-03 rental 6", "kind": "rental", "days": 6, "daily_rate": 10.0, "write_date": "2026-09-09 01:23:32.294508", "amount_total": 75.0}, {"id": 13, "name": "QA D-03 loan 3", "kind": "loan", "days": 3, "daily_rate": 10.0, "write_date": "2026-09-09 01:17:56.286905", "amount_total": 30.0}, {"id": 14, "name": "QA D-03 loan 4", "kind": "loan", "days": 4, "daily_rate": 10.0, "write_date": "2026-09-09 01:17:56.286905", "amount_total": 40.0}, {"id": 15, "name": "QA D-03 loan 5", "kind": "loan", "days": 5, "daily_rate": 10.0, "write_date": "2026-09-09 01:17:56.286905", "amount_total": 50.0}, {"id": 16, "name": "QA D-03 loan 6", "kind": "loan", "days": 6, "daily_rate": 10.0, "write_date": "2026-09-09 01:17:56.286905", "amount_total": 60.0}]

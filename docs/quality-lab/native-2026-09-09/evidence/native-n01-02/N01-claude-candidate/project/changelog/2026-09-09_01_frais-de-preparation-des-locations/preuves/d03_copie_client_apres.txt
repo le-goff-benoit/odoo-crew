@@ -1,0 +1,16 @@
+# Copie client lab_client — état APRÈS reprise D-03 (19.0.1.2.0), 2026-09-09T01:37:59Z
+id | name | kind | days | rate | avant | apres | attendu | ok
+1 | Location 5 jours | rental | 5 | 10.0 | 62.0 | 65.0 | 65.0 | OK
+2 | Location 4 jours (borne) | rental | 4 | 10.0 | 52.0 | 40.0 | 40.0 | OK
+3 | Location 3 jours | rental | 3 | 10.0 | 30.0 | 30.0 | 30.0 | OK
+4 | Location 4 jours tarif nul | rental | 4 | 0.0 | 12.0 | 0.0 | 0.0 | OK
+5 | Pret 10 jours | loan | 10 | 10.0 | 100.0 | 100.0 | 100.0 | OK
+6 | Pret 4 jours (borne) | loan | 4 | 10.0 | 40.0 | 40.0 | 40.0 | OK
+7 | Location 0 jour | rental | 0 | 10.0 | 0.0 | 0.0 | 0.0 | OK
+total_general = 275.0
+delta_net = -21.0
+enregistrements touches = 3 [1, 2, 4]
+prets inchanges = True
+ecarts vs attendu = 0
+version installee = 19.0.1.2.0
+SQL: [(1, 65.0), (2, 40.0), (3, 30.0), (4, 0.0), (5, 100.0), (6, 40.0), (7, 0.0)]

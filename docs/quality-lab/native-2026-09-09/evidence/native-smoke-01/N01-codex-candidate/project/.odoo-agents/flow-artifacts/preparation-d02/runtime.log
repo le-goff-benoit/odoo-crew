@@ -1,0 +1,412 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-782792599b-db-1  Running
+
+══ 1. QA de tâche : -i lab_rental + tests (/lab_rental:TestPreparationFees) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-09 00:58:57,433 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 00:58:57,433 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 00:58:57,434 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 00:58:57,434 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 00:58:57,434 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 00:58:57,434 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 00:58:57,622 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 10d8898dc96f:8069 
+2026-09-09 00:58:57,634 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-09 00:58:57,656 1 INFO lab_qa odoo.modules.loading: Initializing database lab_qa 
+2026-09-09 00:58:59,282 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-09 00:58:59,283 1 INFO lab_qa odoo.modules.loading: Loading module base (1/1) 
+2026-09-09 00:58:59,308 1 INFO lab_qa odoo.registry: module base: creating or updating database tables 
+2026-09-09 00:58:59,466 1 INFO lab_qa odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-09 00:58:59,466 1 INFO lab_qa odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-09 00:58:59,466 1 INFO lab_qa odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-09 00:58:59,528 1 INFO lab_qa odoo.models: Prepare computation of res.partner.user_id 
+2026-09-09 00:58:59,528 1 INFO lab_qa odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-09 00:58:59,528 1 INFO lab_qa odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-09 00:58:59,528 1 INFO lab_qa odoo.models: Prepare computation of res.partner.lang 
+2026-09-09 00:58:59,528 1 INFO lab_qa odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-09 00:58:59,528 1 INFO lab_qa odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-09 00:58:59,528 1 INFO lab_qa odoo.models: Prepare computation of res.partner.properties 
+2026-09-09 00:58:59,528 1 INFO lab_qa odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-09 00:58:59,544 1 INFO lab_qa odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-09 00:58:59,555 1 INFO lab_qa odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-09 00:58:59,556 1 INFO lab_qa odoo.models: Prepare computation of res.company.logo_web 
+2026-09-09 00:58:59,556 1 INFO lab_qa odoo.models: Computing parent_path for table res_company... 
+2026-09-09 00:58:59,566 1 INFO lab_qa odoo.models: Prepare computation of res.users.signature 
+2026-09-09 00:58:59,566 1 INFO lab_qa odoo.models: Prepare computation of res.users.share 
+2026-09-09 00:59:00,528 1 INFO lab_qa odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-09 00:59:00,532 1 INFO lab_qa odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-09 00:59:00,568 1 INFO lab_qa odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-09 00:59:00,602 1 INFO lab_qa odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-09-09 00:59:00,647 1 INFO lab_qa odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-09-09 00:59:01,105 1 INFO lab_qa odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-09-09 00:59:01,112 1 INFO lab_qa odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-09-09 00:59:01,735 1 INFO lab_qa odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-09-09 00:59:01,743 1 INFO lab_qa odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-09-09 00:59:02,386 1 INFO lab_qa odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-09-09 00:59:02,399 1 INFO lab_qa odoo.modules.loading: loading base/security/base_groups.xml 
+2026-09-09 00:59:02,571 1 INFO lab_qa odoo.modules.loading: loading base/security/base_security.xml 
+2026-09-09 00:59:02,741 1 INFO lab_qa odoo.modules.loading: loading base/wizard/wizard_ir_model_menu_create_views.xml 
+2026-09-09 00:59:02,753 1 INFO lab_qa odoo.modules.loading: loading base/views/base_menus.xml 
+2026-09-09 00:59:02,817 1 INFO lab_qa odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-09-09 00:59:02,835 1 INFO lab_qa odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-09-09 00:59:02,842 1 INFO lab_qa odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-09-09 00:59:03,100 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-09-09 00:59:03,209 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-09-09 00:59:03,220 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-09-09 00:59:03,235 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-09-09 00:59:03,254 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-09-09 00:59:03,274 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-09-09 00:59:03,300 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-09-09 00:59:03,322 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-09-09 00:59:03,452 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-09-09 00:59:03,480 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-09-09 00:59:03,503 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-09-09 00:59:03,528 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-09-09 00:59:03,554 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-09-09 00:59:03,605 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-09-09 00:59:03,630 1 INFO lab_qa odoo.modules.loading: loading base/data/ir_config_parameter_data.xml 
+2026-09-09 00:59:03,634 1 INFO lab_qa odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-09-09 00:59:03,647 1 INFO lab_qa odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-09-09 00:59:03,651 1 INFO lab_qa odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-09-09 00:59:03,661 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-09-09 00:59:03,686 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-09-09 00:59:03,705 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-09-09 00:59:03,762 1 INFO lab_qa odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-09-09 00:59:03,788 1 INFO lab_qa odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-09-09 00:59:03,805 1 INFO lab_qa odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-09-09 00:59:03,808 1 INFO lab_qa odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-09-09 00:59:03,812 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-09-09 00:59:03,822 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-09-09 00:59:03,831 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-09-09 00:59:03,840 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-09-09 00:59:03,852 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-09-09 00:59:03,860 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-09-09 00:59:03,869 1 INFO lab_qa odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-09-09 00:59:03,884 1 INFO lab_qa odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-09-09 00:59:03,895 1 INFO lab_qa odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-09-09 00:59:03,912 1 INFO lab_qa odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-09-09 00:59:03,930 1 INFO lab_qa odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-09-09 00:59:03,949 1 INFO lab_qa odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-09-09 00:59:04,009 1 INFO lab_qa odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-09-09 00:59:04,040 1 INFO lab_qa odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-09-09 00:59:04,076 1 INFO lab_qa odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-09-09 00:59:04,112 1 INFO lab_qa odoo.modules.loading: loading base/views/res_groups_views.xml 
+2026-09-09 00:59:04,150 1 INFO lab_qa odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-09-09 00:59:04,245 1 INFO lab_qa odoo.modules.loading: loading base/views/res_users_apikeys_views.xml 
+2026-09-09 00:59:04,251 1 INFO lab_qa odoo.modules.loading: loading base/views/res_device_views.xml 
+2026-09-09 00:59:04,272 1 INFO lab_qa odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-09-09 00:59:04,279 1 INFO lab_qa odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-09-09 00:59:04,287 1 INFO lab_qa odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-09-09 00:59:04,310 1 INFO lab_qa odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-09-09 00:59:04,535 1 INFO lab_qa odoo.modules.loading: Module base loaded in 5.25s, 8374 queries (+8374 other) 
+2026-09-09 00:59:04,536 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 5.25s, 8374 queries (+8374 extra) 
+2026-09-09 00:59:04,538 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-09 00:59:04,539 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 00:59:05,684 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 00:59:05,728 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-09 00:59:05,728 1 INFO lab_qa odoo.modules.loading: Loading module lab_rental (2/21) 
+2026-09-09 00:59:05,731 1 INFO lab_qa odoo.registry: module lab_rental: creating or updating database tables 
+2026-09-09 00:59:05,751 1 INFO lab_qa odoo.modules.loading: loading lab_rental/security/ir.model.access.csv 
+2026-09-09 00:59:05,760 1 INFO lab_qa odoo.modules.loading: Module lab_rental loaded in 0.03s, 68 queries (+68 other) 
+2026-09-09 00:59:05,760 1 INFO lab_qa odoo.modules.loading: Loading module rpc (3/21) 
+2026-09-09 00:59:05,770 1 INFO lab_qa odoo.modules.loading: Module rpc loaded in 0.01s, 10 queries (+10 other) 
+2026-09-09 00:59:05,770 1 INFO lab_qa odoo.modules.loading: Loading module web (4/21) 
+2026-09-09 00:59:05,789 1 INFO lab_qa odoo.registry: module web: creating or updating database tables 
+2026-09-09 00:59:06,106 1 INFO lab_qa odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-09-09 00:59:06,112 1 INFO lab_qa odoo.modules.loading: loading web/security/web_security.xml 
+2026-09-09 00:59:06,121 1 INFO lab_qa odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-09-09 00:59:06,158 1 INFO lab_qa odoo.modules.loading: loading web/views/report_templates.xml 
+2026-09-09 00:59:06,230 1 INFO lab_qa odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-09-09 00:59:06,245 1 INFO lab_qa odoo.modules.loading: loading web/views/partner_view.xml 
+2026-09-09 00:59:06,251 1 INFO lab_qa odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-09-09 00:59:06,255 1 INFO lab_qa odoo.modules.loading: loading web/views/memory_template.xml 
+2026-09-09 00:59:06,260 1 INFO lab_qa odoo.modules.loading: loading web/views/speedscope_config_wizard.xml 
+2026-09-09 00:59:06,266 1 INFO lab_qa odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-09-09 00:59:06,273 1 INFO lab_qa odoo.modules.loading: loading web/views/ir_ui_view_views.xml 
+2026-09-09 00:59:06,283 1 INFO lab_qa odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-09-09 00:59:06,287 1 INFO lab_qa odoo.modules.loading: loading web/data/report_layout.xml 
+2026-09-09 00:59:06,334 1 INFO lab_qa odoo.modules.loading: Module web loaded in 0.56s, 1245 queries (+1245 other) 
+2026-09-09 00:59:06,335 1 INFO lab_qa odoo.modules.loading: Loading module api_doc (5/21) 
+2026-09-09 00:59:06,340 1 INFO lab_qa odoo.registry: module api_doc: creating or updating database tables 
+2026-09-09 00:59:06,356 1 INFO lab_qa odoo.modules.loading: loading api_doc/security/res_groups.xml 
+2026-09-09 00:59:06,377 1 INFO lab_qa odoo.modules.loading: loading api_doc/views/docclient.xml 
+2026-09-09 00:59:06,398 1 INFO lab_qa odoo.modules.loading: Module api_doc loaded in 0.06s, 63 queries (+63 other) 
+2026-09-09 00:59:06,398 1 INFO lab_qa odoo.modules.loading: Loading module auth_totp (6/21) 
+2026-09-09 00:59:06,416 1 INFO lab_qa odoo.registry: module auth_totp: creating or updating database tables 
+2026-09-09 00:59:06,480 1 INFO lab_qa odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-09-09 00:59:06,498 1 INFO lab_qa odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-09-09 00:59:06,504 1 INFO lab_qa odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-09-09 00:59:06,509 1 INFO lab_qa odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-09-09 00:59:06,528 1 INFO lab_qa odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-09-09 00:59:06,532 1 INFO lab_qa odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-09-09 00:59:06,549 1 INFO lab_qa odoo.modules.loading: Module auth_totp loaded in 0.15s, 218 queries (+218 other) 
+2026-09-09 00:59:06,549 1 INFO lab_qa odoo.modules.loading: Loading module base_import (7/21) 
+2026-09-09 00:59:06,577 1 INFO lab_qa odoo.registry: module base_import: creating or updating database tables 
+2026-09-09 00:59:06,849 1 INFO lab_qa odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-09-09 00:59:06,860 1 INFO lab_qa odoo.modules.loading: Module base_import loaded in 0.31s, 969 queries (+969 other) 
+2026-09-09 00:59:06,860 1 INFO lab_qa odoo.modules.loading: Loading module base_import_module (8/21) 
+2026-09-09 00:59:06,866 1 INFO lab_qa odoo.registry: module base_import_module: creating or updating database tables 
+2026-09-09 00:59:06,907 1 INFO lab_qa odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-09-09 00:59:06,912 1 INFO lab_qa odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-09-09 00:59:06,928 1 INFO lab_qa odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-09-09 00:59:06,965 1 INFO lab_qa odoo.modules.loading: Module base_import_module loaded in 0.11s, 172 queries (+172 other) 
+2026-09-09 00:59:06,965 1 INFO lab_qa odoo.modules.loading: Loading module base_setup (9/21) 
+2026-09-09 00:59:06,973 1 INFO lab_qa odoo.registry: module base_setup: creating or updating database tables 
+2026-09-09 00:59:07,007 1 INFO lab_qa odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-09-09 00:59:07,010 1 INFO lab_qa odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-09-09 00:59:07,037 1 INFO lab_qa odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-09-09 00:59:07,052 1 INFO lab_qa odoo.modules.loading: Module base_setup loaded in 0.09s, 152 queries (+152 other) 
+2026-09-09 00:59:07,052 1 INFO lab_qa odoo.modules.loading: Loading module bus (10/21) 
+2026-09-09 00:59:07,067 1 INFO lab_qa odoo.registry: module bus: creating or updating database tables 
+2026-09-09 00:59:07,150 1 INFO lab_qa odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-09-09 00:59:07,163 1 INFO lab_qa odoo.modules.loading: Module bus loaded in 0.11s, 159 queries (+159 other) 
+2026-09-09 00:59:07,163 1 INFO lab_qa odoo.modules.loading: Loading module web_cohort (11/21) 
+2026-09-09 00:59:07,192 1 INFO lab_qa odoo.registry: module web_cohort: creating or updating database tables 
+2026-09-09 00:59:07,526 1 INFO lab_qa odoo.modules.loading: Module web_cohort loaded in 0.36s, 955 queries (+955 other) 
+2026-09-09 00:59:07,526 1 INFO lab_qa odoo.modules.loading: Loading module web_gantt (12/21) 
+2026-09-09 00:59:07,552 1 INFO lab_qa odoo.registry: module web_gantt: creating or updating database tables 
+2026-09-09 00:59:07,902 1 INFO lab_qa odoo.modules.loading: Module web_gantt loaded in 0.38s, 951 queries (+951 other) 
+2026-09-09 00:59:07,902 1 INFO lab_qa odoo.modules.loading: Loading module web_grid (13/21) 
+2026-09-09 00:59:07,942 1 INFO lab_qa odoo.registry: module web_grid: creating or updating database tables 
+2026-09-09 00:59:08,323 1 INFO lab_qa odoo.modules.loading: Module web_grid loaded in 0.42s, 951 queries (+951 other) 
+2026-09-09 00:59:08,323 1 INFO lab_qa odoo.modules.loading: Loading module web_tour (14/21) 
+2026-09-09 00:59:08,330 1 INFO lab_qa odoo.registry: module web_tour: creating or updating database tables 
+2026-09-09 00:59:08,334 1 INFO lab_qa odoo.models: Prepare computation of res.users.tour_enabled 
+2026-09-09 00:59:08,393 1 INFO lab_qa odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-09-09 00:59:08,399 1 INFO lab_qa odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-09-09 00:59:08,435 1 INFO lab_qa odoo.modules.loading: Module web_tour loaded in 0.11s, 180 queries (+180 other) 
+2026-09-09 00:59:08,436 1 INFO lab_qa odoo.modules.loading: Loading module auth_passkey (15/21) 
+2026-09-09 00:59:08,468 1 INFO lab_qa odoo.registry: module auth_passkey: creating or updating database tables 
+2026-09-09 00:59:08,512 1 INFO lab_qa odoo.modules.loading: loading auth_passkey/views/auth_passkey_key_views.xml 
+2026-09-09 00:59:08,522 1 INFO lab_qa odoo.modules.loading: loading auth_passkey/views/auth_passkey_login_templates.xml 
+2026-09-09 00:59:08,528 1 INFO lab_qa odoo.modules.loading: loading auth_passkey/views/res_users_identitycheck_views.xml 
+2026-09-09 00:59:08,534 1 INFO lab_qa odoo.modules.loading: loading auth_passkey/views/res_users_views.xml 
+2026-09-09 00:59:08,551 1 INFO lab_qa odoo.modules.loading: loading auth_passkey/security/ir.model.access.csv 
+2026-09-09 00:59:08,558 1 INFO lab_qa odoo.modules.loading: loading auth_passkey/security/security.xml 
+2026-09-09 00:59:08,581 1 INFO lab_qa odoo.modules.loading: Module auth_passkey loaded in 0.15s, 218 queries (+218 other) 
+2026-09-09 00:59:08,581 1 INFO lab_qa odoo.modules.loading: Loading module html_editor (16/21) 
+2026-09-09 00:59:08,720 1 INFO lab_qa odoo.registry: module html_editor: creating or updating database tables 
+2026-09-09 00:59:09,093 1 INFO lab_qa odoo.modules.loading: loading html_editor/security/ir.model.access.csv 
+2026-09-09 00:59:09,103 1 INFO lab_qa odoo.modules.loading: Module html_editor loaded in 0.52s, 1043 queries (+1043 other) 
+2026-09-09 00:59:09,103 1 INFO lab_qa odoo.modules.loading: Loading module iap (17/21) 
+2026-09-09 00:59:09,106 1 INFO lab_qa odoo.registry: module iap: creating or updating database tables 
+2026-09-09 00:59:09,143 1 INFO lab_qa odoo.modules.loading: loading iap/data/services.xml 
+2026-09-09 00:59:09,146 1 INFO lab_qa odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-09-09 00:59:09,153 1 INFO lab_qa odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-09-09 00:59:09,159 1 INFO lab_qa odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-09-09 00:59:09,181 1 INFO lab_qa odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-09-09 00:59:09,197 1 INFO lab_qa odoo.modules.loading: Module iap loaded in 0.09s, 182 queries (+182 other) 
+2026-09-09 00:59:09,197 1 INFO lab_qa odoo.modules.loading: Loading module web_enterprise (18/21) 
+2026-09-09 00:59:09,205 1 INFO lab_qa odoo.registry: module web_enterprise: creating or updating database tables 
+2026-09-09 00:59:09,236 1 INFO lab_qa odoo.modules.loading: loading web_enterprise/views/webclient_templates.xml 
+2026-09-09 00:59:09,246 1 INFO lab_qa odoo.modules.loading: loading web_enterprise/views/res_users_views.xml 
+2026-09-09 00:59:09,265 1 INFO lab_qa odoo.modules.loading: Module web_enterprise loaded in 0.07s, 113 queries (+113 other) 
+2026-09-09 00:59:09,265 1 INFO lab_qa odoo.modules.loading: Loading module web_map (19/21) 
+2026-09-09 00:59:09,294 1 INFO lab_qa odoo.registry: module web_map: creating or updating database tables 
+2026-09-09 00:59:09,305 1 INFO lab_qa odoo.models: Prepare computation of res.partner.contact_address_complete 
+2026-09-09 00:59:09,614 1 INFO lab_qa odoo.modules.loading: loading web_map/views/res_config_settings.xml 
+2026-09-09 00:59:09,624 1 INFO lab_qa odoo.modules.loading: loading web_map/views/res_partner_views.xml 
+2026-09-09 00:59:09,640 1 INFO lab_qa odoo.modules.loading: Module web_map loaded in 0.37s, 1072 queries (+1072 other) 
+2026-09-09 00:59:09,640 1 INFO lab_qa odoo.modules.loading: Loading module web_mobile (20/21) 
+2026-09-09 00:59:09,644 1 INFO lab_qa odoo.registry: module web_mobile: creating or updating database tables 
+2026-09-09 00:59:09,670 1 INFO lab_qa odoo.modules.loading: loading web_mobile/views/views.xml 
+2026-09-09 00:59:09,686 1 INFO lab_qa odoo.modules.loading: Module web_mobile loaded in 0.05s, 83 queries (+83 other) 
+2026-09-09 00:59:09,686 1 INFO lab_qa odoo.modules.loading: Loading module web_unsplash (21/21) 
+2026-09-09 00:59:09,691 1 INFO lab_qa odoo.registry: module web_unsplash: creating or updating database tables 
+2026-09-09 00:59:09,708 1 INFO lab_qa odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-09-09 00:59:09,723 1 INFO lab_qa odoo.modules.loading: Module web_unsplash loaded in 0.04s, 93 queries (+93 other) 
+2026-09-09 00:59:09,723 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 3.99s, 8897 queries (+8897 extra) 
+2026-09-09 00:59:09,847 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-09 00:59:09,849 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-09 00:59:09,850 1 INFO lab_qa odoo.registry: Registry loaded in 12.227s 
+2026-09-09 00:59:09,850 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-09 00:59:09,861 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: Starting TestPreparationFees.test_days_recompute_both_directions ... 
+2026-09-09 00:59:09,869 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: Starting TestPreparationFees.test_kind_recompute_both_directions ... 
+2026-09-09 00:59:09,874 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: Starting TestPreparationFees.test_loans_excluded ... 
+2026-09-09 00:59:09,877 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: Starting TestPreparationFees.test_mixed_batch_and_no_cumulative_fee ... 
+2026-09-09 00:59:09,882 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: Starting TestPreparationFees.test_negative_values_rejected_on_create ... 
+2026-09-09 00:59:09,883 1 ERROR lab_qa odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T00:59:09.861373\'::timestamp, 1, 0.0,  -1, \'rental\', \'Invalide\', \'2026-09-09T00:59:09.861373\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_rental" violates check constraint "lab_rental_days_nonnegative"
+DETAIL:  Failing row contains (9, -1, 1, 1, Invalide, rental, 2026-09-09 00:59:09.861373, 2026-09-09 00:59:09.861373, 0, null).
+ 
+2026-09-09 00:59:09,889 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ====================================================================== 
+2026-09-09 00:59:09,889 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ERROR: Subtest TestPreparationFees.test_negative_values_rejected_on_create (kind='rental', field='days')
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fees.py", line 88, in test_negative_values_rejected_on_create
+    record = self.Rental.create({'name': 'Invalide', 'kind': kind, field: -1})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 369, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4711, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4887, in _create
+    cr.execute(SQL(
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 440, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.CheckViolation: new row for relation "lab_rental" violates check constraint "lab_rental_days_nonnegative"
+DETAIL:  Failing row contains (9, -1, 1, 1, Invalide, rental, 2026-09-09 00:59:09.861373, 2026-09-09 00:59:09.861373, 0, null).
+
+ 
+2026-09-09 00:59:09,889 1 ERROR lab_qa odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T00:59:09.861373\'::timestamp, 1,  -1.0, 0, \'rental\', \'Invalide\', \'2026-09-09T00:59:09.861373\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_rental" violates check constraint "lab_rental_daily_rate_nonnegative"
+DETAIL:  Failing row contains (10, 0, 1, 1, Invalide, rental, 2026-09-09 00:59:09.861373, 2026-09-09 00:59:09.861373, -1, null).
+ 
+2026-09-09 00:59:09,890 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ====================================================================== 
+2026-09-09 00:59:09,890 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ERROR: Subtest TestPreparationFees.test_negative_values_rejected_on_create (kind='rental', field='daily_rate')
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fees.py", line 88, in test_negative_values_rejected_on_create
+    record = self.Rental.create({'name': 'Invalide', 'kind': kind, field: -1})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 369, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4711, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4887, in _create
+    cr.execute(SQL(
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 440, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.CheckViolation: new row for relation "lab_rental" violates check constraint "lab_rental_daily_rate_nonnegative"
+DETAIL:  Failing row contains (10, 0, 1, 1, Invalide, rental, 2026-09-09 00:59:09.861373, 2026-09-09 00:59:09.861373, -1, null).
+
+ 
+2026-09-09 00:59:09,891 1 ERROR lab_qa odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T00:59:09.861373\'::timestamp, 1, 0.0,  -1, \'loan\', \'Invalide\', \'2026-09-09T00:59:09.861373\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_rental" violates check constraint "lab_rental_days_nonnegative"
+DETAIL:  Failing row contains (11, -1, 1, 1, Invalide, loan, 2026-09-09 00:59:09.861373, 2026-09-09 00:59:09.861373, 0, null).
+ 
+2026-09-09 00:59:09,892 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ====================================================================== 
+2026-09-09 00:59:09,892 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ERROR: Subtest TestPreparationFees.test_negative_values_rejected_on_create (kind='loan', field='days')
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fees.py", line 88, in test_negative_values_rejected_on_create
+    record = self.Rental.create({'name': 'Invalide', 'kind': kind, field: -1})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 369, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4711, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4887, in _create
+    cr.execute(SQL(
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 440, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.CheckViolation: new row for relation "lab_rental" violates check constraint "lab_rental_days_nonnegative"
+DETAIL:  Failing row contains (11, -1, 1, 1, Invalide, loan, 2026-09-09 00:59:09.861373, 2026-09-09 00:59:09.861373, 0, null).
+
+ 
+2026-09-09 00:59:09,893 1 ERROR lab_qa odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T00:59:09.861373\'::timestamp, 1,  -1.0, 0, \'loan\', \'Invalide\', \'2026-09-09T00:59:09.861373\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_rental" violates check constraint "lab_rental_daily_rate_nonnegative"
+DETAIL:  Failing row contains (12, 0, 1, 1, Invalide, loan, 2026-09-09 00:59:09.861373, 2026-09-09 00:59:09.861373, -1, null).
+ 
+2026-09-09 00:59:09,894 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ====================================================================== 
+2026-09-09 00:59:09,894 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ERROR: Subtest TestPreparationFees.test_negative_values_rejected_on_create (kind='loan', field='daily_rate')
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fees.py", line 88, in test_negative_values_rejected_on_create
+    record = self.Rental.create({'name': 'Invalide', 'kind': kind, field: -1})
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/decorators.py", line 369, in create
+    return method(self, vals_list)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4711, in create
+    records = self._create(data_list)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4887, in _create
+    cr.execute(SQL(
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 440, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.CheckViolation: new row for relation "lab_rental" violates check constraint "lab_rental_daily_rate_nonnegative"
+DETAIL:  Failing row contains (12, 0, 1, 1, Invalide, loan, 2026-09-09 00:59:09.861373, 2026-09-09 00:59:09.861373, -1, null).
+
+ 
+2026-09-09 00:59:09,894 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: Starting TestPreparationFees.test_negative_values_rejected_on_write ... 
+2026-09-09 00:59:09,897 1 ERROR lab_qa odoo.sql_db: bad query: b' UPDATE "lab_rental"\n                    SET "amount_total" = "__tmp"."amount_total"::double precision, "days" = "__tmp"."days"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (13,  -10.0,  -1, \'2026-09-09T00:59:09.861373\'::timestamp, 1)) AS "__tmp"("id", "amount_total", "days", "write_date", "write_uid")\n                    WHERE "lab_rental"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_rental" violates check constraint "lab_rental_days_nonnegative"
+DETAIL:  Failing row contains (13, -1, 1, 1, Entrées valides, rental, 2026-09-09 00:59:09.861373, 2026-09-09 00:59:09.861373, 10, -10).
+ 
+2026-09-09 00:59:09,899 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ====================================================================== 
+2026-09-09 00:59:09,899 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ERROR: Subtest TestPreparationFees.test_negative_values_rejected_on_write (field='days')
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fees.py", line 99, in test_negative_values_rejected_on_write
+    record.flush_recordset()
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6385, in flush_recordset
+    self._flush()
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6432, in _flush
+    model.browse(some_ids)._write_multi(vals_list)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4594, in _write_multi
+    self.env.execute_query(SQL(
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 534, in execute_query
+    self.cr.execute(query)
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 440, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.CheckViolation: new row for relation "lab_rental" violates check constraint "lab_rental_days_nonnegative"
+DETAIL:  Failing row contains (13, -1, 1, 1, Entrées valides, rental, 2026-09-09 00:59:09.861373, 2026-09-09 00:59:09.861373, 10, -10).
+
+ 
+2026-09-09 00:59:09,900 1 ERROR lab_qa odoo.sql_db: bad query: b' UPDATE "lab_rental"\n                    SET "amount_total" = "__tmp"."amount_total"::double precision, "daily_rate" = "__tmp"."daily_rate"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (13, 8.0,  -1.0, \'2026-09-09T00:59:09.861373\'::timestamp, 1)) AS "__tmp"("id", "amount_total", "daily_rate", "write_date", "write_uid")\n                    WHERE "lab_rental"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_rental" violates check constraint "lab_rental_daily_rate_nonnegative"
+DETAIL:  Failing row contains (13, 4, 1, 1, Entrées valides, rental, 2026-09-09 00:59:09.861373, 2026-09-09 00:59:09.861373, -1, 8).
+ 
+2026-09-09 00:59:09,901 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ====================================================================== 
+2026-09-09 00:59:09,901 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ERROR: Subtest TestPreparationFees.test_negative_values_rejected_on_write (field='daily_rate')
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fees.py", line 99, in test_negative_values_rejected_on_write
+    record.flush_recordset()
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6385, in flush_recordset
+    self._flush()
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6432, in _flush
+    model.browse(some_ids)._write_multi(vals_list)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4594, in _write_multi
+    self.env.execute_query(SQL(
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 534, in execute_query
+    self.cr.execute(query)
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 440, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.CheckViolation: new row for relation "lab_rental" violates check constraint "lab_rental_daily_rate_nonnegative"
+DETAIL:  Failing row contains (13, 4, 1, 1, Entrées valides, rental, 2026-09-09 00:59:09.861373, 2026-09-09 00:59:09.861373, -1, 8).
+
+ 
+2026-09-09 00:59:09,901 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: Starting TestPreparationFees.test_no_extra_rounding ... 
+2026-09-09 00:59:09,904 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: Starting TestPreparationFees.test_rate_recompute ... 
+2026-09-09 00:59:09,908 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: Starting TestPreparationFees.test_rental_threshold ... 
+2026-09-09 00:59:09,910 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: Starting TestPreparationFees.test_zero_values_and_defaults ... 
+2026-09-09 00:59:09,915 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 10 checked, 0 removed 
+2026-09-09 00:59:09,915 1 INFO lab_qa odoo.service.server: 10 post-tests in 0.07s, 133 queries 
+2026-09-09 00:59:09,915 1 INFO lab_qa odoo.tests.stats: lab_rental: 12 tests 0.05s 133 queries 
+2026-09-09 00:59:09,915 1 ERROR lab_qa odoo.tests.result: 0 failed, 6 error(s) of 10 tests when loading database 'lab_qa' 
+2026-09-09 00:59:09,915 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-09 00:59:09,915 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 00:59:10,187 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+❌ échec (installation, mise à jour ou tests) — voir les extraits ci-dessous
+   ⏱ 14s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 13
+tests échoués  : 6
+tests ignorés  : 0
+WARNING liés à lab_rental : 0
+
+── extraits ──
+222:2026-09-09 00:59:09,883 1 ERROR lab_qa odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T00:59:09.861373\'::timestamp, 1, 0.0,  -1, \'rental\', \'Invalide\', \'2026-09-09T00:59:09.861373\'::timestamp, 1) RETURNING "id"'
+227:2026-09-09 00:59:09,889 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ERROR: Subtest TestPreparationFees.test_negative_values_rejected_on_create (kind='rental', field='days')
+246:2026-09-09 00:59:09,889 1 ERROR lab_qa odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T00:59:09.861373\'::timestamp, 1,  -1.0, 0, \'rental\', \'Invalide\', \'2026-09-09T00:59:09.861373\'::timestamp, 1) RETURNING "id"'
+251:2026-09-09 00:59:09,890 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ERROR: Subtest TestPreparationFees.test_negative_values_rejected_on_create (kind='rental', field='daily_rate')
+270:2026-09-09 00:59:09,891 1 ERROR lab_qa odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T00:59:09.861373\'::timestamp, 1, 0.0,  -1, \'loan\', \'Invalide\', \'2026-09-09T00:59:09.861373\'::timestamp, 1) RETURNING "id"'
+275:2026-09-09 00:59:09,892 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ERROR: Subtest TestPreparationFees.test_negative_values_rejected_on_create (kind='loan', field='days')
+294:2026-09-09 00:59:09,893 1 ERROR lab_qa odoo.sql_db: bad query: b'INSERT INTO "lab_rental" ("create_date", "create_uid", "daily_rate", "days", "kind", "name", "write_date", "write_uid") VALUES (\'2026-09-09T00:59:09.861373\'::timestamp, 1,  -1.0, 0, \'loan\', \'Invalide\', \'2026-09-09T00:59:09.861373\'::timestamp, 1) RETURNING "id"'
+299:2026-09-09 00:59:09,894 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ERROR: Subtest TestPreparationFees.test_negative_values_rejected_on_create (kind='loan', field='daily_rate')
+319:2026-09-09 00:59:09,897 1 ERROR lab_qa odoo.sql_db: bad query: b' UPDATE "lab_rental"\n                    SET "amount_total" = "__tmp"."amount_total"::double precision, "days" = "__tmp"."days"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (13,  -10.0,  -1, \'2026-09-09T00:59:09.861373\'::timestamp, 1)) AS "__tmp"("id", "amount_total", "days", "write_date", "write_uid")\n                    WHERE "lab_rental"."id" = "__tmp"."id"\n                '
+324:2026-09-09 00:59:09,899 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ERROR: Subtest TestPreparationFees.test_negative_values_rejected_on_write (field='days')
+342:2026-09-09 00:59:09,900 1 ERROR lab_qa odoo.sql_db: bad query: b' UPDATE "lab_rental"\n                    SET "amount_total" = "__tmp"."amount_total"::double precision, "daily_rate" = "__tmp"."daily_rate"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (13, 8.0,  -1.0, \'2026-09-09T00:59:09.861373\'::timestamp, 1)) AS "__tmp"("id", "amount_total", "daily_rate", "write_date", "write_uid")\n                    WHERE "lab_rental"."id" = "__tmp"."id"\n                '
+347:2026-09-09 00:59:09,901 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fees: ERROR: Subtest TestPreparationFees.test_negative_values_rejected_on_write (field='daily_rate')
+372:2026-09-09 00:59:09,915 1 ERROR lab_qa odoo.tests.result: 0 failed, 6 error(s) of 10 tests when loading database 'lab_qa' 
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": false, "reasons": ["bilan contenant des échecs ou erreurs", "erreur ou module ignoré dans le log"], "module_tests": 12, "summaries": [{"failed": 0, "errors": 6, "tests": 10}]}
+❌ preuve de tests absente ou invalide
+RECETTE module=lab_rental db=lab_qa install=ko update=n.a. uninstall=n.a. tests="0 failed, 6 error(s) of 10 tests" errors=13 failed=6 skipped=0 warnings=0 total=14s quick=14s
+
+Log complet   : /home/blegoff/odoo-quality-runs/native-smoke-01/N01-codex-candidate/backend/stack/artifacts/lab_rental-20260909-025856.jTF8RT.log
+Captures      : /home/blegoff/odoo-quality-runs/native-smoke-01/N01-codex-candidate/backend/stack/artifacts/
+❌ lab_rental : voir ci-dessus

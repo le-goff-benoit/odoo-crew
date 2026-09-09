@@ -1,0 +1,169 @@
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py init /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --file /tmp/forward-release-plan-auvQFI/after/project/changelog/R01/definition.json
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+T01 · pending · PRÊT · Définir un seuil de réapprovisionnement
+T02 · pending · PRÊT · Choisir le canal de notification
+T03 · pending · dépendances : T01, T02 · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T03
+dépendances : T01, T02
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T01
+/tmp/forward-release-plan-auvQFI/after/project/.odoo-agents/flows/plan-t01-6ab71bde.json
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T02
+/tmp/forward-release-plan-auvQFI/after/project/.odoo-agents/flows/plan-t02-e0023629.json
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+T01 · running · .odoo-agents/flows/plan-t01-6ab71bde.json · Définir un seuil de réapprovisionnement
+T02 · running · .odoo-agents/flows/plan-t02-e0023629.json · Choisir le canal de notification
+T03 · pending · dépendances : T01, T02 · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+T01 · running · .odoo-agents/flows/plan-t01-6ab71bde.json · Définir un seuil de réapprovisionnement
+T02 · interrupted · état local absent : réception durable non validée ; réconcilier explicitement · Choisir le canal de notification
+T03 · pending · dépendances : T01, T02 · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T02
+état local absent : réception durable non validée ; réconcilier explicitement
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py reopen /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T02 --reason Réconciliation explicite après interruption du checkout
+reopen
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T02
+/tmp/forward-release-plan-auvQFI/after/project/.odoo-agents/flows/plan-t02-7d973ff5.json
+EXIT 0
+FIXTURE ONLY: flow status complete for T01
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/after/project --scope module_1 --output /tmp/forward-release-plan-auvQFI/after/project/changelog/R01/T01.json -- /usr/bin/python3 -c from pathlib import Path; assert all(p.read_text().strip() for p in Path('.').glob('module_*/feature.txt')); print('synthetic source integrity passed')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T01 --proof changelog/R01/T01.json --acceptance changelog/R01/T01-acceptance.md --memory changelog/R01/T01-memory.md
+validé ; contenu métier de la réception à relire par l’orchestrateur
+EXIT 0
+FIXTURE ONLY: flow status complete for T02
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/after/project --scope module_2 --output /tmp/forward-release-plan-auvQFI/after/project/changelog/R01/T02.json -- /usr/bin/python3 -c from pathlib import Path; assert all(p.read_text().strip() for p in Path('.').glob('module_*/feature.txt')); print('synthetic source integrity passed')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T02 --proof changelog/R01/T02.json --acceptance changelog/R01/T02-acceptance.md --memory changelog/R01/T02-memory.md
+validé ; contenu métier de la réception à relire par l’orchestrateur
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py start /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T03
+/tmp/forward-release-plan-auvQFI/after/project/.odoo-agents/flows/plan-t03-1438c37c.json
+EXIT 0
+FIXTURE ONLY: flow status complete for T03
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/after/project --scope module_3 --output /tmp/forward-release-plan-auvQFI/after/project/changelog/R01/T03.json -- /usr/bin/python3 -c from pathlib import Path; assert all(p.read_text().strip() for p in Path('.').glob('module_*/feature.txt')); print('synthetic source integrity passed')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T03 --proof changelog/R01/T03.json --acceptance changelog/R01/T03-acceptance.md --memory changelog/R01/T03-memory.md
+validé ; contenu métier de la réception à relire par l’orchestrateur
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+T01 · validated · preuve et passation toujours valides · Définir un seuil de réapprovisionnement
+T02 · validated · preuve et passation toujours valides · Choisir le canal de notification
+T03 · validated · preuve et passation toujours valides · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+T01 · stale · contrat de tâche changé après réception · Définir un seuil de réapprovisionnement
+T02 · validated · preuve et passation toujours valides · Choisir le canal de notification
+T03 · stale · dépendances non validées : T01 · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/after/project --scope module_1 --output /tmp/forward-release-plan-auvQFI/after/project/changelog/R01/T01.json -- /usr/bin/python3 -c from pathlib import Path; assert all(p.read_text().strip() for p in Path('.').glob('module_*/feature.txt')); print('synthetic source integrity passed')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T01 --proof changelog/R01/T01.json --acceptance changelog/R01/T01-acceptance.md --memory changelog/R01/T01-memory.md
+validé ; contenu métier de la réception à relire par l’orchestrateur
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+T01 · validated · preuve et passation toujours valides · Définir un seuil de réapprovisionnement
+T02 · validated · preuve et passation toujours valides · Choisir le canal de notification
+T03 · stale · réception d’une dépendance changée : nouvelle validation requise · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/after/project --scope module_3 --output /tmp/forward-release-plan-auvQFI/after/project/changelog/R01/T03.json -- /usr/bin/python3 -c from pathlib import Path; assert all(p.read_text().strip() for p in Path('.').glob('module_*/feature.txt')); print('synthetic source integrity passed')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T03 --proof changelog/R01/T03.json --acceptance changelog/R01/T03-acceptance.md --memory changelog/R01/T03-memory.md
+validé ; contenu métier de la réception à relire par l’orchestrateur
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+T01 · validated · preuve et passation toujours valides · Définir un seuil de réapprovisionnement
+T02 · validated · preuve et passation toujours valides · Choisir le canal de notification
+T03 · validated · preuve et passation toujours valides · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_release_guard.py prepare /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --module module_1 --module module_2 --module module_3
+{"module_1": {"base": "19.0.1.0.0", "target": "19.0.1.0.1", "prepared_at": "2026-09-09T01:11:15+00:00"}, "updated_at": "2026-09-09T01:11:15+00:00", "module_2": {"base": "19.0.1.0.0", "target": "19.0.1.0.1", "prepared_at": "2026-09-09T01:11:15+00:00"}, "module_3": {"base": "19.0.1.0.0", "target": "19.0.1.0.1", "prepared_at": "2026-09-09T01:11:15+00:00"}}
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+T01 · stale · code changé depuis le contrôle · Définir un seuil de réapprovisionnement
+T02 · stale · code changé depuis le contrôle · Choisir le canal de notification
+T03 · stale · code changé depuis le contrôle · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/after/project --scope module_3 --output /tmp/forward-release-plan-auvQFI/after/project/changelog/R01/T03.json -- /usr/bin/python3 -c from pathlib import Path; assert all(p.read_text().strip() for p in Path('.').glob('module_*/feature.txt')); print('synthetic source integrity passed')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T03 --proof changelog/R01/T03.json --acceptance changelog/R01/T03-acceptance.md --memory changelog/R01/T03-memory.md
+dépendances à réceptionner avant cette tâche
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/after/project --scope module_1 --output /tmp/forward-release-plan-auvQFI/after/project/changelog/R01/T01.json -- /usr/bin/python3 -c from pathlib import Path; assert all(p.read_text().strip() for p in Path('.').glob('module_*/feature.txt')); print('synthetic source integrity passed')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T01 --proof changelog/R01/T01.json --acceptance changelog/R01/T01-acceptance.md --memory changelog/R01/T01-memory.md
+validé ; contenu métier de la réception à relire par l’orchestrateur
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/after/project --scope module_2 --output /tmp/forward-release-plan-auvQFI/after/project/changelog/R01/T02.json -- /usr/bin/python3 -c from pathlib import Path; assert all(p.read_text().strip() for p in Path('.').glob('module_*/feature.txt')); print('synthetic source integrity passed')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T02 --proof changelog/R01/T02.json --acceptance changelog/R01/T02-acceptance.md --memory changelog/R01/T02-memory.md
+validé ; contenu métier de la réception à relire par l’orchestrateur
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/after/project --scope module_3 --output /tmp/forward-release-plan-auvQFI/after/project/changelog/R01/T03.json -- /usr/bin/python3 -c from pathlib import Path; assert all(p.read_text().strip() for p in Path('.').glob('module_*/feature.txt')); print('synthetic source integrity passed')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T03 --proof changelog/R01/T03.json --acceptance changelog/R01/T03-acceptance.md --memory changelog/R01/T03-memory.md
+validé ; contenu métier de la réception à relire par l’orchestrateur
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py status /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+T01 · validated · preuve et passation toujours valides · Définir un seuil de réapprovisionnement
+T02 · validated · preuve et passation toujours valides · Choisir le canal de notification
+T03 · validated · preuve et passation toujours valides · Afficher la synthèse seuil et canal
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py run --project /tmp/forward-release-plan-auvQFI/after/project --scope module_1 --scope module_2 --scope module_3 --module module_1 --output /tmp/forward-release-plan-auvQFI/after/project/changelog/R01/recette.json -- /usr/bin/python3 -c print('SYNTHETIC PARSER FIXTURE - NOT ODOO'); print('odoo.tests.result: 0 failed, 0 error(s) of 1 tests'); print('odoo.tests.stats: module_1: 1 tests')
+passed
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_release_guard.py seal /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --scope module_1 --scope module_2 --scope module_3 --proof changelog/R01/recette.json
+voie de contrôle différente de celle du plan
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_release_guard.py seal /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --scope module_1 --proof changelog/R01/recette.json
+périmètre de clôture incomplet pour T02
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_release_guard.py seal /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --scope module_1 --scope module_2 --scope module_3 --proof changelog/R01/recette.json
+Clôture scellée sur les preuves et documents courants.
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_release_guard.py check /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+Clôture : preuves, code et documents conformes.
+EXIT 0
+$ bash /home/blegoff/odoo-agents-native-lab/scripts/odoo-release.sh close /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+Clôture : preuves, code et documents conformes.
+Release clos : /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_release_guard.py check /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+Clôture : preuves, code et documents conformes.
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_release_guard.py check /tmp/forward-release-plan-auvQFI/after/project/changelog/R02
+sceau d’une autre release/projet ou format invalide
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_release_guard.py check /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+plan ajouté, supprimé ou changé après scellement
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_release_guard.py check /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+Clôture : preuves, code et documents conformes.
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_release_guard.py check /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+plan ajouté, supprimé ou changé après scellement
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_release_guard.py check /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+document changé après contrôle : doc.md
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_release_guard.py check /tmp/forward-release-plan-auvQFI/after/project/changelog/R01
+Clôture : preuves, code et documents conformes.
+EXIT 0
+ALL REPLAY ASSERTIONS PASSED

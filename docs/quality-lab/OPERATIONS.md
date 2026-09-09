@@ -152,7 +152,8 @@ python3 scripts/odoo_bench_native.py status --output /tmp/native-campaign
 
 Ce runner utilise les CLI natives et les skills générés dans un home isolé par
 bubblewrap. Les sources Odoo restent en lecture seule ; seul le projet synthétique
-est modifiable. Le pont autorise QA, mise à jour de la copie et scripts ORM dans
+est modifiable. Le pont autorise lint (`/bridge/labctl lint MODULE`, Ruff dans l’image QA),
+QA, mise à jour de la copie et scripts ORM dans
 les conteneurs du banc. Aucun socket Docker ni dossier client n'est transmis au
 modèle. Les cas, correcteurs et rapports du dépôt sont masqués pendant ses appels.
 Studio emploie un proxy HTTP de boucle locale vers sa seule copie synthétique.

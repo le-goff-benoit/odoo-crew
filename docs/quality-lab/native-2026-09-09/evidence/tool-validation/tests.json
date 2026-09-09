@@ -1,0 +1,545 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/home/blegoff/odoo-agents-native-lab",
+  "scopes": [
+    "scripts",
+    "roles",
+    "tests",
+    "workflows",
+    "benchmarks/native",
+    "build.sh",
+    "routing.md"
+  ],
+  "sources": {
+    "scripts/odoo-config-inventory.sh": {
+      "sha256": "600c449d624f51808e835dd39721f85200330ed12e66fe8d927be337d21a9396",
+      "mode": 509
+    },
+    "scripts/odoo-lint.sh": {
+      "sha256": "f356c4eeb98ebc600b423d4f124e220cc0e03fa2cbf5bd4d782d561393053e5f",
+      "mode": 509
+    },
+    "scripts/odoo-pdf.sh": {
+      "sha256": "84dd604d7d80edc25017155a80cc92860323fb1eded7cf4c87ac6c7af5b4f8d0",
+      "mode": 509
+    },
+    "scripts/odoo-recette.sh": {
+      "sha256": "c5937be660eee6e0f32cb86c8edee48fe631ad8facbfb985a0a2fcc987210d94",
+      "mode": 509
+    },
+    "scripts/odoo-release.sh": {
+      "sha256": "7d2ae8a91808015f6e8f5a47699d9f27d896195a7f84eaa0d44f7b06aba44844",
+      "mode": 509
+    },
+    "scripts/odoo-restore.sh": {
+      "sha256": "ccb37e1057b80038791e47f53433bb68ae02e5bbe494fe45d0ee962ee0d22087",
+      "mode": 509
+    },
+    "scripts/odoo-shot.sh": {
+      "sha256": "d18239338b8a5c59f71f71c1589f38cd0d651768b9d6d4ce379fac2646f16b3f",
+      "mode": 509
+    },
+    "scripts/odoo-stack.sh": {
+      "sha256": "d53bc9d53051ad986d9343df12604ede2f27ce94cfa1fd232c2b4bb356c47666",
+      "mode": 509
+    },
+    "scripts/odoo-test.sh": {
+      "sha256": "fbafdec54ac72c76fa14cc8fa859dd46705be73d48de5c0734d92ab4b8582e45",
+      "mode": 509
+    },
+    "scripts/odoo_bench.py": {
+      "sha256": "b756ca71a7c0110e06d230460585a57a31518a92b8d7f1b72b49364697b37816",
+      "mode": 436
+    },
+    "scripts/odoo_bench_development.py": {
+      "sha256": "d52a011dfb9b262075850e6bf9904436e1be2daf3a84bb8efcd0e8bc70a3316d",
+      "mode": 436
+    },
+    "scripts/odoo_bench_judge.py": {
+      "sha256": "9239e448ea66bea2e88f5b7118231091dda638a7c2fb41134834696e5e55219d",
+      "mode": 436
+    },
+    "scripts/odoo_bench_native.py": {
+      "sha256": "48f32643bee748265452e62826a709fcd48510f9d34fa885ae26a882f03f2084",
+      "mode": 436
+    },
+    "scripts/odoo_bench_runtime.py": {
+      "sha256": "9257c5faa3ac208de7becddfbd6df22990c8e2539f540e66790cebf491747789",
+      "mode": 436
+    },
+    "scripts/odoo_briefing.py": {
+      "sha256": "e37c6b86611fa4adb6056e53c671f5072c0954a42a95809bd8eacb93f250701b",
+      "mode": 509
+    },
+    "scripts/odoo_capture.py": {
+      "sha256": "25963f1d4dad911b74c1ce06b0cfd5baf9fa753cc37f0380a3052b74599cf9f3",
+      "mode": 509
+    },
+    "scripts/odoo_context.py": {
+      "sha256": "2b66e79cadc59bb37b1169093b4e52ad8c4725ee0717666ac2e14d5476729244",
+      "mode": 436
+    },
+    "scripts/odoo_evidence.py": {
+      "sha256": "8d210ca744265f5731b58b252ef256183dab69d0039581687909fdf60f7dd4ff",
+      "mode": 436
+    },
+    "scripts/odoo_flow.py": {
+      "sha256": "d4a38827e7ffd72b85df4c8d4b9acd31330944e6efb4ccd2f1f8e2d0079290b5",
+      "mode": 509
+    },
+    "scripts/odoo_generated.py": {
+      "sha256": "3460dadd81e48ff22435ce079a446cf013e8de62f9616d9cd24c9eb43c88ca24",
+      "mode": 436
+    },
+    "scripts/odoo_instance.py": {
+      "sha256": "2fc7b3776a6c8d0cd9ec03f33de0c5986722d6d5b6213ffa5048d2ecbf586059",
+      "mode": 509
+    },
+    "scripts/odoo_lint.py": {
+      "sha256": "303896062e5cbfebeb590aceeac3d29dd1d70d8c93e18d6f7f2a26b6252487e4",
+      "mode": 509
+    },
+    "scripts/odoo_loaded_instructions.py": {
+      "sha256": "c542abb95bf697b440286d4e61500dca44df7301f24948d00ecd94c32924aba5",
+      "mode": 436
+    },
+    "scripts/odoo_mail.py": {
+      "sha256": "fd4efff724380cd61d7d5385db613e3c1b1cf9fa3c6f415e784c73258de29868",
+      "mode": 509
+    },
+    "scripts/odoo_memory.py": {
+      "sha256": "94e41b17aab83f442b7ae8b5d0d4f9ef78141413378f813f737a23e00c956295",
+      "mode": 436
+    },
+    "scripts/odoo_pack.py": {
+      "sha256": "114021dc69af4fac77e6bd6e5ed3ed2ee772626c7f214be514cddd2793e15ca4",
+      "mode": 509
+    },
+    "scripts/odoo_plan.py": {
+      "sha256": "4431323a7c521fe451e0e57434aaa018f0f0577f3a1d25fba484f210c303d400",
+      "mode": 436
+    },
+    "scripts/odoo_project_scan.py": {
+      "sha256": "0d19fd6ea590c05fd10a5e6d4c046a30730cbf9e528549aa370dd768d408027b",
+      "mode": 509
+    },
+    "scripts/odoo_release_guard.py": {
+      "sha256": "4443c257ad3974300eb6e5cce98ac3c07792cb6c24fd8a2badd26c476d32b09d",
+      "mode": 436
+    },
+    "scripts/odoo_scenarios.py": {
+      "sha256": "e2c7a785d407d112770a6f5225e56463b44be6e409b4fa17eba40c99ea54a9a1",
+      "mode": 436
+    },
+    "scripts/odoo_series.py": {
+      "sha256": "9797c5be75e6a27921e1559b8cc196abe3f14d2010fbe2c1a97b1bb407c61e9d",
+      "mode": 509
+    },
+    "scripts/odoo_shot.py": {
+      "sha256": "fe11ae59dde39926ecd522b236e1822b5fe7e588c48291452a27f75a5dc21f7b",
+      "mode": 436
+    },
+    "scripts/odoo_test_result.py": {
+      "sha256": "60e88262902b77d5c7882b45dd824a66a97aa6df04fec1845c3e7a65c25a36f1",
+      "mode": 436
+    },
+    "scripts/series-env.sh": {
+      "sha256": "442c1964598a3c9b60b2004f711c0106df4d8da1fc062593adad112b1c4b7a4d",
+      "mode": 436
+    },
+    "roles/docs.md": {
+      "sha256": "404c078920845de55981cf9dbb7d79347ce22199bfa64e48ab9e508eeee9e0a4",
+      "mode": 436
+    },
+    "roles/env.md": {
+      "sha256": "4e00e0cd3d52896452804610446493f7a537da36109ec2c9b23f56d5f75d59ca",
+      "mode": 436
+    },
+    "roles/functional-review.md": {
+      "sha256": "3895b08234c09a374804bdd1278f87d304e2965a5c4a13a7d4d6bef1cd2047fd",
+      "mode": 436
+    },
+    "roles/implementation.md": {
+      "sha256": "3d13cee940166251e69c129e8e3f105a49aaf1757e212c38ef26b0b75f74473b",
+      "mode": 436
+    },
+    "roles/orchestration.md": {
+      "sha256": "b205545aa7ed1a7615c130938d7abd3bcd428c04ecfd1fbf296a3f35eff5a010",
+      "mode": 436
+    },
+    "roles/qa-review.md": {
+      "sha256": "19323d25837151fe0185406acde3b0e2613d2f78a952ab0c8410a444531bc40f",
+      "mode": 436
+    },
+    "roles/quality-improve.md": {
+      "sha256": "a6c2846e611e2e9cb0fd44f8be26f98cb7aaba9fa4a6beabbca2ccad91025a86",
+      "mode": 436
+    },
+    "roles/release-close.md": {
+      "sha256": "ea09195049d67eae51cc3c85c6d80374315de7f451800b842caf67a87b15dec5",
+      "mode": 436
+    },
+    "roles/release-plan.md": {
+      "sha256": "f71267eaa4bd37a8d34b2cca160c582a045c8e822ef8dffc455ba80f3c49f783",
+      "mode": 436
+    },
+    "roles/release-start.md": {
+      "sha256": "81484ae94cc6ba958515b100af9eb91c380117bac955e7ab62dd89f20e25d727",
+      "mode": 436
+    },
+    "roles/retex.md": {
+      "sha256": "900e2623d2a5e9a87d3a0b82c9b8d10bda5d82ec3b3a1e1709973b19e952c0d6",
+      "mode": 436
+    },
+    "roles/studio.md": {
+      "sha256": "c5ba30ed672f3622a7d6ee6ddd7339a54e836bbdd7153811b60963d1f47f7d17",
+      "mode": 436
+    },
+    "roles/support.md": {
+      "sha256": "fb490eae2df87f04bd8488e58231fb8e16d64992eb8903b828e73ca0c177d04d",
+      "mode": 436
+    },
+    "tests/test_odoo_bench.py": {
+      "sha256": "2787a8c70bd4384db7b9cb7bf9b86218915a6db516fc94f68db1c72fdc1d57d6",
+      "mode": 436
+    },
+    "tests/test_odoo_bench_development.py": {
+      "sha256": "45643a4454fe22337a92a863aaf612cab0ae80740d9c7e45e4453f601ee128ae",
+      "mode": 436
+    },
+    "tests/test_odoo_bench_judge.py": {
+      "sha256": "eeb5018cd8fdef4d447a088567a7b4595602313cbace8f645f31b0650fd2089d",
+      "mode": 436
+    },
+    "tests/test_odoo_bench_runtime.py": {
+      "sha256": "d8afd511a0f26f31f2579ff4397ec064a93cbb4e029c77ead3d230af363c694a",
+      "mode": 436
+    },
+    "tests/test_odoo_briefing.py": {
+      "sha256": "d80a0ae40c4de02faab1f231a09af46e229f904fc27fb54a0ab01f7fbff9bc6d",
+      "mode": 436
+    },
+    "tests/test_odoo_context_scenarios.py": {
+      "sha256": "5e4ba51621f65c5e23cd3a767cb024465609d3f0442b153b16ea1f38759e079d",
+      "mode": 436
+    },
+    "tests/test_odoo_evidence.py": {
+      "sha256": "5969ea26283ad9e1e5754bd284fe28774ef3d363261864a1a8fca1fed1179cac",
+      "mode": 436
+    },
+    "tests/test_odoo_flow.py": {
+      "sha256": "7faa461106321c1bf191026c5b74cc9da6a4f491198b66dded5220e312b66374",
+      "mode": 436
+    },
+    "tests/test_odoo_generated.py": {
+      "sha256": "38d2fe82b26eedd583157fec7f06d581245a88a972a61e87c88da1be35c7701c",
+      "mode": 436
+    },
+    "tests/test_odoo_guards.py": {
+      "sha256": "762347d02113cc46ed1bbb2e71a5313dd692d85122f46e6b0923fc0e3c5e52fc",
+      "mode": 436
+    },
+    "tests/test_odoo_lint_scope.py": {
+      "sha256": "6d4e07dd10e63303f550d16f17395de8e3bbddede19fb90481ea9a36a5c5892e",
+      "mode": 436
+    },
+    "tests/test_odoo_memory.py": {
+      "sha256": "1d04f92d662d1f734bbe33ffbd136c1e471480151545197c14bb93fe98b585e5",
+      "mode": 436
+    },
+    "tests/test_odoo_pack.py": {
+      "sha256": "c868bb233d064d91a5a5b0ed43f1a7d5818cbf35ba1b83767a5f33961b7726fa",
+      "mode": 436
+    },
+    "tests/test_odoo_recette_shell.py": {
+      "sha256": "82078b944c9f1296e3ba608c1ae52e2a221df4237bc1ec05b7bf91f0b3cfcfa3",
+      "mode": 436
+    },
+    "tests/test_odoo_release_plan.py": {
+      "sha256": "16dd9574022328ebb3f3b69b6e8df7ae0fb430ddf45ea8272801f54bcd2fc1ab",
+      "mode": 436
+    },
+    "tests/test_odoo_restore_shell.py": {
+      "sha256": "03c3f071072707042ce7cb1979e537c1fb8fc02c4681be87e7a8e6193b0ae43f",
+      "mode": 436
+    },
+    "tests/test_odoo_test_result.py": {
+      "sha256": "bc58d030c9b5e756cca7fd38e70d20d66061b0e3cbaa12f1f4188b9f97fc3d82",
+      "mode": 436
+    },
+    "tests/test_odoo_test_shell.py": {
+      "sha256": "6d15788f37f003a8e6c15d648b662d87d52af9c24235993707bed354c41f62b6",
+      "mode": 436
+    },
+    "workflows/odoo-workflow.json": {
+      "sha256": "8fb96a09b6cfb33e9b77c7c52ca292bdd2c169bc1c0804121c39304d9a9fd656",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N01/case.json": {
+      "sha256": "de4bb4de81f13d0ac84a6f471e6dc8efddae199f5e452cc4993deefa6e47fbf6",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N01/project/.odoo-agents/JOURNAL.md": {
+      "sha256": "22fd4e7efe03b0267ce0cf6f9709f4e6ae4325ab617425ae53a3fcc770977cc2",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N01/project/.odoo-agents/PROJECT.md": {
+      "sha256": "4e824ec0e023ee0b66d78f1b97b8ef3bcec3cd5ccc43ec43cfa4e834e6ee8e0d",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N01/project/.odoo-agents/config": {
+      "sha256": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N01/project/decisions/2026-09-08.md": {
+      "sha256": "bb2f63985c09f27d7c8ee0905c8b2e4f61e04ebd52ef24dd7eb67e1d5b93b54d",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N01/project/demande.md": {
+      "sha256": "2e327e1632435465f914a10c56c0bf09197426c407fab2ed682af2ff39dcf9ac",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N01/project/lab_rental/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N01/project/lab_rental/__manifest__.py": {
+      "sha256": "5e7900398e39fce48777430bdba33f779ed11406b13f1e46129535bae60dec1f",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N01/project/lab_rental/models/__init__.py": {
+      "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N01/project/lab_rental/models/business.py": {
+      "sha256": "7a5269e82a4ce89491978f1363fcc49099690df7800a4a30685de240a336ace4",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N01/project/lab_rental/security/ir.model.access.csv": {
+      "sha256": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N02/case.json": {
+      "sha256": "28eb2ff8c676a9edd7d7d4cb233824ec4368c3518e0dec6ae075f326bb77a958",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N02/project/.odoo-agents/JOURNAL.md": {
+      "sha256": "655427224b8f43de3aa1a62eef464eb23d3508bcf6dfedb88f5539413021e3b4",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N02/project/.odoo-agents/PROJECT.md": {
+      "sha256": "b86546ed890c9bf3882c5a7c589bb6261c862119fa601acf867c3a83d934f9e0",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N02/project/.odoo-agents/config": {
+      "sha256": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N02/project/decisions/2026-09-08.md": {
+      "sha256": "18ba37af061018954610d27966fe905c581d9e4d44915d85aead55364cab425c",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N02/project/demande.md": {
+      "sha256": "9a8d8d7065d1602e22dde763afd55e378dc434dba9352727f8c32dcb8c36d970",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N02/project/lab_dispatch/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N02/project/lab_dispatch/__manifest__.py": {
+      "sha256": "15d10346f456fc9f1091f1da7237f52812753e3607dac87dfe4a0a301dbbf1cd",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N02/project/lab_dispatch/models/__init__.py": {
+      "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N02/project/lab_dispatch/models/business.py": {
+      "sha256": "705c54b0a448aa5cdef23f25176699b5c3d9ea3a0bdf12ce991303acf6bf8912",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N02/project/lab_dispatch/security/ir.model.access.csv": {
+      "sha256": "7b0b268f572e338740e60a7bb5cc40ecfb1bb106cccb356ffaaf014c92d3ee90",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N03/case.json": {
+      "sha256": "e9ac6ca8f7edba320df82d247fa9b81f78215a4a783085ce14392c8ec6c87fa0",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N03/project/.odoo-agents/JOURNAL.md": {
+      "sha256": "7b1f07157126aed21f02ecd5a6321e3f8c0b3cdf31456846aa70431503e9625b",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N03/project/.odoo-agents/PROJECT.md": {
+      "sha256": "75e69609c6b01a908b66efcac397370544709d28ed5a29d3a9ba9559addb9dee",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N03/project/.odoo-agents/config": {
+      "sha256": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N03/project/decisions/2026-09-08.md": {
+      "sha256": "a3f3586292c3e2e7c6fb6e3257f2871c3fb9c4695cb149996eb84e9bc219c2cf",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N03/project/demande.md": {
+      "sha256": "24d789353edb5886464f4aa4867c991a3f58f56383e70fffca6e782fad95dc7f",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N04/case.json": {
+      "sha256": "3122dc20f77f6939efff18a590fad661670fe0255fe60c2ebb42db600b19b07e",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N04/project/.odoo-agents/JOURNAL.md": {
+      "sha256": "881feeed0c11b67ff12d77371f83cde50092fe8f3852b9294e4ef789501fb673",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N04/project/.odoo-agents/PROJECT.md": {
+      "sha256": "f6f6efeddfe014910db47507c58b0f994382de8f712a246a259de31c1203e996",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N04/project/.odoo-agents/config": {
+      "sha256": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N04/project/decisions/2026-09-08.md": {
+      "sha256": "51e298ea60157466a088a8116cc7dc5404ebb87da0784293005b4bcc120b752b",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N04/project/demande.md": {
+      "sha256": "581abfa49072bf81ec2d0a3e40892a181ba7c0e2a556ae2f6a44369939331496",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N04/project/lab_rental/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N04/project/lab_rental/__manifest__.py": {
+      "sha256": "5e7900398e39fce48777430bdba33f779ed11406b13f1e46129535bae60dec1f",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N04/project/lab_rental/models/__init__.py": {
+      "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N04/project/lab_rental/models/business.py": {
+      "sha256": "7a5269e82a4ce89491978f1363fcc49099690df7800a4a30685de240a336ace4",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N04/project/lab_rental/security/ir.model.access.csv": {
+      "sha256": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N05/case.json": {
+      "sha256": "3ed95c51e5298dbf07866d96264fcaf0e60e3a2ae8fada46eecb87ce50c90403",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N05/project/.odoo-agents/JOURNAL.md": {
+      "sha256": "655427224b8f43de3aa1a62eef464eb23d3508bcf6dfedb88f5539413021e3b4",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N05/project/.odoo-agents/PROJECT.md": {
+      "sha256": "b86546ed890c9bf3882c5a7c589bb6261c862119fa601acf867c3a83d934f9e0",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N05/project/.odoo-agents/config": {
+      "sha256": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N05/project/decisions/2026-09-08.md": {
+      "sha256": "18ba37af061018954610d27966fe905c581d9e4d44915d85aead55364cab425c",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N05/project/demande.md": {
+      "sha256": "9a8d8d7065d1602e22dde763afd55e378dc434dba9352727f8c32dcb8c36d970",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N05/project/lab_dispatch/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N05/project/lab_dispatch/__manifest__.py": {
+      "sha256": "15d10346f456fc9f1091f1da7237f52812753e3607dac87dfe4a0a301dbbf1cd",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N05/project/lab_dispatch/models/__init__.py": {
+      "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N05/project/lab_dispatch/models/business.py": {
+      "sha256": "705c54b0a448aa5cdef23f25176699b5c3d9ea3a0bdf12ce991303acf6bf8912",
+      "mode": 436
+    },
+    "benchmarks/native/cases/N05/project/lab_dispatch/security/ir.model.access.csv": {
+      "sha256": "7b0b268f572e338740e60a7bb5cc40ecfb1bb106cccb356ffaaf014c92d3ee90",
+      "mode": 436
+    },
+    "benchmarks/native/oracles/N01_check.py": {
+      "sha256": "1a801a780805093de207b40de27768a52dc56b39abd938fd7fcca9c98c2df0ad",
+      "mode": 436
+    },
+    "benchmarks/native/oracles/N01_seed.py": {
+      "sha256": "9a131f2665ed879d27ade811fb46aea10df28d828eaeb21cec58895c54a2b59b",
+      "mode": 436
+    },
+    "benchmarks/native/oracles/N02_check.py": {
+      "sha256": "254c39fb72ea58e25f5d7812127ba18d8fb704de586b298ea9f86ff36b499d61",
+      "mode": 436
+    },
+    "benchmarks/native/oracles/N02_seed.py": {
+      "sha256": "aa4e87f3a5f6c31b6aed46fc2cdcdb00ba9919fdb25e8f7bb803410d1bb2e852",
+      "mode": 436
+    },
+    "benchmarks/native/oracles/N03_check.py": {
+      "sha256": "4580171f4667ee2dda8ee5105a92369df2bdbe89ac90efe2bf715b65e9213b0f",
+      "mode": 436
+    },
+    "benchmarks/native/oracles/N03_seed.py": {
+      "sha256": "4c560afd82de44411aa0396b3e43f0c91441ceb0ece209586ed238694ca82dda",
+      "mode": 436
+    },
+    "benchmarks/native/oracles/N04_check.py": {
+      "sha256": "87448f4b5fe1dfc441e700508b36f5446141646c0a75355993e762c18a0c3792",
+      "mode": 436
+    },
+    "benchmarks/native/oracles/N04_seed.py": {
+      "sha256": "9a131f2665ed879d27ade811fb46aea10df28d828eaeb21cec58895c54a2b59b",
+      "mode": 436
+    },
+    "benchmarks/native/oracles/N05_check.py": {
+      "sha256": "65f8d1d2ff5273134b93db9b304a445b7119d1affecdaa0cf9400ec89aeb5597",
+      "mode": 436
+    },
+    "benchmarks/native/oracles/N05_seed.py": {
+      "sha256": "a0fb181c063882958119cca01df57ad3f357188862519765b56e32665697c507",
+      "mode": 436
+    },
+    "build.sh": {
+      "sha256": "658d584c9a80a67a5582f4c86c90532d8b4121c7b0544f58e61af0c8f2b86321",
+      "mode": 509
+    },
+    "routing.md": {
+      "sha256": "212d6feacd3dc14545fa87329cf16c61565ffb67c0c42710e49b67bab0c1cf61",
+      "mode": 436
+    }
+  },
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "tests",
+    "-v"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 4.1,
+  "log": {
+    "path": "/home/blegoff/odoo-quality-runs/native-validation-tools.log",
+    "sha256": "092b0cc634edd9df101ed7e0fb0d2b2dfa7f3c0698aaef86474aa91a6f6869f7"
+  }
+}

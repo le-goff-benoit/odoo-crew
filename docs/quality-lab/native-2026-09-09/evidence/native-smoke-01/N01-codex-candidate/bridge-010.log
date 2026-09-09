@@ -1,0 +1,14 @@
+2026-09-09 01:02:20,009 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:02:20,009 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:02:20,009 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:02:20,009 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:02:20,009 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:02:20,171 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:02:20,171 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:02:20,186 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:02:20,190 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:02:20,193 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:02:20,297 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.10s, 0 queries (+0 extra) 
+2026-09-09 01:02:20,317 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:02:20,327 1 INFO lab_client odoo.registry: Registry loaded in 0.156s 
+LAB_COPY_OK [{"id": 1, "name": "D02 témoin location 3", "days": 3, "daily_rate": 10.0, "kind": "rental", "amount_total": 30.0}, {"id": 2, "name": "D02 témoin location 4", "days": 4, "daily_rate": 10.0, "kind": "rental", "amount_total": 52.0}, {"id": 3, "name": "D02 témoin location 5", "days": 5, "daily_rate": 10.0, "kind": "rental", "amount_total": 62.0}, {"id": 4, "name": "D02 témoin prêt 4", "days": 4, "daily_rate": 10.0, "kind": "loan", "amount_total": 40.0}]

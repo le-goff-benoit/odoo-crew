@@ -1,0 +1,26 @@
+{
+  "correct": {
+    "exit_code": 0,
+    "checks": {
+      "zero_allowed": true,
+      "negative_create": true,
+      "negative_write": true,
+      "valid_record_preserved": true
+    },
+    "passed": true,
+    "log_sha256": "edc0d1ab34bcf8b79cf829603b8995d4d7d0f03dd0df937be3aec6b7a51e1ef6",
+    "log": "oracle-000.log"
+  },
+  "mutant": {
+    "exit_code": 0,
+    "checks": {
+      "zero_allowed": true,
+      "negative_create": false,
+      "negative_write": false,
+      "valid_record_preserved": false
+    },
+    "passed": false,
+    "log_sha256": "253d511d9c1c91f5e28e1e3d3ef32bd57027233febab9337f7e06f972844efe2",
+    "log": "oracle-001.log"
+  }
+}

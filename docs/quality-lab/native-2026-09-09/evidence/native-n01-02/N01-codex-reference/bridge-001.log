@@ -1,0 +1,33 @@
+2026-09-09 01:06:19,314 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:06:19,314 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:06:19,314 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:06:19,314 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:06:19,314 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:06:19,480 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:06:19,480 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:06:19,497 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:06:19,501 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:06:19,503 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:06:19,505 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:06:19,629 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.12s, 0 queries (+0 extra) 
+2026-09-09 01:06:19,650 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:06:19,660 1 INFO lab_client odoo.registry: Registry loaded in 0.180s 
+Traceback (most recent call last):
+  File "/usr/bin/odoo", line 6, in <module>
+    odoo.cli.main()
+  File "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 133, in main
+    command().run(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 162, in run
+    self.shell(dbnames[0])
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 148, in shell
+    self.console(local_vars)
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 82, in console
+    exec(sys.stdin.read(), local_vars)
+  File "<string>", line 13, in <module>
+  File "/usr/lib/python3.12/pathlib.py", line 1049, in write_text
+    with self.open(mode='w', encoding=encoding, errors=errors, newline=newline) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/work/changelog/2026-09-09_01_frais-de-preparation-des-locations/preuves/copy_before.json'

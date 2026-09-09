@@ -1,0 +1,141 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-b300dadd04-db-1  Running
+
+══ 1. QA de tâche : -u lab_rental + tests (/lab_rental:TestPreparation) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-09 01:18:35,336 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:18:35,336 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:18:35,336 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:18:35,336 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:18:35,336 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:18:35,336 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:18:35,666 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on a89632d2331d:8069 
+2026-09-09 01:18:35,699 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-09 01:18:35,724 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:18:35,729 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:18:35,753 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-09 01:18:35,754 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:18:37,241 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:18:37,242 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:18:37,888 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:18:37,888 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:18:39,159 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:18:39,747 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:18:39,778 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:18:39,778 1 INFO lab_qa odoo.modules.loading: Loading module lab_rental (2/21) 
+2026-09-09 01:18:39,786 1 INFO lab_qa odoo.registry: module lab_rental: creating or updating database tables 
+2026-09-09 01:18:39,822 1 INFO lab_qa odoo.modules.loading: loading lab_rental/security/ir.model.access.csv 
+2026-09-09 01:18:39,840 1 INFO lab_qa odoo.modules.loading: Module lab_rental loaded in 0.06s, 49 queries (+49 other) 
+2026-09-09 01:18:40,055 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.28s, 49 queries (+49 extra) 
+2026-09-09 01:18:40,177 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-09 01:18:40,322 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-09 01:18:40,326 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:18:40,327 1 INFO lab_qa odoo.registry: Registry loaded in 4.659s 
+2026-09-09 01:18:40,327 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-09 01:18:40,328 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_days_recompute_both_directions ... 
+2026-09-09 01:18:40,334 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: ====================================================================== 
+2026-09-09 01:18:40,334 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: TestPreparation.test_days_recompute_both_directions
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation.py", line 45, in test_days_recompute_both_directions
+    self.assertStoredTotals(record, [40])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 17, in assertStoredTotals
+    self.assertAlmostEqual(actual, amount)
+AssertionError: 52.0 != 40 within 7 places (12.0 difference)
+ 
+2026-09-09 01:18:40,335 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_kind_recompute_batch ... 
+2026-09-09 01:18:40,337 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: ====================================================================== 
+2026-09-09 01:18:40,337 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: TestPreparation.test_kind_recompute_batch
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation.py", line 66, in test_kind_recompute_batch
+    self.assertStoredTotals(records, [40, 65])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 17, in assertStoredTotals
+    self.assertAlmostEqual(actual, amount)
+AssertionError: 52.0 != 40 within 7 places (12.0 difference)
+ 
+2026-09-09 01:18:40,337 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_loans_excluded ... 
+2026-09-09 01:18:40,340 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_migration_existing_totals_idempotent ... 
+2026-09-09 01:18:40,345 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: ====================================================================== 
+2026-09-09 01:18:40,345 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: Subtest TestPreparation.test_migration_existing_totals_idempotent (decision='D-02')
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation.py", line 112, in test_migration_existing_totals_idempotent
+    self.assertStoredTotals(records, [30, 40, 65, 75, 30, 40, 50, 60])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 17, in assertStoredTotals
+    self.assertAlmostEqual(actual, amount)
+AssertionError: 52.0 != 40 within 7 places (12.0 difference)
+ 
+2026-09-09 01:18:40,346 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: ====================================================================== 
+2026-09-09 01:18:40,346 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: Subtest TestPreparation.test_migration_existing_totals_idempotent (decision='sans forfait')
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation.py", line 112, in test_migration_existing_totals_idempotent
+    self.assertStoredTotals(records, [30, 40, 65, 75, 30, 40, 50, 60])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 17, in assertStoredTotals
+    self.assertAlmostEqual(actual, amount)
+AssertionError: 52.0 != 40 within 7 places (12.0 difference)
+ 
+2026-09-09 01:18:40,346 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_negative_inputs_rejected ... 
+2026-09-09 01:18:40,354 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_rate_recompute ... 
+2026-09-09 01:18:40,356 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: ====================================================================== 
+2026-09-09 01:18:40,356 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: TestPreparation.test_rate_recompute
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation.py", line 54, in test_rate_recompute
+    self.assertStoredTotals(record, [65])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 17, in assertStoredTotals
+    self.assertAlmostEqual(actual, amount)
+AssertionError: 62.0 != 65 within 7 places (3.0 difference)
+ 
+2026-09-09 01:18:40,357 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_rental_threshold ... 
+2026-09-09 01:18:40,360 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: ====================================================================== 
+2026-09-09 01:18:40,360 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: TestPreparation.test_rental_threshold
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation.py", line 21, in test_rental_threshold
+    self.assertStoredTotals(records, [30, 40, 65, 75])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 17, in assertStoredTotals
+    self.assertAlmostEqual(actual, amount)
+AssertionError: 52.0 != 40 within 7 places (12.0 difference)
+ 
+2026-09-09 01:18:40,360 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: Starting TestPreparation.test_zero_and_decimal_amounts ... 
+2026-09-09 01:18:40,363 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation: ====================================================================== 
+2026-09-09 01:18:40,363 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: TestPreparation.test_zero_and_decimal_amounts
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation.py", line 40, in test_zero_and_decimal_amounts
+    self.assertStoredTotals(records, [0, 0, 15, 0, 65.617])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 17, in assertStoredTotals
+    self.assertAlmostEqual(actual, amount)
+AssertionError: 12.0 != 0 within 7 places (12.0 difference)
+ 
+2026-09-09 01:18:40,364 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 01:18:40,364 1 INFO lab_qa odoo.service.server: 8 post-tests in 0.04s, 104 queries 
+2026-09-09 01:18:40,364 1 INFO lab_qa odoo.tests.stats: lab_rental: 10 tests 0.04s 104 queries 
+2026-09-09 01:18:40,365 1 ERROR lab_qa odoo.tests.result: 7 failed, 0 error(s) of 8 tests when loading database 'lab_qa' 
+2026-09-09 01:18:40,365 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-09 01:18:40,365 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:18:40,689 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+❌ échec (installation, mise à jour ou tests) — voir les extraits ci-dessous
+   ⏱ 7s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 8
+tests échoués  : 7
+tests ignorés  : 0
+WARNING liés à lab_rental : 3
+
+── extraits ──
+32:2026-09-09 01:18:40,334 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: TestPreparation.test_days_recompute_both_directions
+42:2026-09-09 01:18:40,337 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: TestPreparation.test_kind_recompute_batch
+53:2026-09-09 01:18:40,345 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: Subtest TestPreparation.test_migration_existing_totals_idempotent (decision='D-02')
+62:2026-09-09 01:18:40,346 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: Subtest TestPreparation.test_migration_existing_totals_idempotent (decision='sans forfait')
+73:2026-09-09 01:18:40,356 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: TestPreparation.test_rate_recompute
+83:2026-09-09 01:18:40,360 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: TestPreparation.test_rental_threshold
+93:2026-09-09 01:18:40,363 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation: FAIL: TestPreparation.test_zero_and_decimal_amounts
+104:2026-09-09 01:18:40,365 1 ERROR lab_qa odoo.tests.result: 7 failed, 0 error(s) of 8 tests when loading database 'lab_qa' 
+
+── avertissements liés au module (à traiter) ──
+2026-09-09 01:18:37,241 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:18:37,242 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:18:39,159 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+RECETTE module=lab_rental db=lab_qa install=ko update=n.a. uninstall=n.a. tests="7 failed, 0 error(s) of 8 tests" errors=8 failed=7 skipped=0 warnings=3 total=7s quick=7s
+
+Log complet   : /home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-reference/backend/stack/artifacts/lab_rental-20260909-031834.log
+Captures      : /home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-reference/backend/stack/artifacts/
+❌ lab_rental : voir ci-dessus

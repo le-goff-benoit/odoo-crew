@@ -1,0 +1,32 @@
+{
+  "correct": {
+    "exit_code": 0,
+    "checks": {
+      "4_rental": true,
+      "5_rental": true,
+      "6_rental": true,
+      "7_loan": true,
+      "0_rental": true,
+      "dependencies": true,
+      "stored": true
+    },
+    "passed": true,
+    "log_sha256": "17d460feaf0a999baa6e610573d7445e4941aa4912dcc1173bb4192695da1d55",
+    "log": "oracle-000.log"
+  },
+  "mutant": {
+    "exit_code": 0,
+    "checks": {
+      "4_rental": true,
+      "5_rental": false,
+      "6_rental": true,
+      "7_loan": true,
+      "0_rental": true,
+      "dependencies": false,
+      "stored": true
+    },
+    "passed": false,
+    "log_sha256": "4bfc2519b9872f32f892dcb47acb13a92a3b40c053a5f3e856cff561a73a6880",
+    "log": "oracle-001.log"
+  }
+}

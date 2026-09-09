@@ -1,0 +1,55 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/work",
+  "scopes": [
+    "lab_rental"
+  ],
+  "sources": {
+    "lab_rental/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 420
+    },
+    "lab_rental/__manifest__.py": {
+      "sha256": "1263d0249244e023ffc10ffae2128f863a5930c5abbf1633961468abd0991a39",
+      "mode": 420
+    },
+    "lab_rental/models/__init__.py": {
+      "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "mode": 420
+    },
+    "lab_rental/models/business.py": {
+      "sha256": "81ba3772b9081e77d25b22b5f54e1fe5146b7a494fcdeefd00ce96bd54b72284",
+      "mode": 420
+    },
+    "lab_rental/security/ir.model.access.csv": {
+      "sha256": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6",
+      "mode": 420
+    },
+    "lab_rental/tests/__init__.py": {
+      "sha256": "938bf5f0ef721e3901fd3efe04934cdcbdc4fe860d49a335db4df964ae88d0b9",
+      "mode": 436
+    },
+    "lab_rental/tests/common.py": {
+      "sha256": "ce6b26a4bcfe1dbefe1a20e55817b69f11a275ae86be3ae9bc1898480bfc6542",
+      "mode": 436
+    },
+    "lab_rental/tests/test_preparation_fee.py": {
+      "sha256": "ca295627953ffc84b6ff873cac0e47a2fdfbd94292dd809f3c2cb2b5dec46139",
+      "mode": 436
+    }
+  },
+  "command": [
+    "/bridge/labctl",
+    "shell",
+    "/work/.odoo-agents/flow-artifacts/preparation/check_copy.py"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 1.372,
+  "log": {
+    "path": "/work/.odoo-agents/flow-artifacts/preparation/copy-check-1.log",
+    "sha256": "6afdbe917049baf3d635d9a74456e6cacb19c7da091524f01e9f2bc710bcaaaa"
+  }
+}

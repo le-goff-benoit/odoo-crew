@@ -1,0 +1,14 @@
+2026-09-09 01:17:57,567 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:17:57,567 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:17:57,567 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:17:57,567 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:17:57,567 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:17:57,729 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:17:57,730 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:17:57,745 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:17:57,749 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:17:57,754 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:17:57,866 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.11s, 0 queries (+0 extra) 
+2026-09-09 01:17:57,894 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:17:57,903 1 INFO lab_client odoo.registry: Registry loaded in 0.173s 
+{"automations_available": false, "manual_fields": [], "records": [{"amount_total": 30.0, "daily_rate": 10.0, "days": 3, "id": 5, "kind": "rental"}, {"amount_total": 52.0, "daily_rate": 10.0, "days": 4, "id": 6, "kind": "rental"}, {"amount_total": 62.0, "daily_rate": 10.0, "days": 5, "id": 7, "kind": "rental"}, {"amount_total": 72.0, "daily_rate": 10.0, "days": 6, "id": 8, "kind": "rental"}, {"amount_total": 40.0, "daily_rate": 10.0, "days": 4, "id": 9, "kind": "loan"}, {"amount_total": 50.0, "daily_rate": 10.0, "days": 5, "id": 10, "kind": "loan"}, {"amount_total": 60.0, "daily_rate": 10.0, "days": 6, "id": 11, "kind": "loan"}], "server_actions": 0, "views": 0}

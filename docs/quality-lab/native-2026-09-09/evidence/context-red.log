@@ -1,0 +1,14 @@
+..{"trial": "trial", "error": "build failed"}
+.......F
+======================================================================
+FAIL: test_unselected_source_becoming_relevant_invalidates_context (test_odoo_context_scenarios.ContextScenarioTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/odoo-agents-native-lab/tests/test_odoo_context_scenarios.py", line 58, in test_unselected_source_becoming_relevant_invalidates_context
+    with self.assertRaisesRegex(ValueError, 'catalogue'):
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.033s
+
+FAILED (failures=1)

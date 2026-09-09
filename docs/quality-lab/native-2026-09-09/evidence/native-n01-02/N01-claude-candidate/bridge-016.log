@@ -1,0 +1,67 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-5622f025d0-db-1  Running
+
+══ 1. QA de tâche : -u lab_rental + tests (/lab_rental:TestPreparationFee) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-09 01:36:49,925 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:36:49,925 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:36:49,925 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:36:49,925 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:36:49,925 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:36:49,925 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:36:50,094 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 2f02981be755:8069 
+2026-09-09 01:36:50,105 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-09 01:36:50,125 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:36:50,129 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:36:50,145 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-09 01:36:50,146 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:36:51,496 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:36:51,497 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:36:52,591 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:36:52,605 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:36:52,605 1 INFO lab_qa odoo.modules.loading: Loading module lab_rental (2/21) 
+2026-09-09 01:36:52,608 1 INFO lab_qa odoo.registry: module lab_rental: creating or updating database tables 
+2026-09-09 01:36:52,624 1 INFO lab_qa odoo.modules.loading: loading lab_rental/security/ir.model.access.csv 
+2026-09-09 01:36:52,628 1 INFO lab_qa odoo.modules.migration: module lab_rental: Running upgrade [19.0.1.2.0>] post-migrate 
+2026-09-09 01:36:52,633 1 INFO lab_qa odoo.modules.loading: Module lab_rental loaded in 0.03s, 42 queries (+42 other) 
+2026-09-09 01:36:52,747 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.14s, 42 queries (+42 extra) 
+2026-09-09 01:36:52,807 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-09 01:36:52,882 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-09 01:36:52,884 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:36:52,884 1 INFO lab_qa odoo.registry: Registry loaded in 2.790s 
+2026-09-09 01:36:52,884 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-09 01:36:52,885 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_fee_amount_and_threshold_are_the_ones_of_d03 ... 
+2026-09-09 01:36:52,885 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_fee_does_not_depend_on_the_daily_rate ... 
+2026-09-09 01:36:52,887 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_fee_follows_days_and_kind_changes ... 
+2026-09-09 01:36:52,889 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_fee_is_flat_not_proportional ... 
+2026-09-09 01:36:52,890 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_loan_at_threshold_never_carries_the_fee ... 
+2026-09-09 01:36:52,891 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_loan_never_carries_the_fee ... 
+2026-09-09 01:36:52,891 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_rental_above_threshold_carries_the_fee ... 
+2026-09-09 01:36:52,892 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_rental_at_former_threshold_is_free_of_fee ... 
+2026-09-09 01:36:52,893 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_rental_below_threshold_is_free_of_fee ... 
+2026-09-09 01:36:52,895 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_rental_well_above_threshold_carries_the_fee ... 
+2026-09-09 01:36:52,895 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_stored_value_is_written_in_database ... 
+2026-09-09 01:36:52,897 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 01:36:52,897 1 INFO lab_qa odoo.service.server: 11 post-tests in 0.01s, 68 queries 
+2026-09-09 01:36:52,897 1 INFO lab_qa odoo.tests.stats: lab_rental: 13 tests 0.01s 68 queries 
+2026-09-09 01:36:52,897 1 INFO lab_qa odoo.tests.result: 0 failed, 0 error(s) of 11 tests when loading database 'lab_qa' 
+2026-09-09 01:36:52,897 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-09 01:36:52,897 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:36:53,110 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+{"valid": true, "reasons": [], "module_tests": 13, "summaries": [{"failed": 0, "errors": 0, "tests": 11}]}
+✅ -u + tests OK
+   ⏱ 4s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 0
+tests échoués  : 0
+tests ignorés  : 0
+WARNING liés à lab_rental : 0
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": true, "reasons": [], "module_tests": 13, "summaries": [{"failed": 0, "errors": 0, "tests": 11}]}
+RECETTE module=lab_rental db=lab_qa install=ok update=ok uninstall=n.a. tests="0 failed, 0 error(s) of 11 tests" errors=0 failed=0 skipped=0 warnings=0 total=4s quick=4s
+
+Log complet   : /home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-candidate/backend/stack/artifacts/lab_rental-20260909-033649.kpg3pS.log
+Captures      : /home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-candidate/backend/stack/artifacts/
+✅ lab_rental : installation, tests et logs propres

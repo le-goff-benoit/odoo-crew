@@ -1,0 +1,21 @@
+== AVANT reprise ==
+dossiers=3
+id=1 name=LEGACY_DRAFT state=draft snapshot=999.00 lignes=2 annulees=1 attendu_actif=20.00 total_brut=110.00
+id=2 name=LEGACY_DONE state=done snapshot=777.00 lignes=2 annulees=1 attendu_actif=20.00 total_brut=110.00
+id=3 name=LEGACY_FRACTION state=draft snapshot=20.00 lignes=1 annulees=0 attendu_actif=20.00 total_brut=20.00
+== PASSE 1 : labctl update ==
+exit passe1=0
+-- état après passe 1 --
+dossiers=3
+id=1 name=LEGACY_DRAFT state=draft snapshot=20.00 attendu_actif=20.00 write_date=2026-09-09 01:23:21.471989
+id=2 name=LEGACY_DONE state=done snapshot=777.00 attendu_actif=20.00 write_date=2026-09-09 01:20:14.882194
+id=3 name=LEGACY_FRACTION state=draft snapshot=20.00 attendu_actif=20.00 write_date=2026-09-09 01:23:21.471989
+== PASSE 2 : rejeu de la meme migration ==
+version en base avant remise a zero = 19.0.1.0.1
+version en base remise a 19.0.1.0.0 pour rejeu
+exit passe2=0
+-- état après passe 2 --
+dossiers=3
+id=1 name=LEGACY_DRAFT state=draft snapshot=20.00 attendu_actif=20.00 write_date=2026-09-09 01:23:47.058485
+id=2 name=LEGACY_DONE state=done snapshot=777.00 attendu_actif=20.00 write_date=2026-09-09 01:20:14.882194
+id=3 name=LEGACY_FRACTION state=draft snapshot=20.00 attendu_actif=20.00 write_date=2026-09-09 01:23:47.058485

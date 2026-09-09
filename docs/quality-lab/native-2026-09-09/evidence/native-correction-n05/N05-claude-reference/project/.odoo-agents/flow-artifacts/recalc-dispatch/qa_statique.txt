@@ -1,0 +1,7 @@
+ lab_dispatch/__manifest__.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+Sécurité : ir.model.access.csv non modifié (absent du diff ci-dessus) — conforme à D-12 « pas de changement de droits ».
+Formes 19.0 : aucune forme d'une autre série introduite (pas de vue XML, pas de _sql_constraints, pas de groups_id).
+Lint --changed : 1 erreur `author` manquant dans le manifest — dette antérieure au commit de base 799eff1, non reprise.
+Revue du diff : filtered() sur state, exclusion cancelled, docstring justifiant le gel des validés, migration post-migrate idempotente.

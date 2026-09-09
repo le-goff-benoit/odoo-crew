@@ -59,3 +59,9 @@ Elle ne prouve pas une supériorité statistique ni une amélioration générale
 - Vérification finale : 91 tests sous Python 3.10/3.12, graphe, lint Python bloquant, syntaxe shell, génération isolée conforme.
 
 - Livraison : intégration par avance rapide dans `main`, publication de `de0000e`, génération active de 20 fichiers et 2 blocs conforme. [CI GitHub validée](https://github.com/le-goff-benoit/odoo-skills/actions/runs/34278073993). Analyse du bureau et mémoire locale actualisées. Aucun projet client modifié.
+
+
+- 9 septembre : poursuite native et corrections des profils/outils, suivies dans
+  [la campagne d'adoption](native-2026-09-09/README.md). Ce plan conserve
+  l'historique du premier pilote ; l'état de livraison le plus récent est dans
+  le rapport de cette campagne.

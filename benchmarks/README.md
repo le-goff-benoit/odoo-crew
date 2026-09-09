@@ -84,3 +84,13 @@ génération de code, un oracle Odoo et un correcteur masqué. Voir
 [le mode opératoire](../docs/quality-lab/OPERATIONS.md). Les résultats bruts restent
 locaux. Ne publier que des dossiers synthétiques et des rapports vérifiés sans
 secrets ni informations client. Aucune modification automatique des rôles actifs.
+
+## Parcours natifs
+
+Les cas `native/cases/N01` à `N05` utilisent les CLI et les skills générés, le
+graphe, les outils QA et une copie Odoo synthétique. Leurs correcteurs sont dans
+`native/oracles` et restent masqués aux agents. N05 est le contre-exemple de
+précision découvert pendant N02 : il ne compte pas comme cas inédit.
+Voir [l'exploitation du laboratoire](../docs/quality-lab/OPERATIONS.md) pour les
+commandes et [la campagne native](../docs/quality-lab/native-2026-09-09/PLAN.md)
+pour les résultats, incidents et décisions d'adoption.

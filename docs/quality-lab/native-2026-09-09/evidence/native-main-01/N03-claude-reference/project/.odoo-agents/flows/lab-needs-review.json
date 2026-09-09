@@ -1,0 +1,140 @@
+{
+  "claims": {},
+  "created_at": "2026-09-09T01:27:45+00:00",
+  "events": [
+    {
+      "at": "2026-09-09T01:28:06+00:00",
+      "emitted": [
+        "functional_review"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/lab-needs-review/briefing.md"
+      ],
+      "node": "briefing",
+      "note": "",
+      "outcome": "development"
+    },
+    {
+      "at": "2026-09-09T01:31:00+00:00",
+      "emitted": [
+        "studio_implementation"
+      ],
+      "evidence": [
+        "/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/revue_fonctionnelle.md"
+      ],
+      "node": "functional_review",
+      "note": "",
+      "outcome": "studio"
+    },
+    {
+      "at": "2026-09-09T01:38:03+00:00",
+      "emitted": [
+        "studio_diff_qa",
+        "studio_scenario_qa"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/lab-needs-review/studio_implementation.md"
+      ],
+      "node": "studio_implementation",
+      "note": "",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:39:01+00:00",
+      "emitted": [
+        "studio_task_gate"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/lab-needs-review/studio_diff.md"
+      ],
+      "node": "studio_diff_qa",
+      "note": "",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:39:36+00:00",
+      "emitted": [
+        "studio_task_gate"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/flow-artifacts/lab-needs-review/studio_runtime.md"
+      ],
+      "node": "studio_scenario_qa",
+      "note": "",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:40:15+00:00",
+      "emitted": [
+        "journal_task"
+      ],
+      "evidence": [
+        "/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa.md"
+      ],
+      "node": "studio_task_gate",
+      "note": "",
+      "outcome": "pass"
+    },
+    {
+      "at": "2026-09-09T01:40:39+00:00",
+      "emitted": [
+        "task_done"
+      ],
+      "evidence": [
+        "/work/.odoo-agents/JOURNAL.md"
+      ],
+      "node": "journal_task",
+      "note": "",
+      "outcome": "done"
+    },
+    {
+      "at": "2026-09-09T01:40:49+00:00",
+      "emitted": [],
+      "evidence": [
+        "/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa.md"
+      ],
+      "node": "task_done",
+      "note": "",
+      "outcome": "done"
+    }
+  ],
+  "graph": "/home/blegoff/.odoo19-agents/workflows/odoo-workflow.json",
+  "graph_sha256": "83cd9b08dc9ee2c7abcd320afe5a899e73e7a7fc8757072ba03aca0ea5cca715",
+  "kind": "development",
+  "node_counts": {
+    "briefing": 1,
+    "functional_review": 1,
+    "journal_task": 1,
+    "studio_diff_qa": 1,
+    "studio_implementation": 1,
+    "studio_scenario_qa": 1,
+    "studio_task_gate": 1,
+    "task_done": 1
+  },
+  "outcome_counts": {
+    "briefing:development": 1,
+    "functional_review:studio": 1,
+    "journal_task:done": 1,
+    "studio_diff_qa:done": 1,
+    "studio_implementation:done": 1,
+    "studio_scenario_qa:done": 1,
+    "studio_task_gate:pass": 1,
+    "task_done:done": 1
+  },
+  "project": "/work",
+  "run_id": "lab-needs-review",
+  "schema_version": 1,
+  "start_pending": false,
+  "status": "complete",
+  "tokens": {
+    "brief-development": 0,
+    "journal-task-done": 0,
+    "review-studio": 0,
+    "studio-diff": 0,
+    "studio-diff-gate": 0,
+    "studio-gate-pass": 0,
+    "studio-scenario-gate": 0,
+    "studio-scenarios": 0
+  },
+  "updated_at": "2026-09-09T01:40:49+00:00"
+}

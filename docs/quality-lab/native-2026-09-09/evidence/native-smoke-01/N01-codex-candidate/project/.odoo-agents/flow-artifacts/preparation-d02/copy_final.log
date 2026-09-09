@@ -1,0 +1,110 @@
+2026-09-09 01:02:16,610 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:02:16,610 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:02:16,610 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:02:16,610 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:02:16,610 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:02:16,806 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:02:16,810 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:02:16,823 1 INFO lab_client odoo.modules.loading: updating modules list 
+2026-09-09 01:02:16,824 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:02:18,146 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:02:18,146 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:02:19,044 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:02:19,058 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:02:19,058 1 INFO lab_client odoo.modules.loading: Loading module lab_rental (2/21) 
+2026-09-09 01:02:19,061 1 INFO lab_client odoo.registry: module lab_rental: creating or updating database tables 
+2026-09-09 01:02:19,078 1 INFO lab_client odoo.modules.loading: loading lab_rental/security/ir.model.access.csv 
+2026-09-09 01:02:19,085 1 INFO lab_client odoo.modules.loading: Module lab_rental loaded in 0.03s, 49 queries (+49 other) 
+2026-09-09 01:02:19,196 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.14s, 49 queries (+49 extra) 
+2026-09-09 01:02:19,280 1 INFO lab_client odoo.registry: verifying fields for every extended model 
+2026-09-09 01:02:19,364 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:02:19,369 1 INFO lab_client odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:02:19,369 1 INFO lab_client odoo.registry: Registry loaded in 2.581s 
+2026-09-09 01:02:19,369 1 INFO lab_client odoo.service.server: Initiating shutdown 
+2026-09-09 01:02:19,369 1 INFO lab_client odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:02:19,369 1 INFO lab_client odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+2026-09-09 01:02:20,009 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:02:20,009 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:02:20,009 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:02:20,009 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:02:20,009 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:02:20,171 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:02:20,171 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:02:20,186 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:02:20,190 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:02:20,193 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:02:20,297 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.10s, 0 queries (+0 extra) 
+2026-09-09 01:02:20,317 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:02:20,327 1 INFO lab_client odoo.registry: Registry loaded in 0.156s 
+LAB_COPY_OK [{"id": 1, "name": "D02 témoin location 3", "days": 3, "daily_rate": 10.0, "kind": "rental", "amount_total": 30.0}, {"id": 2, "name": "D02 témoin location 4", "days": 4, "daily_rate": 10.0, "kind": "rental", "amount_total": 52.0}, {"id": 3, "name": "D02 témoin location 5", "days": 5, "daily_rate": 10.0, "kind": "rental", "amount_total": 62.0}, {"id": 4, "name": "D02 témoin prêt 4", "days": 4, "daily_rate": 10.0, "kind": "loan", "amount_total": 40.0}]
+2026-09-09 01:02:20,974 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:02:20,974 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:02:20,974 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:02:20,974 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:02:20,974 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:02:21,146 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:02:21,146 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:02:21,162 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:02:21,166 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:02:21,170 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:02:21,282 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.11s, 0 queries (+0 extra) 
+2026-09-09 01:02:21,306 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:02:21,316 1 INFO lab_client odoo.registry: Registry loaded in 0.169s 
+2026-09-09 01:02:21,323 1 INFO lab_client __main__: D-02 : 4 totaux de locations/prêts recalculés. 
+2026-09-09 01:02:21,951 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:02:21,951 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:02:21,951 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:02:21,951 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:02:21,952 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:02:22,117 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:02:22,117 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:02:22,135 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:02:22,139 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:02:22,144 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:02:22,254 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.11s, 0 queries (+0 extra) 
+2026-09-09 01:02:22,276 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:02:22,284 1 INFO lab_client odoo.registry: Registry loaded in 0.167s 
+LAB_COPY_OK [{"id": 1, "name": "D02 témoin location 3", "days": 3, "daily_rate": 10.0, "kind": "rental", "amount_total": 30.0}, {"id": 2, "name": "D02 témoin location 4", "days": 4, "daily_rate": 10.0, "kind": "rental", "amount_total": 52.0}, {"id": 3, "name": "D02 témoin location 5", "days": 5, "daily_rate": 10.0, "kind": "rental", "amount_total": 62.0}, {"id": 4, "name": "D02 témoin prêt 4", "days": 4, "daily_rate": 10.0, "kind": "loan", "amount_total": 40.0}]
+2026-09-09 01:02:22,892 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:02:22,892 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:02:22,892 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:02:22,892 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:02:22,892 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:02:23,048 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:02:23,048 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:02:23,064 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:02:23,067 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:02:23,072 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:02:23,174 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.10s, 0 queries (+0 extra) 
+2026-09-09 01:02:23,199 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:02:23,209 1 INFO lab_client odoo.registry: Registry loaded in 0.160s 
+2026-09-09 01:02:23,216 1 INFO lab_client __main__: D-02 : 4 totaux de locations/prêts recalculés. 
+2026-09-09 01:02:23,816 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:02:23,816 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:02:23,816 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:02:23,816 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:02:23,816 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:02:23,979 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:02:23,979 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:02:23,995 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:02:23,999 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:02:24,002 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:02:24,107 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.10s, 0 queries (+0 extra) 
+2026-09-09 01:02:24,127 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:02:24,134 1 INFO lab_client odoo.registry: Registry loaded in 0.155s 
+LAB_COPY_OK [{"id": 1, "name": "D02 témoin location 3", "days": 3, "daily_rate": 10.0, "kind": "rental", "amount_total": 30.0}, {"id": 2, "name": "D02 témoin location 4", "days": 4, "daily_rate": 10.0, "kind": "rental", "amount_total": 52.0}, {"id": 3, "name": "D02 témoin location 5", "days": 5, "daily_rate": 10.0, "kind": "rental", "amount_total": 62.0}, {"id": 4, "name": "D02 témoin prêt 4", "days": 4, "daily_rate": 10.0, "kind": "loan", "amount_total": 40.0}]
+2026-09-09 01:02:24,745 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:02:24,745 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:02:24,746 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:02:24,746 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:02:24,746 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:02:24,904 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:02:24,904 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:02:24,917 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:02:24,919 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:02:24,922 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:02:25,025 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.10s, 0 queries (+0 extra) 
+2026-09-09 01:02:25,045 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:02:25,052 1 INFO lab_client odoo.registry: Registry loaded in 0.148s 
+2026-09-09 01:02:25,062 1 INFO lab_client odoo.models.unlink: User #1 deleted lab.rental records with IDs: [1, 2, 3, 4] 
+LAB_CLEANUP_OK : quatre témoins retirés, copie vide comme avant la QA.

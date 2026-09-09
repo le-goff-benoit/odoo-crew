@@ -1,0 +1,120 @@
+{
+  "case": "N01",
+  "provider": "claude",
+  "config": {
+    "model": "opus",
+    "effort": "medium"
+  },
+  "status": "executed",
+  "turns": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 542.11,
+      "usage": {
+        "tokens": {
+          "input_tokens": 116,
+          "cache_creation_input_tokens": 84033,
+          "cache_read_input_tokens": 3187163,
+          "output_tokens": 31583,
+          "output_tokens_details": {
+            "thinking_tokens": 6839
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 84033,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 1601,
+              "cache_read_input_tokens": 90549,
+              "cache_creation_input_tokens": 1076,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 1076
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 3.2251795
+      },
+      "actual_model": "claude-opus-5",
+      "tool_calls": 57,
+      "provider_completed": true,
+      "error": null,
+      "answer_sha256": "572085a9a4de7193bc23910c58ed7ae76648bd588956c0d48a5e013cbde1d798"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 447.56,
+      "usage": {
+        "tokens": {
+          "input_tokens": 86,
+          "cache_creation_input_tokens": 81796,
+          "cache_read_input_tokens": 2427767,
+          "output_tokens": 27858,
+          "output_tokens_details": {
+            "thinking_tokens": 3258
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 81796,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 1685,
+              "cache_read_input_tokens": 86189,
+              "cache_creation_input_tokens": 615,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 615
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 2.7299685
+      },
+      "actual_model": "claude-opus-5",
+      "tool_calls": 42,
+      "provider_completed": true,
+      "error": null,
+      "answer_sha256": "aa37a76b8268c12d603a4443a79496508598a7dded031f582c7df3ebd0154622"
+    }
+  ],
+  "active_turn": 1,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "4_rental": true,
+      "5_rental": true,
+      "6_rental": true,
+      "7_loan": true,
+      "0_rental": true,
+      "dependencies": true,
+      "stored": true
+    },
+    "passed": true,
+    "log_sha256": "2a6fec1555d4a8b7ce1b410202b7e58cae1d3022ce168c72125a056d9c4e0057",
+    "log": "oracle-000.log"
+  },
+  "review": null
+}

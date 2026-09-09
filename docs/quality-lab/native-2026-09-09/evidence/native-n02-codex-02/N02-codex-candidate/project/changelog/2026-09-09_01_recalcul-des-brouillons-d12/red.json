@@ -1,0 +1,58 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/work",
+  "scopes": [
+    "lab_dispatch"
+  ],
+  "sources": {
+    "lab_dispatch/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 420
+    },
+    "lab_dispatch/__manifest__.py": {
+      "sha256": "15d10346f456fc9f1091f1da7237f52812753e3607dac87dfe4a0a301dbbf1cd",
+      "mode": 420
+    },
+    "lab_dispatch/models/__init__.py": {
+      "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "mode": 420
+    },
+    "lab_dispatch/models/business.py": {
+      "sha256": "705c54b0a448aa5cdef23f25176699b5c3d9ea3a0bdf12ce991303acf6bf8912",
+      "mode": 420
+    },
+    "lab_dispatch/security/ir.model.access.csv": {
+      "sha256": "7b0b268f572e338740e60a7bb5cc40ecfb1bb106cccb356ffaaf014c92d3ee90",
+      "mode": 420
+    },
+    "lab_dispatch/tests/__init__.py": {
+      "sha256": "0c5db5168c6764340024f01b0134f3ee46ef312e0739806f2146489f97cb4f23",
+      "mode": 436
+    },
+    "lab_dispatch/tests/common.py": {
+      "sha256": "6f3bf6d5c521fb5d4d5df518601ba01383131538d6310e36ca50d19db357b433",
+      "mode": 436
+    },
+    "lab_dispatch/tests/test_recalculate.py": {
+      "sha256": "943d4f76adb99c8ef25650e332875100d8c458c02667c4ebcdd5fbbad9eb199d",
+      "mode": 436
+    }
+  },
+  "command": [
+    "/bridge/labctl",
+    "qa",
+    "lab_dispatch",
+    "--quick",
+    "--tags",
+    "/lab_dispatch:TestDispatchRecalculate"
+  ],
+  "exit_code": 1,
+  "result": "failed",
+  "module": null,
+  "error": null,
+  "seconds": 19.827,
+  "log": {
+    "path": "/work/changelog/2026-09-09_01_recalcul-des-brouillons-d12/red.log",
+    "sha256": "ed2ec29e5aeb695923ec23faa7299c64bbde63627dc3b30ed882ddbd94269c91"
+  }
+}

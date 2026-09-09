@@ -1,0 +1,72 @@
+{
+  "case": "N05",
+  "provider": "claude",
+  "config": {
+    "model": "opus",
+    "effort": "medium"
+  },
+  "status": "executed",
+  "turns": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 512.59,
+      "usage": {
+        "tokens": {
+          "input_tokens": 98,
+          "cache_creation_input_tokens": 81908,
+          "cache_read_input_tokens": 2710767,
+          "output_tokens": 37245,
+          "output_tokens_details": {
+            "thinking_tokens": 7398
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 81908,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 1666,
+              "cache_read_input_tokens": 88930,
+              "cache_creation_input_tokens": 570,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 570
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 3.1072375000000005
+      },
+      "actual_model": "claude-opus-5",
+      "tool_calls": 48,
+      "provider_completed": true,
+      "error": null,
+      "answer_sha256": "3487e772068c549af5cf1d65a3c2edbec786ad87f71e6a176738c2577a959fac"
+    }
+  ],
+  "active_turn": 0,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "migration_draft": true,
+      "preserved_done": true,
+      "mixed_selection": true,
+      "idempotence": true,
+      "fraction_repaired": true
+    },
+    "passed": true,
+    "log_sha256": "52572f778eccbdf80d20fec75a834c83851b4f95e8430430405655846a7966de",
+    "log": "oracle-000.log"
+  },
+  "review": null
+}

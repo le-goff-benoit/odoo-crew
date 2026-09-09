@@ -1,0 +1,81 @@
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_context.py /tmp/forward-release-plan-auvQFI/context-scenarios/project --query stock --output /tmp/forward-release-plan-auvQFI/context-scenarios/context.json
+# Contexte ciblé
+Les archives restent historiques ; vérifier les décisions courantes avant de les appliquer.
+
+## .odoo-agents/PROJECT.md
+Stock project
+
+
+## decisions/stock.md
+stock règle initiale
+
+
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_context.py /tmp/forward-release-plan-auvQFI/context-scenarios/project --verify /tmp/forward-release-plan-auvQFI/context-scenarios/context.json
+Contexte sourcé inchangé.
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_context.py /tmp/forward-release-plan-auvQFI/context-scenarios/project --verify /tmp/forward-release-plan-auvQFI/context-scenarios/context.json
+catalogue de connaissances changé : contenu potentiellement pertinent
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_context.py /tmp/forward-release-plan-auvQFI/context-scenarios/project --verify /tmp/forward-release-plan-auvQFI/context-scenarios/context.json
+catalogue de connaissances changé : nouvelle source ou suppression
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_context.py /tmp/forward-release-plan-auvQFI/context-scenarios/project --verify /tmp/forward-release-plan-auvQFI/context-scenarios/context.json
+catalogue de connaissances changé : nouvelle source ou suppression
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_context.py /tmp/forward-release-plan-auvQFI/context-scenarios/project --verify /tmp/forward-release-plan-auvQFI/context-scenarios/context.json
+Contexte sourcé inchangé.
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_scenarios.py select /tmp/forward-release-plan-auvQFI/context-scenarios/project --changed unknown/file.py
+{
+  "selected": [
+    "S1",
+    "S2"
+  ],
+  "full": true,
+  "unknown_changes": [
+    "unknown/file.py"
+  ],
+  "group": null,
+  "reason": "sélection élargie : impact inconnu"
+}
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_scenarios.py select /tmp/forward-release-plan-auvQFI/context-scenarios/project --changed module/code.py
+{
+  "selected": [
+    "S1"
+  ],
+  "full": false,
+  "unknown_changes": [],
+  "group": null,
+  "reason": "déclencheurs explicites"
+}
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_scenarios.py select /tmp/forward-release-plan-auvQFI/context-scenarios/project --changed module/code.py
+source modifiée : decisions/stock.md
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_scenarios.py run /tmp/forward-release-plan-auvQFI/context-scenarios/project --ids S1 --output /tmp/forward-release-plan-auvQFI/context-scenarios/bad-campaign
+source modifiée : decisions/stock.md
+EXIT 1
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_scenarios.py run /tmp/forward-release-plan-auvQFI/context-scenarios/project --ids S1 --output /tmp/forward-release-plan-auvQFI/context-scenarios/campaign
+[
+  {
+    "id": "S1",
+    "proof": "/tmp/forward-release-plan-auvQFI/context-scenarios/campaign/S1.json",
+    "result": "passed"
+  }
+]
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py verify /tmp/forward-release-plan-auvQFI/context-scenarios/campaign/S1.json
+Preuve valide et périmètre inchangé.
+EXIT 0
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py verify /tmp/forward-release-plan-auvQFI/context-scenarios/campaign/S1.json
+code changé depuis le contrôle
+EXIT 2
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py verify /tmp/forward-release-plan-auvQFI/context-scenarios/campaign/S1.json
+code changé depuis le contrôle
+EXIT 2
+$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_evidence.py verify /tmp/forward-release-plan-auvQFI/context-scenarios/campaign/S1.json
+Preuve valide et périmètre inchangé.
+EXIT 0
+ALL CONTEXT AND SCENARIO ASSERTIONS PASSED

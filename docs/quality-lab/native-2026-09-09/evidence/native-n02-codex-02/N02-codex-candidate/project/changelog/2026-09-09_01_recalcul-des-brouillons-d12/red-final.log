@@ -1,0 +1,154 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-836917f1c8-db-1  Running
+
+══ 1. QA de tâche : -u lab_dispatch + tests (/lab_dispatch:TestDispatchRecalculate) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-09 01:22:09,633 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:22:09,633 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:22:09,633 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:22:09,633 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:22:09,633 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:22:09,633 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:22:09,811 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 0467f5ec2028:8069 
+2026-09-09 01:22:09,822 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-09 01:22:09,840 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:22:09,843 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:22:09,858 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-09 01:22:09,859 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:22:10,798 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+2026-09-09 01:22:10,799 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+2026-09-09 01:22:11,217 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Entrepôt Silex — recalcul des demandes en cours'] to user __system__ #1 via n/a 
+2026-09-09 01:22:11,217 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Entrepôt Silex — recalcul des demandes en cours'] to user __system__ #1 via n/a 
+2026-09-09 01:22:11,874 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+2026-09-09 01:22:12,231 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:22:12,250 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:22:12,250 1 INFO lab_qa odoo.modules.loading: Loading module lab_dispatch (2/21) 
+2026-09-09 01:22:12,254 1 INFO lab_qa odoo.registry: module lab_dispatch: creating or updating database tables 
+2026-09-09 01:22:12,274 1 INFO lab_qa odoo.modules.loading: loading lab_dispatch/security/ir.model.access.csv 
+2026-09-09 01:22:12,285 1 INFO lab_qa odoo.modules.loading: Module lab_dispatch loaded in 0.03s, 49 queries (+49 other) 
+2026-09-09 01:22:12,405 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.15s, 49 queries (+49 extra) 
+2026-09-09 01:22:12,493 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-09 01:22:12,570 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-09 01:22:12,573 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:22:12,573 1 INFO lab_qa odoo.registry: Registry loaded in 2.762s 
+2026-09-09 01:22:12,573 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-09 01:22:12,576 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestDispatchRecalculate.test_done_does_not_read_lines_or_write ... 
+2026-09-09 01:22:12,577 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: ====================================================================== 
+2026-09-09 01:22:12,577 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: FAIL: TestDispatchRecalculate.test_done_does_not_read_lines_or_write
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_dispatch/tests/test_recalculate.py", line 27, in test_done_does_not_read_lines_or_write
+    self.assertTrue(self.done.action_recalculate())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/lab_dispatch/models/business.py", line 15, in action_recalculate
+    record.snapshot_total = sum(line.quantity * line.price for line in record.line_ids)
+                                                                       ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1134, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1138, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1193, in _execute_mock_call
+    raise effect
+AssertionError: Validated line read
+ 
+2026-09-09 01:22:12,578 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestDispatchRecalculate.test_done_keeps_snapshot ... 
+2026-09-09 01:22:12,579 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: ====================================================================== 
+2026-09-09 01:22:12,579 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: FAIL: TestDispatchRecalculate.test_done_keeps_snapshot
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_dispatch/tests/test_recalculate.py", line 19, in test_done_keeps_snapshot
+    self.assertStoredTotal(self.done, 777)
+  File "/mnt/extra-addons/lab_dispatch/tests/common.py", line 28, in assertStoredTotal
+    self.assertEqual(record.snapshot_total, expected)
+AssertionError: 110.0 != 777
+ 
+2026-09-09 01:22:12,579 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestDispatchRecalculate.test_draft_excludes_cancelled ... 
+2026-09-09 01:22:12,580 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: ====================================================================== 
+2026-09-09 01:22:12,580 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: FAIL: TestDispatchRecalculate.test_draft_excludes_cancelled
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_dispatch/tests/test_recalculate.py", line 14, in test_draft_excludes_cancelled
+    self.assertStoredTotal(self.draft, 20)
+  File "/mnt/extra-addons/lab_dispatch/tests/common.py", line 28, in assertStoredTotal
+    self.assertEqual(record.snapshot_total, expected)
+AssertionError: 110.0 != 20
+ 
+2026-09-09 01:22:12,581 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestDispatchRecalculate.test_empty_and_cancelled_lines ... 
+2026-09-09 01:22:12,582 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: ====================================================================== 
+2026-09-09 01:22:12,582 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: FAIL: TestDispatchRecalculate.test_empty_and_cancelled_lines
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_dispatch/tests/test_recalculate.py", line 39, in test_empty_and_cancelled_lines
+    self.assertStoredTotal(self.draft, 0)
+  File "/mnt/extra-addons/lab_dispatch/tests/common.py", line 28, in assertStoredTotal
+    self.assertEqual(record.snapshot_total, expected)
+AssertionError: 110.0 != 0
+ 
+2026-09-09 01:22:12,582 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestDispatchRecalculate.test_mixed_selection ... 
+2026-09-09 01:22:12,583 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: ====================================================================== 
+2026-09-09 01:22:12,583 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: FAIL: TestDispatchRecalculate.test_mixed_selection
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_dispatch/tests/test_recalculate.py", line 32, in test_mixed_selection
+    self.assertStoredTotal(self.draft, 20)
+  File "/mnt/extra-addons/lab_dispatch/tests/common.py", line 28, in assertStoredTotal
+    self.assertEqual(record.snapshot_total, expected)
+AssertionError: 110.0 != 20
+ 
+2026-09-09 01:22:12,583 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestDispatchRecalculate.test_recalculate_is_idempotent ... 
+2026-09-09 01:22:12,584 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: ====================================================================== 
+2026-09-09 01:22:12,584 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: FAIL: TestDispatchRecalculate.test_recalculate_is_idempotent
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_dispatch/tests/test_recalculate.py", line 51, in test_recalculate_is_idempotent
+    self.assertTrue(self.draft.action_recalculate())
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/lab_dispatch/models/business.py", line 15, in action_recalculate
+    record.snapshot_total = sum(line.quantity * line.price for line in record.line_ids)
+    ^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1843, in __set__
+    records.write({self.name: write_value})
+  File "/usr/lib/python3.12/unittest/mock.py", line 1134, in __call__
+    return self._mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1138, in _mock_call
+    return self._execute_mock_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/unittest/mock.py", line 1193, in _execute_mock_call
+    raise effect
+AssertionError: Redundant write
+ 
+2026-09-09 01:22:12,585 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 01:22:12,585 1 INFO lab_qa odoo.service.server: 6 post-tests in 0.01s, 43 queries 
+2026-09-09 01:22:12,585 1 INFO lab_qa odoo.tests.stats: lab_dispatch: 8 tests 0.01s 43 queries 
+2026-09-09 01:22:12,585 1 ERROR lab_qa odoo.tests.result: 6 failed, 0 error(s) of 6 tests when loading database 'lab_qa' 
+2026-09-09 01:22:12,585 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-09 01:22:12,585 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:22:12,825 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+❌ échec (installation, mise à jour ou tests) — voir les extraits ci-dessous
+   ⏱ 5s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 7
+tests échoués  : 6
+tests ignorés  : 0
+WARNING liés à lab_dispatch : 3
+
+── extraits ──
+32:2026-09-09 01:22:12,577 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: FAIL: TestDispatchRecalculate.test_done_does_not_read_lines_or_write
+52:2026-09-09 01:22:12,579 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: FAIL: TestDispatchRecalculate.test_done_keeps_snapshot
+62:2026-09-09 01:22:12,580 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: FAIL: TestDispatchRecalculate.test_draft_excludes_cancelled
+72:2026-09-09 01:22:12,582 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: FAIL: TestDispatchRecalculate.test_empty_and_cancelled_lines
+82:2026-09-09 01:22:12,583 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: FAIL: TestDispatchRecalculate.test_mixed_selection
+92:2026-09-09 01:22:12,584 1 ERROR lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: FAIL: TestDispatchRecalculate.test_recalculate_is_idempotent
+115:2026-09-09 01:22:12,585 1 ERROR lab_qa odoo.tests.result: 6 failed, 0 error(s) of 6 tests when loading database 'lab_qa' 
+
+── avertissements liés au module (à traiter) ──
+2026-09-09 01:22:10,798 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+2026-09-09 01:22:10,799 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+2026-09-09 01:22:11,874 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": false, "reasons": ["bilan contenant des échecs ou erreurs", "erreur ou module ignoré dans le log"], "module_tests": 8, "summaries": [{"failed": 6, "errors": 0, "tests": 6}]}
+❌ preuve de tests absente ou invalide
+RECETTE module=lab_dispatch db=lab_qa install=ko update=n.a. uninstall=n.a. tests="6 failed, 0 error(s) of 6 tests" errors=7 failed=6 skipped=0 warnings=3 total=5s quick=5s
+
+Log complet   : /home/blegoff/odoo-quality-runs/native-n02-codex-02/N02-codex-candidate/backend/stack/artifacts/lab_dispatch-20260909-032208.DoKGd4.log
+Captures      : /home/blegoff/odoo-quality-runs/native-n02-codex-02/N02-codex-candidate/backend/stack/artifacts/
+❌ lab_dispatch : voir ci-dessus

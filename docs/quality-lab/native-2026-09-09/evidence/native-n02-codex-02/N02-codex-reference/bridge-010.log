@@ -1,0 +1,15 @@
+2026-09-09 01:27:24,447 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:27:24,447 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:27:24,447 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:27:24,447 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:27:24,447 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:27:24,611 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:27:24,611 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:27:24,626 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:27:24,628 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:27:24,630 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+2026-09-09 01:27:24,631 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:27:24,739 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.11s, 0 queries (+0 extra) 
+2026-09-09 01:27:24,761 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:27:24,773 1 INFO lab_client odoo.registry: Registry loaded in 0.161s 
+INVENTORY_JSON={"automations": [], "database": "lab_client", "dispatches": [{"id": 1, "name": "LEGACY_DRAFT", "snapshot_total": 20.0, "state": "draft", "write_date": "2026-09-09 01:26:51.912429"}, {"id": 2, "name": "LEGACY_DONE", "snapshot_total": 777.0, "state": "done", "write_date": "2026-09-09 01:18:39.551235"}], "lines": [{"cancelled": false, "dispatch_id": [1, "LEGACY_DRAFT"], "id": 1, "price": 10.0, "quantity": 2.0}, {"cancelled": true, "dispatch_id": [1, "LEGACY_DRAFT"], "id": 2, "price": 30.0, "quantity": 3.0}, {"cancelled": false, "dispatch_id": [2, "LEGACY_DONE"], "id": 3, "price": 10.0, "quantity": 2.0}, {"cancelled": true, "dispatch_id": [2, "LEGACY_DONE"], "id": 4, "price": 30.0, "quantity": 3.0}], "manual_fields": [], "server_actions": []}

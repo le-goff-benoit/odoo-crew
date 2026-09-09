@@ -1,0 +1,30 @@
+{
+  "case": "N02",
+  "provider": "codex",
+  "config": {
+    "model": "gpt-6-astra",
+    "effort": "high"
+  },
+  "status": "incident",
+  "turns": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 490.76,
+      "usage": {
+        "input_tokens": 1348821,
+        "cached_input_tokens": 1276032,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 13475,
+        "reasoning_output_tokens": 562
+      },
+      "actual_model": null,
+      "tool_calls": 42,
+      "provider_completed": true,
+      "error": null,
+      "answer_sha256": "3df2b18fba998d0560296908d31ff89dede1669a48e4cc072a02fd37ee777dca"
+    }
+  ],
+  "active_turn": 0,
+  "error": "lien symbolique interdit dans le projet du banc : /home/blegoff/odoo-quality-runs/native-main-01/N02-codex-reference/project/.qa-tools/lib64"
+}

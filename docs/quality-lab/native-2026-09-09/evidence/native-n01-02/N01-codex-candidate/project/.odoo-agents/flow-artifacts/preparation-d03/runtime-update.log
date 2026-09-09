@@ -1,0 +1,63 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-6a24278b74-db-1  Running
+
+══ 1. QA de tâche : -u lab_rental + tests (/lab_rental) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-09 01:17:13,457 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:17:13,457 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:17:13,457 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:17:13,457 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:17:13,457 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:17:13,457 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:17:13,627 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on e95b0e12b811:8069 
+2026-09-09 01:17:13,637 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-09 01:17:13,657 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:17:13,661 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:17:13,678 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-09 01:17:13,679 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:17:14,909 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:17:14,909 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:17:15,790 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:17:15,809 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:17:15,809 1 INFO lab_qa odoo.modules.loading: Loading module lab_rental (2/21) 
+2026-09-09 01:17:15,812 1 INFO lab_qa odoo.registry: module lab_rental: creating or updating database tables 
+2026-09-09 01:17:15,828 1 INFO lab_qa odoo.modules.loading: loading lab_rental/security/ir.model.access.csv 
+2026-09-09 01:17:15,838 1 INFO lab_qa odoo.modules.loading: Module lab_rental loaded in 0.03s, 42 queries (+42 other) 
+2026-09-09 01:17:15,947 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.14s, 42 queries (+42 extra) 
+2026-09-09 01:17:16,019 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-09 01:17:16,097 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-09 01:17:16,100 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:17:16,101 1 INFO lab_qa odoo.registry: Registry loaded in 2.473s 
+2026-09-09 01:17:16,101 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-09 01:17:16,102 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_daily_rate_changes ... 
+2026-09-09 01:17:16,109 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_days_changes ... 
+2026-09-09 01:17:16,117 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_decimal_rate ... 
+2026-09-09 01:17:16,120 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_kind_changes ... 
+2026-09-09 01:17:16,123 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_loans_have_no_fee ... 
+2026-09-09 01:17:16,129 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_mixed_batch ... 
+2026-09-09 01:17:16,132 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_rental_threshold ... 
+2026-09-09 01:17:16,139 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_zero_values ... 
+2026-09-09 01:17:16,151 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 01:17:16,151 1 INFO lab_qa odoo.service.server: 8 post-tests in 0.05s, 137 queries 
+2026-09-09 01:17:16,151 1 INFO lab_qa odoo.tests.stats: lab_rental: 10 tests 0.05s 137 queries 
+2026-09-09 01:17:16,151 1 INFO lab_qa odoo.tests.result: 0 failed, 0 error(s) of 8 tests when loading database 'lab_qa' 
+2026-09-09 01:17:16,151 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-09 01:17:16,151 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:17:16,643 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+{"valid": true, "reasons": [], "module_tests": 10, "summaries": [{"failed": 0, "errors": 0, "tests": 8}]}
+✅ -u + tests OK
+   ⏱ 4s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 0
+tests échoués  : 0
+tests ignorés  : 0
+WARNING liés à lab_rental : 0
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": true, "reasons": [], "module_tests": 10, "summaries": [{"failed": 0, "errors": 0, "tests": 8}]}
+RECETTE module=lab_rental db=lab_qa install=ok update=ok uninstall=n.a. tests="0 failed, 0 error(s) of 8 tests" errors=0 failed=0 skipped=0 warnings=0 total=4s quick=4s
+
+Log complet   : /home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/backend/stack/artifacts/lab_rental-20260909-031712.CHVU5s.log
+Captures      : /home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/backend/stack/artifacts/
+✅ lab_rental : installation, tests et logs propres

@@ -1,0 +1,28 @@
+{
+  "correct": {
+    "exit_code": 0,
+    "checks": {
+      "migration_draft": true,
+      "preserved_done": true,
+      "mixed_selection": true,
+      "idempotence": true,
+      "fraction_repaired": true
+    },
+    "passed": true,
+    "log_sha256": "145350b9190d89e0260b5b46ca5c1942e2ae71e1080f39acb787f20ef49c6017",
+    "log": "oracle-000.log"
+  },
+  "mutant_noncontractual_precision": {
+    "exit_code": 0,
+    "checks": {
+      "migration_draft": true,
+      "preserved_done": true,
+      "mixed_selection": true,
+      "idempotence": true,
+      "fraction_repaired": false
+    },
+    "passed": false,
+    "log_sha256": "2485de36b66847027b8ebe79eccd405cf03d588ef00c83017c1e924bab29f7b1",
+    "log": "oracle-001.log"
+  }
+}

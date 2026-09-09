@@ -1,0 +1,69 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-993c1be483-db-1  Running
+
+══ 1. QA de tâche : -u lab_rental + tests (/lab_rental:TestRentalDaysConstraint) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-09 01:33:26,046 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:33:26,046 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:33:26,046 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:33:26,047 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:33:26,047 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:33:26,047 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:33:26,303 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 645d3cbe242b:8069 
+2026-09-09 01:33:26,319 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-09 01:33:26,344 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:33:26,347 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:33:26,367 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-09 01:33:26,369 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:33:27,677 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:33:27,678 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:33:28,409 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:33:28,409 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:33:29,311 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:33:29,770 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:33:29,800 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:33:29,800 1 INFO lab_qa odoo.modules.loading: Loading module lab_rental (2/21) 
+2026-09-09 01:33:29,806 1 INFO lab_qa odoo.registry: module lab_rental: creating or updating database tables 
+2026-09-09 01:33:29,830 1 INFO lab_qa odoo.modules.loading: loading lab_rental/security/ir.model.access.csv 
+2026-09-09 01:33:29,842 1 INFO lab_qa odoo.modules.loading: Module lab_rental loaded in 0.04s, 46 queries (+46 other) 
+2026-09-09 01:33:29,981 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.18s, 46 queries (+46 extra) 
+2026-09-09 01:33:30,050 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-09 01:33:30,125 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-09 01:33:30,128 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:33:30,129 1 INFO lab_qa odoo.registry: Registry loaded in 3.825s 
+2026-09-09 01:33:30,129 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-09 01:33:30,132 1 INFO lab_qa odoo.addons.lab_rental.tests.test_rental_days: Starting TestRentalDaysConstraint.test_constraint_is_in_database ... 
+2026-09-09 01:33:30,134 1 INFO lab_qa odoo.addons.lab_rental.tests.test_rental_days: Starting TestRentalDaysConstraint.test_create_negative_days_refused ... 
+2026-09-09 01:33:30,135 1 INFO lab_qa odoo.addons.lab_rental.tests.test_rental_days: Starting TestRentalDaysConstraint.test_total_still_computed ... 
+2026-09-09 01:33:30,136 1 INFO lab_qa odoo.addons.lab_rental.tests.test_rental_days: Starting TestRentalDaysConstraint.test_valid_rental_survives_refusal ... 
+2026-09-09 01:33:30,137 1 INFO lab_qa odoo.addons.lab_rental.tests.test_rental_days: Starting TestRentalDaysConstraint.test_write_negative_days_refused ... 
+2026-09-09 01:33:30,137 1 INFO lab_qa odoo.addons.lab_rental.tests.test_rental_days: Starting TestRentalDaysConstraint.test_zero_days_allowed ... 
+2026-09-09 01:33:30,139 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 01:33:30,139 1 INFO lab_qa odoo.service.server: 6 post-tests in 0.01s, 44 queries 
+2026-09-09 01:33:30,139 1 INFO lab_qa odoo.tests.stats: lab_rental: 8 tests 0.01s 44 queries 
+2026-09-09 01:33:30,139 1 INFO lab_qa odoo.tests.result: 0 failed, 0 error(s) of 6 tests when loading database 'lab_qa' 
+2026-09-09 01:33:30,139 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-09 01:33:30,139 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:33:30,327 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+{"valid": true, "reasons": [], "module_tests": 8, "summaries": [{"failed": 0, "errors": 0, "tests": 6}]}
+✅ -u + tests OK
+   ⏱ 6s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 0
+tests échoués  : 0
+tests ignorés  : 0
+WARNING liés à lab_rental : 3
+
+── avertissements liés au module (à traiter) ──
+2026-09-09 01:33:27,677 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:33:27,678 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:33:29,311 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": true, "reasons": [], "module_tests": 8, "summaries": [{"failed": 0, "errors": 0, "tests": 6}]}
+RECETTE module=lab_rental db=lab_qa install=ok update=ok uninstall=n.a. tests="0 failed, 0 error(s) of 6 tests" errors=0 failed=0 skipped=0 warnings=3 total=6s quick=6s
+
+Log complet   : /home/blegoff/odoo-quality-runs/native-correction-n04/N04-claude-reference/backend/stack/artifacts/lab_rental-20260909-033324.PM0IN1.log
+Captures      : /home/blegoff/odoo-quality-runs/native-correction-n04/N04-claude-reference/backend/stack/artifacts/
+✅ lab_rental : installation, tests et logs propres

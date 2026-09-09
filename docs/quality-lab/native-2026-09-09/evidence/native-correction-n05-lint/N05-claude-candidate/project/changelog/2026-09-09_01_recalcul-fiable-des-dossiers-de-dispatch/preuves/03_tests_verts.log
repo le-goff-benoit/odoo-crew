@@ -1,0 +1,73 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-4f7988d773-db-1  Running
+
+══ 1. QA de tâche : -u lab_dispatch + tests (/lab_dispatch:TestRecalculate,/lab_dispatch:TestReprise) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-09 01:37:44,890 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:37:44,890 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:37:44,891 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:37:44,891 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:37:44,891 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:37:44,891 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:37:45,084 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on e603757bb4c4:8069 
+2026-09-09 01:37:45,095 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-09 01:37:45,114 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:37:45,116 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:37:45,138 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-09 01:37:45,139 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:37:46,205 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+2026-09-09 01:37:46,206 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+2026-09-09 01:37:46,855 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Entrepôt Silex — recalcul des demandes en cours'] to user __system__ #1 via n/a 
+2026-09-09 01:37:46,855 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Entrepôt Silex — recalcul des demandes en cours'] to user __system__ #1 via n/a 
+2026-09-09 01:37:47,750 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+2026-09-09 01:37:48,321 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:37:48,342 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:37:48,342 1 INFO lab_qa odoo.modules.loading: Loading module lab_dispatch (2/21) 
+2026-09-09 01:37:48,346 1 INFO lab_qa odoo.registry: module lab_dispatch: creating or updating database tables 
+2026-09-09 01:37:48,368 1 INFO lab_qa odoo.modules.loading: loading lab_dispatch/security/ir.model.access.csv 
+2026-09-09 01:37:48,373 1 INFO lab_qa odoo.modules.migration: module lab_dispatch: Running upgrade [19.0.1.0.1>] post-migrate 
+2026-09-09 01:37:48,374 1 INFO lab_qa odoo.upgrade.lab_dispatch.19.0.1.0.1.post-migrate: lab_dispatch : reprise des brouillons, 0 dossier(s) corrigé(s) 
+2026-09-09 01:37:48,379 1 INFO lab_qa odoo.modules.loading: Module lab_dispatch loaded in 0.04s, 50 queries (+50 other) 
+2026-09-09 01:37:48,501 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.16s, 50 queries (+50 extra) 
+2026-09-09 01:37:48,564 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-09 01:37:48,672 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-09 01:37:48,677 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:37:48,678 1 INFO lab_qa odoo.registry: Registry loaded in 3.593s 
+2026-09-09 01:37:48,678 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-09 01:37:48,679 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestRecalculate.test_brouillon_exclut_les_lignes_annulees ... 
+2026-09-09 01:37:48,683 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestRecalculate.test_brouillon_sans_ligne ... 
+2026-09-09 01:37:48,684 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestRecalculate.test_selection_mixte ... 
+2026-09-09 01:37:48,687 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestRecalculate.test_valide_reste_strictement_inchange ... 
+2026-09-09 01:37:48,689 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 01:37:48,690 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestReprise.test_reprise_corrige_les_brouillons ... 
+2026-09-09 01:37:48,692 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestReprise.test_reprise_idempotente ... 
+2026-09-09 01:37:48,693 1 INFO lab_qa odoo.addons.lab_dispatch.tests.test_recalculate: Starting TestReprise.test_reprise_ignore_les_valides ... 
+2026-09-09 01:37:48,695 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 01:37:48,695 1 INFO lab_qa odoo.service.server: 7 post-tests in 0.02s, 71 queries 
+2026-09-09 01:37:48,695 1 INFO lab_qa odoo.tests.stats: lab_dispatch: 11 tests 0.02s 71 queries 
+2026-09-09 01:37:48,695 1 INFO lab_qa odoo.tests.result: 0 failed, 0 error(s) of 7 tests when loading database 'lab_qa' 
+2026-09-09 01:37:48,695 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-09 01:37:48,695 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:37:49,103 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+{"valid": true, "reasons": [], "module_tests": 11, "summaries": [{"failed": 0, "errors": 0, "tests": 7}]}
+✅ -u + tests OK
+   ⏱ 5s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 0
+tests échoués  : 0
+tests ignorés  : 0
+WARNING liés à lab_dispatch : 3
+
+── avertissements liés au module (à traiter) ──
+2026-09-09 01:37:46,205 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+2026-09-09 01:37:46,206 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+2026-09-09 01:37:47,750 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": true, "reasons": [], "module_tests": 11, "summaries": [{"failed": 0, "errors": 0, "tests": 7}]}
+RECETTE module=lab_dispatch db=lab_qa install=ok update=ok uninstall=n.a. tests="0 failed, 0 error(s) of 7 tests" errors=0 failed=0 skipped=0 warnings=3 total=6s quick=5s
+
+Log complet   : /home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/backend/stack/artifacts/lab_dispatch-20260909-033743.AC0FiB.log
+Captures      : /home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/backend/stack/artifacts/
+✅ lab_dispatch : installation, tests et logs propres

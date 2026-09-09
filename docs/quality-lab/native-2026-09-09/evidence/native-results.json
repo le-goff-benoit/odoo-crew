@@ -1,0 +1,2808 @@
+[
+  {
+    "campaign": "native-smoke-01",
+    "trial": "N01-codex-candidate",
+    "status": "incident",
+    "turns": 1,
+    "seconds": 600.0,
+    "tool_calls": 43,
+    "oracle": {},
+    "error": "lien symbolique interdit dans le projet du banc : /home/blegoff/odoo-quality-runs/native-smoke-01/N01-codex-candidate/project/.tools/ruff/lib64",
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparationFees"
+        ],
+        "seconds": 14.0,
+        "exit_code": 1,
+        "log": "bridge-002.log",
+        "sha256": "52c5a69933c5e9c2bef5044231fc1c63bfde8b46042174ce4033142d8e207e1e",
+        "project_sha256": "2d97a783bd2d8d444c07071295925ea4e17858ef15afeada0151d095ec06edc7",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 12,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 6,
+              "tests": 10
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparationFees",
+          "--fresh"
+        ],
+        "seconds": 10.78,
+        "exit_code": 0,
+        "log": "bridge-007.log",
+        "sha256": "184242d856bf518aec27bbb56f0aaf5125199992b2af45a34cb9bf0ada6d352b",
+        "project_sha256": "d33cb73dac1421c333ccd51185d491e5052485e0f2797c10b2339dec4b70adfb",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 12,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 10
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparationFees",
+          "--update"
+        ],
+        "seconds": 4.37,
+        "exit_code": 0,
+        "log": "bridge-008.log",
+        "sha256": "11c974f891e5ea7307672c71993566e622d097cecd8e818c38b70c123b26f83f",
+        "project_sha256": "e34f66a11e385c2d3d018323999ef282a8f9c14e7f9fd12c1c8277dbfd9b78e1",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 12,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 10
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-smoke-01",
+    "trial": "N01-codex-reference",
+    "status": "incident",
+    "turns": 1,
+    "seconds": 547.59,
+    "tool_calls": 50,
+    "oracle": {},
+    "error": "lien symbolique interdit dans le projet du banc : /home/blegoff/odoo-quality-runs/native-smoke-01/N01-codex-reference/project/.odoo-agents/tooling-venv/lib64",
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 10.24,
+        "exit_code": 0,
+        "log": "bridge-002.log",
+        "sha256": "aa9f0e9ef34e49814081e4d6a1aa93338373eef50d14dc5f8a606573b3baadc8",
+        "project_sha256": "7e9d236ba08c83f3db963074b6eb384639f6e9d4b36a2266e986b034ddb0862c",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--no-template",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 10.76,
+        "exit_code": 0,
+        "log": "bridge-003.log",
+        "sha256": "9973c1dffe61b78d485f608eeca023303d1794d1bdac6e5a1770f0670abe9a9f",
+        "project_sha256": "16ee0c551926efc3eb8d2899c38dc05fc60c922678604472467a2310106fe7d8",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--update",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 11.43,
+        "exit_code": 0,
+        "log": "bridge-004.log",
+        "sha256": "afc49b7529b0428e9353fb143a32e1ddfecc8c8617ce0e67cd2ba93d2d9826dc",
+        "project_sha256": "b250484821303f99679ac78cb0bdadc0a2ec05ee8725341915c5d66710c77cc7",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 9,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-main-01",
+    "trial": "N02-claude-candidate",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 432.04,
+    "tool_calls": 50,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true
+      },
+      "passed": true,
+      "log_sha256": "37353da016cf98b80169e352e020166e4963667c6a46432b5256c5fe60dd41a4",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestLabDispatchRecalculate"
+        ],
+        "seconds": 11.37,
+        "exit_code": 1,
+        "log": "bridge-001.log",
+        "sha256": "cb92e83e1496ec9117284326cd4ac8c05e7231a9ad7b94343bb209a8180a8e93",
+        "project_sha256": "22da90ef62f20b26ff955d83f95d3f3da1db87ab9876249796d89d82ad702150",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 5,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_dispatch:TestLabDispatchRecalculate"
+        ],
+        "seconds": 13.45,
+        "exit_code": 0,
+        "log": "bridge-002.log",
+        "sha256": "a6be72f0a40e573d824bd71062a043c6037974ec5ca3e84e7a8ad441b55d1595",
+        "project_sha256": "243517a36bae6c0abfc1a849d2139f9b060a7c055099d21e251a3f7490e9d716",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--update",
+          "--tags",
+          "/lab_dispatch:TestLabDispatchRecalculate"
+        ],
+        "seconds": 4.44,
+        "exit_code": 0,
+        "log": "bridge-003.log",
+        "sha256": "b9fc6fde8fcb111ec01b761a6881bddf98f1ed4586f11b9c1eb931860f30834b",
+        "project_sha256": "af8242c97bcf4f5ace61ead88439e371556498ea51417868ca46a8ceb503fadf",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-main-01",
+    "trial": "N02-claude-reference",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 575.4,
+    "tool_calls": 60,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true
+      },
+      "passed": true,
+      "log_sha256": "faf898cb276d5303749fce475526745e9f11ae7981be6a7a8b86350f7122b4a1",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestDispatchRecalculate"
+        ],
+        "seconds": 11.23,
+        "exit_code": 0,
+        "log": "bridge-002.log",
+        "sha256": "1bd87f57b14d3e0aa727979b915211593121ba9eec10bbe2b0a285f31dba63d1",
+        "project_sha256": "de2c17c11d1a73fe4ea91b960e591d3a3f3b325b5fc33e732cc88d38b923f26f",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick"
+        ],
+        "seconds": 3.17,
+        "exit_code": 0,
+        "log": "bridge-003.log",
+        "sha256": "90bc39e0067c2c0e2a6823c3ab982d009127ae4538ac949a90c9d695749d9c8b",
+        "project_sha256": "de2c17c11d1a73fe4ea91b960e591d3a3f3b325b5fc33e732cc88d38b923f26f",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--fresh"
+        ],
+        "seconds": 10.53,
+        "exit_code": 0,
+        "log": "bridge-004.log",
+        "sha256": "95321b52b3ef1f2ed44562b534198c225b0389f8e96f6350848164e430c35587",
+        "project_sha256": "de2c17c11d1a73fe4ea91b960e591d3a3f3b325b5fc33e732cc88d38b923f26f",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--fresh",
+          "--tags",
+          "/lab_dispatch:TestDispatchRecalculate"
+        ],
+        "seconds": 15.98,
+        "exit_code": 1,
+        "log": "bridge-007.log",
+        "sha256": "fea6538e9dc7c7ccf643c08ff5e575fb0bf23c7eb110ef200c134c48f4c6fbe6",
+        "project_sha256": "58584a671cc75afaca71b4d2dcd956cc73f9911a6f1fa8e824db181dfd467aeb",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 9,
+          "summaries": [
+            {
+              "failed": 5,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--fresh",
+          "--tags",
+          "/lab_dispatch:TestDispatchRecalculate"
+        ],
+        "seconds": 14.43,
+        "exit_code": 1,
+        "log": "bridge-008.log",
+        "sha256": "6c3b3d177a05f88160f0dae882678adecb10e7cd126e1c39c3173a9def8aebf2",
+        "project_sha256": "919aa679a1b5b8d978dad4d0f0c4aa357b54a14f9f18417736f2a809693119fc",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 9,
+          "summaries": [
+            {
+              "failed": 6,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--fresh",
+          "--tags",
+          "/lab_dispatch:TestDispatchRecalculate"
+        ],
+        "seconds": 15.3,
+        "exit_code": 1,
+        "log": "bridge-009.log",
+        "sha256": "e7f29385c873f41b92bdd6c3468cfadd32820e274231aabb0ecfdc019a978876",
+        "project_sha256": "6ff15dfc88a9129f4cdc23dced87b10d34a3196098e869f94b816dd68d165634",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 9,
+          "summaries": [
+            {
+              "failed": 6,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--fresh",
+          "--tags",
+          "/lab_dispatch:TestDispatchRecalculate"
+        ],
+        "seconds": 15.08,
+        "exit_code": 0,
+        "log": "bridge-010.log",
+        "sha256": "68925fdcb722099361436c5b3c57570d0411e502551f81e53b85cc63231324f1",
+        "project_sha256": "6d7e1e8b40ad9dd10c740af33be56e8563b4b0e2de1121e40e6ebdc53ca3b4ff",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 9,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--fresh",
+          "--update",
+          "--tags",
+          "/lab_dispatch:TestDispatchRecalculate"
+        ],
+        "seconds": 31.02,
+        "exit_code": 0,
+        "log": "bridge-011.log",
+        "sha256": "280fad6ace2ffc49538784d20b37df4311beee79bc1bdcba8d2e87804c806a4d",
+        "project_sha256": "796a678c01443f373b08360fb9722bb28264622422a47eda31e5401aa82d75e0",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 9,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-main-01",
+    "trial": "N02-codex-candidate",
+    "status": "incident",
+    "turns": 1,
+    "seconds": 894.93,
+    "tool_calls": 40,
+    "oracle": {},
+    "error": "lien symbolique interdit dans le projet du banc : /home/blegoff/odoo-quality-runs/native-main-01/N02-codex-candidate/project/.odoo-agents/tools/venv/lib64",
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestRecalculate"
+        ],
+        "seconds": 10.91,
+        "exit_code": 1,
+        "log": "bridge-001.log",
+        "sha256": "987f13a9d87087f9b1a28fce454e54afde00fab939c85e7e2503405b1e569d76",
+        "project_sha256": "0336f6d062424af76d8b6eac0b626ee76e38d28d6e9e7d81407ee83e292bbecd",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 9,
+          "summaries": [
+            {
+              "failed": 7,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestRecalculate"
+        ],
+        "seconds": 4.44,
+        "exit_code": 0,
+        "log": "bridge-003.log",
+        "sha256": "f9e3194ebcef38524e16b6940f0a697d68b1dc0b6610c0f47602cbf5deebce72",
+        "project_sha256": "a365def2f83388cc7c9b6df51273a2210dbf9221d761d274ff317dd88fd50372",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 9,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-main-01",
+    "trial": "N02-codex-reference",
+    "status": "incident",
+    "turns": 1,
+    "seconds": 490.76,
+    "tool_calls": 42,
+    "oracle": {},
+    "error": "lien symbolique interdit dans le projet du banc : /home/blegoff/odoo-quality-runs/native-main-01/N02-codex-reference/project/.qa-tools/lib64",
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestRecalculate"
+        ],
+        "seconds": 10.74,
+        "exit_code": 0,
+        "log": "bridge-001.log",
+        "sha256": "59f8807c45486f84ebb65136f808e8ecd2c26b748402b3a50b06743f6d4cc18b",
+        "project_sha256": "ae9a8db86d2d787d917c50f64399fbe91b695f07e2c1ae40b181447413f8215d",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--tags",
+          "/lab_dispatch:TestRecalculate"
+        ],
+        "seconds": 6.79,
+        "exit_code": 1,
+        "log": "bridge-002.log",
+        "sha256": "6a8baa1b1ad13baa8ff361297db60d1c902548e42a87879c5c3d143dd8048a4c",
+        "project_sha256": "132c9ede219ad65f29141bb6cd1584a43267c149bceafdf26ee2949076d1002d",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 6,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestRecalculate"
+        ],
+        "seconds": 3.6,
+        "exit_code": 0,
+        "log": "bridge-003.log",
+        "sha256": "c57a1404b3e516ccdcab47fc809221d683e05541e342713c43bc3aa77b5537e6",
+        "project_sha256": "53fbf30acd3f194b6b5fd327e2aab2ada2088c8205b30fb7628dcf7e3469bd89",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-main-01",
+    "trial": "N03-claude-candidate",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 639.37,
+    "tool_calls": 60,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "field_boolean_stored": true,
+        "5_rental": true,
+        "6_rental": true,
+        "7_rental": true,
+        "8_rental": true,
+        "9_loan": true,
+        "dependency_kind": true,
+        "dependency_days": true,
+        "original_fields": true,
+        "single_model": true
+      },
+      "passed": true,
+      "log_sha256": "81525664612b9f92759a7d13f964fb0ebc6d54717c54737f729f2b32e347ba74",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": []
+  },
+  {
+    "campaign": "native-main-01",
+    "trial": "N03-claude-reference",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 836.82,
+    "tool_calls": 80,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "field_boolean_stored": true,
+        "5_rental": true,
+        "6_rental": true,
+        "7_rental": true,
+        "8_rental": true,
+        "9_loan": true,
+        "dependency_kind": true,
+        "dependency_days": true,
+        "original_fields": true,
+        "single_model": true
+      },
+      "passed": true,
+      "log_sha256": "61d55f6f75511550e4b53f70dfc746501e9c61addbb9b35009963ce24ffa8334",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": []
+  },
+  {
+    "campaign": "native-main-01",
+    "trial": "N03-codex-candidate",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 622.98,
+    "tool_calls": 33,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "field_boolean_stored": true,
+        "5_rental": true,
+        "6_rental": true,
+        "7_rental": true,
+        "8_rental": true,
+        "9_loan": true,
+        "dependency_kind": true,
+        "dependency_days": true,
+        "original_fields": true,
+        "single_model": true
+      },
+      "passed": true,
+      "log_sha256": "db1941027717f18bacd3821495ab9585b1de101ee5408802c3c48c641ce74e5c",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": []
+  },
+  {
+    "campaign": "native-main-01",
+    "trial": "N03-codex-reference",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 760.43,
+    "tool_calls": 43,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "field_boolean_stored": true,
+        "5_rental": true,
+        "6_rental": true,
+        "7_rental": true,
+        "8_rental": true,
+        "9_loan": true,
+        "dependency_kind": true,
+        "dependency_days": true,
+        "original_fields": true,
+        "single_model": true
+      },
+      "passed": true,
+      "log_sha256": "cf8c52d882ee33f56948ce43406e01d6376f2ab7fc0971a8ce244d6f5d17d106",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": []
+  },
+  {
+    "campaign": "native-n01-02",
+    "trial": "N01-claude-candidate",
+    "status": "executed",
+    "turns": 2,
+    "seconds": 1207.83,
+    "tool_calls": 126,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "4_rental": true,
+        "5_rental": true,
+        "6_rental": true,
+        "7_loan": true,
+        "0_rental": true,
+        "dependencies": true,
+        "stored": true
+      },
+      "passed": true,
+      "log_sha256": "fd515539c2da84c7b0eb0785d622035ef71756dbe5232103fc8344992a70aa95",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 16.09,
+        "exit_code": 0,
+        "log": "bridge-005.log",
+        "sha256": "9e7fb0b4aa274d4bef04cc46b8763fd5c5a2c95bbda7571996e185fae197b530",
+        "project_sha256": "e1e6e4359d8d309f22ad69d2ce55e88a21fa5e1e407188a135597aa79deb672a",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 9
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 11.85,
+        "exit_code": 1,
+        "log": "bridge-006.log",
+        "sha256": "4769246d1b3633b6148e1ba4e9083aeb50e243806ea4a14048f41a8a34a6d697",
+        "project_sha256": "16d837dfe94a9dbcd4a2faa5153d61b44930771e3bf6a0552c60730e5f2b6a26",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 6,
+              "errors": 0,
+              "tests": 9
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 17.47,
+        "exit_code": 0,
+        "log": "bridge-007.log",
+        "sha256": "238cc0b6d13722bf882855f60ca4b3105d6764eaa4408718c3d28f8ee5ca0ea4",
+        "project_sha256": "ed2e13e55c76cc792e78a3d7a338ec010edc77b2111a0269229f6546ca69bb68",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 9
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--update",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 11.32,
+        "exit_code": 0,
+        "log": "bridge-011.log",
+        "sha256": "46fd53c2f504d2a8f4ef005d2a8e5fe1c61963d0053d6d5f3342db38a2dee35b",
+        "project_sha256": "4414b8536776eb14bcc678de224cf3942edcf273f1e7c942047ac169778c3e57",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 9
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--update",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 11.69,
+        "exit_code": 0,
+        "log": "bridge-012.log",
+        "sha256": "8daeaf95bbc1fc3606d38dc065a2dff4cc54b3a15194a72573c81d9dc4953ddb",
+        "project_sha256": "4414b8536776eb14bcc678de224cf3942edcf273f1e7c942047ac169778c3e57",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 9
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick"
+        ],
+        "seconds": 4.43,
+        "exit_code": 0,
+        "log": "bridge-013.log",
+        "sha256": "de157612b35c8580a6f178e817034ea90d422c3dd913fa97464b59a0e762b741",
+        "project_sha256": "607c581d4216ce338d989adfde957307da555e6496cafedcadcd4e4157ed07be",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 9
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 4.37,
+        "exit_code": 0,
+        "log": "bridge-016.log",
+        "sha256": "ce956d8345567dff632118db722871bbc30e862c797426a8d0b5c0b1ac38f42b",
+        "project_sha256": "ce51cf61a88376c36e4d5de3ff732c321bf13ab5be2db036a582fe1894a70aa0",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 13,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 11
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 11.75,
+        "exit_code": 1,
+        "log": "bridge-017.log",
+        "sha256": "dc1aea243f3da3db5b3fdb176c9c446bcde40f46f4fc6cbdf5e8c5212e2748c2",
+        "project_sha256": "69dfbeb573db8e00af459975fb9c03f30e5d0070ae67856b1099372cb99155e2",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 13,
+          "summaries": [
+            {
+              "failed": 6,
+              "errors": 0,
+              "tests": 11
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 11.33,
+        "exit_code": 0,
+        "log": "bridge-018.log",
+        "sha256": "a3c6bae370d2babba77781e0252c6086130ef3c9025aff1006828b6eb820bc6a",
+        "project_sha256": "071148f3d0be231141f7bb704a7d6c2c8caf67fa1bb7de6b9c7025caa9ead805",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 13,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 11
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 4.37,
+        "exit_code": 0,
+        "log": "bridge-019.log",
+        "sha256": "f654c07261a3830865ee2daeb058375437547ed7f486b29202282457d95c1fc2",
+        "project_sha256": "80bb9a87e3dae90a36898b2ac85b65e0e48c12ae3cf08adf4aa86d80255c205d",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 13,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 11
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-n01-02",
+    "trial": "N01-claude-reference",
+    "status": "executed",
+    "turns": 2,
+    "seconds": 989.67,
+    "tool_calls": 99,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "4_rental": true,
+        "5_rental": true,
+        "6_rental": true,
+        "7_loan": true,
+        "0_rental": true,
+        "dependencies": true,
+        "stored": true
+      },
+      "passed": true,
+      "log_sha256": "2a6fec1555d4a8b7ce1b410202b7e58cae1d3022ce168c72125a056d9c4e0057",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 11.79,
+        "exit_code": 0,
+        "log": "bridge-002.log",
+        "sha256": "cb056b61ae098f9ee76062df2281cebd7f87de01b9b51819fbeb4d69e4d6994f",
+        "project_sha256": "20fb687bd132914cde18ee3a9e22120c11f57821e4f5da6eec37416a5e8ca24c",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 15.68,
+        "exit_code": 0,
+        "log": "bridge-003.log",
+        "sha256": "563e005409d928ea01e8dc6e81ccd7b3c75da9c2f23164817ccfbd280b534c7a",
+        "project_sha256": "20fb687bd132914cde18ee3a9e22120c11f57821e4f5da6eec37416a5e8ca24c",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--no-template",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 18.97,
+        "exit_code": 0,
+        "log": "bridge-004.log",
+        "sha256": "66539a549eb0ea19955aa322915e22acad3b463e9a5b7eeffa7a2f0cfa1eb8c6",
+        "project_sha256": "20fb687bd132914cde18ee3a9e22120c11f57821e4f5da6eec37416a5e8ca24c",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--fresh",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 15.71,
+        "exit_code": 0,
+        "log": "bridge-005.log",
+        "sha256": "ae28dd90110eaf70c5f1ac9d2a78738539a9608646589d827214b4c39ff869e4",
+        "project_sha256": "20fb687bd132914cde18ee3a9e22120c11f57821e4f5da6eec37416a5e8ca24c",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 9
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--fresh",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 19.84,
+        "exit_code": 1,
+        "log": "bridge-006.log",
+        "sha256": "afd949af95b55a30ff89140715b1c2883b64f17899aa1a4060ee8a38f6066da7",
+        "project_sha256": "d287c618017b10054b1a2a9a1b13b2255612a8c5ee071ad8bfaf312e1ec20c0b",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 4,
+              "errors": 0,
+              "tests": 9
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--fresh",
+          "--update",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 20.41,
+        "exit_code": 0,
+        "log": "bridge-007.log",
+        "sha256": "82e54c83cf690581a8c78385a0b922146e2d48889cc50b3148ffc3196a4c6258",
+        "project_sha256": "20fb687bd132914cde18ee3a9e22120c11f57821e4f5da6eec37416a5e8ca24c",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 9
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--fresh",
+          "--update",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 17.5,
+        "exit_code": 1,
+        "log": "bridge-013.log",
+        "sha256": "86dcce150c712759b12a08477f5c5a05739dde78c4586ba0f326ae90d0597300",
+        "project_sha256": "27b026a8fc89f88b963478b89b62e6800eab2b9326c36e6d4769d5368385b8d6",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 13,
+          "summaries": [
+            {
+              "failed": 6,
+              "errors": 0,
+              "tests": 11
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--fresh",
+          "--update",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 17.11,
+        "exit_code": 0,
+        "log": "bridge-014.log",
+        "sha256": "71220cc66d8600835b99c16065b5c773a4cf5fff1b8d5290932dd43a5186e63d",
+        "project_sha256": "d442e720a4d713ae4536ff14b10735b2016c34e728d922a23178d5b530379fe8",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 13,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 11
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-n01-02",
+    "trial": "N01-codex-candidate",
+    "status": "executed",
+    "turns": 2,
+    "seconds": 1065.76,
+    "tool_calls": 93,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "4_rental": true,
+        "5_rental": true,
+        "6_rental": true,
+        "7_loan": true,
+        "0_rental": true,
+        "dependencies": true,
+        "stored": true
+      },
+      "passed": true,
+      "log_sha256": "02b398d6aaa524e448bf6affc8751c043dc0d24824f10f75f49d6b8d8aa0c5b5",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 18.96,
+        "exit_code": 0,
+        "log": "bridge-002.log",
+        "sha256": "78f289742246b1d176e9980cc3d18b6e846ecc868a5e208c13b4dbc888fc1199",
+        "project_sha256": "c68bd9e92596fcf0a13e3f6341a9bae4b214d2dc558dd1b2fcb0b7eb233c35cf",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 10,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 8
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 4.32,
+        "exit_code": 1,
+        "log": "bridge-011.log",
+        "sha256": "dcc05ba982e381d20de5b8844ab3276854edd62a00f321c35835e518995a338d",
+        "project_sha256": "123ea4ceb413fc4340002093d684708928910225b2e3091ff1f665192a9f3402",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 10,
+          "summaries": [
+            {
+              "failed": 11,
+              "errors": 0,
+              "tests": 8
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_rental:TestPreparationFee"
+        ],
+        "seconds": 11.31,
+        "exit_code": 0,
+        "log": "bridge-012.log",
+        "sha256": "1c0d26e1c0e13be3ca55274f1624922daf714f393362a2cb35b11a50e0f75a3a",
+        "project_sha256": "9878b5fe3937ccc213047bace700fcef8cbfbae1956dbaa7a70786e5fa333ff1",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 10,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 8
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--update"
+        ],
+        "seconds": 4.39,
+        "exit_code": 0,
+        "log": "bridge-013.log",
+        "sha256": "7415ac053f0d7a3b0765563b3b991e082f9aa743e48050a60bd12506d06aed72",
+        "project_sha256": "112cf68bb256ee21e16f7c00847b67372877c7c94ef4a70667533801d5069122",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 10,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 8
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-n01-02",
+    "trial": "N01-codex-reference",
+    "status": "executed",
+    "turns": 2,
+    "seconds": 1386.07,
+    "tool_calls": 164,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "4_rental": true,
+        "5_rental": true,
+        "6_rental": true,
+        "7_loan": true,
+        "0_rental": true,
+        "dependencies": true,
+        "stored": true
+      },
+      "passed": true,
+      "log_sha256": "e1964f85c37e3a30b5ccf6ddd4b5e926d3d6a80f7b7c06ad4d2c1acd37028357",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparation"
+        ],
+        "seconds": 13.37,
+        "exit_code": 0,
+        "log": "bridge-003.log",
+        "sha256": "5d28e5d611717aa94fdb66056cb3a103dcb5bb487d7a3d39ea2aa2d65320c95e",
+        "project_sha256": "3c9ade0eaaefe49396986775d0e57276452bbe4fb73c2cd5ed57c0859047da9e",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_rental:TestPreparation"
+        ],
+        "seconds": 11.61,
+        "exit_code": 0,
+        "log": "bridge-004.log",
+        "sha256": "e88f4802210964c40b7dd5c731d49b5389f4823cd09c272e27ce2f8ccef06a34",
+        "project_sha256": "e2e56634b7d197ef12719f427d6717d1e45f50788f89141faa0a3d1b737ca65e",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--tags",
+          "/lab_rental:TestPreparation"
+        ],
+        "seconds": 6.47,
+        "exit_code": 1,
+        "log": "bridge-005.log",
+        "sha256": "a77baa147366ad904ace4091a42c5e571d59caf5fe3db5151f4299b7f4b736cf",
+        "project_sha256": "f02e844d7416e834f15d3042d58a35d16fdc914bbba203f13abfcf08b15dd0f1",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 10,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 4,
+              "tests": 8
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparation"
+        ],
+        "seconds": 4.12,
+        "exit_code": 0,
+        "log": "bridge-006.log",
+        "sha256": "1378cf9b7822941d0a8091aa64f177226ee805ac26366ed15e1bef5bc1492a50",
+        "project_sha256": "bd69c843409c3fc82a6bbf6737d3ef6fb50dae48058d0d8a0711e134b902debd",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 10,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 8
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparation"
+        ],
+        "seconds": 6.58,
+        "exit_code": 1,
+        "log": "bridge-012.log",
+        "sha256": "c1417ab0d5624c397a86442ac4551cf61d3105f2ca473f01c03ba5c4a6c11195",
+        "project_sha256": "1d0e1aaf78e33f3743f321ff9e68e23777215910e234bdc48ea8c921b496b01b",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 10,
+          "summaries": [
+            {
+              "failed": 7,
+              "errors": 0,
+              "tests": 8
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparation"
+        ],
+        "seconds": 4.12,
+        "exit_code": 0,
+        "log": "bridge-013.log",
+        "sha256": "de93079f614c2a35ac6ff63d29d5b0318132a3b84ccd9c19dfa5d864bbdf8738",
+        "project_sha256": "73e41d4ea8e3f58487634e081cecf641afecd23ac65c050e40908fa6dfb33350",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 10,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 8
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestPreparation"
+        ],
+        "seconds": 7.14,
+        "exit_code": 0,
+        "log": "bridge-016.log",
+        "sha256": "c4c73f0a89103ec381bfc9800a1ac8070eced676d99295c9ea5da0dd4125c229",
+        "project_sha256": "2e374e11ff239cf5585fb1ca2bbd919b72d907442013b4ecea40c265c1e2907a",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 10,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 8
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-n02-codex-02",
+    "trial": "N02-codex-candidate",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 582.99,
+    "tool_calls": 59,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true
+      },
+      "passed": true,
+      "log_sha256": "5c62e21960476fde2aad997dd8de9c2cdffde0ffe429fabd7d59b88d97d97925",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestDispatchRecalculate"
+        ],
+        "seconds": 19.76,
+        "exit_code": 1,
+        "log": "bridge-001.log",
+        "sha256": "ed2ec29e5aeb695923ec23faa7299c64bbde63627dc3b30ed882ddbd94269c91",
+        "project_sha256": "559269a700471540ef63b70a4b1a7ab03eb1002188e320140f1995a01860f9f4",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 6,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestDispatchRecalculate"
+        ],
+        "seconds": 4.38,
+        "exit_code": 1,
+        "log": "bridge-002.log",
+        "sha256": "0fe8074e50f2494a4ac52e8bdfe4d5ed2f73127308f9a46f72e0622a8dc39098",
+        "project_sha256": "000fd83a7506fcb2dc627a3eb124c3a1486ef73aafb056ae24531ce7d22fd7a1",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 6,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestDispatchRecalculate"
+        ],
+        "seconds": 6.81,
+        "exit_code": 0,
+        "log": "bridge-003.log",
+        "sha256": "57979530cbb54d00e7e16d701b721e9a5cb1eff93c3b71fa5f7abc2af3b09ff6",
+        "project_sha256": "da87220aa540737945c009f61f09b735e2dafc8a71bdada79cfe94c147b16b18",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_dispatch:TestDispatchRecalculate"
+        ],
+        "seconds": 16.22,
+        "exit_code": 0,
+        "log": "bridge-004.log",
+        "sha256": "7bc55d48056a6f5a666faf537f7ec717dbb1b31335d0b84767c57b80fce71c0a",
+        "project_sha256": "65cbf7ff48fb95333ef2559abfd6708690c3878e0052d3448499dda80c3bcb1a",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-n02-codex-02",
+    "trial": "N02-codex-reference",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 758.73,
+    "tool_calls": 62,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true
+      },
+      "passed": true,
+      "log_sha256": "50becf4dd95a0cea30942c4ed2b784614452304ab0b12dd1352409a7e75c0318",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestRecalculate"
+        ],
+        "seconds": 17.87,
+        "exit_code": 0,
+        "log": "bridge-001.log",
+        "sha256": "2a9d4b7363f8eaf917806a7836731c6c809d2f6656a2cf9aa9a764c7ddfe1677",
+        "project_sha256": "47bbf44f9a6696a31a1d87d73e1002dec8be5a95417a5c574991066cb6872a50",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--fresh",
+          "--no-template",
+          "--tags",
+          "/lab_dispatch:TestRecalculate"
+        ],
+        "seconds": 13.1,
+        "exit_code": 0,
+        "log": "bridge-002.log",
+        "sha256": "b60af6be14672407ebc6533678cd8d325ff39ade16942a0881a5bb147bc88829",
+        "project_sha256": "b99aba7404c50864cd956f286f0ac5f31e709f3b1d0591155e8ae2ca2dacfa75",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "zéro test exécuté",
+            "aucun test du module cible prouvé"
+          ],
+          "module_tests": 0,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 0
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--fresh",
+          "--no-template",
+          "--tags",
+          "/lab_dispatch:TestRecalculate"
+        ],
+        "seconds": 19.9,
+        "exit_code": 1,
+        "log": "bridge-003.log",
+        "sha256": "9434d87b207b2b59bce9b78380d34c1c22a0a19e0f7d2e6b574112b685abe356",
+        "project_sha256": "538e5d182ae025c9db767b422a66f853939747bd6a5ebea0f9886ecd11b32279",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 9,
+          "summaries": [
+            {
+              "failed": 6,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestRecalculate"
+        ],
+        "seconds": 5.25,
+        "exit_code": 0,
+        "log": "bridge-005.log",
+        "sha256": "c8650f0d88a064c41579d6be272d8cae49f6a057522a49f8ff528b1bf1f831e0",
+        "project_sha256": "0f194b56eba0c627c8998983f54d3b2692e7d6b610ad8c8ea207efe8e528aeba",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 9,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--fresh",
+          "--no-template",
+          "--update",
+          "--tags",
+          "/lab_dispatch:TestRecalculate"
+        ],
+        "seconds": 19.95,
+        "exit_code": 0,
+        "log": "bridge-006.log",
+        "sha256": "358915611ab4a660fdd53cee34f6aa57d7036d11245528a9e9dbd5fbeaa42079",
+        "project_sha256": "d3d1214a545adc21540d036527d2eae7cb4593f0b650b0e05b27ce9a0d828e6b",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 9,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-correction-n04",
+    "trial": "N04-claude-candidate",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 291.2,
+    "tool_calls": 35,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "zero_allowed": true,
+        "negative_create": true,
+        "negative_write": true,
+        "valid_record_preserved": true
+      },
+      "passed": true,
+      "log_sha256": "abd5a33c72491f039e1ee4276d41daf898dfd3d769dbd8db2ee8ef44b3f20d7b",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestDaysConstraint"
+        ],
+        "seconds": 13.44,
+        "exit_code": 0,
+        "log": "bridge-002.log",
+        "sha256": "e9dc84c85e741d0d693a120cb5bbf63769242eaa80d1bb3dd268b47e9a31422e",
+        "project_sha256": "da0d797ab7035e16d4b60e166362daa576828f50382ef83a6716a62b6a7a8fef",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 9,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-correction-n04",
+    "trial": "N04-claude-reference",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 532.95,
+    "tool_calls": 71,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "zero_allowed": true,
+        "negative_create": true,
+        "negative_write": true,
+        "valid_record_preserved": true
+      },
+      "passed": true,
+      "log_sha256": "a64d29c3de79e0a3f81764288d61571148ee03c195f37232cd180d07520710f1",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestRentalDaysConstraint"
+        ],
+        "seconds": 15.36,
+        "exit_code": 0,
+        "log": "bridge-002.log",
+        "sha256": "f04ed6dbdee22510d8ec6555568e3ce56f6ba68799a93983e7abfca12a85bf87",
+        "project_sha256": "c008a86cc9ed2cdb601675395cde1437530d06776ae7a71488b65b71de604256",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_rental:TestRentalDaysConstraint"
+        ],
+        "seconds": 18.46,
+        "exit_code": 1,
+        "log": "bridge-003.log",
+        "sha256": "32dcdf938e75f4fa896514814d1aa7ca140318b408dca1f23eebe5343edc5a10",
+        "project_sha256": "370ccce10a17466f5ff3e5a3448b659fc822468a19b5512eacb1b4fd5ab08935",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 4,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_rental:TestRentalDaysConstraint"
+        ],
+        "seconds": 17.14,
+        "exit_code": 0,
+        "log": "bridge-004.log",
+        "sha256": "cc1c5e8bb4ee25ae60e2dec7e851d6466849ec16fc836d396912c20820929d6b",
+        "project_sha256": "ca8be5aec0afad710a6deb09f487d8ba97506f84ea8895a61fb6db6485aaa747",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_rental:TestRentalDaysConstraint"
+        ],
+        "seconds": 14.94,
+        "exit_code": 0,
+        "log": "bridge-005.log",
+        "sha256": "a63069102676385facf9867b588e3bcfe7a45c25e6d104b9271dd3232a19cb9f",
+        "project_sha256": "c2115e548d8306aaa74fc87fe9ca643afe7a7b33c20123880e91462c9e033632",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--update",
+          "--tags",
+          "/lab_rental:TestRentalDaysConstraint"
+        ],
+        "seconds": 5.88,
+        "exit_code": 0,
+        "log": "bridge-006.log",
+        "sha256": "9b6e2f8bda34df3361214f891674f4c7521d65c10d029a9863b2ca2197fb7c6f",
+        "project_sha256": "42b031d96895e467ecda591446ede2e4b4cf29d6ba859f51c4fd7528739dc021",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 8,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 6
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-correction-n04",
+    "trial": "N04-codex-candidate",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 863.11,
+    "tool_calls": 116,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "zero_allowed": true,
+        "negative_create": true,
+        "negative_write": true,
+        "valid_record_preserved": true
+      },
+      "passed": true,
+      "log_sha256": "9a3aa9c2b4c26d7ed84090c5206f99434fea7f5655c465585ed9ff98d4e7170d",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestRentalDays"
+        ],
+        "seconds": 17.04,
+        "exit_code": 1,
+        "log": "bridge-001.log",
+        "sha256": "af88ae6f27ba9964c8b5c86420316564caf0bbd3f17defc5a8fdfea9a73deba5",
+        "project_sha256": "51fb48ed68510989471f82b1b09310c7e1a1b6dbc2765ff98f9ccc278b0aa6f3",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 6,
+          "summaries": [
+            {
+              "failed": 4,
+              "errors": 0,
+              "tests": 4
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestRentalDays"
+        ],
+        "seconds": 6.14,
+        "exit_code": 0,
+        "log": "bridge-002.log",
+        "sha256": "bac577fea7a965c4fee748ac1c507f7b996cc7c2c9f312812cfff2275bd02308",
+        "project_sha256": "806392924716b4c243507058907ac39f799cde579bbf7961ff0cc2ef2e5ae573",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 6,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 4
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestRentalDays"
+        ],
+        "seconds": 6.91,
+        "exit_code": 0,
+        "log": "bridge-003.log",
+        "sha256": "80a71b54ae5e128f258c6ad1ea7e10bc2541ec7949e61d92f34c72c7345f6f03",
+        "project_sha256": "56547411a947cdbf6f17250b2ccd35998179d9eead79c20600ce17d175a75d1a",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 6,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 4
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-correction-n04",
+    "trial": "N04-codex-reference",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 808.67,
+    "tool_calls": 40,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "zero_allowed": true,
+        "negative_create": true,
+        "negative_write": true,
+        "valid_record_preserved": true
+      },
+      "passed": true,
+      "log_sha256": "2b1443940e6e2af647afccabb10e40623d8b57577f4010e3d5516ad40ee79d14",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestRentalDays"
+        ],
+        "seconds": 10.83,
+        "exit_code": 1,
+        "log": "bridge-001.log",
+        "sha256": "b727cab5ed1fe8c7776927dbf0feebd25a9810e1d5df6b5bc3c5492181c6f232",
+        "project_sha256": "fda6027b8b71d371c30d1cef80504c69ac6b5f1ba223727ca14d9fba2459d740",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 6,
+          "summaries": [
+            {
+              "failed": 4,
+              "errors": 0,
+              "tests": 4
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_rental",
+          "--quick",
+          "--tags",
+          "/lab_rental:TestRentalDays"
+        ],
+        "seconds": 5.79,
+        "exit_code": 0,
+        "log": "bridge-003.log",
+        "sha256": "38b57451d1c04107764670b290da36aa82234b0a24c62f4f409eb074f84cd0da",
+        "project_sha256": "44cf40537260bf5bdc8f86c257dad3b04967127d5f660416c766925d6e3718ec",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 6,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 4
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-correction-n05",
+    "trial": "N05-claude-candidate",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 512.59,
+    "tool_calls": 48,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true,
+        "fraction_repaired": true
+      },
+      "passed": true,
+      "log_sha256": "52572f778eccbdf80d20fec75a834c83851b4f95e8430430405655846a7966de",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestLabDispatchRecalculate,/lab_dispatch:TestLabDispatchRepair"
+        ],
+        "seconds": 17.48,
+        "exit_code": 1,
+        "log": "bridge-001.log",
+        "sha256": "b23c42ba307401f59f3d27cb09585d97303a5a6f6fe841bb07792f75ffbb5ff9",
+        "project_sha256": "ace9ad4717ff7ac5a3be18a7270a4106d638bcbe2921468a1c29f974046fba2f",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 4,
+              "errors": 3,
+              "tests": 7
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestLabDispatchRecalculate,/lab_dispatch:TestLabDispatchRepair"
+        ],
+        "seconds": 4.86,
+        "exit_code": 0,
+        "log": "bridge-002.log",
+        "sha256": "f95e53a6209f29eaf62121b7db073289e3f47c39bdca652cc74a262215c6b004",
+        "project_sha256": "c4d89859b4af7fcf9d67e7d4d8020fe938079192e260a905fc26eb357eaf34fb",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-correction-n05",
+    "trial": "N05-claude-reference",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 365.66,
+    "tool_calls": 41,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true,
+        "fraction_repaired": true
+      },
+      "passed": true,
+      "log_sha256": "fc851623fabe52c853612db2c7c556bd27d7cb3559c41fa3f4ba264c6d99d509",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestLabDispatchRecalculate"
+        ],
+        "seconds": 13.9,
+        "exit_code": 1,
+        "log": "bridge-002.log",
+        "sha256": "d04a8bb7fb970fe714a1ce0eddc805abc17d18e7de80d423e1d1d504f66621c1",
+        "project_sha256": "2bf56ab6a43d81dee68a05171990727231dac4425dcac26d757257bd76c257d7",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 7,
+          "summaries": [
+            {
+              "failed": 4,
+              "errors": 0,
+              "tests": 5
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestLabDispatchRecalculate"
+        ],
+        "seconds": 6.67,
+        "exit_code": 0,
+        "log": "bridge-003.log",
+        "sha256": "d88e895c5966f8f73568d169040e6972c727efe760eb21942ced235bd36620bf",
+        "project_sha256": "6f1a8ec2f1db0d54baac864f486422dd3125e3714ab7583681a9eda337073ccf",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 7,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 5
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--fresh"
+        ],
+        "seconds": 22.45,
+        "exit_code": 0,
+        "log": "bridge-009.log",
+        "sha256": "699427b551ddc30d608c17753dfae7af2d19c2a9bc185e1d5599e80ae642b8f6",
+        "project_sha256": "7049c825ed1f5edf404eb45ade25810196a1d0745b66a310e23b85af516eb5ad",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 7,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 5
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-correction-n05-lint",
+    "trial": "N05-claude-candidate",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 517.18,
+    "tool_calls": 50,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true,
+        "fraction_repaired": true
+      },
+      "passed": true,
+      "log_sha256": "9a1b333ad46508518cf693b8c5ea7d01d6e655658e629e9696c0ce190ca9ecff",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestRecalculate,/lab_dispatch:TestReprise"
+        ],
+        "seconds": 14.04,
+        "exit_code": 1,
+        "log": "bridge-003.log",
+        "sha256": "2a823c2795ea6d8beb5ff2cd6467935da0c912575263146921aa71eb1eee68a8",
+        "project_sha256": "39258f85a75fabf48e663651e7213ea843a15fdf03d9bbcb0e205d94f077b085",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 3,
+              "errors": 3,
+              "tests": 7
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestRecalculate,/lab_dispatch:TestReprise"
+        ],
+        "seconds": 5.42,
+        "exit_code": 0,
+        "log": "bridge-006.log",
+        "sha256": "e536c2073e36cf576f2ac02b61c315e38107dcbd6c3837de1722e9c1661a681b",
+        "project_sha256": "622fceb4d93e6d753aa8ec92ff99a0adaca0b0a9d639d891a74ab4763637c5f0",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--fresh"
+        ],
+        "seconds": 19.26,
+        "exit_code": 0,
+        "log": "bridge-011.log",
+        "sha256": "af068d15d41cb22ac444ce2633c2122562c2314b7127ade73726c6282a424651",
+        "project_sha256": "30908c39abe9b863324b6032cac65069521bb303db99e7ff763f67cfa3326018",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 11,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 7
+            }
+          ]
+        }
+      }
+    ]
+  },
+  {
+    "campaign": "native-correction-n05-lint",
+    "trial": "N05-claude-reference",
+    "status": "executed",
+    "turns": 1,
+    "seconds": 362.48,
+    "tool_calls": 48,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true,
+        "fraction_repaired": true
+      },
+      "passed": true,
+      "log_sha256": "7234822afbaae31077b21c9c58cc8dc67b52561bddd42cb6ab23565af4a37ba3",
+      "log": "oracle-000.log"
+    },
+    "error": null,
+    "qa_attempts": [
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--tags",
+          "/lab_dispatch:TestDispatchRecalculate"
+        ],
+        "seconds": 10.83,
+        "exit_code": 1,
+        "log": "bridge-001.log",
+        "sha256": "b581c4abfae87d46eb33ceac015bc80f05a6058b8f0260e6eee6f4a81a1b9b31",
+        "project_sha256": "c395b48f5f414ee58dd9a13ecc3bfe6f005c1db9ea16e95c9901afb7bed10874",
+        "test_result": {
+          "valid": false,
+          "reasons": [
+            "bilan contenant des échecs ou erreurs",
+            "erreur ou module ignoré dans le log"
+          ],
+          "module_tests": 7,
+          "summaries": [
+            {
+              "failed": 4,
+              "errors": 0,
+              "tests": 5
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--fresh",
+          "--tags",
+          "/lab_dispatch:TestDispatchRecalculate"
+        ],
+        "seconds": 12.39,
+        "exit_code": 0,
+        "log": "bridge-006.log",
+        "sha256": "532b2a6e6dfe2bfb05929fdcbdc8efa29a5d90179e642262ea1e8b6336f257c3",
+        "project_sha256": "379abc486e3584eaa77a56b785bd701d4d4e82cc9acecad733cc462d7669d6e8",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 7,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 5
+            }
+          ]
+        }
+      },
+      {
+        "args": [
+          "qa",
+          "lab_dispatch",
+          "--quick",
+          "--update"
+        ],
+        "seconds": 5.57,
+        "exit_code": 0,
+        "log": "bridge-007.log",
+        "sha256": "217ce6f582cdff36f404ee0461213aefafdcbca6865c955c17f2b8913da59c6d",
+        "project_sha256": "c2472719f55bdadfe388f54a21227accbaeb87f2b507564966f3af7906974b56",
+        "test_result": {
+          "valid": true,
+          "reasons": [],
+          "module_tests": 7,
+          "summaries": [
+            {
+              "failed": 0,
+              "errors": 0,
+              "tests": 5
+            }
+          ]
+        }
+      }
+    ]
+  }
+]

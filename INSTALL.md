@@ -185,3 +185,22 @@ python3 scripts/odoo_flow.py migrate \
 ```
 
 Libérer auparavant tous les nœuds encore revendiqués.
+
+## Mise à jour du 9 septembre 2026
+
+Après `git pull`, `./build.sh` installe aussi `/odoo-plan`, `/odoo-start` et
+`/odoo-improve` sur Claude Code et Codex. Le contrôle couvre 26 fichiers générés,
+les deux blocs d'aiguillage et le pointeur personnel. Relancer une nouvelle
+conversation pour charger les nouvelles descriptions de skills.
+
+Le build remplace les anciens blocs générés du `~/AGENTS.md` par le pointeur
+commun et retire le doublon documentaire généré de `~/.agents/skills` ; les
+originaux sont sauvegardés sous `~/.odoo-agents-backups/loaded-instructions/`.
+Le texte personnel hors des blocs est conservé. Un doublon non généré exige une
+réconciliation explicite et n'est pas supprimé. Les projets clients ne sont pas
+réécrits automatiquement.
+
+Les releases nouvelles utilisent les contrôles décrits dans
+[RELEASE_PLAN.md](docs/RELEASE_PLAN.md). Pour un run déjà ouvert, suivre la section
+« Continuer un run commencé avec l'ancien graphe » avant de le reprendre. Les
+preuves anciennes ne deviennent pas conformes par simple mise à jour des outils.

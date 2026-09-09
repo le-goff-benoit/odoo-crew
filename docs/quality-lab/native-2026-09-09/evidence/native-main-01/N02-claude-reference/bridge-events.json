@@ -1,0 +1,313 @@
+[
+  {
+    "args": [
+      "shell",
+      "tmp_probe/inventaire.py"
+    ],
+    "seconds": 0.85,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "e2602a24c35da4cf6e81ea6633fa044ed247af4d5d16c8e8b130ee1b0291a18c",
+    "project_sha256": "071dfdbf456fdb82dfb2e094f2f082a627874486ac15209b68b988de36260a5d"
+  },
+  {
+    "args": [
+      "shell",
+      "tmp_probe/inventaire.py"
+    ],
+    "seconds": 0.85,
+    "exit_code": 0,
+    "log": "bridge-001.log",
+    "sha256": "91984c2f527f09603fd7fb97999a6108c0b6f02cea8e018ed845fa6d95c49e7f",
+    "project_sha256": "3ca0c27d660cbc7b85214bbeac1de9065acdcf75893cdeba8dee782d9949d9cc"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick",
+      "--tags",
+      "/lab_dispatch:TestDispatchRecalculate"
+    ],
+    "seconds": 11.23,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "1bd87f57b14d3e0aa727979b915211593121ba9eec10bbe2b0a285f31dba63d1",
+    "project_sha256": "de2c17c11d1a73fe4ea91b960e591d3a3f3b325b5fc33e732cc88d38b923f26f",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "zéro test exécuté",
+        "aucun test du module cible prouvé"
+      ],
+      "module_tests": 0,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 0
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick"
+    ],
+    "seconds": 3.17,
+    "exit_code": 0,
+    "log": "bridge-003.log",
+    "sha256": "90bc39e0067c2c0e2a6823c3ab982d009127ae4538ac949a90c9d695749d9c8b",
+    "project_sha256": "de2c17c11d1a73fe4ea91b960e591d3a3f3b325b5fc33e732cc88d38b923f26f",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "zéro test exécuté",
+        "aucun test du module cible prouvé"
+      ],
+      "module_tests": 0,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 0
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick",
+      "--fresh"
+    ],
+    "seconds": 10.53,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "95321b52b3ef1f2ed44562b534198c225b0389f8e96f6350848164e430c35587",
+    "project_sha256": "de2c17c11d1a73fe4ea91b960e591d3a3f3b325b5fc33e732cc88d38b923f26f",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "zéro test exécuté",
+        "aucun test du module cible prouvé"
+      ],
+      "module_tests": 0,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 0
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "tmp_probe/paths.py"
+    ],
+    "seconds": 0.94,
+    "exit_code": 0,
+    "log": "bridge-005.log",
+    "sha256": "678ca7fa4f4289a1669a3a6950c7826bc3caa7348ec54d307f348526277b6d9a",
+    "project_sha256": "a4ee103656f087c3fe54838449a039e353c18c03aa53a8b39f4b999ed41814f7"
+  },
+  {
+    "args": [
+      "shell",
+      "tmp_probe/imp.py"
+    ],
+    "seconds": 0.9,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "a8dd56e334ae9d73fe81a07126703e2ab40aef1354ce1591775b6dbe4dcc58a7",
+    "project_sha256": "58584a671cc75afaca71b4d2dcd956cc73f9911a6f1fa8e824db181dfd467aeb"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--fresh",
+      "--tags",
+      "/lab_dispatch:TestDispatchRecalculate"
+    ],
+    "seconds": 15.98,
+    "exit_code": 1,
+    "log": "bridge-007.log",
+    "sha256": "fea6538e9dc7c7ccf643c08ff5e575fb0bf23c7eb110ef200c134c48f4c6fbe6",
+    "project_sha256": "58584a671cc75afaca71b4d2dcd956cc73f9911a6f1fa8e824db181dfd467aeb",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 9,
+      "summaries": [
+        {
+          "failed": 5,
+          "errors": 0,
+          "tests": 7
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--fresh",
+      "--tags",
+      "/lab_dispatch:TestDispatchRecalculate"
+    ],
+    "seconds": 14.43,
+    "exit_code": 1,
+    "log": "bridge-008.log",
+    "sha256": "6c3b3d177a05f88160f0dae882678adecb10e7cd126e1c39c3173a9def8aebf2",
+    "project_sha256": "919aa679a1b5b8d978dad4d0f0c4aa357b54a14f9f18417736f2a809693119fc",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 9,
+      "summaries": [
+        {
+          "failed": 6,
+          "errors": 0,
+          "tests": 7
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--fresh",
+      "--tags",
+      "/lab_dispatch:TestDispatchRecalculate"
+    ],
+    "seconds": 15.3,
+    "exit_code": 1,
+    "log": "bridge-009.log",
+    "sha256": "e7f29385c873f41b92bdd6c3468cfadd32820e274231aabb0ecfdc019a978876",
+    "project_sha256": "6ff15dfc88a9129f4cdc23dced87b10d34a3196098e869f94b816dd68d165634",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 9,
+      "summaries": [
+        {
+          "failed": 6,
+          "errors": 0,
+          "tests": 7
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--fresh",
+      "--tags",
+      "/lab_dispatch:TestDispatchRecalculate"
+    ],
+    "seconds": 15.08,
+    "exit_code": 0,
+    "log": "bridge-010.log",
+    "sha256": "68925fdcb722099361436c5b3c57570d0411e502551f81e53b85cc63231324f1",
+    "project_sha256": "6d7e1e8b40ad9dd10c740af33be56e8563b4b0e2de1121e40e6ebdc53ca3b4ff",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 9,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 7
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--fresh",
+      "--update",
+      "--tags",
+      "/lab_dispatch:TestDispatchRecalculate"
+    ],
+    "seconds": 31.02,
+    "exit_code": 0,
+    "log": "bridge-011.log",
+    "sha256": "280fad6ace2ffc49538784d20b37df4311beee79bc1bdcba8d2e87804c806a4d",
+    "project_sha256": "796a678c01443f373b08360fb9722bb28264622422a47eda31e5401aa82d75e0",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 9,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 7
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 4.03,
+    "exit_code": 0,
+    "log": "bridge-012.log",
+    "sha256": "f1aab67a9628f16e54170eaf68178b9a0e947064ec26fdfca84fd32144d5a136",
+    "project_sha256": "ddb50c9ea70cbc41df4be975b40832525a0988344fca394dffaa28d682412ef5"
+  },
+  {
+    "args": [
+      "shell",
+      "changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/reprise/reprise_brouillons.py"
+    ],
+    "seconds": 0.95,
+    "exit_code": 0,
+    "log": "bridge-013.log",
+    "sha256": "77e6e2479f488745979c288e198ce2fe5cf8c98b6711252d3729aba4f02e9421",
+    "project_sha256": "8baf33e57b3b7f553a0cfe726de0d994cfb6167aa41ab9eff367d651b0c101c5"
+  },
+  {
+    "args": [
+      "shell",
+      "changelog/2026-09-09_01_recalcul-juste-des-dossiers-en-brouillon/reprise/reprise_brouillons.py"
+    ],
+    "seconds": 0.97,
+    "exit_code": 0,
+    "log": "bridge-014.log",
+    "sha256": "20b52946a3f1f7ce63cd425419851f6157adcba667ca13ab63a440960cb5fb24",
+    "project_sha256": "07468a3f9ae5ae3539749bcbeedb61ecf2696ea5e1c42c502ce01b04c3e63185"
+  },
+  {
+    "args": [
+      "shell",
+      "tmp_probe/mixte.py"
+    ],
+    "seconds": 1.15,
+    "exit_code": 0,
+    "log": "bridge-015.log",
+    "sha256": "4f6485294a1aa78769ea95bc4665336d90bbc58f4d009e054b70fbe81ccb1ee5",
+    "project_sha256": "3816fcd78ac77414af97d4e09e2206ae74a09fb52d8109bdfa035261d87fc2b6"
+  }
+]

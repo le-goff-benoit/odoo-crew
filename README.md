@@ -170,7 +170,7 @@ Si `.odoo-agents/` manque, initialiser d'abord le projet :
 | Valider seulement | `odoo-tester` | verdict de QA de release |
 | Déclarer un environnement | `/odoo-env` | métadonnées projet + secret dans le trousseau |
 | Documenter explicitement | `camptocamp-docs` | DOCX, PDF, captures ou communication client |
-| Capitaliser un retour | `/odoo-feedback` | journal, leçons et règles du dispositif |
+| Capitaliser un retour | `/odoo-feedback` | journal, leçons candidates puis promotion prouvée |
 
 Les mêmes noms sont disponibles dans Claude Code et Codex. Si les sous-agents
 ne sont pas disponibles, l'agent principal applique lui-même le rôle : les
@@ -289,7 +289,8 @@ sans clé de fournisseur ni appel LLM. Les campagnes modèles/Odoo se lancent
 explicitement dans un environnement équipé.
 
 [Exploiter le laboratoire](docs/quality-lab/OPERATIONS.md) ·
-[Suivre les propositions](docs/IMPROVEMENTS.md)
+[Suivre les propositions](docs/IMPROVEMENTS.md) ·
+[Corrections et preuves du 9 septembre](docs/quality-lab/native-2026-09-09/README.md)
 
 ## Commandes utiles
 

@@ -1,0 +1,412 @@
+[
+  {
+    "args": [
+      "shell",
+      "probe.py"
+    ],
+    "seconds": 0.96,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "7db8bdc66b196874c0234f04c4b7aeb1e8ab0eff14b798c267f7c5cb0c79cddc",
+    "project_sha256": "92bcddff087c23bfb371e8e78a2de965b97d721b673f154127f23c4019a53a0c"
+  },
+  {
+    "args": [
+      "shell",
+      "probe.py"
+    ],
+    "seconds": 0.87,
+    "exit_code": 0,
+    "log": "bridge-001.log",
+    "sha256": "31f65c9ed36ac92a35f57e8287a0d0c91b6e2ab14f4b7a73cdeb166d3f21a119",
+    "project_sha256": "8333ba34be2d8c8d78130b9a1325e1b7691f4f65a5cf942819d76a8beb0f3c4f"
+  },
+  {
+    "args": [
+      "shell",
+      "probe.py"
+    ],
+    "seconds": 0.91,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "7bfffd1ac2e016763e714f871e250e612f1b92ce6c1a20f550eb287aac90ade7",
+    "project_sha256": "e5d1e589d8895aa522759e1ca0801375f122a1475e6e6f358613b3f7c503d257"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.54,
+    "exit_code": 0,
+    "log": "bridge-003.log",
+    "sha256": "ad6c9bf62017c30f0d3a930508408708bb312eb9dc49fe4cb9ff6656d236ebea",
+    "project_sha256": "184fa07f239c80c16447bb557f0d723e6e8957e57d68566cdfd6bb61ec5e307b"
+  },
+  {
+    "args": [
+      "shell",
+      "probe.py"
+    ],
+    "seconds": 1.02,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "5be0c053c4ebc5c4f95b5fa59b3f20ec3e91c115e6aee8bb123279a0866bb509",
+    "project_sha256": "fbf286de9e288f47e1ca610058341bf9bb89edec3b13d52defd6932e0f08da99"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 16.09,
+    "exit_code": 0,
+    "log": "bridge-005.log",
+    "sha256": "9e7fb0b4aa274d4bef04cc46b8763fd5c5a2c95bbda7571996e185fae197b530",
+    "project_sha256": "e1e6e4359d8d309f22ad69d2ce55e88a21fa5e1e407188a135597aa79deb672a",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 11,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 9
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--fresh",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 11.85,
+    "exit_code": 1,
+    "log": "bridge-006.log",
+    "sha256": "4769246d1b3633b6148e1ba4e9083aeb50e243806ea4a14048f41a8a34a6d697",
+    "project_sha256": "16d837dfe94a9dbcd4a2faa5153d61b44930771e3bf6a0552c60730e5f2b6a26",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 11,
+      "summaries": [
+        {
+          "failed": 6,
+          "errors": 0,
+          "tests": 9
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--fresh",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 17.47,
+    "exit_code": 0,
+    "log": "bridge-007.log",
+    "sha256": "238cc0b6d13722bf882855f60ca4b3105d6764eaa4408718c3d28f8ee5ca0ea4",
+    "project_sha256": "ed2e13e55c76cc792e78a3d7a338ec010edc77b2111a0269229f6546ca69bb68",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 11,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 9
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 4.04,
+    "exit_code": 0,
+    "log": "bridge-008.log",
+    "sha256": "d9cd30e2c30932a6553fe183946b98452512e8e8c380c15bdbcd5068225c0a8a",
+    "project_sha256": "fac82c79417aec18e31af05e8d0f3b320430c3900cbf5a63c46f3b826069a8da"
+  },
+  {
+    "args": [
+      "shell",
+      "probe.py"
+    ],
+    "seconds": 1.25,
+    "exit_code": 0,
+    "log": "bridge-009.log",
+    "sha256": "5591a9756f050b1d31cac78814e9a8b72b9e63dbfac87ce3f5ed33496b77bf9e",
+    "project_sha256": "9652f75427613985c89a2de088d47c9510e4f70a6a78d82bc323a5122584a6b4"
+  },
+  {
+    "args": [
+      "shell",
+      "probe.py"
+    ],
+    "seconds": 1.67,
+    "exit_code": 0,
+    "log": "bridge-010.log",
+    "sha256": "a5d4c086c8e9b6fe348623756618afefdde6eab4ee5e709efdca20c2213c33bb",
+    "project_sha256": "765a68cbd56e25208351624a68363a49a8865883bd7d6db7cc986dd9e25d4678"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--fresh",
+      "--update",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 11.32,
+    "exit_code": 0,
+    "log": "bridge-011.log",
+    "sha256": "46fd53c2f504d2a8f4ef005d2a8e5fe1c61963d0053d6d5f3342db38a2dee35b",
+    "project_sha256": "4414b8536776eb14bcc678de224cf3942edcf273f1e7c942047ac169778c3e57",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 11,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 9
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--update",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 11.69,
+    "exit_code": 0,
+    "log": "bridge-012.log",
+    "sha256": "8daeaf95bbc1fc3606d38dc065a2dff4cc54b3a15194a72573c81d9dc4953ddb",
+    "project_sha256": "4414b8536776eb14bcc678de224cf3942edcf273f1e7c942047ac169778c3e57",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 11,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 9
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick"
+    ],
+    "seconds": 4.43,
+    "exit_code": 0,
+    "log": "bridge-013.log",
+    "sha256": "de157612b35c8580a6f178e817034ea90d422c3dd913fa97464b59a0e762b741",
+    "project_sha256": "607c581d4216ce338d989adfde957307da555e6496cafedcadcd4e4157ed07be",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 11,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 9
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "shell",
+      ".tmp_d03_inventaire.py"
+    ],
+    "seconds": 0.9,
+    "exit_code": 0,
+    "log": "bridge-014.log",
+    "sha256": "3d9b3e8ebe20332f58161f665d369d508766128d227f63cacfea85cc3c3274d3",
+    "project_sha256": "3815ea089b1c3830b6a271ed95f2e959ee44e50be63960a7dcc9a5b162af4043"
+  },
+  {
+    "args": [
+      "shell",
+      ".tmp_avant.py"
+    ],
+    "seconds": 0.88,
+    "exit_code": 0,
+    "log": "bridge-015.log",
+    "sha256": "95260a44347f5fd94e09704fc70ea804a3ab126abdd3f37b6fab24dc04bb3706",
+    "project_sha256": "918a2ab612a0d62fffaf7c18736dcfdf73b98dfde2df022e971bf1292d5a2d9a"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 4.37,
+    "exit_code": 0,
+    "log": "bridge-016.log",
+    "sha256": "ce956d8345567dff632118db722871bbc30e862c797426a8d0b5c0b1ac38f42b",
+    "project_sha256": "ce51cf61a88376c36e4d5de3ff732c321bf13ab5be2db036a582fe1894a70aa0",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 13,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 11
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--fresh",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 11.75,
+    "exit_code": 1,
+    "log": "bridge-017.log",
+    "sha256": "dc1aea243f3da3db5b3fdb176c9c446bcde40f46f4fc6cbdf5e8c5212e2748c2",
+    "project_sha256": "69dfbeb573db8e00af459975fb9c03f30e5d0070ae67856b1099372cb99155e2",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 13,
+      "summaries": [
+        {
+          "failed": 6,
+          "errors": 0,
+          "tests": 11
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--fresh",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 11.33,
+    "exit_code": 0,
+    "log": "bridge-018.log",
+    "sha256": "a3c6bae370d2babba77781e0252c6086130ef3c9025aff1006828b6eb820bc6a",
+    "project_sha256": "071148f3d0be231141f7bb704a7d6c2c8caf67fa1bb7de6b9c7025caa9ead805",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 13,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 11
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 4.37,
+    "exit_code": 0,
+    "log": "bridge-019.log",
+    "sha256": "f654c07261a3830865ee2daeb058375437547ed7f486b29202282457d95c1fc2",
+    "project_sha256": "80bb9a87e3dae90a36898b2ac85b65e0e48c12ae3cf08adf4aa86d80255c205d",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 13,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 11
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 4.39,
+    "exit_code": 0,
+    "log": "bridge-020.log",
+    "sha256": "ab0889390f3cb88c0c67bec5a7e065dd051a8d816425d574261a91cdb85cfd5a",
+    "project_sha256": "7be750d84b65f389650fc401d61eb83e678a4ca448301a207288487e7ea8b0a9"
+  },
+  {
+    "args": [
+      "shell",
+      ".tmp_apres.py"
+    ],
+    "seconds": 0.9,
+    "exit_code": 0,
+    "log": "bridge-021.log",
+    "sha256": "13ba55084a8cbff1e475d1cb9c35ec86303a3e5ad77cd80681088a1f175962b8",
+    "project_sha256": "5a3ad72dfcdb40d999502c55fb1e4b4d54023bacd30877a66e7e6032cc26383e"
+  },
+  {
+    "args": [
+      "shell",
+      ".tmp_idem.py"
+    ],
+    "seconds": 0.91,
+    "exit_code": 0,
+    "log": "bridge-022.log",
+    "sha256": "2aa24296530a1c9dffb285f643ccc3d756f7c82acb06437ebdd773b4adb871fd",
+    "project_sha256": "0f583ba71b6acfe8411558c4bf56663701e9357202e44e3aedd7402adb731f64"
+  }
+]

@@ -1,0 +1,24 @@
+{
+  "case": "N01",
+  "provider": "codex",
+  "config": {
+    "model": "gpt-6-astra",
+    "effort": "high"
+  },
+  "status": "incident",
+  "turns": [
+    {
+      "status": "timeout",
+      "exit_code": -9,
+      "seconds": 600.0,
+      "usage": null,
+      "actual_model": null,
+      "tool_calls": 43,
+      "provider_completed": false,
+      "error": null,
+      "answer_sha256": "787f55f6e64988e34ab1ef0ff5e16e954989d3450601c4d43b09bbdc336a8f60"
+    }
+  ],
+  "active_turn": 0,
+  "error": "lien symbolique interdit dans le projet du banc : /home/blegoff/odoo-quality-runs/native-smoke-01/N01-codex-candidate/project/.tools/ruff/lib64"
+}

@@ -1,0 +1,211 @@
+[
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/recalculate/inventory.py"
+    ],
+    "seconds": 0.93,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "509ef6ec0c35e1ea21270e2288b7f2e003724fca4e4c37976f6c97370abe9ecd",
+    "project_sha256": "beba71e3378ed85e235a2d92a314fe92c7ba8f8a38c11ad0ff788856a63304b1"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick",
+      "--tags",
+      "/lab_dispatch:TestRecalculate"
+    ],
+    "seconds": 17.87,
+    "exit_code": 0,
+    "log": "bridge-001.log",
+    "sha256": "2a9d4b7363f8eaf917806a7836731c6c809d2f6656a2cf9aa9a764c7ddfe1677",
+    "project_sha256": "47bbf44f9a6696a31a1d87d73e1002dec8be5a95417a5c574991066cb6872a50",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "zéro test exécuté",
+        "aucun test du module cible prouvé"
+      ],
+      "module_tests": 0,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 0
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick",
+      "--fresh",
+      "--no-template",
+      "--tags",
+      "/lab_dispatch:TestRecalculate"
+    ],
+    "seconds": 13.1,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "b60af6be14672407ebc6533678cd8d325ff39ade16942a0881a5bb147bc88829",
+    "project_sha256": "b99aba7404c50864cd956f286f0ac5f31e709f3b1d0591155e8ae2ca2dacfa75",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "zéro test exécuté",
+        "aucun test du module cible prouvé"
+      ],
+      "module_tests": 0,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 0
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--fresh",
+      "--no-template",
+      "--tags",
+      "/lab_dispatch:TestRecalculate"
+    ],
+    "seconds": 19.9,
+    "exit_code": 1,
+    "log": "bridge-003.log",
+    "sha256": "9434d87b207b2b59bce9b78380d34c1c22a0a19e0f7d2e6b574112b685abe356",
+    "project_sha256": "538e5d182ae025c9db767b422a66f853939747bd6a5ebea0f9886ecd11b32279",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 9,
+      "summaries": [
+        {
+          "failed": 6,
+          "errors": 0,
+          "tests": 7
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-09_01_recalcul-des-brouillons/reproduire_defaut.py"
+    ],
+    "seconds": 1.18,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "b33ceb76922ae54d3aeebfa31a29c5d149a673705c16fc9a5a1142320fb636e9",
+    "project_sha256": "44716f1205bbe18a18c86f0e58749d24e7af10e721f0ba2d23258efd8fb7c3b7"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick",
+      "--tags",
+      "/lab_dispatch:TestRecalculate"
+    ],
+    "seconds": 5.25,
+    "exit_code": 0,
+    "log": "bridge-005.log",
+    "sha256": "c8650f0d88a064c41579d6be272d8cae49f6a057522a49f8ff528b1bf1f831e0",
+    "project_sha256": "0f194b56eba0c627c8998983f54d3b2692e7d6b610ad8c8ea207efe8e528aeba",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 9,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 7
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--fresh",
+      "--no-template",
+      "--update",
+      "--tags",
+      "/lab_dispatch:TestRecalculate"
+    ],
+    "seconds": 19.95,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "358915611ab4a660fdd53cee34f6aa57d7036d11245528a9e9dbd5fbeaa42079",
+    "project_sha256": "d3d1214a545adc21540d036527d2eae7cb4593f0b650b0e05b27ce9a0d828e6b",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 9,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 7
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.93,
+    "exit_code": 0,
+    "log": "bridge-007.log",
+    "sha256": "1a688f4ebb5f5d5fb470143a5202a59ba67b4d18ba78987e1cd056c08d689a34",
+    "project_sha256": "d76cac388faf7469533591cec3e111d0390948a619ea7476e7374f183cb1bdec"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-09_01_recalcul-des-brouillons/reprise_brouillons.py"
+    ],
+    "seconds": 2.01,
+    "exit_code": 0,
+    "log": "bridge-008.log",
+    "sha256": "09a227dd911b6250574a9ce28036eaa8730d3ad4632911cb0982b2117c401b7d",
+    "project_sha256": "13688158b0d116545448ec84308c22b8c92e44052a3746981aaf42a3a9c9f579"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-09_01_recalcul-des-brouillons/reprise_brouillons.py"
+    ],
+    "seconds": 1.3,
+    "exit_code": 0,
+    "log": "bridge-009.log",
+    "sha256": "3c5769d18310633fea0f87866b56a419ecff9cc9034e778860566de9b009315c",
+    "project_sha256": "d13bf246df69870fc5c3758b52ce76c6dfe8f6bf91fdd943cb53a7a3705d2101"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/recalculate/inventory.py"
+    ],
+    "seconds": 0.91,
+    "exit_code": 0,
+    "log": "bridge-010.log",
+    "sha256": "2e958502d52be607983f4ec0c95f047e67f506251c7b24223d5ec17b3a5e4c67",
+    "project_sha256": "8a097a86cccf4124747a01cd926ef83210bf5fbdfea89867538d292a17922fc3"
+  }
+]

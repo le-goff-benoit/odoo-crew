@@ -1,0 +1,161 @@
+[
+  {
+    "args": [
+      "shell",
+      "tmp/etat_donnees.py"
+    ],
+    "seconds": 0.87,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "b53467d493f2fe6b7957311136d1b1811d3acbbe9d3bcc7c3e8a6e349476a97d",
+    "project_sha256": "54b0f84b9d68466db858e6437ff37c6295c4f43edd54b1bde6268e2f9435b942"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick",
+      "--tags",
+      "/lab_dispatch:TestLabDispatchRecalculate"
+    ],
+    "seconds": 11.37,
+    "exit_code": 1,
+    "log": "bridge-001.log",
+    "sha256": "cb92e83e1496ec9117284326cd4ac8c05e7231a9ad7b94343bb209a8180a8e93",
+    "project_sha256": "22da90ef62f20b26ff955d83f95d3f3da1db87ab9876249796d89d82ad702150",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 8,
+      "summaries": [
+        {
+          "failed": 5,
+          "errors": 0,
+          "tests": 6
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick",
+      "--fresh",
+      "--tags",
+      "/lab_dispatch:TestLabDispatchRecalculate"
+    ],
+    "seconds": 13.45,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "a6be72f0a40e573d824bd71062a043c6037974ec5ca3e84e7a8ad441b55d1595",
+    "project_sha256": "243517a36bae6c0abfc1a849d2139f9b060a7c055099d21e251a3f7490e9d716",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 8,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 6
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_dispatch",
+      "--quick",
+      "--update",
+      "--tags",
+      "/lab_dispatch:TestLabDispatchRecalculate"
+    ],
+    "seconds": 4.44,
+    "exit_code": 0,
+    "log": "bridge-003.log",
+    "sha256": "b9fc6fde8fcb111ec01b761a6881bddf98f1ed4586f11b9c1eb931860f30834b",
+    "project_sha256": "af8242c97bcf4f5ace61ead88439e371556498ea51417868ca46a8ceb503fadf",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 8,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 6
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/reprise/etat_donnees.py"
+    ],
+    "seconds": 0.88,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "54d68c0c63c0f9bbff9dad17fdcce2950b23bbdf6ffe3241ec504efe8af61617",
+    "project_sha256": "d05a37a934507b51ad4d71a48cd6251463cbfeacae2960b8a8949c3c64ae87ec"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.58,
+    "exit_code": 0,
+    "log": "bridge-005.log",
+    "sha256": "2b20de51e7ec764e292e2c0522fa9c99e9b82b5c839b32796d67cd428b5ce158",
+    "project_sha256": "5ba16ba0d64a16feef43ce6c7c574e1f1a2a7c3b7751a1dc7d9f8fe48983cb86"
+  },
+  {
+    "args": [
+      "shell",
+      "changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/reprise/reprise_brouillons.py"
+    ],
+    "seconds": 0.93,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "bfcf7e3708b37168892d819eec9da5e35b07a35cd3ee8fb51b92c7f8ec8168d7",
+    "project_sha256": "2c4e2f9a3b0e82febf025eb8cd551435d8801f70386983185153f58c16972258"
+  },
+  {
+    "args": [
+      "shell",
+      "changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/reprise/reprise_brouillons.py"
+    ],
+    "seconds": 0.96,
+    "exit_code": 0,
+    "log": "bridge-007.log",
+    "sha256": "ccec1a17a773adbaaa3895f671862329aac14e9e0efdc021c238fa40b7edb2f5",
+    "project_sha256": "c20e144ed8553e685fb2f474339d9a38f3daad5a694b6777978a6ca751b5924b"
+  },
+  {
+    "args": [
+      "shell",
+      "changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/reprise/etat_donnees.py"
+    ],
+    "seconds": 0.93,
+    "exit_code": 0,
+    "log": "bridge-008.log",
+    "sha256": "03352b1c7aac994d97d524c9eb592177cc1b0a2402b6f95b8a08c5997a0b3180",
+    "project_sha256": "34a003908d1eafc5273a469f708b3d78b757ddbf343ae610ec8048a8d04c0d39"
+  },
+  {
+    "args": [
+      "shell",
+      "changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/reprise/controle_ecritures.py"
+    ],
+    "seconds": 0.88,
+    "exit_code": 0,
+    "log": "bridge-009.log",
+    "sha256": "4077090866b6ac2227c47068c5087456c13d1a0566259549208f5805c774dd2d",
+    "project_sha256": "ff76f886479fc5c4c942bcbe771176e46b6991cc1c21635371d658850ce843f4"
+  }
+]

@@ -1,0 +1,16 @@
+=== AVANT ===
+dossiers : 2 · brouillons : 1 · validés : 1
+  id=1 state=draft snapshot=999.00 attendu=20.00
+  id=2 state=done  snapshot=777.00 attendu=20.00
+
+brouillons divergents : 1 / 1
+  id=1 999.00 -> 20.00
+
+=== APRÈS ===
+  id=1 state=draft snapshot=20.00 attendu=20.00
+  id=2 state=done  snapshot=777.00 attendu=20.00
+
+enregistrements écrits : 1
+validés strictement intacts (total et write_date) : OUI
+tous les brouillons convergés : OUI
+REPRISE ok · commit effectué

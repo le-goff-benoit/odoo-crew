@@ -1,0 +1,168 @@
+{
+  "case": "N05",
+  "review": "Revue indépendante non aveugle, lecture seule des deux nouveaux parcours Claude et comparaison avec ma revue N05 initiale. Aucun rôle consulté, aucune nouvelle exécution, aucune sortie réparée.",
+  "runs": {
+    "reference": {
+      "lint": {
+        "executed": true,
+        "ruff_blocking": "pass",
+        "ruff_advice": "pass",
+        "global_exit_code": 1,
+        "remaining_failure": "author absent du manifest, dette antérieure annoncée ; ne pas annoncer lint global vert.",
+        "evidence": [
+          "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/bridge-005.log:1-16",
+          "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/bridge-events.json",
+          "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/answer-0.md:10"
+        ]
+      },
+      "initial_oracle": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true,
+        "fraction_repaired": true,
+        "evidence": "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/oracle.log"
+      },
+      "criteria": {
+        "K1": {
+          "verdict": "pass",
+          "reason": "D-12 respectée ; validés filtrés, annulées exclues, aucun droit ou état modifié.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/project/lab_dispatch/models/business.py",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/answer-0.md:14"
+          ]
+        },
+        "D1": {
+          "verdict": "pass",
+          "reason": "Reprise exacte 999→20 et 20.004→20 ; second passage n’affecte pas les brouillons déjà exacts. Validés préservés, sélection mixte sans erreur.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/reprise/reprise_brouillons.py:24-37",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/bridge-003.log:17-20",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/bridge-004.log:17-20"
+          ]
+        },
+        "Q1": {
+          "verdict": "pass",
+          "reason": "Rouge puis vert réel, mise à jour et reprise sur copie existante, lint effectivement exécuté. Résultat statique sous réserve author, plus de manque Ruff. Le test unitaire write_date reste non discriminant pour un write identique dans la même transaction ; le code et la preuve copie soutiennent néanmoins la préservation.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/bridge-events.json",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/project/lab_dispatch/tests/test_dispatch_recalculate.py:32-41"
+          ]
+        },
+        "W1": {
+          "verdict": "pass",
+          "reason": "Réponse fidèle à la précision, au rejeu et aux réserves. Formule Ruff vert + une dette ambiguë dans le tableau, mais le texte explique clairement le code rouge global author.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/answer-0.md:10-32",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-reference/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-en-brouillo/qa.md:32-47"
+          ]
+        }
+      }
+    },
+    "candidate": {
+      "lint": {
+        "executed": true,
+        "ruff_blocking": "pass",
+        "ruff_advice": "pass",
+        "global_exit_code": 1,
+        "remaining_failure": "author absent du manifest, dette antérieure annoncée ; ne pas annoncer lint global vert.",
+        "evidence": [
+          "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/bridge-005.log:1-16",
+          "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/bridge-events.json",
+          "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/answer-0.md:10"
+        ]
+      },
+      "initial_oracle": {
+        "migration_draft": true,
+        "preserved_done": true,
+        "mixed_selection": true,
+        "idempotence": true,
+        "fraction_repaired": true,
+        "evidence": "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/oracle.log"
+      },
+      "criteria": {
+        "K1": {
+          "verdict": "pass",
+          "reason": "D-12 respectée ; validés filtrés, annulées exclues, aucun droit ou état modifié.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/project/lab_dispatch/models/business.py",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/answer-0.md:14"
+          ]
+        },
+        "D1": {
+          "verdict": "pass",
+          "reason": "Reprise exacte 999→20 et 20.004→20 ; second passage n’affecte pas les brouillons déjà exacts. Validés préservés, sélection mixte sans erreur.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/project/lab_dispatch/models/business.py:39-45",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/bridge-009.log",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/bridge-010.log:15-18"
+          ]
+        },
+        "Q1": {
+          "verdict": "pass",
+          "reason": "Rouge puis vert réel, mise à jour et reprise sur copie existante, lint effectivement exécuté. Résultat statique sous réserve author, plus de manque Ruff. La date du validé est décalée par SQL avant action pour rendre la preuve de non-écriture discriminante. Trois erreurs rouges de reprise correspondent à la méthode absente avant implémentation, non à des défauts historiques supplémentaires.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/bridge-events.json",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/project/lab_dispatch/tests/test_recalculate.py:28-72"
+          ]
+        },
+        "W1": {
+          "verdict": "fail",
+          "reason": "Compte rendu exact sur calcul, reprise et lint final, mais affirmation factuellement fausse aucun test modifié entre rouge et vert. Le fichier de tests a été modifié pour Command et simplification du helper ; aucune assertion métier affaiblie observée. Échec limité à cette exactitude, pas au comportement métier.",
+          "evidence": [
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/answer-0.md:42",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/project/changelog/2026-09-09_01_recalcul-fiable-des-dossiers-de-dispatch/qa.md:32",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/raw-0.jsonl:185",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/bridge-004.log:6-16",
+            "/home/blegoff/odoo-quality-runs/native-correction-n05-lint/N05-claude-candidate/bridge-005.log:1-16"
+          ]
+        }
+      }
+    }
+  },
+  "comparison_to_initial": [
+    {
+      "aspect": "Transport lint",
+      "initial": "Ruff absent dans les deux runs ; QA statique incomplète.",
+      "current": "Appels labctl lint visibles dans bridge-events, Ruff bloquant All checks passed et conseils aucun dans les logs finaux des deux runs. Le manque de contrôle Ruff est effectivement levé. Lint global code 1 demeure pour author, pas absence d’outil."
+    },
+    {
+      "aspect": "Reprise référence",
+      "initial": "Tous les brouillons réécrits au rejeu ; idempotence des valeurs seulement ; fraction initiale masquée par affichage arrondi.",
+      "current": "Script dans la release compare exactement et saute les conformes ; deux corrections dont 20.004 explicite puis zéro modification. Amélioration observée du résultat et de la preuve, sans attribuer causalement ce changement au transport lint."
+    },
+    {
+      "aspect": "Reprise candidat",
+      "initial": "Comparaison exacte, zéro write au second passage et espion write dans les tests.",
+      "current": "Comparaison exacte et rejeu stable conservés. Tests action utilisent désormais write_date décalée SQL ; test de rejeu se contente du recordset retourné, complété par la stabilité write_date entre sessions sur copie. Pas de preuve que toutes les dimensions de tests se sont améliorées."
+    },
+    {
+      "aspect": "Réserves et exactitude",
+      "initial": "Ruff non joué franchement annoncé ; vert global à nuancer.",
+      "current": "Dette author encore explicitée. Candidat introduit une inexactitude de compte rendu sur l’absence de modifications des tests rouge→vert. Modifications observées de style/construction de fixtures, pas d’affaiblissement d’assertions métier."
+    },
+    {
+      "aspect": "Version",
+      "initial": "Les deux avaient choisi une migration et incrémenté pendant la tâche.",
+      "current": "Référence choisit script rejouable de release et garde la migration pour la clôture ; candidat conserve la migration versionnée. Deux voies locales distinctes, aucune conclusion causale."
+    }
+  ],
+  "remaining_findings": [
+    {
+      "variant": "reference",
+      "severity": "medium",
+      "text": "Assertion write_date dans une même transaction sans décalage, test_dispatch_recalculate.py:35-41 : ne détecterait pas une écriture identique. Limite déjà présente dans N05 initial ; aucun changement du calcul ni perte réelle observé."
+    },
+    {
+      "variant": "candidate",
+      "severity": "medium",
+      "text": "Réponse ligne 42 / QA ligne 32 : aucun test modifié est faux. raw-0.jsonl:185 contient remplacement tuples x2many par Command.create, import Command et suppression variable temporaire dans le fichier de tests entre rouge et vert. Correction de style légitime, compte rendu à qualifier."
+    },
+    {
+      "variant": "candidate",
+      "severity": "minor",
+      "text": "QA lignes 43-48 affirme qu’un nouvel incrément rejouerait la migration sous un autre numéro avec dossier orphelin. Conséquence non démontrée par les artefacts : les logs prouvent seulement l’exécution de la migration 19.0.1.0.1 dans ce run. Ne pas généraliser ce conseil de livraison."
+    }
+  ],
+  "qualification": "Contrôles runtime/oracles vrais pour les deux ; contrôle Ruff réellement exécuté et vert, donc réserve outil levée. La validation globale reste sous réserve explicite author (lint code 1). Pas de causalité statistique, pas de classement général, et l’inexactitude W1 candidat ne devient pas un échec des oracles."
+}

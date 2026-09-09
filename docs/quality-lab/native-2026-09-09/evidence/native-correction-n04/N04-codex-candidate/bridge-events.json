@@ -1,0 +1,137 @@
+[
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/days-nonnegative/inventory.py"
+    ],
+    "seconds": 0.87,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "6dc8e9e2531799ea8bec67f977bdf74b1e5285ef1fd6cfe383292d29505017b4",
+    "project_sha256": "f66aa15f47a11b46f06184bf07ef65310c15fb25750c95ab81dd7174fa5747ce"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestRentalDays"
+    ],
+    "seconds": 17.04,
+    "exit_code": 1,
+    "log": "bridge-001.log",
+    "sha256": "af88ae6f27ba9964c8b5c86420316564caf0bbd3f17defc5a8fdfea9a73deba5",
+    "project_sha256": "51fb48ed68510989471f82b1b09310c7e1a1b6dbc2765ff98f9ccc278b0aa6f3",
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 6,
+      "summaries": [
+        {
+          "failed": 4,
+          "errors": 0,
+          "tests": 4
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestRentalDays"
+    ],
+    "seconds": 6.14,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "bac577fea7a965c4fee748ac1c507f7b996cc7c2c9f312812cfff2275bd02308",
+    "project_sha256": "806392924716b4c243507058907ac39f799cde579bbf7961ff0cc2ef2e5ae573",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 6,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 4
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestRentalDays"
+    ],
+    "seconds": 6.91,
+    "exit_code": 0,
+    "log": "bridge-003.log",
+    "sha256": "80a71b54ae5e128f258c6ad1ea7e10bc2541ec7949e61d92f34c72c7345f6f03",
+    "project_sha256": "56547411a947cdbf6f17250b2ccd35998179d9eead79c20600ce17d175a75d1a",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 6,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 4
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/days-nonnegative/seed_copy.py"
+    ],
+    "seconds": 1.17,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "89396373e8624cedb25b36c02fef759d6a17c5d29f08e3596555db0d3d9e25fc",
+    "project_sha256": "d707cbea6536b6dec13f2352ede8c956b29b16661d27c838cd47b23ce0d78f00"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 6.01,
+    "exit_code": 0,
+    "log": "bridge-005.log",
+    "sha256": "aa31a8f58f1fb7ff4742177d624b989818a9ed01a4ecbbf56e37fb8ca93458b2",
+    "project_sha256": "692c7bc388238e6fbdd688cb9e946e51965c7ae58e26d9cb2a1600d7ee316c07"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/days-nonnegative/check_copy.py"
+    ],
+    "seconds": 1.12,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "57742e98572b9a144573a6a470626947568970245a0f5fe61f6bf4de2176c19d",
+    "project_sha256": "41c0afcf12e2524c0a2512b8ae798c9352580f62c7b6f5e829776ac04d1b24e3"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/days-nonnegative/inventory.py"
+    ],
+    "seconds": 0.91,
+    "exit_code": 0,
+    "log": "bridge-007.log",
+    "sha256": "e3d4f7c0f33f1828036a9afc38b5933c22936118c19924ff077401c993898d64",
+    "project_sha256": "75744d7c58a3c4433ed161aa6370c9095338a227d6f7fbe84e424337cfb23e7c"
+  }
+]

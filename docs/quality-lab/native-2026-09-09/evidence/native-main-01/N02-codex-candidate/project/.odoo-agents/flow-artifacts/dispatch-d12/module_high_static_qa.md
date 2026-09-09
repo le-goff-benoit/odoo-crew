@@ -1,0 +1,7 @@
+# QA statique sensible — lab_dispatch, 19.0, mode tâche
+Relecture du diff : seuls draft sont parcourus ; aucune lecture des lignes ni écriture du total des done ; annulées exclues ; zéro ligne donne zéro ; retour True préservé. Comparaison du total évitant les réécritures identiques. Pas de sudo ni de SQL, droits et manifest inchangés. Précédent de filtrage : sale_order.py:694 dans les sources 19.0.
+Tests importés et visibles dans git diff (ajout en intention, sans commit). 7 cas métier, dont utilisateur interne non superutilisateur, sélection mixte et espion write sur validé. Pas de nouveau modèle ni de vue.
+`git diff --check` et compilation Python : OK.
+`odoo-lint.sh --changed <.base> /work/lab_dispatch` : Ruff OK, aucun conseil ; lint Odoo code 1 pour author absent du manifest NON MODIFIÉ. Même erreur reproduite sur les fichiers extraits de la base git 53e6624dcbef3d8d8a5029b689165244a79ddd0c (preuves/lint-base.log). La base n'avait pas de tests. Dette antérieure indépendante du correctif, aucune anomalie introduite.
+Script de reprise : compilation OK ; Ruff E/F OK avec env déclaré comme builtin du shell Odoo et longueur 120. Garde stricte lab_client, sélection draft, comparaison lignes/états/validés, assertions avant commit, rellecture après commit.
+Preuves dans changelog/2026-09-09_01_recalcul-fiable-des-brouillons/preuves : lint-developer.log, lint-base.log, lint-reprise.log. Aucun contrôle statique omis ; réserve explicite sur le lint global non vert.

@@ -1,0 +1,25 @@
+2026-09-09 01:25:00,433 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:25:00,433 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:25:00,433 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:25:00,433 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:25:00,433 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:25:00,623 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:25:00,627 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:25:00,650 1 INFO lab_client odoo.modules.loading: updating modules list 
+2026-09-09 01:25:00,651 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:25:01,915 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Entrepôt Silex — recalcul des demandes en cours'] to user __system__ #1 via n/a 
+2026-09-09 01:25:01,915 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Entrepôt Silex — recalcul des demandes en cours'] to user __system__ #1 via n/a 
+2026-09-09 01:25:03,198 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:25:03,212 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:25:03,212 1 INFO lab_client odoo.modules.loading: Loading module lab_dispatch (2/21) 
+2026-09-09 01:25:03,216 1 INFO lab_client odoo.registry: module lab_dispatch: creating or updating database tables 
+2026-09-09 01:25:03,235 1 INFO lab_client odoo.modules.loading: loading lab_dispatch/security/ir.model.access.csv 
+2026-09-09 01:25:03,242 1 INFO lab_client odoo.modules.loading: Module lab_dispatch loaded in 0.03s, 49 queries (+49 other) 
+2026-09-09 01:25:03,367 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.15s, 49 queries (+49 extra) 
+2026-09-09 01:25:03,448 1 INFO lab_client odoo.registry: verifying fields for every extended model 
+2026-09-09 01:25:03,533 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:25:03,537 1 INFO lab_client odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:25:03,537 1 INFO lab_client odoo.registry: Registry loaded in 2.933s 
+2026-09-09 01:25:03,537 1 INFO lab_client odoo.service.server: Initiating shutdown 
+2026-09-09 01:25:03,537 1 INFO lab_client odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:25:03,537 1 INFO lab_client odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

@@ -1,0 +1,18 @@
+2026-09-09 01:28:50,356 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:28:50,358 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:28:50,359 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:28:50,359 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:28:50,359 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:28:50,802 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:28:50,802 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:28:50,827 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:28:50,830 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:28:50,832 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 01:28:50,836 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:28:51,006 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.17s, 0 queries (+0 extra) 
+2026-09-09 01:28:51,055 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:28:51,071 1 INFO lab_client odoo.registry: Registry loaded in 0.268s 
+SQL total: [(0,)]
+SQL negatifs: [(0,)]
+contraintes: [('lab_rental_pkey', 'PRIMARY KEY (id)'), ('lab_rental_create_uid_fkey', 'FOREIGN KEY (create_uid) REFERENCES res_users(id) ON DELETE SET NULL'), ('lab_rental_write_uid_fkey', 'FOREIGN KEY (write_uid) REFERENCES res_users(id) ON DELETE SET NULL')]
+uid shell: 1 __system__

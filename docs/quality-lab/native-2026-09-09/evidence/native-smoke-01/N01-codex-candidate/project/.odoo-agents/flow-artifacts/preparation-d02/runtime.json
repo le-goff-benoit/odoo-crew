@@ -1,0 +1,58 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/work",
+  "scopes": [
+    "lab_rental"
+  ],
+  "sources": {
+    "lab_rental/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 420
+    },
+    "lab_rental/__manifest__.py": {
+      "sha256": "69b14ee284397f616d6d9e950b9a72deebf06419463917a99e13d9005f99b265",
+      "mode": 420
+    },
+    "lab_rental/models/__init__.py": {
+      "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "mode": 420
+    },
+    "lab_rental/models/business.py": {
+      "sha256": "856cda663acc470ec74a494e708f254065b90dab59db53355f1ef3cf2f928b4e",
+      "mode": 420
+    },
+    "lab_rental/security/ir.model.access.csv": {
+      "sha256": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6",
+      "mode": 420
+    },
+    "lab_rental/tests/__init__.py": {
+      "sha256": "05799c99d8d1c676a83718a59713302a2f3ba78f5f08892526d236f8494d12ed",
+      "mode": 436
+    },
+    "lab_rental/tests/common.py": {
+      "sha256": "3c2b1c1093259f8dc10db90ac72b3e48ce11090b7c22f746b687e4cc3bbaf7bb",
+      "mode": 436
+    },
+    "lab_rental/tests/test_preparation_fees.py": {
+      "sha256": "b92734cf6c52f79874047f09f9377855afd1122f05e808d124903ae73017053e",
+      "mode": 436
+    }
+  },
+  "command": [
+    "/bridge/labctl",
+    "qa",
+    "lab_rental",
+    "--quick",
+    "--tags",
+    "/lab_rental:TestPreparationFees"
+  ],
+  "exit_code": 1,
+  "result": "failed",
+  "module": null,
+  "error": null,
+  "seconds": 14.093,
+  "log": {
+    "path": "/work/.odoo-agents/flow-artifacts/preparation-d02/runtime.log",
+    "sha256": "52c5a69933c5e9c2bef5044231fc1c63bfde8b46042174ce4033142d8e207e1e"
+  }
+}

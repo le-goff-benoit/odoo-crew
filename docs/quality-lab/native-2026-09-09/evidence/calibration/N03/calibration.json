@@ -1,0 +1,49 @@
+{
+  "before_field": {
+    "exit_code": 0,
+    "checks": {
+      "field_boolean_stored": false,
+      "original_fields": true,
+      "single_model": true
+    },
+    "passed": false,
+    "log_sha256": "f8782566cd8aac101a14b32229aea16190b1d752b60c4e27c91c24359d2643f3",
+    "log": "oracle-000.log"
+  },
+  "correct": {
+    "exit_code": 0,
+    "checks": {
+      "field_boolean_stored": true,
+      "5_rental": true,
+      "6_rental": true,
+      "7_rental": true,
+      "8_rental": true,
+      "9_loan": true,
+      "dependency_kind": true,
+      "dependency_days": true,
+      "original_fields": true,
+      "single_model": true
+    },
+    "passed": true,
+    "log_sha256": "deb74f564a6b26ef99f2ddf08a6969e77d26255fc697885bcbbfdf7aa7ce8664",
+    "log": "oracle-001.log"
+  },
+  "mutant": {
+    "exit_code": 0,
+    "checks": {
+      "field_boolean_stored": true,
+      "5_rental": true,
+      "6_rental": true,
+      "7_rental": false,
+      "8_rental": true,
+      "9_loan": false,
+      "dependency_kind": true,
+      "dependency_days": true,
+      "original_fields": true,
+      "single_model": true
+    },
+    "passed": false,
+    "log_sha256": "94a13131576aa08aa40d7eba548e169140af492181c149d281c8740a6cd9d402",
+    "log": "oracle-002.log"
+  }
+}

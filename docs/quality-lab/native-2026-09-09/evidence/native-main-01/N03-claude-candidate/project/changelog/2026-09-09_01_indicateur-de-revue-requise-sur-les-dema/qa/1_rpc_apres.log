@@ -1,0 +1,17 @@
+OK   C12  un seul x_studio_needs_review sur x_lab_request — 1 trouvé(s)
+OK   C10  type booléen — boolean
+OK   C8   champ stocké — store=True
+OK   C10  dépendances déclarées — 'x_studio_days,x_studio_kind'
+OK   C10  champ manuel en lecture seule — state=manual readonly=True
+OK   C10  code du calcul conforme à D-22 — "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_kind'] == 'rental' and record['x_studio_days'] >= 7\n"
+OK   C12  un seul identifiant externe pour le champ — 1 trouvé(s)
+OK   C10  identifiant externe dans studio_customization, noupdate — studio_customization.revue_requise_demand_924627ca-0724-4389-b944-ba45837bd3c3 noupdate=True
+OK   C10  nommé par Odoo (suffixe uuid), pas à la main — revue_requise_demand_924627ca-0724-4389-b944-ba45837bd3c3
+OK   C11  champ existant x_name inchangé — studio_customization.lab_seed_x_name
+OK   C11  champ existant x_studio_days inchangé — studio_customization.lab_seed_x_studio_days
+OK   C11  champ existant x_studio_kind inchangé — studio_customization.lab_seed_x_studio_kind
+
+INFO  table de vérité D-22 non jouable en RPC : <Fault 4: "You are not allowed to access 'Demande Aster' (x_lab_request) records.\n\nNo group currently allows this operation.\n\nContact your administrator to request access if necessary.">
+INFO  → jouée en ORM superutilisateur par test_1_needs_review_orm.py
+
+RECETTE VERTE — 12 contrôle(s), 0 échec(s)

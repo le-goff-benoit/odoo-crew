@@ -1,0 +1,176 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-6a24278b74-db-1  Running
+
+══ 1. QA de tâche : -u lab_rental + tests (/lab_rental:TestPreparationFee) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-09 01:15:03,783 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:15:03,783 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 01:15:03,784 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:15:03,784 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:15:03,784 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:15:03,784 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:15:03,955 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 1729b927137f:8069 
+2026-09-09 01:15:03,966 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-09 01:15:03,984 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:15:03,986 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:15:04,001 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-09 01:15:04,002 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 01:15:05,310 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:15:05,310 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 01:15:06,348 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 01:15:06,362 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:15:06,362 1 INFO lab_qa odoo.modules.loading: Loading module lab_rental (2/21) 
+2026-09-09 01:15:06,365 1 INFO lab_qa odoo.registry: module lab_rental: creating or updating database tables 
+2026-09-09 01:15:06,381 1 INFO lab_qa odoo.modules.loading: loading lab_rental/security/ir.model.access.csv 
+2026-09-09 01:15:06,391 1 INFO lab_qa odoo.modules.loading: Module lab_rental loaded in 0.03s, 42 queries (+42 other) 
+2026-09-09 01:15:06,500 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.14s, 42 queries (+42 extra) 
+2026-09-09 01:15:06,566 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-09 01:15:06,641 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-09 01:15:06,644 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-09 01:15:06,644 1 INFO lab_qa odoo.registry: Registry loaded in 2.688s 
+2026-09-09 01:15:06,644 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-09 01:15:06,645 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_daily_rate_changes ... 
+2026-09-09 01:15:06,647 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: ====================================================================== 
+2026-09-09 01:15:06,647 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: TestPreparationFee.test_daily_rate_changes
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fee.py", line 64, in test_daily_rate_changes
+    self.assertStoredTotals(record, [65])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 19, in assertStoredTotals
+    self.assertAlmostEqual(record.amount_total, total, places=9)
+AssertionError: 62.0 != 65 within 9 places (3.0 difference)
+ 
+2026-09-09 01:15:06,648 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_days_changes ... 
+2026-09-09 01:15:06,649 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: ====================================================================== 
+2026-09-09 01:15:06,649 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: TestPreparationFee.test_days_changes
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fee.py", line 59, in test_days_changes
+    self.assertStoredTotals(record, [expected])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 19, in assertStoredTotals
+    self.assertAlmostEqual(record.amount_total, total, places=9)
+AssertionError: 52.0 != 40 within 9 places (12.0 difference)
+ 
+2026-09-09 01:15:06,650 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_decimal_rate ... 
+2026-09-09 01:15:06,651 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: ====================================================================== 
+2026-09-09 01:15:06,651 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: TestPreparationFee.test_decimal_rate
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fee.py", line 51, in test_decimal_rate
+    self.assertStoredTotals(records, [21.1725, 6.1725])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 19, in assertStoredTotals
+    self.assertAlmostEqual(record.amount_total, total, places=9)
+AssertionError: 18.1725 != 21.1725 within 9 places (3.0 difference)
+ 
+2026-09-09 01:15:06,651 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_kind_changes ... 
+2026-09-09 01:15:06,652 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: ====================================================================== 
+2026-09-09 01:15:06,652 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: TestPreparationFee.test_kind_changes
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fee.py", line 73, in test_kind_changes
+    self.assertStoredTotals(record, [65])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 19, in assertStoredTotals
+    self.assertAlmostEqual(record.amount_total, total, places=9)
+AssertionError: 62.0 != 65 within 9 places (3.0 difference)
+ 
+2026-09-09 01:15:06,653 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_loans_have_no_fee ... 
+2026-09-09 01:15:06,656 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_mixed_batch ... 
+2026-09-09 01:15:06,657 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: ====================================================================== 
+2026-09-09 01:15:06,657 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: TestPreparationFee.test_mixed_batch
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fee.py", line 86, in test_mixed_batch
+    self.assertStoredTotals(records, [40, 65, 50])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 19, in assertStoredTotals
+    self.assertAlmostEqual(record.amount_total, total, places=9)
+AssertionError: 52.0 != 40 within 9 places (12.0 difference)
+ 
+2026-09-09 01:15:06,658 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_rental_threshold ... 
+2026-09-09 01:15:06,660 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: ====================================================================== 
+2026-09-09 01:15:06,660 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: Subtest TestPreparationFee.test_rental_threshold (days=4)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fee.py", line 17, in test_rental_threshold
+    self.assertStoredTotals(record, [expected])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 19, in assertStoredTotals
+    self.assertAlmostEqual(record.amount_total, total, places=9)
+AssertionError: 52.0 != 40 within 9 places (12.0 difference)
+ 
+2026-09-09 01:15:06,661 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: ====================================================================== 
+2026-09-09 01:15:06,661 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: Subtest TestPreparationFee.test_rental_threshold (days=5)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fee.py", line 17, in test_rental_threshold
+    self.assertStoredTotals(record, [expected])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 19, in assertStoredTotals
+    self.assertAlmostEqual(record.amount_total, total, places=9)
+AssertionError: 62.0 != 65 within 9 places (3.0 difference)
+ 
+2026-09-09 01:15:06,663 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: ====================================================================== 
+2026-09-09 01:15:06,663 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: Subtest TestPreparationFee.test_rental_threshold (days=6)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fee.py", line 17, in test_rental_threshold
+    self.assertStoredTotals(record, [expected])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 19, in assertStoredTotals
+    self.assertAlmostEqual(record.amount_total, total, places=9)
+AssertionError: 72.0 != 75 within 9 places (3.0 difference)
+ 
+2026-09-09 01:15:06,664 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: ====================================================================== 
+2026-09-09 01:15:06,664 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: Subtest TestPreparationFee.test_rental_threshold (days=20)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fee.py", line 17, in test_rental_threshold
+    self.assertStoredTotals(record, [expected])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 19, in assertStoredTotals
+    self.assertAlmostEqual(record.amount_total, total, places=9)
+AssertionError: 212.0 != 215 within 9 places (3.0 difference)
+ 
+2026-09-09 01:15:06,665 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: Starting TestPreparationFee.test_zero_values ... 
+2026-09-09 01:15:06,670 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: ====================================================================== 
+2026-09-09 01:15:06,670 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: Subtest TestPreparationFee.test_zero_values (kind='rental', days=4, rate=0)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fee.py", line 43, in test_zero_values
+    self.assertStoredTotals(record, [expected])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 19, in assertStoredTotals
+    self.assertAlmostEqual(record.amount_total, total, places=9)
+AssertionError: 12.0 != 0 within 9 places (12.0 difference)
+ 
+2026-09-09 01:15:06,671 1 INFO lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: ====================================================================== 
+2026-09-09 01:15:06,671 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: Subtest TestPreparationFee.test_zero_values (kind='rental', days=5, rate=0)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_rental/tests/test_preparation_fee.py", line 43, in test_zero_values
+    self.assertStoredTotals(record, [expected])
+  File "/mnt/extra-addons/lab_rental/tests/common.py", line 19, in assertStoredTotals
+    self.assertAlmostEqual(record.amount_total, total, places=9)
+AssertionError: 12.0 != 15 within 9 places (3.0 difference)
+ 
+2026-09-09 01:15:06,674 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 01:15:06,674 1 INFO lab_qa odoo.service.server: 8 post-tests in 0.03s, 115 queries 
+2026-09-09 01:15:06,674 1 INFO lab_qa odoo.tests.stats: lab_rental: 10 tests 0.03s 115 queries 
+2026-09-09 01:15:06,674 1 ERROR lab_qa odoo.tests.result: 11 failed, 0 error(s) of 8 tests when loading database 'lab_qa' 
+2026-09-09 01:15:06,674 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-09 01:15:06,674 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:15:06,971 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+❌ échec (installation, mise à jour ou tests) — voir les extraits ci-dessous
+   ⏱ 4s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 12
+tests échoués  : 11
+tests ignorés  : 0
+WARNING liés à lab_rental : 0
+
+── extraits ──
+29:2026-09-09 01:15:06,647 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: TestPreparationFee.test_daily_rate_changes
+39:2026-09-09 01:15:06,649 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: TestPreparationFee.test_days_changes
+49:2026-09-09 01:15:06,651 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: TestPreparationFee.test_decimal_rate
+59:2026-09-09 01:15:06,652 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: TestPreparationFee.test_kind_changes
+70:2026-09-09 01:15:06,657 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: TestPreparationFee.test_mixed_batch
+80:2026-09-09 01:15:06,660 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: Subtest TestPreparationFee.test_rental_threshold (days=4)
+89:2026-09-09 01:15:06,661 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: Subtest TestPreparationFee.test_rental_threshold (days=5)
+98:2026-09-09 01:15:06,663 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: Subtest TestPreparationFee.test_rental_threshold (days=6)
+107:2026-09-09 01:15:06,664 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: Subtest TestPreparationFee.test_rental_threshold (days=20)
+117:2026-09-09 01:15:06,670 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: Subtest TestPreparationFee.test_zero_values (kind='rental', days=4, rate=0)
+126:2026-09-09 01:15:06,671 1 ERROR lab_qa odoo.addons.lab_rental.tests.test_preparation_fee: FAIL: Subtest TestPreparationFee.test_zero_values (kind='rental', days=5, rate=0)
+137:2026-09-09 01:15:06,674 1 ERROR lab_qa odoo.tests.result: 11 failed, 0 error(s) of 8 tests when loading database 'lab_qa' 
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": false, "reasons": ["bilan contenant des échecs ou erreurs", "erreur ou module ignoré dans le log"], "module_tests": 10, "summaries": [{"failed": 11, "errors": 0, "tests": 8}]}
+❌ preuve de tests absente ou invalide
+RECETTE module=lab_rental db=lab_qa install=ko update=n.a. uninstall=n.a. tests="11 failed, 0 error(s) of 8 tests" errors=12 failed=11 skipped=0 warnings=0 total=5s quick=4s
+
+Log complet   : /home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/backend/stack/artifacts/lab_rental-20260909-031502.Z1MesO.log
+Captures      : /home/blegoff/odoo-quality-runs/native-n01-02/N01-codex-candidate/backend/stack/artifacts/
+❌ lab_rental : voir ci-dessus

@@ -1,0 +1,11 @@
+env.cr.execute("SELECT id, name, days FROM lab_rental ORDER BY id")
+print("ETAT AVANT NETTOYAGE:", env.cr.fetchall())
+env['lab.rental'].search([('name', 'like', 'QA copie')]).unlink()
+env.flush_all()
+env.cr.execute("SELECT count(*) FROM lab_rental")
+print("LIGNES APRES NETTOYAGE:", env.cr.fetchone()[0])
+model = env['lab.rental']
+obj = next(o for o in model._table_object_definitions if o.name == 'check_days_positive')
+print("NOM SQL:", obj.full_name(model))
+print("MESSAGE METIER:", obj.get_error_message(model))
+env.cr.commit()

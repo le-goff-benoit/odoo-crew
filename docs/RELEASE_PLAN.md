@@ -101,3 +101,37 @@ les tâches existantes ou les nouvelles ; cycles, références inconnues et éta
 validé importé sont refusés. Une modification du contrat d'une tâche existante
 exige une réconciliation explicite et une nouvelle réception. Un module futur ou
 encore vide peut démarrer ; sa preuve de réception doit couvrir des fichiers réels.
+
+## Continuer un run commencé avec l'ancien graphe
+
+Un changement de graphe ne doit pas changer silencieusement le sens d'un run.
+Finir les travaux des propriétaires actifs avant de libérer leurs revendications.
+Pour poursuivre avec le graphe historique conservé dans l'état :
+
+```bash
+FLOW=/chemin/projet/.odoo-agents/flows/run.json
+SNAPSHOT=/chemin/projet/.odoo-agents/flows/graphe-historique.json
+FLOW_TOOL=~/.odoo19-agents/scripts/odoo_flow.py
+python3 - "$FLOW" "$SNAPSHOT" <<'PY'
+import json, pathlib, sys
+state = json.loads(pathlib.Path(sys.argv[1]).read_text())
+snapshot = state.get('graph_snapshot')
+if not snapshot:
+    raise SystemExit('Snapshot absent : retrouver le fichier du graphe original.')
+with pathlib.Path(sys.argv[2]).open('x') as stream:
+    json.dump(snapshot, stream, ensure_ascii=False, indent=2)
+    stream.write('\n')
+PY
+# Pour chaque revendication encore présente, avec son propriétaire réel :
+python3 "$FLOW_TOOL" --graph "$SNAPSHOT" release "$FLOW" <noeud> \
+  --owner <proprietaire> --reason 'Continuation avec le graphe historique'
+python3 "$FLOW_TOOL" --graph "$SNAPSHOT" migrate "$FLOW"
+python3 "$FLOW_TOOL" --graph "$SNAPSHOT" status "$FLOW"
+```
+
+Conserver `--graph "$SNAPSHOT"` pour la suite des commandes du run. La migration
+réconcilie l'empreinte des octets réexportés avec le même graphe sémantique ; ne
+jamais éditer le hash à la main. Une migration vers le nouveau graphe dont les
+étapes ont changé peut être refusée : ce refus protège les preuves existantes.
+Les commandes de release courantes peuvent imposer de nouveaux contrôles à la
+clôture ; reprendre leurs preuves explicitement, sans convertir un ancien vert.

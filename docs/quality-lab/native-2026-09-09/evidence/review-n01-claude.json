@@ -1,0 +1,84 @@
+{
+  "case": "N01",
+  "scope": "Revue documentaire bornée du second contexte D-03 : mémoire, passation, release et conservation historique. Oracle vrai fourni comme contexte, non réévalué ; aucun code métier ni nouveau run exécuté. Indépendante et non aveugle.",
+  "runs": {
+    "reference": {
+      "handoff_verdict": "pass",
+      "current_memory": "D-03 seule en vigueur : 15 EUR dès 5 jours inclus, prêts exclus. D-02/D-01 historisées explicitement. Pas de QA D-02 recyclée comme preuve de D-03.",
+      "release": "Même dossier 2026-09-09_01_frais-de-preparation-des-locations ; point 1 REMPLACÉ, point 2 validé ; release ouverte.",
+      "history_comparison": {
+        "method": "Comparaison byte-à-byte des preuves historiques entre after-0 et project par le relecteur.",
+        "file_counts": {
+          "changelog": 6,
+          ".odoo-agents/flow-artifacts": 4
+        },
+        "changed_or_missing": [],
+        "old_flow_identical": true,
+        "note": "Les fichiers de suivi courants (README, QA, PROJECT et JOURNAL) sont naturellement enrichis ; la conservation attestée porte sur les preuves historiques et le run initial. resource-locks.json modifié normalement, hors preuve historique."
+      },
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-reference/answer-1.md",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-reference/project/.odoo-agents/PROJECT.md",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-reference/project/.odoo-agents/JOURNAL.md",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-reference/project/changelog/2026-09-09_01_frais-de-preparation-des-locations/README.md:13-14",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-reference/project/.odoo-agents/flows/frais-preparation.json"
+      ],
+      "limits": "Référence annonce explicitement copie vide et absence de reprise de valeurs préexistantes ; pas de prétention à valider une migration de base peuplée."
+    },
+    "candidate": {
+      "handoff_verdict": "pass",
+      "current_memory": "D-03 seule en vigueur : 15 EUR dès 5 jours inclus, prêts exclus. D-02/D-01 historisées explicitement. Pas de QA D-02 recyclée comme preuve de D-03.",
+      "release": "Même dossier 2026-09-09_01_frais-de-preparation-des-locations ; point 1 REMPLACÉ, point 2 validé ; release ouverte.",
+      "history_comparison": {
+        "method": "Comparaison byte-à-byte des preuves historiques entre after-0 et project par le relecteur.",
+        "file_counts": {
+          "changelog": 7,
+          ".odoo-agents/flow-artifacts": 5
+        },
+        "changed_or_missing": [],
+        "old_flow_identical": true,
+        "note": "Les fichiers de suivi courants (README, QA, PROJECT et JOURNAL) sont naturellement enrichis ; la conservation attestée porte sur les preuves historiques et le run initial. resource-locks.json modifié normalement, hors preuve historique."
+      },
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-candidate/answer-1.md",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-candidate/project/.odoo-agents/PROJECT.md",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-candidate/project/.odoo-agents/JOURNAL.md",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-candidate/project/changelog/2026-09-09_01_frais-de-preparation-des-locations/README.md:13-14",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-candidate/project/.odoo-agents/flows/frais-preparation.json"
+      ],
+      "limits": "Candidat annonce copie synthétique, author supposé à confirmer et chaîne complète de deux migrations en un seul update non mesurée. Ces limites restent dans la mémoire finale."
+    }
+  },
+  "findings": [
+    {
+      "variant": "candidate",
+      "severity": "minor",
+      "type": "wording_contradiction",
+      "text": "Réponse D-03, paragraphe Cadrage : règle déjà livrée. Le même texte et le README affirment D-02 jamais livrée et validation locale seulement. Lire déjà réalisée/testée, pas déployée ; formulation incohérente sans affirmation opérationnelle de déploiement.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-candidate/answer-1.md",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-candidate/project/changelog/2026-09-09_01_frais-de-preparation-des-locations/README.md:39-41"
+      ]
+    },
+    {
+      "variant": "candidate",
+      "severity": "minor",
+      "type": "overgeneralized_lesson",
+      "text": "Mémoire transforme la voie technique choisie en nécessité générale : deux changements exigent deux dossiers/deux incréments ; il faut un post-migrate et un incrément. Ceci décrit leur stratégie automatique actuelle, pas toute reprise locale possible. À ne pas promouvoir comme invariant universel.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-candidate/project/.odoo-agents/PROJECT.md:24-34"
+      ]
+    },
+    {
+      "variant": "reference",
+      "severity": "minor",
+      "type": "ambiguous_business_wording",
+      "text": "Mémoire dit 4 jours ne paie plus rien alors que seule la préparation disparaît ; la formule jours × tarif et la réponse précisant 12→0 de frais lèvent l’ambiguïté. Préférer plus de frais de préparation.",
+      "evidence": [
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-reference/project/.odoo-agents/PROJECT.md:12-15",
+        "/home/blegoff/odoo-quality-runs/native-n01-02/N01-claude-reference/answer-1.md:9"
+      ]
+    }
+  ],
+  "conclusion": "Passation et conservation historiques confirmées pour les deux : référence 6 preuves release + 4 fragments ; candidat 7 + 5 ; zéro différence dans ces fichiers et ancien flow identique. D-03 est la mémoire active, même release à deux points, anciennes QA clairement historiques. Réserves de formulation seulement dans ce périmètre documentaire ; aucune conclusion statistique ou comparaison générale."
+}

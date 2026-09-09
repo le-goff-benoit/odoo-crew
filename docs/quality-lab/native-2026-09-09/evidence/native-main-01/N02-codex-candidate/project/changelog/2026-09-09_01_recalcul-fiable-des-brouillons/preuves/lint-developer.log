@@ -1,0 +1,17 @@
+Série cible : 19.0  (__manifest__.py)
+Périmètre --changed (53e6624dcbef3d8d8a5029b689165244a79ddd0c) : 3 fichier(s)
+══ 1/3  ruff — règles bloquantes (config Odoo 19.0) ══
+All checks passed!
+
+══ 2/3  ruff — conseils (config complète, non bloquant) ═════════════════
+aucun.
+
+══ 3/3  contrôles Odoo (manifest, XML, sécurité, tests) ═════════════════
+── lab_dispatch  (/work/lab_dispatch)
+   série cible : 19.0  (source : __manifest__.py)
+ERREUR         /work/lab_dispatch/__manifest__.py
+               clé obligatoire manquante : `author`
+
+1 erreur(s), 0 avertissement(s), 0 info(s)
+
+❌ lint en échec

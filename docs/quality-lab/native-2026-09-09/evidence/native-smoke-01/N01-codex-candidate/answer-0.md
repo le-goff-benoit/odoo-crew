@@ -1,0 +1,1 @@
+Les dix tests passent désormais sur une installation neuve : zéro échec, zéro erreur, aucun test ignoré, en 11 secondes. La copie a aussi confirmé le besoin de reprise : l’update seul conserve les anciens totaux, puis le script donne bien 30/52/62/40 EUR. Je termine la vérification de mise à jour, le rejeu d’idempotence et le nettoyage des témoins.

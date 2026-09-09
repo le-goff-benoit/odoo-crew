@@ -1,0 +1,17 @@
+# Copie client lab_client — état AVANT D-03 (mesure lecture seule, 2026-09-09T01:35:36Z)
+# script : .odoo-agents/flow-artifacts/frais-d03/inventaire_lab_client_avant.py
+id | name | kind | days | rate | amount_total
+1 | Location 5 jours | rental | 5 | 10.0 | 62.0
+2 | Location 4 jours (borne) | rental | 4 | 10.0 | 52.0
+3 | Location 3 jours | rental | 3 | 10.0 | 30.0
+4 | Location 4 jours tarif nul | rental | 4 | 0.0 | 12.0
+5 | Pret 10 jours | loan | 10 | 10.0 | 100.0
+6 | Pret 4 jours (borne) | loan | 4 | 10.0 | 40.0
+7 | Location 0 jour | rental | 0 | 10.0 | 0.0
+total_general = 296.0
+nb = 7
+attendu: enregistrements impactes = 3 delta = -21.0
+   (1, 'Location 5 jours', 5, 12.0, 15.0, 3.0)
+   (2, 'Location 4 jours (borne)', 4, 12.0, 0.0, -12.0)
+   (4, 'Location 4 jours tarif nul', 4, 12.0, 0.0, -12.0)
+version installee du module: 19.0.1.1.0

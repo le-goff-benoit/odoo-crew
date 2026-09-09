@@ -1,0 +1,27 @@
+2026-09-09 01:39:37,904 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 01:39:37,904 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 01:39:37,904 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 01:39:37,904 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 01:39:37,904 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 01:39:38,066 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 01:39:38,066 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 01:39:38,082 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 01:39:38,086 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 01:39:38,089 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_dispatch', defaulting to '' 
+2026-09-09 01:39:38,091 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 01:39:38,196 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.10s, 0 queries (+0 extra) 
+2026-09-09 01:39:38,223 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 01:39:38,232 1 INFO lab_client odoo.registry: Registry loaded in 0.165s 
+dossier id=1 LEGACY_DRAFT state=draft snapshot=20.0 write_date=2026-09-09 01:38:01.203819
+dossier id=2 LEGACY_DONE state=done snapshot=777.0 write_date=2026-09-09 01:32:28.761716
+dossier id=3 LEGACY_FRACTION state=draft snapshot=20.0 write_date=2026-09-09 01:38:01.203819
+ligne id=1 dispatch=1 qty=2.0 price=10.0 cancelled=None write_date=2026-09-09 01:32:28.761716
+ligne id=2 dispatch=1 qty=3.0 price=30.0 cancelled=True write_date=2026-09-09 01:32:28.761716
+ligne id=3 dispatch=2 qty=2.0 price=10.0 cancelled=None write_date=2026-09-09 01:32:28.761716
+ligne id=4 dispatch=2 qty=3.0 price=30.0 cancelled=True write_date=2026-09-09 01:32:28.761716
+ligne id=5 dispatch=3 qty=2.0 price=10.0 cancelled=None write_date=2026-09-09 01:32:28.761716
+module lab_dispatch state= installed latest_version= 19.0.1.0.1
+apres action_recalculate sur TOUTE la selection (mixte):
+  id=1 snapshot=20.0 write_date=2026-09-09 01:38:01.203819
+  id=2 snapshot=777.0 write_date=2026-09-09 01:32:28.761716
+  id=3 snapshot=20.0 write_date=2026-09-09 01:38:01.203819

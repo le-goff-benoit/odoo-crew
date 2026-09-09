@@ -17,7 +17,8 @@ référentiel, scripts, stack). L'aiguillage Odoo de `~/.claude/CLAUDE.md` et
   portent le même texte. Une divergence (`≠`) est un défaut à corriger avant
   de commiter.
 - Les noms : rôles `odoo-analyst`, `odoo-developer`, `odoo-tester`,
-  `odoo-support` ; commandes `/odoo-new`, `/odoo-close`, `/odoo-feedback` ;
+  `odoo-support` ; commandes `/odoo-new`, `/odoo-close`, `/odoo-feedback`, `/odoo-plan`,
+  `/odoo-start`, `/odoo-improve` ;
   skill `camptocamp-docs`. Le vocabulaire est « release », pas « lot ».
 - Un renommage passe par `build.sh` (liste des anciens noms à retirer) et par
   les `AGENTS.md` des projets qui citent les commandes.
@@ -33,7 +34,7 @@ référentiel, scripts, stack). L'aiguillage Odoo de `~/.claude/CLAUDE.md` et
 ## Scripts
 
 - Un script se teste **en bac à sable** : copie d'un projet dans le scratchpad,
-  `chmod -R o+rX` pour que l'uid 101 du conteneur lise les fichiers, base par
+  permissions de lecture pour l'utilisateur effectif du conteneur, base par
   module (`odoo_qa_<série>_<module>`) ; jamais sur un projet réel, jamais sur
   une base partagée. Nettoyer les bases de test créées.
 - `odoo-test.sh` ne coupe jamais PostgreSQL s'il tournait avant l'appel, et

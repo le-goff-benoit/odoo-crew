@@ -1,0 +1,4 @@
+# QA statique — D-31
+Relecture des quatre fichiers touchés : contrainte SQL Odoo 19.0, tests importés, transactions/savepoints gérés par TransactionCase.assertRaises, flush explicite et invalidation du cache avant relecture. Aucun écran/droit/manifest touché ; calcul identique par comparaison AST. Compilation et git diff --check verts.
+Lint natif --changed exécuté : Ruff vert (aucun conseil). Contrôles Odoo : une erreur antérieure « author manquant », reproduite sur HEAD dans baseline-lint.log. Verdict de tâche sous réserve de cette dette préexistante, aucune anomalie introduite. Le statut brut du lint reste failed (lint.json/log), sans le masquer ni modifier le manifest hors demande.
+Critères C1-C4 couverts par les tests ; C5 runtime et copie à joindre. Sources 19.0 : addons/stock/models/stock_storage_category.py ; addons/hr/tests/test_hr_version.py (CheckViolation).

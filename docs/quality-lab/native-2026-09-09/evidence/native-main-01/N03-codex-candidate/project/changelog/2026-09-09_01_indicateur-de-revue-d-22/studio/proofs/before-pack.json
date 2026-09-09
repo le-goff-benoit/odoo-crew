@@ -1,0 +1,281 @@
+{
+  "fields": [
+    {
+      "id": 3731,
+      "name": "create_date",
+      "ttype": "datetime",
+      "store": true,
+      "compute": false,
+      "depends": false
+    },
+    {
+      "id": 3730,
+      "name": "create_uid",
+      "ttype": "many2one",
+      "store": true,
+      "compute": false,
+      "depends": false
+    },
+    {
+      "id": 3729,
+      "name": "display_name",
+      "ttype": "char",
+      "store": false,
+      "compute": false,
+      "depends": false
+    },
+    {
+      "id": 3728,
+      "name": "id",
+      "ttype": "integer",
+      "store": true,
+      "compute": false,
+      "depends": false
+    },
+    {
+      "id": 3733,
+      "name": "write_date",
+      "ttype": "datetime",
+      "store": true,
+      "compute": false,
+      "depends": false
+    },
+    {
+      "id": 3732,
+      "name": "write_uid",
+      "ttype": "many2one",
+      "store": true,
+      "compute": false,
+      "depends": false
+    },
+    {
+      "id": 3734,
+      "name": "x_name",
+      "ttype": "char",
+      "store": true,
+      "compute": false,
+      "depends": false
+    },
+    {
+      "id": 3736,
+      "name": "x_studio_days",
+      "ttype": "integer",
+      "store": true,
+      "compute": false,
+      "depends": false
+    },
+    {
+      "id": 3738,
+      "name": "x_studio_kind",
+      "ttype": "selection",
+      "store": true,
+      "compute": false,
+      "depends": false
+    },
+    {
+      "id": 3742,
+      "name": "x_studio_needs_review",
+      "ttype": "boolean",
+      "store": true,
+      "compute": "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'",
+      "depends": "x_studio_days,x_studio_kind"
+    }
+  ],
+  "xmlids": [
+    {
+      "id": 26984,
+      "module": "studio_customization",
+      "name": "lab_seed_model",
+      "model": "ir.model",
+      "res_id": 422,
+      "studio": true,
+      "noupdate": true
+    },
+    {
+      "id": 26981,
+      "module": "studio_customization",
+      "name": "lab_seed_x_name",
+      "model": "ir.model.fields",
+      "res_id": 3734,
+      "studio": true,
+      "noupdate": true
+    },
+    {
+      "id": 26982,
+      "module": "studio_customization",
+      "name": "lab_seed_x_studio_days",
+      "model": "ir.model.fields",
+      "res_id": 3736,
+      "studio": true,
+      "noupdate": true
+    },
+    {
+      "id": 26983,
+      "module": "studio_customization",
+      "name": "lab_seed_x_studio_kind",
+      "model": "ir.model.fields",
+      "res_id": 3738,
+      "studio": true,
+      "noupdate": true
+    },
+    {
+      "id": 26990,
+      "module": "studio_customization",
+      "name": "revue_requise_demand_a4294814-6488-42ee-b3f7-afff3f08e203",
+      "model": "ir.model.fields",
+      "res_id": 3742,
+      "studio": true,
+      "noupdate": false
+    }
+  ],
+  "views": [],
+  "access": [],
+  "actions": [
+    {
+      "id": 157,
+      "name": "Archive Selection",
+      "code": "\nrecords.action_archive_all()\n        "
+    },
+    {
+      "id": 176,
+      "name": "Automation Rules: check and execute",
+      "code": "model._cron_process_time_based_actions()"
+    },
+    {
+      "id": 35,
+      "name": "Base: Auto-vacuum internal data",
+      "code": "model._run_vacuum_cleaner()"
+    },
+    {
+      "id": 36,
+      "name": "Base: Portal Users Deletion",
+      "code": "model._gc_portal_users(batch_size=50)"
+    },
+    {
+      "id": 13,
+      "name": "Config: Run Remaining Action Todo",
+      "code": "\nconfig = model.next() or {}\nif config.get('type') not in ('ir.actions.act_window_close',):\n    action = config\n"
+    },
+    {
+      "id": 158,
+      "name": "Delete Selection",
+      "code": "\nrecords.action_unlink_all()\n        "
+    },
+    {
+      "id": 173,
+      "name": "Digest Emails",
+      "code": "model._cron_send_digest_email()"
+    },
+    {
+      "id": 83,
+      "name": "Disable two-factor authentication",
+      "code": "\n            action = records.action_totp_disable()\n        "
+    },
+    {
+      "id": 131,
+      "name": "Discuss: channel member unmute",
+      "code": "model._cleanup_expired_mutes()"
+    },
+    {
+      "id": 82,
+      "name": "Download (vCard)",
+      "code": "\n            action = {\n                'type': 'ir.actions.act_url',\n                'url': '/web/partner/vcard?partner_ids=' + ','.join(map(str, records.ids)),\n                'target': 'download',\n            }\n        "
+    },
+    {
+      "id": 94,
+      "name": "Export JS",
+      "code": "\nif records:\n    action = records.export_js_file()\n        "
+    },
+    {
+      "id": 51,
+      "name": "Failed to install demo data for some modules, demo disabled",
+      "code": "\nfailures = env['ir.demo_failure'].search([\n    ('wizard_id', '=', False),\n])\nrecord = model.create({\n    'failure_ids': [Command.set(failures.ids)],\n})\naction = {\n    'type': 'ir.actions.act_window',\n    'res_id': record.id,\n    'res_model': 'ir.demo_failure.wizard',\n    'target': 'new',\n    'views': [(env.ref('base.demo_failures_dialog').id, 'form')],\n}\n        "
+    },
+    {
+      "id": 160,
+      "name": "Grant portal access",
+      "code": "action = model.action_open_wizard()"
+    },
+    {
+      "id": 147,
+      "name": "Invite to use two-factor authentication",
+      "code": "\n            action = records.action_totp_invite()\n        "
+    },
+    {
+      "id": 124,
+      "name": "Mail: Email Queue Manager",
+      "code": "model.process_email_queue(batch_size=1000)"
+    },
+    {
+      "id": 127,
+      "name": "Mail: Fetchmail Service",
+      "code": "model._fetch_mails()"
+    },
+    {
+      "id": 128,
+      "name": "Mail: Post scheduled messages",
+      "code": "model._post_messages_cron()"
+    },
+    {
+      "id": 130,
+      "name": "Mail: send web push notification",
+      "code": "model._push_notification_to_endpoint()"
+    },
+    {
+      "id": 126,
+      "name": "Notification: Delete Notifications older than 6 Months",
+      "code": "model._gc_notifications(max_age_days=180)"
+    },
+    {
+      "id": 129,
+      "name": "Notification: Notify scheduled messages",
+      "code": "model._send_notifications_cron()"
+    },
+    {
+      "id": 148,
+      "name": "Open two-factor authentication configuration",
+      "code": "\nuser = env.user\naction = user.action_open_my_account_settings()\n        "
+    },
+    {
+      "id": 153,
+      "name": "Privacy Lookup",
+      "code": "\naction = record.action_privacy_lookup()\n        "
+    },
+    {
+      "id": 154,
+      "name": "Privacy Lookup",
+      "code": "\naction = record.partner_id.action_privacy_lookup()\n        "
+    },
+    {
+      "id": 125,
+      "name": "Publisher: Update Notification",
+      "code": "model.update_notification(None)"
+    },
+    {
+      "id": 169,
+      "name": "Resend",
+      "code": "action = records.resend_failed()"
+    },
+    {
+      "id": 162,
+      "name": "SMS: SMS Queue Manager",
+      "code": "model._process_queue()"
+    },
+    {
+      "id": 146,
+      "name": "Send Password Reset Instructions",
+      "code": "records.action_reset_password()"
+    },
+    {
+      "id": 171,
+      "name": "Snailmail: process letters queue",
+      "code": "model._snailmail_cron()"
+    },
+    {
+      "id": 145,
+      "name": "Users: Notify About Unregistered Users",
+      "code": "model.send_unregistered_user_reminder(batch_size=100)"
+    }
+  ],
+  "automations": []
+}

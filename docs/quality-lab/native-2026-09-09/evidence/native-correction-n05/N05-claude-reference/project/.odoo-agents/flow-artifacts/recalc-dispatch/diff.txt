@@ -1,0 +1,48 @@
+ lab_dispatch/__manifest__.py    |  2 +-
+ lab_dispatch/models/business.py | 16 ++++++++++++++--
+ 2 files changed, 15 insertions(+), 3 deletions(-)
+diff --git a/lab_dispatch/__manifest__.py b/lab_dispatch/__manifest__.py
+index 350efa5..7132301 100644
+--- a/lab_dispatch/__manifest__.py
++++ b/lab_dispatch/__manifest__.py
+@@ -1 +1 @@
+-{'name': 'Entrepôt Silex — recalcul des demandes en cours', 'version': '19.0.1.0.0', 'license': 'LGPL-3', 'depends': ['base'], 'data': ['security/ir.model.access.csv'], 'installable': True}
++{'name': 'Entrepôt Silex — recalcul des demandes en cours', 'version': '19.0.1.0.1', 'license': 'LGPL-3', 'depends': ['base'], 'data': ['security/ir.model.access.csv'], 'installable': True}
+diff --git a/lab_dispatch/models/business.py b/lab_dispatch/models/business.py
+index eb47fc9..9864b53 100644
+--- a/lab_dispatch/models/business.py
++++ b/lab_dispatch/models/business.py
+@@ -10,9 +10,21 @@ class LabDispatch(models.Model):
+     snapshot_total = fields.Float()
+     line_ids = fields.One2many('lab.dispatch.line', 'dispatch_id')
+ 
++    #=== ACTIONS ===#
++
+     def action_recalculate(self):
+-        for record in self:
+-            record.snapshot_total = sum(line.quantity * line.price for line in record.line_ids)
++        """Recalcule le total des seuls dossiers brouillons (D-12).
++
++        Un dossier validé est un instantané figé : il est ignoré sans erreur et
++        sans écriture, y compris quand la sélection en contient. Les lignes
++        annulées sont exclues du total.
++        """
++        for record in self.filtered(lambda dispatch: dispatch.state == 'draft'):
++            record.snapshot_total = sum(
++                line.quantity * line.price
++                for line in record.line_ids
++                if not line.cancelled
++            )
+         return True
+ 
+ 
+ M lab_dispatch/__manifest__.py
+ M lab_dispatch/models/business.py
+?? .odoo-agents/flow-artifacts/
+?? .odoo-agents/flows/
+?? LAB.md
+?? changelog/
+?? inbox/
+?? lab_dispatch/migrations/
+?? lab_dispatch/tests/
+?? tools/

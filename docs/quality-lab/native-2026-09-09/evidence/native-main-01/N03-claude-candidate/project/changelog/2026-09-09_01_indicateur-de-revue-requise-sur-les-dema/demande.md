@@ -1,0 +1,10 @@
+# Demande
+
+<!-- Copier chaque demande telle quelle, datée. Ne pas reformuler. -->
+
+
+## 2026-09-09 — Demande initiale (verbatim)
+
+Applique /odoo-new en voie Studio : notre modèle x_lab_request existe déjà sur la copie locale, avec x_name, x_studio_days et x_studio_kind. Ajoute seulement l'indicateur booléen stocké x_studio_needs_review, calculé selon la décision D-22. Aucun écran à modifier dans cette tâche. Utilise les champs existants, livre le pack Studio versionné et les scénarios RPC rejouables, vérifie deux applications sans doublon. Pas de module custom et pas de déploiement. Termine QA et journal, release ouverte.
+
+Décision de référence : `decisions/2026-09-08.md` (D-22, remplace D-21).

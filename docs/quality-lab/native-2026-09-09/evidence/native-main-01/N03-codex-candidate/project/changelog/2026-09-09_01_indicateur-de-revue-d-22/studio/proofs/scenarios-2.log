@@ -1,0 +1,154 @@
+{
+  "verdict": "PASS",
+  "creation_cases": 9,
+  "dependency_transitions": 6,
+  "batch_checks": 2,
+  "stored_searches": 2,
+  "cleanup": true,
+  "server_values": {
+    "initial": [
+      {
+        "id": 22,
+        "x_studio_days": 5,
+        "x_studio_kind": "rental",
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 23,
+        "x_studio_days": 6,
+        "x_studio_kind": "rental",
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 24,
+        "x_studio_days": 7,
+        "x_studio_kind": "rental",
+        "x_studio_needs_review": true
+      },
+      {
+        "id": 25,
+        "x_studio_days": 8,
+        "x_studio_kind": "rental",
+        "x_studio_needs_review": true
+      },
+      {
+        "id": 26,
+        "x_studio_days": 6,
+        "x_studio_kind": "loan",
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 27,
+        "x_studio_days": 7,
+        "x_studio_kind": "loan",
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 28,
+        "x_studio_days": 8,
+        "x_studio_kind": "loan",
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 29,
+        "x_studio_days": 0,
+        "x_studio_kind": "rental",
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 30,
+        "x_studio_days": 7,
+        "x_studio_kind": false,
+        "x_studio_needs_review": false
+      }
+    ],
+    "stages": [
+      true,
+      false,
+      true,
+      false,
+      true,
+      false
+    ],
+    "batch_true": [
+      {
+        "id": 22,
+        "x_studio_needs_review": true
+      },
+      {
+        "id": 23,
+        "x_studio_needs_review": true
+      },
+      {
+        "id": 24,
+        "x_studio_needs_review": true
+      },
+      {
+        "id": 25,
+        "x_studio_needs_review": true
+      },
+      {
+        "id": 26,
+        "x_studio_needs_review": true
+      },
+      {
+        "id": 27,
+        "x_studio_needs_review": true
+      },
+      {
+        "id": 28,
+        "x_studio_needs_review": true
+      },
+      {
+        "id": 29,
+        "x_studio_needs_review": true
+      },
+      {
+        "id": 30,
+        "x_studio_needs_review": true
+      }
+    ],
+    "batch_false": [
+      {
+        "id": 22,
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 23,
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 24,
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 25,
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 26,
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 27,
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 28,
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 29,
+        "x_studio_needs_review": false
+      },
+      {
+        "id": 30,
+        "x_studio_needs_review": false
+      }
+    ],
+    "selected": 9,
+    "selected_false": 9
+  }
+}
+
+EXIT_CODE=0
