@@ -1,0 +1,9 @@
+{
+  "at": "2026-09-09T17:57:53.990832+00:00",
+  "scope": "measurement only; no candidate instructions, inputs, outputs or runtime changed",
+  "cause": "Native fork serializes ancestor context; exclude imported prefix using own thread_settings_applied boundary",
+  "before": "22bb96c53ecb994a44b499dc08f7ad758d6f758839ea57ea0ec3fd07f6e34c46",
+  "after": "973ba5147c4cbde7ef1c2f35e33f7adad248ae8b5a88e65ae6312c72c94aa530",
+  "affected": "E02-D metric complete false; outputs untouched; same corrected measurement applied to all six runs",
+  "validation": "5 metrics tests pass including inherited unfinished turn and missing-boundary refusal"
+}

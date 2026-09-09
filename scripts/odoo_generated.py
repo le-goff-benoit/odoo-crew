@@ -22,6 +22,7 @@ def expected_outputs(root: Path, destination: Path) -> dict[Path, str]:
     for declaration in declarations:
         kind, slug, role, *args = declaration
         body = (root / "roles" / f"{role}.md").read_text(encoding="utf-8")
+        body += "\n" + (root / "roles/communication.md").read_text(encoding="utf-8")
         marker = (
             "<!-- Généré par ~/.odoo19-agents/build.sh — ne pas éditer ici.\n"
             f"     Source : ~/.odoo19-agents/roles/{role}.md -->\n\n"

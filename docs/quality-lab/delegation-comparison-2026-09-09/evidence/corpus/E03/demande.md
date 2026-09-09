@@ -1,0 +1,2 @@
+# Demande originale
+Dans lab.qualification, interdire un prix unitaire négatif sur toute ligne. Les lignes gratuites (prix zéro) restent autorisées. La quantité doit rester positive ou nulle ; le montant reste quantité × prix. Le bouton Confirmer doit continuer de fonctionner. La validation doit couvrir création, modification, import load et opérations par lots avec annulation du lot en erreur. Conserver les enregistrements valides déjà présents. Livrer un petit correctif 19.0, ses tests et les preuves d'exécution locales.

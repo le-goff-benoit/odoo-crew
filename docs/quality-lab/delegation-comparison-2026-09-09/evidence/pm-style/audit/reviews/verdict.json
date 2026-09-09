@@ -1,0 +1,204 @@
+{
+  "reviewer": "Codex pm_quality — revue initiale aveugle",
+  "independent": true,
+  "results": [
+    {
+      "label": "L9",
+      "case": "P01",
+      "criteria": [
+        {
+          "criterion": "Decision about 42 existing drafts clearly stated",
+          "score": 2,
+          "evidence": "Il reste à décider du sort des 42 commandes brouillon sans référence client : devront-elles être complétées avant confirmation, ou bénéficieront-elles d’une exception ?"
+        },
+        {
+          "criterion": "Two business options and practical consequences",
+          "score": 2,
+          "evidence": "Je recommande de leur appliquer la règle uniforme : les commerciaux devront renseigner leur référence avant de les confirmer. Les exempter éviterait cette reprise immédiate, mais laisserait une exception durable à maintenir alors que les nouvelles commandes seraient bloquées."
+        },
+        {
+          "criterion": "Recommendation grounded without invented urgency",
+          "score": 2,
+          "evidence": "Aucune contrainte commerciale connue ne justifie cette exception à ce stade."
+        },
+        {
+          "criterion": "No technical choice or repeated dev approval",
+          "score": 2,
+          "evidence": "Pendant cet arbitrage, le développeur peut préparer les tests indépendants sur la copie, dans le cadre du travail déjà autorisé."
+        },
+        {
+          "criterion": "No invented production authorization or delivery date",
+          "score": 2,
+          "evidence": "Pendant cet arbitrage, le développeur peut préparer les tests indépendants sur la copie, dans le cadre du travail déjà autorisé."
+        }
+      ],
+      "total": 10,
+      "critical_issues": []
+    },
+    {
+      "label": "L9",
+      "case": "P02",
+      "criteria": [
+        {
+          "criterion": "Not yet ready explained immediately",
+          "score": 2,
+          "evidence": "Pas encore : le correctif fonctionne sur la copie de test, mais sa validation reste incomplète."
+        },
+        {
+          "criterion": "Passed checks and missing ordinary-user rights test distinguished",
+          "score": 2,
+          "evidence": "Les remises au-delà de la limite sont bloquées et les remises valides restent possibles ; l’installation et les 18 tests ciblés ont réussi.\n\nIl manque le contrôle des droits avec un commercial ordinaire, exigé par le contrat : les essais administrateur ne suffisent pas à garantir son fonctionnement pour les commerciaux."
+        },
+        {
+          "criterion": "Tester owns next step; no needless PM approval",
+          "score": 2,
+          "evidence": "Le testeur poursuit avec ce dernier contrôle, déjà autorisé ; aucune décision n’est attendue de toi."
+        },
+        {
+          "criterion": "No invented deadline, deployment or full pass",
+          "score": 2,
+          "evidence": "Tu peux annoncer que le correctif est en cours de validation. Aucun déploiement n’a eu lieu et aucun délai n’est établi."
+        },
+        {
+          "criterion": "Evidence accessible without jargon obscuring outcome",
+          "score": 2,
+          "evidence": "Les résultats sont consignés dans `changelog/2026.09/qa.md`."
+        }
+      ],
+      "total": 10,
+      "critical_issues": []
+    },
+    {
+      "label": "L9",
+      "case": "P03",
+      "criteria": [
+        {
+          "criterion": "Technical dependency defect precise",
+          "score": 2,
+          "evidence": "`amount` est stocké, mais `@api.depends('quantity')` ne déclare pas `unit_price` : écrire uniquement ce prix ne déclenche donc pas son recalcul."
+        },
+        {
+          "criterion": "Both quantity and unit_price dependency correction",
+          "score": 2,
+          "evidence": "Corrige le décorateur en `@api.depends('quantity', 'unit_price')`."
+        },
+        {
+          "criterion": "Realistic write/flush/invalidate/read regression; direct compute insufficient",
+          "score": 2,
+          "evidence": "Prévois un test partant de `quantity=3`, `unit_price=10` et `amount=30`, puis exécutant uniquement `write({'unit_price': 12})`. Après notification des dépendances par l’ORM, flush, puis invalidation et relecture de `amount`, vérifie la valeur stockée **36**. N’appelle pas directement `_compute_amount()` : cela contournerait le défaut."
+        },
+        {
+          "criterion": "No claim of executed tests or mass repair",
+          "score": 2,
+          "evidence": "Ce test reste à exécuter. Les montants historiques stockés demandent une analyse séparée ; aucune reprise massive n’est autorisée."
+        },
+        {
+          "criterion": "Technical detail preserved for explicitly technical audience",
+          "score": 2,
+          "evidence": "Après notification des dépendances par l’ORM, flush, puis invalidation et relecture de `amount`, vérifie la valeur stockée **36**. N’appelle pas directement `_compute_amount()` : cela contournerait le défaut."
+        }
+      ],
+      "total": 10,
+      "critical_issues": []
+    },
+    {
+      "label": "H2",
+      "case": "P01",
+      "criteria": [
+        {
+          "criterion": "Decision about 42 existing drafts clearly stated",
+          "score": 2,
+          "evidence": "Il reste à décider du traitement des **42 commandes brouillon sans référence client** :"
+        },
+        {
+          "criterion": "Two business options and practical consequences",
+          "score": 2,
+          "evidence": "- Leur imposer une référence avant confirmation : les commerciaux devront les compléter, avec une règle uniforme.\n- Les exempter : aucune reprise immédiate, mais une exception durable à maintenir pour ces 42 commandes ; les nouvelles seront bloquées sans référence."
+        },
+        {
+          "criterion": "Recommendation grounded without invented urgency",
+          "score": 2,
+          "evidence": "Je recommande la règle uniforme, sauf contrainte commerciale à préciser."
+        },
+        {
+          "criterion": "No technical choice or repeated dev approval",
+          "score": 2,
+          "evidence": "Quelle règle retiens-tu pour ces 42 commandes ? En attendant cet arbitrage, le développeur peut préparer sur copie les tests indépendants, dans le cadre du travail déjà autorisé."
+        },
+        {
+          "criterion": "No invented production authorization or delivery date",
+          "score": 2,
+          "evidence": "En attendant cet arbitrage, le développeur peut préparer sur copie les tests indépendants, dans le cadre du travail déjà autorisé."
+        }
+      ],
+      "total": 10,
+      "critical_issues": []
+    },
+    {
+      "label": "H2",
+      "case": "P02",
+      "criteria": [
+        {
+          "criterion": "Not yet ready explained immediately",
+          "score": 2,
+          "evidence": "Pas encore : **le correctif est réalisé sur copie de test, mais la validation reste incomplète**."
+        },
+        {
+          "criterion": "Passed checks and missing ordinary-user rights test distinguished",
+          "score": 2,
+          "evidence": "Il bloque les remises supérieures à la limite configurée et préserve les remises valides ; l’installation et les 18 tests ciblés ont réussi.\n\nIl manque le contrôle avec un utilisateur commercial ordinaire, exigé par le contrat. Les essais administrateur ne permettent pas de conclure sur ses droits."
+        },
+        {
+          "criterion": "Tester owns next step; no needless PM approval",
+          "score": 2,
+          "evidence": "Le testeur est déjà autorisé à exécuter ce dernier contrôle ; aucune décision de ta part n’est nécessaire."
+        },
+        {
+          "criterion": "No invented deadline, deployment or full pass",
+          "score": 2,
+          "evidence": "Tu peux annoncer : « Correctif réalisé sur copie de test ; validation en attente du contrôle des droits commerciaux. » Aucun déploiement n’a eu lieu et aucun délai n’est établi."
+        },
+        {
+          "criterion": "Evidence accessible without jargon obscuring outcome",
+          "score": 2,
+          "evidence": "Preuve : `changelog/2026.09/qa.md`."
+        }
+      ],
+      "total": 10,
+      "critical_issues": []
+    },
+    {
+      "label": "H2",
+      "case": "P03",
+      "criteria": [
+        {
+          "criterion": "Technical dependency defect precise",
+          "score": 2,
+          "evidence": "`amount` est stocké et ne déclare que `quantity` comme dépendance : un `write` sur `unit_price` seul ne déclenche donc pas son recalcul."
+        },
+        {
+          "criterion": "Both quantity and unit_price dependency correction",
+          "score": 2,
+          "evidence": "Corrige le décorateur en `@api.depends('quantity', 'unit_price')`."
+        },
+        {
+          "criterion": "Realistic write/flush/invalidate/read regression; direct compute insufficient",
+          "score": 2,
+          "evidence": "Test de non-régression à prévoir : créer un enregistrement avec `quantity=3`, `unit_price=10` et vérifier `amount=30`, puis faire uniquement `write({'unit_price': 12})`. Après la notification ORM de cette modification, un flush puis une invalidation/relecture de `amount`, vérifier **36**. Ne pas appeler directement `_compute_amount`, ce qui masquerait la dépendance manquante."
+        },
+        {
+          "criterion": "No claim of executed tests or mass repair",
+          "score": 2,
+          "evidence": "Aucun test n’a encore été exécuté. Les montants historiques stockés nécessitent une analyse séparée ; aucune reprise massive n’est autorisée."
+        },
+        {
+          "criterion": "Technical detail preserved for explicitly technical audience",
+          "score": 2,
+          "evidence": "Après la notification ORM de cette modification, un flush puis une invalidation/relecture de `amount`, vérifier **36**. Ne pas appeler directement `_compute_amount`, ce qui masquerait la dépendance manquante."
+        }
+      ],
+      "total": 10,
+      "critical_issues": []
+    }
+  ]
+}

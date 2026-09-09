@@ -1,0 +1,9 @@
+{
+    "name": "Synthetic qualification",
+    "version": "19.0.1.0.1",
+    "author": "Camptocamp",
+    "license": "LGPL-3",
+    "depends": ["web"],
+    "data": ["security/ir.model.access.csv", "views/quantity.xml"],
+    "installable": True,
+}

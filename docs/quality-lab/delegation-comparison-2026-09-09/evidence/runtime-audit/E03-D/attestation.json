@@ -1,0 +1,41 @@
+{
+  "case": "E03",
+  "independent": true,
+  "pass": true,
+  "evidence": {
+    "oracle_report": "/tmp/odoo-delegation-comparison-20260909/runtime-audit/E03-D/runtime-evidence/test-20260909-201450-a9dd5986.tests.json",
+    "oracle_log": "/tmp/odoo-delegation-comparison-20260909/runtime-audit/E03-D/runtime-evidence/test-20260909-201450-a9dd5986.log",
+    "expected_oracle_methods": [
+      "TestDelegationOracle.test_negative_create_and_write",
+      "TestDelegationOracle.test_free_and_zero_quantity",
+      "TestDelegationOracle.test_quantity_amount_and_button",
+      "TestDelegationOracle.test_batch_atomicity",
+      "TestDelegationOracle.test_import_load"
+    ],
+    "executed_methods": [
+      "TestDelegationOracle.test_batch_atomicity",
+      "TestDelegationOracle.test_free_and_zero_quantity",
+      "TestDelegationOracle.test_import_load",
+      "TestDelegationOracle.test_negative_create_and_write",
+      "TestDelegationOracle.test_quantity_amount_and_button",
+      "TestPrice.test_batch_create_atomicity",
+      "TestPrice.test_batch_write_atomicity",
+      "TestPrice.test_free_confirmation_and_recomputation",
+      "TestPrice.test_load_create_atomicity",
+      "TestPrice.test_load_update_atomicity",
+      "TestPrice.test_load_valid",
+      "TestPrice.test_negative_context_default",
+      "TestPrice.test_negative_create",
+      "TestPrice.test_negative_write_preserves_record",
+      "TestPrice.test_transaction_batch_rollback",
+      "TestQuantity.test_confirmation",
+      "TestQuantity.test_negative_create",
+      "TestQuantity.test_negative_write",
+      "TestQuantity.test_zero"
+    ],
+    "inventory": "/tmp/odoo-delegation-comparison-20260909/runtime-audit/E03-D/runtime-evidence/inventory-20260909-201452-8c42d221.inventory.json",
+    "seed_records_preserved": true,
+    "seed_reference": "/tmp/odoo-delegation-comparison-20260909/environment/resources.json",
+    "scope": "Copied candidate unchanged except independent test import; original candidate run/snapshot untouched. Same assigned synthetic DB after both primaries ended."
+  }
+}

@@ -3,6 +3,7 @@ import importlib.util
 from pathlib import Path
 import tempfile
 import unittest
+import shutil
 
 ROOT = Path(__file__).resolve().parents[1]
 spec = importlib.util.spec_from_file_location('generated', ROOT / 'scripts/odoo_generated.py')
@@ -11,6 +12,25 @@ spec.loader.exec_module(g)
 
 
 class GeneratedTests(unittest.TestCase):
+    def test_common_instruction_change_invalidates_every_profile(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp) / 'source'
+            root.mkdir()
+            shutil.copytree(ROOT / 'roles', root / 'roles')
+            for name in ('build.sh', 'routing.md'):
+                shutil.copy2(ROOT / name, root / name)
+            dest = Path(tmp) / 'distribution'
+            for path, content in g.expected_outputs(root, dest).items():
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text(content)
+            baseline = len(g.check(root, dest))
+            common = root / 'roles/communication.md'
+            common.write_text(common.read_text() + '\nUpdated shared instruction.\n')
+            self.assertEqual(len(g.check(root, dest)) - baseline, 26)
+            for path, content in g.expected_outputs(root, dest).items():
+                path.write_text(content)
+            self.assertEqual(len(g.check(root, dest)), baseline)
+
     def test_every_declared_output_is_checked(self):
         with tempfile.TemporaryDirectory() as tmp:
             dest = Path(tmp)

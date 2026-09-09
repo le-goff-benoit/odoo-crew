@@ -1,0 +1,72 @@
+{
+  "case": "E01",
+  "reviewer": "Codex independent semantic reviewer /root/comparison_quality",
+  "independent": true,
+  "checks": [
+    {
+      "id": "existing",
+      "pass": true,
+      "evidence": "Q7/output/analyse.md : « ÇA EXISTE dans le module fourni. ». Le verdict attribue correctement la règle au custom existant, pas au standard métier."
+    },
+    {
+      "id": "proof",
+      "pass": true,
+      "evidence": "Q7/project/lab_qualification/models.py : « _name = \"lab.qualification\" ».  Q7/project/lab_qualification/models.py : « \"CHECK(quantity >= 0)\" ».  Q7/output/analyse.md : « /home/blegoff/odoo-sources/19.0/odoo/orm/table_objects.py ». Source 19.0 relue : class Constraint(TableObject), définition ajoutée par apply_to_database. Citation déterminante exacte et pertinente."
+    },
+    {
+      "id": "scope",
+      "pass": true,
+      "evidence": "Q7/output/analyse.md : « si la contrainte est installée dans la base ». La lecture du CHECK confirme la borne inclusive zéro. Créations, modifications et imports explicités sans proposer de doublon. Le parcours load/write/create cité dans V4 a été vérifié dans les sources 19.0."
+    },
+    {
+      "id": "limits",
+      "pass": true,
+      "evidence": "Q7/output/analyse.md : « Aucune exécution Odoo ni aucun essai d’import n’a été réalisé. ». "
+    },
+    {
+      "id": "memory",
+      "pass": true,
+      "evidence": "Q7/output/PROJECT.md : « D-17 : prix zéro autorisé pour les lignes gratuites, y compris confirmées. Décision acquise. ». Q7/output/PROJECT.md : « SYN-11 résolu : le libellé du bouton ne nécessite plus de changement ; ne pas rouvrir. ». Comparaison au corpus public E01 : journal initial préservé octet pour octet, 11 lignes ajoutées ; décisions de quantité zéro/négative et limites synthétiques conservées. Q7/output/PROJECT.md : « Couverture des imports déduite de la contrainte SQL, sous réserve de sa présence effective en base ; aucun essai Odoo exécuté. ». "
+    }
+  ],
+  "score": {
+    "business": 4,
+    "coverage": 2,
+    "evidence": 2,
+    "useful_synthesis": 2,
+    "total": 10
+  },
+  "critical_issues": [],
+  "pm": {
+    "criteria": [
+      {
+        "criterion": "Outcome immediately understandable to an Odoo PM",
+        "score": 2,
+        "evidence": "Q7/output/result.md : « Aucun développement supplémentaire n’est justifié : il ferait doublon. ». "
+      },
+      {
+        "criterion": "Concrete business impact explained",
+        "score": 2,
+        "evidence": "Q7/output/result.md : « Le module fourni bloque déjà les quantités négatives et conserve les lignes à zéro. ». "
+      },
+      {
+        "criterion": "Next action and actor explicit, no unnecessary approval",
+        "score": 2,
+        "evidence": "Q7/output/result.md : « Si une validation de l’installation réelle est nécessaire, le responsable technique vérifiera le module sur une copie locale. ». "
+      },
+      {
+        "criterion": "Necessary decisions answerable with options/consequences/recommendation; N/A if none required",
+        "score": null,
+        "evidence": "N/A : aucune décision métier nouvelle nécessaire ; aucune question requise ni posée. Qualité des questions non mesurée."
+      },
+      {
+        "criterion": "Technical details kept accessible without obscuring result or honest limits",
+        "score": 2,
+        "evidence": "Q7/output/result.md : « Elle ne confirme pas son installation chez un client ; aucun essai sur une base n’a été réalisé. ». "
+      }
+    ],
+    "total": 8,
+    "max": 8
+  },
+  "runtime_claims_to_verify": []
+}

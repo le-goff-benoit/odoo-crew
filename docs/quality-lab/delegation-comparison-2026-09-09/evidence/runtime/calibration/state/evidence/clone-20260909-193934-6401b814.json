@@ -1,0 +1,16 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "delegcmp-6f9a0b9dfae4-pg",
+    "createdb",
+    "-U",
+    "odoo",
+    "-T",
+    "comparison_seed",
+    "comparison_run_0"
+  ],
+  "log": "/tmp/odoo-delegation-comparison-20260909/runtime/calibration/state/evidence/clone-20260909-193934-6401b814.log",
+  "returncode": 0,
+  "seconds": 0.114
+}

@@ -1,0 +1,17 @@
+# Cadre de l'épreuve
+Épreuve synthétique de rôle/exécution, réception commune après gel hors chronomètre. Ce n'est pas une certification de la chaîne /odoo-new. Les données et décisions fournies sont fictives. Série 19.0. Avant lecture/écriture Odoo, lancer `python3 /tmp/odoo-delegation-comparison-20260909/reference/scripts/odoo_briefing.py /tmp/odoo-delegation-comparison-20260909/runs/E01-S/project --offline` sur le projet matérialisé. Sources `~/odoo-sources/19.0` en lecture seule. Pas de réseau métier, pas de production. Les preuves source locales sont permises. Le dossier `output/` contient les livrables ; conserver les entrées et mémoires initiales. Proposer les évolutions de mémoire dans `output/PROJECT.md` et `output/JOURNAL.md` : chaque fichier est un remplacement complet conservant les éléments applicables, le journal initial doit rester préfixe identique octet pour octet (ajout seulement) ; l'entrée ajoutée au journal fait au plus 15 lignes. Écrire `output/result.md` avec verdict, preuves consultées/exécutées, limites et suites.
+Ne cherchez pas les grilles, oracles, autres runs, configurations de l'évaluateur ou versions corrigées. Ne modifiez pas le banc. Aucune dépendance aux réponses des autres candidats. Les juges sémantiques n'imposent aucune phrase exacte. Ne présentez jamais une preuve synthétique comme une opération effectuée chez un client.
+
+# Demande originale
+Ajoutez une validation pour empêcher les quantités négatives sur nos lignes lab.qualification, y compris les imports. Gardez les lignes à zéro : elles servent de brouillons. Je veux éviter un développement en double si le module le fait déjà.
+
+Rôle analyse fonctionnelle seulement. Lire le petit module fourni et les pièces. Aucune exécution Odoo, aucun correctif, aucune modification de projet. Livrables : output/analyse.md, output/PROJECT.md, output/JOURNAL.md et output/result.md. Une conclusion courte suffit si elle est étayée.
+
+Condition S : travailler seul, sans sous-agent.
+
+## Communication au chef de projet Odoo
+Rédigez output/result.md pour un chef de projet Odoo : résultat concret dès le début, impact métier, prochaine action et son responsable. Employez des phrases courtes et des mots courants ; placez les commandes, noms internes et détails de preuve dans les autres livrables ou des liens utiles. Gardez les limites nécessaires à une décision honnête. Si une décision humaine est réellement indispensable, présentez la question, les options et conséquences concrètes, puis votre recommandation. Sinon n’inventez pas de question ni de demande d’autorisation. Cette consigne concerne le compte rendu au chef de projet, pas les détails techniques nécessaires aux preuves.
+
+Référentiel figé : /tmp/odoo-delegation-comparison-20260909/reference. Lire uniquement les rôles pertinents et les références nécessaires ; les archives de campagnes sont hors périmètre. Ne créez pas de flow de livraison pour cette épreuve de rôle. Aucun appel CLI de modèle ni réseau client.
+
+Si des sous-agents sont autorisés par votre condition, ils héritent du même modèle/effort sans override et ne délèguent pas à leur tour. Deux enfants maximum au total ; même critère de qualité pour les deux conditions. Les détails de votre organisation et vos éventuelles reprises peuvent être consignés dans output/execution-notes.md ; gardez result.md centré sur le besoin métier.

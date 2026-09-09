@@ -1,0 +1,73 @@
+[
+    {
+        "Id": "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f",
+        "RepoTags": [
+            "postgres:16"
+        ],
+        "RepoDigests": [
+            "postgres@sha256:4b7183ac05f8ef417db21fd72d71047a4238340c261d3cc3ddb6d579ab5071ae"
+        ],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-05-19T23:16:52.560114913Z",
+        "DockerVersion": "",
+        "Author": "",
+        "Config": {
+            "ExposedPorts": {
+                "5432/tcp": {}
+            },
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/16/bin",
+                "GOSU_VERSION=1.19",
+                "LANG=en_US.utf8",
+                "PG_MAJOR=16",
+                "PG_VERSION=16.14-1.pgdg13+1",
+                "PGDATA=/var/lib/postgresql/data"
+            ],
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "Cmd": [
+                "postgres"
+            ],
+            "Volumes": {
+                "/var/lib/postgresql/data": {}
+            },
+            "StopSignal": "SIGINT"
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 451009718,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/home/blegoff/nobackup/docker/overlay2/f21bbb7b9ba7e310b0cb2a49ee10f68f623eee27489f7ad4a03a81411f1a5ac7/diff:/home/blegoff/nobackup/docker/overlay2/c075ba6351226a5795d723f47a8ed97ba3f1b3d87365981ecc985b1056501f7b/diff:/home/blegoff/nobackup/docker/overlay2/87d4c18262c87a72e2dd04a2b2b8a15ef1556c459c676c38b436af77001252b5/diff:/home/blegoff/nobackup/docker/overlay2/ac17103ce16bf54e593d3c15319f1526b3c7d7752733f78e87cee93e9bf24e7f/diff:/home/blegoff/nobackup/docker/overlay2/4712a3dcca9ef2afdaf126923bdafe80745524fcf5ca9d9c391ac082c2097e6a/diff:/home/blegoff/nobackup/docker/overlay2/ae7fa69ad02eb1b788bcd112412dcb622770f0043e510da536d073534603b784/diff:/home/blegoff/nobackup/docker/overlay2/4fe424c2f7717b2f66c827f8f69939c75ed5e782d29791357c2c41eadc96629e/diff:/home/blegoff/nobackup/docker/overlay2/24ea02a5f8826ba5658f4f6b228f0c167ebd662dc7ef3c7ad9128e0aad67fd36/diff:/home/blegoff/nobackup/docker/overlay2/51a7b4f834658b27abbde1426b32e85f2809ba6e0395769e6d1225d62cc21254/diff:/home/blegoff/nobackup/docker/overlay2/50b5caf572d5b0d14e7fb074cc32ee742df486c620ed0e7d44be8e83b5494890/diff:/home/blegoff/nobackup/docker/overlay2/9395e6b4bd249f0ee2fcee27266c06bc2747b26929be641e65e1a2c327244401/diff:/home/blegoff/nobackup/docker/overlay2/e1b6313c4412daa581b2dd9247b8c25f19b181a51bfa827a075026ecdcfabb13/diff:/home/blegoff/nobackup/docker/overlay2/08670fc08da80680c9f9b35dbe0d9dc6915b7891c3fc077f6a0fa726aed817f6/diff",
+                "MergedDir": "/home/blegoff/nobackup/docker/overlay2/dd35806cce32da71371e5cd602c71f06db6fb24eb68ca1227949dea8bda68c4c/merged",
+                "UpperDir": "/home/blegoff/nobackup/docker/overlay2/dd35806cce32da71371e5cd602c71f06db6fb24eb68ca1227949dea8bda68c4c/diff",
+                "WorkDir": "/home/blegoff/nobackup/docker/overlay2/dd35806cce32da71371e5cd602c71f06db6fb24eb68ca1227949dea8bda68c4c/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:219a998c60509502b47b97f1158067d5dd62640d2d689560d32cfd5594f6bc40",
+                "sha256:53dfced9c8cd81fe748e8fbc4d8d127eaf4e24f72b980e59f701e01fb282f97d",
+                "sha256:a8eebb8b995a8bb9468c295f5812b9820eb8c6361911cb4ef9c693ce1db8f213",
+                "sha256:6231ba30529561d36d2aa10b7105e26421568115f13d08a1feb20639d28ef8a0",
+                "sha256:a26aa04b3bb6bdf14603421d7ebb466bade5e06794127fb1c44437d36be5d864",
+                "sha256:6d1cb0611ac17b8c1cac9d150c1afcbe51b252e723dddda45e7d550f47620057",
+                "sha256:f47cffd58f6c2e1256ac92e47d90296ecd8a693bafb01ef844770f894e04e2e9",
+                "sha256:e4c3c249be5cadee5f308e09547571deadaf2f20181ab8a1aa8e700db2c7bb98",
+                "sha256:5968443a2b62c5465ae9fcc1ae5bcf22ca08b9b1f9d221763a9913c5f62ae415",
+                "sha256:9ab02ef72e9d81843e4e63ded00da965d28e2e2a4384a39f4682f6f37bc05fd5",
+                "sha256:37181db13743a034ee3d2f23eeecfa543cdbf7929708c85bf849d2fe6502d828",
+                "sha256:6da5ed47dfd4c52f8da6bf16b956539d6052697d0ea7e47e9154eca6a347aa98",
+                "sha256:70f6ef3c39e2dc2a611caf43bc41069c337197c5bb6643c2e89948038d8c96be",
+                "sha256:3b5e88f26d7887231867f58d9d6bfcd4e33c1382fbcf3b23ccb5962336769dc2"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "0001-01-01T00:00:00Z"
+        }
+    }
+]

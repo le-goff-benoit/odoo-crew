@@ -1,0 +1,72 @@
+{
+  "case": "E01",
+  "reviewer": "Codex independent semantic reviewer /root/comparison_quality",
+  "independent": true,
+  "checks": [
+    {
+      "id": "existing",
+      "pass": true,
+      "evidence": "V4/output/analyse.md : « ÇA EXISTE dans le module fourni. ». Le verdict attribue correctement la règle au custom existant, pas au standard métier."
+    },
+    {
+      "id": "proof",
+      "pass": true,
+      "evidence": "V4/project/lab_qualification/models.py : « _name = \"lab.qualification\" ».  V4/project/lab_qualification/models.py : « \"CHECK(quantity >= 0)\" ».  V4/output/analyse.md : « /home/blegoff/odoo-sources/19.0/odoo/orm/table_objects.py ». Source 19.0 relue : class Constraint(TableObject), définition ajoutée par apply_to_database. Citation déterminante exacte et pertinente."
+    },
+    {
+      "id": "scope",
+      "pass": true,
+      "evidence": "V4/output/analyse.md : « Ces écritures restent soumises à la contrainte SQL installée. ». La lecture du CHECK confirme la borne inclusive zéro. Créations, modifications et imports explicités sans proposer de doublon. Le parcours load/write/create cité dans V4 a été vérifié dans les sources 19.0."
+    },
+    {
+      "id": "limits",
+      "pass": true,
+      "evidence": "V4/output/analyse.md : « La présence de la déclaration dans le code ne garantit pas que la version correspondante du module ou la contrainte soit installée sur une base client. ». "
+    },
+    {
+      "id": "memory",
+      "pass": true,
+      "evidence": "V4/output/PROJECT.md : « D-17 : prix zéro autorisé pour les lignes gratuites, y compris confirmées. Décision acquise. ». V4/output/PROJECT.md : « SYN-11 résolu : le libellé du bouton ne nécessite plus de changement ; ne pas rouvrir. ». Comparaison au corpus public E01 : journal initial préservé octet pour octet, 10 lignes ajoutées ; décisions de quantité zéro/négative et limites synthétiques conservées. V4/output/PROJECT.md : « Son déploiement client et les données existantes n'ont pas été vérifiés ; aucun Odoo n'a été exécuté. ». "
+    }
+  ],
+  "score": {
+    "business": 4,
+    "coverage": 2,
+    "evidence": 2,
+    "useful_synthesis": 2,
+    "total": 10
+  },
+  "critical_issues": [],
+  "pm": {
+    "criteria": [
+      {
+        "criterion": "Outcome immediately understandable to an Odoo PM",
+        "score": 2,
+        "evidence": "V4/output/result.md : « Le contrôle demandé existe déjà dans le module fourni. ». "
+      },
+      {
+        "criterion": "Concrete business impact explained",
+        "score": 2,
+        "evidence": "V4/output/result.md : « Les lignes à zéro restent autorisées. ». "
+      },
+      {
+        "criterion": "Next action and actor explicit, no unnecessary approval",
+        "score": 2,
+        "evidence": "V4/output/result.md : « Prochaine action : le chef de projet peut écarter le développement en double. ». "
+      },
+      {
+        "criterion": "Necessary decisions answerable with options/consequences/recommendation; N/A if none required",
+        "score": null,
+        "evidence": "N/A : aucune décision métier nouvelle nécessaire ; aucune question requise ni posée. Qualité des questions non mesurée."
+      },
+      {
+        "criterion": "Technical details kept accessible without obscuring result or honest limits",
+        "score": 2,
+        "evidence": "V4/output/result.md : « Aucun test Odoo ni accès à une base client n'a été effectué ; les pièces sont synthétiques. ». "
+      }
+    ],
+    "total": 8,
+    "max": 8
+  },
+  "runtime_claims_to_verify": []
+}

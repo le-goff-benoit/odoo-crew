@@ -1,0 +1,49 @@
+{
+  "case": "E03",
+  "requires_independent_semantic_review": true,
+  "obligations": [
+    {
+      "id": "rule",
+      "criterion": "Prix négatif refusé globalement, y compris quantité nulle ; zéro autorisé et quantité nonnegative conservée.",
+      "critical": true
+    },
+    {
+      "id": "behavior",
+      "criterion": "Montant reste produit quantity/unit_price avec recalcul pour chacun ; bouton et valeurs existantes conservés.",
+      "critical": true
+    },
+    {
+      "id": "channels",
+      "criterion": "Preuves réelles des chemins create/write/load et rollback lots, y compris cas positifs, tests candidats pertinents.",
+      "critical": true
+    },
+    {
+      "id": "style",
+      "criterion": "Correctif minimal compatible Odoo19.0 et sécurité existante préservée, pas de modification des sources Odoo.",
+      "critical": true
+    },
+    {
+      "id": "qa",
+      "criterion": "Compte rendu distingue vérifications effectuées, résultats exacts et limites ; installation/mise à jour et tests exécutés dans runtime local fourni.",
+      "critical": true
+    },
+    {
+      "id": "memory",
+      "criterion": "Conserve règles initiales et décisions D-17/SYN-11 ; consigne changement, preuves et limites sans inventer données client.",
+      "critical": true
+    }
+  ],
+  "review_schema": {
+    "case": "E03",
+    "reviewer": "identity independent from candidate",
+    "independent": true,
+    "checks": [
+      {
+        "id": "obligation_id",
+        "pass": true,
+        "evidence": "artifact path and factual justification, not a keyword"
+      }
+    ]
+  },
+  "note": "Mechanical checks never establish semantic correctness. Reviewer reads source evidence and entire outputs; no exact prose expected."
+}

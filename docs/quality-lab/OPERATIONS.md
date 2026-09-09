@@ -291,3 +291,28 @@ mémoire publiée avec citations. La conservation d'une preuve ne transmet pas s
 verdict. Une contre-relecture du texte incomplet et un nouveau parcours positif
 précèdent l'adoption d'une consigne corrigée ; ne pas modifier l'oracle pour
 reclasser automatiquement les sorties déjà observées.
+
+
+## Comparaison native solo/délégation et communication
+
+`benchmarks/delegation_comparison/` fournit trois cas synthétiques, un
+matérialiseur public, une réception commune et un runtime Odoo isolé. Le
+[rapport](delegation-comparison-2026-09-09/README.md) décrit le transport réel
+Codex collaboration, distinct du runner CLI historique. D permet de déléguer :
+une exécution D sans enfant reste D0 et ne prouve aucun effet de délégation.
+
+Figer les entrées et l’ordre avant lancement, terminer chaque arbre avant le
+suivant, puis conserver sorties et métriques avant la revue commune. Le compteur
+natif retire l’historique hérité à la frontière propre du thread ; l’absence de
+frontière dans un fork est une erreur de mesure. Les jetons finaux par thread
+incluent le cache comme sous-ensemble, sans conversion monétaire implicite.
+Le chevauchement entre enfants diffère de l’activité du principal pendant le
+tour d’un seul enfant. Conserver préparation, audit et coordination séparément.
+
+La calibration sans modèle se lance avec `python3
+benchmarks/delegation_comparison/calibrate.py --out /tmp/comparison-calibration`.
+Elle valide la réception des attestations et la préservation, pas leur vérité
+sémantique. Le code E03 exige une revue et l’oracle Odoo indépendant après gel.
+Pour tous les briefings d’un audit sur dossier, utiliser explicitement
+`python3 scripts/odoo_briefing.py CHEMIN --offline` ; ne pas publier de métadonnées
+extérieures apparues par une omission de cette option.

@@ -1,0 +1,408 @@
+2026-09-09 18:09:59,955 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 18:09:59,955 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 18:09:59,955 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo-data/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 18:09:59,955 1 INFO ? odoo: database: odoo@delegcmp-0f281675a438-pg:default 
+2026-09-09 18:10:00,122 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 26dca65b91ca:8069 
+2026-09-09 18:10:00,135 1 INFO comparison_run_1 odoo.tests.common: Importing test framework 
+2026-09-09 18:10:00,153 1 INFO comparison_run_1 odoo.modules.loading: loading 1 modules... 
+2026-09-09 18:10:00,155 1 INFO comparison_run_1 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 18:10:00,170 1 INFO comparison_run_1 odoo.modules.loading: updating modules list 
+2026-09-09 18:10:00,171 1 INFO comparison_run_1 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 18:10:00,752 1 INFO comparison_run_1 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 18:10:00,752 1 INFO comparison_run_1 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 18:10:01,161 1 INFO comparison_run_1 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 18:10:01,174 1 INFO comparison_run_1 odoo.modules.loading: loading 15 modules... 
+2026-09-09 18:10:01,189 1 INFO comparison_run_1 odoo.modules.loading: Loading module lab_qualification (10/15) 
+2026-09-09 18:10:01,207 1 INFO comparison_run_1 odoo.registry: module lab_qualification: creating or updating database tables 
+2026-09-09 18:10:01,225 1 INFO comparison_run_1 odoo.modules.loading: loading lab_qualification/security/ir.model.access.csv 
+2026-09-09 18:10:01,229 1 INFO comparison_run_1 odoo.modules.loading: loading lab_qualification/views/quantity.xml 
+2026-09-09 18:10:01,244 1 INFO comparison_run_1 odoo.modules.loading: Module lab_qualification loaded in 0.06s, 69 queries (+69 other) 
+2026-09-09 18:10:01,349 1 INFO comparison_run_1 odoo.modules.loading: 15 modules loaded in 0.18s, 69 queries (+69 extra) 
+2026-09-09 18:10:01,405 1 INFO comparison_run_1 odoo.registry: verifying fields for every extended model 
+2026-09-09 18:10:01,472 1 INFO comparison_run_1 odoo.modules.loading: Modules loaded. 
+2026-09-09 18:10:01,474 1 INFO comparison_run_1 odoo.registry: Registry changed, signaling through the database 
+2026-09-09 18:10:01,474 1 INFO comparison_run_1 odoo.registry: Registry loaded in 1.351s 
+2026-09-09 18:10:01,474 1 INFO comparison_run_1 odoo.service.server: Starting post tests 
+2026-09-09 18:10:01,475 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_batch_create_atomicity ... 
+2026-09-09 18:10:01,481 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,481 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_batch_create_atomicity (invalid={'unit_price': -1})
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 74, in test_batch_create_atomicity
+    with self.assertRaises(CheckViolation), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 18:10:01,481 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:10:01.475713\'::timestamp, 1, \'Batch valid\', 2, \'draft\', 3.0, \'2026-09-09T18:10:01.475713\'::timestamp, 1), (\'2026-09-09T18:10:01.475713\'::timestamp, 1, \'Batch invalid\',  -1, \'draft\', 10.0, \'2026-09-09T18:10:01.475713\'::timestamp, 1), (\'2026-09-09T18:10:01.475713\'::timestamp, 1, \'Batch free\', 4, \'draft\', 0.0, \'2026-09-09T18:10:01.475713\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (8, -1, 1, 1, Batch invalid, draft, 2026-09-09 18:10:01.475713, 2026-09-09 18:10:01.475713, 10, null).
+ 
+2026-09-09 18:10:01,482 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,482 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_batch_create_atomicity (invalid={'quantity': -1})
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 81, in test_batch_create_atomicity
+    self.assertEqual(model.search([]).ids, initial_ids)
+AssertionError: Lists differ: [1, 2, 3, 4, 5, 6] != [1, 2, 3]
+
+First list contains 3 additional elements.
+First extra element 3:
+4
+
+- [1, 2, 3, 4, 5, 6]
++ [1, 2, 3]
+ 
+2026-09-09 18:10:01,482 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_batch_write_atomicity ... 
+2026-09-09 18:10:01,484 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,484 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_batch_write_atomicity (invalid={'unit_price': -1})
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 93, in test_batch_write_atomicity
+    with self.assertRaises(CheckViolation), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 18:10:01,484 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (9, 1.0,  -1, \'2026-09-09T18:10:01.475713\'::timestamp, 1), (10, 1.0,  -1, \'2026-09-09T18:10:01.475713\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (9, -1, 1, 1, Must roll back, draft, 2026-09-09 18:10:01.475713, 2026-09-09 18:10:01.475713, -1, 1).
+ 
+2026-09-09 18:10:01,485 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,485 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_batch_write_atomicity (invalid={'quantity': -1})
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 97, in test_batch_write_atomicity
+    self.assertEqual(records.read(fields), before)
+AssertionError: Lists differ: [{'id': 9, 'name': 'Must roll back', 'quantity': 3, 'unit_pri[147 chars]ft'}] != [{'id': 9, 'name': 'Batch priced', 'quantity': 3, 'unit_price[139 chars]ft'}]
+
+First differing element 0:
+{'id': 9, 'name': 'Must roll back', 'quantity': 3, 'unit_pri[39 chars]aft'}
+{'id': 9, 'name': 'Batch priced', 'quantity': 3, 'unit_price[37 chars]aft'}
+
+- [{'amount': -3.0,
+?             -
+
++ [{'amount': 36.0,
+?              +
+
+    'id': 9,
+-   'name': 'Must roll back',
++   'name': 'Batch priced',
+    'quantity': 3,
+    'state': 'draft',
+-   'unit_price': -1.0},
+?                 -
+
++   'unit_price': 12.0},
+?                  +
+
+-  {'amount': -4.0,
+?             ^^
+
++  {'amount': 0.0,
+?             ^
+
+    'id': 10,
+-   'name': 'Must roll back',
++   'name': 'Batch free',
+    'quantity': 4,
+    'state': 'draft',
+-   'unit_price': -1.0}]
+?                 ^^
+
++   'unit_price': 0.0}]
+?                 ^
+
+ 
+2026-09-09 18:10:01,486 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_free_confirmation_and_recomputation ... 
+2026-09-09 18:10:01,489 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_load_create_atomicity ... 
+2026-09-09 18:10:01,494 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,494 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_load_create_atomicity (quantity='3', price='-0.000001')
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/tools/misc.py", line 779, in deco
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 148, in test_load_create_atomicity
+    self.assertIs(result["ids"], False)
+AssertionError: [12, 13, 14] is not False
+ 
+2026-09-09 18:10:01,497 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,497 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_load_create_atomicity (quantity='-1', price='5')
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/tools/misc.py", line 779, in deco
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 150, in test_load_create_atomicity
+    self.assertEqual(model.search([]).ids, initial_ids)
+AssertionError: Lists differ: [1, 2, 3, 12, 13, 14] != [1, 2, 3]
+
+First list contains 3 additional elements.
+First extra element 3:
+12
+
+- [1, 2, 3, 12, 13, 14]
++ [1, 2, 3]
+ 
+2026-09-09 18:10:01,497 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_load_update_atomicity ... 
+2026-09-09 18:10:01,501 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,501 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_load_update_atomicity (quantity='4', price='-1')
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/tools/misc.py", line 779, in deco
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 169, in test_load_update_atomicity
+    self.assertIs(result["ids"], False)
+AssertionError: [20, 21] is not False
+ 
+2026-09-09 18:10:01,504 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,504 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_load_update_atomicity (quantity='-1', price='0')
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/tools/misc.py", line 779, in deco
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 172, in test_load_update_atomicity
+    self.assertEqual(records.read(fields), before)
+AssertionError: Lists differ: [{'id[44 chars]ty': 8, 'unit_price': 5.0, 'amount': 40.0, 'st[129 chars]ed'}] != [{'id[44 chars]ty': 3, 'unit_price': 12.0, 'amount': 36.0, 's[128 chars]ed'}]
+
+First differing element 0:
+{'id'[43 chars]ty': 8, 'unit_price': 5.0, 'amount': 40.0, 'st[13 chars]med'}
+{'id'[43 chars]ty': 3, 'unit_price': 12.0, 'amount': 36.0, 's[14 chars]med'}
+
+- [{'amount': 40.0,
+?             ^^
+
++ [{'amount': 36.0,
+?             ^^
+
+    'id': 20,
+    'name': 'Import update paid',
+-   'quantity': 8,
+?               ^
+
++   'quantity': 3,
+?               ^
+
+    'state': 'confirmed',
+-   'unit_price': 5.0},
+?                 ^
+
++   'unit_price': 12.0},
+?                 ^^
+
+-  {'amount': -4.0,
+?             ^^
+
++  {'amount': 0.0,
+?             ^
+
+    'id': 21,
+    'name': 'Import update free',
+    'quantity': 4,
+    'state': 'confirmed',
+-   'unit_price': -1.0}]
+?                 ^^
+
++   'unit_price': 0.0}]
+?                 ^
+
+ 
+2026-09-09 18:10:01,506 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_load_valid ... 
+2026-09-09 18:10:01,508 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_negative_context_default ... 
+2026-09-09 18:10:01,509 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,509 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: TestPrice.test_negative_context_default
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 38, in test_negative_context_default
+    with self.assertRaises(CheckViolation), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 18:10:01,509 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_negative_create ... 
+2026-09-09 18:10:01,511 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,511 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_negative_create (state='draft', price=-5)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 14, in test_negative_create
+    with self.assertRaises(CheckViolation), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 18:10:01,512 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,512 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_negative_create (state='draft', price=-1e-06)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 14, in test_negative_create
+    with self.assertRaises(CheckViolation), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 18:10:01,513 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,513 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_negative_create (state='confirmed', price=-5)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 14, in test_negative_create
+    with self.assertRaises(CheckViolation), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 18:10:01,513 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,513 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_negative_create (state='confirmed', price=-1e-06)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 14, in test_negative_create
+    with self.assertRaises(CheckViolation), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 18:10:01,514 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_negative_write_preserves_record ... 
+2026-09-09 18:10:01,515 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,515 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_negative_write_preserves_record (state='draft', price=-5)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 28, in test_negative_write_preserves_record
+    with self.assertRaises(CheckViolation), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 18:10:01,516 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,516 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_negative_write_preserves_record (state='draft', price=-1e-06)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 28, in test_negative_write_preserves_record
+    with self.assertRaises(CheckViolation), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 18:10:01,517 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,517 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_negative_write_preserves_record (state='confirmed', price=-5)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 28, in test_negative_write_preserves_record
+    with self.assertRaises(CheckViolation), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 18:10:01,518 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,518 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: Subtest TestPrice.test_negative_write_preserves_record (state='confirmed', price=-1e-06)
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 28, in test_negative_write_preserves_record
+    with self.assertRaises(CheckViolation), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 18:10:01,518 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_transaction_batch_rollback ... 
+2026-09-09 18:10:01,520 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: ====================================================================== 
+2026-09-09 18:10:01,520 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_price: FAIL: TestPrice.test_transaction_batch_rollback
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_price.py", line 113, in test_transaction_batch_rollback
+    with self.assertRaises(CheckViolation), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 18:10:01,520 1 INFO comparison_run_1 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 18:10:01,521 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_confirmation ... 
+2026-09-09 18:10:01,522 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS confirmation 
+2026-09-09 18:10:01,523 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_negative_create ... 
+2026-09-09 18:10:01,523 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:10:01.521518\'::timestamp, 1, \'Negative\',  -1, \'draft\', 10.0, \'2026-09-09T18:10:01.521518\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (35, -1, 1, 1, Negative, draft, 2026-09-09 18:10:01.521518, 2026-09-09 18:10:01.521518, 10, null).
+ 
+2026-09-09 18:10:01,523 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS negative_create 
+2026-09-09 18:10:01,524 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_negative_write ... 
+2026-09-09 18:10:01,525 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (36,  -10.0,  -1, \'2026-09-09T18:10:01.521518\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (36, -1, 1, 1, Preserve, draft, 2026-09-09 18:10:01.521518, 2026-09-09 18:10:01.521518, 10, -10).
+ 
+2026-09-09 18:10:01,525 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS negative_write 
+2026-09-09 18:10:01,526 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_zero ... 
+2026-09-09 18:10:01,527 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS zero 
+2026-09-09 18:10:01,527 1 INFO comparison_run_1 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 18:10:01,527 1 INFO comparison_run_1 odoo.service.server: 14 post-tests in 0.05s, 256 queries 
+2026-09-09 18:10:01,527 1 INFO comparison_run_1 odoo.tests.stats: lab_qualification: 18 tests 0.05s 256 queries 
+2026-09-09 18:10:01,527 1 ERROR comparison_run_1 odoo.tests.result: 18 failed, 0 error(s) of 14 tests when loading database 'comparison_run_1' 
+2026-09-09 18:10:01,527 1 INFO comparison_run_1 odoo.service.server: Initiating shutdown 
+2026-09-09 18:10:01,527 1 INFO comparison_run_1 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 18:10:01,630 1 INFO comparison_run_1 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

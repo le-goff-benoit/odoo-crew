@@ -1,0 +1,19 @@
+{
+  "status": "adopted",
+  "at": "2026-09-09T18:18:34.226987+00:00",
+  "change": "Common PM communication preference in generated roles/commands/skills",
+  "basis": "Explicit user feedback; 3 fixed reference/candidate cases accepted, including heldout technical-audience counterexample",
+  "measured_gain": false,
+  "scores": {
+    "reference": 30,
+    "candidate": 30
+  },
+  "interpretation": "Preference standardization with bounded non-regression, not a demonstrated quality increase",
+  "limits": [
+    "One bundle per instruction variant",
+    "Communication exercise only, no full workflow",
+    "Missing factual-information question not separately exercised",
+    "Future real PM feedback remains necessary"
+  ],
+  "rollback": "f6ea0b6851df5269dbec151bbdebe337d67707e8 canonical roles/build"
+}

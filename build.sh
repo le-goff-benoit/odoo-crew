@@ -49,6 +49,13 @@ yaml_string() {
     python3 -c 'import json, sys; print(json.dumps(sys.argv[1], ensure_ascii=False))' "$1"
 }
 
+# Corps commun aux agents, commandes et skills ; une seule source éditable.
+emit_role_body() {
+    cat "$HERE/roles/$1.md"
+    printf '\n'
+    cat "$HERE/roles/communication.md"
+}
+
 emit() {
     local slug="$1" role="$2" tools="$3" short="$4" desc="$5" color="${6:-}"
 
@@ -63,7 +70,7 @@ emit() {
         printf -- '---\n\n'
         printf '<!-- Généré par ~/.odoo19-agents/build.sh — ne pas éditer ici.\n'
         printf '     Source : ~/.odoo19-agents/roles/%s.md -->\n\n' "$role"
-        cat "$HERE/roles/$role.md"
+        emit_role_body "$role"
     } > "$CLAUDE_AGENTS/$slug.md"
     echo "  ✓ $CLAUDE_AGENTS/$slug.md"
 
@@ -78,7 +85,7 @@ emit() {
         printf -- '---\n\n'
         printf '<!-- Généré par ~/.odoo19-agents/build.sh — ne pas éditer ici.\n'
         printf '     Source : ~/.odoo19-agents/roles/%s.md -->\n\n' "$role"
-        cat "$HERE/roles/$role.md"
+        emit_role_body "$role"
     } > "$CODEX_SKILLS/$slug/SKILL.md"
     echo "  ✓ $CODEX_SKILLS/$slug/SKILL.md"
 }
@@ -183,7 +190,7 @@ emit_command() {
         printf '<!-- Généré par ~/.odoo19-agents/build.sh — ne pas éditer ici.\n'
         printf '     Source : ~/.odoo19-agents/roles/%s.md -->\n\n' "$role"
         [ -n "$intro" ] && printf '%s\n\n' "$intro"
-        cat "$HERE/roles/$role.md"
+        emit_role_body "$role"
     } > "$CLAUDE_COMMANDS/$slug.md"
     echo "  ✓ $CLAUDE_COMMANDS/$slug.md"
 
@@ -197,7 +204,7 @@ emit_command() {
         printf -- '---\n\n'
         printf '<!-- Généré par ~/.odoo19-agents/build.sh — ne pas éditer ici.\n'
         printf '     Source : ~/.odoo19-agents/roles/%s.md -->\n\n' "$role"
-        cat "$HERE/roles/$role.md"
+        emit_role_body "$role"
     } > "$CODEX_SKILLS/$slug/SKILL.md"
     echo "  ✓ $CODEX_SKILLS/$slug/SKILL.md"
 }
@@ -241,7 +248,7 @@ emit_skill() {
             printf -- '---\n\n'
             printf '<!-- Généré par ~/.odoo19-agents/build.sh — ne pas éditer ici.\n'
             printf '     Source : ~/.odoo19-agents/roles/%s.md -->\n\n' "$role"
-            cat "$HERE/roles/$role.md"
+            emit_role_body "$role"
         } > "$target"
         echo "  ✓ $target"
     done

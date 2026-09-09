@@ -1,0 +1,82 @@
+[
+    {
+        "Id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d",
+        "RepoTags": [
+            "odoo-qa:19.0"
+        ],
+        "RepoDigests": [],
+        "Parent": "",
+        "Comment": "buildkit.dockerfile.v0",
+        "Created": "2026-09-03T14:01:51.534932846+02:00",
+        "DockerVersion": "",
+        "Author": "",
+        "Config": {
+            "User": "odoo",
+            "ExposedPorts": {
+                "8069/tcp": {},
+                "8071/tcp": {},
+                "8072/tcp": {}
+            },
+            "Env": [
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "LANG=en_US.UTF-8",
+                "ODOO_VERSION=19.0",
+                "ODOO_RC=/etc/odoo/odoo.conf"
+            ],
+            "Entrypoint": [
+                "/entrypoint.sh"
+            ],
+            "Cmd": [
+                "odoo"
+            ],
+            "Volumes": {
+                "/mnt/extra-addons": {},
+                "/var/lib/odoo": {}
+            },
+            "Labels": {
+                "com.docker.compose.project": "odoo-qa-19_0",
+                "com.docker.compose.service": "odoo",
+                "com.docker.compose.version": "2.29.7",
+                "maintainer": "Odoo S.A. <info@odoo.com>",
+                "org.opencontainers.image.version": "24.04"
+            },
+            "Shell": [
+                "/bin/bash",
+                "-xo",
+                "pipefail",
+                "-c"
+            ]
+        },
+        "Architecture": "amd64",
+        "Os": "linux",
+        "Size": 2991062309,
+        "GraphDriver": {
+            "Data": {
+                "LowerDir": "/home/blegoff/nobackup/docker/overlay2/utkf3qyztznlfzry4xa029zir/diff:/home/blegoff/nobackup/docker/overlay2/95c64192b8964de98e07dabf6c763820286e317c83547b81a160fde8054b08d5/diff:/home/blegoff/nobackup/docker/overlay2/8cf44b6227b1bcd60da6c2ff088a9a7c715cd53af1a9f8fc2d7f35d54b325fbf/diff:/home/blegoff/nobackup/docker/overlay2/ab197f863694d9d340aeb71c664ae7f0f80a6387403f3c4696f610203f631e03/diff:/home/blegoff/nobackup/docker/overlay2/324e8568c3a396fdedca9b05961c9c2864f933421c4f3f916ed2b2b0f91ac4c7/diff:/home/blegoff/nobackup/docker/overlay2/38d27559ef40612ea5b42d0e01d44d11c96d9dd8778db49e159f892f32f3293f/diff:/home/blegoff/nobackup/docker/overlay2/72b5292b106916b395ed5221e1e04b9024b3422d1a5bf0153fd590ce3c2709ee/diff:/home/blegoff/nobackup/docker/overlay2/b4772e9f3067b90ee49f4a8f3d1ee54b79a18dc6501c103f768ddf3050910e4d/diff:/home/blegoff/nobackup/docker/overlay2/0f08efb87688a88c9c1ed79363e3fc993d7cb8ff026b6cdca3a7ce34a17788d8/diff:/home/blegoff/nobackup/docker/overlay2/af4dc5adc84c500451a7e9fd8b75dd17d092fc4620fd35bf322ade052f6d1a6c/diff",
+                "MergedDir": "/home/blegoff/nobackup/docker/overlay2/myu2vbh7qvp8j0sniha6opci9/merged",
+                "UpperDir": "/home/blegoff/nobackup/docker/overlay2/myu2vbh7qvp8j0sniha6opci9/diff",
+                "WorkDir": "/home/blegoff/nobackup/docker/overlay2/myu2vbh7qvp8j0sniha6opci9/work"
+            },
+            "Name": "overlay2"
+        },
+        "RootFS": {
+            "Type": "layers",
+            "Layers": [
+                "sha256:b9a65b3c65ab22d490085bd0bf5490e2409da8748b406870f2463bdc41cd6795",
+                "sha256:8e377c19ad6bf4d929c7bff640817fc5b74365ab46ca5fd7c1dfdbe05580a4d6",
+                "sha256:1dbddbca34b1db742d7840017f25acec878669d7adb322b792aa82fcb71f0365",
+                "sha256:023b17d8e3bd0c4d32cf62bd1f2bc096436730fd9089854c9202a647424e6a7f",
+                "sha256:ee3094e67aee06faeee99908f31b474134b43591953a9027c5acb3230e14f150",
+                "sha256:c068a4fb21df348be0186ff6cde79ef02e21972271b8f971feb4e5566fe42400",
+                "sha256:4221250079218f5f50c956a06e7ea0ff214e7abc6da9daf07c5ec067b8fa13fe",
+                "sha256:5a1462a44d81abf957c08b8f6225501247da46ec02ab3625c510c35664b9cd82",
+                "sha256:638cb512f7a17e02ffe272eba8244b20d5392e947ccb480cfe798c1d66e25202",
+                "sha256:4c9b19f683312b5b855454f9c9a7a63e02c361b050c2dbff83e5114e17a1e66d",
+                "sha256:26e6635b75693351c43d1aa72e3c98c0f3ec18de97e489a0e6fe579a4f9d17a1"
+            ]
+        },
+        "Metadata": {
+            "LastTagTime": "2026-09-03T14:01:53.817839705+02:00"
+        }
+    }
+]

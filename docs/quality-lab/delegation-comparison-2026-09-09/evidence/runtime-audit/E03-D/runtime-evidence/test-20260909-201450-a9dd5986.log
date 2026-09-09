@@ -1,0 +1,166 @@
+2026-09-09 18:14:50,692 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 18:14:50,692 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 18:14:50,692 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo-data/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 18:14:50,692 1 INFO ? odoo: database: odoo@delegcmp-0f281675a438-pg:default 
+2026-09-09 18:14:50,862 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 9db654b36ba8:8069 
+2026-09-09 18:14:50,873 1 INFO comparison_run_1 odoo.tests.common: Importing test framework 
+2026-09-09 18:14:50,896 1 INFO comparison_run_1 odoo.modules.loading: loading 1 modules... 
+2026-09-09 18:14:50,900 1 INFO comparison_run_1 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 18:14:50,920 1 INFO comparison_run_1 odoo.modules.loading: updating modules list 
+2026-09-09 18:14:50,921 1 INFO comparison_run_1 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 18:14:51,502 1 INFO comparison_run_1 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 18:14:51,502 1 INFO comparison_run_1 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 18:14:51,885 1 INFO comparison_run_1 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 18:14:51,895 1 INFO comparison_run_1 odoo.modules.loading: loading 15 modules... 
+2026-09-09 18:14:51,910 1 INFO comparison_run_1 odoo.modules.loading: Loading module lab_qualification (10/15) 
+2026-09-09 18:14:51,929 1 INFO comparison_run_1 odoo.registry: module lab_qualification: creating or updating database tables 
+2026-09-09 18:14:51,949 1 INFO comparison_run_1 odoo.modules.loading: loading lab_qualification/security/ir.model.access.csv 
+2026-09-09 18:14:51,952 1 INFO comparison_run_1 odoo.modules.loading: loading lab_qualification/views/quantity.xml 
+2026-09-09 18:14:51,968 1 INFO comparison_run_1 odoo.modules.loading: Module lab_qualification loaded in 0.06s, 72 queries (+72 other) 
+2026-09-09 18:14:52,075 1 INFO comparison_run_1 odoo.modules.loading: 15 modules loaded in 0.18s, 72 queries (+72 extra) 
+2026-09-09 18:14:52,132 1 INFO comparison_run_1 odoo.registry: verifying fields for every extended model 
+2026-09-09 18:14:52,200 1 INFO comparison_run_1 odoo.modules.loading: Modules loaded. 
+2026-09-09 18:14:52,203 1 INFO comparison_run_1 odoo.registry: Registry changed, signaling through the database 
+2026-09-09 18:14:52,203 1 INFO comparison_run_1 odoo.registry: Registry loaded in 1.340s 
+2026-09-09 18:14:52,203 1 INFO comparison_run_1 odoo.service.server: Starting post tests 
+2026-09-09 18:14:52,205 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_delegation_oracle: Starting TestDelegationOracle.test_batch_atomicity ... 
+2026-09-09 18:14:52,207 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.205521\'::timestamp, 1, \'oracle batch valid\', 3, \'draft\', 10.0, \'2026-09-09T18:14:52.205521\'::timestamp, 1), (\'2026-09-09T18:14:52.205521\'::timestamp, 1, \'oracle batch invalid\', 2, \'draft\',  -2.0, \'2026-09-09T18:14:52.205521\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (74, 2, 1, 1, oracle batch invalid, draft, 2026-09-09 18:14:52.205521, 2026-09-09 18:14:52.205521, -2, null).
+ 
+2026-09-09 18:14:52,213 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "unit_price" = "__tmp"."unit_price"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (75,  -1.5,  -0.5, \'2026-09-09T18:14:52.205521\'::timestamp, 1), (76,  -1.0,  -0.5, \'2026-09-09T18:14:52.205521\'::timestamp, 1)) AS "__tmp"("id", "amount", "unit_price", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (75, 3, 1, 1, oracle multiwrite a, draft, 2026-09-09 18:14:52.205521, 2026-09-09 18:14:52.205521, -0.5, -1.5).
+ 
+2026-09-09 18:14:52,214 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_delegation_oracle: DELEGATION_ORACLE_PASS batch_atomicity 
+2026-09-09 18:14:52,215 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_delegation_oracle: Starting TestDelegationOracle.test_free_and_zero_quantity ... 
+2026-09-09 18:14:52,218 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "unit_price" = "__tmp"."unit_price"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (78,  -1.0, \'2026-09-09T18:14:52.205521\'::timestamp, 1)) AS "__tmp"("id", "unit_price", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (78, 0, 1, 1, oracle empty, draft, 2026-09-09 18:14:52.205521, 2026-09-09 18:14:52.205521, -1, 0).
+ 
+2026-09-09 18:14:52,219 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.205521\'::timestamp, 1, \'oracle empty negative\', 0, \'draft\',  -1.0, \'2026-09-09T18:14:52.205521\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (79, 0, 1, 1, oracle empty negative, draft, 2026-09-09 18:14:52.205521, 2026-09-09 18:14:52.205521, -1, null).
+ 
+2026-09-09 18:14:52,220 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_delegation_oracle: DELEGATION_ORACLE_PASS free_and_zero_quantity 
+2026-09-09 18:14:52,220 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_delegation_oracle: Starting TestDelegationOracle.test_import_load ... 
+2026-09-09 18:14:52,221 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.205521\'::timestamp, 1, \'oracle import valid row\', 2, \'draft\', 6.0, \'2026-09-09T18:14:52.205521\'::timestamp, 1), (\'2026-09-09T18:14:52.205521\'::timestamp, 1, \'oracle import negative row\', 2, \'draft\',  -1.0, \'2026-09-09T18:14:52.205521\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (81, 2, 1, 1, oracle import negative row, draft, 2026-09-09 18:14:52.205521, 2026-09-09 18:14:52.205521, -1, null).
+ 
+2026-09-09 18:14:52,223 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.205521\'::timestamp, 1, \'oracle import negative row\', 2, \'draft\',  -1.0, \'2026-09-09T18:14:52.205521\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (83, 2, 1, 1, oracle import negative row, draft, 2026-09-09 18:14:52.205521, 2026-09-09 18:14:52.205521, -1, null).
+ 
+2026-09-09 18:14:52,226 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_delegation_oracle: DELEGATION_ORACLE_PASS import_load 
+2026-09-09 18:14:52,226 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_delegation_oracle: Starting TestDelegationOracle.test_negative_create_and_write ... 
+2026-09-09 18:14:52,227 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.205521\'::timestamp, 1, \'oracle negative\', 2, \'draft\',  -0.01, \'2026-09-09T18:14:52.205521\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (85, 2, 1, 1, oracle negative, draft, 2026-09-09 18:14:52.205521, 2026-09-09 18:14:52.205521, -0.01, null).
+ 
+2026-09-09 18:14:52,229 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "unit_price" = "__tmp"."unit_price"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (86,  -6.0,  -2.0, \'2026-09-09T18:14:52.205521\'::timestamp, 1)) AS "__tmp"("id", "amount", "unit_price", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (86, 3, 1, 1, oracle preserve, draft, 2026-09-09 18:14:52.205521, 2026-09-09 18:14:52.205521, -2, -6).
+ 
+2026-09-09 18:14:52,229 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_delegation_oracle: DELEGATION_ORACLE_PASS negative_create_and_write 
+2026-09-09 18:14:52,229 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_delegation_oracle: Starting TestDelegationOracle.test_quantity_amount_and_button ... 
+2026-09-09 18:14:52,230 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.205521\'::timestamp, 1, \'oracle bad quantity\',  -1, \'draft\', 10.0, \'2026-09-09T18:14:52.205521\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (87, -1, 1, 1, oracle bad quantity, draft, 2026-09-09 18:14:52.205521, 2026-09-09 18:14:52.205521, 10, null).
+ 
+2026-09-09 18:14:52,232 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (88,  -24.0,  -2, \'2026-09-09T18:14:52.205521\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (88, -2, 1, 1, oracle confirm, confirmed, 2026-09-09 18:14:52.205521, 2026-09-09 18:14:52.205521, 12, -24).
+ 
+2026-09-09 18:14:52,233 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_delegation_oracle: DELEGATION_ORACLE_PASS quantity_amount_and_button 
+2026-09-09 18:14:52,233 1 INFO comparison_run_1 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 18:14:52,234 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_batch_create_atomicity ... 
+2026-09-09 18:14:52,236 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.234800\'::timestamp, 1, \'Batch valid\', 2, \'draft\', 3.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1), (\'2026-09-09T18:14:52.234800\'::timestamp, 1, \'Batch invalid\', 0, \'draft\',  -1.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1), (\'2026-09-09T18:14:52.234800\'::timestamp, 1, \'Batch free\', 4, \'draft\', 0.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (90, 0, 1, 1, Batch invalid, draft, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, -1, null).
+ 
+2026-09-09 18:14:52,237 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.234800\'::timestamp, 1, \'Batch valid\', 2, \'draft\', 3.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1), (\'2026-09-09T18:14:52.234800\'::timestamp, 1, \'Batch invalid\',  -1, \'draft\', 10.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1), (\'2026-09-09T18:14:52.234800\'::timestamp, 1, \'Batch free\', 4, \'draft\', 0.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (92, -1, 1, 1, Batch invalid, draft, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, 10, null).
+ 
+2026-09-09 18:14:52,238 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_batch_write_atomicity ... 
+2026-09-09 18:14:52,240 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "name" = "__tmp"."name"::VARCHAR, "unit_price" = "__tmp"."unit_price"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (93,  -3.0, \'Must roll back\',  -1.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1), (94,  -4.0, \'Must roll back\',  -1.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1)) AS "__tmp"("id", "amount", "name", "unit_price", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (93, 3, 1, 1, Must roll back, draft, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, -1, -3).
+ 
+2026-09-09 18:14:52,242 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "name" = "__tmp"."name"::VARCHAR, "quantity" = "__tmp"."quantity"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (94, \'Must roll back\',  -1, \'2026-09-09T18:14:52.234800\'::timestamp, 1)) AS "__tmp"("id", "name", "quantity", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (94, -1, 1, 1, Must roll back, draft, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, 0, 0).
+ 
+2026-09-09 18:14:52,243 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_free_confirmation_and_recomputation ... 
+2026-09-09 18:14:52,246 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_load_create_atomicity ... 
+2026-09-09 18:14:52,252 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_load_update_atomicity ... 
+2026-09-09 18:14:52,259 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_load_valid ... 
+2026-09-09 18:14:52,260 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_negative_context_default ... 
+2026-09-09 18:14:52,261 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.234800\'::timestamp, 1, \'Invalid default\', 0, \'draft\',  -1.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (111, 0, 1, 1, Invalid default, draft, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, -1, null).
+ 
+2026-09-09 18:14:52,262 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_negative_create ... 
+2026-09-09 18:14:52,263 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.234800\'::timestamp, 1, \'Invalid price\', 0, \'draft\',  -5.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (112, 0, 1, 1, Invalid price, draft, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, -5, null).
+ 
+2026-09-09 18:14:52,264 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.234800\'::timestamp, 1, \'Invalid price\', 0, \'draft\',  -1e-06, \'2026-09-09T18:14:52.234800\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (113, 0, 1, 1, Invalid price, draft, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, -1e-06, null).
+ 
+2026-09-09 18:14:52,264 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.234800\'::timestamp, 1, \'Invalid price\', 0, \'confirmed\',  -5.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (114, 0, 1, 1, Invalid price, confirmed, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, -5, null).
+ 
+2026-09-09 18:14:52,265 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.234800\'::timestamp, 1, \'Invalid price\', 0, \'confirmed\',  -1e-06, \'2026-09-09T18:14:52.234800\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (115, 0, 1, 1, Invalid price, confirmed, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, -1e-06, null).
+ 
+2026-09-09 18:14:52,265 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_negative_write_preserves_record ... 
+2026-09-09 18:14:52,267 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "unit_price" = "__tmp"."unit_price"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (116,  -35.0, 7,  -5.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "unit_price", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (116, 7, 1, 1, Preserved price, draft, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, -5, -35).
+ 
+2026-09-09 18:14:52,269 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "unit_price" = "__tmp"."unit_price"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (116,  -7e-06, 7,  -1e-06, \'2026-09-09T18:14:52.234800\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "unit_price", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (116, 7, 1, 1, Preserved price, draft, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, -1e-06, -7e-06).
+ 
+2026-09-09 18:14:52,270 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "unit_price" = "__tmp"."unit_price"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (117,  -35.0, 7,  -5.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "unit_price", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (117, 7, 1, 1, Preserved price, confirmed, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, -5, -35).
+ 
+2026-09-09 18:14:52,271 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "unit_price" = "__tmp"."unit_price"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (117,  -7e-06, 7,  -1e-06, \'2026-09-09T18:14:52.234800\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "unit_price", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (117, 7, 1, 1, Preserved price, confirmed, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, -1e-06, -7e-06).
+ 
+2026-09-09 18:14:52,272 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_price: Starting TestPrice.test_transaction_batch_rollback ... 
+2026-09-09 18:14:52,276 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "unit_price" = "__tmp"."unit_price"::double precision, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (119,  -4.0,  -1.0, \'2026-09-09T18:14:52.234800\'::timestamp, 1)) AS "__tmp"("id", "amount", "unit_price", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (119, 4, 1, 1, Last operation, draft, 2026-09-09 18:14:52.2348, 2026-09-09 18:14:52.2348, -1, -4).
+ 
+2026-09-09 18:14:52,278 1 INFO comparison_run_1 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 18:14:52,279 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_confirmation ... 
+2026-09-09 18:14:52,282 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS confirmation 
+2026-09-09 18:14:52,282 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_negative_create ... 
+2026-09-09 18:14:52,283 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T18:14:52.279797\'::timestamp, 1, \'Negative\',  -1, \'draft\', 10.0, \'2026-09-09T18:14:52.279797\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (121, -1, 1, 1, Negative, draft, 2026-09-09 18:14:52.279797, 2026-09-09 18:14:52.279797, 10, null).
+ 
+2026-09-09 18:14:52,283 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS negative_create 
+2026-09-09 18:14:52,284 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_negative_write ... 
+2026-09-09 18:14:52,286 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (122,  -10.0,  -1, \'2026-09-09T18:14:52.279797\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (122, -1, 1, 1, Preserve, draft, 2026-09-09 18:14:52.279797, 2026-09-09 18:14:52.279797, 10, -10).
+ 
+2026-09-09 18:14:52,286 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS negative_write 
+2026-09-09 18:14:52,287 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_zero ... 
+2026-09-09 18:14:52,288 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS zero 
+2026-09-09 18:14:52,289 1 INFO comparison_run_1 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 18:14:52,289 1 INFO comparison_run_1 odoo.service.server: 19 post-tests in 0.09s, 368 queries 
+2026-09-09 18:14:52,289 1 INFO comparison_run_1 odoo.tests.stats: lab_qualification: 25 tests 0.08s 368 queries 
+2026-09-09 18:14:52,290 1 INFO comparison_run_1 odoo.tests.result: 0 failed, 0 error(s) of 19 tests when loading database 'comparison_run_1' 
+2026-09-09 18:14:52,290 1 INFO comparison_run_1 odoo.service.server: Initiating shutdown 
+2026-09-09 18:14:52,290 1 INFO comparison_run_1 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 18:14:52,371 1 INFO comparison_run_1 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

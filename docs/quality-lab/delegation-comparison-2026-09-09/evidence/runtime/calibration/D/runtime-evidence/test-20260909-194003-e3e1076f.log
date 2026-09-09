@@ -1,0 +1,123 @@
+2026-09-09 17:40:03,737 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 17:40:03,737 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 17:40:03,738 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo-data/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 17:40:03,738 1 INFO ? odoo: database: odoo@delegcmp-6f9a0b9dfae4-pg:default 
+2026-09-09 17:40:03,916 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on b553aa6f3852:8069 
+2026-09-09 17:40:03,929 1 INFO comparison_run_1 odoo.tests.common: Importing test framework 
+2026-09-09 17:40:03,948 1 INFO comparison_run_1 odoo.modules.loading: loading 1 modules... 
+2026-09-09 17:40:03,952 1 INFO comparison_run_1 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 17:40:03,973 1 INFO comparison_run_1 odoo.modules.loading: updating modules list 
+2026-09-09 17:40:03,974 1 INFO comparison_run_1 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 17:40:04,457 1 INFO comparison_run_1 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 17:40:04,457 1 INFO comparison_run_1 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 17:40:04,876 1 INFO comparison_run_1 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 17:40:04,897 1 INFO comparison_run_1 odoo.modules.loading: loading 15 modules... 
+2026-09-09 17:40:04,921 1 INFO comparison_run_1 odoo.modules.loading: Loading module lab_qualification (10/15) 
+2026-09-09 17:40:04,946 1 INFO comparison_run_1 odoo.registry: module lab_qualification: creating or updating database tables 
+2026-09-09 17:40:04,968 1 INFO comparison_run_1 odoo.modules.loading: loading lab_qualification/security/ir.model.access.csv 
+2026-09-09 17:40:04,972 1 INFO comparison_run_1 odoo.modules.loading: loading lab_qualification/views/quantity.xml 
+2026-09-09 17:40:04,986 1 INFO comparison_run_1 odoo.modules.loading: Module lab_qualification loaded in 0.07s, 77 queries (+77 other) 
+2026-09-09 17:40:05,094 1 INFO comparison_run_1 odoo.modules.loading: 15 modules loaded in 0.20s, 77 queries (+77 extra) 
+2026-09-09 17:40:05,149 1 INFO comparison_run_1 odoo.registry: verifying fields for every extended model 
+2026-09-09 17:40:05,201 1 INFO comparison_run_1 odoo.modules.loading: Modules loaded. 
+2026-09-09 17:40:05,203 1 INFO comparison_run_1 odoo.registry: Registry changed, signaling through the database 
+2026-09-09 17:40:05,204 1 INFO comparison_run_1 odoo.registry: Registry loaded in 1.287s 
+2026-09-09 17:40:05,204 1 INFO comparison_run_1 odoo.service.server: Starting post tests 
+2026-09-09 17:40:05,204 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: Starting TestDelegationOracle.test_batch_atomicity ... 
+2026-09-09 17:40:05,205 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: ====================================================================== 
+2026-09-09 17:40:05,205 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: ERROR: TestDelegationOracle.test_batch_atomicity
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 59, in test_batch_atomicity
+    self._reject(lambda: model.create([
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 14, in _reject
+    with self.assertRaises((CheckViolation, ValidationError)), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 507, in _assertRaises
+    if issubclass(exception, AccessError):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: issubclass() arg 1 must be a class
+ 
+2026-09-09 17:40:05,206 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: Starting TestDelegationOracle.test_free_and_zero_quantity ... 
+2026-09-09 17:40:05,210 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: ====================================================================== 
+2026-09-09 17:40:05,210 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: ERROR: TestDelegationOracle.test_free_and_zero_quantity
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 34, in test_free_and_zero_quantity
+    self._reject(lambda: empty.write({'unit_price': -1}))
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 14, in _reject
+    with self.assertRaises((CheckViolation, ValidationError)), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 507, in _assertRaises
+    if issubclass(exception, AccessError):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: issubclass() arg 1 must be a class
+ 
+2026-09-09 17:40:05,210 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: Starting TestDelegationOracle.test_import_load ... 
+2026-09-09 17:40:05,211 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T17:40:05.205049\'::timestamp, 1, \'oracle import valid row\', 2, \'draft\', 6.0, \'2026-09-09T17:40:05.205049\'::timestamp, 1), (\'2026-09-09T17:40:05.205049\'::timestamp, 1, \'oracle import negative row\', 2, \'draft\',  -1.0, \'2026-09-09T17:40:05.205049\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (7, 2, 1, 1, oracle import negative row, draft, 2026-09-09 17:40:05.205049, 2026-09-09 17:40:05.205049, -1, null).
+ 
+2026-09-09 17:40:05,212 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T17:40:05.205049\'::timestamp, 1, \'oracle import negative row\', 2, \'draft\',  -1.0, \'2026-09-09T17:40:05.205049\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_unit_price_nonnegative"
+DETAIL:  Failing row contains (9, 2, 1, 1, oracle import negative row, draft, 2026-09-09 17:40:05.205049, 2026-09-09 17:40:05.205049, -1, null).
+ 
+2026-09-09 17:40:05,213 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: DELEGATION_ORACLE_PASS import_load 
+2026-09-09 17:40:05,214 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: Starting TestDelegationOracle.test_negative_create_and_write ... 
+2026-09-09 17:40:05,214 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: ====================================================================== 
+2026-09-09 17:40:05,214 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: ERROR: TestDelegationOracle.test_negative_create_and_write
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 20, in test_negative_create_and_write
+    self._reject(lambda: model.create({'name': 'oracle negative', 'quantity': 2, 'unit_price': -0.01}))
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 14, in _reject
+    with self.assertRaises((CheckViolation, ValidationError)), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 507, in _assertRaises
+    if issubclass(exception, AccessError):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: issubclass() arg 1 must be a class
+ 
+2026-09-09 17:40:05,214 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: Starting TestDelegationOracle.test_quantity_amount_and_button ... 
+2026-09-09 17:40:05,215 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: ====================================================================== 
+2026-09-09 17:40:05,215 1 ERROR comparison_run_1 odoo.addons.lab_qualification.tests.test_oracle: ERROR: TestDelegationOracle.test_quantity_amount_and_button
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 43, in test_quantity_amount_and_button
+    self._reject(lambda: model.create({'name': 'oracle bad quantity', 'quantity': -1, 'unit_price': 10}))
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 14, in _reject
+    with self.assertRaises((CheckViolation, ValidationError)), self.env.cr.savepoint():
+  File "/usr/lib/python3.12/contextlib.py", line 137, in __enter__
+    return next(self.gen)
+           ^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 507, in _assertRaises
+    if issubclass(exception, AccessError):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: issubclass() arg 1 must be a class
+ 
+2026-09-09 17:40:05,215 1 INFO comparison_run_1 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 17:40:05,215 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_confirmation ... 
+2026-09-09 17:40:05,217 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS confirmation 
+2026-09-09 17:40:05,217 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_negative_create ... 
+2026-09-09 17:40:05,217 1 ERROR comparison_run_1 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T17:40:05.215927\'::timestamp, 1, \'Negative\',  -1, \'draft\', 10.0, \'2026-09-09T17:40:05.215927\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (12, -1, 1, 1, Negative, draft, 2026-09-09 17:40:05.215927, 2026-09-09 17:40:05.215927, 10, null).
+ 
+2026-09-09 17:40:05,218 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS negative_create 
+2026-09-09 17:40:05,218 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_negative_write ... 
+2026-09-09 17:40:05,219 1 ERROR comparison_run_1 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (13,  -10.0,  -1, \'2026-09-09T17:40:05.215927\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (13, -1, 1, 1, Preserve, draft, 2026-09-09 17:40:05.215927, 2026-09-09 17:40:05.215927, 10, -10).
+ 
+2026-09-09 17:40:05,220 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS negative_write 
+2026-09-09 17:40:05,220 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_zero ... 
+2026-09-09 17:40:05,221 1 INFO comparison_run_1 odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS zero 
+2026-09-09 17:40:05,221 1 INFO comparison_run_1 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 17:40:05,221 1 INFO comparison_run_1 odoo.service.server: 9 post-tests in 0.02s, 95 queries 
+2026-09-09 17:40:05,221 1 INFO comparison_run_1 odoo.tests.stats: lab_qualification: 13 tests 0.02s 95 queries 
+2026-09-09 17:40:05,221 1 ERROR comparison_run_1 odoo.tests.result: 0 failed, 4 error(s) of 9 tests when loading database 'comparison_run_1' 
+2026-09-09 17:40:05,221 1 INFO comparison_run_1 odoo.service.server: Initiating shutdown 
+2026-09-09 17:40:05,221 1 INFO comparison_run_1 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 17:40:05,422 1 INFO comparison_run_1 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

@@ -1,0 +1,184 @@
+[
+  {
+    "run": "E01-S",
+    "seconds": 103.53,
+    "tokens": {
+      "reasoning_output_tokens": 45,
+      "cached_input_tokens": 153856,
+      "cache_write_input_tokens": 0,
+      "total_tokens": 170644,
+      "input_tokens": 167960,
+      "output_tokens": 2684
+    },
+    "children": 0,
+    "child_overlap_seconds": 0.0,
+    "model_effort": [
+      [
+        "gpt-6-astra",
+        "high"
+      ]
+    ],
+    "test_suite_attempts": [],
+    "rework_scope": "E03 first failed suite is planned red reproduction, not a failed repair. Semantic reception defects pending."
+  },
+  {
+    "run": "E01-D",
+    "seconds": 125.236,
+    "tokens": {
+      "cache_write_input_tokens": 0,
+      "input_tokens": 207639,
+      "cached_input_tokens": 178944,
+      "reasoning_output_tokens": 142,
+      "total_tokens": 211042,
+      "output_tokens": 3403
+    },
+    "children": 0,
+    "child_overlap_seconds": 0.0,
+    "model_effort": [
+      [
+        "gpt-6-astra",
+        "high"
+      ]
+    ],
+    "test_suite_attempts": [],
+    "rework_scope": "E03 first failed suite is planned red reproduction, not a failed repair. Semantic reception defects pending."
+  },
+  {
+    "run": "E02-D",
+    "seconds": 206.946,
+    "tokens": {
+      "cached_input_tokens": 534528,
+      "cache_write_input_tokens": 0,
+      "total_tokens": 571715,
+      "input_tokens": 564577,
+      "reasoning_output_tokens": 509,
+      "output_tokens": 7138
+    },
+    "children": 1,
+    "child_overlap_seconds": 0.0,
+    "model_effort": [
+      [
+        "gpt-6-astra",
+        "high"
+      ]
+    ],
+    "test_suite_attempts": [],
+    "rework_scope": "E03 first failed suite is planned red reproduction, not a failed repair. Semantic reception defects pending."
+  },
+  {
+    "run": "E02-S",
+    "seconds": 174.485,
+    "tokens": {
+      "input_tokens": 270924,
+      "cached_input_tokens": 253696,
+      "total_tokens": 275869,
+      "reasoning_output_tokens": 308,
+      "output_tokens": 4945,
+      "cache_write_input_tokens": 0
+    },
+    "children": 0,
+    "child_overlap_seconds": 0.0,
+    "model_effort": [
+      [
+        "gpt-6-astra",
+        "high"
+      ]
+    ],
+    "test_suite_attempts": [],
+    "rework_scope": "E03 first failed suite is planned red reproduction, not a failed repair. Semantic reception defects pending."
+  },
+  {
+    "run": "E03-S",
+    "seconds": 355.426,
+    "tokens": {
+      "reasoning_output_tokens": 878,
+      "output_tokens": 10206,
+      "total_tokens": 756542,
+      "input_tokens": 746336,
+      "cache_write_input_tokens": 0,
+      "cached_input_tokens": 702848
+    },
+    "children": 0,
+    "child_overlap_seconds": 0.0,
+    "model_effort": [
+      [
+        "gpt-6-astra",
+        "high"
+      ]
+    ],
+    "test_suite_attempts": [
+      {
+        "report": "/tmp/odoo-delegation-comparison-20260909/snapshots/E03-S/runtime-evidence/test-20260909-200326-9d80fe4f.tests.json",
+        "passed": false,
+        "methods": 15,
+        "summary": [
+          [
+            15,
+            0,
+            15
+          ]
+        ]
+      },
+      {
+        "report": "/tmp/odoo-delegation-comparison-20260909/snapshots/E03-S/runtime-evidence/test-20260909-200426-90fb7f9f.tests.json",
+        "passed": true,
+        "methods": 15,
+        "summary": [
+          [
+            0,
+            0,
+            15
+          ]
+        ]
+      }
+    ],
+    "rework_scope": "E03 first failed suite is planned red reproduction, not a failed repair. Semantic reception defects pending."
+  },
+  {
+    "run": "E03-D",
+    "seconds": 341.181,
+    "tokens": {
+      "cache_write_input_tokens": 0,
+      "input_tokens": 638821,
+      "output_tokens": 9863,
+      "reasoning_output_tokens": 927,
+      "cached_input_tokens": 596224,
+      "total_tokens": 648684
+    },
+    "children": 0,
+    "child_overlap_seconds": 0.0,
+    "model_effort": [
+      [
+        "gpt-6-astra",
+        "high"
+      ]
+    ],
+    "test_suite_attempts": [
+      {
+        "report": "/tmp/odoo-delegation-comparison-20260909/snapshots/E03-D/runtime-evidence/test-20260909-200959-2b347d9f.tests.json",
+        "passed": false,
+        "methods": 14,
+        "summary": [
+          [
+            18,
+            0,
+            14
+          ]
+        ]
+      },
+      {
+        "report": "/tmp/odoo-delegation-comparison-20260909/snapshots/E03-D/runtime-evidence/test-20260909-201020-c48e66d7.tests.json",
+        "passed": true,
+        "methods": 14,
+        "summary": [
+          [
+            0,
+            0,
+            14
+          ]
+        ]
+      }
+    ],
+    "rework_scope": "E03 first failed suite is planned red reproduction, not a failed repair. Semantic reception defects pending."
+  }
+]

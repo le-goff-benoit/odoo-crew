@@ -1,0 +1,42 @@
+{
+  "case": "E03",
+  "independent": true,
+  "pass": true,
+  "evidence": {
+    "oracle_report": "/tmp/odoo-delegation-comparison-20260909/runtime-audit/E03-S/runtime-evidence/test-20260909-201447-71d4d202.tests.json",
+    "oracle_log": "/tmp/odoo-delegation-comparison-20260909/runtime-audit/E03-S/runtime-evidence/test-20260909-201447-71d4d202.log",
+    "expected_oracle_methods": [
+      "TestDelegationOracle.test_negative_create_and_write",
+      "TestDelegationOracle.test_free_and_zero_quantity",
+      "TestDelegationOracle.test_quantity_amount_and_button",
+      "TestDelegationOracle.test_batch_atomicity",
+      "TestDelegationOracle.test_import_load"
+    ],
+    "executed_methods": [
+      "TestDelegationOracle.test_batch_atomicity",
+      "TestDelegationOracle.test_free_and_zero_quantity",
+      "TestDelegationOracle.test_import_load",
+      "TestDelegationOracle.test_negative_create_and_write",
+      "TestDelegationOracle.test_quantity_amount_and_button",
+      "TestPrice.test_amount_recomputed_on_edits",
+      "TestPrice.test_free_and_positive_confirmation",
+      "TestPrice.test_load_invalid_create_batch",
+      "TestPrice.test_load_invalid_update_batch",
+      "TestPrice.test_load_valid_batch",
+      "TestPrice.test_mixed_create_batch_rollback",
+      "TestPrice.test_negative_price_context_default",
+      "TestPrice.test_negative_price_create",
+      "TestPrice.test_negative_price_write",
+      "TestPrice.test_transaction_batch_rollback",
+      "TestPrice.test_write_batch_rollback",
+      "TestQuantity.test_confirmation",
+      "TestQuantity.test_negative_create",
+      "TestQuantity.test_negative_write",
+      "TestQuantity.test_zero"
+    ],
+    "inventory": "/tmp/odoo-delegation-comparison-20260909/runtime-audit/E03-S/runtime-evidence/inventory-20260909-201449-bcc7fcc8.inventory.json",
+    "seed_records_preserved": true,
+    "seed_reference": "/tmp/odoo-delegation-comparison-20260909/environment/resources.json",
+    "scope": "Copied candidate unchanged except independent test import; original candidate run/snapshot untouched. Same assigned synthetic DB after both primaries ended."
+  }
+}

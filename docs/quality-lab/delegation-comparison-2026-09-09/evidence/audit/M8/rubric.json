@@ -1,0 +1,54 @@
+{
+  "case": "E02",
+  "requires_independent_semantic_review": true,
+  "obligations": [
+    {
+      "id": "cause",
+      "criterion": "Identifie dépendance unit_price manquante dans @api.depends du montant stocké ; calcule résultat attendu 36 et observé 30.",
+      "critical": true
+    },
+    {
+      "id": "evidence",
+      "criterion": "Croise code, trace ORM et décision D-17 ; cite des pièces vérifiables et reconnaît leur nature synthétique.",
+      "critical": true
+    },
+    {
+      "id": "classification",
+      "criterion": "Classe bug custom de déclenchement de recalcul, ni règle métier interdisant gratuité ni bug standard.",
+      "critical": true
+    },
+    {
+      "id": "workaround",
+      "criterion": "Donne un contournement concret borné : re-saisie de quantité identique avec preuve fournie, validation locale conseillée avant usage réel ; aucune réparation production autorisée/exécutée.",
+      "critical": true
+    },
+    {
+      "id": "scope",
+      "criterion": "Précise impact sur montants stockés après changement du prix ; correction ultérieure dépendance et inventaire/recalcul contrôlé des données existantes à cadrer séparément.",
+      "critical": true
+    },
+    {
+      "id": "red_test",
+      "criterion": "Propose test rouge précis qty3 prix10 montant30 puis write prix12 attendu36 ; zéro gratuit et état confirmé préservés, sans prétendre test exécuté.",
+      "critical": true
+    },
+    {
+      "id": "memory",
+      "criterion": "Préserve gratuité autorisée D-17 sans redemander confirmation, et le dossier résolu distinct SYN-11 ; mémorise limitation des preuves et suites.",
+      "critical": true
+    }
+  ],
+  "review_schema": {
+    "case": "E02",
+    "reviewer": "identity independent from candidate",
+    "independent": true,
+    "checks": [
+      {
+        "id": "obligation_id",
+        "pass": true,
+        "evidence": "artifact path and factual justification, not a keyword"
+      }
+    ]
+  },
+  "note": "Mechanical checks never establish semantic correctness. Reviewer reads source evidence and entire outputs; no exact prose expected."
+}

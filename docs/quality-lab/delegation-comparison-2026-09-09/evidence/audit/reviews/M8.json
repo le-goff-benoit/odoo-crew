@@ -1,0 +1,82 @@
+{
+  "case": "E02",
+  "reviewer": "Codex independent semantic reviewer /root/comparison_quality",
+  "independent": true,
+  "checks": [
+    {
+      "id": "cause",
+      "pass": true,
+      "evidence": "M8/project/lab_qualification/models.py : « @api.depends(\"quantity\") ».  M8/project/lab_qualification/models.py : « record.amount = record.quantity * record.unit_price ».  M8/output/diagnostic.md : « montant 30 au lieu de 36 ». Le champ amount est bien stocké ; dépendance prix absente et multiplication exacte."
+    },
+    {
+      "id": "evidence",
+      "pass": true,
+      "evidence": "M8/output/diagnostic.md : « La trace a été fournie avec le cas ; elle n'a pas été produite pendant cette intervention. ».  M8/pieces/orm-trace.jsonl : « \"after_flush_read\":{\"quantity\":3,\"unit_price\":12,\"amount\":30,\"state\":\"confirmed\"} ».  M8/pieces/decisions.md : « Règle approuvée, aucune confirmation supplémentaire requise. ». Code, trace et D-17 concordent. Citations decorators.py, fields.py et models.py vérifiées directement ; registry.py aussi pour R3."
+    },
+    {
+      "id": "classification",
+      "pass": true,
+      "evidence": "M8/output/diagnostic.md : « Bug custom : dépendance ». Classification cohérente avec le déclencheur incomplet ; aucune gratuité interdite et aucun bug standard imputé."
+    },
+    {
+      "id": "workaround",
+      "pass": true,
+      "evidence": "M8/output/diagnostic.md : « une écriture ORM explicite de la quantité inchangée déclenche le recalcul. ».  M8/output/diagnostic.md : « Un technicien pourra l'essayer sur une copie autorisée, avec contrôle avant/après. ». La trace séquence 3 est vérifiée : write quantity=3 produit 36. Contournement technique concret, borné à une vérification sur copie ; aucun geste production prescrit. Réserve de lisibilité : présenté en seconde intention comme piste derrière le contrôle manuel, mais pas absent."
+    },
+    {
+      "id": "scope",
+      "pass": true,
+      "evidence": "M8/output/diagnostic.md : « Corriger le déclencheur ne prouve pas que tous les anciens montants seront remis à jour. ». Impact sur les prix modifiés et inventaire/comptage des écarts sur copie explicités ; futur recalcul traité séparément."
+    },
+    {
+      "id": "red_test",
+      "pass": true,
+      "evidence": "M8/output/diagnostic.md : « Test rouge proposé — non exécuté ».  M8/output/diagnostic.md : « Écrire **uniquement** `unit_price = 12`, sans réécrire la quantité. ». Scénario complet relu : qty3/prix10/montant30, prix seul12, flush/invalidation/relecture, attendu36 ; gratuité, état confirmé et quantité conservés. Aucun appel direct du compute ni affirmation de test exécuté."
+    },
+    {
+      "id": "memory",
+      "pass": true,
+      "evidence": "M8/output/PROJECT.md : « D-17 : prix zéro autorisé pour les lignes gratuites, y compris confirmées. Décision acquise. ». M8/output/PROJECT.md : « SYN-11 résolu : le libellé du bouton ne nécessite plus de changement ; ne pas rouvrir. ». Comparaison au corpus public E02 : journal initial préservé octet pour octet, 12 lignes ajoutées ; décisions de quantité zéro/négative et limites synthétiques conservées. M8/output/PROJECT.md : « Test rouge proposé dans output/diagnostic.md, non exécuté. ». Suite et limite de preuve mémorisées, D-17 sans question et SYN-11 non rouvert."
+    }
+  ],
+  "score": {
+    "business": 4,
+    "coverage": 2,
+    "evidence": 2,
+    "useful_synthesis": 2,
+    "total": 10
+  },
+  "critical_issues": [],
+  "pm": {
+    "criteria": [
+      {
+        "criterion": "Outcome immediately understandable to an Odoo PM",
+        "score": 2,
+        "evidence": "M8/output/result.md : « Le diagnostic de SYN-42 identifie un bug dans le module : changer le prix seul ne relance pas le calcul du montant. ». "
+      },
+      {
+        "criterion": "Concrete business impact explained",
+        "score": 2,
+        "evidence": "M8/output/result.md : « Le scénario fourni conserve 30 au lieu de 36, soit un écart de 6 sur une ligne. ». "
+      },
+      {
+        "criterion": "Next action and actor explicit, no unnecessary approval",
+        "score": 2,
+        "evidence": "M8/output/result.md : « La prochaine action revient au développeur : exécuter le test préparé sur une base locale, constater l'échec, puis corriger le déclenchement du calcul dans la suite de développement. ». "
+      },
+      {
+        "criterion": "Necessary decisions answerable with options/consequences/recommendation; N/A if none required",
+        "score": null,
+        "evidence": "N/A : aucune décision métier nouvelle nécessaire ; aucune question requise ni posée. Qualité des questions non mesurée."
+      },
+      {
+        "criterion": "Technical details kept accessible without obscuring result or honest limits",
+        "score": 2,
+        "evidence": "M8/output/result.md : « Les preuves sont du code local et une trace synthétique fournie. ». "
+      }
+    ],
+    "total": 8,
+    "max": 8
+  },
+  "runtime_claims_to_verify": []
+}

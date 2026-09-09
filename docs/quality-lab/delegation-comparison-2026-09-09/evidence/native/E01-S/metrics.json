@@ -1,0 +1,68 @@
+{
+  "parent": "/root/comp_e01_s",
+  "threads": [
+    {
+      "thread_id": "01a08747-9896-7651-b808-e1a2e4addaaa",
+      "agent": "/root/comp_e01_s",
+      "start": 1788976011.418,
+      "end": 1788976114.948,
+      "complete": true,
+      "turns": [
+        {
+          "turn_id": "01a08747-98ba-7ab1-b2f4-3a164b913988",
+          "start": 1788976011.462,
+          "end": 1788976114.948,
+          "seconds": 103.486
+        }
+      ],
+      "model_effort": [
+        [
+          "gpt-6-astra",
+          "high"
+        ]
+      ],
+      "tokens": {
+        "input_tokens": 167960,
+        "cached_input_tokens": 153856,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2684,
+        "reasoning_output_tokens": 45,
+        "total_tokens": 170644
+      },
+      "usage_response_ids": [
+        "resp_0799746a6cf5d240016aa19b8d5f2c87d2a73966a057058343",
+        "resp_0799746a6cf5d240016aa19b928d4087d2bfb3c8a8ae3b3128",
+        "resp_0799746a6cf5d240016aa19b9a36a887d2aec8a465f94728ca",
+        "resp_0799746a6cf5d240016aa19ba445b487d2938ab8dd8735ecbe",
+        "resp_0799746a6cf5d240016aa19baacb2487d28fd6514dd455a969",
+        "resp_0799746a6cf5d240016aa19bea3a1c87d2b61c35908a85a780"
+      ],
+      "tool_calls": 5,
+      "child_spawns": 0,
+      "export": "root--comp_e01_s.jsonl",
+      "export_sha256": "8e14dc2a9d386d884999d59038991431c4a97e31677523d143172b35accfc506",
+      "source_snapshot_sha256": "73829a6f4ee53889595a22b0a7c2ba7e178437de37bbe1cf2a62ac1dc54f71c9"
+    }
+  ],
+  "descendants": 0,
+  "complete": true,
+  "tokens_measured": true,
+  "duplicate_response_ids": false,
+  "tokens": {
+    "reasoning_output_tokens": 45,
+    "cached_input_tokens": 153856,
+    "cache_write_input_tokens": 0,
+    "total_tokens": 170644,
+    "input_tokens": 167960,
+    "output_tokens": 2684
+  },
+  "wall_seconds": 103.53,
+  "child_overlap_seconds": 0.0,
+  "observed_model_effort": [
+    [
+      "gpt-6-astra",
+      "high"
+    ]
+  ],
+  "scope": "One final cumulative counter per thread, descendants included. Cached and reasoning are subsets, not added to total. Overlap is native turn availability, not continuous compute activity. Preparation, coordinator and common judge excluded. Tool content is not a generic secret sanitizer."
+}

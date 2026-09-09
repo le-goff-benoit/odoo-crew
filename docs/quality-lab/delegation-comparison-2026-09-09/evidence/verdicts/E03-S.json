@@ -1,0 +1,137 @@
+{
+  "case": "E03",
+  "pass": true,
+  "mechanical_only": false,
+  "semantic_review_required": true,
+  "checks": [
+    {
+      "id": "artifact:analyse.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E03-S/output/analyse.md"
+    },
+    {
+      "id": "artifact:qa.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E03-S/output/qa.md"
+    },
+    {
+      "id": "artifact:PROJECT.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E03-S/output/PROJECT.md"
+    },
+    {
+      "id": "artifact:JOURNAL.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E03-S/output/JOURNAL.md"
+    },
+    {
+      "id": "artifact:result.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E03-S/output/result.md"
+    },
+    {
+      "id": "preserve_input:demande.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve_input:task.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve:.odoo-agents/JOURNAL.md",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:.odoo-agents/PROJECT.md",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:.odoo-agents/config",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "no_unowned_project_files",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "id": "journal_history",
+      "pass": true,
+      "detail": "Existing journal text preserved exactly"
+    },
+    {
+      "id": "journal_15_lines",
+      "pass": true,
+      "detail": 10
+    },
+    {
+      "id": "independent_semantic_review",
+      "pass": true,
+      "detail": "Independent reviewer identity and case mandatory"
+    },
+    {
+      "id": "semantic_coverage",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "id": "semantic:rule",
+      "pass": true,
+      "detail": "K6/project/lab_qualification/models.py : « \"CHECK(unit_price >= 0)\" ».  K6/project/lab_qualification/models.py : « \"CHECK(quantity >= 0)\" ». Contraintes indépendantes : le prix négatif est interdit même avec quantité zéro et dans tous les états ; zéro reste admis. Tests avec petit négatif et défaut de contexte présents."
+    },
+    {
+      "id": "semantic:behavior",
+      "pass": true,
+      "detail": "K6/project/lab_qualification/models.py : « @api.depends(\"quantity\", \"unit_price\") ».  K6/project/lab_qualification/models.py : « record.amount = record.quantity * record.unit_price ».  K6/project/lab_qualification/models.py : « self.write({\"state\": \"confirmed\"}) ». Comparaison au corpus public : calcul, action, vue, ACL et quatre tests initiaux conservés. Tests nouveaux vérifient gratuité confirmée et recalcul de chaque facteur. Conservation des données en runtime à confirmer séparément."
+    },
+    {
+      "id": "semantic:channels",
+      "pass": true,
+      "detail": "K6/project/lab_qualification/tests/test_price.py : « def test_transaction_batch_rollback(self): ».  K6/project/lab_qualification/tests/test_price.py : « def test_load_invalid_update_batch(self): ».  Lecture complète : create/write directs, lots mixtes prix ou quantité invalides, import load valide et invalide en création/mise à jour, valeurs préservées après rollback. Flush réel dans savepoint pour ORM ; load testé sans savepoint externe imposant artificiellement son annulation. Les assertions portent sur ids/messages/valeurs, pas sur une simple absence de crash. PASS de relecture, conditionné au contrôle indépendant des exécutions annoncé dans runtime_claims_to_verify ; aucune exécution attestée par ce relecteur."
+    },
+    {
+      "id": "semantic:style",
+      "pass": true,
+      "detail": "K6/project/lab_qualification/models.py : « _unit_price_nonnegative = models.Constraint( ».  Correctif minimal 19.0 : contrainte, manifest 19.0.1.0.1 et tests. Imports/ACL/vue conservés par comparaison binaire au corpus public. Les empreintes code-sha256.json correspondent à tous les fichiers livrés. Sources de contraintes stock et test_sql citées vérifiées. Aucune écriture aux sources Odoo effectuée par cette revue."
+    },
+    {
+      "id": "semantic:qa",
+      "pass": true,
+      "detail": "K6/output/qa.md : « 0 failed, 0 error(s) of 15 tests ».  K6/output/qa.md : « Pas d'installation sur base neuve ». Rapport précis : rouge/vert, nombre de méthodes distingué des sous-tests, mise à jour locale, lint bloquant vs conseils, limites du bouton et du jeu synthétique. Affirmations cohérentes avec le contenu des tests ; authenticité/exécution à contrôler séparément. PASS documentaire provisoire, pas certification runtime."
+    },
+    {
+      "id": "semantic:memory",
+      "pass": true,
+      "detail": "K6/output/PROJECT.md : « D-17 : prix zéro autorisé pour les lignes gratuites, y compris confirmées. Décision acquise. ». K6/output/PROJECT.md : « SYN-11 résolu : le libellé du bouton ne nécessite plus de changement ; ne pas rouvrir. ». Comparaison au corpus public E03 : journal initial préservé octet pour octet, 11 lignes ajoutées ; décisions de quantité zéro/négative et limites synthétiques conservées. K6/output/PROJECT.md : « Réception indépendante du banc à venir. ». Règle nouvelle et limites transactionnelles mémorisées sans inventer de données client."
+    },
+    {
+      "id": "independent_runtime",
+      "pass": true,
+      "detail": "Separate receiver attestation must cite raw oracle log and preserved seed check"
+    },
+    {
+      "id": "candidate_test_changes",
+      "pass": true,
+      "detail": [
+        "/tmp/odoo-delegation-comparison-20260909/snapshots/E03-S/project/lab_qualification/tests/test_price.py"
+      ]
+    },
+    {
+      "id": "candidate_code_changes",
+      "pass": true,
+      "detail": [
+        "lab_qualification/__manifest__.py",
+        "lab_qualification/models.py"
+      ]
+    }
+  ],
+  "limitations": [
+    "Reviewer attestations require independent human/agent inspection; schema validates completeness, not truth.",
+    "Mechanical checks do not prove absence of false narrative claims or external writes."
+  ]
+}

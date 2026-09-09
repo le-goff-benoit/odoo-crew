@@ -1,0 +1,44 @@
+{
+  "case": "E01",
+  "requires_independent_semantic_review": true,
+  "obligations": [
+    {
+      "id": "existing",
+      "criterion": "Conclut que le custom existant couvre la demande par sa contrainte SQL, sans attribuer cette règle au standard métier.",
+      "critical": true
+    },
+    {
+      "id": "proof",
+      "criterion": "Cite le modèle et la contrainte CHECK(quantity >= 0), avec source 19.0 justifiant models.Constraint ; distingue code fourni et déploiement.",
+      "critical": true
+    },
+    {
+      "id": "scope",
+      "criterion": "Explique couverture quantité zéro et canaux ORM/import lorsque la contrainte est réellement installée ; aucune validation doublonnée proposée.",
+      "critical": true
+    },
+    {
+      "id": "limits",
+      "criterion": "Signale absence de base live et absence de preuve de contrainte effectivement installée chez un client.",
+      "critical": true
+    },
+    {
+      "id": "memory",
+      "criterion": "Conserve décisions initiales et consigne conclusion, preuves et limite dans mémoire proposée sans prétendre vérification live.",
+      "critical": true
+    }
+  ],
+  "review_schema": {
+    "case": "E01",
+    "reviewer": "identity independent from candidate",
+    "independent": true,
+    "checks": [
+      {
+        "id": "obligation_id",
+        "pass": true,
+        "evidence": "artifact path and factual justification, not a keyword"
+      }
+    ]
+  },
+  "note": "Mechanical checks never establish semantic correctness. Reviewer reads source evidence and entire outputs; no exact prose expected."
+}

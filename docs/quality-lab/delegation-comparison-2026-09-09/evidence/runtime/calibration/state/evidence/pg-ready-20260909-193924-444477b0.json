@@ -1,0 +1,13 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "delegcmp-6f9a0b9dfae4-pg",
+    "pg_isready",
+    "-U",
+    "odoo"
+  ],
+  "log": "/tmp/odoo-delegation-comparison-20260909/runtime/calibration/state/evidence/pg-ready-20260909-193924-444477b0.log",
+  "returncode": 2,
+  "seconds": 0.068
+}

@@ -1,0 +1,114 @@
+{
+  "calibration_only": true,
+  "candidate_trials_started": false,
+  "initial_red": {
+    "passed": false,
+    "process_exit": 1,
+    "tags": "delegation_oracle",
+    "summaries": [
+      [
+        4,
+        0,
+        5
+      ]
+    ],
+    "started_tests": [
+      "TestDelegationOracle.test_batch_atomicity",
+      "TestDelegationOracle.test_free_and_zero_quantity",
+      "TestDelegationOracle.test_import_load",
+      "TestDelegationOracle.test_negative_create_and_write",
+      "TestDelegationOracle.test_quantity_amount_and_button"
+    ],
+    "expected_tests": [
+      "TestDelegationOracle.test_negative_create_and_write",
+      "TestDelegationOracle.test_free_and_zero_quantity",
+      "TestDelegationOracle.test_quantity_amount_and_button",
+      "TestDelegationOracle.test_batch_atomicity",
+      "TestDelegationOracle.test_import_load"
+    ],
+    "missing_tests": [],
+    "skipped": false
+  },
+  "corrected_green": {
+    "passed": true,
+    "process_exit": 0,
+    "tags": "/lab_qualification",
+    "summaries": [
+      [
+        0,
+        0,
+        9
+      ]
+    ],
+    "started_tests": [
+      "TestDelegationOracle.test_batch_atomicity",
+      "TestDelegationOracle.test_free_and_zero_quantity",
+      "TestDelegationOracle.test_import_load",
+      "TestDelegationOracle.test_negative_create_and_write",
+      "TestDelegationOracle.test_quantity_amount_and_button",
+      "TestQuantity.test_confirmation",
+      "TestQuantity.test_negative_create",
+      "TestQuantity.test_negative_write",
+      "TestQuantity.test_zero"
+    ],
+    "expected_tests": [
+      "TestDelegationOracle.test_negative_create_and_write",
+      "TestDelegationOracle.test_free_and_zero_quantity",
+      "TestDelegationOracle.test_quantity_amount_and_button",
+      "TestDelegationOracle.test_batch_atomicity",
+      "TestDelegationOracle.test_import_load",
+      "TestQuantity.test_zero",
+      "TestQuantity.test_negative_create",
+      "TestQuantity.test_negative_write",
+      "TestQuantity.test_confirmation"
+    ],
+    "missing_tests": [],
+    "skipped": false
+  },
+  "empty_test_selection_rejected": {
+    "passed": false,
+    "process_exit": 0,
+    "tags": "/lab_qualification:AbsentClass",
+    "summaries": [
+      [
+        0,
+        0,
+        0
+      ]
+    ],
+    "started_tests": [],
+    "expected_tests": [
+      "TestQuantity.test_zero",
+      "TestQuantity.test_negative_create",
+      "TestQuantity.test_negative_write",
+      "TestQuantity.test_confirmation"
+    ],
+    "missing_tests": [
+      "TestQuantity.test_confirmation",
+      "TestQuantity.test_negative_create",
+      "TestQuantity.test_negative_write",
+      "TestQuantity.test_zero"
+    ],
+    "skipped": false
+  },
+  "seed_inventory_preserved": true,
+  "images": {
+    "odoo-qa:19.0": {
+      "digests": [],
+      "id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d"
+    },
+    "postgres:16": {
+      "digests": [
+        "postgres@sha256:4b7183ac05f8ef417db21fd72d71047a4238340c261d3cc3ddb6d579ab5071ae"
+      ],
+      "id": "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f"
+    }
+  },
+  "seed_semantic_sha256": "932551827fabd0fe2e56b95b9a0ffadaadf4d64987f961c03e84003c5d738483",
+  "cleanup": {
+    "remaining_containers": [],
+    "remaining_networks": [],
+    "verified": true
+  },
+  "oracle_initial_issue": "Tuple unsupported by Odoo assertRaises; corpus corrected via unittest.TestCase.assertRaises before successful calibration."
+}

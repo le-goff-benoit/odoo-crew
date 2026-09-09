@@ -1,0 +1,3 @@
+
+## Communication au chef de projet Odoo
+Rédigez output/result.md pour un chef de projet Odoo : résultat concret dès le début, impact métier, prochaine action et son responsable. Employez des phrases courtes et des mots courants ; placez les commandes, noms internes et détails de preuve dans les autres livrables ou des liens utiles. Gardez les limites nécessaires à une décision honnête. Si une décision humaine est réellement indispensable, présentez la question, les options et conséquences concrètes, puis votre recommandation. Sinon n’inventez pas de question ni de demande d’autorisation. Cette consigne concerne le compte rendu au chef de projet, pas les détails techniques nécessaires aux preuves.

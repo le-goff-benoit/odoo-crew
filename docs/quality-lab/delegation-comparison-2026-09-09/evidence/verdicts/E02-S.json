@@ -1,0 +1,157 @@
+{
+  "case": "E02",
+  "pass": true,
+  "mechanical_only": false,
+  "semantic_review_required": true,
+  "checks": [
+    {
+      "id": "artifact:diagnostic.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E02-S/output/diagnostic.md"
+    },
+    {
+      "id": "artifact:PROJECT.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E02-S/output/PROJECT.md"
+    },
+    {
+      "id": "artifact:JOURNAL.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E02-S/output/JOURNAL.md"
+    },
+    {
+      "id": "artifact:result.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E02-S/output/result.md"
+    },
+    {
+      "id": "preserve_input:demande.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve_input:pieces/decisions.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve_input:pieces/dependencies-source.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve_input:pieces/orm-trace.jsonl",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve_input:task.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve:.odoo-agents/JOURNAL.md",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:.odoo-agents/PROJECT.md",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:.odoo-agents/config",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/__init__.py",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/__manifest__.py",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/models.py",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/security/ir.model.access.csv",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/views/quantity.xml",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "no_unowned_project_files",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "id": "journal_history",
+      "pass": true,
+      "detail": "Existing journal text preserved exactly"
+    },
+    {
+      "id": "journal_15_lines",
+      "pass": true,
+      "detail": 11
+    },
+    {
+      "id": "independent_semantic_review",
+      "pass": true,
+      "detail": "Independent reviewer identity and case mandatory"
+    },
+    {
+      "id": "semantic_coverage",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "id": "semantic:cause",
+      "pass": true,
+      "detail": "M8/project/lab_qualification/models.py : « @api.depends(\"quantity\") ».  M8/project/lab_qualification/models.py : « record.amount = record.quantity * record.unit_price ».  M8/output/diagnostic.md : « montant 30 au lieu de 36 ». Le champ amount est bien stocké ; dépendance prix absente et multiplication exacte."
+    },
+    {
+      "id": "semantic:evidence",
+      "pass": true,
+      "detail": "M8/output/diagnostic.md : « La trace a été fournie avec le cas ; elle n'a pas été produite pendant cette intervention. ».  M8/pieces/orm-trace.jsonl : « \"after_flush_read\":{\"quantity\":3,\"unit_price\":12,\"amount\":30,\"state\":\"confirmed\"} ».  M8/pieces/decisions.md : « Règle approuvée, aucune confirmation supplémentaire requise. ». Code, trace et D-17 concordent. Citations decorators.py, fields.py et models.py vérifiées directement ; registry.py aussi pour R3."
+    },
+    {
+      "id": "semantic:classification",
+      "pass": true,
+      "detail": "M8/output/diagnostic.md : « Bug custom : dépendance ». Classification cohérente avec le déclencheur incomplet ; aucune gratuité interdite et aucun bug standard imputé."
+    },
+    {
+      "id": "semantic:workaround",
+      "pass": true,
+      "detail": "M8/output/diagnostic.md : « une écriture ORM explicite de la quantité inchangée déclenche le recalcul. ».  M8/output/diagnostic.md : « Un technicien pourra l'essayer sur une copie autorisée, avec contrôle avant/après. ». La trace séquence 3 est vérifiée : write quantity=3 produit 36. Contournement technique concret, borné à une vérification sur copie ; aucun geste production prescrit. Réserve de lisibilité : présenté en seconde intention comme piste derrière le contrôle manuel, mais pas absent."
+    },
+    {
+      "id": "semantic:scope",
+      "pass": true,
+      "detail": "M8/output/diagnostic.md : « Corriger le déclencheur ne prouve pas que tous les anciens montants seront remis à jour. ». Impact sur les prix modifiés et inventaire/comptage des écarts sur copie explicités ; futur recalcul traité séparément."
+    },
+    {
+      "id": "semantic:red_test",
+      "pass": true,
+      "detail": "M8/output/diagnostic.md : « Test rouge proposé — non exécuté ».  M8/output/diagnostic.md : « Écrire **uniquement** `unit_price = 12`, sans réécrire la quantité. ». Scénario complet relu : qty3/prix10/montant30, prix seul12, flush/invalidation/relecture, attendu36 ; gratuité, état confirmé et quantité conservés. Aucun appel direct du compute ni affirmation de test exécuté."
+    },
+    {
+      "id": "semantic:memory",
+      "pass": true,
+      "detail": "M8/output/PROJECT.md : « D-17 : prix zéro autorisé pour les lignes gratuites, y compris confirmées. Décision acquise. ». M8/output/PROJECT.md : « SYN-11 résolu : le libellé du bouton ne nécessite plus de changement ; ne pas rouvrir. ». Comparaison au corpus public E02 : journal initial préservé octet pour octet, 12 lignes ajoutées ; décisions de quantité zéro/négative et limites synthétiques conservées. M8/output/PROJECT.md : « Test rouge proposé dans output/diagnostic.md, non exécuté. ». Suite et limite de preuve mémorisées, D-17 sans question et SYN-11 non rouvert."
+    }
+  ],
+  "limitations": [
+    "Reviewer attestations require independent human/agent inspection; schema validates completeness, not truth.",
+    "Mechanical checks do not prove absence of false narrative claims or external writes."
+  ]
+}

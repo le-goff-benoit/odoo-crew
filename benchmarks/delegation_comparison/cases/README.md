@@ -1,0 +1,4 @@
+# Corpus synthétique de comparaison S/D
+E01 analyse simple, E02 synthèse à indices répartis, E03 correctif inédit avant troisième paire.
+`public/` seulement est matérialisé dans les runs. `private/` contient grilles et oracle, à consulter uniquement après gel des sorties. Aucun résultat candidat n'a servi à écrire les obligations. E03 provient du module initial lab_qualification de qualification, adapté à 19.0 ; aucune base client réelle.
+Les lecteurs candidats disposent des sources Odoo locales et des preuves synthétiques explicitement marquées. Le juge mécanique exige aussi une revue sémantique indépendante ; il n'infère jamais sa réussite depuis des mots clés. Calibration exécutée par calibrate.py ; calibration Odoo réelle effectuée séparément par runtime.py sur initial rouge et correctif témoin vert.

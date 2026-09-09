@@ -1,0 +1,30 @@
+2026-09-09 17:41:07,924 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 17:41:07,924 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 17:41:07,924 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo-data/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 17:41:07,925 1 INFO ? odoo: database: odoo@delegcmp-6f9a0b9dfae4-pg:default 
+2026-09-09 17:41:08,095 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 70fc5ba17351:8069 
+2026-09-09 17:41:08,107 1 INFO comparison_run_0 odoo.tests.common: Importing test framework 
+2026-09-09 17:41:08,122 1 INFO comparison_run_0 odoo.modules.loading: loading 1 modules... 
+2026-09-09 17:41:08,124 1 INFO comparison_run_0 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 17:41:08,140 1 INFO comparison_run_0 odoo.modules.loading: updating modules list 
+2026-09-09 17:41:08,142 1 INFO comparison_run_0 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 17:41:08,742 1 INFO comparison_run_0 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 17:41:08,742 1 INFO comparison_run_0 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 17:41:09,217 1 INFO comparison_run_0 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 17:41:09,229 1 INFO comparison_run_0 odoo.modules.loading: loading 15 modules... 
+2026-09-09 17:41:09,244 1 INFO comparison_run_0 odoo.modules.loading: Loading module lab_qualification (10/15) 
+2026-09-09 17:41:09,263 1 INFO comparison_run_0 odoo.registry: module lab_qualification: creating or updating database tables 
+2026-09-09 17:41:09,281 1 INFO comparison_run_0 odoo.modules.loading: loading lab_qualification/security/ir.model.access.csv 
+2026-09-09 17:41:09,284 1 INFO comparison_run_0 odoo.modules.loading: loading lab_qualification/views/quantity.xml 
+2026-09-09 17:41:09,300 1 INFO comparison_run_0 odoo.modules.loading: Module lab_qualification loaded in 0.06s, 68 queries (+68 other) 
+2026-09-09 17:41:09,403 1 INFO comparison_run_0 odoo.modules.loading: 15 modules loaded in 0.17s, 68 queries (+68 extra) 
+2026-09-09 17:41:09,460 1 INFO comparison_run_0 odoo.registry: verifying fields for every extended model 
+2026-09-09 17:41:09,517 1 INFO comparison_run_0 odoo.modules.loading: Modules loaded. 
+2026-09-09 17:41:09,520 1 INFO comparison_run_0 odoo.registry: Registry changed, signaling through the database 
+2026-09-09 17:41:09,520 1 INFO comparison_run_0 odoo.registry: Registry loaded in 1.424s 
+2026-09-09 17:41:09,521 1 INFO comparison_run_0 odoo.service.server: Starting post tests 
+2026-09-09 17:41:09,521 1 INFO comparison_run_0 odoo.service.server: 0 post-tests in 0.00s, 0 queries 
+2026-09-09 17:41:09,521 1 WARNING comparison_run_0 odoo.tests.result: 0 failed, 0 error(s) of 0 tests when loading database 'comparison_run_0' 
+2026-09-09 17:41:09,521 1 INFO comparison_run_0 odoo.service.server: Initiating shutdown 
+2026-09-09 17:41:09,521 1 INFO comparison_run_0 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 17:41:09,603 1 INFO comparison_run_0 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

@@ -1,0 +1,69 @@
+{
+  "parent": "/root/comp_e01_d",
+  "threads": [
+    {
+      "thread_id": "01a0874b-28fe-7ad2-8774-dbffa8511033",
+      "agent": "/root/comp_e01_d",
+      "start": 1788976244.994,
+      "end": 1788976370.23,
+      "complete": true,
+      "turns": [
+        {
+          "turn_id": "01a0874b-291d-74a0-94c5-a716a13d8f6c",
+          "start": 1788976245.032,
+          "end": 1788976370.23,
+          "seconds": 125.198
+        }
+      ],
+      "model_effort": [
+        [
+          "gpt-6-astra",
+          "high"
+        ]
+      ],
+      "tokens": {
+        "input_tokens": 207639,
+        "cached_input_tokens": 178944,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3403,
+        "reasoning_output_tokens": 142,
+        "total_tokens": 211042
+      },
+      "usage_response_ids": [
+        "resp_0255b66810faedd7016aa19c770ba487d2b68c28cf2fb69c2a",
+        "resp_0255b66810faedd7016aa19c7ccbd887d292dfa20f3fbce950",
+        "resp_0255b66810faedd7016aa19c841bbc87d296473b071fd8109d",
+        "resp_0255b66810faedd7016aa19c92f55487d2ac47ffca520f9eb1",
+        "resp_0255b66810faedd7016aa19c9caa5887d2af506f4afcc99ae5",
+        "resp_0255b66810faedd7016aa19ca4703c87d297c6f11823c94a13",
+        "resp_0255b66810faedd7016aa19cec7bb087d295168db4c8a3e729"
+      ],
+      "tool_calls": 6,
+      "child_spawns": 0,
+      "export": "root--comp_e01_d.jsonl",
+      "export_sha256": "219a287d1b9506b75be106abcfd40ba8300b29d72d0b5f7daa271ac81e4600b6",
+      "source_snapshot_sha256": "8605315d5776dcead9244b9622d8d4e451d89249083edcfa65c8fe42e189f5f6"
+    }
+  ],
+  "descendants": 0,
+  "complete": true,
+  "tokens_measured": true,
+  "duplicate_response_ids": false,
+  "tokens": {
+    "cache_write_input_tokens": 0,
+    "input_tokens": 207639,
+    "cached_input_tokens": 178944,
+    "reasoning_output_tokens": 142,
+    "total_tokens": 211042,
+    "output_tokens": 3403
+  },
+  "wall_seconds": 125.236,
+  "child_overlap_seconds": 0.0,
+  "observed_model_effort": [
+    [
+      "gpt-6-astra",
+      "high"
+    ]
+  ],
+  "scope": "One final cumulative counter per thread, descendants included. Cached and reasoning are subsets, not added to total. Overlap is native turn availability, not continuous compute activity. Preparation, coordinator and common judge excluded. Tool content is not a generic secret sanitizer."
+}

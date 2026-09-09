@@ -1,0 +1,37 @@
+{
+  "expected_tests": [
+    "TestQuantity.test_zero",
+    "TestQuantity.test_negative_create",
+    "TestQuantity.test_negative_write",
+    "TestQuantity.test_confirmation"
+  ],
+  "missing_tests": [],
+  "passed": false,
+  "process_exit": 1,
+  "skipped": false,
+  "started_tests": [
+    "TestPrice.test_amount_recomputed_on_edits",
+    "TestPrice.test_free_and_positive_confirmation",
+    "TestPrice.test_load_invalid_create_batch",
+    "TestPrice.test_load_invalid_update_batch",
+    "TestPrice.test_load_valid_batch",
+    "TestPrice.test_mixed_create_batch_rollback",
+    "TestPrice.test_negative_price_context_default",
+    "TestPrice.test_negative_price_create",
+    "TestPrice.test_negative_price_write",
+    "TestPrice.test_transaction_batch_rollback",
+    "TestPrice.test_write_batch_rollback",
+    "TestQuantity.test_confirmation",
+    "TestQuantity.test_negative_create",
+    "TestQuantity.test_negative_write",
+    "TestQuantity.test_zero"
+  ],
+  "summaries": [
+    [
+      15,
+      0,
+      15
+    ]
+  ],
+  "tags": "/lab_qualification"
+}

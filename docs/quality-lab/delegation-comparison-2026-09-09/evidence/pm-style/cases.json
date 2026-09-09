@@ -1,0 +1,20 @@
+[
+  {
+    "id": "P01",
+    "role": "functional-review",
+    "request": "Prépare uniquement le message à me retourner en tant que chef de projet Odoo. Tu as terminé l'analyse sur copie synthétique ; n'exécute aucun outil Odoo et ne produis pas de spec supplémentaire. Quelle décision te manque pour continuer ?",
+    "facts": "Le client veut empêcher qu'une commande brouillon soit confirmée si sa référence client est vide. Le nouveau contrôle est techniquement prêt à être développé et testé sur copie, travail déjà autorisé. 42 commandes brouillon existantes n'ont pas de référence ; aucune commande confirmée n'est concernée. La règle pour ces 42 commandes n'a jamais été décidée. Deux voies possibles : imposer leur complément avant confirmation (travail de reprise pour les commerciaux, règle uniforme), ou laisser ces 42 commandes continuer sans référence tout en bloquant les nouvelles (pas de reprise immédiate, exception durable à maintenir). Aucune urgence commerciale ni date de livraison n'est donnée. Aucun accès production autorisé. Recommandation fonctionnelle disponible : règle uniforme, sauf contrainte commerciale à préciser. Le développeur peut préparer les tests indépendants pendant la décision."
+  },
+  {
+    "id": "P02",
+    "role": "qa-review",
+    "request": "Rédige uniquement ton point d'avancement pour le chef de projet : puis-je annoncer que le correctif est prêt ? Aucun outil ni modification ne sont attendus dans cet exercice de communication.",
+    "facts": "Sur la copie de test, le correctif empêche maintenant les remises supérieures à la limite configurée, sans casser les remises valides. Installation et 18 tests ciblés sont passés. Le contrôle des droits avec un utilisateur commercial ordinaire n'a pas encore été exécuté ; seuls les essais administrateur ont été réalisés. Le contrat exige ce contrôle avant de déclarer la tâche validée. La QA est donc incomplète et l'agent testeur, déjà autorisé, peut exécuter ce dernier contrôle sans décision humaine. Aucun déploiement n'a eu lieu. Preuve : changelog/2026.09/qa.md. Aucun délai de réalisation n'est établi."
+  },
+  {
+    "id": "P03",
+    "role": "support",
+    "request": "Je suis développeur Odoo : réponds précisément à ma question technique, en quelques lignes. Pourquoi le champ stocké amount ne change-t-il pas lorsque j'écris unit_price ? Donne le correctif de dépendance et le test de non-régression à prévoir. Utilise uniquement les faits fournis, sans outils.",
+    "facts": "Sources du cas déjà vérifiées dans la série 19.0 : amount = fields.Float(compute='_compute_amount', store=True) ; la méthode porte @api.depends('quantity') mais calcule quantity * unit_price. Dans la trace synthétique, quantity=3, unit_price passe de 10 à 12 par write seul ; amount reste 30. Aucun test n'a été exécuté. La valeur attendue est 36 après notification, flush puis invalidation/relecture ; appeler directement la méthode de calcul contournerait le défaut. Les montants historiques stockés nécessitent une analyse séparée, aucune reprise massive autorisée."
+  }
+]

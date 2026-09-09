@@ -1,0 +1,16 @@
+Série cible : 19.0  (.odoo-agents/config)
+══ 1/3  ruff — règles bloquantes (config Odoo 19.0) ══
+All checks passed!
+
+══ 2/3  ruff — conseils (config complète, non bloquant) ═════════════════
+      3 missing-trailing-comma
+      1 unsorted-imports
+(détail : ruff check --config /home/blegoff/odoo-sources/19.0/ruff.toml <module>)
+
+══ 3/3  contrôles Odoo (manifest, XML, sécurité, tests) ═════════════════
+── lab_qualification  (/tmp/odoo-delegation-comparison-20260909/runs/E03-S/project/lab_qualification)
+   série cible : 19.0  (source : .odoo-agents/config)
+
+0 erreur(s), 0 avertissement(s), 0 info(s)
+
+✅ lint OK

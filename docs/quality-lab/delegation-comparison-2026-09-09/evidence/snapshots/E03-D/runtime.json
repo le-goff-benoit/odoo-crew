@@ -1,0 +1,26 @@
+{
+  "database": "comparison_run_1",
+  "expected_tests": [
+    "TestQuantity.test_zero",
+    "TestQuantity.test_negative_create",
+    "TestQuantity.test_negative_write",
+    "TestQuantity.test_confirmation"
+  ],
+  "images": {
+    "odoo-qa:19.0": {
+      "digests": [],
+      "id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d"
+    },
+    "postgres:16": {
+      "digests": [
+        "postgres@sha256:4b7183ac05f8ef417db21fd72d71047a4238340c261d3cc3ddb6d579ab5071ae"
+      ],
+      "id": "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f"
+    }
+  },
+  "network": "delegcmp-0f281675a438-net",
+  "owner": "d12d0ccfea134284812f45aba248a6a4",
+  "postgres": "delegcmp-0f281675a438-pg",
+  "prefix": "delegcmp-0f281675a438",
+  "project": "/tmp/odoo-delegation-comparison-20260909/runs/E03-D/project"
+}

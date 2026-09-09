@@ -31,6 +31,9 @@ jobs:
           mkdir -p "$RUNNER_TEMP/ordered-recovery-calibration"
           cp benchmarks/ordered_recovery/*.py "$RUNNER_TEMP/ordered-recovery-calibration/"
           python3 "$RUNNER_TEMP/ordered-recovery-calibration/calibrate.py" --pack "$GITHUB_WORKSPACE"
+      - name: Calibration déterministe de la comparaison de délégation
+        run: |
+          python3 benchmarks/delegation_comparison/calibrate.py --out "$RUNNER_TEMP/delegation-comparison-calibration"
       - name: Parité des profils générés dans une distribution isolée
         run: |
           ./build.sh --output-root "$RUNNER_TEMP/odoo-quality-dist"

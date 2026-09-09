@@ -69,3 +69,19 @@ du banc d’un défaut candidat et ajoute sa calibration portable à la CI.
 L’épreuve Odoo utilise un module 19.0 et une copie synthétique restaurée ; elle
 ne qualifie ni une base client ni les autres séries. L’exposition intégrale aux
 consignes chiffrées n’est pas certifiée, malgré la séparation native des threads.
+
+La [comparaison de délégation](quality-lab/delegation-comparison-2026-09-09/README.md)
+mesure six essais natifs et sept threads primaires. Les six livrables sont reçus ;
+les deux correctifs passent le même oracle indépendant. Sur E02, seul cas avec
+délégation réelle, le temps augmente de 18,60 % et les jetons de 107,24 % : la
+politique optionnelle est conservée. Les variantes D d’E01/E03 sans enfant ne
+prouvent pas un effet de délégation. Le compteur est corrigé pour exclure les
+contextes hérités des enfants ; incident et mesures initiales conservés.
+
+**Communication PM — adoptée comme préférence explicite** :
+`roles/communication.md` alimente les 26 sorties générées des 13 profils. Résultat,
+conséquence métier, prochaine action et acteur ; question de décision accompagnée
+d’options, conséquences et recommandation, sans approbation répétée. Trois cas
+figés, dont une contre-épreuve technique, obtiennent 30/30 avant comme après :
+non-régression bornée, aucun gain comportemental déclaré. Prochain retour utile :
+compréhension et facilité de décision observées par un chef de projet en usage réel.

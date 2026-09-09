@@ -151,6 +151,14 @@ vérifie ensuite un vrai reçu A antérieur à B, le positif sans réception sup
 et une tâche Odoo 19.0 sur copie synthétique restaurée. Les traces natives et
 leurs limites de visibilité sont conservées ; la calibration du banc entre en CI.
 
+La [comparaison solo/délégation](docs/quality-lab/delegation-comparison-2026-09-09/README.md)
+reçoit six livrables et confirme deux correctifs avec un oracle indépendant. Un
+seul diagnostic utilise un sous-agent : il est plus lent et consomme davantage,
+sans gain de note. La délégation reste un choix au cas par cas. Une consigne
+commune rend explicite le langage attendu par un chef de projet : résultat,
+impact, prochaine action et décisions compréhensibles. Ses trois essais de
+communication passent sans régression, sans gain de qualité démontré.
+
 ## Pour aller plus loin
 
 | Vous souhaitez… | Documentation |

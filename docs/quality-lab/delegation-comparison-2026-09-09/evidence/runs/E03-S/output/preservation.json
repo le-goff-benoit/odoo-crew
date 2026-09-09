@@ -1,0 +1,61 @@
+{
+  "scope": "Synthetic local clone E03-S only",
+  "records_identical": true,
+  "record_count_before": 3,
+  "record_count_after": 3,
+  "before": [
+    {
+      "amount": 36.0,
+      "id": 1,
+      "name": "Seed priced",
+      "quantity": 3,
+      "state": "draft",
+      "unit_price": 12.0
+    },
+    {
+      "amount": 0.0,
+      "id": 2,
+      "name": "Seed free",
+      "quantity": 4,
+      "state": "draft",
+      "unit_price": 0.0
+    },
+    {
+      "amount": 0.0,
+      "id": 3,
+      "name": "Seed empty",
+      "quantity": 0,
+      "state": "draft",
+      "unit_price": 11.0
+    }
+  ],
+  "after": [
+    {
+      "amount": 36.0,
+      "id": 1,
+      "name": "Seed priced",
+      "quantity": 3,
+      "state": "draft",
+      "unit_price": 12.0
+    },
+    {
+      "amount": 0.0,
+      "id": 2,
+      "name": "Seed free",
+      "quantity": 4,
+      "state": "draft",
+      "unit_price": 0.0
+    },
+    {
+      "amount": 0.0,
+      "id": 3,
+      "name": "Seed empty",
+      "quantity": 0,
+      "state": "draft",
+      "unit_price": 11.0
+    }
+  ],
+  "version_before": "19.0.1.0.0",
+  "version_after": "19.0.1.0.1",
+  "note": "The full inventory semantic hash changes because it includes the module version; records are compared separately."
+}

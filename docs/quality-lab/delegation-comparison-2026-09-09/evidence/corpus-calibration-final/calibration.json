@@ -1,0 +1,203 @@
+{
+  "pass": true,
+  "fixtures": [
+    {
+      "case": "E01",
+      "fixture": "positive_hand_authored",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "case": "E01",
+      "fixture": "missing_review",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E01",
+      "fixture": "missing_obligation",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E01",
+      "fixture": "semantic_rejection_existing",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E01",
+      "fixture": "semantic_rejection_proof",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E01",
+      "fixture": "semantic_rejection_scope",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E01",
+      "fixture": "semantic_rejection_limits",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E01",
+      "fixture": "semantic_rejection_memory",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E01",
+      "fixture": "unauthorized_code",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E01",
+      "fixture": "lost_history",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E01",
+      "fixture": "journal_too_long",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E01",
+      "fixture": "input_replaced",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E01",
+      "fixture": "missing_deliverable",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "positive_hand_authored",
+      "expected": true,
+      "actual": true,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "missing_review",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "missing_obligation",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "semantic_rejection_cause",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "semantic_rejection_evidence",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "semantic_rejection_classification",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "semantic_rejection_workaround",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "semantic_rejection_scope",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "semantic_rejection_red_test",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "semantic_rejection_memory",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "unauthorized_code",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "lost_history",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "journal_too_long",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "input_replaced",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    },
+    {
+      "case": "E02",
+      "fixture": "missing_deliverable",
+      "expected": false,
+      "actual": false,
+      "pass": true
+    }
+  ],
+  "scope": "Receiver completeness/preservation and semantic-review rejection propagation. No automated semantic judgment, no Odoo execution, no native candidate pass asserted.",
+  "native_E03_calibration": "Performed separately by runtime on initial red and positive implementation green; see runtime calibration artifacts."
+}

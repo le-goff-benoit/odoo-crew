@@ -1,0 +1,23 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "-d",
+    "--name",
+    "delegcmp-6f9a0b9dfae4-pg",
+    "--label",
+    "delegation-comparison-owner=b2029bb52bf746e7acd9d78d45b39671",
+    "--network",
+    "delegcmp-6f9a0b9dfae4-net",
+    "--tmpfs",
+    "/var/lib/postgresql/data",
+    "-e",
+    "POSTGRES_USER=odoo",
+    "-e",
+    "POSTGRES_PASSWORD=synthetic-lab-only",
+    "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f"
+  ],
+  "log": "/tmp/odoo-delegation-comparison-20260909/runtime/calibration/state/evidence/postgres-20260909-193924-a6a5f42e.log",
+  "returncode": 0,
+  "seconds": 0.139
+}

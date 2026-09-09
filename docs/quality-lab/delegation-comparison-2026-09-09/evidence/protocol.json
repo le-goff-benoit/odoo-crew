@@ -1,0 +1,41 @@
+{
+  "reference": "f6ea0b6851df5269dbec151bbdebe337d67707e8",
+  "frozen_at": "2026-09-09T17:45:55.189320+00:00",
+  "question": "Impact of delegation availability on quality, elapsed time, tokens and rework for three bounded Odoo tasks",
+  "order": [
+    "E01-S",
+    "E01-D",
+    "E02-D",
+    "E02-S",
+    "E03-S",
+    "E03-D"
+  ],
+  "treatments": {
+    "S": "Single participant, no children",
+    "D": "Same inputs plus permission for at most two useful children; zero allowed; no nested delegation"
+  },
+  "scope": "Role/execution benchmark, not end-to-end production workflow certification. Independent common posthoc reception excluded equally from run timing.",
+  "model_effort": "Inherited without override; native observed gpt-6-astra/high, checked for every tree",
+  "limits_minutes": {
+    "E01": 10,
+    "E02": 12,
+    "E03": 20
+  },
+  "primary_runs": 6,
+  "maximum_children_per_D": 2,
+  "maximum_policy_revisions": 2,
+  "maximum_additional_runs": 6,
+  "cli_model_calls": 0,
+  "transport": "Actual Codex collaboration; serial participant trees; four slots root+parent+2children. No background audits/runtime jobs during measured runs.",
+  "inputs": "Public packages identical within pair except absolute paths and S/D condition; same common PM communication instruction before freeze. Runtime clones same semantic hash and immutable images.",
+  "judging": "Original outputs frozen after native completion; shared independent quality audit with opaque labels, technical verification separate; masking cooperative not cryptographically complete. No feedback or policy change within six primary runs.",
+  "quality": "All mandatory case obligations and no critical issue; qualitative score10 (business4,coverage2,evidence2,useful synthesis2), threshold8. PM usability separately 0/1/2 per applicable criterion. No question fabricated to satisfy usability.",
+  "decision": "Descriptive only: keep optional delegation unless D all acceptable without score/coverage loss, E02 useful child overlap and >=20% time gain and token ratio<=1.5, E01 no >25% needless-delegation penalty. One pair per case cannot establish general causal gain. If no children observed, no claim about actual delegation effect.",
+  "heldout": "E03 not used to adjust policy before its pair; all policies frozen before first primary run. After observed, E03 is no longer held out for future revisions.",
+  "privacy": "Export native metadata, tools/results and final only; never incoming/system/developer/reasoning messages. Encrypted native message parameters limit exposure certification.",
+  "feedback": "User PM-language preference recorded verbatim in campaign JOURNAL; applied equally to S/D. No canonical role change during comparison.",
+  "preparation_incidents": [
+    "Designer followup for metrics refused with agent thread limit reached; root implemented metrics locally; no candidate affected.",
+    "Initial private oracle tuple-of-exceptions incompatible with Odoo19 test helper; corrected before freeze, red/green recalibrated."
+  ]
+}

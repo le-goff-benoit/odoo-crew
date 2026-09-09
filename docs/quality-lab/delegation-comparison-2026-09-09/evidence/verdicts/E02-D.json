@@ -1,0 +1,157 @@
+{
+  "case": "E02",
+  "pass": true,
+  "mechanical_only": false,
+  "semantic_review_required": true,
+  "checks": [
+    {
+      "id": "artifact:diagnostic.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E02-D/output/diagnostic.md"
+    },
+    {
+      "id": "artifact:PROJECT.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E02-D/output/PROJECT.md"
+    },
+    {
+      "id": "artifact:JOURNAL.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E02-D/output/JOURNAL.md"
+    },
+    {
+      "id": "artifact:result.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E02-D/output/result.md"
+    },
+    {
+      "id": "preserve_input:demande.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve_input:pieces/decisions.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve_input:pieces/dependencies-source.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve_input:pieces/orm-trace.jsonl",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve_input:task.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve:.odoo-agents/JOURNAL.md",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:.odoo-agents/PROJECT.md",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:.odoo-agents/config",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/__init__.py",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/__manifest__.py",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/models.py",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/security/ir.model.access.csv",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/views/quantity.xml",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "no_unowned_project_files",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "id": "journal_history",
+      "pass": true,
+      "detail": "Existing journal text preserved exactly"
+    },
+    {
+      "id": "journal_15_lines",
+      "pass": true,
+      "detail": 10
+    },
+    {
+      "id": "independent_semantic_review",
+      "pass": true,
+      "detail": "Independent reviewer identity and case mandatory"
+    },
+    {
+      "id": "semantic_coverage",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "id": "semantic:cause",
+      "pass": true,
+      "detail": "R3/project/lab_qualification/models.py : « @api.depends(\"quantity\") ».  R3/project/lab_qualification/models.py : « record.amount = record.quantity * record.unit_price ».  R3/output/diagnostic.md : « 36 attendu, 30 stocké ». Le champ amount est bien stocké ; dépendance prix absente et multiplication exacte."
+    },
+    {
+      "id": "semantic:evidence",
+      "pass": true,
+      "detail": "R3/output/diagnostic.md : « une trace synthétique fournie. ».  R3/pieces/orm-trace.jsonl : « \"after_flush_read\":{\"quantity\":3,\"unit_price\":12,\"amount\":30,\"state\":\"confirmed\"} ».  R3/pieces/decisions.md : « Règle approuvée, aucune confirmation supplémentaire requise. ». Code, trace et D-17 concordent. Citations decorators.py, fields.py et models.py vérifiées directement ; registry.py aussi pour R3."
+    },
+    {
+      "id": "semantic:classification",
+      "pass": true,
+      "detail": "R3/output/diagnostic.md : « Bug custom : dépendance ». Classification cohérente avec le déclencheur incomplet ; aucune gratuité interdite et aucun bug standard imputé."
+    },
+    {
+      "id": "semantic:workaround",
+      "pass": true,
+      "detail": "R3/output/diagnostic.md : « La trace montre que réécrire la même quantité déclenche le recalcul. ».  R3/output/diagnostic.md : « Cela décrit une piste technique à tester sur copie locale, pas une consigne de réparation autorisée ici. ». La trace séquence 3 est vérifiée : write quantity=3 produit 36. Contournement technique concret, borné à une vérification sur copie ; aucun geste production prescrit. Réserve de lisibilité : présenté en seconde intention comme piste derrière le contrôle manuel, mais pas absent."
+    },
+    {
+      "id": "semantic:scope",
+      "pass": true,
+      "detail": "R3/output/diagnostic.md : « Ne pas supposer qu'une correction de dépendances répare tous les montants historiques. ». Impact sur les prix modifiés et inventaire/comptage des écarts sur copie explicités ; futur recalcul traité séparément."
+    },
+    {
+      "id": "semantic:red_test",
+      "pass": true,
+      "detail": "R3/output/diagnostic.md : « Test rouge proposé — non exécuté ».  R3/output/diagnostic.md : « Écrire uniquement `unit_price = 12`. Ne pas écrire la quantité. ». Scénario complet relu : qty3/prix10/montant30, prix seul12, flush/invalidation/relecture, attendu36 ; gratuité, état confirmé et quantité conservés. Aucun appel direct du compute ni affirmation de test exécuté."
+    },
+    {
+      "id": "semantic:memory",
+      "pass": true,
+      "detail": "R3/output/PROJECT.md : « D-17 : prix zéro autorisé pour les lignes gratuites, y compris confirmées. Décision acquise. ». R3/output/PROJECT.md : « SYN-11 résolu : le libellé du bouton ne nécessite plus de changement ; ne pas rouvrir. ». Comparaison au corpus public E02 : journal initial préservé octet pour octet, 11 lignes ajoutées ; décisions de quantité zéro/négative et limites synthétiques conservées. R3/output/PROJECT.md : « Le test rouge reste proposé, non exécuté. ». Suite et limite de preuve mémorisées, D-17 sans question et SYN-11 non rouvert."
+    }
+  ],
+  "limitations": [
+    "Reviewer attestations require independent human/agent inspection; schema validates completeness, not truth.",
+    "Mechanical checks do not prove absence of false narrative claims or external writes."
+  ]
+}

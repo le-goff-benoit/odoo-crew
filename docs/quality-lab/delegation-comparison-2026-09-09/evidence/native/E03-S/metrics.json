@@ -1,0 +1,78 @@
+{
+  "parent": "/root/comp_e03_s",
+  "threads": [
+    {
+      "thread_id": "01a08754-b88f-77a0-b11f-f659dad0edc0",
+      "agent": "/root/comp_e03_s",
+      "start": 1788976871.57,
+      "end": 1788977226.996,
+      "complete": true,
+      "turns": [
+        {
+          "turn_id": "01a08754-b8af-7c61-a580-97ca5bae0e3e",
+          "start": 1788976871.612,
+          "end": 1788977226.996,
+          "seconds": 355.384
+        }
+      ],
+      "model_effort": [
+        [
+          "gpt-6-astra",
+          "high"
+        ]
+      ],
+      "tokens": {
+        "input_tokens": 746336,
+        "cached_input_tokens": 702848,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 10206,
+        "reasoning_output_tokens": 878,
+        "total_tokens": 756542
+      },
+      "usage_response_ids": [
+        "resp_0bb8a87f80d76777016aa19eea091c87d28264d363252c3773",
+        "resp_0bb8a87f80d76777016aa19eee8ab887d296f56ae2c619f572",
+        "resp_0bb8a87f80d76777016aa19ef5c01887d2b3600ffe3373a5f4",
+        "resp_0bb8a87f80d76777016aa19effdfe887d299ee19bbc4ff7a83",
+        "resp_0bb8a87f80d76777016aa19f10c8f087d2be5610e63712168f",
+        "resp_0bb8a87f80d76777016aa19f1784d887d2ad59e8b2f182364d",
+        "resp_0bb8a87f80d76777016aa19f7006a487d2911f673e8c9e7da7",
+        "resp_0bb8a87f80d76777016aa19f91aed087d295fba09a782a1ad9",
+        "resp_0bb8a87f80d76777016aa19f9770fc87d2ac9a52f39856135e",
+        "resp_0bb8a87f80d76777016aa19fabea4487d2a3643ae5d5142db8",
+        "resp_0bb8a87f80d76777016aa19fb0dd6c87d28009d4dfbbb0032d",
+        "resp_0bb8a87f80d76777016aa19fbd314087d2bd09a670447d49d2",
+        "resp_0bb8a87f80d76777016aa19fc2a93487d29287f32f513e7ddb",
+        "resp_0bb8a87f80d76777016aa1a02ec32487d2ba3ecfd7fa126142",
+        "resp_0bb8a87f80d76777016aa1a03c58fc87d29594389f985e2407",
+        "resp_0bb8a87f80d76777016aa1a0461c1c87d2b2ddfd0b5d652a12"
+      ],
+      "tool_calls": 15,
+      "child_spawns": 0,
+      "export": "root--comp_e03_s.jsonl",
+      "export_sha256": "99b78225514672ce647e73a8eacd4f3b823d13b76bf0125748345773e7c13016",
+      "source_snapshot_sha256": "836fa9a030ebc8c3091d29d48b038a72dd2667191af8526783e8e816015eff40"
+    }
+  ],
+  "descendants": 0,
+  "complete": true,
+  "tokens_measured": true,
+  "duplicate_response_ids": false,
+  "tokens": {
+    "reasoning_output_tokens": 878,
+    "output_tokens": 10206,
+    "total_tokens": 756542,
+    "input_tokens": 746336,
+    "cache_write_input_tokens": 0,
+    "cached_input_tokens": 702848
+  },
+  "wall_seconds": 355.426,
+  "child_overlap_seconds": 0.0,
+  "observed_model_effort": [
+    [
+      "gpt-6-astra",
+      "high"
+    ]
+  ],
+  "scope": "One final cumulative counter per thread, descendants included. Cached and reasoning are subsets, not added to total. Overlap is native turn availability, not continuous compute activity. Preparation, coordinator and common judge excluded. Tool content is not a generic secret sanitizer."
+}

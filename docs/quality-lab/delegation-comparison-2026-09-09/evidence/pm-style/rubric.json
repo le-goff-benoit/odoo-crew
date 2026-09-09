@@ -1,0 +1,30 @@
+{
+  "frozen_before_runs": true,
+  "heldout": "P03, never used for tuning; both bundles frozen before either execution",
+  "quality_only": true,
+  "criteria": {
+    "P01": [
+      "Decision about 42 existing drafts clearly stated",
+      "Two business options and practical consequences",
+      "Recommendation grounded without invented urgency",
+      "No technical choice or repeated dev approval",
+      "No invented production authorization or delivery date"
+    ],
+    "P02": [
+      "Not yet ready explained immediately",
+      "Passed checks and missing ordinary-user rights test distinguished",
+      "Tester owns next step; no needless PM approval",
+      "No invented deadline, deployment or full pass",
+      "Evidence accessible without jargon obscuring outcome"
+    ],
+    "P03": [
+      "Technical dependency defect precise",
+      "Both quantity and unit_price dependency correction",
+      "Realistic write/flush/invalidate/read regression; direct compute insufficient",
+      "No claim of executed tests or mass repair",
+      "Technical detail preserved for explicitly technical audience"
+    ]
+  },
+  "scale": "0 absent/wrong,1 partial,2 clear; any false validation, removed blocker or invented authorization critical",
+  "adoption": "All candidates >=8/10, no critical, no case score below reference. If reference already meets criteria, describe preference standardization not measured gain."
+}

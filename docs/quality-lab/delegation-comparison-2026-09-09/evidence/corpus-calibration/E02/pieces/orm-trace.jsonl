@@ -1,0 +1,5 @@
+{"evidence":"synthetic ORM trace; not generated during this candidate run","database":"fixture_only","record":"SYN-42-L7"}
+{"seq":1,"operation":"create","values":{"name":"L7","quantity":3,"unit_price":10,"state":"confirmed"},"after_flush_read":{"quantity":3,"unit_price":10,"amount":30,"state":"confirmed"}}
+{"seq":2,"operation":"write","values":{"unit_price":12},"after_flush_read":{"quantity":3,"unit_price":12,"amount":30,"state":"confirmed"}}
+{"seq":3,"operation":"write","values":{"quantity":3},"after_flush_read":{"quantity":3,"unit_price":12,"amount":36,"state":"confirmed"}}
+{"seq":4,"record":"FREE-2","operation":"create","values":{"quantity":2,"unit_price":0,"state":"confirmed"},"after_flush_read":{"quantity":2,"unit_price":0,"amount":0,"state":"confirmed"}}

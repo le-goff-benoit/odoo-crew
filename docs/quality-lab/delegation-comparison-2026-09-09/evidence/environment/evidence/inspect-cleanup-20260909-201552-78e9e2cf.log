@@ -1,0 +1,33 @@
+[
+    {
+        "Name": "delegcmp-0f281675a438-net",
+        "Id": "64da00647a07002286131ec30bd5941236448578ef45f86908a982ca3c6c5d0c",
+        "Created": "2026-09-09T19:44:04.404980939+02:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "192.168.32.0/20",
+                    "Gateway": "192.168.32.1"
+                }
+            ]
+        },
+        "Internal": true,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {},
+        "Options": {},
+        "Labels": {
+            "delegation-comparison-owner": "d12d0ccfea134284812f45aba248a6a4"
+        }
+    }
+]

@@ -1,0 +1,94 @@
+{
+  "case": "E03",
+  "reviewer": "Codex independent semantic reviewer /root/comparison_quality",
+  "independent": true,
+  "checks": [
+    {
+      "id": "rule",
+      "pass": true,
+      "evidence": "Z2/project/lab_qualification/models.py : « \"CHECK(unit_price >= 0)\" ».  Z2/project/lab_qualification/models.py : « \"CHECK(quantity >= 0)\" ». Contraintes indépendantes : le prix négatif est interdit même avec quantité zéro et dans tous les états ; zéro reste admis. Tests avec petit négatif et défaut de contexte présents."
+    },
+    {
+      "id": "behavior",
+      "pass": true,
+      "evidence": "Z2/project/lab_qualification/models.py : « @api.depends(\"quantity\", \"unit_price\") ».  Z2/project/lab_qualification/models.py : « record.amount = record.quantity * record.unit_price ».  Z2/project/lab_qualification/models.py : « self.write({\"state\": \"confirmed\"}) ». Comparaison au corpus public : calcul, action, vue, ACL et quatre tests initiaux conservés. Tests nouveaux vérifient gratuité confirmée et recalcul de chaque facteur. Conservation des données en runtime à confirmer séparément."
+    },
+    {
+      "id": "channels",
+      "pass": true,
+      "evidence": "Z2/project/lab_qualification/tests/test_price.py : « def test_transaction_batch_rollback(self): ».  Z2/project/lab_qualification/tests/test_price.py : « def test_load_update_atomicity(self): ».  Lecture complète : create/write directs, lots mixtes prix ou quantité invalides, import load valide et invalide en création/mise à jour, valeurs préservées après rollback. Flush réel dans savepoint pour ORM ; load testé sans savepoint externe imposant artificiellement son annulation. Les assertions portent sur ids/messages/valeurs, pas sur une simple absence de crash. PASS de relecture, conditionné au contrôle indépendant des exécutions annoncé dans runtime_claims_to_verify ; aucune exécution attestée par ce relecteur."
+    },
+    {
+      "id": "style",
+      "pass": true,
+      "evidence": "Z2/project/lab_qualification/models.py : « _unit_price_nonnegative = models.Constraint( ».  Correctif minimal 19.0 : contrainte, manifest 19.0.1.0.1 et tests. Imports/ACL/vue conservés par comparaison binaire au corpus public. Les empreintes code-sha256.json correspondent à tous les fichiers livrés. Sources de contraintes stock et test_sql citées vérifiées. Aucune écriture aux sources Odoo effectuée par cette revue."
+    },
+    {
+      "id": "qa",
+      "pass": true,
+      "evidence": "Z2/output/qa.md : « 0 failed, 0 error(s) of 14 tests ».  Z2/output/qa.md : « Pas de certification de release ni d'installation sur base neuve ». Rapport précis : rouge/vert, nombre de méthodes distingué des sous-tests, mise à jour locale, lint bloquant vs conseils, limites du bouton et du jeu synthétique. Affirmations cohérentes avec le contenu des tests ; authenticité/exécution à contrôler séparément. PASS documentaire provisoire, pas certification runtime."
+    },
+    {
+      "id": "memory",
+      "pass": true,
+      "evidence": "Z2/output/PROJECT.md : « D-17 : prix zéro autorisé pour les lignes gratuites, y compris confirmées. Décision acquise. ». Z2/output/PROJECT.md : « SYN-11 résolu : le libellé du bouton ne nécessite plus de changement ; ne pas rouvrir. ». Comparaison au corpus public E03 : journal initial préservé octet pour octet, 10 lignes ajoutées ; décisions de quantité zéro/négative et limites synthétiques conservées. Z2/output/PROJECT.md : « Aucune livraison client attestée ». Règle nouvelle et limites transactionnelles mémorisées sans inventer de données client."
+    }
+  ],
+  "score": {
+    "business": 4,
+    "coverage": 2,
+    "evidence": 2,
+    "useful_synthesis": 2,
+    "total": 10
+  },
+  "critical_issues": [],
+  "pm": {
+    "criteria": [
+      {
+        "criterion": "Outcome immediately understandable to an Odoo PM",
+        "score": 2,
+        "evidence": "Z2/output/result.md : « Le correctif est prêt et validé sur la copie locale synthétique. ». "
+      },
+      {
+        "criterion": "Concrete business impact explained",
+        "score": 2,
+        "evidence": "Z2/output/result.md : « Les lignes gratuites restent autorisées, même confirmées. ». "
+      },
+      {
+        "criterion": "Next action and actor explicit, no unnecessary approval",
+        "score": 2,
+        "evidence": "Z2/output/result.md : « Prochaine action : le responsable du banc peut lancer la réception indépendante sur le code livré. ». "
+      },
+      {
+        "criterion": "Necessary decisions answerable with options/consequences/recommendation; N/A if none required",
+        "score": null,
+        "evidence": "N/A : aucune décision métier nouvelle nécessaire ; aucune question requise ni posée. Qualité des questions non mesurée."
+      },
+      {
+        "criterion": "Technical details kept accessible without obscuring result or honest limits",
+        "score": 2,
+        "evidence": "Z2/output/result.md : « Aucun déploiement client ni contrôle visuel du bouton n'a été effectué ; son action a été testée automatiquement. ». "
+      }
+    ],
+    "total": 8,
+    "max": 8
+  },
+  "runtime_claims_to_verify": [
+    {
+      "claim": "Z2/output/qa.md : « 0 failed, 0 error(s) of 14 tests ». ",
+      "verification_needed": "Contrôler les journaux bruts de mise à jour et de tests verts, noms réellement exécutés, absence de saut et code/hash testé. Aucun runtime exécuté par ce relecteur."
+    },
+    {
+      "claim": "Z2/output/qa.md : « 14 méthodes exécutées, 18 échecs d'assertion/sous-tests ». ",
+      "verification_needed": "Vérifier le rouge avant contrainte, échecs attendus et mêmes tests après correctif."
+    },
+    {
+      "claim": "Z2/output/qa.md : « mêmes id, name, quantity, unit_price, amount et state ». ",
+      "verification_needed": "Comparaisons documentaires fournies cohérentes ; rattacher inventaires au clone/runtime et à la mise à jour effectifs. Ne pas étendre la conservation aux métadonnées non inventoriées."
+    },
+    {
+      "claim": "Z2/output/qa.md : « code retour 0, règles Ruff bloquantes réussies ». ",
+      "verification_needed": "Vérifier lint effectif du code final ; conseils non bloquants distincts du résultat requis."
+    }
+  ]
+}

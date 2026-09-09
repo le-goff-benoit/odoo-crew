@@ -1,0 +1,82 @@
+{
+  "case": "E02",
+  "reviewer": "Codex independent semantic reviewer /root/comparison_quality",
+  "independent": true,
+  "checks": [
+    {
+      "id": "cause",
+      "pass": true,
+      "evidence": "R3/project/lab_qualification/models.py : « @api.depends(\"quantity\") ».  R3/project/lab_qualification/models.py : « record.amount = record.quantity * record.unit_price ».  R3/output/diagnostic.md : « 36 attendu, 30 stocké ». Le champ amount est bien stocké ; dépendance prix absente et multiplication exacte."
+    },
+    {
+      "id": "evidence",
+      "pass": true,
+      "evidence": "R3/output/diagnostic.md : « une trace synthétique fournie. ».  R3/pieces/orm-trace.jsonl : « \"after_flush_read\":{\"quantity\":3,\"unit_price\":12,\"amount\":30,\"state\":\"confirmed\"} ».  R3/pieces/decisions.md : « Règle approuvée, aucune confirmation supplémentaire requise. ». Code, trace et D-17 concordent. Citations decorators.py, fields.py et models.py vérifiées directement ; registry.py aussi pour R3."
+    },
+    {
+      "id": "classification",
+      "pass": true,
+      "evidence": "R3/output/diagnostic.md : « Bug custom : dépendance ». Classification cohérente avec le déclencheur incomplet ; aucune gratuité interdite et aucun bug standard imputé."
+    },
+    {
+      "id": "workaround",
+      "pass": true,
+      "evidence": "R3/output/diagnostic.md : « La trace montre que réécrire la même quantité déclenche le recalcul. ».  R3/output/diagnostic.md : « Cela décrit une piste technique à tester sur copie locale, pas une consigne de réparation autorisée ici. ». La trace séquence 3 est vérifiée : write quantity=3 produit 36. Contournement technique concret, borné à une vérification sur copie ; aucun geste production prescrit. Réserve de lisibilité : présenté en seconde intention comme piste derrière le contrôle manuel, mais pas absent."
+    },
+    {
+      "id": "scope",
+      "pass": true,
+      "evidence": "R3/output/diagnostic.md : « Ne pas supposer qu'une correction de dépendances répare tous les montants historiques. ». Impact sur les prix modifiés et inventaire/comptage des écarts sur copie explicités ; futur recalcul traité séparément."
+    },
+    {
+      "id": "red_test",
+      "pass": true,
+      "evidence": "R3/output/diagnostic.md : « Test rouge proposé — non exécuté ».  R3/output/diagnostic.md : « Écrire uniquement `unit_price = 12`. Ne pas écrire la quantité. ». Scénario complet relu : qty3/prix10/montant30, prix seul12, flush/invalidation/relecture, attendu36 ; gratuité, état confirmé et quantité conservés. Aucun appel direct du compute ni affirmation de test exécuté."
+    },
+    {
+      "id": "memory",
+      "pass": true,
+      "evidence": "R3/output/PROJECT.md : « D-17 : prix zéro autorisé pour les lignes gratuites, y compris confirmées. Décision acquise. ». R3/output/PROJECT.md : « SYN-11 résolu : le libellé du bouton ne nécessite plus de changement ; ne pas rouvrir. ». Comparaison au corpus public E02 : journal initial préservé octet pour octet, 11 lignes ajoutées ; décisions de quantité zéro/négative et limites synthétiques conservées. R3/output/PROJECT.md : « Le test rouge reste proposé, non exécuté. ». Suite et limite de preuve mémorisées, D-17 sans question et SYN-11 non rouvert."
+    }
+  ],
+  "score": {
+    "business": 4,
+    "coverage": 2,
+    "evidence": 2,
+    "useful_synthesis": 2,
+    "total": 10
+  },
+  "critical_issues": [],
+  "pm": {
+    "criteria": [
+      {
+        "criterion": "Outcome immediately understandable to an Odoo PM",
+        "score": 2,
+        "evidence": "R3/output/result.md : « Le défaut est confirmé dans les pièces synthétiques : après le changement de prix, le montant reste à 30 au lieu de 36. ». "
+      },
+      {
+        "criterion": "Concrete business impact explained",
+        "score": 2,
+        "evidence": "R3/output/result.md : « Les montants affichés peuvent donc être faux après une modification du prix. ». "
+      },
+      {
+        "criterion": "Next action and actor explicit, no unnecessary approval",
+        "score": 2,
+        "evidence": "R3/output/result.md : « La prochaine action revient au développeur, avec le support : reproduire le défaut sur une copie locale avec le test proposé, puis préparer la correction. ». "
+      },
+      {
+        "criterion": "Necessary decisions answerable with options/consequences/recommendation; N/A if none required",
+        "score": null,
+        "evidence": "N/A : aucune décision métier nouvelle nécessaire ; aucune question requise ni posée. Qualité des questions non mesurée."
+      },
+      {
+        "criterion": "Technical details kept accessible without obscuring result or honest limits",
+        "score": 2,
+        "evidence": "R3/output/result.md : « Le test proposé reste à exécuter. Aucun correctif n'a été appliqué. ». "
+      }
+    ],
+    "total": 8,
+    "max": 8
+  },
+  "runtime_claims_to_verify": []
+}

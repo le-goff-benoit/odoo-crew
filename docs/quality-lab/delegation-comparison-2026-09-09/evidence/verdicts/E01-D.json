@@ -1,0 +1,137 @@
+{
+  "case": "E01",
+  "pass": true,
+  "mechanical_only": false,
+  "semantic_review_required": true,
+  "checks": [
+    {
+      "id": "artifact:analyse.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E01-D/output/analyse.md"
+    },
+    {
+      "id": "artifact:PROJECT.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E01-D/output/PROJECT.md"
+    },
+    {
+      "id": "artifact:JOURNAL.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E01-D/output/JOURNAL.md"
+    },
+    {
+      "id": "artifact:result.md",
+      "pass": true,
+      "detail": "/tmp/odoo-delegation-comparison-20260909/snapshots/E01-D/output/result.md"
+    },
+    {
+      "id": "preserve_input:demande.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve_input:pieces/constraint-source.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve_input:task.md",
+      "pass": true,
+      "detail": "Public evidence preserved"
+    },
+    {
+      "id": "preserve:.odoo-agents/JOURNAL.md",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:.odoo-agents/PROJECT.md",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:.odoo-agents/config",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/__init__.py",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/__manifest__.py",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/models.py",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/security/ir.model.access.csv",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "preserve:lab_qualification/views/quantity.xml",
+      "pass": true,
+      "detail": "Original input remains byte-identical"
+    },
+    {
+      "id": "no_unowned_project_files",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "id": "journal_history",
+      "pass": true,
+      "detail": "Existing journal text preserved exactly"
+    },
+    {
+      "id": "journal_15_lines",
+      "pass": true,
+      "detail": 9
+    },
+    {
+      "id": "independent_semantic_review",
+      "pass": true,
+      "detail": "Independent reviewer identity and case mandatory"
+    },
+    {
+      "id": "semantic_coverage",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "id": "semantic:existing",
+      "pass": true,
+      "detail": "V4/output/analyse.md : « ÇA EXISTE dans le module fourni. ». Le verdict attribue correctement la règle au custom existant, pas au standard métier."
+    },
+    {
+      "id": "semantic:proof",
+      "pass": true,
+      "detail": "V4/project/lab_qualification/models.py : « _name = \"lab.qualification\" ».  V4/project/lab_qualification/models.py : « \"CHECK(quantity >= 0)\" ».  V4/output/analyse.md : « /home/blegoff/odoo-sources/19.0/odoo/orm/table_objects.py ». Source 19.0 relue : class Constraint(TableObject), définition ajoutée par apply_to_database. Citation déterminante exacte et pertinente."
+    },
+    {
+      "id": "semantic:scope",
+      "pass": true,
+      "detail": "V4/output/analyse.md : « Ces écritures restent soumises à la contrainte SQL installée. ». La lecture du CHECK confirme la borne inclusive zéro. Créations, modifications et imports explicités sans proposer de doublon. Le parcours load/write/create cité dans V4 a été vérifié dans les sources 19.0."
+    },
+    {
+      "id": "semantic:limits",
+      "pass": true,
+      "detail": "V4/output/analyse.md : « La présence de la déclaration dans le code ne garantit pas que la version correspondante du module ou la contrainte soit installée sur une base client. ». "
+    },
+    {
+      "id": "semantic:memory",
+      "pass": true,
+      "detail": "V4/output/PROJECT.md : « D-17 : prix zéro autorisé pour les lignes gratuites, y compris confirmées. Décision acquise. ». V4/output/PROJECT.md : « SYN-11 résolu : le libellé du bouton ne nécessite plus de changement ; ne pas rouvrir. ». Comparaison au corpus public E01 : journal initial préservé octet pour octet, 10 lignes ajoutées ; décisions de quantité zéro/négative et limites synthétiques conservées. V4/output/PROJECT.md : « Son déploiement client et les données existantes n'ont pas été vérifiés ; aucun Odoo n'a été exécuté. ». "
+    }
+  ],
+  "limitations": [
+    "Reviewer attestations require independent human/agent inspection; schema validates completeness, not truth.",
+    "Mechanical checks do not prove absence of false narrative claims or external writes."
+  ]
+}

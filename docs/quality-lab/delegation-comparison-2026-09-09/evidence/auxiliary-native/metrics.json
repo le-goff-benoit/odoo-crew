@@ -1,0 +1,327 @@
+{
+  "threads": [
+    {
+      "thread_id": "01a08761-5253-7ee3-ac06-ee599430bf06",
+      "agent": "/root/pm_candidate",
+      "start": 1788977697.366,
+      "end": 1788977748.902,
+      "complete": true,
+      "turns": [
+        {
+          "turn_id": "01a08761-5271-7551-8a92-70694d5691f1",
+          "start": 1788977697.4029999,
+          "end": 1788977748.902,
+          "seconds": 51.499
+        }
+      ],
+      "model_effort": [
+        [
+          "gpt-6-astra",
+          "high"
+        ]
+      ],
+      "tokens": {
+        "input_tokens": 178122,
+        "cached_input_tokens": 158848,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1064,
+        "reasoning_output_tokens": 103,
+        "total_tokens": 179186
+      },
+      "usage_response_ids": [
+        "resp_04f28bb8235b1682016aa1a2234ffc87d283a2d95aa55ce0d9",
+        "resp_04f28bb8235b1682016aa1a227360c87d29b6a15c59aeae7e2",
+        "resp_04f28bb8235b1682016aa1a22a8cc087d2b6648b186c3f8aa8",
+        "resp_04f28bb8235b1682016aa1a230775c87d28750d790b5965f83",
+        "resp_04f28bb8235b1682016aa1a237681887d298ef959e8fe41e80",
+        "resp_04f28bb8235b1682016aa1a2511f7487d2bafb96b3cd686da6"
+      ],
+      "export": "pm_candidate.jsonl",
+      "export_sha256": "f4e7261fd7e8bf30403f46d11e0102775304cb0064627f50b0e49262b7ee6ae2",
+      "source_snapshot_sha256": "bb6f518c43f3bff164b42eff35649d96551034954fdde46c6997a3d4ffca1a20"
+    },
+    {
+      "thread_id": "01a0873d-2634-71c2-8a94-01778cac998f",
+      "agent": "/root/comparison_corpus",
+      "start": 1788975326.776,
+      "end": 1788975741.903,
+      "complete": true,
+      "turns": [
+        {
+          "turn_id": "01a0873d-2655-79b0-a305-6d65b5cfd24f",
+          "start": 1788975326.822,
+          "end": 1788975741.903,
+          "seconds": 415.081
+        }
+      ],
+      "model_effort": [
+        [
+          "gpt-6-astra",
+          "high"
+        ]
+      ],
+      "tokens": {
+        "input_tokens": 640273,
+        "cached_input_tokens": 602624,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 11616,
+        "reasoning_output_tokens": 831,
+        "total_tokens": 651889
+      },
+      "usage_response_ids": [
+        "resp_0a294365352f3edc016aa198e1554487d2a80bf50fa644d4c9",
+        "resp_0a294365352f3edc016aa198e61cac87d28bb400921b4a8bbe",
+        "resp_0a294365352f3edc016aa198ee977c87d29806e339c440c514",
+        "resp_0a294365352f3edc016aa198f410b487d2a4c76deffe5a636d",
+        "resp_0a294365352f3edc016aa198faac7487d29971f7d4d6b1f06c",
+        "resp_0a294365352f3edc016aa198fdfe1c87d2997d44ef216897e5",
+        "resp_0a294365352f3edc016aa19907b00887d28f7de871af02296d",
+        "resp_0a294365352f3edc016aa1993429cc87d28b1b163963732d6d",
+        "resp_0a294365352f3edc016aa1993e191c87d293e6ddc3f7f9d5d1",
+        "resp_0a294365352f3edc016aa19942f7d087d293bf381ac4ba4781",
+        "resp_0a294365352f3edc016aa19954fe6487d2b24dd600a6243658",
+        "resp_0a294365352f3edc016aa1995adae887d2beaa3fda75aa6287",
+        "resp_0a294365352f3edc016aa199bc464887d294a59e01f83683d9",
+        "resp_0a294365352f3edc016aa199fd272c87d290b7ff347c461bec",
+        "resp_0a294365352f3edc016aa19a09f14487d2b8ed8cd6fba0ee4b",
+        "resp_0a294365352f3edc016aa19a103a8487d2b35963c85b326595",
+        "resp_0a294365352f3edc016aa19a14a8a487d29a395510f1680f58",
+        "resp_0a294365352f3edc016aa19a4aed9887d283993ff240a2c870",
+        "resp_0a294365352f3edc016aa19a5b0ad887d295814e8e075a2afd",
+        "resp_0a294365352f3edc016aa19a6b2a1487d28842a71cc6aac056",
+        "resp_0a294365352f3edc016aa19a77235487d2b30cb2c8c332cf0a"
+      ],
+      "export": "comparison_corpus.jsonl",
+      "export_sha256": "d34a7238ac1cd4fdc9e78b8c96e2839853a3f526f5a400949856ffba9845052d",
+      "source_snapshot_sha256": "1dd725774ff00ee7c500a5cde6198e032baa24274598b757c76f71f881d94bb3"
+    },
+    {
+      "thread_id": "01a08762-8c18-7f83-b42d-d2a50cf39ec8",
+      "agent": "/root/pm_quality",
+      "start": 1788977777.691,
+      "end": 1788977879.317,
+      "complete": true,
+      "turns": [
+        {
+          "turn_id": "01a08762-8c38-7123-a75a-cb61a35a7ef5",
+          "start": 1788977777.7289999,
+          "end": 1788977879.317,
+          "seconds": 101.588
+        }
+      ],
+      "model_effort": [
+        [
+          "gpt-6-astra",
+          "high"
+        ]
+      ],
+      "tokens": {
+        "input_tokens": 119657,
+        "cached_input_tokens": 112128,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2929,
+        "reasoning_output_tokens": 126,
+        "total_tokens": 122586
+      },
+      "usage_response_ids": [
+        "resp_0f1906e0b719f221016aa1a2740cf887d295cea85e3dd2d208",
+        "resp_0f1906e0b719f221016aa1a278952887d2b22cc0860b8b57f7",
+        "resp_0f1906e0b719f221016aa1a27c3de887d280056d98d5caa202",
+        "resp_0f1906e0b719f221016aa1a2827ca087d28644a0ecd77ed207",
+        "resp_0f1906e0b719f221016aa1a2d38cd087d29417797011e46e9b"
+      ],
+      "export": "pm_quality.jsonl",
+      "export_sha256": "77656342feae7dde76991c29bf661383ac48066ea73f616f2e7c4192f035b0b6",
+      "source_snapshot_sha256": "2c7b5dbd9963ae5a10204aeebad5fbfe78b37e8d681bd15cc35b144cad546f71"
+    },
+    {
+      "thread_id": "01a0875f-ca80-7480-bc4c-5bc6a246cd12",
+      "agent": "/root/comparison_quality",
+      "start": 1788977597.06,
+      "end": 1788977929.457,
+      "complete": true,
+      "turns": [
+        {
+          "turn_id": "01a0875f-ca9f-7a90-953a-c4541f2ce6e2",
+          "start": 1788977597.0970001,
+          "end": 1788977929.457,
+          "seconds": 332.36
+        }
+      ],
+      "model_effort": [
+        [
+          "gpt-6-astra",
+          "high"
+        ]
+      ],
+      "tokens": {
+        "input_tokens": 977278,
+        "cached_input_tokens": 919040,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9390,
+        "reasoning_output_tokens": 1019,
+        "total_tokens": 986668
+      },
+      "usage_response_ids": [
+        "resp_0ce65b43909308e9016aa1a1bfeb6887d280ea6cfb9605c679",
+        "resp_0ce65b43909308e9016aa1a1c4bdbc87d29821d6713788e87a",
+        "resp_0ce65b43909308e9016aa1a1c7b8dc87d2ac3d13008b61d58a",
+        "resp_0ce65b43909308e9016aa1a1d9a11087d29da4d61bfa2600d1",
+        "resp_0ce65b43909308e9016aa1a1e1b8c487d2a2b3d4ec47adc921",
+        "resp_0ce65b43909308e9016aa1a1e7846087d281db2c01631f675e",
+        "resp_0ce65b43909308e9016aa1a1f157d087d2a5ec5c2374073577",
+        "resp_0ce65b43909308e9016aa1a1f79fd087d2b06d822341eb8c60",
+        "resp_0ce65b43909308e9016aa1a200182c87d2ab5536e392b93ed7",
+        "resp_0ce65b43909308e9016aa1a20bfa4c87d2a77b4a64ea778f54",
+        "resp_0ce65b43909308e9016aa1a22358c487d2b68222e464f56d4e",
+        "resp_0ce65b43909308e9016aa1a23214a487d29e42b0cd50b8119c",
+        "resp_0ce65b43909308e9016aa1a237acb487d29079ec1946f44cef",
+        "resp_0ce65b43909308e9016aa1a24ac00487d2a01eafd760fbdc48",
+        "resp_0ce65b43909308e9016aa1a2b3d2d087d2a2f934958ebf3412",
+        "resp_0ce65b43909308e9016aa1a2fc917087d2b6bd8d37c7a0c5a1",
+        "resp_0ce65b43909308e9016aa1a305b3f887d28e1c83670c2ade0f"
+      ],
+      "export": "comparison_quality.jsonl",
+      "export_sha256": "3a609dfb00c2943024822dfe889662f39fc9c4cfe203a2367f39db1bc05006e2",
+      "source_snapshot_sha256": "238f528d002e95ccd0cdc0044fec7de382bf79ac569057c3b21c73235db64d4e"
+    },
+    {
+      "thread_id": "01a0873e-09db-75c0-8947-716a050306b2",
+      "agent": "/root/comparison_runtime",
+      "start": 1788975385.055,
+      "end": 1788975723.099,
+      "complete": true,
+      "turns": [
+        {
+          "turn_id": "01a0873e-09fc-71b2-84cb-17ef25ee331a",
+          "start": 1788975385.097,
+          "end": 1788975723.099,
+          "seconds": 338.002
+        }
+      ],
+      "model_effort": [
+        [
+          "gpt-6-astra",
+          "high"
+        ]
+      ],
+      "tokens": {
+        "input_tokens": 835008,
+        "cached_input_tokens": 789376,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7694,
+        "reasoning_output_tokens": 424,
+        "total_tokens": 842702
+      },
+      "usage_response_ids": [
+        "resp_0838372728823ffa016aa1991bda8487d28dd3bd6e38182111",
+        "resp_0838372728823ffa016aa1992202f087d2ac1ab1f0b98af5c6",
+        "resp_0838372728823ffa016aa1992a115887d298e8b09739d3aaba",
+        "resp_0838372728823ffa016aa1993086d887d2aec1d740a099d508",
+        "resp_0838372728823ffa016aa199461fac87d2ad7f8c1c5673fba6",
+        "resp_0838372728823ffa016aa1994ceffc87d28041b417dc1ac1a3",
+        "resp_0838372728823ffa016aa199babd7887d2aae488a2226e4f5a",
+        "resp_0838372728823ffa016aa199c3d91887d29f9cf32f70aff239",
+        "resp_0838372728823ffa016aa199cdb57887d2bd5488d338b0b2e2",
+        "resp_0838372728823ffa016aa199d6170887d29d4c6d881e7e7ed1",
+        "resp_0838372728823ffa016aa199dbca6c87d2b71881fc902d2806",
+        "resp_0838372728823ffa016aa199eab09c87d29bc3b450d95870d0",
+        "resp_0838372728823ffa016aa199f4ee7c87d2a1e6296e4fb64ffb",
+        "resp_0838372728823ffa016aa199fd671087d28ce08db9746f1df2",
+        "resp_0838372728823ffa016aa19a0178c087d2b55d46ded8477798",
+        "resp_0838372728823ffa016aa19a080b3087d2a86c910a02caf572",
+        "resp_0838372728823ffa016aa19a1a00dc87d287850d8d7db8c3fe",
+        "resp_0838372728823ffa016aa19a2d298087d2921bfa67e3f229e2",
+        "resp_0838372728823ffa016aa19a35492487d296a8d94aa65e1735",
+        "resp_0838372728823ffa016aa19a3ec32087d2afcebf532b029501",
+        "resp_0838372728823ffa016aa19a53c4a887d29135daac6ad20980",
+        "resp_0838372728823ffa016aa19a59e38087d2966dc8c548a34751",
+        "resp_0838372728823ffa016aa19a6068fc87d2909fa33060450c7a"
+      ],
+      "export": "comparison_runtime.jsonl",
+      "export_sha256": "355d68db579096bb1d2b56b40cf190cde165fbb2f5d724f1705681bc0f337280",
+      "source_snapshot_sha256": "0d261994b4ab8609c74f33e60c9ea7f1465c2d75245bc55f8146fcbf6146c5b4"
+    },
+    {
+      "thread_id": "01a0873b-81dc-7df3-b011-600f21f5d83c",
+      "agent": "/root/comparison_design",
+      "start": 1788975219.168,
+      "end": 1788975357.06,
+      "complete": true,
+      "turns": [
+        {
+          "turn_id": "01a0873b-8203-70a2-b4bf-a995bb2cb9e7",
+          "start": 1788975219.215,
+          "end": 1788975357.06,
+          "seconds": 137.845
+        }
+      ],
+      "model_effort": [
+        [
+          "gpt-6-astra",
+          "high"
+        ]
+      ],
+      "tokens": {
+        "input_tokens": 213351,
+        "cached_input_tokens": 196992,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3497,
+        "reasoning_output_tokens": 46,
+        "total_tokens": 216848
+      },
+      "usage_response_ids": [
+        "resp_07f354736cc3fe11016aa198753eac87d295e5d82a9dea99fa",
+        "resp_07f354736cc3fe11016aa1987c37b487d2857399cddd4dae77",
+        "resp_07f354736cc3fe11016aa19882f1cc87d2bd39bd449fca6179",
+        "resp_07f354736cc3fe11016aa198885b0c87d2a2cc729aa6f59275",
+        "resp_07f354736cc3fe11016aa198910f4487d2b557cbcbebafd51b",
+        "resp_07f354736cc3fe11016aa198ea130c87d2a4f7115148c8a427",
+        "resp_07f354736cc3fe11016aa198f18ba487d2b4a83105a7c024f9"
+      ],
+      "export": "comparison_design.jsonl",
+      "export_sha256": "0906ed98f6cba5a8854fba613468a25ade43cde161b5ca454f60d4bbfaab895f",
+      "source_snapshot_sha256": "443e072ccd19b2d75f5f55d0d55a27ab246e61a3f56261cd13e45ceee43aa2dd"
+    },
+    {
+      "thread_id": "01a0875f-e820-7552-a5e5-f8ce3996b676",
+      "agent": "/root/pm_reference",
+      "start": 1788977604.644,
+      "end": 1788977645.996,
+      "complete": true,
+      "turns": [
+        {
+          "turn_id": "01a0875f-e83f-74e2-a851-8caa717a9752",
+          "start": 1788977604.68,
+          "end": 1788977645.996,
+          "seconds": 41.316
+        }
+      ],
+      "model_effort": [
+        [
+          "gpt-6-astra",
+          "high"
+        ]
+      ],
+      "tokens": {
+        "input_tokens": 149329,
+        "cached_input_tokens": 132096,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 995,
+        "reasoning_output_tokens": 127,
+        "total_tokens": 150324
+      },
+      "usage_response_ids": [
+        "resp_015850be94602a88016aa1a1c6a29c87d292f12d729d8ef4bf",
+        "resp_015850be94602a88016aa1a1ca65bc87d2af16c721824baaee",
+        "resp_015850be94602a88016aa1a1cf4fbc87d283b3e109e536d1c2",
+        "resp_015850be94602a88016aa1a1d2aa1887d28fac6535a5a813ff",
+        "resp_015850be94602a88016aa1a1eba40887d29579a5ceca83ccf8"
+      ],
+      "export": "pm_reference.jsonl",
+      "export_sha256": "7be3f888a2e5e19ba69b703f68b89ffcb40add1afb859a9a15e6a2617a605b45",
+      "source_snapshot_sha256": "3526b78e9ab698428f2957461f89a72984918ada4a98b5606adcae088b05e508"
+    }
+  ],
+  "scope": "Auxiliary metadata only: no messages or tool content exported. Preparation, common reviews and separate communication test excluded from primary timing. Root cumulative turn spans earlier campaigns and is not attributable, not zero."
+}

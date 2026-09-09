@@ -1,0 +1,80 @@
+2026-09-09 17:40:58,807 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 17:40:58,808 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 17:40:58,808 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo-data/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 17:40:58,808 1 INFO ? odoo: database: odoo@delegcmp-6f9a0b9dfae4-pg:default 
+2026-09-09 17:40:58,973 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 9945d1269741:8069 
+2026-09-09 17:40:58,984 1 INFO comparison_run_0 odoo.tests.common: Importing test framework 
+2026-09-09 17:40:58,999 1 INFO comparison_run_0 odoo.modules.loading: loading 1 modules... 
+2026-09-09 17:40:59,001 1 INFO comparison_run_0 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 17:40:59,016 1 INFO comparison_run_0 odoo.modules.loading: updating modules list 
+2026-09-09 17:40:59,016 1 INFO comparison_run_0 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 17:40:59,534 1 INFO comparison_run_0 odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 17:40:59,535 1 INFO comparison_run_0 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 17:41:00,103 1 INFO comparison_run_0 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 17:41:00,117 1 INFO comparison_run_0 odoo.modules.loading: loading 15 modules... 
+2026-09-09 17:41:00,134 1 INFO comparison_run_0 odoo.modules.loading: Loading module lab_qualification (10/15) 
+2026-09-09 17:41:00,178 1 INFO comparison_run_0 odoo.registry: module lab_qualification: creating or updating database tables 
+2026-09-09 17:41:00,205 1 INFO comparison_run_0 odoo.modules.loading: loading lab_qualification/security/ir.model.access.csv 
+2026-09-09 17:41:00,210 1 INFO comparison_run_0 odoo.modules.loading: loading lab_qualification/views/quantity.xml 
+2026-09-09 17:41:00,231 1 INFO comparison_run_0 odoo.modules.loading: Module lab_qualification loaded in 0.10s, 68 queries (+68 other) 
+2026-09-09 17:41:00,346 1 INFO comparison_run_0 odoo.modules.loading: 15 modules loaded in 0.23s, 68 queries (+68 extra) 
+2026-09-09 17:41:00,422 1 INFO comparison_run_0 odoo.registry: verifying fields for every extended model 
+2026-09-09 17:41:00,497 1 INFO comparison_run_0 odoo.modules.loading: Modules loaded. 
+2026-09-09 17:41:00,500 1 INFO comparison_run_0 odoo.registry: Registry changed, signaling through the database 
+2026-09-09 17:41:00,501 1 INFO comparison_run_0 odoo.registry: Registry loaded in 1.527s 
+2026-09-09 17:41:00,501 1 INFO comparison_run_0 odoo.service.server: Starting post tests 
+2026-09-09 17:41:00,502 1 INFO comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: Starting TestDelegationOracle.test_batch_atomicity ... 
+2026-09-09 17:41:00,506 1 INFO comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: ====================================================================== 
+2026-09-09 17:41:00,506 1 ERROR comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: FAIL: TestDelegationOracle.test_batch_atomicity
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 60, in test_batch_atomicity
+    self._reject(lambda: model.create([
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 15, in _reject
+    with unittest.TestCase.assertRaises(self, (CheckViolation, ValidationError)), self.env.cr.savepoint():
+AssertionError: (<class 'psycopg2.errors.CheckViolation'>, <class 'odoo.exceptions.ValidationError'>) not raised
+ 
+2026-09-09 17:41:00,507 1 INFO comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: Starting TestDelegationOracle.test_free_and_zero_quantity ... 
+2026-09-09 17:41:00,512 1 INFO comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: ====================================================================== 
+2026-09-09 17:41:00,512 1 ERROR comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: FAIL: TestDelegationOracle.test_free_and_zero_quantity
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 35, in test_free_and_zero_quantity
+    self._reject(lambda: empty.write({'unit_price': -1}))
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 15, in _reject
+    with unittest.TestCase.assertRaises(self, (CheckViolation, ValidationError)), self.env.cr.savepoint():
+AssertionError: (<class 'psycopg2.errors.CheckViolation'>, <class 'odoo.exceptions.ValidationError'>) not raised
+ 
+2026-09-09 17:41:00,512 1 INFO comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: Starting TestDelegationOracle.test_import_load ... 
+2026-09-09 17:41:00,515 1 INFO comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: ====================================================================== 
+2026-09-09 17:41:00,515 1 ERROR comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: FAIL: TestDelegationOracle.test_import_load
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 82, in test_import_load
+    self.assertTrue(any(m.get('type') == 'error' for m in bad.get('messages', [])))
+AssertionError: False is not true
+ 
+2026-09-09 17:41:00,515 1 INFO comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: Starting TestDelegationOracle.test_negative_create_and_write ... 
+2026-09-09 17:41:00,517 1 INFO comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: ====================================================================== 
+2026-09-09 17:41:00,517 1 ERROR comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: FAIL: TestDelegationOracle.test_negative_create_and_write
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 21, in test_negative_create_and_write
+    self._reject(lambda: model.create({'name': 'oracle negative', 'quantity': 2, 'unit_price': -0.01}))
+  File "/mnt/extra-addons/lab_qualification/tests/test_oracle.py", line 15, in _reject
+    with unittest.TestCase.assertRaises(self, (CheckViolation, ValidationError)), self.env.cr.savepoint():
+AssertionError: (<class 'psycopg2.errors.CheckViolation'>, <class 'odoo.exceptions.ValidationError'>) not raised
+ 
+2026-09-09 17:41:00,517 1 INFO comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: Starting TestDelegationOracle.test_quantity_amount_and_button ... 
+2026-09-09 17:41:00,519 1 ERROR comparison_run_0 odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T17:41:00.502907\'::timestamp, 1, \'oracle bad quantity\',  -1, \'draft\', 10.0, \'2026-09-09T17:41:00.502907\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (15, -1, 1, 1, oracle bad quantity, draft, 2026-09-09 17:41:00.502907, 2026-09-09 17:41:00.502907, 10, null).
+ 
+2026-09-09 17:41:00,521 1 ERROR comparison_run_0 odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (16,  -24.0,  -2, \'2026-09-09T17:41:00.502907\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (16, -2, 1, 1, oracle confirm, confirmed, 2026-09-09 17:41:00.502907, 2026-09-09 17:41:00.502907, 12, -24).
+ 
+2026-09-09 17:41:00,522 1 INFO comparison_run_0 odoo.addons.lab_qualification.tests.test_oracle: DELEGATION_ORACLE_PASS quantity_amount_and_button 
+2026-09-09 17:41:00,523 1 INFO comparison_run_0 odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 17:41:00,523 1 INFO comparison_run_0 odoo.service.server: 5 post-tests in 0.02s, 56 queries 
+2026-09-09 17:41:00,523 1 INFO comparison_run_0 odoo.tests.stats: lab_qualification: 7 tests 0.02s 56 queries 
+2026-09-09 17:41:00,524 1 ERROR comparison_run_0 odoo.tests.result: 4 failed, 0 error(s) of 5 tests when loading database 'comparison_run_0' 
+2026-09-09 17:41:00,524 1 INFO comparison_run_0 odoo.service.server: Initiating shutdown 
+2026-09-09 17:41:00,524 1 INFO comparison_run_0 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 17:41:00,982 1 INFO comparison_run_0 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
