@@ -1,0 +1,38 @@
+test_claim_can_be_released_even_after_graph_disappears (test_odoo_flow.FlowExecutionTest) ... ok
+test_claim_without_delegate_on_serial_path_is_not_reported_as_live_agent (test_odoo_flow.FlowExecutionTest)
+Contre-épreuve : un rôle assuré localement reste une revendication. ... ok
+test_claims_enforce_cross_run_resource_locks (test_odoo_flow.FlowExecutionTest) ... ok
+test_cli_claim_and_json_status_keep_human_and_machine_outputs (test_odoo_flow.FlowExecutionTest) ... ok
+test_cli_migrates_a_compatible_state_explicitly (test_odoo_flow.FlowExecutionTest) ... ok
+test_completion_rejects_stale_structured_evidence (test_odoo_flow.FlowExecutionTest) ... ok
+test_complex_analysis_has_three_parallel_lanes (test_odoo_flow.FlowExecutionTest) ... ok
+test_concurrent_completions_do_not_lose_events (test_odoo_flow.FlowExecutionTest) ... ok
+test_failed_delegate_release_preserves_join_and_allows_reassignment (test_odoo_flow.FlowExecutionTest)
+Un refus fournisseur ne termine pas le travail réservé pour lui. ... ok
+test_graph_hash_prevents_silent_resume_after_change (test_odoo_flow.FlowExecutionTest) ... ok
+test_high_risk_path_requires_client_copy_lane (test_odoo_flow.FlowExecutionTest) ... ok
+test_human_gate_is_visible_as_waiting (test_odoo_flow.FlowExecutionTest) ... ok
+test_human_gate_requires_explicit_confirmation_and_file (test_odoo_flow.FlowExecutionTest) ... ok
+test_migration_rejects_changed_meaning_of_active_edge (test_odoo_flow.FlowExecutionTest) ... ok
+test_normal_module_path_forks_and_joins (test_odoo_flow.FlowExecutionTest) ... ok
+test_release_red_path_never_reaches_docs (test_odoo_flow.FlowExecutionTest) ... ok
+test_retry_is_limited_to_two (test_odoo_flow.FlowExecutionTest) ... ok
+test_running_status_wins_while_another_parallel_node_is_ready (test_odoo_flow.FlowExecutionTest) ... ok
+test_sensitive_support_bug_returns_to_analysis (test_odoo_flow.FlowExecutionTest) ... ok
+test_sensitive_support_studio_detour_cannot_downgrade_module_qa (test_odoo_flow.FlowExecutionTest) ... ok
+test_start_directories_are_local_git_ignored (test_odoo_flow.FlowExecutionTest) ... ok
+test_studio_lanes_are_serialized_by_client_copy_lock (test_odoo_flow.FlowExecutionTest) ... ok
+test_terminal_dashboard_distinguishes_running_and_human_wait (test_odoo_flow.FlowExecutionTest) ... ok
+test_terminal_dashboard_shows_agents_and_graph_position (test_odoo_flow.FlowExecutionTest) ... ok
+test_empty_file_or_directory_is_not_evidence (test_odoo_flow.GraphDefinitionTest) ... ok
+test_graph_exposes_parallelism_and_bounded_cycles (test_odoo_flow.GraphDefinitionTest) ... ok
+test_graph_is_valid (test_odoo_flow.GraphDefinitionTest) ... ok
+test_malformed_edge_is_reported_without_crashing (test_odoo_flow.GraphDefinitionTest) ... ok
+test_physical_resource_conflicts_across_projects (test_odoo_flow.GraphDefinitionTest) ... ok
+test_stack_write_conflicts_with_child_database_but_siblings_can_run (test_odoo_flow.GraphDefinitionTest) ... ok
+test_unbounded_cycle_is_rejected (test_odoo_flow.GraphDefinitionTest) ... ok
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.521s
+
+OK

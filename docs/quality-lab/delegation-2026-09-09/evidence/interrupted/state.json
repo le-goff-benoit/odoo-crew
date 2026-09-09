@@ -1,0 +1,36 @@
+{
+  "case": "N04",
+  "provider": "claude",
+  "config": {
+    "model": "opus",
+    "effort": "medium"
+  },
+  "status": "incident",
+  "turns": [
+    {
+      "status": "timeout",
+      "exit_code": -9,
+      "seconds": 600.01,
+      "usage": null,
+      "actual_model": "claude-opus-5",
+      "tool_calls": 95,
+      "provider_completed": false,
+      "error": null,
+      "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "active_turn": 0,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "zero_allowed": true,
+      "negative_create": false,
+      "negative_write": false,
+      "valid_record_preserved": false
+    },
+    "passed": false,
+    "log_sha256": "fd04547b2d83183dc78c35ca2ac4ebcdac9c9f27bf698cfa0f18e61a0dd0414a",
+    "log": "oracle-000.log"
+  },
+  "review": null
+}

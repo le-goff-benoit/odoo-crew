@@ -1,0 +1,72 @@
+test_claim_can_be_released_even_after_graph_disappears (test_odoo_flow.FlowExecutionTest) ... ok
+test_claim_without_delegate_on_serial_path_is_not_reported_as_live_agent (test_odoo_flow.FlowExecutionTest)
+Contre-épreuve : un rôle assuré localement reste une revendication. ... FAIL
+test_claims_enforce_cross_run_resource_locks (test_odoo_flow.FlowExecutionTest) ... ok
+test_cli_claim_and_json_status_keep_human_and_machine_outputs (test_odoo_flow.FlowExecutionTest) ... ok
+test_cli_migrates_a_compatible_state_explicitly (test_odoo_flow.FlowExecutionTest) ... ok
+test_completion_rejects_stale_structured_evidence (test_odoo_flow.FlowExecutionTest) ... ok
+test_complex_analysis_has_three_parallel_lanes (test_odoo_flow.FlowExecutionTest) ... ok
+test_concurrent_completions_do_not_lose_events (test_odoo_flow.FlowExecutionTest) ... ok
+test_failed_delegate_release_preserves_join_and_allows_reassignment (test_odoo_flow.FlowExecutionTest)
+Un refus fournisseur ne termine pas le travail réservé pour lui. ... FAIL
+test_graph_hash_prevents_silent_resume_after_change (test_odoo_flow.FlowExecutionTest) ... ok
+test_high_risk_path_requires_client_copy_lane (test_odoo_flow.FlowExecutionTest) ... ok
+test_human_gate_is_visible_as_waiting (test_odoo_flow.FlowExecutionTest) ... ok
+test_human_gate_requires_explicit_confirmation_and_file (test_odoo_flow.FlowExecutionTest) ... ok
+test_migration_rejects_changed_meaning_of_active_edge (test_odoo_flow.FlowExecutionTest) ... ok
+test_normal_module_path_forks_and_joins (test_odoo_flow.FlowExecutionTest) ... ok
+test_release_red_path_never_reaches_docs (test_odoo_flow.FlowExecutionTest) ... ok
+test_retry_is_limited_to_two (test_odoo_flow.FlowExecutionTest) ... ok
+test_running_status_wins_while_another_parallel_node_is_ready (test_odoo_flow.FlowExecutionTest) ... FAIL
+test_sensitive_support_bug_returns_to_analysis (test_odoo_flow.FlowExecutionTest) ... ok
+test_sensitive_support_studio_detour_cannot_downgrade_module_qa (test_odoo_flow.FlowExecutionTest) ... ok
+test_start_directories_are_local_git_ignored (test_odoo_flow.FlowExecutionTest) ... ok
+test_studio_lanes_are_serialized_by_client_copy_lock (test_odoo_flow.FlowExecutionTest) ... ok
+test_terminal_dashboard_distinguishes_running_and_human_wait (test_odoo_flow.FlowExecutionTest) ... ok
+test_terminal_dashboard_shows_agents_and_graph_position (test_odoo_flow.FlowExecutionTest) ... FAIL
+test_empty_file_or_directory_is_not_evidence (test_odoo_flow.GraphDefinitionTest) ... ok
+test_graph_exposes_parallelism_and_bounded_cycles (test_odoo_flow.GraphDefinitionTest) ... ok
+test_graph_is_valid (test_odoo_flow.GraphDefinitionTest) ... ok
+test_malformed_edge_is_reported_without_crashing (test_odoo_flow.GraphDefinitionTest) ... ok
+test_physical_resource_conflicts_across_projects (test_odoo_flow.GraphDefinitionTest) ... ok
+test_stack_write_conflicts_with_child_database_but_siblings_can_run (test_odoo_flow.GraphDefinitionTest) ... ok
+test_unbounded_cycle_is_rejected (test_odoo_flow.GraphDefinitionTest) ... ok
+
+======================================================================
+FAIL: test_claim_without_delegate_on_serial_path_is_not_reported_as_live_agent (test_odoo_flow.FlowExecutionTest)
+Contre-épreuve : un rôle assuré localement reste une revendication.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/test_odoo_flow.py", line 262, in test_claim_without_delegate_on_serial_path_is_not_reported_as_live_agent
+    self.assertIn("Nœuds agent 1 revendiqué(s) · 0 prêt(s)", dashboard)
+AssertionError: 'Nœuds agent 1 revendiqué(s) · 0 prêt(s)' not found in 'ODOO FLOW · test\n────────────────────────────────────────────────────────────────────────\nÉtat       EN COURS\nFlux       development\nProjet     /tmp/tmp5z18f6kg\nProgression 1 étape(s) franchie(s)\nAgents délégués 1 actif(s) · 0 prêt(s)\nDernière   ✓ briefing → development\n\nPOSITION DANS LE GRAPHE\n  EN COURS\n  ▶ functional_review\n    AGENT · odoo-analyst · propriétaire: codex-local-analyst\n    Produire la revue fonctionnelle contradictoire et choisir la voie.'
+
+======================================================================
+FAIL: test_failed_delegate_release_preserves_join_and_allows_reassignment (test_odoo_flow.FlowExecutionTest)
+Un refus fournisseur ne termine pas le travail réservé pour lui.
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/test_odoo_flow.py", line 226, in test_failed_delegate_release_preserves_join_and_allows_reassignment
+    self.assertNotIn("Agents délégués", dashboard)
+AssertionError: 'Agents délégués' unexpectedly found in 'ODOO FLOW · test\n────────────────────────────────────────────────────────────────────────\nÉtat       EN COURS\nFlux       development_complex\nProjet     /tmp/tmpcbbc5tte\nProgression 1 étape(s) franchie(s)\nAgents délégués 2 actif(s) · 1 prêt(s)\nDernière   ✓ briefing → development_complex\n\nPOSITION DANS LE GRAPHE\n  EN COURS\n  ▶ analyst_data_lane\n    AGENT · odoo-analyst · graph-lane · propriétaire: codex-delegate-data\n    Voie parallèle en lecture seule : inspecter la configuration et les données de la copie client.\n  ▶ analyst_project_lane\n    AGENT · odoo-analyst · graph-lane · propriétaire: codex-delegate-project\n    Voie parallèle en lecture seule : inspecter le custom, le projet et ses décisions.\n  PROCHAINE ÉTAPE\n  ○ analyst_standard_lane\n    AGENT · odoo-analyst · graph-lane\n    Voie parallèle en lecture seule : vérifier le standard et les sources de la série.\n    Sorties: done · Preuve: fragment standard'
+
+======================================================================
+FAIL: test_running_status_wins_while_another_parallel_node_is_ready (test_odoo_flow.FlowExecutionTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/test_odoo_flow.py", line 212, in test_running_status_wins_while_another_parallel_node_is_ready
+    self.assertIn("Nœuds agent 1 revendiqué(s) · 1 prêt(s)", dashboard)
+AssertionError: 'Nœuds agent 1 revendiqué(s) · 1 prêt(s)' not found in 'ODOO FLOW · test\n────────────────────────────────────────────────────────────────────────\nÉtat       EN COURS\nFlux       development\nProjet     /tmp/tmpesr2395z\nProgression 3 étape(s) franchie(s)\nAgents délégués 1 actif(s) · 1 prêt(s)\nDernière   ✓ module_implementation → done\n\nPOSITION DANS LE GRAPHE\n  EN COURS\n  ▶ module_runtime_qa\n    AGENT · odoo-tester · graph-lane-runtime · propriétaire: codex-odoo-tester-runtime\n    Voie QA normale : installer, mettre à jour et exécuter les tests ciblés.\n  PROCHAINE ÉTAPE\n  ○ module_static_qa\n    AGENT · odoo-tester · graph-lane-static\n    Voie QA normale : relire le diff et exécuter le lint ciblé.\n    Sorties: done · Preuve: fragment QA statique'
+
+======================================================================
+FAIL: test_terminal_dashboard_shows_agents_and_graph_position (test_odoo_flow.FlowExecutionTest)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/test_odoo_flow.py", line 168, in test_terminal_dashboard_shows_agents_and_graph_position
+    self.assertIn("Nœuds agent 0 revendiqué(s) · 2 prêt(s)", dashboard)
+AssertionError: 'Nœuds agent 0 revendiqué(s) · 2 prêt(s)' not found in "ODOO FLOW · test\n────────────────────────────────────────────────────────────────────────\nÉtat       PRÊT\nFlux       development\nProjet     /tmp/tmp8tx0e8ml\nProgression 3 étape(s) franchie(s)\nAgents délégués 0 actif(s) · 2 prêt(s)\nDernière   ✓ module_implementation → done\n\nPOSITION DANS LE GRAPHE\n  VAGUE 1 · PARALLÈLE · 2 nœuds\n  ○ module_runtime_qa\n    AGENT · odoo-tester · graph-lane-runtime\n    Voie QA normale : installer, mettre à jour et exécuter les tests ciblés.\n    Sorties: done · Preuve: fragment QA d'exécution\n  ○ module_static_qa\n    AGENT · odoo-tester · graph-lane-static\n    Voie QA normale : relire le diff et exécuter le lint ciblé.\n    Sorties: done · Preuve: fragment QA statique\n\nHISTORIQUE RÉCENT\n  ✓ briefing → development\n  ✓ functional_review → module\n  ✓ module_implementation → done"
+
+----------------------------------------------------------------------
+Ran 31 tests in 0.516s
+
+FAILED (failures=4)

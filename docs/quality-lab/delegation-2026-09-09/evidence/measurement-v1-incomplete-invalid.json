@@ -1,0 +1,92 @@
+{
+  "native_tasks_started": 3,
+  "tasks_with_observed_work": 2,
+  "tasks": [
+    {
+      "task_id": "a2dff412d6c4c4bad",
+      "tool_use_id": "toolu_015JbX4Zma4y8pquzjWUHcxs",
+      "role": "odoo-analyst",
+      "started": 91.354,
+      "progress": [
+        93.875,
+        94.631,
+        94.631,
+        95.286,
+        95.286,
+        98.413,
+        99.32,
+        102.143,
+        102.9,
+        107.89,
+        109.656,
+        113.587,
+        118.727,
+        120.793,
+        125.028,
+        130.07,
+        131.28,
+        133.95,
+        139.644,
+        142.768,
+        148.162,
+        159.851,
+        252.832,
+        267.391
+      ],
+      "tool_returned": true,
+      "last_usage": {
+        "total_tokens": 41473,
+        "tool_uses": 24,
+        "duration_ms": 176034
+      },
+      "tool_error": false,
+      "returned_at": 282.051
+    },
+    {
+      "task_id": "a607acbb7b5609436",
+      "tool_use_id": "toolu_012o1fTcpSMq1RfP6xMsXLhE",
+      "role": "odoo-developer",
+      "started": 335.091,
+      "progress": [
+        337.612,
+        338.77,
+        342.449,
+        344.414,
+        350.408,
+        356.349,
+        366.886,
+        383.773,
+        389.371,
+        391.237,
+        396.832,
+        401.671,
+        406.655,
+        414.465,
+        420.405,
+        433.662,
+        438.188,
+        452.982
+      ],
+      "tool_returned": false,
+      "last_usage": {
+        "total_tokens": 48450,
+        "tool_uses": 18,
+        "duration_ms": 117914
+      }
+    },
+    {
+      "task_id": "b08dhl1x5",
+      "tool_use_id": "toolu_01G3kTMEHeTmYVMKHxUtxHNp",
+      "role": null,
+      "started": 441.205,
+      "progress": [],
+      "tool_returned": true,
+      "tool_error": false,
+      "returned_at": 448.097
+    }
+  ],
+  "overlaps": [],
+  "provider_result": null,
+  "business_verdict": "À relire séparément dans les preuves et l’oracle Odoo",
+  "limit": "Les enveloppes de progression prouvent le chevauchement des activités observées, pas le calcul simultané du fournisseur ni un gain causal de vitesse."
+}

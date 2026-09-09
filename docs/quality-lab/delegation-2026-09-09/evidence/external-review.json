@@ -1,0 +1,22 @@
+{
+  "scope": "Relecture externe, non aveugle, sans retoucher les générations",
+  "delegation": "attestée : 5 agents puis 3 testeurs en contexte neuf",
+  "recovery_mechanics": "3 revendications abandonnées libérées, étapes antérieures conservées, module inchangé, nouvelles QA sur nouvelles bases",
+  "runtime_oracle": "4/4 contrôles métier vrais après reprise ; témoin/mutant déjà étalonnés dans la campagne N04 antérieure",
+  "quality_verdict": "refusé pour la satisfaction globale de la spécification",
+  "critical_issue": {
+    "id": "A8",
+    "specification": "Le message d’erreur configuré est bien celui remonté à l’utilisateur (non vide)",
+    "qa_claim": "9 critères sur 9 satisfaits ; A8 satisfait sur le code",
+    "missing": "Ni RPC ni interface utilisateur traversée",
+    "required_outcome": "retry ou blocked selon possibilité du contrôle ; jamais 9/9 en l’état"
+  },
+  "other_limits": [
+    "author manquant dans le manifest d’origine ; pas une régression de la tâche",
+    "objet Git .base non transféré par la copie de fichiers ; réserve déclarée, périmètre vérifié séparément contre ddc8f7d",
+    "pont de commandes Odoo sérialisé",
+    "Codex non évalué en délégation : quota fournisseur",
+    "cas unique 19.0, pas de gain causal de vitesse mesuré"
+  ],
+  "instruction_candidate": "non adoptée, référence et candidat corrigent déjà la décision sur dossier court"
+}

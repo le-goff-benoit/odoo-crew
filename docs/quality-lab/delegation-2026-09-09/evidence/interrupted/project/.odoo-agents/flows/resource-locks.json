@@ -1,0 +1,62 @@
+{
+  "claims": [
+    {
+      "at": "2026-09-09T07:42:50+00:00",
+      "locks": [
+        {
+          "mode": "read",
+          "resource": "module_code"
+        },
+        {
+          "mode": "write",
+          "resource": "flow_artifact:d31-jours-negatifs:qa_high_static"
+        }
+      ],
+      "node": "module_high_static_qa",
+      "owner": "claude-odoo-tester-statique",
+      "state": "/work/.odoo-agents/flows/d31-jours-negatifs.json"
+    },
+    {
+      "at": "2026-09-09T07:42:50+00:00",
+      "locks": [
+        {
+          "mode": "read",
+          "resource": "module_code"
+        },
+        {
+          "mode": "write",
+          "resource": "qa_db_module"
+        },
+        {
+          "mode": "write",
+          "resource": "flow_artifact:d31-jours-negatifs:qa_high_runtime"
+        }
+      ],
+      "node": "module_high_runtime_qa",
+      "owner": "claude-odoo-tester-execution",
+      "state": "/work/.odoo-agents/flows/d31-jours-negatifs.json"
+    },
+    {
+      "at": "2026-09-09T07:42:50+00:00",
+      "locks": [
+        {
+          "mode": "read",
+          "resource": "module_code"
+        },
+        {
+          "mode": "write",
+          "resource": "client_copy"
+        },
+        {
+          "mode": "write",
+          "resource": "flow_artifact:d31-jours-negatifs:qa_client"
+        }
+      ],
+      "node": "module_client_copy_qa",
+      "owner": "claude-odoo-tester-copie",
+      "state": "/work/.odoo-agents/flows/d31-jours-negatifs.json"
+    }
+  ],
+  "schema_version": 1,
+  "updated_at": "2026-09-09T07:42:50+00:00"
+}

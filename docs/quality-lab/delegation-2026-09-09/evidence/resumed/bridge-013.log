@@ -1,0 +1,32 @@
+2026-09-09 07:49:58,492 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 07:49:58,493 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 07:49:58,493 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 07:49:58,493 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 07:49:58,493 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 07:49:58,644 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 07:49:58,644 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 07:49:58,661 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 07:49:58,665 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 07:49:58,668 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 07:49:58,670 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 07:49:58,777 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.11s, 0 queries (+0 extra) 
+2026-09-09 07:49:58,804 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 07:49:58,813 1 INFO lab_client odoo.registry: Registry loaded in 0.169s 
+Traceback (most recent call last):
+  File "/usr/bin/odoo", line 6, in <module>
+    odoo.cli.main()
+  File "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 133, in main
+PREUVE r2 / A8
+attribut Constraint présent : True
+objet Constraint :     command().run(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 162, in run
+    self.shell(dbnames[0])
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 148, in shell
+    self.console(local_vars)
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 82, in console
+    exec(sys.stdin.read(), local_vars)
+  File "<string>", line 15, in <module>
+  File "/usr/lib/python3/dist-packages/odoo/orm/table_objects.py", line 76, in __str__
+    return f"({self.name!r}={self.definition!r}, {self.message!r})"
+                             ^^^^^^^^^^^^^^^
+AttributeError: 'Constraint' object has no attribute 'definition'. Did you mean: '_definition'?

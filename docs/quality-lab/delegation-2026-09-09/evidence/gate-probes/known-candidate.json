@@ -1,0 +1,37 @@
+{
+  "id": "known-candidate",
+  "returncode": 0,
+  "seconds": 11.86,
+  "answer": "```json\n{\n  \"issue\": \"retry\",\n  \"criteres_non_satisfaits\": [\"A8\"],\n  \"justification\": \"A8 est un critère obligatoire en deux volets : (a) absence de _sql_constraints dans le code, et (b) le message d'erreur configuré est bien celui remonté à l'utilisateur. Le volet (a) est prouvé (fragment statique : zéro _sql_constraints). Le volet (b) ne l'est pas : le fragment statique constate seulement un message non vide dans le code sans exécuter de parcours utilisateur, et le fragment copie lit le message sur l'objet Constraint sans traverser la couche RPC ni aucune interface. Aucune preuve ne relie donc le message configuré à ce que l'utilisateur reçoit effectivement. La synthèse proposée requalifie un résultat utilisateur attendu en vérification de code et transforme un manque de preuve en réserve : une preuve partielle reste partielle et une réserve ne vaut pas satisfaction, donc le décompte correct est 8/9 et non 9/9, et le verdict ne peut pas être 'pass'. Le contrôle manquant est un contrôle obligatoire déjà inscrit au contrat (aucune décision n'en modifie la portée) et il est réalisable — il s'agit d'exercer le déclenchement de la contrainte via un parcours utilisateur/RPC et de constater le message remonté — donc l'issue est 'retry' (aucune des deux reprises n'est consommée) et non 'blocked'. A1 à A7 et A9 restent satisfaits ; la dette author antérieure est explicitement identifiée comme dette préexistante et n'entre pas dans les critères non satisfaits.\"\n}\n```",
+  "error": false,
+  "model_usage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 7578,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.0076679999999999995,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-opus-5": {
+      "inputTokens": 2,
+      "outputTokens": 797,
+      "cacheReadInputTokens": 2958,
+      "cacheCreationInputTokens": 9097,
+      "webSearchRequests": 0,
+      "costUSD": 0.112384,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "thinkingTokens": 205,
+      "canonicalModel": "claude-opus-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

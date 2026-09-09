@@ -1,0 +1,158 @@
+test_comparison_is_paired_frozen_and_alternates_order (test_odoo_bench.BenchTests) ... ok
+test_completed_never_retried (test_odoo_bench.BenchTests) ... ODOO BENCH 20260909-092903-95b7ed86 · executed · 1/1 exécutés
+  B06-codex        completed    fixture / high · 0 s · qualité non évaluée
+ok
+test_critical_failure_never_averaged_away (test_odoo_bench.BenchTests) ... ok
+test_packet_excludes_secret_rubric (test_odoo_bench.BenchTests) ... ok
+test_plan_rejects_unimplemented_and_overbudget (test_odoo_bench.BenchTests) ... ok
+test_provider_error_and_usage (test_odoo_bench.BenchTests) ... ok
+test_review_requires_all_criteria_and_correct_answer (test_odoo_bench.BenchTests) ... ok
+test_runner_requires_completion_and_rejects_tool_calls (test_odoo_bench.BenchTests) ... ODOO BENCH 20260909-092903-68786df2 · running · 0/1 exécutés
+  B06-codex        running      fixture / high · 0 s · qualité non évaluée
+ODOO BENCH 20260909-092903-68786df2 · executed · 1/1 exécutés
+  B06-codex        completed    fixture / high · 0.2 s · qualité non évaluée
+ODOO BENCH 20260909-092903-9e6f485b · running · 0/1 exécutés
+  B06-codex        running      fixture / high · 0 s · qualité non évaluée
+ODOO BENCH 20260909-092903-9e6f485b · executed_with_errors · 1/1 exécutés
+  B06-codex        error        fixture / high · 0.2 s · qualité non évaluée
+ODOO BENCH 20260909-092903-4ba25cf3 · running · 0/1 exécutés
+  B06-codex        running      fixture / high · 0 s · qualité non évaluée
+ODOO BENCH 20260909-092903-4ba25cf3 · executed_with_errors · 1/1 exécutés
+  B06-codex        error        fixture / high · 0.2 s · qualité non évaluée
+ok
+test_stop_preserves_pending_without_launch (test_odoo_bench.BenchTests) ... ODOO BENCH 20260909-092904-9a92f927 · interrupted · 0/1 exécutés
+  B06-codex        pending      fixture / high · 0 s · qualité non évaluée
+ok
+test_tampered_packet_refuses_launch (test_odoo_bench.BenchTests) ... ok
+test_zero_exit_without_completion_is_not_completion (test_odoo_bench.BenchTests) ... ok
+test_invalid_answer_is_not_repaired (test_odoo_bench_development.ExtractionTests) ... ok
+test_preserves_code_exactly (test_odoo_bench_development.ExtractionTests) ... ok
+test_absence_may_have_empty_quote_with_reason (test_odoo_bench_judge.JudgeTests) ... ok
+test_fabricated_quote_is_rejected (test_odoo_bench_judge.JudgeTests) ... ok
+test_missing_criteria_and_extra_identity_are_rejected (test_odoo_bench_judge.JudgeTests) ... ok
+test_resume_reuses_unchanged_review_without_provider_call (test_odoo_bench_judge.JudgeTests) ... ok
+test_implementation_outside_fixture_is_rejected_before_docker (test_odoo_bench_runtime.RuntimeBoundaryTests) ... ok
+test_multiple_learnings_keep_exceptions (test_odoo_briefing.BriefingTests) ... ok
+test_negative_count_refused (test_odoo_briefing.BriefingTests) ... ok
+test_project_without_generated_marker_is_not_empty (test_odoo_briefing.BriefingTests) ... ok
+test_recent_truncated_entry_does_not_drop_learning (test_odoo_briefing.BriefingTests) ... ok
+test_zero_journal_still_preserves_all_learnings (test_odoo_briefing.BriefingTests) ... ok
+test_bridge_rejects_outside_paths_and_symbolic_links (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_context_cannot_claim_another_project (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_context_omits_whole_long_block_and_tracks_freshness (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_failed_native_setup_is_preserved_as_incident (test_odoo_context_scenarios.ContextScenarioTests) ... {"trial": "trial", "error": "build failed"}
+ok
+test_lint_bridge_is_bounded_and_records_real_command_result (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_native_cli_enables_tools_but_not_delegation (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_new_decision_invalidates_context_even_if_old_sources_unchanged (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_scenario_execution_proof_includes_business_source (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_snapshot_excludes_installed_virtualenv_but_keeps_code (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_superseded_rule_never_rendered_as_current (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_unknown_change_expands_selection_and_stale_source_blocks (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_unselected_source_becoming_relevant_invalidates_context (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_bytecode_does_not_invalidate_code_proof (test_odoo_evidence.EvidenceTests) ... ok
+test_changed_code_or_new_file_invalidates_proof (test_odoo_evidence.EvidenceTests) ... ok
+test_changed_log_or_failed_exit_cannot_be_validated (test_odoo_evidence.EvidenceTests) ... ok
+test_changes_during_execution_are_not_a_success (test_odoo_evidence.EvidenceTests) ... ok
+test_deleted_scope_during_control_records_failed_proof (test_odoo_evidence.EvidenceTests) ... ok
+test_failed_proof_is_valid_evidence_of_failure_only (test_odoo_evidence.EvidenceTests) ... ok
+test_proof_of_other_project_is_refused (test_odoo_evidence.EvidenceTests) ... ok
+test_timeout_is_not_a_success (test_odoo_evidence.EvidenceTests) ... ok
+test_claim_can_be_released_even_after_graph_disappears (test_odoo_flow.FlowExecutionTest) ... ok
+test_claim_without_delegate_on_serial_path_is_not_reported_as_live_agent (test_odoo_flow.FlowExecutionTest)
+Contre-épreuve : un rôle assuré localement reste une revendication. ... ok
+test_claims_enforce_cross_run_resource_locks (test_odoo_flow.FlowExecutionTest) ... ok
+test_cli_claim_and_json_status_keep_human_and_machine_outputs (test_odoo_flow.FlowExecutionTest) ... ok
+test_cli_migrates_a_compatible_state_explicitly (test_odoo_flow.FlowExecutionTest) ... ok
+test_completion_rejects_stale_structured_evidence (test_odoo_flow.FlowExecutionTest) ... ok
+test_complex_analysis_has_three_parallel_lanes (test_odoo_flow.FlowExecutionTest) ... ok
+test_concurrent_completions_do_not_lose_events (test_odoo_flow.FlowExecutionTest) ... ok
+test_failed_delegate_release_preserves_join_and_allows_reassignment (test_odoo_flow.FlowExecutionTest)
+Un refus fournisseur ne termine pas le travail réservé pour lui. ... ok
+test_graph_hash_prevents_silent_resume_after_change (test_odoo_flow.FlowExecutionTest) ... ok
+test_high_risk_path_requires_client_copy_lane (test_odoo_flow.FlowExecutionTest) ... ok
+test_human_gate_is_visible_as_waiting (test_odoo_flow.FlowExecutionTest) ... ok
+test_human_gate_requires_explicit_confirmation_and_file (test_odoo_flow.FlowExecutionTest) ... ok
+test_migration_rejects_changed_meaning_of_active_edge (test_odoo_flow.FlowExecutionTest) ... ok
+test_normal_module_path_forks_and_joins (test_odoo_flow.FlowExecutionTest) ... ok
+test_release_red_path_never_reaches_docs (test_odoo_flow.FlowExecutionTest) ... ok
+test_retry_is_limited_to_two (test_odoo_flow.FlowExecutionTest) ... ok
+test_running_status_wins_while_another_parallel_node_is_ready (test_odoo_flow.FlowExecutionTest) ... ok
+test_sensitive_support_bug_returns_to_analysis (test_odoo_flow.FlowExecutionTest) ... ok
+test_sensitive_support_studio_detour_cannot_downgrade_module_qa (test_odoo_flow.FlowExecutionTest) ... ok
+test_start_directories_are_local_git_ignored (test_odoo_flow.FlowExecutionTest) ... ok
+test_studio_lanes_are_serialized_by_client_copy_lock (test_odoo_flow.FlowExecutionTest) ... ok
+test_terminal_dashboard_distinguishes_running_and_human_wait (test_odoo_flow.FlowExecutionTest) ... ok
+test_terminal_dashboard_shows_agents_and_graph_position (test_odoo_flow.FlowExecutionTest) ... ok
+test_empty_file_or_directory_is_not_evidence (test_odoo_flow.GraphDefinitionTest) ... ok
+test_graph_exposes_parallelism_and_bounded_cycles (test_odoo_flow.GraphDefinitionTest) ... ok
+test_graph_is_valid (test_odoo_flow.GraphDefinitionTest) ... ok
+test_malformed_edge_is_reported_without_crashing (test_odoo_flow.GraphDefinitionTest) ... ok
+test_physical_resource_conflicts_across_projects (test_odoo_flow.GraphDefinitionTest) ... ok
+test_stack_write_conflicts_with_child_database_but_siblings_can_run (test_odoo_flow.GraphDefinitionTest) ... ok
+test_unbounded_cycle_is_rejected (test_odoo_flow.GraphDefinitionTest) ... ok
+test_empty_build_is_not_success (test_odoo_generated.GeneratedTests) ... ok
+test_every_declared_output_is_checked (test_odoo_generated.GeneratedTests) ... ok
+test_confirmation_requires_both_flags (test_odoo_guards.GuardTests) ... ⚠️  ÉCRITURE EN PRODUCTION confirmée : x.synthetic.write
+ok
+test_local_target_refuses_remote_before_authentication (test_odoo_guards.GuardTests) ... ok
+test_read_like_method_name_cannot_bypass_production_guard (test_odoo_guards.GuardTests) ... ok
+test_missing_test_init_remains_error_with_changed_file_filter (test_odoo_lint_scope.LintScopeTests) ... ok
+test_current_rule_not_old_statement_and_open_question_persists (test_odoo_memory.MemoryTests) ... ok
+test_cycle_rejected (test_odoo_memory.MemoryTests) ... ok
+test_proposal_cannot_replace_confirmed_or_resolve_question (test_odoo_memory.MemoryTests) ... ok
+test_realization_requires_evidence_and_deployment_target (test_odoo_memory.MemoryTests) ... ok
+test_stale_source_blocks_claim_of_valid_memory (test_odoo_memory.MemoryTests) ... ok
+test_unknown_implementation_does_not_claim_not_started (test_odoo_memory.MemoryTests) ... ok
+test_all_records_prevalidated_before_first_write (test_odoo_pack.PackTests) ... ok
+test_dry_run_has_no_mutation (test_odoo_pack.PackTests) ... ok
+test_import_and_second_application_are_idempotent (test_odoo_pack.PackTests) ... ok
+test_lost_response_after_creation_does_not_duplicate_on_retry (test_odoo_pack.PackTests) ... ok
+test_malformed_record_is_refused_before_writes (test_odoo_pack.PackTests) ... ok
+test_wrong_series_or_unresolved_ref_is_not_silent (test_odoo_pack.PackTests) ... ok
+test_explicit_normal_waiver_is_visible (test_odoo_recette_shell.RecetteShellTests) ... ok
+test_high_risk_refuses_waiver (test_odoo_recette_shell.RecetteShellTests) ... ok
+test_missing_copy_cannot_be_green (test_odoo_recette_shell.RecetteShellTests) ... ok
+test_downgrade_rejected_by_transition (test_odoo_release_plan.PlanHighRiskTests) ... ok
+test_add_tasks_preserves_receipt_and_rejects_forgery (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_changed_request_invalidates_receipt (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_close_shell_refuses_missing_seal (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_cyclic_and_outside_definitions_rejected (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_dependency_receipt_and_stale_code (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_dependency_rereception_does_not_revalidate_child (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_existing_plan_and_fake_import_refused (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_finish_requires_terminal_and_memory (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_high_risk_cannot_waive_client_copy (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_loaded_instructions_migration_keeps_user_text_and_backup (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_missing_local_flow_is_not_green (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_module_plan_cannot_claim_studio_controls (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_overlapping_tasks_wait_but_independent_ready (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_release_identity_and_plan_presence_are_sealed (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_reopen_preserves_history_and_defer_is_not_dependency (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_seal_requires_documents_and_invalidates_mutation (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_start_empty_module_and_deleted_snapshot (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_version_prepare_idempotent_preserves_source (test_odoo_release_plan.ReleasePlanTests) ... ok
+test_failed_preparation_or_update_never_announces_ready (test_odoo_restore_shell.RestoreShellTests) ... ok
+test_stack_restore_strips_dispatch_word (test_odoo_restore_shell.RestoreShellTests) ... ok
+test_success_with_unfiltered_output_is_ready (test_odoo_restore_shell.RestoreShellTests) ... ok
+test_any_failed_stage_stays_red (test_odoo_test_result.ResultTests) ... ok
+test_dependency_tests_cannot_validate_target (test_odoo_test_result.ResultTests) ... ok
+test_no_summary_or_zero_tests_is_red (test_odoo_test_result.ResultTests) ... ok
+test_positive_target_tests (test_odoo_test_result.ResultTests) ... ok
+test_existing_empty_database_installs (test_odoo_test_shell.ShellTests) ... ok
+test_existing_uninstalled_module_installs (test_odoo_test_shell.ShellTests) ... ok
+test_full_update_and_tests_share_one_registry_load (test_odoo_test_shell.ShellTests) ... ok
+test_installed_module_updates (test_odoo_test_shell.ShellTests) ... ok
+test_successful_process_with_zero_tests_is_failure (test_odoo_test_shell.ShellTests) ... ok
+
+----------------------------------------------------------------------
+Ran 126 tests in 3.262s
+
+OK
+  + x.synthetic studio_customization.one
+1 / 0 / 0 à créer / à modifier / inchangés sur synthetic
+  + x.synthetic studio_customization.one
+1 / 0 / 0 créés / modifiés / inchangés sur synthetic
+0 / 0 / 1 créés / modifiés / inchangés sur synthetic
+  + x.synthetic studio_customization.one
+0 / 0 / 1 créés / modifiés / inchangés sur synthetic

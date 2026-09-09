@@ -1,0 +1,20 @@
+--- a/scripts/odoo_bench_native.py
++++ b/scripts/odoo_bench_native.py
+@@ -142,7 +142,7 @@
+         return args + ['-']
+     return ['/opt/claude', '--print', '--dangerously-skip-permissions', '--strict-mcp-config',
+             '--mcp-config', '{"mcpServers":{}}', '--no-session-persistence', '--output-format', 'stream-json',
+-            '--verbose', '--tools', 'Bash,Read,Write,Edit,Glob,Grep,Skill', '--model', config['model'],
++            '--verbose', '--tools', 'Bash,Read,Write,Edit,Glob,Grep,Skill,Agent,TaskOutput,TaskStop', '--model', config['model'],
+             '--effort', config['effort']]
+ 
+ 
+@@ -384,7 +384,7 @@
+         operational = ('# Environnement du laboratoire\nProjet entièrement synthétique ; série 19.0. '
+                        'Tu exécutes le workflow natif avec les profils générés sous ~/.codex/skills ou ~/.claude/commands '
+                        'et ~/.claude/agents. Lis /odoo-new et les rôles concernés, pilote le vrai graphe. '
+-                       'Dans cette campagne, applique les rôles toi-même (pas de sous-agent). '
++                       'Dans cet essai de délégation réelle, utilise les sous-agents natifs avec les profils générés. Délègue au moins deux voies QA indépendantes dans une même vague si leurs verrous sont compatibles. L’orchestrateur seul pilote le graphe et fusionne les preuves. Donne à chaque enfant son rôle, périmètre, preuve isolée et briefing. Les autres agents travaillent dans le même projet : aucune modification hors du périmètre attribué, aucun retour sur les modifications d’autrui. Une délégation refusée ou inachevée reste un incident explicite, sans faux succès. '
+                        'Le dépôt du dispositif et les sources Odoo sont en lecture seule. '
+                        'Le projet /work est modifiable. Aucun accès à un projet client ou au socket Docker.\n'
+                        '## Transport des outils Odoo (adaptation du banc, identique entre variantes)\n'

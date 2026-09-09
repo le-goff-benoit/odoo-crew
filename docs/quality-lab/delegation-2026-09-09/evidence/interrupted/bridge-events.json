@@ -1,0 +1,189 @@
+[
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/_probe_days.py"
+    ],
+    "seconds": 0.86,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "dc4e20a7cdefb5235eb9a23ccf7e1de2c7649bca9093a7ac08883757ba0baebb",
+    "project_sha256": "f3d9e1fd1d8c95e01ed0691b6c27d518cc93a236da291ac01c1ba7a1e9618eaf"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/_probe2.py"
+    ],
+    "seconds": 0.86,
+    "exit_code": 0,
+    "log": "bridge-001.log",
+    "sha256": "efde139f331d23d0854059452be52d01f4dc4efb4294ffeddf25de9bbb81bb82",
+    "project_sha256": "78f9dc4a2b361c02e887fecff6ff335cc8f881bcacd6947c7048c16a6bd4d5b8"
+  },
+  {
+    "args": [
+      "shell",
+      "probe_orch.py"
+    ],
+    "seconds": 0.87,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "1d631c3a41eb3400446907997d4779dc8fe2bc02d236170a2146220367e7a9c0",
+    "project_sha256": "6ba38e2bd4a2affcd60dee54a4718dd60409ad195c503593a8ed7ec093901778"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.61,
+    "exit_code": 1,
+    "log": "bridge-003.log",
+    "sha256": "93c9992bef814c9eaf6a736ad8decc303054246cd47bef0cf02e74cdd1f5c045",
+    "project_sha256": "8295d99b1f3cfe20a1106794f8347195c86bc766de3d28aa94f907da404c5e16"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.62,
+    "exit_code": 1,
+    "log": "bridge-004.log",
+    "sha256": "53678a9d50f20a170df7aa5bcf5976aa4982f2e3cea6f84b2065ea8288b4b1e2",
+    "project_sha256": "26bcbcec50bb99581ee624d30f77843354a7594de3b48a789bc249368d8923d0"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.62,
+    "exit_code": 1,
+    "log": "bridge-005.log",
+    "sha256": "53678a9d50f20a170df7aa5bcf5976aa4982f2e3cea6f84b2065ea8288b4b1e2",
+    "project_sha256": "c35979559d980ef3807cb0b46844f566bedfc783a7ba35c7b7317d9c0c736ece"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.62,
+    "exit_code": 1,
+    "log": "bridge-006.log",
+    "sha256": "bbefcf8a07fdc141232317655c57efbb82509c5ce5f4b826645ff6b0d4af509f",
+    "project_sha256": "b7e1f3c52a1a01e2ebdd01d3687dd46de338250a2e4b805531973d1891a41ccf"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.62,
+    "exit_code": 1,
+    "log": "bridge-007.log",
+    "sha256": "b9ebba0a493366d0b17656ff3f7f23921c0630f49455cffa1b248384d66e56df",
+    "project_sha256": "7e2b393cb314072d190dab04836249d05b05e91851761b24ff6ddff949daddea"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestLabRentalDaysConstraint"
+    ],
+    "seconds": 9.84,
+    "exit_code": 0,
+    "log": "bridge-008.log",
+    "sha256": "5287fae7f9531dad83c79314ca05e61daa939d3fec92aebd8d41fdaffb6803e5",
+    "project_sha256": "d97ea4fac1b836d05f41e76620e621654930d99f64c170088cb135cce475fa77",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 8,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 6
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--fresh",
+      "--tags",
+      "/lab_rental:TestLabRentalDaysConstraint"
+    ],
+    "seconds": 13.5,
+    "exit_code": 0,
+    "log": "bridge-009.log",
+    "sha256": "4c4cce29fbc797a528d6718326d5238ea9e868203184f472e31c5e60f38bb06e",
+    "project_sha256": "df846845fcf0c27b64dfdba668da18d7fd84650f03489a8d3bf93e2b8a745155",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 8,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 6
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.7,
+    "exit_code": 1,
+    "log": "bridge-010.log",
+    "sha256": "b9ebba0a493366d0b17656ff3f7f23921c0630f49455cffa1b248384d66e56df",
+    "project_sha256": "f0ed84938621edc5c63d4761eb7525539529dd8fd3fa7c387860684659dac17e"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.63,
+    "exit_code": 1,
+    "log": "bridge-011.log",
+    "sha256": "b9ebba0a493366d0b17656ff3f7f23921c0630f49455cffa1b248384d66e56df",
+    "project_sha256": "d8373e9e19aaf88925e2311c4a5a694cfd842733a9af5d70561a7e29f3aa3110"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick"
+    ],
+    "seconds": 4.82,
+    "exit_code": 0,
+    "log": "bridge-012.log",
+    "sha256": "913bf6faff82e53964c1608b6dae633922590c593e99e7411503cfe14af378bb",
+    "project_sha256": "d8373e9e19aaf88925e2311c4a5a694cfd842733a9af5d70561a7e29f3aa3110",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 8,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 6
+        }
+      ]
+    }
+  }
+]

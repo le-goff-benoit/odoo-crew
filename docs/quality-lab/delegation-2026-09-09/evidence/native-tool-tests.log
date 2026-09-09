@@ -1,0 +1,21 @@
+test_bridge_rejects_outside_paths_and_symbolic_links (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_context_cannot_claim_another_project (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_context_omits_whole_long_block_and_tracks_freshness (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_delegation_requires_explicit_claude_option (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_failed_native_setup_is_preserved_as_incident (test_odoo_context_scenarios.ContextScenarioTests) ... {"trial": "trial", "error": "build failed"}
+ok
+test_lint_bridge_is_bounded_and_records_real_command_result (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_native_cli_enables_tools_but_not_delegation (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_native_delegation_counts_agent_work_not_shell_or_requests (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_native_delegation_keeps_interrupted_child_incomplete (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_new_decision_invalidates_context_even_if_old_sources_unchanged (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_scenario_execution_proof_includes_business_source (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_snapshot_excludes_installed_virtualenv_but_keeps_code (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_superseded_rule_never_rendered_as_current (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_unknown_change_expands_selection_and_stale_source_blocks (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+test_unselected_source_becoming_relevant_invalidates_context (test_odoo_context_scenarios.ContextScenarioTests) ... ok
+
+----------------------------------------------------------------------
+Ran 15 tests in 0.035s
+
+OK

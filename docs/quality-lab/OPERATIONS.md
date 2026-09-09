@@ -157,7 +157,26 @@ QA, mise à jour de la copie et scripts ORM dans
 les conteneurs du banc. Aucun socket Docker ni dossier client n'est transmis au
 modèle. Les cas, correcteurs et rapports du dépôt sont masqués pendant ses appels.
 Studio emploie un proxy HTTP de boucle locale vers sa seule copie synthétique.
-Les rôles sont appliqués par l'orchestrateur ; la délégation n'est pas mesurée.
+Par défaut, les rôles sont appliqués par l'orchestrateur et la délégation est
+désactivée. Le mode expérimental `--delegate-claude` expose les sous-agents
+Claude et ajoute un relevé `delegation` à chaque tour : identifiants, rôle,
+progression observée, notification de fin et résumé natif du fournisseur.
+Un événement `local_bash` ne compte pas comme sous-agent. Codex reste sans
+délégation dans ce runner ; aucune extrapolation entre moteurs.
+
+```bash
+python3 scripts/odoo_bench_native.py run --output /tmp/native-delegation \
+  --cases N04 --reference <commit-avant> --candidate <commit-apres> \
+  --providers claude --timeout 900 --workers 1 --delegate-claude
+```
+
+Comme en mode normal, cette commande exécute les **deux révisions** par cas.
+`--workers` règle le nombre de campagnes simultanées, pas le nombre d'enfants
+d'un orchestrateur. Les profils bornent celui-ci à trois. Le compteur atteste
+les événements reçus ; il ne juge pas la qualité de la passation, ne mesure pas
+le chevauchement et ne suffit pas à annoncer un gain de vitesse. Le pont Odoo
+reste sérialisé. Pour mesurer le chevauchement, conserver une chronologie
+horodatée des événements comme dans l'[essai de délégation et reprise](delegation-2026-09-09/README.md).
 
 Les états distinguent préparation, exécution, résultat et incident. Ce runner
 natif ne possède pas encore de reprise automatique : conserver le dossier d'un

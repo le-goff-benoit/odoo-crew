@@ -12,7 +12,10 @@ réalisable. Pour une remarque propre à un client, utiliser `/odoo-feedback`.
 2. Reproduire sur dossiers synthétiques, outils isolés et copies jetables.
    Les commandes du banc distinguent exécution et qualité. Le mode dossier sans
    outils ne prouve pas une chaîne native ; le mode natif du laboratoire adapte
-   le transport Docker et n'évalue pas la délégation. Consigner ces limites.
+   le transport Docker. Par défaut, il désactive la délégation ; l'option
+   expérimentale `--delegate-claude` compte les enfants dans les événements
+   natifs. Ce comptage ne prouve ni la qualité des passations ni un gain de
+   vitesse ; le pont sérialise les commandes Odoo. Consigner ces limites.
 3. Contrôler le correcteur : références correctes acceptées, défauts injectés
    détectés, grilles indépendantes des réponses. Relire les désaccords critiques.
    Un oracle défectueux se corrige séparément, puis tous les candidats concernés

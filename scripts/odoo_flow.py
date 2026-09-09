@@ -810,7 +810,7 @@ def format_dashboard(
     ready_agents = sum(
         graph["nodes"][name]["executor"] == "agent" for name in summary["ready"]
     )
-    running_agents = sum(
+    claimed_agent_nodes = sum(
         graph["nodes"][name]["executor"] == "agent" for name in summary["running"]
     )
     lines = [
@@ -820,7 +820,7 @@ def format_dashboard(
         f"Flux       {summary['kind']}",
         f"Projet     {summary['project']}",
         f"Progression {summary['completed_events']} étape(s) franchie(s)",
-        f"Agents délégués {running_agents} actif(s) · {ready_agents} prêt(s)",
+        f"Nœuds agent {claimed_agent_nodes} revendiqué(s) · {ready_agents} prêt(s)",
     ]
     if events:
         last = events[-1]

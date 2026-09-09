@@ -1,0 +1,132 @@
+{
+  "reference": "ddc8f7d29b83feee5d9699ed6fe53b6a5f007188",
+  "scope": "Coordination réelle de sous-agents et audit des dimensions non mesurées ; aucun client ni base réelle.",
+  "exploratory_incident": {
+    "agent": "/root/audit_couverture",
+    "task": "Audit indépendant de la couverture, lecture seule",
+    "outcome": "provider_incident",
+    "message": "You've hit your usage limit. Visit https://chatgpt.com/codex/settings/usage to purchase more credits or try again at Sep 15th, 2026 9:13 PM.",
+    "completed_tasks": 0,
+    "note": "Appel réel de collaboration.spawn_agent, avant le protocole contrôlé. Aucun résultat de travail reçu."
+  },
+  "transport_probe": {
+    "provider": "claude",
+    "model_requested": "opus",
+    "effort_requested": "medium",
+    "timeout_seconds": 90,
+    "tools": [],
+    "scope": "Test isolé de disponibilité, pas un essai de délégation."
+  },
+  "controlled_campaign": {
+    "status": "interrupted_at_timeout",
+    "provider": "claude",
+    "model_requested": "opus",
+    "effort_requested": "medium",
+    "max_seconds_per_trial": 600,
+    "max_trials": 1,
+    "repetitions": 1,
+    "maximum_children": 3,
+    "reference_revision": "ddc8f7d",
+    "cases": [
+      "N04-existing-sql-with-native-delegation"
+    ],
+    "runner_sha256": "2e5796e77d0b33969ab73f5374271b38b3863f2373ca1fea02b32ffa03f10d96",
+    "runner_adaptation": "Ajout des outils Agent/TaskOutput/TaskStop et remplacement de la phrase interdisant les sous-agents par une consigne de délégation. Aucun profil ni oracle changé.",
+    "no_automatic_retry": true,
+    "stop_on_provider_quota": true,
+    "observed_agents": 5
+  },
+  "metrics": [
+    "identifiants parent/enfant et événements natifs",
+    "intervalles de travail enfants observés",
+    "fichiers attribués et empreintes",
+    "verrous et intégrité des autres branches",
+    "attente de toutes les preuves",
+    "détection de contradiction",
+    "durée incluant coordination",
+    "résultat outil distinct du résultat métier"
+  ],
+  "limits": [
+    "Ne pas inférer la délégation depuis claim/status ou depuis des processus shell concurrents.",
+    "Ne pas inférer un gain de vitesse causal avec une exécution par cas.",
+    "Un dossier synthétique ne valide ni Odoo ORM, ni navigateur, ni production.",
+    "Même modèle/effort pour toute comparaison de directives ; nouveau cas réservé après exposition."
+  ],
+  "reserved_followups": [
+    "D01-branches-independent",
+    "D02-interrupted-branch",
+    "D03-held-out-conflicting-evidence"
+  ],
+  "measurement_calibration": {
+    "implementation": "evidence/summarize_native.py",
+    "sha256": "f193d1971fac87d8d4e55dbc4adaab250d736f351f417c129387ec51c3779479",
+    "result": "evidence/measurement-calibration.log",
+    "scope": "Comptage des démarrages natifs et chevauchement conservateur entre événements de progression ; ni verdict métier ni gain de vitesse.",
+    "initial_sha256": "4bf76c82005b79610b79edadecd190042075cbb94332d3b12b9c123766aaa917",
+    "correction": "Événements local_bash exclus : ce sont des commandes, pas des agents. Témoin négatif rouge puis vert ; v1 invalide conservée. Tous les événements seront relus par v2 sans changer les réponses."
+  },
+  "recovery_trial": {
+    "status": "executed_with_quality_rejection_A8",
+    "cause": "Premier essai interrompu après 600.01 s pendant la QA ; 5 sous-agents natifs observés, synthèse non produite, oracle copie rouge.",
+    "case": "N04-resume-after-timeout",
+    "provider": "claude",
+    "model_requested": "opus",
+    "effort_requested": "medium",
+    "timeout_seconds": 600,
+    "max_trials": 1,
+    "fresh_context": true,
+    "fresh_databases": true,
+    "source_snapshot": "N04-claude-delegated/after-0",
+    "request_sha256": "a1331cdc62ec946eb3faa351bb26e1d24fbda50dd044ad1154bc2376d1e20762",
+    "source_hashes": {
+      ".odoo-agents/JOURNAL.md": "881feeed0c11b67ff12d77371f83cde50092fe8f3852b9294e4ef789501fb673",
+      ".odoo-agents/PROJECT.md": "f6f6efeddfe014910db47507c58b0f994382de8f712a246a259de31c1203e996",
+      ".odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+      ".odoo-agents/flow-artifacts/.gitignore": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d",
+      ".odoo-agents/flow-artifacts/d31-jours-negatifs/briefing.md": "bd53d64938ae918af43fba15949fb278f0c6304ff6d50753424ffe77751e49de",
+      ".odoo-agents/flow-artifacts/d31-jours-negatifs/functional_review.md": "19ab76e9b01b8a02509d1da3555a01c1a3583cf767faec954f5e7d18b5cac104",
+      ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/lint.log": "b9ebba0a493366d0b17656ff3f7f23921c0630f49455cffa1b248384d66e56df",
+      ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/qa-tests.log": "5287fae7f9531dad83c79314ca05e61daa939d3fec92aebd8d41fdaffb6803e5",
+      ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/runtime/run1-fresh-tags.log": "4c4cce29fbc797a528d6718326d5238ea9e868203184f472e31c5e60f38bb06e",
+      ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/runtime/run2-suite-complete.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      ".odoo-agents/flow-artifacts/d31-jours-negatifs/module_implementation_high_risk.md": "1d93cf31a87c1de1ff3376669b363b0ff11f696d80442d0b0588d14709ef6c39",
+      ".odoo-agents/flows/.d31-jours-negatifs.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      ".odoo-agents/flows/.gitignore": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d",
+      ".odoo-agents/flows/.resource-locks.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      ".odoo-agents/flows/d31-jours-negatifs.json": "094866e4efbbcd0b46ecf082babe05ba62b9066d858abc0565499c1314b1e691",
+      ".odoo-agents/flows/resource-locks.json": "c666d479ca950b080970791ee4135e8420ad9666c8023184d4fea21629ffcd2c",
+      "LAB.md": "ab4799febd1154caa21fe81e86fafe4ff0e0215b3494d2ca9e7b9dad4b99a9b7",
+      "changelog/2026-09-09_01_interdiction-des-durees-negatives-de-loc/.base": "bb54f49773402ab847c72af55f3ecb3b3a2f5a4314ff2a4b2bbe191ba4fdbe8f",
+      "changelog/2026-09-09_01_interdiction-des-durees-negatives-de-loc/.opened": "6f633e47dc782e87b394a41d1a9206098f47060662338f9a46e856aac7d4e452",
+      "changelog/2026-09-09_01_interdiction-des-durees-negatives-de-loc/README.md": "db5298ad8f4bb6df76d851b11cbce2c2b806e99ce76ff8574856747ed55f560a",
+      "changelog/2026-09-09_01_interdiction-des-durees-negatives-de-loc/demande.md": "db47a06d151223e9b91c9dca83c8b98465d10c0b8006cb55f75c7c9a6d56f00d",
+      "changelog/2026-09-09_01_interdiction-des-durees-negatives-de-loc/revue_fonctionnelle.md": "2061340268223878cb609c576a943d89662e04ba5cd25d5d6af003126591d513",
+      "decisions/2026-09-08.md": "51e298ea60157466a088a8116cc7dc5404ebb87da0784293005b4bcc120b752b",
+      "demande.md": "581abfa49072bf81ec2d0a3e40892a181ba7c0e2a556ae2f6a44369939331496",
+      "inbox/.gitignore": "ed1fad6fc1b488921bda2481930847e10fef14f8d0b4720007fd2305d73563b9",
+      "lab_rental/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "lab_rental/__manifest__.py": "5e7900398e39fce48777430bdba33f779ed11406b13f1e46129535bae60dec1f",
+      "lab_rental/models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "lab_rental/models/business.py": "c7aeeea79b1f02e104b2035fdfafe65aced13854c0147c9eded37738fd01b299",
+      "lab_rental/security/ir.model.access.csv": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6",
+      "lab_rental/tests/__init__.py": "f13ad538e591920bc3d4b355276fb31eae811777d7e407d974cc9e1dfa8124a9",
+      "lab_rental/tests/test_days_constraint.py": "104691edac794b30da8f4bc75505c512f2b3a0c719aa5fb40540c2edd5148aaf"
+    },
+    "expected": [
+      "anciens verrous abandonnés libérés avec raison",
+      "pas de rejeu gratuit des étapes livrées",
+      "nouvelle QA sur les nouvelles bases",
+      "synthèse et journal fidèles",
+      "release ouverte"
+    ],
+    "limit": "Reconstitution de bases synthétiques vides, pas restauration d’une sauvegarde client ni comparaison causale de directives.",
+    "observed_agents": 3
+  },
+  "consolidation_probes": "evidence/gate-probes/protocol.json",
+  "adoption": {
+    "dashboard": "adopté",
+    "claude_benchmark_option": "expérimental installé, commande et consigne équivalentes aux essais, comptage rejoué sur événements originaux",
+    "extra_consolidation_instruction": "non adoptée : effet non démontré",
+    "global_agent_quality": "non validée sur A8"
+  }
+}

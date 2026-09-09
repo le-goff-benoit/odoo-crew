@@ -165,7 +165,7 @@ class FlowExecutionTest(unittest.TestCase):
         self.assertIn("VAGUE 1 · PARALLÈLE · 2 nœuds", dashboard)
         self.assertIn("AGENT · odoo-tester · graph-lane-runtime", dashboard)
         self.assertIn("AGENT · odoo-tester · graph-lane-static", dashboard)
-        self.assertIn("Agents délégués 0 actif(s) · 2 prêt(s)", dashboard)
+        self.assertIn("Nœuds agent 0 revendiqué(s) · 2 prêt(s)", dashboard)
         self.assertIn("HISTORIQUE RÉCENT", dashboard)
 
     def test_terminal_dashboard_distinguishes_running_and_human_wait(self):
@@ -209,7 +209,59 @@ class FlowExecutionTest(unittest.TestCase):
         self.assertEqual(summary["ready"], ["module_static_qa"])
         dashboard = FLOW.format_dashboard(state, self.graph)
         self.assertIn("État       EN COURS", dashboard)
-        self.assertIn("Agents délégués 1 actif(s) · 1 prêt(s)", dashboard)
+        self.assertIn("Nœuds agent 1 revendiqué(s) · 1 prêt(s)", dashboard)
+
+    def test_failed_delegate_release_preserves_join_and_allows_reassignment(self):
+        """Un refus fournisseur ne termine pas le travail réservé pour lui."""
+        state = self.state("development_complex")
+        finish(state, self.graph, "briefing", "development_complex")
+        path = self.project / "failure.json"
+        FLOW.write_state(path, state)
+        failed = "analyst_data_lane"
+        peer = "analyst_project_lane"
+        FLOW.claim_node(path, GRAPH_PATH, failed, "codex-delegate-data")
+        FLOW.claim_node(path, GRAPH_PATH, peer, "codex-delegate-project")
+        before = FLOW.load_json(path)
+        dashboard = FLOW.format_dashboard(before, self.graph)
+        self.assertNotIn("Agents délégués", dashboard)
+        self.assertIn("Nœuds agent 2 revendiqué(s) · 1 prêt(s)", dashboard)
+
+        with self.assertRaises(FLOW.FlowError):
+            FLOW.release_claim(path, GRAPH_PATH, failed, "wrong-owner", "refus fournisseur")
+        self.assertEqual(FLOW.load_json(path), before)
+        FLOW.release_claim(path, GRAPH_PATH, failed, "codex-delegate-data", "quota fournisseur")
+        released = FLOW.load_json(path)
+        self.assertEqual(released["events"], before["events"])
+        self.assertEqual(released["tokens"], before["tokens"])
+        self.assertIn(peer, released["claims"])
+        self.assertIn(failed, FLOW.ready_nodes(released, self.graph))
+        self.assertNotIn("functional_synthesis", FLOW.ready_nodes(released, self.graph))
+        self.assertEqual(released["claim_events"][-1]["reason"], "quota fournisseur")
+
+        FLOW.claim_node(path, GRAPH_PATH, failed, "codex-local-data")
+        for node, owner in ((failed, "codex-local-data"), (peer, "codex-delegate-project")):
+            proof = self.project / (node + ".md")
+            proof.write_text("Contrôle synthétique du protocole ; aucun appel Odoo.")
+            FLOW.complete_claimed_node(path, GRAPH_PATH, node, "done", [str(proof)], None, owner, False)
+        self.assertNotIn("functional_synthesis", FLOW.ready_nodes(FLOW.load_json(path), self.graph))
+        last = "analyst_standard_lane"
+        FLOW.claim_node(path, GRAPH_PATH, last, "codex-local-standard")
+        proof = self.project / (last + ".md")
+        proof.write_text("Dernier contrôle synthétique du protocole.")
+        FLOW.complete_claimed_node(path, GRAPH_PATH, last, "done", [str(proof)], None, "codex-local-standard", False)
+        self.assertEqual(FLOW.ready_nodes(FLOW.load_json(path), self.graph), ["functional_synthesis"])
+
+    def test_claim_without_delegate_on_serial_path_is_not_reported_as_live_agent(self):
+        """Contre-épreuve : un rôle assuré localement reste une revendication."""
+        state = self.state("development")
+        finish(state, self.graph, "briefing", "development")
+        path = self.project / "local.json"
+        FLOW.write_state(path, state)
+        FLOW.claim_node(path, GRAPH_PATH, "functional_review", "codex-local-analyst")
+        dashboard = FLOW.format_dashboard(FLOW.load_json(path), self.graph)
+        self.assertIn("Nœuds agent 1 revendiqué(s) · 0 prêt(s)", dashboard)
+        self.assertNotIn("Agents délégués", dashboard)
+        self.assertIn("propriétaire: codex-local-analyst", dashboard)
 
     def test_cli_claim_and_json_status_keep_human_and_machine_outputs(self):
         state = self.state("development")

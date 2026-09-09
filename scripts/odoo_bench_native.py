@@ -133,6 +133,8 @@ def sandbox(home, workspace, pack, bridge=None, provider=None):
 
 def native_command(provider, config):
     if provider == 'codex':
+        if config.get('delegate'):
+            raise ValueError('option de délégation native prise en charge uniquement pour Claude dans ce banc')
         args = ['/opt/node/bin/codex', 'exec', '--ignore-user-config', '--ignore-rules', '--ephemeral',
                 '--json', '--skip-git-repo-check', '--dangerously-bypass-approvals-and-sandbox',
                 '--model', config['model'], '-c', 'model_reasoning_effort=' + json.dumps(config['effort']),
@@ -140,10 +142,56 @@ def native_command(provider, config):
         for feature in ('apps', 'plugins', 'multi_agent', 'memories', 'hooks', 'browser_use', 'computer_use', 'image_generation'):
             args += ['--disable', feature]
         return args + ['-']
+    tool_names = 'Bash,Read,Write,Edit,Glob,Grep,Skill'
+    if config.get('delegate'):
+        tool_names += ',Agent,TaskOutput,TaskStop'
     return ['/opt/claude', '--print', '--dangerously-skip-permissions', '--strict-mcp-config',
             '--mcp-config', '{"mcpServers":{}}', '--no-session-persistence', '--output-format', 'stream-json',
-            '--verbose', '--tools', 'Bash,Read,Write,Edit,Glob,Grep,Skill', '--model', config['model'],
+            '--verbose', '--tools', tool_names, '--model', config['model'],
             '--effort', config['effort']]
+
+
+def delegation_instruction(config):
+    if not config.get('delegate'):
+        return 'Dans cette campagne, applique les rôles toi-même (pas de sous-agent). '
+    return ('Dans cet essai de délégation réelle, utilise les sous-agents natifs avec les profils générés. '
+            'Délègue au moins deux voies QA indépendantes dans une même vague si leurs verrous sont compatibles. '
+            'L’orchestrateur seul pilote le graphe et fusionne les preuves. '
+            'Donne à chaque enfant son rôle, périmètre, preuve isolée et briefing. '
+            'Les autres agents travaillent dans le même projet : aucune modification hors du périmètre attribué, '
+            'aucun retour sur les modifications d’autrui. '
+            'Une délégation refusée ou inachevée reste un incident explicite, sans faux succès. ')
+
+
+def native_delegation_summary(raw, provider):
+    """Compter les enfants attestés ; un lancement n'est ni un succès ni un gain."""
+    if provider != 'claude':
+        return {'supported': False}
+    tasks = {}
+    provider_summary = None
+    for line in Path(raw).read_text(errors='replace').splitlines():
+        try:
+            event = json.loads(line)
+        except ValueError:
+            continue
+        if not isinstance(event, dict):
+            continue
+        if event.get('type') == 'system':
+            task_id = event.get('task_id')
+            if event.get('subtype') == 'task_started' and event.get('task_type') == 'local_agent' and task_id:
+                tasks[task_id] = {'role': event.get('subagent_type'), 'tool_use_id': event.get('tool_use_id'),
+                                  'spawn_depth': event.get('spawn_depth'), 'progress_events': 0, 'status': 'incomplete'}
+            elif task_id in tasks:
+                if event.get('subtype') == 'task_progress':
+                    tasks[task_id]['progress_events'] += 1
+                elif event.get('subtype') == 'task_notification':
+                    tasks[task_id]['status'] = event.get('status', 'incomplete')
+        elif event.get('type') == 'result' and not event.get('parent_tool_use_id'):
+            provider_summary = event.get('subagent_stats')
+    return {'supported': True, 'started': len(tasks),
+            'with_progress': sum(bool(t['progress_events']) for t in tasks.values()),
+            'completed': sum(t['status'] == 'completed' for t in tasks.values()),
+            'tasks': tasks, 'provider_summary': provider_summary}
 
 
 class Lab:
@@ -384,8 +432,8 @@ def _trial(folder, pack, case, provider, config, timeout):
         operational = ('# Environnement du laboratoire\nProjet entièrement synthétique ; série 19.0. '
                        'Tu exécutes le workflow natif avec les profils générés sous ~/.codex/skills ou ~/.claude/commands '
                        'et ~/.claude/agents. Lis /odoo-new et les rôles concernés, pilote le vrai graphe. '
-                       'Dans cette campagne, applique les rôles toi-même (pas de sous-agent). '
-                       'Le dépôt du dispositif et les sources Odoo sont en lecture seule. '
+                       + delegation_instruction(config)
+                       + 'Le dépôt du dispositif et les sources Odoo sont en lecture seule. '
                        'Le projet /work est modifiable. Aucun accès à un projet client ou au socket Docker.\n'
                        '## Transport des outils Odoo (adaptation du banc, identique entre variantes)\n'
                        'Docker est supervisé hors du sandbox. Utilise `/bridge/labctl qa MODULE --quick` '
@@ -441,6 +489,7 @@ def _trial(folder, pack, case, provider, config, timeout):
             item = {'status': outcome, 'exit_code': process.returncode, 'seconds': round(time.monotonic() - started, 2),
                     'usage': parsed['usage'], 'actual_model': parsed['actual_model'], 'tool_calls': parsed['tool_calls'],
                     'provider_completed': parsed['completed_event'], 'error': parsed['provider_error'],
+                    'delegation': native_delegation_summary(raw, provider),
                     'answer_sha256': digest(parsed['answer'].encode())}
             state['turns'].append(item)
             snap = folder / f'after-{index}'; copy_project(project, snap)
@@ -473,6 +522,8 @@ def main():
     parser.add_argument('--candidate', default='5868225')
     parser.add_argument('--timeout', type=int, default=600)
     parser.add_argument('--workers', type=int, choices=[1, 2], default=2)
+    parser.add_argument('--delegate-claude', action='store_true',
+                        help='mode expérimental : activer et compter les sous-agents Claude ; aucun gain de vitesse présumé')
     args = parser.parse_args(); output = args.output.resolve()
     if args.action == 'status':
         for path in sorted(output.glob('N*/state.json')):
@@ -481,6 +532,8 @@ def main():
         return
     if output.exists() or not 1 <= args.timeout <= 900:
         raise ValueError('nouveau dossier requis et timeout 1–900 s')
+    if args.delegate_claude and 'claude' not in args.providers:
+        raise ValueError('--delegate-claude nécessite un essai Claude dans --providers')
     catalog = {}
     for identifier in args.cases:
         if not re.fullmatch(r'N\d{2}', identifier):
@@ -492,11 +545,14 @@ def main():
         packs[label] = output / 'packs' / label
         revisions[label] = export_revision(rev, packs[label])
     config = {'codex': {'model': 'gpt-6-astra', 'effort': 'high'}, 'claude': {'model': 'opus', 'effort': 'medium'}}
+    config['claude']['delegate'] = args.delegate_claude
     atomic_json(output / 'protocol.json', {'schema': 1, 'created_at': now(), 'revisions': revisions,
                 'config': config, 'timeout': args.timeout, 'workers': args.workers,
                 'cases': {k: digest(json.dumps(v, sort_keys=True).encode()) for k, v in catalog.items()},
                 'runner': digest(Path(__file__).read_bytes()), 'corpus': source_hashes(ROOT / 'benchmarks/native'),
-                'limitations': ['Un orchestrateur applique les rôles, délégation non mesurée.',
+                'limitations': [('Délégation Claude activée et enfants comptés dans les événements natifs ; Codex sans délégation.'
+                                 if args.delegate_claude else 'Un orchestrateur applique les rôles, délégation non mesurée.'),
+                                'Le pont sérialise les commandes Odoo ; compter les enfants ne mesure pas le chevauchement ni un gain de vitesse.',
                                 'Transport Odoo via pont supervisé ; accès aux profils et outils natifs.',
                                 'Une répétition, comparaison du lot complet, pas effet causal de chaque correction.',
                                 'Clôture et navigateur hors de ces tâches ; pas de production.']})

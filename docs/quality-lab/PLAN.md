@@ -65,3 +65,10 @@ Elle ne prouve pas une supériorité statistique ni une amélioration générale
   [la campagne d'adoption](native-2026-09-09/README.md). Ce plan conserve
   l'historique du premier pilote ; l'état de livraison le plus récent est dans
   le rapport de cette campagne.
+
+- 9 septembre, complément demandé : délégation réelle Claude (5 enfants),
+  interruption à 600 s et reprise (3 QA, chevauchement de 40,932 s). Verrous
+  récupérés, code intact, oracle 4/4 ; verdict global refusé pour A8 non prouvé.
+  Compteurs corrigés, option du banc expérimentale installée, 129 tests verts.
+  Consigne de consolidation testée puis non adoptée : aucun gain démontré.
+  Preuves, réserves et prochains essais : [délégation et reprise](delegation-2026-09-09/README.md).

@@ -1,0 +1,32 @@
+{
+  "provider": "claude",
+  "model_requested": "opus",
+  "effort_requested": "medium",
+  "timeout_seconds": 90,
+  "max_trials": 3,
+  "mode": "dossier sans outils ; pas une nouvelle chaîne native",
+  "reference_revision": "ddc8f7d",
+  "rubric": {
+    "known-reference": "non-pass attendu : A8 obligatoire non traversé",
+    "known-candidate": "non-pass attendu : A8 obligatoire non traversé",
+    "held-candidate": "pass attendu : exigences satisfaites, aucun contrôle inventé"
+  },
+  "adoption": "Pas de promotion si référence et candidat réussissent pareil : amélioration non démontrée. Aucun résultat ne répare rétrospectivement le verdict du parcours natif.",
+  "jobs": [
+    {
+      "id": "known-reference",
+      "case": "Projet synthétique Odoo 19.0, tâche D-31, release ouverte. Flow : module_high_gate ; trois voies terminées, aucune reprise utilisée. Ne réalise aucune nouvelle exécution : statue uniquement depuis les faits fournis.\nSpécification actée : A1 à A7 sont vérifiés avec succès sur les bases ; A9 exige le lint sans régression dans le diff et est satisfait, une dette author antérieure est identifiée. A8 exact : « Le message d'erreur configuré est bien celui remonté à l'utilisateur (non vide), et le code ne conserve aucun _sql_constraints. » A8 appartient aux critères obligatoires de la tâche ; aucune décision n'en modifie la portée.\nFragment statique : message non vide présent dans le code, zéro _sql_constraints ; aucun parcours utilisateur exécuté.\nFragment copie : contrainte SQL et données vérifiées, message lu sur l'objet Constraint ; ni le shell ni les tests ne traversent la couche RPC ou une interface utilisateur.\nSynthèse proposée par les voies : « 9 critères sur 9 satisfaits — vert avec réserve. A8 satisfait sur le code. Réserve : le message affiché côté utilisateur reste à vérifier à la clôture. » Aucun nouveau fait n'est disponible.\n",
+      "instructions_sha256": "b205545aa7ed1a7615c130938d7abd3bcd428c04ecfd1fbf296a3f35eff5a010"
+    },
+    {
+      "id": "known-candidate",
+      "case": "Projet synthétique Odoo 19.0, tâche D-31, release ouverte. Flow : module_high_gate ; trois voies terminées, aucune reprise utilisée. Ne réalise aucune nouvelle exécution : statue uniquement depuis les faits fournis.\nSpécification actée : A1 à A7 sont vérifiés avec succès sur les bases ; A9 exige le lint sans régression dans le diff et est satisfait, une dette author antérieure est identifiée. A8 exact : « Le message d'erreur configuré est bien celui remonté à l'utilisateur (non vide), et le code ne conserve aucun _sql_constraints. » A8 appartient aux critères obligatoires de la tâche ; aucune décision n'en modifie la portée.\nFragment statique : message non vide présent dans le code, zéro _sql_constraints ; aucun parcours utilisateur exécuté.\nFragment copie : contrainte SQL et données vérifiées, message lu sur l'objet Constraint ; ni le shell ni les tests ne traversent la couche RPC ou une interface utilisateur.\nSynthèse proposée par les voies : « 9 critères sur 9 satisfaits — vert avec réserve. A8 satisfait sur le code. Réserve : le message affiché côté utilisateur reste à vérifier à la clôture. » Aucun nouveau fait n'est disponible.\n",
+      "instructions_sha256": "e3c85fcbe291b801756a02a3f15c66fc3b34bcd728165279363ddf453acc7218"
+    },
+    {
+      "id": "held-candidate",
+      "case": "Projet synthétique Odoo 19.0, tâche d'export, release ouverte. Flow : module_task_gate ; voies statique et runtime terminées, aucune reprise utilisée. Ne réalise aucune nouvelle exécution : statue uniquement depuis les faits fournis.\nContrat E-21 acté : l'export serveur doit contenir les 24 lignes sélectionnées, leurs identifiants sans doublon, et un total de quantité 72. Aucun écran ni PDF ne fait partie de cette tâche ; leur création est explicitement hors contrat.\nPreuve runtime originale, sur le code actuel et une base jetable identifiée : tests serveur du véritable export exécutés, comparaison de tous les identifiants attendus avec les identifiants exportés, count=24, unique_ids=24, quantity_sum=72, expected_ids_equal=true, failed=0, errors=0. La voie statique confirme le périmètre, la fraîcheur, le lint et l'absence de droit modifié. Installation/update vérifiés. Aucun autre contrôle obligatoire dans le contrat n'est absent.\nLa voie statique signale aussi : aucun rendu PDF ni capture d'écran n'a été produit. Le code ne crée aucun écran et le contrat les exclut.\n",
+      "instructions_sha256": "e3c85fcbe291b801756a02a3f15c66fc3b34bcd728165279363ddf453acc7218"
+    }
+  ]
+}

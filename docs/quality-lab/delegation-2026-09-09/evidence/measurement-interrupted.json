@@ -1,0 +1,185 @@
+{
+  "native_tasks_started": 5,
+  "tasks_with_observed_work": 5,
+  "tasks": [
+    {
+      "task_id": "a2dff412d6c4c4bad",
+      "tool_use_id": "toolu_015JbX4Zma4y8pquzjWUHcxs",
+      "role": "odoo-analyst",
+      "started": 91.354,
+      "progress": [
+        93.875,
+        94.631,
+        94.631,
+        95.286,
+        95.286,
+        98.413,
+        99.32,
+        102.143,
+        102.9,
+        107.89,
+        109.656,
+        113.587,
+        118.727,
+        120.793,
+        125.028,
+        130.07,
+        131.28,
+        133.95,
+        139.644,
+        142.768,
+        148.162,
+        159.851,
+        252.832,
+        267.391
+      ],
+      "tool_returned": true,
+      "spawn_depth": 1,
+      "last_usage": {
+        "total_tokens": 41473,
+        "tool_uses": 24,
+        "duration_ms": 176034
+      },
+      "native_status": "completed",
+      "notified_at": 282.051,
+      "tool_error": false,
+      "returned_at": 282.051
+    },
+    {
+      "task_id": "a607acbb7b5609436",
+      "tool_use_id": "toolu_012o1fTcpSMq1RfP6xMsXLhE",
+      "role": "odoo-developer",
+      "started": 335.091,
+      "progress": [
+        337.612,
+        338.77,
+        342.449,
+        344.414,
+        350.408,
+        356.349,
+        366.886,
+        383.773,
+        389.371,
+        391.237,
+        396.832,
+        401.671,
+        406.655,
+        414.465,
+        420.405,
+        433.662,
+        438.188,
+        452.982,
+        505.485,
+        509.714
+      ],
+      "tool_returned": true,
+      "spawn_depth": 1,
+      "last_usage": {
+        "total_tokens": 53604,
+        "tool_uses": 20,
+        "duration_ms": 174650
+      },
+      "native_status": "completed",
+      "notified_at": 528.334,
+      "tool_error": false,
+      "returned_at": 528.334
+    },
+    {
+      "task_id": "acd6f380465bfde6f",
+      "tool_use_id": "toolu_013enGTbR3dY14JqdNZauqk7",
+      "role": "odoo-tester",
+      "started": 565.43,
+      "progress": [
+        568.408,
+        569.367,
+        571.586,
+        572.946,
+        577.333,
+        578.696,
+        594.119,
+        595.427,
+        612.756,
+        613.512
+      ],
+      "tool_returned": true,
+      "spawn_depth": 1,
+      "tool_error": false,
+      "returned_at": 565.43,
+      "last_usage": {
+        "total_tokens": 37466,
+        "tool_uses": 10,
+        "duration_ms": 48041
+      }
+    },
+    {
+      "task_id": "afef2a081e8af8270",
+      "tool_use_id": "toolu_01BTa9jabNc4owfBk7rH61Sy",
+      "role": "odoo-tester",
+      "started": 582.327,
+      "progress": [
+        584.193,
+        585.0,
+        587.671,
+        589.333,
+        593.817,
+        613.209
+      ],
+      "tool_returned": true,
+      "spawn_depth": 1,
+      "tool_error": false,
+      "returned_at": 582.328,
+      "last_usage": {
+        "total_tokens": 34848,
+        "tool_uses": 6,
+        "duration_ms": 30872
+      }
+    },
+    {
+      "task_id": "a8634a2ac29b6d2c0",
+      "tool_use_id": "toolu_01U5uZME2NZq9FSmoU5C4SdX",
+      "role": "odoo-tester",
+      "started": 602.976,
+      "progress": [
+        605.29,
+        605.944,
+        606.096,
+        609.122
+      ],
+      "tool_returned": true,
+      "spawn_depth": 1,
+      "tool_error": false,
+      "returned_at": 602.976,
+      "last_usage": {
+        "total_tokens": 26338,
+        "tool_uses": 4,
+        "duration_ms": 6164
+      }
+    }
+  ],
+  "overlaps": [
+    {
+      "tasks": [
+        "acd6f380465bfde6f",
+        "afef2a081e8af8270"
+      ],
+      "observed_work_envelope_overlap_seconds": 29.016
+    },
+    {
+      "tasks": [
+        "acd6f380465bfde6f",
+        "a8634a2ac29b6d2c0"
+      ],
+      "observed_work_envelope_overlap_seconds": 3.832
+    },
+    {
+      "tasks": [
+        "afef2a081e8af8270",
+        "a8634a2ac29b6d2c0"
+      ],
+      "observed_work_envelope_overlap_seconds": 3.832
+    }
+  ],
+  "provider_result": null,
+  "business_verdict": "À relire séparément dans les preuves et l’oracle Odoo",
+  "limit": "Les enveloppes de progression prouvent le chevauchement des activités observées, pas le calcul simultané du fournisseur ni un gain causal de vitesse."
+}

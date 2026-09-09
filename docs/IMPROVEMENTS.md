@@ -20,7 +20,7 @@ comportemental. Les rapports des 8 et 9 septembre distinguent ces preuves.
 | R09 — reprise après évolution du graphe | Snapshot, libération indépendante du graphe courant, migration sémantique contrôlée | Tests de migration ; pas de migration forcée d'un nœud dont le sens change |
 | R10 — accès distant Studio | Chemin local limité, méthodes de lecture explicites, garde d'instance distante | Tests sans production ; les droits serveur restent nécessaires |
 | R11 — pack partiel/idempotence | Prévalidation, import objet/XML-ID atomique, ordre des références, rejeu | Tests ORM et Studio ; le pack entier n'est pas une transaction globale Online |
-| R12 — défaut non bloquant par étiquette | Toute régression, critère faux ou contrôle obligatoire absent exige reprise | Rôle QA/orchestration ; réception et clôture liées aux preuves |
+| R12 — défaut non bloquant par étiquette | Toute régression, critère faux ou contrôle obligatoire absent exige reprise | Consigne et contrôles de réception présents, mais faux « 9/9 » observé en délégation sur A8 : [défaut de consolidation encore ouvert](quality-lab/delegation-2026-09-09/README.md). Le garde de preuves ne vérifie pas leur sens métier |
 | R13 — couverture concentrée | Suites par outil, cas métier, mutations, campagnes natives et juge masqué | Résultats et limites dans les rapports ; un nombre de tests n'est pas une note métier |
 
 ## Vitesse, sans affaiblir les verdicts
@@ -50,7 +50,7 @@ comportemental. Les rapports des 8 et 9 septembre distinguent ces preuves.
 | M06 — synchronisation/passation | Plan et réceptions versionnés, contexte sourcé vérifiable ; checkout sans état local signalé, jamais déclaré vert silencieusement |
 | M07 — volume | Sélection progressive à la demande, blocs entiers et index de sources ; les anciens dossiers restent consultables |
 | §6 / §10 — préparer puis exécuter | `/odoo-plan` et `/odoo-start`, en conservant `/odoo-new` direct ; tâches, dépendances, risque, critères et réception |
-| §7 — parallélisme utile | Analyse/tâches indépendantes quand ressources compatibles ; recette partagée maintenue sérialisée tant qu'elle écrit un rapport et utilise une stack commune |
+| §7 — parallélisme utile | Analyse/tâches indépendantes quand ressources compatibles ; compteur de revendications distingué des agents démarrés ; mode natif Claude de délégation expérimental, événements et reprise dans [l'essai complémentaire](quality-lab/delegation-2026-09-09/README.md). Le pont Odoo et la recette partagée restent sérialisés ; aucun gain de vitesse démontré |
 | §8 / §14 — métier et tests | Catalogue SCENARIOS optionnel sourcé, sélection par impact, élargissement si dépendance inconnue, oracle indépendant |
 | §9 — documentation | `doc.md` et consolidation obligatoires ; guides DOCX/PDF et communication facultatifs sur demande, y compris après clôture |
 | §15–16 — boucle d'amélioration | Référence figée, essais, défaut, correction, contre-épreuve, décision d'adoption, installation/publication ; pas de promotion automatique par une note LLM |

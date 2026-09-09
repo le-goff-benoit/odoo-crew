@@ -11,7 +11,7 @@ from unittest.mock import patch
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'scripts'))
 import odoo_context as context
 import odoo_scenarios as scenarios
-from odoo_bench_native import inside, copy_project, native_command, trial, Lab
+from odoo_bench_native import inside, copy_project, native_command, native_delegation_summary, trial, Lab
 
 
 class ContextScenarioTests(unittest.TestCase):
@@ -127,6 +127,49 @@ class ContextScenarioTests(unittest.TestCase):
         self.assertNotIn('shell_tool', cmd)
         cmd = native_command('claude', {'model':'fixture', 'effort':'medium'})
         self.assertIn('Bash,Read,Write,Edit,Glob,Grep,Skill', cmd)
+
+    def test_delegation_requires_explicit_claude_option(self):
+        settings = {'model': 'fixture', 'effort': 'medium', 'delegate': True}
+        cmd = native_command('claude', settings)
+        exposed = cmd[cmd.index('--tools') + 1].split(',')
+        self.assertTrue({'Agent', 'TaskOutput', 'TaskStop'}.issubset(exposed))
+        with self.assertRaises(ValueError):
+            native_command('codex', settings)
+
+    def test_native_delegation_counts_agent_work_not_shell_or_requests(self):
+        raw = self.root / 'raw.jsonl'
+        rows = [
+            {'type': 'assistant', 'message': {'content': [{'type': 'tool_use', 'name': 'Agent'}]}},
+            {'type': 'system', 'subtype': 'task_started', 'task_type': 'local_bash', 'task_id': 'shell'},
+            {'type': 'system', 'subtype': 'task_notification', 'task_id': 'shell', 'status': 'completed'},
+        ]
+        raw.write_text('\n'.join(json.dumps(row) for row in rows))
+        self.assertEqual(native_delegation_summary(raw, 'claude')['started'], 0)
+        for task_id, outcome in [('a', 'completed'), ('b', 'failed')]:
+            rows.extend([
+                {'type': 'system', 'subtype': 'task_started', 'task_type': 'local_agent',
+                 'task_id': task_id, 'tool_use_id': 'call-' + task_id, 'subagent_type': 'odoo-tester'},
+                {'type': 'system', 'subtype': 'task_progress', 'task_id': task_id},
+                {'type': 'system', 'subtype': 'task_notification', 'task_id': task_id, 'status': outcome},
+            ])
+        raw.write_text('\n'.join(json.dumps(row) for row in rows))
+        result = native_delegation_summary(raw, 'claude')
+        self.assertEqual(result['started'], 2)
+        self.assertEqual(result['with_progress'], 2)
+        self.assertEqual(result['completed'], 1)
+        self.assertEqual(result['tasks']['b']['status'], 'failed')
+        self.assertEqual(native_delegation_summary(raw, 'codex'), {'supported': False})
+
+    def test_native_delegation_keeps_interrupted_child_incomplete(self):
+        raw = self.root / 'partial.jsonl'
+        row = {'type': 'system', 'subtype': 'task_started', 'task_type': 'local_agent', 'task_id': 'unfinished'}
+        raw.write_text('not JSON\nnull\n' + json.dumps(row))
+        result = native_delegation_summary(raw, 'claude')
+        self.assertEqual(result['started'], 1)
+        self.assertEqual(result['with_progress'], 0)
+        self.assertEqual(result['completed'], 0)
+        self.assertEqual(result['tasks']['unfinished']['status'], 'incomplete')
+        self.assertIsNone(result['provider_summary'])
 
 
 if __name__ == '__main__': unittest.main()

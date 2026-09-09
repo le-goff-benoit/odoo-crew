@@ -1,0 +1,192 @@
+[
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.72,
+    "exit_code": 1,
+    "log": "bridge-000.log",
+    "sha256": "b0eedb907728188993c593a730b88b5f3dd243a032fda440e60cf2fb1e63a9d2",
+    "project_sha256": "64c42cda7352eb01540272529ee0be7685d7c739a8f90bad440c3deca242fc99"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--fresh",
+      "--tags",
+      "/lab_rental:TestLabRentalDaysConstraint"
+    ],
+    "seconds": 11.38,
+    "exit_code": 0,
+    "log": "bridge-001.log",
+    "sha256": "9da0b6271c66486e56415b4ebb2ef6959fa43e081865ef5c94f5595ad8be8e6f",
+    "project_sha256": "7829764fb81a651448d46928a2646be85a8586879ace0ffc9ec63557679920ad",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 8,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 6
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental"
+    ],
+    "seconds": 6.31,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "22ef159106901226c489252ffb8e33937cf1d574390c00856504077f4d576611",
+    "project_sha256": "ddd43bf32d9d556d328349920affd1154323327ab2c89e4bc081af1fe0fa3585",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 8,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 6
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/d31-jours-negatifs/scripts/r2_00_state_initial.py"
+    ],
+    "seconds": 0.91,
+    "exit_code": 0,
+    "log": "bridge-003.log",
+    "sha256": "49e759bd22bbea5cf699c7d11217853c5cf08613463ccb39211be246576fc4d4",
+    "project_sha256": "b8fcd87f7b55f8872957bed39e8ba01b09a300d773e9f462d95e5cb1d01ef074"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.61,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "b1253e90394abd89e217653e5066e0ce00986cade3fd4c383f122c195d0951ba",
+    "project_sha256": "15cad5919ed618a7a33355e9303bba8eb040a53b334eb2c5871ca611f0ccefa1"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/d31-jours-negatifs/scripts/r2_02_a6_after_update.py"
+    ],
+    "seconds": 0.84,
+    "exit_code": 0,
+    "log": "bridge-005.log",
+    "sha256": "2f13dd4c8edc0ffc563cd35db3fdaa3abf19653f5b39801757e9cf496cd26be5",
+    "project_sha256": "819d1084ec24a320688edfaab75fab1bcbd3df413cf5603d8c22c76deb85fbd7"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/d31-jours-negatifs/scripts/r2_03_a1_a5.py"
+    ],
+    "seconds": 0.99,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "24d80ca750233e3827bffa04d291cd6ab57b28ca95a032ff44a8eadefc17b32f",
+    "project_sha256": "dd0bab5b77932518eea56fa6aa5edbc75c7414317d480f3985ac9fc5ee91721b"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/d31-jours-negatifs/scripts/r2_04_a7_before.py"
+    ],
+    "seconds": 0.88,
+    "exit_code": 0,
+    "log": "bridge-007.log",
+    "sha256": "69db81c521e2f7f42266996d90afe2252823cd3bb57775e11fd6eafb477e8271",
+    "project_sha256": "0ef43475653ecef04a91a32d1955b17e4283bdf0d2e8bac0ad9cb29b2d5a9076"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.16,
+    "exit_code": 0,
+    "log": "bridge-008.log",
+    "sha256": "b5e6175fe07f6b61b899160ce2d5455e1a066f8ccaa6be48a54c164afe4d017f",
+    "project_sha256": "ee31b7044479de223495b5d07013101839236d7b2ad38a115bb2457cc154cb20"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/d31-jours-negatifs/scripts/r2_06_a7_after.py"
+    ],
+    "seconds": 0.94,
+    "exit_code": 0,
+    "log": "bridge-009.log",
+    "sha256": "4aa043c7ec6c693b6bfe667744715c3c55d77bd4f5d5be3c85dfece20b5afbdd",
+    "project_sha256": "cb639d53967132ab039bfee67cf59402f19646a5a5a007e2477b87b6f85b274b"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/d31-jours-negatifs/scripts/r2_07_cleanup.py"
+    ],
+    "seconds": 0.98,
+    "exit_code": 0,
+    "log": "bridge-010.log",
+    "sha256": "66147145dd578f4065e28b7934070f788c8c4ae01b5b328dcdfa6a4b8002dd9d",
+    "project_sha256": "54fef7a2ab61bc4bece516989c5baa869854bb0e0f52907eea16f6753a2d9d98"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.48,
+    "exit_code": 0,
+    "log": "bridge-011.log",
+    "sha256": "bcf40385da957189ae3d134c68975a023d1fcbf57480c06c487843826c5b7269",
+    "project_sha256": "20127de9f45de127b3aefa02a5b432b2c7bee1dc70ae9e26e330a3d8d60a7b22"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/d31-jours-negatifs/scripts/r2_09_final_state.py"
+    ],
+    "seconds": 0.83,
+    "exit_code": 0,
+    "log": "bridge-012.log",
+    "sha256": "b6a856805959e75d8973014e61a1b71e96bd5b7fe062d89afc6edfb93c90a638",
+    "project_sha256": "908136def47341c87a52e948c19b4baeeef545fe6f2ba2075651afd4de814427"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/d31-jours-negatifs/scripts/r2_10_a8_message.py"
+    ],
+    "seconds": 0.84,
+    "exit_code": 1,
+    "log": "bridge-013.log",
+    "sha256": "8e8f42b6564bc31368294b5946d4f950b81cf03ab812249cb1743213ff84e91d",
+    "project_sha256": "e2bcaa46182f8f6e1c7d8156e738147114dc36d1260e33ba06bb69d00d746df7"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/flow-artifacts/d31-jours-negatifs/scripts/r2_10_a8_message.py"
+    ],
+    "seconds": 1.19,
+    "exit_code": 0,
+    "log": "bridge-014.log",
+    "sha256": "c79501f0ac9f5f81555c9d151b11243893b14d1f4879098c6340eaa637878f9a",
+    "project_sha256": "67853d43049c0f352f8a425688bbc7b3633a8b0262238e092a9b3f783908c221"
+  }
+]

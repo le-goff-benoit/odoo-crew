@@ -1,0 +1,219 @@
+{
+  "native_tasks_started": 3,
+  "tasks_with_observed_work": 3,
+  "tasks": [
+    {
+      "task_id": "af00108ca1e0f3976",
+      "tool_use_id": "toolu_01897RWiKzTTowJaREbcr4Gp",
+      "role": "odoo-tester",
+      "started": 126.678,
+      "progress": [
+        128.592,
+        129.348,
+        132.368,
+        133.024,
+        136.395,
+        139.466,
+        145.414,
+        151.259,
+        151.713,
+        152.269,
+        152.925,
+        153.379,
+        153.832,
+        154.185,
+        161.646,
+        162.752,
+        163.305,
+        164.411,
+        164.965,
+        165.367,
+        170.648,
+        171.705,
+        172.913,
+        177.344,
+        232.762
+      ],
+      "tool_returned": true,
+      "spawn_depth": 1,
+      "tool_error": false,
+      "returned_at": 126.678,
+      "last_usage": {
+        "total_tokens": 49035,
+        "tool_uses": 25,
+        "duration_ms": 106087
+      },
+      "native_status": "completed",
+      "notified_at": 245.56
+    },
+    {
+      "task_id": "ab8c8165a02a1b5d8",
+      "tool_use_id": "toolu_011UCHdk1WZekJJpzvuLrzRs",
+      "role": "odoo-tester",
+      "started": 149.191,
+      "progress": [
+        150.702,
+        151.36,
+        153.379,
+        155.599,
+        157.87,
+        160.185,
+        173.618,
+        175.936,
+        184.74,
+        188.366,
+        190.938,
+        222.801
+      ],
+      "tool_returned": true,
+      "spawn_depth": 1,
+      "tool_error": false,
+      "returned_at": 149.191,
+      "last_usage": {
+        "total_tokens": 41524,
+        "tool_uses": 12,
+        "duration_ms": 73604
+      },
+      "native_status": "completed",
+      "notified_at": 231.905
+    },
+    {
+      "task_id": "aab1b4ade7899663f",
+      "tool_use_id": "toolu_01VgWau8CXjpzUz6ZB3uBU1M",
+      "role": "odoo-tester",
+      "started": 178.954,
+      "progress": [
+        181.869,
+        182.322,
+        184.639,
+        186.502,
+        192.7,
+        203.025,
+        205.746,
+        207.91,
+        216.915,
+        229.992,
+        237.903,
+        240.976,
+        251.005,
+        257.759,
+        268.893,
+        277.052,
+        283.952,
+        341.222
+      ],
+      "tool_returned": true,
+      "spawn_depth": 1,
+      "tool_error": false,
+      "returned_at": 178.954,
+      "last_usage": {
+        "total_tokens": 56394,
+        "tool_uses": 18,
+        "duration_ms": 162261
+      },
+      "native_status": "completed",
+      "notified_at": 349.131
+    }
+  ],
+  "overlaps": [
+    {
+      "tasks": [
+        "af00108ca1e0f3976",
+        "ab8c8165a02a1b5d8"
+      ],
+      "observed_work_envelope_overlap_seconds": 72.099
+    },
+    {
+      "tasks": [
+        "af00108ca1e0f3976",
+        "aab1b4ade7899663f"
+      ],
+      "observed_work_envelope_overlap_seconds": 50.893
+    },
+    {
+      "tasks": [
+        "ab8c8165a02a1b5d8",
+        "aab1b4ade7899663f"
+      ],
+      "observed_work_envelope_overlap_seconds": 40.932
+    }
+  ],
+  "provider_result": {
+    "subtype": "success",
+    "is_error": false,
+    "duration_ms": 143573,
+    "total_cost_usd": 3.680250499999999,
+    "subagent_stats": {
+      "spawned": 3,
+      "requested": {
+        "background": 0,
+        "foreground": 0,
+        "unset": 3
+      },
+      "started_in_background": 3,
+      "max_depth": 1,
+      "spawned_by_subagents": 0,
+      "completed": 3,
+      "failed": 0,
+      "killed": {
+        "parent": 0,
+        "user": 0,
+        "system": 0
+      },
+      "refused": {
+        "depth_limit": 0,
+        "concurrency_limit": 0,
+        "budget": 0
+      },
+      "by_type": {
+        "odoo-tester": 3
+      }
+    },
+    "modelUsage": {
+      "claude-haiku-4-5-20251001": {
+        "inputTokens": 1371,
+        "outputTokens": 22,
+        "cacheReadInputTokens": 0,
+        "cacheCreationInputTokens": 0,
+        "webSearchRequests": 0,
+        "costUSD": 0.0014810000000000001,
+        "contextWindow": 200000,
+        "maxOutputTokens": 32000,
+        "thinkingTokens": 0,
+        "canonicalModel": "claude-haiku-4-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-opus-5": {
+        "inputTokens": 76,
+        "outputTokens": 25735,
+        "cacheReadInputTokens": 2333947,
+        "cacheCreationInputTokens": 95090,
+        "webSearchRequests": 0,
+        "costUSD": 2.7616284999999996,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 64000,
+        "thinkingTokens": 1846,
+        "canonicalModel": "claude-opus-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      },
+      "claude-sonnet-5": {
+        "inputTokens": 82,
+        "outputTokens": 31565,
+        "cacheReadInputTokens": 1478285,
+        "cacheCreationInputTokens": 122268,
+        "webSearchRequests": 0,
+        "costUSD": 0.9171410000000002,
+        "contextWindow": 1000000,
+        "maxOutputTokens": 64000,
+        "thinkingTokens": 3192,
+        "canonicalModel": "claude-sonnet-5",
+        "provider": "firstParty",
+        "costBasis": "list"
+      }
+    }
+  },
+  "business_verdict": "À relire séparément dans les preuves et l’oracle Odoo",
+  "limit": "Les enveloppes de progression prouvent le chevauchement des activités observées, pas le calcul simultané du fournisseur ni un gain causal de vitesse."
+}

@@ -106,7 +106,7 @@ ODOO FLOW · ajout-reference
 Flux       development
 Projet     /srv/odoo/client
 Progression 3 étape(s) franchie(s)
-Agents délégués 0 actif(s) · 2 prêt(s)
+Nœuds agent 0 revendiqué(s) · 2 prêt(s)
 Dernière   ✓ module_implementation → done
 
 POSITION DANS LE GRAPHE
@@ -120,6 +120,11 @@ POSITION DANS LE GRAPHE
     Voie QA normale : relire le diff et exécuter le lint ciblé.
     Sorties: done · Preuve: fragment QA statique
 ```
+
+Une revendication réserve le travail et ses verrous ; elle ne prouve pas qu'un
+sous-agent a démarré. Les identifiants et événements du moteur de sous-agents
+font foi pour mesurer la délégation effective. Un rôle exécuté par
+l'orchestrateur lui-même reste également un nœud revendiqué.
 
 Légende :
 

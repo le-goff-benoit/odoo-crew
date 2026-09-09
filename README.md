@@ -121,6 +121,11 @@ ni un gain global de vitesse. Les prochaines améliorations doivent à leur tour
 
 [Lire les résultats et leurs limites](docs/quality-lab/native-2026-09-09/README.md)
 
+Un [essai complémentaire de délégation et de reprise](docs/quality-lab/delegation-2026-09-09/README.md)
+distingue les agents réellement démarrés des étapes simplement réservées et
+précise les prochaines dimensions à tester. Le mode de délégation du banc
+reste expérimental.
+
 ## Pour aller plus loin
 
 | Vous souhaitez… | Documentation |

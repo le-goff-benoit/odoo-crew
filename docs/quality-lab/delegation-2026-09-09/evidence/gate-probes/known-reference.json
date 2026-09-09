@@ -1,0 +1,37 @@
+{
+  "id": "known-reference",
+  "returncode": 0,
+  "seconds": 13.57,
+  "answer": "```json\n{\n  \"issue\": \"retry\",\n  \"criteres_non_satisfaits\": [\"A8\"],\n  \"justification\": \"A8 est un critère obligatoire en deux volets : absence de _sql_constraints ET message d'erreur non vide effectivement remonté à l'utilisateur. Seul le premier volet est prouvé (fragment statique : message présent dans le code, zéro _sql_constraints ; fragment copie : message lu sur l'objet Constraint). Aucun fragment ne traverse la couche RPC ni une interface utilisateur : la remontée à l'utilisateur n'est établie par aucun fait. La synthèse « 9/9 satisfaits — vert avec réserve » requalifie un contrôle obligatoire manquant en réserve reportée à la clôture, ce que la gravité ou l'avancement ne permettent pas ; seules la dette antérieure explicitement identifiée (lint author, couverte par A9 qui reste satisfait) et les améliorations facultatives peuvent rester en arbitrage. A1 à A7 et A9 sont satisfaits ; il manque uniquement l'exécution d'un parcours utilisateur (ou d'un appel traversant la couche RPC) constatant le message non vide. Aucune reprise n'ayant été consommée, le retour à l'implémentation/QA pour produire cette preuve est possible dans la limite des deux reprises ; le verdict ne peut pas être vert en l'état, et il n'est pas bloqué puisque le contrôle manquant est exécutable.\"\n}\n```",
+  "error": false,
+  "model_usage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 7475,
+      "outputTokens": 18,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.007565,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-opus-5": {
+      "inputTokens": 2,
+      "outputTokens": 783,
+      "cacheReadInputTokens": 2958,
+      "cacheCreationInputTokens": 8956,
+      "webSearchRequests": 0,
+      "costUSD": 0.110624,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "thinkingTokens": 257,
+      "canonicalModel": "claude-opus-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}

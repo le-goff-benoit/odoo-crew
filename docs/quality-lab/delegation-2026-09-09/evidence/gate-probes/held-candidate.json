@@ -1,0 +1,37 @@
+{
+  "id": "held-candidate",
+  "returncode": 0,
+  "seconds": 5.78,
+  "answer": "```json\n{\n  \"issue\": \"pass\",\n  \"criteres_non_satisfaits\": [],\n  \"justification\": \"Les trois critères du contrat E-21 sont couverts par une preuve runtime originale exécutée sur le code actuel et une base jetable identifiée : count=24 (24 lignes sélectionnées), unique_ids=24 avec expected_ids_equal=true (identifiants attendus, sans doublon), quantity_sum=72 (total de quantité). failed=0, errors=0. La voie statique confirme le périmètre, la fraîcheur, le lint, l'absence de droit modifié, et l'installation/update sont vérifiés ; aucun contrôle obligatoire du contrat n'est absent. L'absence de rendu PDF et de capture d'écran ne constitue pas un critère non satisfait : les écrans et PDF sont explicitement hors contrat et le code n'en crée aucun — un contrôle absent du contrat ne devient pas une obligation supplémentaire.\"\n}\n```",
+  "error": false,
+  "model_usage": {
+    "claude-haiku-4-5-20251001": {
+      "inputTokens": 7558,
+      "outputTokens": 28,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 0,
+      "costUSD": 0.007698,
+      "contextWindow": 200000,
+      "maxOutputTokens": 32000,
+      "thinkingTokens": 0,
+      "canonicalModel": "claude-haiku-4-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-opus-5": {
+      "inputTokens": 2,
+      "outputTokens": 380,
+      "cacheReadInputTokens": 2958,
+      "cacheCreationInputTokens": 9062,
+      "webSearchRequests": 0,
+      "costUSD": 0.101609,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 64000,
+      "thinkingTokens": 38,
+      "canonicalModel": "claude-opus-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  }
+}
