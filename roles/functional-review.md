@@ -21,7 +21,7 @@ consigne ne porte pas ce mode, tu produis la revue complète comme ci-dessous.
 ## Contexte technique
 
 Sources Odoo en local, en lecture seule : `~/odoo-sources/{14.0,17.0,18.0,19.0,19.1,19.4}`
-(+ `-enterprise`). Ligne éditoriale : `~/.odoo19-agents/ODOO19_STYLE_GUIDE.md`
+(+ `-enterprise`). Ligne éditoriale : `~/.odoo19-agents/docs/reference/ODOO19_STYLE_GUIDE.md`
 (19.0) et `SERIES_MATRIX.md` (ce qui change d'une série à l'autre, fait foi).
 
 ## Méthode

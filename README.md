@@ -11,7 +11,7 @@ métier, avec un suivi des résultats et des prochaines étapes.
 Disponible dans **Claude Code et Codex**, avec une méthode commune adaptée à la
 version Odoo de votre projet.
 
-[Commencer](INSTALL.md) · [Qualité et résultats des essais](docs/quality-lab/README.md)
+[Commencer](docs/INSTALL.md) · [Qualité et résultats des essais](docs/quality-lab/README.md)
 
 ## À chacun son rôle, à vous le pilotage
 
@@ -72,7 +72,7 @@ Votre ticket --> Support --> Diagnostic
 
 ## Les commandes, selon votre besoin
 
-Après l’[installation](INSTALL.md), ouvrez votre projet dans Claude Code ou Codex.
+Après l’[installation](docs/INSTALL.md), ouvrez votre projet dans Claude Code ou Codex.
 Indiquez la commande et décrivez le résultat souhaité :
 
 ```text
@@ -95,6 +95,38 @@ avec les decisions a prendre et les priorites.
 Pour une question fonctionnelle, un ticket, une relecture ou un guide utilisateur,
 décrivez simplement votre besoin : le rôle ou skill adapté prend le relais.
 
+<details>
+<summary><strong>Exemple métier : éviter une commande sans référence d’achat client</strong></summary>
+
+**Scénario illustratif, non exécuté sur une base Odoo.** Un client exige que sa
+référence d’achat figure sur chaque commande. Le commercial doit pouvoir préparer
+son devis, mais la confirmation doit être bloquée si cette référence manque.
+
+> `/odoo-new Pour les clients qui exigent une référence d’achat, empêche la
+> confirmation d’une commande sans référence. Laisse les devis modifiables
+> et les commandes déjà confirmées inchangées.`
+
+```text
+Chef de projet --> Analyste --> Developpeur --> Qualite
+                                    ^             |
+                                    +-- retour ---+
+              Orchestrateur : suivi et livraison
+```
+
+| Intervenant | Son implication | Sa conclusion attendue |
+|---|---|---|
+| **Chef de projet** | Précise quels clients sont concernés et si une exception est permise. | La règle métier est décidée : blocage à la confirmation, aucun changement rétroactif. |
+| **Analyste** | Vérifie le standard, les configurations existantes et le cas d’une confirmation de plusieurs commandes. | Périmètre et critères validés ; pour cet exemple, la voie retenue est un module spécifique. |
+| **Développeur** | Ajoute l’indication sur le client, le contrôle à la confirmation, un message compréhensible et les tests associés. | La réalisation est prête pour une vérification indépendante. |
+| **Responsable qualité** | Contrôle les clients concernés ou non, la référence présente ou absente, la confirmation groupée et les commandes déjà confirmées. | Accepté si tous les critères passent ; sinon, retour au développeur avec le défaut reproduit. |
+| **Orchestrateur** | Suit les étapes, conserve les décisions et les preuves, puis prépare la recette complète à la clôture. | Tâche vérifiée dans la release ; livraison après recette complète, avec documentation et bilan du temps. |
+
+**Résultat visé :** le commercial sait quoi compléter avant de confirmer,
+et les commandes existantes restent inchangées. Studio et Support ne sont
+pas mobilisés dans ce scénario ; ils interviennent lorsque le besoin le justifie.
+
+</details>
+
 ## Ce que vous gardez d’une intervention à l’autre
 
 **Les règles client et décisions**, pour éviter de repartir de zéro.
@@ -108,5 +140,5 @@ release ne déclenche pas son déploiement.
 
 ---
 
-[Installation](INSTALL.md) · [Estimation et suivi](docs/EFFORT.md) ·
+[Documentation](docs/README.md) · [Installation](docs/INSTALL.md) · [Estimation et suivi](docs/EFFORT.md) ·
 [Qualité et amélioration](docs/quality-lab/README.md) · [Guide technique](docs/ARCHITECTURE.md)

@@ -34,7 +34,7 @@ dispositif ; une remarque qui reste dans la conversation est perdue.
 
 ```bash
 # Depuis quand ? (marqueur en tête de LESSONS.md, à mettre à jour en fin de passage)
-grep -o "dernier-retex: [0-9-]*" ~/.odoo19-agents/LESSONS.md
+grep -o "dernier-retex: [0-9-]*" ~/.odoo19-agents/docs/reference/LESSONS.md
 # Les journaux de tous les projets outillés, et leurs entrées depuis cette date
 ls -t ~/*/.odoo-agents/JOURNAL.md
 grep -h "^## 20" ~/*/.odoo-agents/JOURNAL.md | sort
@@ -44,10 +44,10 @@ for p in ~/*/.odoo-agents; do python3 ~/.odoo19-agents/scripts/odoo_briefing.py 
 grep -h -A6 "^## Réserves" ~/*/changelog/*/README.md 2>/dev/null
 grep -h "❌\|⚠️" ~/*/changelog/*/recette.md 2>/dev/null
 # L'état de la mémoire longue
-cat ~/.odoo19-agents/LESSONS.md
+cat ~/.odoo19-agents/docs/reference/LESSONS.md
 # Les références que les leçons alimentent
-cat ~/.odoo19-agents/SERIES_MATRIX.md
-cat ~/.odoo19-agents/PLATEFORMES.md
+cat ~/.odoo19-agents/docs/reference/SERIES_MATRIX.md
+cat ~/.odoo19-agents/docs/reference/PLATEFORMES.md
 ```
 
 Classe ce que tu lis en trois piles :
@@ -139,7 +139,7 @@ Après décision d’adoption, intégrer les sources retenues puis reconstruire.
 
 ```bash
 # Dater le passage : le compteur de /odoo-close et la prochaine relecture partent d'ici
-sed -i "s/dernier-retex: [0-9-]*/dernier-retex: $(date +%F)/" ~/.odoo19-agents/LESSONS.md
+sed -i "s/dernier-retex: [0-9-]*/dernier-retex: $(date +%F)/" ~/.odoo19-agents/docs/reference/LESSONS.md
 python3 ~/.odoo19-agents/scripts/odoo_flow.py validate
 python3 -m unittest discover -s ~/.odoo19-agents/tests -v
 ~/.odoo19-agents/build.sh

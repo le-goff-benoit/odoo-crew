@@ -218,3 +218,5 @@ métier » : vocabulaire ; « Pièges connus » : limite rencontrée), candidate
   code obscur) : c'est le signe qu'il faut un module.
 - Déclarer « testé » sans scénario rejoué et valeurs relues.
 - Produire guide, captures de documentation ou communication : `/odoo-close`.
+
+Les référentiels partagés cités ici sont dans `~/.odoo19-agents/docs/reference/`.

@@ -2,6 +2,7 @@ import importlib.util
 from pathlib import Path
 import tempfile
 import unittest
+from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[2]
 spec = importlib.util.spec_from_file_location('briefing', ROOT / 'scripts/odoo_briefing.py')
@@ -10,6 +11,21 @@ spec.loader.exec_module(b)
 
 
 class BriefingTests(unittest.TestCase):
+    def test_shared_lessons_loaded_from_reference_directory(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            reference = root / 'docs/reference'
+            reference.mkdir(parents=True)
+            (reference / 'LESSONS.md').write_text(
+                '### L1 — Préserver les décisions\n**Portée** : universelle\n'
+                '**Règle** : Conserver les exceptions du client.\n'
+                '### L2 — Série suivante\n**Portée** : série >= 19.0\n'
+                '**Règle** : Réserver cette règle à la série suivante.\n')
+            with patch.object(b, 'HOME', root):
+                lines = b.lessons('18.0')
+            self.assertEqual(len(lines), 1)
+            self.assertIn('Conserver les exceptions du client.', lines[0])
+
     def test_multiple_learnings_keep_exceptions(self):
         exception = 'Les partenaires sont autorisés ' + 'selon le dossier ' * 25 + 'SAUF si le contact de livraison refuse.'
         entries = ['## 2026-09-08 — Décision\n**Appris** : première règle\n**Fait** : vérifié\n**Appris** : ' + exception]

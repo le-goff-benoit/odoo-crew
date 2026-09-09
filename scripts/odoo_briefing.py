@@ -148,7 +148,7 @@ def journal_summary(entries: list[str], count: int, full: bool) -> str:
 
 
 def lessons(series: str) -> list[str]:
-    path = HOME / "LESSONS.md"
+    path = HOME / "docs/reference/LESSONS.md"
     if not path.is_file():
         return []
     text = path.read_text(encoding="utf-8", errors="replace")
@@ -362,7 +362,7 @@ def main(argv: list[str]) -> int:
     text = "\n".join(out)
     print(text)
     print(f"\n— briefing : {len(text.encode('utf-8')) // 1024} Ko. Détail : "
-          f"`{agents}/`, `{HOME}/LESSONS.md`, `{HOME}/SERIES_MATRIX.md`.", file=sys.stderr)
+          f"`{agents}/`, `{HOME}/docs/reference/LESSONS.md`, `{HOME}/docs/reference/SERIES_MATRIX.md`.", file=sys.stderr)
     return 0
 
 

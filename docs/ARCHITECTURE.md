@@ -5,7 +5,7 @@ des rôles spécialisés, un plan de release, un graphe persistant, des preuves
 vérifiables et une mémoire de projet commune. La série Odoo est toujours détectée avant le travail
 (17.0, 18.0, 19.0 ou saas~19.x).
 
-Pour installer ou mettre à jour le dispositif, voir [INSTALL.md](../INSTALL.md).
+Pour installer ou mettre à jour le dispositif, voir [INSTALL.md](INSTALL.md).
 
 Pour améliorer le dispositif, `/odoo-improve` pilote la boucle **essai → défaut
 observé → correction → contre-épreuve → adoption dans les profils**. Le
@@ -330,26 +330,22 @@ conversation, les fichiers ou les journaux.
 
 ```text
 ~/.odoo19-agents/
-├── README.md                    fonctionnement et utilisation
-├── INSTALL.md                   installation et mise à jour
-├── AGENTS.md                    règles de maintenance du dispositif
-├── routing.md                   aiguillage injecté dans Claude et Codex
-├── ODOO19_STYLE_GUIDE.md        ligne éditoriale 19.0
-├── SERIES_MATRIX.md             différences entre séries, fait foi
-├── PLATEFORMES.md               différences d'hébergement
-├── LESSONS.md                   mémoire longue
-├── workflows/
-│   └── odoo-workflow.json       graphe exécutable
+├── README.md                    présentation et commandes
+├── AGENTS.md / CLAUDE.md         consignes détectées par les outils
+├── build.sh                     validation et génération des profils
 ├── roles/                       sources uniques des profils
-├── scripts/
-│   ├── odoo_flow.py             moteur et tableau de bord du graphe
-│   ├── odoo_briefing.py         contexte initial compact
-│   └── …                        release, QA, Studio, instances, captures
-├── tests/
-│   └── test_odoo_flow.py        structure et parcours du graphe
-├── docs/                        modèles et charte documentaire
-├── stack/                       environnement Odoo local de QA
-└── build.sh                     validation et génération des profils
+│   └── routing.md               aiguillage commun
+├── workflows/                   graphe exécutable
+├── scripts/                     outils de pilotage et d'exécution
+├── tests/                       pilotage, outillage et laboratoire
+├── benchmarks/                  scénarios et correcteurs des essais
+├── docs/
+│   ├── README.md                index de la documentation
+│   ├── INSTALL.md               installation et mise à jour
+│   ├── reference/               guide Odoo, séries, plateformes, leçons
+│   ├── quality-lab/             résultats et preuves des campagnes
+│   └── templates/               modèles documentaires
+└── stack/                       environnement Odoo local de QA
 ```
 
 Les profils sous `~/.claude/` et `~/.codex/` sont générés : ils ne s'éditent
@@ -381,7 +377,7 @@ utiliser sa référence figée ou une migration explicitement compatible ; ne pa
 modifier son hash à la main. Le plan ne fait pas disparaître cette contrainte.
 
 Le détail de l'installation, de la validation et de la mise à jour se trouve
-dans [INSTALL.md](../INSTALL.md).
+dans [INSTALL.md](INSTALL.md).
 
 Le [mode opératoire du laboratoire](../docs/quality-lab/OPERATIONS.md) explique
 comment adapter les cas, comparer les directives et suivre une campagne. Les

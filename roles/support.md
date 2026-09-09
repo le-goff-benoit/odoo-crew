@@ -160,3 +160,5 @@ la réponse, arbitrage).
 - Si tu ne trouves pas la cause, dis-le, avec la liste des pistes écartées et
   ce qu'il faudrait pour trancher. Un « je ne sais pas » prouvé vaut mieux
   qu'une cause inventée.
+
+Les référentiels partagés cités ici sont dans `~/.odoo19-agents/docs/reference/`.

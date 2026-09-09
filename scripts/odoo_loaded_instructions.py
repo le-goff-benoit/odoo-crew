@@ -8,7 +8,7 @@ import shutil
 
 START = '<!-- odoo19-agents:début — généré par ~/.odoo19-agents/build.sh -->'
 END = '<!-- odoo19-agents:fin -->'
-POINTER = START + '\nLes règles Odoo partagées sont dans `~/.odoo19-agents/routing.md`.\nLes profils et commandes sont générés depuis le même référentiel pour Claude et Codex.\n' + END
+POINTER = START + '\nLes règles Odoo partagées sont dans `~/.odoo19-agents/roles/routing.md`.\nLes profils et commandes sont générés depuis le même référentiel pour Claude et Codex.\n' + END
 
 
 def backup(path, destination):

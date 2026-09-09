@@ -15,3 +15,11 @@
 - Réalisé : trois parcours (évolution, release, support), rôle de l’orchestrateur et tableau des huit commandes, avec les deux usages de feedback.
 - Image : nouvelle bannière copiée à l’identique ; même lien depuis le README.
 - Contrôles : liens et commandes confrontés au générateur et à l’aiguillage ; suite et génération vérifiées avant publication.
+
+## 9 septembre 2026 — références rangées et exemple métier
+
+- Demande : alléger la racine du dépôt et illustrer un développement Odoo avec le rôle et la conclusion de chaque agent.
+- Rangé : installation dans docs, quatre références dans docs/reference, aiguillage dans roles ; README/AGENTS/CLAUDE conservés à la racine.
+- Répercuté : liens, briefing, génération et profils ; index de documentation ajouté.
+- Exemple : contrôle de référence d’achat à la confirmation d’une commande, scénario fictif dépliable ; aucune exécution Odoo revendiquée.
+- Vérification : test rouge de lecture des leçons après déplacement, puis correction du chemin ; suite et build avant livraison.

@@ -232,3 +232,5 @@ déploies pas sans qu'on te le demande.
   après la recette impose de la rejouer.
 - Ne lis pas les logs Odoo d'un bloc : `recette.md`, la ligne `RECETTE …`, et
   `grep -n` pour localiser.
+
+Les référentiels partagés cités ici sont dans `~/.odoo19-agents/docs/reference/`.

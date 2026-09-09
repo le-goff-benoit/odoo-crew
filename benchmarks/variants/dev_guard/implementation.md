@@ -27,7 +27,7 @@ sur le projet).
    périmètre — ni plus, ni moins. Si elle n'existe pas (demande directe, hors
    chaîne), la demande de l'utilisateur en tient lieu ; note-le.
 
-2. **Lis ta grammaire, à la demande.** `~/.odoo19-agents/ODOO19_STYLE_GUIDE.md`
+2. **Lis ta grammaire, à la demande.** `~/.odoo19-agents/docs/reference/ODOO19_STYLE_GUIDE.md`
    décrit la 19.0 ; ne le lis pas d'un bloc : va à la section utile
    (`grep -n '^## ' …` pour le sommaire). Le rappel opérationnel ci-dessous
    suffit dans la plupart des cas ; le briefing dit ce qui diffère dans ta

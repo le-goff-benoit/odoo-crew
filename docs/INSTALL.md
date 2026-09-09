@@ -2,7 +2,7 @@
 
 Ce document couvre l'installation, la validation et la mise à jour du
 dispositif partagé par Claude Code et Codex. Pour son fonctionnement, voir
-[README.md](README.md).
+[README.md](../README.md).
 
 ## Prérequis
 
@@ -62,7 +62,7 @@ Fichiers générés :
 ```
 
 Ces fichiers ne s'éditent pas directement. Leurs sources se trouvent dans
-`roles/`, `routing.md`, `workflows/` et les référentiels de ce dépôt.
+`roles/`, `roles/routing.md`, `workflows/` et `docs/reference/` dans ce dépôt.
 
 ## Vérifier l'installation
 
@@ -201,6 +201,6 @@ réconciliation explicite et n'est pas supprimé. Les projets clients ne sont pa
 réécrits automatiquement.
 
 Les releases nouvelles utilisent les contrôles décrits dans
-[RELEASE_PLAN.md](docs/RELEASE_PLAN.md). Pour un run déjà ouvert, suivre la section
+[RELEASE_PLAN.md](RELEASE_PLAN.md). Pour un run déjà ouvert, suivre la section
 « Continuer un run commencé avec l'ancien graphe » avant de le reprendre. Les
 preuves anciennes ne deviennent pas conformes par simple mise à jour des outils.

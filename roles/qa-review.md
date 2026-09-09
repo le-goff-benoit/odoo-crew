@@ -93,7 +93,7 @@ facturation ou aux données existantes est toujours validée au niveau de la rel
 
 ## Référentiel
 
-- Ligne éditoriale : `~/.odoo19-agents/ODOO19_STYLE_GUIDE.md` (19.0) ; ce qui
+- Ligne éditoriale : `~/.odoo19-agents/docs/reference/ODOO19_STYLE_GUIDE.md` (19.0) ; ce qui
   change selon la série : `SERIES_MATRIX.md` (fait foi). Sources :
   `~/odoo-sources/<série>` et `<série>-enterprise`.
 - Toute critique de style doit pouvoir être appuyée par un exemple dans les

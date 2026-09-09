@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Génère les profils d'agents Claude Code et Codex à partir des rôles partagés.
 #
-# Source de vérité : roles/*.md et routing.md (+ ODOO19_STYLE_GUIDE.md, qu'ils référencent).
+# Source de vérité : roles/*.md et roles/routing.md (+ docs/reference/ODOO19_STYLE_GUIDE.md, qu'ils référencent).
 # Cibles :
 #   ~/.claude/agents/<nom>.md          — sous-agents Claude Code
 #   ~/.codex/skills/<nom>/SKILL.md     — skills Codex
@@ -15,7 +15,7 @@
 #
 # --output-root <répertoire> génère une distribution isolée, sans modifier les profils actifs.
 # --check vérifie les sorties sans les régénérer.
-# Relancer après toute modification d'un rôle ou de routing.md : ./build.sh
+# Relancer après toute modification d'un rôle ou de roles/routing.md : ./build.sh
 
 set -euo pipefail
 
@@ -159,7 +159,7 @@ inject_routing() {
     {
         printf '%s\n' "$MARK_START"
         printf '%s\n\n' "$heading"
-        cat "$HERE/routing.md"
+        cat "$HERE/roles/routing.md"
         printf '\nPour une demande de développement, la chaîne complète est outillée par\n'
         printf 'la commande `/odoo-new`.\n'
         printf '%s\n' "$MARK_END"
@@ -277,4 +277,4 @@ python3 "$HERE/scripts/odoo_loaded_instructions.py" "$DEST_ROOT"
 
 # Tous les profils, commandes, skills et blocs de routing sont vérifiés.
 python3 "$HERE/scripts/odoo_generated.py" "$DEST_ROOT"
-echo "Terminé. Sources partagées : $HERE/roles/, $HERE/routing.md"
+echo "Terminé. Sources partagées : $HERE/roles/, $HERE/roles/routing.md"

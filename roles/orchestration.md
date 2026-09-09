@@ -4,7 +4,7 @@ Enchaîne les profils dans l'ordre logique sur une demande de développement,
 **sans redemander l'autorisation entre les étapes**. La demande à traiter suit
 cette consigne (ou est celle que l'utilisateur vient de formuler).
 
-Référentiel commun dans `~/.odoo19-agents/` : `ODOO19_STYLE_GUIDE.md` (19.0),
+Référentiel commun dans `~/.odoo19-agents/docs/reference/` : `ODOO19_STYLE_GUIDE.md` (19.0),
 `SERIES_MATRIX.md` (les autres séries, fait foi), `LESSONS.md`. Réponds en
 français.
 

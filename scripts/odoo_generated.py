@@ -66,7 +66,7 @@ def check(root: Path, destination: Path) -> list[str]:
             errors.append(f"contenu différent de la source : {path}")
     start = "<!-- odoo19-agents:début — généré par ~/.odoo19-agents/build.sh -->"
     end = "<!-- odoo19-agents:fin -->"
-    routing = (root / "routing.md").read_text(encoding="utf-8")
+    routing = (root / "roles/routing.md").read_text(encoding="utf-8")
     expected = (
         start + "\n# Développement Odoo\n\n" + routing
         + "\nPour une demande de développement, la chaîne complète est outillée par\n"

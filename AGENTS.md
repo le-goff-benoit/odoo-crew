@@ -6,7 +6,7 @@ référentiel, scripts, stack). L'aiguillage Odoo de `~/.claude/CLAUDE.md` et
 
 ## Source unique et génération
 
-- `roles/*.md`, `routing.md` et `workflows/odoo-workflow.json` sont la **source
+- `roles/*.md`, `roles/routing.md` et `workflows/odoo-workflow.json` sont la **source
   unique** des profils, commandes, skills et transitions. Les fichiers de
   `~/.claude/agents`, `~/.claude/commands`,
   `~/.claude/skills`, `~/.codex/skills` et les blocs délimités de
@@ -24,6 +24,9 @@ référentiel, scripts, stack). L'aiguillage Odoo de `~/.claude/CLAUDE.md` et
   les `AGENTS.md` des projets qui citent les commandes.
 
 ## Référentiel
+
+Les quatre références ci-dessous sont dans `docs/reference/` ;
+le guide d’installation est `docs/INSTALL.md`.
 
 - `ODOO19_STYLE_GUIDE.md` décrit la 19.0 ; `SERIES_MATRIX.md` fait foi sur ce
   qui change par série ; `PLATEFORMES.md` sur l'hébergement ; `LESSONS.md` est
@@ -48,6 +51,8 @@ référentiel, scripts, stack). L'aiguillage Odoo de `~/.claude/CLAUDE.md` et
   `odoo_instance.py` ; rien de tel n'entre dans ce dépôt.
 
 ## Livraison
+
+- Ne pas ajouter Claude comme co-auteur des commits de ce dépôt.
 
 - Commit avec un message en français, impératif, qui dit ce qui change pour les
   agents. `git push origin main` ; sur un autre poste : `git pull` puis

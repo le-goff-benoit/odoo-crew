@@ -17,7 +17,7 @@ class GeneratedTests(unittest.TestCase):
             root = Path(tmp) / 'source'
             root.mkdir()
             shutil.copytree(ROOT / 'roles', root / 'roles')
-            for name in ('build.sh', 'routing.md'):
+            for name in ('build.sh',):
                 shutil.copy2(ROOT / name, root / name)
             dest = Path(tmp) / 'distribution'
             for path, content in g.expected_outputs(root, dest).items():

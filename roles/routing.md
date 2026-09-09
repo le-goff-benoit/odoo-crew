@@ -1,7 +1,7 @@
 Sources Odoo en lecture seule : `~/odoo-sources/{14.0,17.0,18.0,19.0,19.1,19.4}`
 (+ `-enterprise`). Ne jamais y écrire : tout code va dans le module custom du projet.
 
-Référentiel `~/.odoo19-agents/` : `ODOO19_STYLE_GUIDE.md` (ligne éditoriale,
+Référentiel `~/.odoo19-agents/docs/reference/` : `ODOO19_STYLE_GUIDE.md` (ligne éditoriale,
 décrit la **19.0**), `SERIES_MATRIX.md` (ce qui change par série, **fait foi**
 sur le guide), `PLATEFORMES.md` (Odoo.sh / Online / on-premise / Docker, fait
 foi sur déploiement et restauration), `LESSONS.md` (les erreurs déjà payées).
