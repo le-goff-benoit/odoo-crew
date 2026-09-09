@@ -1,0 +1,140 @@
+Auteur réel /root/o01_author_a ; owner codex-author-a.
+Lecture initiale task-A.txt puis HANDOFF.md : demande/spec trouvées dans changelog/ordered après tentative racine (cat exit 1 fichiers absents). Inventaire rg --files limité au projet et référentiel. Consultation roles/orchestration.md, docs/TASK_RECEPTION.md et aides publiques. Aucun pass, aucune édition état directe.
+
+$ cat /tmp/odoo-ordered-recovery-20260909/O01/project/HANDOFF.md /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/demande-A.md /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/spec-A.md /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/PROJECT.md /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/JOURNAL.md /tmp/odoo-ordered-recovery-20260909/O01/project/documentary/A/reference.txt
+# Frontière documentaire
+Le banc a amorcé les tokens avant QA. Aucun bundle, reçu, reviewer ou pass n’est installé par le banc. Toute réception sera réellement exécutée.
+Pack : /tmp/odoo-ordered-recovery-20260909/reference
+Flows : .odoo-agents/flows/ordered-a.json et ordered-b.json
+Lire les demandes originales et les contrats dans changelog/ordered.
+Afficher la référence dossier dans la fiche interne. Ne pas ajouter de tri automatique. Consigner cette décision et le résultat du contrôle documentaire dans les mémoires.
+# Contrat A
+La référence dossier est visible dans la fiche interne. Le contrôle porte uniquement sur documentary/A/reference.txt. Aucune demande de tri automatique.
+# Projet documentaire
+Le tableau conserve les décisions explicites.
+# Journal documentaire
+Initialisation du dossier.
+reference_dossier=visible
+
+EXIT 0
+
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 0 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ module_task_gate
+    ORCHESTRATEUR
+    Fusionner les preuves QA normales et rendre un verdict unique.
+    Sorties: blocked, pass, retry · Preuve: qa.md et critères d'acceptation
+
+EXIT 0
+
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_evidence.py run --project /tmp/odoo-ordered-recovery-20260909/O01/project --scope documentary/A --output changelog/ordered/reception-A/evidence-A.json -- python3 -c 'from pathlib import Path; p=Path('"'"'documentary/A/reference.txt'"'"'); actual=p.read_text(); assert actual == '"'"'reference_dossier=visible\n'"'"', repr(actual); print('"'"'PASS documentaire A : documentary/A/reference.txt contient exactement reference_dossier=visible ; référence dossier visible dans la fiche interne représentée par ce fichier. Portée limitée à ce fichier synthétique ; aucun contrôle Odoo ou navigateur.'"'"')'
+passed
+
+EXIT 0
+
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py claim /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json module_task_gate --owner codex-author-a
+▶ module_task_gate · ORCHESTRATEUR
+  Démarré par codex-author-a
+  Fusionner les preuves QA normales et rendre un verdict unique.
+
+EXIT 0
+
+WRITE /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-A/PROJECT-propose.md
+# Projet documentaire
+Le tableau conserve les décisions explicites.
+
+## Décision A — référence dossier
+La référence dossier doit être visible dans la fiche interne. Ne pas ajouter de tri automatique.
+Le contrôle documentaire A a réussi : documentary/A/reference.txt contient exactement `reference_dossier=visible`.
+La preuve est changelog/ordered/reception-A/evidence-A.json. Le résultat porte uniquement sur ce fichier documentaire synthétique ; il ne constitue pas un test Odoo ni une validation navigateur.
+
+
+WRITE /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-A/JOURNAL-propose.md
+# Journal documentaire
+Initialisation du dossier.
+
+## 2026-09-09 — Demande A
+Demande : afficher la référence dossier dans la fiche interne ; ne pas ajouter de tri automatique.
+Fait : décision consignée dans les propositions mémoire, contenu documentaire vérifié.
+Verdict : contrôle documentaire A réussi ; documentary/A/reference.txt contient exactement `reference_dossier=visible`.
+Preuve : changelog/ordered/reception-A/evidence-A.json.
+Portée : uniquement documentary/A/reference.txt, fichier synthétique ; aucun test Odoo ou navigateur.
+Appris : l'affichage de la référence dossier n'autorise aucun ajout de tri automatique.
+Reste ouvert : réception indépendante, pass de la porte QA et publication mémoire par le coordinateur.
+
+
+WRITE /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-A/qa-A.md
+# Contrôle documentaire A
+
+La commande réellement exécutée par odoo_evidence.py a réussi (code de sortie 0).
+Elle vérifie que documentary/A/reference.txt contient exactement `reference_dossier=visible` suivi d'un saut de ligne. La référence dossier est donc visible dans la représentation documentaire de la fiche interne.
+
+La preuve structurée est evidence-A.json, avec commande, empreinte du périmètre documentary/A et résultat. Aucun fichier de ce périmètre n'a été modifié.
+
+La demande interdit l'ajout de tri automatique ; les propositions mémoire conservent cette interdiction. Le contrôle porte uniquement sur documentary/A/reference.txt. Aucune validation Odoo ou navigateur n'a été effectuée.
+
+La réception indépendante, le pass et la publication restent à effectuer.
+
+
+$ cat /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-A/evidence-A.json
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/odoo-ordered-recovery-20260909/O01/project",
+  "scopes": [
+    "documentary/A"
+  ],
+  "sources": {
+    "documentary/A/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  },
+  "command": [
+    "python3",
+    "-c",
+    "from pathlib import Path; p=Path('documentary/A/reference.txt'); actual=p.read_text(); assert actual == 'reference_dossier=visible\\n', repr(actual); print('PASS documentaire A : documentary/A/reference.txt contient exactement reference_dossier=visible ; référence dossier visible dans la fiche interne représentée par ce fichier. Portée limitée à ce fichier synthétique ; aucun contrôle Odoo ou navigateur.')"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 0.017,
+  "log": {
+    "path": "/tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-A/evidence-A.log",
+    "sha256": "bbe004c4f5a5f698649041c8a19c98f4ac50e5a86fd4e89a3630b47eff864444"
+  }
+}
+
+EXIT 0
+
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py prepare-reception /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json --source changelog/ordered/demande-A.md --spec changelog/ordered/spec-A.md --evidence changelog/ordered/reception-A/evidence-A.json --evidence changelog/ordered/reception-A/qa-A.md --memory .odoo-agents/PROJECT.md=changelog/ordered/reception-A/PROJECT-propose.md --memory .odoo-agents/JOURNAL.md=changelog/ordered/reception-A/JOURNAL-propose.md --scope documentary/A --output changelog/ordered/reception-A/bundle-A.json --owner codex-author-a
+Dossier de réception : changelog/ordered/reception-A/bundle-A.json · f6eb8ef06ea2
+Réception indépendante positive requise avant pass ; publier ensuite les drafts exacts.
+
+EXIT 0
+
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       EN COURS
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 0 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  EN COURS
+  ▶ module_task_gate
+    ORCHESTRATEUR · propriétaire: codex-author-a
+    Fusionner les preuves QA normales et rendre un verdict unique.
+
+EXIT 0

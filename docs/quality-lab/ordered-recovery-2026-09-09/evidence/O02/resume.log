@@ -1,0 +1,38 @@
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py publish-memory /tmp/odoo-ordered-recovery-20260909/O02/project/.odoo-agents/flows/ordered-a.json --owner codex-resume-A
+Mémoire published : .odoo-agents/PROJECT.md
+Mémoire published : .odoo-agents/JOURNAL.md
+Publication vérifiée ; journal_task reste revendiqué et doit être complété.
+
+exit_code=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py complete /tmp/odoo-ordered-recovery-20260909/O02/project/.odoo-agents/flows/ordered-a.json journal_task --owner codex-resume-A --outcome done --evidence /tmp/odoo-ordered-recovery-20260909/O02/project/changelog/ordered/resume-A/publication.md
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O02/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → done
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ task_done
+    ORCHESTRATEUR
+    Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
+    Sorties: done · Preuve: compte-rendu final
+
+exit_code=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py complete /tmp/odoo-ordered-recovery-20260909/O02/project/.odoo-agents/flows/ordered-a.json task_done --owner codex-resume-A --outcome done --evidence /tmp/odoo-ordered-recovery-20260909/O02/project/result.md
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       TERMINÉ
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O02/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ task_done → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
+
+exit_code=0

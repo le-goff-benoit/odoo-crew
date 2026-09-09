@@ -1,0 +1,41 @@
+{
+  "tags": "/lab_qualification:TestQuantity,/lab_qualification:TestConfirmation",
+  "process_exit": 0,
+  "summaries": [
+    [
+      0,
+      0,
+      20
+    ]
+  ],
+  "started_tests": [
+    "TestConfirmation.test_create_confirmed_default_zero_rejected",
+    "TestConfirmation.test_create_confirmed_positive",
+    "TestConfirmation.test_create_confirmed_zero_rejected",
+    "TestConfirmation.test_draft_write_zero",
+    "TestConfirmation.test_draft_zero_explicit_and_default",
+    "TestConfirmation.test_load_create_zero_confirmed_rejected",
+    "TestConfirmation.test_load_update_zero_confirmed_rejected",
+    "TestConfirmation.test_load_valid_records",
+    "TestConfirmation.test_mixed_confirmation_atomic",
+    "TestConfirmation.test_negative_create_internal_user",
+    "TestConfirmation.test_negative_write_internal_user_preserved",
+    "TestConfirmation.test_positive_boundary_confirmation",
+    "TestConfirmation.test_write_confirmed_quantity_zero_rejected",
+    "TestConfirmation.test_write_state_and_positive_quantity",
+    "TestConfirmation.test_write_state_zero_rejected",
+    "TestConfirmation.test_zero_confirmation_rejected",
+    "TestQuantity.test_confirmation",
+    "TestQuantity.test_negative_create",
+    "TestQuantity.test_negative_write",
+    "TestQuantity.test_zero"
+  ],
+  "summary_present_and_tests_started": true,
+  "pass": true,
+  "markers": [
+    "confirmation",
+    "negative_create",
+    "negative_write",
+    "zero"
+  ]
+}

@@ -1,0 +1,7 @@
+{"database" : "ordered_copy", "read_only" : "on", "records" : [{"id":1,"name":"ordered-seed-draft-zero","state":"draft","quantity":0,"unit_price":10,"amount":0}, 
+ {"id":2,"name":"ordered-seed-draft-positive","state":"draft","quantity":3,"unit_price":10,"amount":30}, 
+ {"id":3,"name":"ordered-seed-confirmed-positive","state":"confirmed","quantity":3,"unit_price":10,"amount":30}], "module" : [{"id":346,"name":"lab_qualification","state":"installed","latest_version":"19.0.1.0.0"}], "constraints" : [{"conname":"lab_qualification_confirmed_quantity_positive","definition":"CHECK ((((state)::text <> 'confirmed'::text) OR (quantity > 0)))","convalidated":true}, 
+ {"conname":"lab_qualification_create_uid_fkey","definition":"FOREIGN KEY (create_uid) REFERENCES res_users(id) ON DELETE SET NULL","convalidated":true}, 
+ {"conname":"lab_qualification_pkey","definition":"PRIMARY KEY (id)","convalidated":true}, 
+ {"conname":"lab_qualification_quantity_nonnegative","definition":"CHECK ((quantity >= 0))","convalidated":true}, 
+ {"conname":"lab_qualification_write_uid_fkey","definition":"FOREIGN KEY (write_uid) REFERENCES res_users(id) ON DELETE SET NULL","convalidated":true}], "invalid_confirmed_count" : 0}

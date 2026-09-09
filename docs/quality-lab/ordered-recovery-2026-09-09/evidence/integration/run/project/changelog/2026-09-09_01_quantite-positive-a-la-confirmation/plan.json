@@ -1,0 +1,112 @@
+{
+  "history": [
+    {
+      "action": "prepared",
+      "at": "2026-09-09T16:58:27+00:00"
+    },
+    {
+      "action": "start",
+      "at": "2026-09-09T16:58:27+00:00",
+      "reason": null,
+      "task_id": "A"
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-09T17:22:09+00:00",
+      "reason": null,
+      "task_id": "A"
+    }
+  ],
+  "schema": 1,
+  "tasks": [
+    {
+      "acceptance": [
+        "AC01–AC11 satisfaits selon la revue figée",
+        "AC12 : rouge puis vert, lint/update/tests, réception indépendante, mémoire publiée, réception du plan ; release ouverte"
+      ],
+      "attempts": [
+        {
+          "at": "2026-09-09T16:58:27+00:00",
+          "flow": ".odoo-agents/flows/plan-a-1e31f5f6.json",
+          "sources_before": {
+            "lab_qualification/__init__.py": {
+              "mode": 436,
+              "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e"
+            },
+            "lab_qualification/__manifest__.py": {
+              "mode": 436,
+              "sha256": "0c4b28ed31e5e48cb3410093ef454674df23c9d4766258dca1a5c2b53275f004"
+            },
+            "lab_qualification/models.py": {
+              "mode": 436,
+              "sha256": "a2df4120d028c94cdefeebf562aabc31ba431ac4035bf74d4ac2ba4524027aaa"
+            },
+            "lab_qualification/security/ir.model.access.csv": {
+              "mode": 436,
+              "sha256": "9b7ef52061e7547f91396cb9e4827f766f28acc4ab19d353277989580de84427"
+            },
+            "lab_qualification/tests/__init__.py": {
+              "mode": 436,
+              "sha256": "ff1a1ee6a3bcdcf013596360aa6588af3b7ba83e0e775a50ebe7063d890714aa"
+            },
+            "lab_qualification/tests/test_browser.py": {
+              "mode": 436,
+              "sha256": "539000887873e6ffe961cf977dd63f24ad34eedc7bb4ff4b49674d2f560eff81"
+            },
+            "lab_qualification/tests/test_quantity.py": {
+              "mode": 436,
+              "sha256": "bb8f56e01d21f58524b30125485abb6c14f54b97c2991f0bd623c55dd6276601"
+            },
+            "lab_qualification/views/quantity.xml": {
+              "mode": 436,
+              "sha256": "57a9886cab5355a8cef6cce64a910d26f4918cc1c69063d09ea57d2245cb207f"
+            }
+          }
+        }
+      ],
+      "depends_on": [],
+      "id": "A",
+      "receipt": {
+        "acceptance": {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/reception-plan-A.md",
+          "sha256": "b99ec1a69d155aaa13519dc7fdcd849ef76834b378af7c4f5f8824ce00698e5b"
+        },
+        "at": "2026-09-09T17:22:09+00:00",
+        "contract_sha256": "98141b2f027eaccb4764653828b0ae2ebf94a95e1a7761043cdd61fdd8df9b5a",
+        "dependencies": {},
+        "memory": {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/consolidation-A.md",
+          "sha256": "0bf7c6cd01fd1bd6fdae7794c0094afd24b2fdf39ff28eba73a8061a928f5c52"
+        },
+        "proof": {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/verification.evidence.json",
+          "sha256": "ebe5226eb7f7311ed813f2bdeb5fcfb772ef84ba659684d48d8f166d0c07510e"
+        }
+      },
+      "request": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/demande.md",
+      "risk": "high",
+      "route": "module",
+      "scopes": [
+        "lab_qualification"
+      ],
+      "title": "Garantir une quantité positive pour les confirmés"
+    },
+    {
+      "acceptance": [
+        "Reprendre ultérieurement la passation validée de A ; non exécuté ici"
+      ],
+      "depends_on": [
+        "A"
+      ],
+      "id": "C",
+      "request": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/demande-C.md",
+      "risk": "normal",
+      "route": "standard",
+      "scopes": [
+        "future-handoff-check"
+      ],
+      "title": "Témoin de dépendance — disponibilité seule"
+    }
+  ],
+  "updated_at": "2026-09-09T17:22:09+00:00"
+}

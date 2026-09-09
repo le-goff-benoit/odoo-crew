@@ -1,0 +1,13 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "ordered-recovery-d015b7aa5705-pg",
+    "pg_isready",
+    "-U",
+    "odoo"
+  ],
+  "returncode": 2,
+  "seconds": 0.093,
+  "log": "/tmp/odoo-ordered-recovery-20260909/integration/evidence/pg-ready-20260909-183745-db0fb1fa.log"
+}

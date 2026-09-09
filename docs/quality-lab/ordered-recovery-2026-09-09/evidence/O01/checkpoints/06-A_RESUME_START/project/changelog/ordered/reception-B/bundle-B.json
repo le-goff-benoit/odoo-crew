@@ -1,0 +1,64 @@
+{
+  "format": "odoo-task-reception-bundle/1",
+  "project": "/tmp/odoo-ordered-recovery-20260909/O01/project",
+  "owner": "Codex-auteur-orchestrateur-B",
+  "groups": {
+    "source": [
+      {
+        "path": "changelog/ordered/demande-B.md",
+        "sha256": "3485ab60e45bd1ff02ba4b5705cf68cdb9549823e04627aa92d4160bca3b9bc9"
+      },
+      {
+        "path": "changelog/ordered/demande-A.md",
+        "sha256": "4bed5b421e10525be0599743b25318cb2de0385de6e37a3d115ba98e7e522846"
+      }
+    ],
+    "spec": [
+      {
+        "path": "changelog/ordered/spec-B.md",
+        "sha256": "27d882383bcc2d1fc594c6a24291027990c154bc44a4acecc72e8cf1c3773a8a"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "changelog/ordered/reception-B/evidence-B.json",
+        "sha256": "18b9e95b61eb8fbffd373f344db59fa5462a08a12f8773d8ac1d322a14f35b31"
+      }
+    ]
+  },
+  "memory": [
+    {
+      "target": ".odoo-agents/PROJECT.md",
+      "before_sha256": "0c72c616ca2c18c0d64bb8ca5fdc34173047ffe852d9d0b842d9d9e048e347d6",
+      "draft": {
+        "path": "changelog/ordered/reception-B/PROJECT-propose.md",
+        "sha256": "03e9bd642fbd20afdc7831cc6a1e711e32422d1f788fb2d88b88f79dcd3329ec"
+      },
+      "base": {
+        "path": "changelog/ordered/reception-B/bundle-B.json.PROJECT.md.base",
+        "sha256": "0c72c616ca2c18c0d64bb8ca5fdc34173047ffe852d9d0b842d9d9e048e347d6"
+      }
+    },
+    {
+      "target": ".odoo-agents/JOURNAL.md",
+      "before_sha256": "3f2c11e9461ff58ed3dd75a8f265ac6dc3cf1078e0ee91259e24164f0e6b9f1f",
+      "draft": {
+        "path": "changelog/ordered/reception-B/JOURNAL-propose.md",
+        "sha256": "c71f247305e5c9bce144de77122c292b06fac3e6d6f5a3039e72b80e1d6005a5"
+      },
+      "base": {
+        "path": "changelog/ordered/reception-B/bundle-B.json.JOURNAL.md.base",
+        "sha256": "3f2c11e9461ff58ed3dd75a8f265ac6dc3cf1078e0ee91259e24164f0e6b9f1f"
+      }
+    }
+  ],
+  "scopes": [
+    "documentary/B"
+  ],
+  "code": {
+    "documentary/B/priority.txt": {
+      "sha256": "d85a64ee48c0c33b2264d79f2f20454f5f6d238de40885f81d5cadaa2e26b046",
+      "mode": 436
+    }
+  }
+}

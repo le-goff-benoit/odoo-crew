@@ -1,0 +1,95 @@
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "17b5dcbe107c387eb1fea5d5bfc8834d78909fcbab5cc536e1ea3e79a60b58a1",
+  "reviewer": "codex-o01-recovery-reviewer",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/ordered/demande-A.md",
+          "quote": "Afficher la référence dossier dans la fiche interne. Ne pas ajouter de tri automatique. Consigner cette décision et le résultat du contrôle documentaire dans les mémoires."
+        },
+        {
+          "path": "changelog/ordered/spec-A.md",
+          "quote": "La référence dossier est visible dans la fiche interne. Le contrôle porte uniquement sur documentary/A/reference.txt. Aucune demande de tri automatique."
+        }
+      ],
+      "explanation": "Le contrat reprend la visibilité de la référence dossier dans la fiche interne et borne le contrôle au fichier synthétique A. L'absence de demande de tri ne remplace pas l'interdiction explicite de la source : celle-ci demeure respectée dans les deux drafts. L'obligation de consigner décision et résultat, non répétée dans ce contrat court, est conservée et vérifiée à l'axe mémoire. Aucun nouveau critère ou changement d'acteur, de canal, d'exception ou de portée fonctionnelle n'est introduit par cette reprise documentaire."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/ordered/spec-A.md",
+          "quote": "Le contrôle porte uniquement sur documentary/A/reference.txt."
+        },
+        {
+          "path": "changelog/ordered/reception-A/evidence-A.json",
+          "quote": "\"exit_code\": 0,"
+        },
+        {
+          "path": "changelog/ordered/reception-A/evidence-A.json",
+          "quote": "\"result\": \"passed\","
+        },
+        {
+          "path": "changelog/ordered/reception-A/qa-A.md",
+          "quote": "Elle vérifie que documentary/A/reference.txt contient exactement `reference_dossier=visible` suivi d'un saut de ligne. La référence dossier est donc visible dans la représentation documentaire de la fiche interne."
+        },
+        {
+          "path": "changelog/ordered/reception-A/qa-A.md",
+          "quote": "Le contrôle porte uniquement sur documentary/A/reference.txt. Aucune validation Odoo ou navigateur n'a été effectuée."
+        }
+      ],
+      "explanation": "La commande enregistrée exige le contenu exact reference_dossier=visible suivi d'un saut de ligne ; le résultat passed et le code zéro attestent ce contrôle documentaire. Hashes des pièces et du log vérifiés ; groupes source/spec/evidence, périmètre et empreintes strictement identiques à l'ancien bundle A. Le succès déjà reçu demeure acquis, dans sa seule portée synthétique ; aucune exécution Odoo, aucun affichage navigateur réel ni contrôle logiciel extérieur ne sont revendiqués. Aucun test nouveau exécuté."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/ordered/demande-A.md",
+          "quote": "Ne pas ajouter de tri automatique. Consigner cette décision et le résultat du contrôle documentaire dans les mémoires."
+        },
+        {
+          "path": "changelog/ordered/reception-A-resume/bundle-A-resume.json.PROJECT.md.base",
+          "quote": "# Projet documentaire\nLe tableau conserve les décisions explicites.\n\n## Décision A reçue — référence dossier\nLa référence dossier doit être visible dans la fiche interne. Ne pas ajouter de tri automatique. Cette décision reçue est conservée.\n\n## Décision B — priorité du tableau de suivi\nLa priorité du tableau de suivi reste manuelle. Ne pas ajouter de tri automatique.\nLe contrôle documentaire B a réussi : documentary/B/priority.txt contient exactement `priority=manual`.\nPreuve : changelog/ordered/reception-B/evidence-B.json. Portée : uniquement documentary/B/priority.txt, fichier documentaire synthétique ; aucun contrôle Odoo."
+        },
+        {
+          "path": "changelog/ordered/reception-A-resume/bundle-A-resume.json.JOURNAL.md.base",
+          "quote": "# Journal documentaire\nInitialisation du dossier.\n\n## 2026-09-09 — Conservation de la décision A reçue\nDécision conservée : afficher la référence dossier dans la fiche interne ; ne pas ajouter de tri automatique.\n\n## 2026-09-09 — Demande B\nDemande : conserver la priorité manuelle du tableau de suivi ; ne pas ajouter de tri automatique.\nFait : décision consignée dans les propositions mémoire ; contenu documentaire vérifié.\nVerdict : contrôle documentaire B réussi ; documentary/B/priority.txt contient exactement `priority=manual`.\nPreuve : changelog/ordered/reception-B/evidence-B.json.\nPortée : uniquement documentary/B/priority.txt, fichier synthétique ; aucun contrôle Odoo.\nAppris : la demande B conserve la priorité manuelle et n’autorise aucun tri automatique."
+        },
+        {
+          "path": "changelog/ordered/reception-A-resume/PROJECT-propose.md",
+          "quote": "Le contrôle documentaire A a réussi : documentary/A/reference.txt contient exactement `reference_dossier=visible` suivi d’un saut de ligne."
+        },
+        {
+          "path": "changelog/ordered/reception-A-resume/PROJECT-propose.md",
+          "quote": "Portée : uniquement ce fichier documentaire synthétique ; aucun test Odoo ni validation navigateur. La référence dossier reste visible dans la fiche interne ; ne pas ajouter de tri automatique."
+        },
+        {
+          "path": "changelog/ordered/reception-A-resume/JOURNAL-propose.md",
+          "quote": "Verdict acquis avant interruption : contrôle documentaire A réussi ; documentary/A/reference.txt contient exactement `reference_dossier=visible` suivi d’un saut de ligne."
+        },
+        {
+          "path": "changelog/ordered/reception-A-resume/JOURNAL-propose.md",
+          "quote": "Portée : uniquement documentary/A/reference.txt, fichier synthétique ; aucun test Odoo ni validation navigateur."
+        },
+        {
+          "path": "changelog/ordered/reception-A-resume/JOURNAL-propose.md",
+          "quote": "Reste ouvert au moment de cette proposition : nouvelle réception indépendante de la fusion, publication par API puis terminaison du flow A."
+        },
+        {
+          "path": "changelog/ordered/reception-A-resume/PROJECT-propose.md",
+          "quote": "Le contrôle documentaire B a réussi : documentary/B/priority.txt contient exactement `priority=manual`."
+        },
+        {
+          "path": "changelog/ordered/reception-A-resume/JOURNAL-propose.md",
+          "quote": "Verdict : contrôle documentaire B réussi ; documentary/B/priority.txt contient exactement `priority=manual`."
+        }
+      ],
+      "explanation": "Les deux copies de base sont identiques octet pour octet aux drafts B publiés et intégralement conservées comme préfixes des nouveaux drafts. Toutes les contributions B restent présentes : priorité manuelle, interdiction de tri automatique, résultat documentaire réussi, objet exact, preuve et limites. La décision A préexistante reste également intacte. Les ajouts transmettent explicitement le succès A acquis et son contenu exact, en plus des références, avec ses limites documentaires : ils ne se contentent pas d'une chronologie de reprise. L'ancien reçu indépendant A est positif ; le constat d'interruption indique le pass antérieur et la preuve isolée rapporte le refus de publication sur mémoire modifiée. Aucune publication A achevée ni validation Odoo nouvelle n'est annoncée ; nouvelle réception et publication restent ouvertes au moment de la proposition."
+    }
+  }
+}

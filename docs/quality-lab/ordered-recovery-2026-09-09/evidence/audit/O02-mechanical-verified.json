@@ -1,0 +1,108 @@
+{
+  "case": "O02",
+  "mechanical_pass": true,
+  "checks": [
+    {
+      "name": "complete_ordered_ledger",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "strict_time_order",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "trace_snapshots_intact",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "checkpoint_snapshots_intact",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "original_requests_specs_inputs_preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "initial_receipt_actually_precedes_B",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "initial_receipt_matches_reviewer_artifact",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "separate_author_reviewer_resume",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "initial_artifacts_preserved",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "task_completed",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "current_receipt_bundle_hashes",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "both_memories_match_accepted_drafts",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "sources_proofs_scopes_fresh",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive_reuses_exact_initial_receipt",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "positive_no_retry_or_extra_gate",
+      "passed": true,
+      "detail": [
+        [
+          "journal_task",
+          "done"
+        ],
+        [
+          "task_done",
+          "done"
+        ]
+      ]
+    },
+    {
+      "name": "no_orphan_flow_claim",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "name": "no_orphan_resource_claim",
+      "passed": true,
+      "detail": "/tmp/odoo-ordered-recovery-20260909/O02/project/.odoo-agents/flows/resource-locks.json"
+    }
+  ],
+  "audit_required": [
+    "Original native traces establish actual independent reviewers, exact original task exposure and genuinely fresh recovery context; names alone never suffice.",
+    "Read public CLI/API traces: no direct state/registry/plan edits after initial seeding, B publishes under held registry lock.",
+    "Semantics: preserve pre-existing decisions; A reference visible in internal form; B manual priority retained when applicable; no automatic ordering introduced; journal reflects actual controls; no duplicates. Paraphrases are valid.",
+    "Every new acceptance has an actual independent reviewer and grounded three-axis citations. Earlier acceptance remains identifiable.",
+    "Positive: no extra QA execution, bundle regeneration or reviewer work after interruption; inspect calls, not only state events.",
+    "Final explanation agrees with state. A blocked result explains cause and a real public retry or restart path; no claimed Odoo work."
+  ]
+}

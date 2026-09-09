@@ -1,0 +1,64 @@
+{
+  "format": "odoo-task-reception-bundle/1",
+  "project": "/tmp/odoo-ordered-recovery-20260909/O01/project",
+  "owner": "codex-author-a",
+  "groups": {
+    "source": [
+      {
+        "path": "changelog/ordered/demande-A.md",
+        "sha256": "4bed5b421e10525be0599743b25318cb2de0385de6e37a3d115ba98e7e522846"
+      }
+    ],
+    "spec": [
+      {
+        "path": "changelog/ordered/spec-A.md",
+        "sha256": "1dfdda64dedaf11930b4d613cafcbe074bd6ed9412bc87a869510a981eb00909"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "changelog/ordered/reception-A/evidence-A.json",
+        "sha256": "851b40c37bb56209f46993044934ef7371ba64d56079847dc6ce4046595a0c45"
+      },
+      {
+        "path": "changelog/ordered/reception-A/qa-A.md",
+        "sha256": "9ed82107d2ed7c96ce1647e69bc94eecc2e4e7bf5244b2b4046e9a24f27c0e92"
+      }
+    ]
+  },
+  "memory": [
+    {
+      "target": ".odoo-agents/PROJECT.md",
+      "before_sha256": "0c72c616ca2c18c0d64bb8ca5fdc34173047ffe852d9d0b842d9d9e048e347d6",
+      "draft": {
+        "path": "changelog/ordered/reception-A/PROJECT-propose.md",
+        "sha256": "99deeee45fd074abf24f03a25d75daae0c0f92685a8b5db10c08af253413c36e"
+      },
+      "base": {
+        "path": "changelog/ordered/reception-A/bundle-A.json.PROJECT.md.base",
+        "sha256": "0c72c616ca2c18c0d64bb8ca5fdc34173047ffe852d9d0b842d9d9e048e347d6"
+      }
+    },
+    {
+      "target": ".odoo-agents/JOURNAL.md",
+      "before_sha256": "3f2c11e9461ff58ed3dd75a8f265ac6dc3cf1078e0ee91259e24164f0e6b9f1f",
+      "draft": {
+        "path": "changelog/ordered/reception-A/JOURNAL-propose.md",
+        "sha256": "761f925e8e40b8288f1c03804e9449333997a029e3ede1c121a7d4e6a0c21220"
+      },
+      "base": {
+        "path": "changelog/ordered/reception-A/bundle-A.json.JOURNAL.md.base",
+        "sha256": "3f2c11e9461ff58ed3dd75a8f265ac6dc3cf1078e0ee91259e24164f0e6b9f1f"
+      }
+    }
+  ],
+  "scopes": [
+    "documentary/A"
+  ],
+  "code": {
+    "documentary/A/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  }
+}

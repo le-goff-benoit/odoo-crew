@@ -1,0 +1,634 @@
+{
+  "kind": "independent QA verification; not an Odoo test run",
+  "module": "lab_qualification",
+  "series": "19.0",
+  "mode": "task",
+  "checks": [
+    {
+      "check": "complete live module file set and hashes equal tested green snapshot",
+      "pass": true
+    },
+    {
+      "check": "green archive __manifest__.py",
+      "pass": true
+    },
+    {
+      "check": "green archive __init__.py",
+      "pass": true
+    },
+    {
+      "check": "green archive models.py",
+      "pass": true
+    },
+    {
+      "check": "green archive security/ir.model.access.csv",
+      "pass": true
+    },
+    {
+      "check": "green archive tests/test_confirmation.py",
+      "pass": true
+    },
+    {
+      "check": "green archive tests/__init__.py",
+      "pass": true
+    },
+    {
+      "check": "green archive tests/test_quantity.py",
+      "pass": true
+    },
+    {
+      "check": "green archive tests/common.py",
+      "pass": true
+    },
+    {
+      "check": "green archive tests/test_browser.py",
+      "pass": true
+    },
+    {
+      "check": "green archive views/quantity.xml",
+      "pass": true
+    },
+    {
+      "check": "initial archive __manifest__.py",
+      "pass": true
+    },
+    {
+      "check": "initial archive equals bootstrap __manifest__.py",
+      "pass": true
+    },
+    {
+      "check": "initial archive __init__.py",
+      "pass": true
+    },
+    {
+      "check": "initial archive equals bootstrap __init__.py",
+      "pass": true
+    },
+    {
+      "check": "initial archive models.py",
+      "pass": true
+    },
+    {
+      "check": "initial archive equals bootstrap models.py",
+      "pass": true
+    },
+    {
+      "check": "initial archive security/ir.model.access.csv",
+      "pass": true
+    },
+    {
+      "check": "initial archive equals bootstrap security/ir.model.access.csv",
+      "pass": true
+    },
+    {
+      "check": "initial archive tests/__init__.py",
+      "pass": true
+    },
+    {
+      "check": "initial archive equals bootstrap tests/__init__.py",
+      "pass": true
+    },
+    {
+      "check": "initial archive tests/test_quantity.py",
+      "pass": true
+    },
+    {
+      "check": "initial archive equals bootstrap tests/test_quantity.py",
+      "pass": true
+    },
+    {
+      "check": "initial archive tests/test_browser.py",
+      "pass": true
+    },
+    {
+      "check": "initial archive equals bootstrap tests/test_browser.py",
+      "pass": true
+    },
+    {
+      "check": "initial archive views/quantity.xml",
+      "pass": true
+    },
+    {
+      "check": "initial archive equals bootstrap views/quantity.xml",
+      "pass": true
+    },
+    {
+      "check": "same red/green test bytes tests/test_confirmation.py",
+      "pass": true
+    },
+    {
+      "check": "same red/green test bytes tests/__init__.py",
+      "pass": true
+    },
+    {
+      "check": "same red/green test bytes tests/test_quantity.py",
+      "pass": true
+    },
+    {
+      "check": "same red/green test bytes tests/common.py",
+      "pass": true
+    },
+    {
+      "check": "same red/green test bytes tests/test_browser.py",
+      "pass": true
+    },
+    {
+      "check": "preserved existing file __init__.py",
+      "pass": true
+    },
+    {
+      "check": "preserved existing file __manifest__.py",
+      "pass": true
+    },
+    {
+      "check": "preserved existing file views/quantity.xml",
+      "pass": true
+    },
+    {
+      "check": "preserved existing file security/ir.model.access.csv",
+      "pass": true
+    },
+    {
+      "check": "preserved existing file tests/test_quantity.py",
+      "pass": true
+    },
+    {
+      "check": "preserved existing file tests/test_browser.py",
+      "pass": true
+    },
+    {
+      "check": "reviewed-module-diff exit zero",
+      "pass": true
+    },
+    {
+      "check": "reviewed diff equals developer archived diff",
+      "pass": true
+    },
+    {
+      "check": "reused changed lint reports success on target series",
+      "pass": true
+    },
+    {
+      "check": "contract unchanged from bound criteria",
+      "pass": true
+    },
+    {
+      "check": "red copied log equals runtime original",
+      "pass": true
+    },
+    {
+      "check": "red original Odoo result summary",
+      "pass": true
+    },
+    {
+      "check": "red 20 distinct actual started test names",
+      "pass": true
+    },
+    {
+      "check": "red archived parser matches original log",
+      "pass": true
+    },
+    {
+      "check": "red tested only copy",
+      "pass": true
+    },
+    {
+      "check": "red real module update",
+      "pass": true
+    },
+    {
+      "check": "red no warnings or ignored module",
+      "pass": true
+    },
+    {
+      "check": "red counted real failed cases",
+      "pass": true
+    },
+    {
+      "check": "green copied log equals runtime original",
+      "pass": true
+    },
+    {
+      "check": "green original Odoo result summary",
+      "pass": true
+    },
+    {
+      "check": "green 20 distinct actual started test names",
+      "pass": true
+    },
+    {
+      "check": "green archived parser matches original log",
+      "pass": true
+    },
+    {
+      "check": "green tested only copy",
+      "pass": true
+    },
+    {
+      "check": "green real module update",
+      "pass": true
+    },
+    {
+      "check": "green no warnings or ignored module",
+      "pass": true
+    },
+    {
+      "check": "green counted real failed cases",
+      "pass": true
+    },
+    {
+      "check": "identical actual red/green test selection",
+      "pass": true
+    },
+    {
+      "check": "live-container exit zero",
+      "pass": true
+    },
+    {
+      "check": "registered PostgreSQL is running",
+      "pass": true
+    },
+    {
+      "check": "PostgreSQL ownership label",
+      "pass": true
+    },
+    {
+      "check": "same PostgreSQL immutable image",
+      "pass": true
+    },
+    {
+      "check": "live-odoo-image exit zero",
+      "pass": true
+    },
+    {
+      "check": "same immutable Odoo image available",
+      "pass": true
+    },
+    {
+      "check": "red execution used same immutable Odoo image",
+      "pass": true
+    },
+    {
+      "check": "green execution used same immutable Odoo image",
+      "pass": true
+    },
+    {
+      "check": "live-ordered_copy exit zero",
+      "pass": true
+    },
+    {
+      "check": "ordered_copy actual target and enforced read-only",
+      "pass": true
+    },
+    {
+      "check": "ordered_copy all original identities and business values preserved",
+      "pass": true
+    },
+    {
+      "check": "ordered_copy exactly three original records",
+      "pass": true
+    },
+    {
+      "check": "ordered_copy module installed identity retained",
+      "pass": true
+    },
+    {
+      "check": "ordered_copy stored version",
+      "pass": true
+    },
+    {
+      "check": "ordered_copy initial nonnegative constraint remains",
+      "pass": true
+    },
+    {
+      "check": "ordered_copy new constraint copy only",
+      "pass": true
+    },
+    {
+      "check": "ordered_copy effective validated constraints",
+      "pass": true
+    },
+    {
+      "check": "ordered_copy no invalid confirmed history",
+      "pass": true
+    },
+    {
+      "check": "live-ordered_seed exit zero",
+      "pass": true
+    },
+    {
+      "check": "ordered_seed actual target and enforced read-only",
+      "pass": true
+    },
+    {
+      "check": "ordered_seed all original identities and business values preserved",
+      "pass": true
+    },
+    {
+      "check": "ordered_seed exactly three original records",
+      "pass": true
+    },
+    {
+      "check": "ordered_seed module installed identity retained",
+      "pass": true
+    },
+    {
+      "check": "ordered_seed stored version",
+      "pass": true
+    },
+    {
+      "check": "ordered_seed initial nonnegative constraint remains",
+      "pass": true
+    },
+    {
+      "check": "ordered_seed new constraint copy only",
+      "pass": true
+    },
+    {
+      "check": "ordered_seed effective validated constraints",
+      "pass": true
+    },
+    {
+      "check": "ordered_seed no invalid confirmed history",
+      "pass": true
+    },
+    {
+      "check": "module stable during independent verification",
+      "pass": true
+    }
+  ],
+  "references_sha256": {
+    "/tmp/odoo-ordered-recovery-20260909/integration/developer/green/final-hashes.json": "3be81373056b5cbfeba449647465c86f473c5aa49f877fa106a78d6a9600901b",
+    "/tmp/odoo-ordered-recovery-20260909/integration/developer/red/initial-hashes.json": "205ebaba22ce2a56fb1190c1e299fe988e85fb8ecc9dff04669391bda3342784",
+    "/tmp/odoo-ordered-recovery-20260909/integration/developer/red/test-hashes.json": "2749f3bf67d89831e7ec245450c0aa4925a7e3d4d0266a5977e80a13215d442a",
+    "/tmp/odoo-ordered-recovery-20260909/integration/evidence/bootstrap-result.json": "0179f56473fc5b7e1af49796ffe01227d94a1ebba3cb7940f45ed21babcf5741",
+    "/tmp/odoo-ordered-recovery-20260909/integration/qa/reviewed-module-diff.log": "55e3d5d0879b1634c6afdd9ef7c80e9b2802eea8b20d81cc5bdc3d0c636b3046",
+    "/tmp/odoo-ordered-recovery-20260909/integration/qa/reviewed-module-diff.command.json": "a1aefe56e34df4225f385493d5c80ab3eb0747727893b4418b40dea740045613",
+    "/tmp/odoo-ordered-recovery-20260909/integration/developer/module.diff": "55e3d5d0879b1634c6afdd9ef7c80e9b2802eea8b20d81cc5bdc3d0c636b3046",
+    "/tmp/odoo-ordered-recovery-20260909/integration/developer/lint.log": "4ec5a6b22eb53c6ba07182769500169f8e7aaf4bfc3317df26f6773328f9194d",
+    "/tmp/odoo-ordered-recovery-20260909/integration/run/project/changelog/2026-09-09_01_quantite-positive-a-la-confirmation/criteria.json": "ad78cc289b8ca14aee17e821f1f7a816deee7e9073d41f086a5812fea4aa1742",
+    "/tmp/odoo-ordered-recovery-20260909/integration/run/project/changelog/2026-09-09_01_quantite-positive-a-la-confirmation/revue_fonctionnelle.md": "ad64b892e52786539fbf08b9a4d70559e3125c424198e4b907cd10b35564c712",
+    "/tmp/odoo-ordered-recovery-20260909/integration/run/project/changelog/2026-09-09_01_quantite-positive-a-la-confirmation/demande.md": "289433ea51eafc4d12c09c73c07c343ec168162a72e41718b102b1e7aa9d6220",
+    "/tmp/odoo-ordered-recovery-20260909/integration/run/project/changelog/2026-09-09_01_quantite-positive-a-la-confirmation/consolidation-contrat.md": "757a4ecee597f94f12ab252c3785ecaa48ec3bb1957d60b92a30ac6ae8afd364",
+    "/tmp/odoo-ordered-recovery-20260909/integration/developer/red/test-ordered_copy-20260909-190409-e2e7801f.json": "0f346dcf1c5605cf0a6f0d12f3b83c0fe0474f6601978f3115e45a4fa701d56b",
+    "/tmp/odoo-ordered-recovery-20260909/integration/developer/red/test-ordered_copy-20260909-190409-e2e7801f.tests.json": "9346291fc51ea1fa12018c9a971e78423d5475f7aeb8c08a2a4f860aff701010",
+    "/tmp/odoo-ordered-recovery-20260909/integration/developer/red/test-ordered_copy-20260909-190409-e2e7801f.log": "bcc9f0a3f8aa5ab5959ff87b44b4df577f7e26e73b64a463b0ba7cb38a34c7ab",
+    "/tmp/odoo-ordered-recovery-20260909/integration/evidence/test-ordered_copy-20260909-190409-e2e7801f.log": "bcc9f0a3f8aa5ab5959ff87b44b4df577f7e26e73b64a463b0ba7cb38a34c7ab",
+    "/tmp/odoo-ordered-recovery-20260909/integration/developer/green/test-ordered_copy-20260909-190501-1a622b24.json": "71823b052a741757492b2ade69dee3f99fd97bd3ea93d5109bd7565af197df43",
+    "/tmp/odoo-ordered-recovery-20260909/integration/developer/green/test-ordered_copy-20260909-190501-1a622b24.tests.json": "5ffe25b3e8886effe4d817b4e17e8ef9e101efdeb7567b5bc7b805aedf737503",
+    "/tmp/odoo-ordered-recovery-20260909/integration/developer/green/test-ordered_copy-20260909-190501-1a622b24.log": "aa913707263311a7dc9561ceb5e676e66946cad88044c92f361d956050a07795",
+    "/tmp/odoo-ordered-recovery-20260909/integration/evidence/test-ordered_copy-20260909-190501-1a622b24.log": "aa913707263311a7dc9561ceb5e676e66946cad88044c92f361d956050a07795",
+    "/tmp/odoo-ordered-recovery-20260909/integration/resources.json": "35d45c0a29d48b8db88fc0fe63dc4c285d1779529b61407acfd777aa0152249f",
+    "/tmp/odoo-ordered-recovery-20260909/integration/qa/live-container.log": "8d675262b7b2d2a7b1184ec07624777cc2daa8a86207542f14d0bbb5ce763c8e",
+    "/tmp/odoo-ordered-recovery-20260909/integration/qa/live-container.command.json": "5153cdb546bd943106611754d3e0aa4f0285fa3e55588100a7fb61cc22b527ca",
+    "/tmp/odoo-ordered-recovery-20260909/integration/qa/live-odoo-image.log": "1a9c83d7ee521da797149f649fcd0d1afb446367764e42ea023bc193417e0df2",
+    "/tmp/odoo-ordered-recovery-20260909/integration/qa/live-odoo-image.command.json": "69819956c2c38a076c9f6a48423c1117fd939dec2d6177ae033a848fc1533634",
+    "/tmp/odoo-ordered-recovery-20260909/integration/qa/live-ordered_copy.log": "4a1e1b972994a1b0595837a83776817ef860b9355924045e5a2d54f0e5450e47",
+    "/tmp/odoo-ordered-recovery-20260909/integration/qa/live-ordered_copy.command.json": "ce38b04efe52ac05b416ea4760271aa5d51e1ab33379c45dd715055bd90cc700",
+    "/tmp/odoo-ordered-recovery-20260909/integration/evidence/inventory-ordered_copy-20260909-183801-79429f03.inventory.json": "fa915a6d68cfe46af7afc09b6708bab9fce4f5ed3f570848e623639ca49b963e",
+    "/tmp/odoo-ordered-recovery-20260909/integration/qa/live-ordered_seed.log": "7fc82684a43655b0f8bf57fbefd55cfba06dcb88df75befe3bef020c73e933f1",
+    "/tmp/odoo-ordered-recovery-20260909/integration/qa/live-ordered_seed.command.json": "53ebb3a271bd626e482b78e44f7055c97fde467f63dbecc95eb5831474b9ba6c",
+    "/tmp/odoo-ordered-recovery-20260909/integration/evidence/inventory-ordered_seed-20260909-183759-07173621.inventory.json": "5baa76fb5b2086ae1f5a1428a6c4bb37b7505f46687db86fc95600b6d5dbae1c"
+  },
+  "verified_live_module_sha256": {
+    "__manifest__.py": "0c4b28ed31e5e48cb3410093ef454674df23c9d4766258dca1a5c2b53275f004",
+    "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+    "models.py": "8de0ab23cfdfb8f713347ca975ade3a0ff83b64e8ce4505675d10efd2b5219b7",
+    "security/ir.model.access.csv": "9b7ef52061e7547f91396cb9e4827f766f28acc4ab19d353277989580de84427",
+    "tests/test_confirmation.py": "bac3a683d35dcd66e05df894010df91e38e135cd85ee47ad5353d153500d9a13",
+    "tests/__init__.py": "ed47f7d5473768022964338a974dfaa311a9d5c3a6d54e755a93aa7059bc9cfa",
+    "tests/test_quantity.py": "bb8f56e01d21f58524b30125485abb6c14f54b97c2991f0bd623c55dd6276601",
+    "tests/common.py": "ac45ccf1d429ad10c7d570dcc5b5dfc433c15bacc8be0b15cd0e37bb6874434c",
+    "tests/test_browser.py": "539000887873e6ffe961cf977dd63f24ad34eedc7bb4ff4b49674d2f560eff81",
+    "views/quantity.xml": "57a9886cab5355a8cef6cce64a910d26f4918cc1c69063d09ea57d2245cb207f"
+  },
+  "reused_developer_executions": {
+    "red": {
+      "reuse_only": true,
+      "new_qa_test_execution": false,
+      "original_metadata": "/tmp/odoo-ordered-recovery-20260909/integration/developer/red/test-ordered_copy-20260909-190409-e2e7801f.json",
+      "original_log": "/tmp/odoo-ordered-recovery-20260909/integration/developer/red/test-ordered_copy-20260909-190409-e2e7801f.log",
+      "summary_from_original_log": [
+        [
+          8,
+          0,
+          20
+        ]
+      ],
+      "started_tests_from_original_log": [
+        "TestConfirmation.test_create_confirmed_default_zero_rejected",
+        "TestConfirmation.test_create_confirmed_positive",
+        "TestConfirmation.test_create_confirmed_zero_rejected",
+        "TestConfirmation.test_draft_write_zero",
+        "TestConfirmation.test_draft_zero_explicit_and_default",
+        "TestConfirmation.test_load_create_zero_confirmed_rejected",
+        "TestConfirmation.test_load_update_zero_confirmed_rejected",
+        "TestConfirmation.test_load_valid_records",
+        "TestConfirmation.test_mixed_confirmation_atomic",
+        "TestConfirmation.test_negative_create_internal_user",
+        "TestConfirmation.test_negative_write_internal_user_preserved",
+        "TestConfirmation.test_positive_boundary_confirmation",
+        "TestConfirmation.test_write_confirmed_quantity_zero_rejected",
+        "TestConfirmation.test_write_state_and_positive_quantity",
+        "TestConfirmation.test_write_state_zero_rejected",
+        "TestConfirmation.test_zero_confirmation_rejected",
+        "TestQuantity.test_confirmation",
+        "TestQuantity.test_negative_create",
+        "TestQuantity.test_negative_write",
+        "TestQuantity.test_zero"
+      ],
+      "failed_cases_from_original_log": [
+        "TestConfirmation.test_create_confirmed_default_zero_rejected",
+        "TestConfirmation.test_create_confirmed_zero_rejected",
+        "TestConfirmation.test_load_create_zero_confirmed_rejected",
+        "TestConfirmation.test_load_update_zero_confirmed_rejected",
+        "TestConfirmation.test_mixed_confirmation_atomic",
+        "TestConfirmation.test_write_confirmed_quantity_zero_rejected",
+        "TestConfirmation.test_write_state_zero_rejected",
+        "TestConfirmation.test_zero_confirmation_rejected"
+      ],
+      "original_seconds": 2.852
+    },
+    "green": {
+      "reuse_only": true,
+      "new_qa_test_execution": false,
+      "original_metadata": "/tmp/odoo-ordered-recovery-20260909/integration/developer/green/test-ordered_copy-20260909-190501-1a622b24.json",
+      "original_log": "/tmp/odoo-ordered-recovery-20260909/integration/developer/green/test-ordered_copy-20260909-190501-1a622b24.log",
+      "summary_from_original_log": [
+        [
+          0,
+          0,
+          20
+        ]
+      ],
+      "started_tests_from_original_log": [
+        "TestConfirmation.test_create_confirmed_default_zero_rejected",
+        "TestConfirmation.test_create_confirmed_positive",
+        "TestConfirmation.test_create_confirmed_zero_rejected",
+        "TestConfirmation.test_draft_write_zero",
+        "TestConfirmation.test_draft_zero_explicit_and_default",
+        "TestConfirmation.test_load_create_zero_confirmed_rejected",
+        "TestConfirmation.test_load_update_zero_confirmed_rejected",
+        "TestConfirmation.test_load_valid_records",
+        "TestConfirmation.test_mixed_confirmation_atomic",
+        "TestConfirmation.test_negative_create_internal_user",
+        "TestConfirmation.test_negative_write_internal_user_preserved",
+        "TestConfirmation.test_positive_boundary_confirmation",
+        "TestConfirmation.test_write_confirmed_quantity_zero_rejected",
+        "TestConfirmation.test_write_state_and_positive_quantity",
+        "TestConfirmation.test_write_state_zero_rejected",
+        "TestConfirmation.test_zero_confirmation_rejected",
+        "TestQuantity.test_confirmation",
+        "TestQuantity.test_negative_create",
+        "TestQuantity.test_negative_write",
+        "TestQuantity.test_zero"
+      ],
+      "failed_cases_from_original_log": [],
+      "original_seconds": 2.687
+    }
+  },
+  "fresh_live_observations": {
+    "ordered_copy": {
+      "database": "ordered_copy",
+      "read_only": "on",
+      "records": [
+        {
+          "id": 1,
+          "name": "ordered-seed-draft-zero",
+          "state": "draft",
+          "quantity": 0,
+          "unit_price": 10,
+          "amount": 0
+        },
+        {
+          "id": 2,
+          "name": "ordered-seed-draft-positive",
+          "state": "draft",
+          "quantity": 3,
+          "unit_price": 10,
+          "amount": 30
+        },
+        {
+          "id": 3,
+          "name": "ordered-seed-confirmed-positive",
+          "state": "confirmed",
+          "quantity": 3,
+          "unit_price": 10,
+          "amount": 30
+        }
+      ],
+      "module": [
+        {
+          "id": 346,
+          "name": "lab_qualification",
+          "state": "installed",
+          "latest_version": "19.0.1.0.0"
+        }
+      ],
+      "constraints": [
+        {
+          "conname": "lab_qualification_confirmed_quantity_positive",
+          "definition": "CHECK ((((state)::text <> 'confirmed'::text) OR (quantity > 0)))",
+          "convalidated": true
+        },
+        {
+          "conname": "lab_qualification_create_uid_fkey",
+          "definition": "FOREIGN KEY (create_uid) REFERENCES res_users(id) ON DELETE SET NULL",
+          "convalidated": true
+        },
+        {
+          "conname": "lab_qualification_pkey",
+          "definition": "PRIMARY KEY (id)",
+          "convalidated": true
+        },
+        {
+          "conname": "lab_qualification_quantity_nonnegative",
+          "definition": "CHECK ((quantity >= 0))",
+          "convalidated": true
+        },
+        {
+          "conname": "lab_qualification_write_uid_fkey",
+          "definition": "FOREIGN KEY (write_uid) REFERENCES res_users(id) ON DELETE SET NULL",
+          "convalidated": true
+        }
+      ],
+      "invalid_confirmed_count": 0
+    },
+    "ordered_seed": {
+      "database": "ordered_seed",
+      "read_only": "on",
+      "records": [
+        {
+          "id": 1,
+          "name": "ordered-seed-draft-zero",
+          "state": "draft",
+          "quantity": 0,
+          "unit_price": 10,
+          "amount": 0
+        },
+        {
+          "id": 2,
+          "name": "ordered-seed-draft-positive",
+          "state": "draft",
+          "quantity": 3,
+          "unit_price": 10,
+          "amount": 30
+        },
+        {
+          "id": 3,
+          "name": "ordered-seed-confirmed-positive",
+          "state": "confirmed",
+          "quantity": 3,
+          "unit_price": 10,
+          "amount": 30
+        }
+      ],
+      "module": [
+        {
+          "id": 346,
+          "name": "lab_qualification",
+          "state": "installed",
+          "latest_version": "19.0.1.0.0"
+        }
+      ],
+      "constraints": [
+        {
+          "conname": "lab_qualification_create_uid_fkey",
+          "definition": "FOREIGN KEY (create_uid) REFERENCES res_users(id) ON DELETE SET NULL",
+          "convalidated": true
+        },
+        {
+          "conname": "lab_qualification_pkey",
+          "definition": "PRIMARY KEY (id)",
+          "convalidated": true
+        },
+        {
+          "conname": "lab_qualification_quantity_nonnegative",
+          "definition": "CHECK ((quantity >= 0))",
+          "convalidated": true
+        },
+        {
+          "conname": "lab_qualification_write_uid_fkey",
+          "definition": "FOREIGN KEY (write_uid) REFERENCES res_users(id) ON DELETE SET NULL",
+          "convalidated": true
+        }
+      ],
+      "invalid_confirmed_count": 0
+    }
+  },
+  "new_odoo_test_runs": 0,
+  "new_lint_runs": 0,
+  "database_writes": 0,
+  "pending_after_qa": [
+    "independent documentary reception",
+    "memory publication",
+    "flow completion",
+    "plan reception"
+  ],
+  "limitations": [
+    "synthetic copy, not customer restore",
+    "no browser",
+    "no release certification",
+    "no invalid historical fixture"
+  ]
+}

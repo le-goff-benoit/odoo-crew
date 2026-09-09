@@ -1,0 +1,64 @@
+{
+  "format": "odoo-task-reception-bundle/1",
+  "project": "/tmp/odoo-ordered-recovery-20260909/O03/project",
+  "owner": "codex-o03-author-A-orchestrateur",
+  "groups": {
+    "source": [
+      {
+        "path": "changelog/ordered/demande-A.md",
+        "sha256": "4bed5b421e10525be0599743b25318cb2de0385de6e37a3d115ba98e7e522846"
+      }
+    ],
+    "spec": [
+      {
+        "path": "changelog/ordered/spec-A.md",
+        "sha256": "1dfdda64dedaf11930b4d613cafcbe074bd6ed9412bc87a869510a981eb00909"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "changelog/ordered/author-A/documentary-proof.json",
+        "sha256": "d8004fa17a5be0bab7fa83fbdbef70407c9075a37d5aaf5fd793e44dd547824d"
+      },
+      {
+        "path": "changelog/ordered/author-A/documentary-proof.log",
+        "sha256": "e659a10f9eca0662fa80c553f2c462e5e3637a685918a2392020daa325819d5a"
+      }
+    ]
+  },
+  "memory": [
+    {
+      "target": ".odoo-agents/PROJECT.md",
+      "before_sha256": "0c72c616ca2c18c0d64bb8ca5fdc34173047ffe852d9d0b842d9d9e048e347d6",
+      "draft": {
+        "path": "changelog/ordered/author-A/PROJECT-propose.md",
+        "sha256": "e8c7c9ad13325e8bfa064f179242ee7b5c44af0ad51b3b4b21638169e310c0e2"
+      },
+      "base": {
+        "path": "changelog/ordered/author-A/bundle-A.json.PROJECT.md.base",
+        "sha256": "0c72c616ca2c18c0d64bb8ca5fdc34173047ffe852d9d0b842d9d9e048e347d6"
+      }
+    },
+    {
+      "target": ".odoo-agents/JOURNAL.md",
+      "before_sha256": "3f2c11e9461ff58ed3dd75a8f265ac6dc3cf1078e0ee91259e24164f0e6b9f1f",
+      "draft": {
+        "path": "changelog/ordered/author-A/JOURNAL-propose.md",
+        "sha256": "a8ee4ba35c478cc1284bf070057d98afc26189d4ae9546523207acb64c69b4e9"
+      },
+      "base": {
+        "path": "changelog/ordered/author-A/bundle-A.json.JOURNAL.md.base",
+        "sha256": "3f2c11e9461ff58ed3dd75a8f265ac6dc3cf1078e0ee91259e24164f0e6b9f1f"
+      }
+    }
+  ],
+  "scopes": [
+    "documentary/A"
+  ],
+  "code": {
+    "documentary/A/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  }
+}

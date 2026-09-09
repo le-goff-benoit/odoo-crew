@@ -1,0 +1,152 @@
+{
+  "format": "odoo-task-reception-bundle/1",
+  "project": "/tmp/odoo-ordered-recovery-20260909/integration/run/project",
+  "owner": "codex-integration-orchestrateur",
+  "groups": {
+    "source": [
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/demande.md",
+        "sha256": "289433ea51eafc4d12c09c73c07c343ec168162a72e41718b102b1e7aa9d6220"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/consolidation-contrat.md",
+        "sha256": "757a4ecee597f94f12ab252c3785ecaa48ec3bb1957d60b92a30ac6ae8afd364"
+      }
+    ],
+    "spec": [
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/revue_fonctionnelle.md",
+        "sha256": "ad64b892e52786539fbf08b9a4d70559e3125c424198e4b907cd10b35564c712"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/qa.md",
+        "sha256": "131efb36d04c6520f6f5523a7cd945cdb4f7216418007033764ba212392e6933"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/criteria.json",
+        "sha256": "1d959ddd2d5def7148a82c801ef78038c0753d1feeb1702f8c1e07c0b97301ec"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/result.md",
+        "sha256": "854405212bc1231681bdc3bac62f132ecfbd9f3a9faf8cce1544ab1f9a52425c"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/static.md",
+        "sha256": "fafed5f936d7b9604c090a4ef7bd2dd7fd7b416b5656095a512469f35d4cbe91"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/runtime.md",
+        "sha256": "f6c85fe15b11ea572687e401ea603daabad2f11170f5f74f0f81b19af7625fc2"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/copy.md",
+        "sha256": "40920d4f47163b04c902025e55280797f40f23a152bfec8ac10839c82c09fdb1"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/verification.evidence.json",
+        "sha256": "ebe5226eb7f7311ed813f2bdeb5fcfb772ef84ba659684d48d8f166d0c07510e"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/verification.evidence.log",
+        "sha256": "08238aa279b48ffb54838a1d4aef1fc8fc99dc7ce839afe52d5f236de05f6071"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/verification.json",
+        "sha256": "af0827a61720bb48894101c08cd36d7a76cb0d8156d8430ada6f7ac30a20942d"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/developer/result.md",
+        "sha256": "7a0cc454dfd93b938535bc946b08fe019ddcd50501955de84d20eec6cacea4d2"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/developer/verification.json",
+        "sha256": "e6db0aced39b2484f7e0114914e100584086ae26c1f32f80c59783c5233fddb5"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/developer/lint.log",
+        "sha256": "4ec5a6b22eb53c6ba07182769500169f8e7aaf4bfc3317df26f6773328f9194d"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/developer/red/test-ordered_copy-20260909-190409-e2e7801f.log",
+        "sha256": "bcc9f0a3f8aa5ab5959ff87b44b4df577f7e26e73b64a463b0ba7cb38a34c7ab"
+      },
+      {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/developer/green/test-ordered_copy-20260909-190501-1a622b24.log",
+        "sha256": "aa913707263311a7dc9561ceb5e676e66946cad88044c92f361d956050a07795"
+      }
+    ]
+  },
+  "memory": [
+    {
+      "target": ".odoo-agents/PROJECT.md",
+      "before_sha256": "ae46234fd8f24cec8de98152b883a0f16722c36f23a20d9d16aa8f826ec2dbbe",
+      "draft": {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/reception/PROJECT-propose.md",
+        "sha256": "c036a57a9709d0f3b0d9ddbf7f622599a3cc5d72bead0d0b25c1b27d56689062"
+      },
+      "base": {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/reception/bundle.json.PROJECT.md.base",
+        "sha256": "ae46234fd8f24cec8de98152b883a0f16722c36f23a20d9d16aa8f826ec2dbbe"
+      }
+    },
+    {
+      "target": ".odoo-agents/JOURNAL.md",
+      "before_sha256": "1bd1c5ce5998f86752cebd09031aeab3dfeedfbf2e27de3b2627bbf49484e10e",
+      "draft": {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/reception/JOURNAL-propose.md",
+        "sha256": "8db2d6df692efc349fded99630c50e5fe718aa4e4d175404ebc9437dacb48e3f"
+      },
+      "base": {
+        "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/reception/bundle.json.JOURNAL.md.base",
+        "sha256": "1bd1c5ce5998f86752cebd09031aeab3dfeedfbf2e27de3b2627bbf49484e10e"
+      }
+    }
+  ],
+  "scopes": [
+    "lab_qualification"
+  ],
+  "code": {
+    "lab_qualification/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 436
+    },
+    "lab_qualification/__manifest__.py": {
+      "sha256": "0c4b28ed31e5e48cb3410093ef454674df23c9d4766258dca1a5c2b53275f004",
+      "mode": 436
+    },
+    "lab_qualification/models.py": {
+      "sha256": "8de0ab23cfdfb8f713347ca975ade3a0ff83b64e8ce4505675d10efd2b5219b7",
+      "mode": 436
+    },
+    "lab_qualification/security/ir.model.access.csv": {
+      "sha256": "9b7ef52061e7547f91396cb9e4827f766f28acc4ab19d353277989580de84427",
+      "mode": 436
+    },
+    "lab_qualification/tests/__init__.py": {
+      "sha256": "ed47f7d5473768022964338a974dfaa311a9d5c3a6d54e755a93aa7059bc9cfa",
+      "mode": 436
+    },
+    "lab_qualification/tests/common.py": {
+      "sha256": "ac45ccf1d429ad10c7d570dcc5b5dfc433c15bacc8be0b15cd0e37bb6874434c",
+      "mode": 436
+    },
+    "lab_qualification/tests/test_browser.py": {
+      "sha256": "539000887873e6ffe961cf977dd63f24ad34eedc7bb4ff4b49674d2f560eff81",
+      "mode": 436
+    },
+    "lab_qualification/tests/test_confirmation.py": {
+      "sha256": "bac3a683d35dcd66e05df894010df91e38e135cd85ee47ad5353d153500d9a13",
+      "mode": 436
+    },
+    "lab_qualification/tests/test_quantity.py": {
+      "sha256": "bb8f56e01d21f58524b30125485abb6c14f54b97c2991f0bd623c55dd6276601",
+      "mode": 436
+    },
+    "lab_qualification/views/quantity.xml": {
+      "sha256": "57a9886cab5355a8cef6cce64a910d26f4918cc1c69063d09ea57d2245cb207f",
+      "mode": 436
+    }
+  }
+}

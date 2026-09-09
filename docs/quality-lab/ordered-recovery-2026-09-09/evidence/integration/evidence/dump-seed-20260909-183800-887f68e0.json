@@ -1,0 +1,17 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "ordered-recovery-d015b7aa5705-pg",
+    "pg_dump",
+    "-U",
+    "odoo",
+    "-Fc",
+    "-f",
+    "/tmp/ordered_seed.dump",
+    "ordered_seed"
+  ],
+  "returncode": 0,
+  "seconds": 0.339,
+  "log": "/tmp/odoo-ordered-recovery-20260909/integration/evidence/dump-seed-20260909-183800-887f68e0.log"
+}

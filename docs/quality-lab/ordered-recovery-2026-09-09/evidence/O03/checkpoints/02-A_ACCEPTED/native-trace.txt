@@ -1,0 +1,44 @@
+$ ["python3", "/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py", "status", "/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/ordered-a.json"]
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       EN COURS
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O03/project
+Progression 0 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  EN COURS
+  ▶ module_task_gate
+    ORCHESTRATEUR · propriétaire: codex-o03-author-A-orchestrateur
+    Fusionner les preuves QA normales et rendre un verdict unique.
+
+exit=0
+$ ["python3", "/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py", "release", "/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/ordered-a.json", "module_task_gate", "--owner", "codex-o03-author-A-orchestrateur", "--reason", "Auteur arr\u00eat\u00e9 apr\u00e8s pr\u00e9paration ; transfert explicite au coordinateur pour r\u00e9ception r\u00e9elle."]
+■ module_task_gate · verrou libéré par codex-o03-author-A-orchestrateur
+
+exit=0
+$ ["python3", "/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py", "claim", "/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/ordered-a.json", "module_task_gate", "--owner", "codex-coordinate-O03-A"]
+▶ module_task_gate · ORCHESTRATEUR
+  Démarré par codex-coordinate-O03-A
+  Fusionner les preuves QA normales et rendre un verdict unique.
+
+exit=0
+$ ["python3", "/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py", "complete", "/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/ordered-a.json", "module_task_gate", "--owner", "codex-coordinate-O03-A", "--outcome", "pass", "--evidence", "/tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/author-A/review-A.json"]
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O03/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ module_task_gate → pass
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: blocked, done, retry · Preuve: entrée JOURNAL.md
+
+exit=0

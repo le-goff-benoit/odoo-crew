@@ -1,0 +1,94 @@
+{
+  "tests_identical_red_green": true,
+  "red_summary": [
+    [
+      8,
+      0,
+      20
+    ]
+  ],
+  "green_summary": [
+    [
+      0,
+      0,
+      20
+    ]
+  ],
+  "started_tests_identical": true,
+  "started_count": 20,
+  "initial_files_unchanged": [
+    "tests/test_quantity.py",
+    "tests/test_browser.py",
+    "views/quantity.xml",
+    "security/ir.model.access.csv",
+    "__manifest__.py",
+    "__init__.py"
+  ],
+  "inventories": {
+    "copy": {
+      "baseline": "inventory-ordered_copy-20260909-183801-79429f03.inventory.json",
+      "current": "inventory-ordered_copy-20260909-190531-7a23ab3f.inventory.json",
+      "identical": true,
+      "records": [
+        {
+          "amount": 0.0,
+          "id": 1,
+          "name": "ordered-seed-draft-zero",
+          "quantity": 0,
+          "state": "draft",
+          "unit_price": 10.0
+        },
+        {
+          "amount": 30.0,
+          "id": 2,
+          "name": "ordered-seed-draft-positive",
+          "quantity": 3,
+          "state": "draft",
+          "unit_price": 10.0
+        },
+        {
+          "amount": 30.0,
+          "id": 3,
+          "name": "ordered-seed-confirmed-positive",
+          "quantity": 3,
+          "state": "confirmed",
+          "unit_price": 10.0
+        }
+      ]
+    },
+    "seed": {
+      "baseline": "inventory-ordered_seed-20260909-183759-07173621.inventory.json",
+      "current": "inventory-ordered_seed-20260909-190542-67c057d8.inventory.json",
+      "identical": true,
+      "records": [
+        {
+          "amount": 0.0,
+          "id": 1,
+          "name": "ordered-seed-draft-zero",
+          "quantity": 0,
+          "state": "draft",
+          "unit_price": 10.0
+        },
+        {
+          "amount": 30.0,
+          "id": 2,
+          "name": "ordered-seed-draft-positive",
+          "quantity": 3,
+          "state": "draft",
+          "unit_price": 10.0
+        },
+        {
+          "amount": 30.0,
+          "id": 3,
+          "name": "ordered-seed-confirmed-positive",
+          "quantity": 3,
+          "state": "confirmed",
+          "unit_price": 10.0
+        }
+      ]
+    }
+  },
+  "new_constraint_in_copy_only": true,
+  "no_commit": true,
+  "staged_module_files": true
+}

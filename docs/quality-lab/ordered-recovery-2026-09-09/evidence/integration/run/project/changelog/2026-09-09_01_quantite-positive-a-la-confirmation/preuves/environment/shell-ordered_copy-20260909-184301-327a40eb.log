@@ -1,0 +1,13 @@
+2026-09-09 16:43:01,498 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 16:43:01,498 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 16:43:01,498 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo-data/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 16:43:01,498 1 INFO ? odoo: database: odoo@ordered-recovery-d015b7aa5705-pg:default 
+2026-09-09 16:43:01,709 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 16:43:01,709 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 16:43:01,723 1 INFO ordered_copy odoo.modules.loading: loading 1 modules... 
+2026-09-09 16:43:01,725 1 INFO ordered_copy odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 16:43:01,731 1 INFO ordered_copy odoo.modules.loading: loading 15 modules... 
+2026-09-09 16:43:01,855 1 INFO ordered_copy odoo.modules.loading: 15 modules loaded in 0.12s, 0 queries (+0 extra) 
+2026-09-09 16:43:01,881 1 INFO ordered_copy odoo.modules.loading: Modules loaded. 
+2026-09-09 16:43:01,891 1 INFO ordered_copy odoo.registry: Registry loaded in 0.181s 
+ANALYST_READONLY_JSON={"acl": [{"group_id": [1, "Role / User"], "id": 157, "name": "lab.qualification", "perm_create": true, "perm_read": true, "perm_unlink": true, "perm_write": true}], "automation_installed": false, "automations": [], "database": "ordered_copy", "installed_modules": ["api_doc", "auth_passkey", "auth_totp", "base", "base_import", "base_import_module", "base_setup", "bus", "html_editor", "iap", "lab_qualification", "rpc", "web", "web_tour", "web_unsplash"], "invalid_confirmed_count": 0, "manual_fields": [], "records": [{"amount": 0.0, "id": 1, "name": "ordered-seed-draft-zero", "quantity": 0, "state": "draft", "unit_price": 10.0}, {"amount": 30.0, "id": 2, "name": "ordered-seed-draft-positive", "quantity": 3, "state": "draft", "unit_price": 10.0}, {"amount": 30.0, "id": 3, "name": "ordered-seed-confirmed-positive", "quantity": 3, "state": "confirmed", "unit_price": 10.0}], "rules": [], "server_actions": [], "views": [{"active": true, "id": 238, "inherit_id": false, "name": "lab.qualification.form"}]}

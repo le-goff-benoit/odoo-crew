@@ -1,0 +1,60 @@
+{
+  "format": "odoo-task-reception-bundle/1",
+  "project": "/tmp/odoo-ordered-recovery-20260909/O02/project",
+  "owner": "codex-author-A",
+  "groups": {
+    "source": [
+      {
+        "path": "changelog/ordered/demande-A.md",
+        "sha256": "4bed5b421e10525be0599743b25318cb2de0385de6e37a3d115ba98e7e522846"
+      }
+    ],
+    "spec": [
+      {
+        "path": "changelog/ordered/spec-A.md",
+        "sha256": "1dfdda64dedaf11930b4d613cafcbe074bd6ed9412bc87a869510a981eb00909"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "changelog/ordered/reception-A/evidence-A.json",
+        "sha256": "92ba62cf4dcd67f75ae17e832c90fce62386e94d70e13829872387d2fcfa89dd"
+      }
+    ]
+  },
+  "memory": [
+    {
+      "target": ".odoo-agents/PROJECT.md",
+      "before_sha256": "0c72c616ca2c18c0d64bb8ca5fdc34173047ffe852d9d0b842d9d9e048e347d6",
+      "draft": {
+        "path": "changelog/ordered/reception-A/PROJECT-propose.md",
+        "sha256": "554509a65cd5c18ec00d9dc75f47275184b766a4252a57134cf2b4cf90896162"
+      },
+      "base": {
+        "path": "changelog/ordered/reception-A/bundle-A.json.PROJECT.md.base",
+        "sha256": "0c72c616ca2c18c0d64bb8ca5fdc34173047ffe852d9d0b842d9d9e048e347d6"
+      }
+    },
+    {
+      "target": ".odoo-agents/JOURNAL.md",
+      "before_sha256": "3f2c11e9461ff58ed3dd75a8f265ac6dc3cf1078e0ee91259e24164f0e6b9f1f",
+      "draft": {
+        "path": "changelog/ordered/reception-A/JOURNAL-propose.md",
+        "sha256": "4f70eeaec4f1f256f06a3526dbc4f19c064137aead27b3a84e47de188df6a497"
+      },
+      "base": {
+        "path": "changelog/ordered/reception-A/bundle-A.json.JOURNAL.md.base",
+        "sha256": "3f2c11e9461ff58ed3dd75a8f265ac6dc3cf1078e0ee91259e24164f0e6b9f1f"
+      }
+    }
+  ],
+  "scopes": [
+    "documentary/A"
+  ],
+  "code": {
+    "documentary/A/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  }
+}

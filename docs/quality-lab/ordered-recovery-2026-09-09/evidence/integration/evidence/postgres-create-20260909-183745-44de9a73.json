@@ -1,0 +1,23 @@
+{
+  "command": [
+    "docker",
+    "run",
+    "-d",
+    "--name",
+    "ordered-recovery-d015b7aa5705-pg",
+    "--label",
+    "ordered-recovery-owner=d015b7aa5705430194c69359c0ed1974",
+    "--network",
+    "ordered-recovery-d015b7aa5705",
+    "--tmpfs",
+    "/var/lib/postgresql/data",
+    "-e",
+    "POSTGRES_USER=odoo",
+    "-e",
+    "POSTGRES_PASSWORD=synthetic-lab-only",
+    "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f"
+  ],
+  "returncode": 0,
+  "seconds": 0.142,
+  "log": "/tmp/odoo-ordered-recovery-20260909/integration/evidence/postgres-create-20260909-183745-44de9a73.log"
+}

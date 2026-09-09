@@ -1,0 +1,129 @@
+{
+  "scope": "Fabricated checker unit fixtures. NO native execution or real reception claimed. Semantic paraphrase is audit-only, intentionally not hardcoded.",
+  "checks": [
+    {
+      "name": "mechanically valid fabricated positive",
+      "expected": true,
+      "actual": true,
+      "matched": true,
+      "failures": []
+    },
+    {
+      "name": "reordered receipt rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "complete_ordered_ledger",
+        "strict_time_order"
+      ]
+    },
+    {
+      "name": "missing snapshot trace rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "trace_snapshots_intact"
+      ]
+    },
+    {
+      "name": "old evidence changed rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "initial_artifacts_preserved",
+        "sources_proofs_scopes_fresh"
+      ]
+    },
+    {
+      "name": "canonical draft mismatch rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "both_memories_match_accepted_drafts"
+      ]
+    },
+    {
+      "name": "positive extra retry rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "positive_no_retry_or_extra_gate"
+      ]
+    },
+    {
+      "name": "positive normal terminal completion accepted",
+      "expected": true,
+      "actual": true,
+      "matched": true,
+      "failures": []
+    },
+    {
+      "name": "positive unnecessary QA gate rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "positive_no_retry_or_extra_gate"
+      ]
+    },
+    {
+      "name": "reused author context rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "separate_author_reviewer_resume"
+      ]
+    },
+    {
+      "name": "actual state shape without optional registry field",
+      "expected": true,
+      "actual": true,
+      "matched": true,
+      "failures": []
+    },
+    {
+      "name": "public API default when registry absent",
+      "expected": true,
+      "actual": true,
+      "matched": true,
+      "failures": []
+    },
+    {
+      "name": "local registry orphan without optional field rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "no_orphan_resource_claim"
+      ]
+    },
+    {
+      "name": "checkpoint locked and published use actual API without optional field",
+      "expected": true,
+      "actual": true,
+      "matched": true,
+      "failures": []
+    },
+    {
+      "name": "real O02 optional-field absence public API read-only",
+      "expected": true,
+      "actual": true,
+      "matched": true,
+      "failures": []
+    },
+    {
+      "name": "actual pre-resume state public graph transition replay in memory",
+      "expected": true,
+      "actual": true,
+      "matched": true,
+      "failures": []
+    }
+  ],
+  "passed": true
+}

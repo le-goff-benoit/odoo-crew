@@ -1,0 +1,41 @@
+[
+    {
+        "Name": "ordered-recovery-d015b7aa5705",
+        "Id": "4838741a7c4227f8b27002472257759e520ad41ed3f1bbb62999f444c1f68f7e",
+        "Created": "2026-09-09T18:37:45.464607629+02:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv4": true,
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": {},
+            "Config": [
+                {
+                    "Subnet": "192.168.32.0/20",
+                    "Gateway": "192.168.32.1"
+                }
+            ]
+        },
+        "Internal": true,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "17a7e0de10707a05fd0feb6e06a45b0311f5e31274b136719f924a8626b7171f": {
+                "Name": "ordered-recovery-d015b7aa5705-pg",
+                "EndpointID": "d87f2b8515867d3b6886febb216ef169a110436fa0449d040c351fe81655037e",
+                "MacAddress": "de:e4:51:3c:60:a7",
+                "IPv4Address": "192.168.32.2/20",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {
+            "ordered-recovery-owner": "d015b7aa5705430194c69359c0ed1974"
+        }
+    }
+]

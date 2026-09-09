@@ -1,0 +1,115 @@
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "c88bfe658317e088a6e6cc0192ff868029760c849b074b97f99ef846ffd35953",
+  "reviewer": "/root/odoo_receipt",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/demande.md",
+          "quote": "Nous demandons de conserver zéro en brouillon et d'autoriser la confirmation\nuniquement lorsque la quantité est strictement positive. La règle doit s'appliquer\nau bouton de confirmation, aux créations directes et aux écritures ORM/imports.\nUne confirmation groupée contenant un brouillon à zéro doit échouer sans confirmer\nles autres lignes de la sélection. Un enregistrement déjà confirmé ne doit pas\npouvoir recevoir une quantité nulle. La contrainte existante contre les quantités\nnégatives reste applicable."
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/demande.md",
+          "quote": "L'évolution porte sur le module custom existant. Conserver ses droits actuels,\nsans élargissement ni nouvelle interface nécessaire. La base de départ du banc\ncontient des brouillons à zéro et positifs, et un confirmé positif ; préserver\nleurs identités et données valides lors de la mise à niveau sur la copie locale.\nAucune correction automatique d'une donnée historique invalide n'est demandée.\nLes vérifications doivent distinguer la base de référence de sa copie de travail.\n\nLa release reste ouverte. Livrer analyse, changement du module, QA locale avec\ncontre-exemple rouge puis correction verte, réception indépendante, mémoire exacte\net réception du plan ; ne pas prétendre à une recette complète de release."
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/consolidation-contrat.md",
+          "quote": "Revue originale conservée dans integration/analysis/revue.md. L’orchestrateur sépare le moment de vérification de AC12 : preuves QA avant la porte, réception indépendante à la porte, publication des mémoires puis réception du plan après. Aucun critère métier AC01–AC11 ni obligation finale n’est retiré. Cette clarification précède le binding du contrat, le développement et ses résultats."
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/revue_fonctionnelle.md",
+          "quote": "- [ ] **AC01 — Brouillon zéro** (demande 8–9) : étant donné une création au brouillon avec quantité explicite 0, puis une création sans quantité, quand elles sont enregistrées, alors elles sont acceptées avec quantité 0 et montant 0 ; une écriture de zéro sur un brouillon reste permise.\n- [ ] **AC02 — Borne positive et bouton** (9–10) : étant donné un brouillon quantité 1, prix 10, quand `action_confirm()` est appelé, alors il devient confirmé, quantité 1 et montant 10. Le cas positif initial quantité 3 reste fonctionnel avec montant 30.\n- [ ] **AC03 — Bouton zéro** (9–10) : étant donné un brouillon quantité 0, quand le bouton est appelé, alors l'opération est refusée et, après rollback/savepoint et relecture, il reste brouillon, quantité 0, montant 0.\n- [ ] **AC04 — Confirmation groupée atomique** (11–12) : étant donné des brouillons quantité 3 et 0, quand leur recordset est confirmé en une opération, alors elle échoue ; après annulation et relecture, les deux états et leurs quantités/montants restent initiaux. Placer la ligne positive avant la nulle rend observable une implémentation erronée qui traiterait les lignes successivement.\n- [ ] **AC05 — Créations directes** (9–10) : étant donné une création directe `confirmed`, quand la quantité vaut 0 ou est omise (défaut 0), alors elle est refusée et aucun nouvel enregistrement invalide ne subsiste ; quantité 1 doit être acceptée.\n- [ ] **AC06 — Écritures directes** (9–10, 12–13) : écrire l'état `confirmed` sur un brouillon à zéro, ou écrire quantité 0 sur un confirmé positif, est refusé ; les valeurs précédentes persistent après annulation. Une écriture simultanée état confirmé/quantité 1 est acceptée. Modifier la quantité d'un confirmé vers une autre valeur positive reste possible.\n- [ ] **AC07 — Import réel par ORM** (10) : via `load`, importer un nouveau confirmé à zéro et mettre à jour un confirmé existant vers zéro produit des erreurs, sans donnée invalide persistante ; un import de brouillon à zéro et un import de confirmé positif réussissent. Préserver l'identité et les valeurs antérieures du confirmé après l'import refusé. Un test `create` seul ne valide pas ce critère.\n- [ ] **AC08 — Négatifs préexistants** (13–14) : les créations et écritures de quantité -1 restent refusées ; après une écriture rejetée sur une ligne quantité 3/prix 10, relire quantité 3 et montant 30.\n- [ ] **AC09 — Droits et écran** (16–17) : aucun changement d'ACL, règles, groupes ou vue ; un utilisateur interne non superutilisateur peut préparer et confirmer une ligne positive et rencontre le même refus pour zéro. Aucun élargissement pour public/portail n'est introduit.\n- [ ] **AC10 — Mise à niveau de la copie** (18–21) : après update sur `ordered_copy`, les IDs 1/2/3 et tous leurs noms, états, quantités, prix et montants égalent l'inventaire initial ; la nouvelle règle est réellement active. Un inventaire distinct confirme `ordered_seed` inchangée et encore au module initial. Ne pas qualifier cette preuve de restauration client.\n- [ ] **AC11 — Historique et effets interdits** (20) : ni script de reprise ni update ne transforme automatiquement un confirmé invalide, ni ne modifie les lignes initiales valides. Si une anomalie historique est constatée, la réception en rend compte et n'annonce pas une mise à niveau validée sans règle active.\n- [ ] **AC12 — Preuves de livraison** (23–25) : archiver au moins un nouveau contre-exemple métier rouge exécuté sur le code initial, puis les mêmes attentes vertes après correction et les scénarios couvrant AC01–AC11 ; lint des fichiers touchés, update et tests ciblés réellement exécutés ; preuves soumises à réception indépendante à la porte QA. La publication mémoire et la réception du plan suivent cette porte, selon les conditions de complétion ci-dessous. La release reste ouverte et aucun bilan ne prétend à une recette complète."
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/revue_fonctionnelle.md",
+          "quote": "La réception indépendante doit passer avant la publication exacte des deux mémoires. L’orchestrateur termine ensuite le flow et reçoit la tâche du plan avec une preuve valide et un fragment de consolidation. La release reste ouverte. Ces obligations AC12 demeurent requises pour déclarer la tâche terminée ; elles ne sont pas présentées comme déjà réalisées dans les preuves QA qui les précèdent."
+        }
+      ],
+      "explanation": "Demande et contrat conservent tous les objets et canaux : zéro en préparation, borne entière positive 1, bouton/create/write/load, confirmation groupée atomique, refus de zéro sur un confirmé et maintien des négatifs interdits. AC09–AC11 conservent droits/interface, IDs et données valides, distinction ordered_copy/ordered_seed et absence de redressement. Les tests de défaut, bornes, relecture, utilisateur non su et contrainte effective sont des conséquences vérifiables du besoin ; models.Constraint est un choix technique justifié, pas une demande supplémentaire. Les hypothèses de retour au brouillon, recordset sans nouvelle interface et absence de navigateur sont explicites et compatibles avec la demande. La consolidation antérieure au développement séquence AC12 sans supprimer ses obligations : cette réception documentaire précède publication mémoire et réception du plan, encore requises ensuite. Aucune recette complète ou clôture de release n'est acquise."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/revue_fonctionnelle.md",
+          "quote": "- [ ] **AC01 — Brouillon zéro** (demande 8–9) : étant donné une création au brouillon avec quantité explicite 0, puis une création sans quantité, quand elles sont enregistrées, alors elles sont acceptées avec quantité 0 et montant 0 ; une écriture de zéro sur un brouillon reste permise.\n- [ ] **AC02 — Borne positive et bouton** (9–10) : étant donné un brouillon quantité 1, prix 10, quand `action_confirm()` est appelé, alors il devient confirmé, quantité 1 et montant 10. Le cas positif initial quantité 3 reste fonctionnel avec montant 30.\n- [ ] **AC03 — Bouton zéro** (9–10) : étant donné un brouillon quantité 0, quand le bouton est appelé, alors l'opération est refusée et, après rollback/savepoint et relecture, il reste brouillon, quantité 0, montant 0.\n- [ ] **AC04 — Confirmation groupée atomique** (11–12) : étant donné des brouillons quantité 3 et 0, quand leur recordset est confirmé en une opération, alors elle échoue ; après annulation et relecture, les deux états et leurs quantités/montants restent initiaux. Placer la ligne positive avant la nulle rend observable une implémentation erronée qui traiterait les lignes successivement.\n- [ ] **AC05 — Créations directes** (9–10) : étant donné une création directe `confirmed`, quand la quantité vaut 0 ou est omise (défaut 0), alors elle est refusée et aucun nouvel enregistrement invalide ne subsiste ; quantité 1 doit être acceptée.\n- [ ] **AC06 — Écritures directes** (9–10, 12–13) : écrire l'état `confirmed` sur un brouillon à zéro, ou écrire quantité 0 sur un confirmé positif, est refusé ; les valeurs précédentes persistent après annulation. Une écriture simultanée état confirmé/quantité 1 est acceptée. Modifier la quantité d'un confirmé vers une autre valeur positive reste possible.\n- [ ] **AC07 — Import réel par ORM** (10) : via `load`, importer un nouveau confirmé à zéro et mettre à jour un confirmé existant vers zéro produit des erreurs, sans donnée invalide persistante ; un import de brouillon à zéro et un import de confirmé positif réussissent. Préserver l'identité et les valeurs antérieures du confirmé après l'import refusé. Un test `create` seul ne valide pas ce critère.\n- [ ] **AC08 — Négatifs préexistants** (13–14) : les créations et écritures de quantité -1 restent refusées ; après une écriture rejetée sur une ligne quantité 3/prix 10, relire quantité 3 et montant 30.\n- [ ] **AC09 — Droits et écran** (16–17) : aucun changement d'ACL, règles, groupes ou vue ; un utilisateur interne non superutilisateur peut préparer et confirmer une ligne positive et rencontre le même refus pour zéro. Aucun élargissement pour public/portail n'est introduit.\n- [ ] **AC10 — Mise à niveau de la copie** (18–21) : après update sur `ordered_copy`, les IDs 1/2/3 et tous leurs noms, états, quantités, prix et montants égalent l'inventaire initial ; la nouvelle règle est réellement active. Un inventaire distinct confirme `ordered_seed` inchangée et encore au module initial. Ne pas qualifier cette preuve de restauration client.\n- [ ] **AC11 — Historique et effets interdits** (20) : ni script de reprise ni update ne transforme automatiquement un confirmé invalide, ni ne modifie les lignes initiales valides. Si une anomalie historique est constatée, la réception en rend compte et n'annonce pas une mise à niveau validée sans règle active.\n- [ ] **AC12 — Preuves de livraison** (23–25) : archiver au moins un nouveau contre-exemple métier rouge exécuté sur le code initial, puis les mêmes attentes vertes après correction et les scénarios couvrant AC01–AC11 ; lint des fichiers touchés, update et tests ciblés réellement exécutés ; preuves soumises à réception indépendante à la porte QA. La publication mémoire et la réception du plan suivent cette porte, selon les conditions de complétion ci-dessous. La release reste ouverte et aucun bilan ne prétend à une recette complète."
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/developer/red/test-ordered_copy-20260909-190409-e2e7801f.log",
+          "quote": "8 failed, 0 error(s) of 20 tests when loading database 'ordered_copy'"
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/developer/green/test-ordered_copy-20260909-190501-1a622b24.log",
+          "quote": "0 failed, 0 error(s) of 20 tests when loading database 'ordered_copy'"
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/developer/lint.log",
+          "quote": "0 erreur(s), 0 avertissement(s), 0 info(s)"
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/runtime.md",
+          "quote": "**Zéro nouveau test Odoo exécuté par la QA**"
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/copy.md",
+          "quote": "| `lab_qualification_confirmed_quantity_positive` | `CHECK ((((state)::text <> 'confirmed'::text) OR (quantity > 0)))`, convalidated true | Absente |"
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/result.md",
+          "quote": "AC12 | Partie QA satisfaite : rouge/vert identiques, lint/update, preuves soumises. Réception à la porte et complétion finale encore en attente"
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/criteria.json",
+          "quote": "Publication mémoire et réception du plan sont obligations suivantes, non déclarées accomplies ici."
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/verification.json",
+          "quote": "\"/tmp/odoo-ordered-recovery-20260909/integration/run/project/changelog/2026-09-09_01_quantite-positive-a-la-confirmation/criteria.json\": \"ad78cc289b8ca14aee17e821f1f7a816deee7e9073d41f086a5812fea4aa1742\""
+        }
+      ],
+      "explanation": "Lecture des tests actuels et des logs figés : les mêmes 20 méthodes sont réellement démarrées rouge puis vert, dont 16 nouvelles et 4 anciennes ; 8 refus métier manquent avant correction puis 20/20 passent. AC01 couvre défaut/explicite/write et montants ; AC02 couvre 1 et 3 ; AC03–06 couvrent refus, création absente, recordset positif avant zéro, rollback/relecture, écritures positives simultanées/ultérieures ; AC07 appelle réellement load en création et mise à jour .id, avec erreurs, comptage et préservation d'identité/valeurs ; AC08 conserve -1 interdit ; AC09 utilise with_user et assertions non su, ACL/vue inchangées. AC10 est étayé par update et inventaires distincts des trois IDs et toutes valeurs, contrainte nouvelle validée uniquement sur copie ; AC11 par absence de reprise et fixture valide. La QA réutilise tests/lint et effectue seulement de nouveaux contrôles de fraîcheur et lectures SQL READ ONLY : son résultat générique n'est pas un bilan Odoo supplémentaire. AC12 est satisfait à cette porte dans sa portée temporelle explicite, sans publication ni réception du plan déjà réalisée. Intégrité : 31 hashes directs du bundle, modes des 10 fichiers de code, 2 bases cibles, 23 hashes d'archives vérifiés ; couverture cible vérifiée par odoo_coverage.verify et contrat recalculé c078392d… identique. Une référence QA à criteria.json reste historique (ad78cc… contre actuel 1d959d…) : reconstruction en mémoire du squelette standard missing à partir du contrat actuel reproduit exactement ad78cc…, ce qui établit que son remplissage a conservé le contrat. Toutes les autres références_sha256 de cette preuve concordent. Aucun test ni accès DB lancé par cette réception."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/demande.md",
+          "quote": "Nous demandons de conserver zéro en brouillon et d'autoriser la confirmation\nuniquement lorsque la quantité est strictement positive. La règle doit s'appliquer\nau bouton de confirmation, aux créations directes et aux écritures ORM/imports.\nUne confirmation groupée contenant un brouillon à zéro doit échouer sans confirmer\nles autres lignes de la sélection. Un enregistrement déjà confirmé ne doit pas\npouvoir recevoir une quantité nulle. La contrainte existante contre les quantités\nnégatives reste applicable."
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/demande.md",
+          "quote": "L'évolution porte sur le module custom existant. Conserver ses droits actuels,\nsans élargissement ni nouvelle interface nécessaire. La base de départ du banc\ncontient des brouillons à zéro et positifs, et un confirmé positif ; préserver\nleurs identités et données valides lors de la mise à niveau sur la copie locale.\nAucune correction automatique d'une donnée historique invalide n'est demandée.\nLes vérifications doivent distinguer la base de référence de sa copie de travail.\n\nLa release reste ouverte. Livrer analyse, changement du module, QA locale avec\ncontre-exemple rouge puis correction verte, réception indépendante, mémoire exacte\net réception du plan ; ne pas prétendre à une recette complète de release."
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/reception/bundle.json.PROJECT.md.base",
+          "quote": "## Compréhension métier\nLa quantité peut être nulle pendant la préparation ; une confirmation doit garantir une quantité positive par tous les canaux. Le montant est quantity × unit_price.\n\n## Décisions actées\nModule existant lab_qualification, voie module, aucune interface ou permission nouvelle. Jeu initial valide de trois lignes, copie locale restaurée depuis ordered_seed. Écritures et tests uniquement sur ordered_copy ; référence conservée. Aucun redressement automatique.\n\n## Pièges connus\nUne garde dans le seul bouton ne couvre pas les imports ni les écritures directes. Les preuves backend ne valent pas recette complète de release."
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/reception/bundle.json.JOURNAL.md.base",
+          "quote": "## 2026-09-09 — Préparation\nDemande : qualifier un invariant à la confirmation sur Odoo 19.0.\nFait : copie synthétique effectivement restaurée, trois identités et valeurs conservées ; analyse indépendante terminée.\nVerdict : module requis, QA renforcée ; développement et réception encore à réaliser.\nAppris : vérifier les canaux create/write/load et la contrainte effective.\nReste ouvert : tâche et release."
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/reception/PROJECT-propose.md",
+          "quote": "## Résultat acquis de la tâche A\nLa règle persistante impose quantity > 0 pour state=confirmed, tout en autorisant zéro au brouillon et en conservant le refus des négatifs. Les canaux bouton, create, write et load ont été contrôlés, y compris confirmation groupée et utilisateur interne non superutilisateur.\nQA de tâche validée : mêmes 20 tests, 8 échecs métier sur le code initial puis 20/20 après correction ; 16 nouveaux tests et quatre anciens. La QA indépendante réutilise ces exécutions après contrôle de fraîcheur et vérifie directement images, schéma et conservation des trois lignes de chaque base.\nLa copie synthétique porte la nouvelle contrainte ; ordered_seed conserve le schéma initial. ACL, vue et version manifest 19.0.1.0.0 conservées. Aucun redressement historique.\nPortée : Odoo 19.0, données synthétiques valides ; pas de navigateur, recette complète, copie client ni qualification d’un historique invalide. Les réceptions et l’état opérationnel sont dans le plan de la release ; celle-ci reste ouverte."
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/reception/JOURNAL-propose.md",
+          "quote": "## 2026-09-09 — Quantité positive à la confirmation\nDemande : conserver zéro au brouillon et refuser les confirmés non positifs, par bouton et canaux ORM/import.\nFait : contrainte persistante ajoutée, négatifs toujours refusés, aucune modification de droits/vue ni réparation historique.\nVerdict acquis : QA de tâche VALIDÉE ; 8 échecs métier sur 20 au rouge puis mêmes 20/20 au vert, lint 0 erreur/avertissement.\nContrôle indépendant : tests relus et réutilisés, contrôle live des deux bases ; trois IDs et valeurs initiaux conservés, contrainte nouvelle uniquement sur copie.\nAppris : un contrôle neuf de fraîcheur/copie peut réutiliser les tests valables ; il ne constitue pas une nouvelle exécution de ces tests.\nPortée : copie synthétique Odoo 19.0, pas de données client ni d’historique invalide testé ; détails et réceptions dans la release.\nReste ouvert : release, recette complète et tâche C témoin non exécutée ; état des tâches dans plan.json."
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/result.md",
+          "quote": "**La tâche n'est pas déclarée terminée et la release reste ouverte.**"
+        },
+        {
+          "path": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/preuves/qa/copy.md",
+          "quote": "Les valeurs sont prouvées stables ; aucune affirmation de zéro écriture SQL pendant l'update développeur n'est faite."
+        }
+      ],
+      "explanation": "Les deux bases sont conservées intégralement en préfixe de leurs drafts : aucune contribution antérieure ni décision n'est supprimée. Le journal ancien reste daté Préparation ; sa mention historique développement/réception à réaliser est correctement suivie du résultat actuel. Les ajouts transmettent une QA de tâche validée, les 8 échecs initiaux puis mêmes 20/20, et non la simple conservation des preuves. Formule quantity × unit_price, zéro brouillon, invariant conditionnel, refus négatifs, droits/vue inchangés, absence de réparation, distinction référence/copie et version inchangée sont conservés. Les textes distinguent réutilisation des tests et nouvelles lectures QA ; ils ne prétendent ni zéro écriture pendant l'update, ni tests exécutés par ce relecteur. Les limites synthétique/19.0, absence de navigateur, copie client, historique invalide et recette complète restent visibles. Le renvoi à l'état du plan ne déclare pas ses réceptions réalisées ; publication exacte des drafts et réception finale du plan restent postérieures à ce reçu conformément au contrat. La tâche C signalée ouverte reste une limite opérationnelle, sans résultat technique attribué."
+    }
+  }
+}

@@ -1,0 +1,111 @@
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "f72df49967431d7d8990c8aa30678efa2fae7ccbf208368781f70003652e1078",
+  "reviewer": "Codex-relecteur-independant-B",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/ordered/demande-B.md",
+          "quote": "Conserver la priorité manuelle du tableau de suivi. Ne pas ajouter de tri automatique. Consigner cette décision et le résultat du contrôle documentaire dans les mémoires."
+        },
+        {
+          "path": "changelog/ordered/spec-B.md",
+          "quote": "La priorité reste manuelle. Le contrôle porte uniquement sur documentary/B/priority.txt. Aucune demande de tri automatique."
+        },
+        {
+          "path": "changelog/ordered/demande-A.md",
+          "quote": "Afficher la référence dossier dans la fiche interne. Ne pas ajouter de tri automatique."
+        },
+        {
+          "path": "changelog/ordered/reception-B/PROJECT-propose.md",
+          "quote": "La priorité du tableau de suivi reste manuelle. Ne pas ajouter de tri automatique."
+        },
+        {
+          "path": "changelog/ordered/reception-B/JOURNAL-propose.md",
+          "quote": "Verdict : contrôle documentaire B réussi ; documentary/B/priority.txt contient exactement `priority=manual`."
+        }
+      ],
+      "explanation": "Le contrat B conserve l'objet (priorité du tableau), son caractère manuel et l'absence de tri automatique. Son contrôle est expressément borné au fichier documentaire B : cette borne est cohérente avec le mandat documentaire, sans prétendre valider une application. Le contrat abrégé ne répète pas la consignation mémoire, mais cette obligation originale reste examinée et effectivement satisfaite dans les deux drafts, avec résultat. La source A justifie les ajouts de décision A dans les drafts ; elle n'ajoute pas au contrôle B une prétendue exécution A. Aucun acteur, canal, exception ou automatisme supplémentaire n'est inventé."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/ordered/spec-B.md",
+          "quote": "Le contrôle porte uniquement sur documentary/B/priority.txt."
+        },
+        {
+          "path": "changelog/ordered/reception-B/evidence-B.json",
+          "quote": "assert actual == 'priority=manual\\\\n', repr(actual);"
+        },
+        {
+          "path": "changelog/ordered/reception-B/evidence-B.json",
+          "quote": "\"exit_code\": 0"
+        },
+        {
+          "path": "changelog/ordered/reception-B/evidence-B.json",
+          "quote": "\"result\": \"passed\""
+        },
+        {
+          "path": "changelog/ordered/reception-B/evidence-B.json",
+          "quote": "\"scopes\": [\n    \"documentary/B\"\n  ]"
+        }
+      ],
+      "explanation": "La preuve exécute une lecture du fichier B et une assertion d'égalité complète avec priority=manual suivi d'un saut de ligne ; le résultat passed et le code de sortie nul établissent le succès de cette assertion. Le log référencé porte le même résultat. Les empreintes du fichier, de la preuve et du log concordent. Cela atteste la priorité manuelle dans ce seul artefact synthétique, sans contenu supplémentaire dans celui-ci. Cela ne prouve aucun comportement Odoo ni l'absence globale de tri dans une application, résultats que ce contrat documentaire ne demande pas. Aucun test relancé."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/ordered/demande-B.md",
+          "quote": "Consigner cette décision et le résultat du contrôle documentaire dans les mémoires."
+        },
+        {
+          "path": "changelog/ordered/demande-A.md",
+          "quote": "Afficher la référence dossier dans la fiche interne. Ne pas ajouter de tri automatique."
+        },
+        {
+          "path": "changelog/ordered/reception-B/bundle-B.json.PROJECT.md.base",
+          "quote": "# Projet documentaire\nLe tableau conserve les décisions explicites."
+        },
+        {
+          "path": "changelog/ordered/reception-B/bundle-B.json.JOURNAL.md.base",
+          "quote": "# Journal documentaire\nInitialisation du dossier."
+        },
+        {
+          "path": "changelog/ordered/reception-B/PROJECT-propose.md",
+          "quote": "La référence dossier doit être visible dans la fiche interne. Ne pas ajouter de tri automatique. Cette décision reçue est conservée."
+        },
+        {
+          "path": "changelog/ordered/reception-B/JOURNAL-propose.md",
+          "quote": "Décision conservée : afficher la référence dossier dans la fiche interne ; ne pas ajouter de tri automatique."
+        },
+        {
+          "path": "changelog/ordered/reception-B/PROJECT-propose.md",
+          "quote": "Le contrôle documentaire B a réussi : documentary/B/priority.txt contient exactement `priority=manual`."
+        },
+        {
+          "path": "changelog/ordered/reception-B/PROJECT-propose.md",
+          "quote": "Portée : uniquement documentary/B/priority.txt, fichier documentaire synthétique ; aucun contrôle Odoo."
+        },
+        {
+          "path": "changelog/ordered/reception-B/JOURNAL-propose.md",
+          "quote": "Verdict : contrôle documentaire B réussi ; documentary/B/priority.txt contient exactement `priority=manual`."
+        },
+        {
+          "path": "changelog/ordered/reception-B/JOURNAL-propose.md",
+          "quote": "Portée : uniquement documentary/B/priority.txt, fichier synthétique ; aucun contrôle Odoo."
+        },
+        {
+          "path": "changelog/ordered/reception-B/evidence-B.json",
+          "quote": "\"result\": \"passed\""
+        }
+      ],
+      "explanation": "Les deux bases figées sont intégralement conservées ; elles ne contiennent ni résultat A ni limite A susceptible d'être perdue. Les ajouts A sont fondés sur sa demande et restent formulés comme décision reçue/conservée : ils ne disent pas que la référence a été implémentée, contrôlée ou livrée. Aucun résultat A n'est disponible dans ce bundle et aucun n'est attribué. Pour B, les deux drafts transmettent la décision, l'interdiction de tri automatique, le succès réel du contrôle et son périmètre exclusivement documentaire sans contrôle Odoo. Le résultat n'est donc remplacé ni par une simple référence de preuve ni par une chronologie. Aucun remplacement de contenu des bases n'est nécessaire. Ce constat porte sur les bases figées du bundle, pas sur une fusion avec une mémoire concurrente ultérieure."
+    }
+  }
+}

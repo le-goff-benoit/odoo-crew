@@ -1,0 +1,38 @@
+{
+  "owner": "d015b7aa5705430194c69359c0ed1974",
+  "prefix": "ordered-recovery-d015b7aa5705",
+  "network": "ordered-recovery-d015b7aa5705",
+  "postgres": "ordered-recovery-d015b7aa5705-pg",
+  "containers": [
+    "ordered-recovery-d015b7aa5705-pg",
+    "ordered-recovery-d015b7aa5705-odoo-d69df81048",
+    "ordered-recovery-d015b7aa5705-odoo-d1873c985a",
+    "ordered-recovery-d015b7aa5705-odoo-b278924841",
+    "ordered-recovery-d015b7aa5705-odoo-ce726ee032",
+    "ordered-recovery-d015b7aa5705-odoo-a32401ce63",
+    "ordered-recovery-d015b7aa5705-odoo-6f76a81570",
+    "ordered-recovery-d015b7aa5705-odoo-11482cbdde",
+    "ordered-recovery-d015b7aa5705-odoo-1682a73387",
+    "ordered-recovery-d015b7aa5705-odoo-552546c6a9",
+    "ordered-recovery-d015b7aa5705-odoo-79191d32cc",
+    "ordered-recovery-d015b7aa5705-odoo-39e4b92433"
+  ],
+  "project": "/tmp/odoo-ordered-recovery-20260909/integration/run/project",
+  "databases": [
+    "ordered_seed",
+    "ordered_copy"
+  ],
+  "images": {
+    "odoo-qa:19.0": {
+      "id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d",
+      "digests": []
+    },
+    "postgres:16": {
+      "id": "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f",
+      "digests": [
+        "postgres@sha256:4b7183ac05f8ef417db21fd72d71047a4238340c261d3cc3ddb6d579ab5071ae"
+      ]
+    }
+  },
+  "kind": "synthetic dump/restore copy; no customer data"
+}

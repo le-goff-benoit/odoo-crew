@@ -1,0 +1,27 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/odoo-ordered-recovery-20260909/O03/project",
+  "scopes": [
+    "documentary/A"
+  ],
+  "sources": {
+    "documentary/A/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  },
+  "command": [
+    "python3",
+    "-c",
+    "from pathlib import Path; p=Path('documentary/A/reference.txt'); actual=p.read_text(); assert actual == 'reference_dossier=visible\\n', repr(actual); print('PASS documentary/A/reference.txt: reference_dossier=visible; contrôle documentaire de visibilité; aucun tri automatique introduit')"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 0.016,
+  "log": {
+    "path": "/tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/author-A/documentary-proof.log",
+    "sha256": "e659a10f9eca0662fa80c553f2c462e5e3637a685918a2392020daa325819d5a"
+  }
+}

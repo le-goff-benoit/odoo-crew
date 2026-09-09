@@ -26,6 +26,11 @@ jobs:
           python3 scripts/odoo_flow.py validate
           python3 -m unittest discover -s tests -v
           bash -n build.sh scripts/odoo-test.sh scripts/odoo-recette.sh scripts/odoo-restore.sh
+      - name: Calibration déterministe des reprises ordonnées
+        run: |
+          mkdir -p "$RUNNER_TEMP/ordered-recovery-calibration"
+          cp benchmarks/ordered_recovery/*.py "$RUNNER_TEMP/ordered-recovery-calibration/"
+          python3 "$RUNNER_TEMP/ordered-recovery-calibration/calibrate.py" --pack "$GITHUB_WORKSPACE"
       - name: Parité des profils générés dans une distribution isolée
         run: |
           ./build.sh --output-root "$RUNNER_TEMP/odoo-quality-dist"

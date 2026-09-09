@@ -1,0 +1,99 @@
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "f6eb8ef06ea2b50cbf387efbea04603278d7c67d7c2afa4b41705bb4a544d54b",
+  "reviewer": "codex-o01-review-a",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/ordered/demande-A.md",
+          "quote": "Afficher la référence dossier dans la fiche interne. Ne pas ajouter de tri automatique. Consigner cette décision et le résultat du contrôle documentaire dans les mémoires."
+        },
+        {
+          "path": "changelog/ordered/spec-A.md",
+          "quote": "La référence dossier est visible dans la fiche interne. Le contrôle porte uniquement sur documentary/A/reference.txt. Aucune demande de tri automatique."
+        }
+      ],
+      "explanation": "La demande porte sur la visibilité de la référence dossier dans la fiche interne, interdit un ajout de tri automatique et impose la transmission de la décision et du résultat documentaire dans les mémoires. Le contrat reprend le même objet et le même canal interne, sans acteur ou borne supplémentaire. Sa formule « Aucune demande de tri automatique » ne vaut pas autorisation : l'interdiction originale reste applicable et est reprise expressément par les drafts. Le périmètre documentary/A/reference.txt est une borne du contrôle de cette fixture documentaire, pas une preuve d'affichage dans une application réelle. Le contrat court ne répète pas l'obligation mémoire ; celle-ci demeure applicable, concrétisée par les deux propositions et vérifiée au troisième axe. Aucun ajout fonctionnel, aucune exception nouvelle ni retrait de critère ne sont constatés."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/ordered/spec-A.md",
+          "quote": "La référence dossier est visible dans la fiche interne. Le contrôle porte uniquement sur documentary/A/reference.txt. Aucune demande de tri automatique."
+        },
+        {
+          "path": "changelog/ordered/reception-A/evidence-A.json",
+          "quote": "\"exit_code\": 0,"
+        },
+        {
+          "path": "changelog/ordered/reception-A/evidence-A.json",
+          "quote": "\"result\": \"passed\","
+        },
+        {
+          "path": "changelog/ordered/reception-A/qa-A.md",
+          "quote": "Elle vérifie que documentary/A/reference.txt contient exactement `reference_dossier=visible` suivi d'un saut de ligne. La référence dossier est donc visible dans la représentation documentaire de la fiche interne."
+        },
+        {
+          "path": "changelog/ordered/reception-A/qa-A.md",
+          "quote": "Aucun fichier de ce périmètre n'a été modifié."
+        },
+        {
+          "path": "changelog/ordered/reception-A/qa-A.md",
+          "quote": "Le contrôle porte uniquement sur documentary/A/reference.txt. Aucune validation Odoo ou navigateur n'a été effectuée."
+        }
+      ],
+      "explanation": "La commande enregistrée lit le fichier prévu et exige l'égalité exacte avec reference_dossier=visible suivi d'un saut de ligne ; le statut passed, le code zéro et le log concordent. La relecture du fichier et des SHA-256 confirme l'identité entre le périmètre actuel, le bundle et la preuve, ainsi que l'intégrité du log. Le succès documentaire est donc conservé. Ce périmètre ne contient que cette déclaration de visibilité ; aucun tri n'y est ajouté et aucune intervention sur son contenu n'est revendiquée. Cette preuve n'établit ni fonctionnement d'une fiche Odoo ni absence de tri dans un logiciel extérieur au périmètre ; ces conclusions ne sont pas revendiquées par la QA. Aucun test nouveau n'a été exécuté par le relecteur."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/ordered/demande-A.md",
+          "quote": "Ne pas ajouter de tri automatique. Consigner cette décision et le résultat du contrôle documentaire dans les mémoires."
+        },
+        {
+          "path": "changelog/ordered/reception-A/bundle-A.json.PROJECT.md.base",
+          "quote": "# Projet documentaire\nLe tableau conserve les décisions explicites."
+        },
+        {
+          "path": "changelog/ordered/reception-A/bundle-A.json.JOURNAL.md.base",
+          "quote": "# Journal documentaire\nInitialisation du dossier."
+        },
+        {
+          "path": "changelog/ordered/reception-A/PROJECT-propose.md",
+          "quote": "La référence dossier doit être visible dans la fiche interne. Ne pas ajouter de tri automatique."
+        },
+        {
+          "path": "changelog/ordered/reception-A/PROJECT-propose.md",
+          "quote": "Le contrôle documentaire A a réussi : documentary/A/reference.txt contient exactement `reference_dossier=visible`."
+        },
+        {
+          "path": "changelog/ordered/reception-A/PROJECT-propose.md",
+          "quote": "Le résultat porte uniquement sur ce fichier documentaire synthétique ; il ne constitue pas un test Odoo ni une validation navigateur."
+        },
+        {
+          "path": "changelog/ordered/reception-A/JOURNAL-propose.md",
+          "quote": "Demande : afficher la référence dossier dans la fiche interne ; ne pas ajouter de tri automatique."
+        },
+        {
+          "path": "changelog/ordered/reception-A/JOURNAL-propose.md",
+          "quote": "Verdict : contrôle documentaire A réussi ; documentary/A/reference.txt contient exactement `reference_dossier=visible`."
+        },
+        {
+          "path": "changelog/ordered/reception-A/JOURNAL-propose.md",
+          "quote": "Portée : uniquement documentary/A/reference.txt, fichier synthétique ; aucun test Odoo ou navigateur."
+        },
+        {
+          "path": "changelog/ordered/reception-A/JOURNAL-propose.md",
+          "quote": "Reste ouvert : réception indépendante, pass de la porte QA et publication mémoire par le coordinateur."
+        }
+      ],
+      "explanation": "Les deux bases figées sont conservées intégralement au début des drafts : décision de conserver les décisions explicites et initialisation du journal. Elles ne contiennent aucune contribution antérieure supplémentaire à préserver. Les ajouts transmettent effectivement le résultat réussi et son objet exact, pas seulement la présence d'une preuve. La demande d'affichage et l'interdiction de tri restent explicites dans les deux fichiers. Les limites synthétiques et l'absence de validation Odoo/navigateur sont conservées. Les drafts n'annoncent aucune livraison ou publication acquise : les étapes du coordinateur restent ouvertes. Les références de preuve concordent avec le contrôle reçu. Aucun remplacement d'une ancienne décision contradictoire n'est nécessaire dans les bases fournies ; aucune histoire absente n'est inventée."
+    }
+  }
+}

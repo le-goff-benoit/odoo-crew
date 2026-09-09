@@ -1,0 +1,132 @@
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json
+ODOO FLOW · ordered-b
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 0 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ module_task_gate
+    ORCHESTRATEUR
+    Fusionner les preuves QA normales et rendre un verdict unique.
+    Sorties: blocked, pass, retry · Preuve: qa.md et critères d'acceptation
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_evidence.py run --project /tmp/odoo-ordered-recovery-20260909/O01/project --scope documentary/B --output /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-B/evidence-B.json -- python3 -c 'from pathlib import Path; p=Path('"'"'documentary/B/priority.txt'"'"'); actual=p.read_text(); assert actual == '"'"'priority=manual\n'"'"', repr(actual); print('"'"'PASS B: documentary/B/priority.txt contient exactement priority=manual; priorité manuelle conservée, aucun tri automatique demandé.'"'"')'
+passed
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py claim /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json module_task_gate --owner Codex-auteur-orchestrateur-B
+▶ module_task_gate · ORCHESTRATEUR
+  Démarré par Codex-auteur-orchestrateur-B
+  Fusionner les preuves QA normales et rendre un verdict unique.
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py prepare-reception /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json --source changelog/ordered/demande-B.md --source changelog/ordered/demande-A.md --spec changelog/ordered/spec-B.md --evidence changelog/ordered/reception-B/evidence-B.json --memory .odoo-agents/PROJECT.md=changelog/ordered/reception-B/PROJECT-propose.md --memory .odoo-agents/JOURNAL.md=changelog/ordered/reception-B/JOURNAL-propose.md --scope documentary/B --output /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-B/bundle-B.json --owner Codex-auteur-orchestrateur-B
+Dossier de réception : changelog/ordered/reception-B/bundle-B.json · f72df4996743
+Réception indépendante positive requise avant pass ; publier ensuite les drafts exacts.
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json
+ODOO FLOW · ordered-b
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ module_task_gate → pass
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: blocked, done, retry · Preuve: entrée JOURNAL.md
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py claim /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json journal_task --owner Codex-auteur-orchestrateur-B
+▶ journal_task · ORCHESTRATEUR
+  Démarré par Codex-auteur-orchestrateur-B
+  Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py publish-memory /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json --owner Codex-auteur-orchestrateur-B
+Mémoire published : .odoo-agents/PROJECT.md
+Mémoire published : .odoo-agents/JOURNAL.md
+Publication vérifiée ; journal_task reste revendiqué et doit être complété.
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py complete /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json journal_task --outcome done --evidence /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/JOURNAL.md --owner Codex-auteur-orchestrateur-B
+ODOO FLOW · ordered-b
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → done
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ task_done
+    ORCHESTRATEUR
+    Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
+    Sorties: done · Preuve: compte-rendu final
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json
+ODOO FLOW · ordered-b
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → done
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ task_done
+    ORCHESTRATEUR
+    Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
+    Sorties: done · Preuve: compte-rendu final
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → done
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py claim /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json task_done --owner Codex-auteur-orchestrateur-B
+▶ task_done · ORCHESTRATEUR
+  Démarré par Codex-auteur-orchestrateur-B
+  Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py complete /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json task_done --outcome done --evidence /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-B/compte-rendu-final-B.md --owner Codex-auteur-orchestrateur-B
+ODOO FLOW · ordered-b
+────────────────────────────────────────────────────────────────────────
+État       TERMINÉ
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ task_done → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json
+ODOO FLOW · ordered-b
+────────────────────────────────────────────────────────────────────────
+État       TERMINÉ
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ task_done → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → done
+  ✓ task_done → done
+exit=0

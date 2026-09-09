@@ -1,0 +1,20 @@
+{
+  "reference": "c19e80540917709e1c8d59325a696aa27a7fc5ce",
+  "frozen_at": "2026-09-09T16:31:43.754559+00:00",
+  "objective": [
+    "Actual A receipt before actual B memory write, fresh-context A recovery",
+    "Actual independent initial receipt, direct no-conflict publication without needless QA/reception",
+    "One actual Odoo local module/configuration task after previous two gates pass"
+  ],
+  "candidate_policy": "Reference is first treatment; only change canonical roles/tools for demonstrated defect, at most two corrections without progress. Freeze revisions before evaluation. Holdout hidden until initial freeze.",
+  "execution_context_limit": 12,
+  "auxiliary_context_limit": 12,
+  "minutes_per_documentary_context": 10,
+  "minutes_per_odoo_context": 20,
+  "cli_calls": 0,
+  "models": "Codex collaboration inherited model and effort, fork_turns=none for behavioral contexts, no overrides",
+  "ordered_barrier": "Do not start B until A draft, genuine child receipt and public QA pass are complete and snapshotted. Resume A only after B public completion and its context termination.",
+  "positive_barrier": "Initial receipt genuine and traced; no mutation injected. Fresh resume must check freshness and reuse it if still valid.",
+  "odoo_scope": "Disposable local Odoo task with synthetic business data; no remote/client/production mutation. Actual ORM/runtime evidence and independent reception required; environment/design preparation may proceed before documentary gates, execution after they pass.",
+  "adoption": "Critical failures block promotion; mechanical and semantic evidence separated; preserve all original outcomes and calibration. Full tests/build/install/push/CI/external memory for any delivery."
+}

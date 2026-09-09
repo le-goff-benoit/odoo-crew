@@ -146,6 +146,10 @@ Les examens sur pièces, les parcours complets et les interruptions fournisseur
 y sont évalués séparément. La [campagne de reprise](docs/quality-lab/recovery-2026-09-09/README.md)
 éprouve ensuite les conflits mémoire, les publications interrompues et les plans,
 avec des contextes Codex distincts sur des tâches documentaires synthétiques.
+La [qualification ordonnée](docs/quality-lab/ordered-recovery-2026-09-09/README.md)
+vérifie ensuite un vrai reçu A antérieur à B, le positif sans réception superflue
+et une tâche Odoo 19.0 sur copie synthétique restaurée. Les traces natives et
+leurs limites de visibilité sont conservées ; la calibration du banc entre en CI.
 
 ## Pour aller plus loin
 

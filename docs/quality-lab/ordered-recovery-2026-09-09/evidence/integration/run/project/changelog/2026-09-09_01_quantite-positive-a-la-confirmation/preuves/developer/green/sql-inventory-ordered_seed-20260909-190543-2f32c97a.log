@@ -1,0 +1,15 @@
+   database   | id |              name               |   state   | quantity | unit_price | amount 
+--------------+----+---------------------------------+-----------+----------+------------+--------
+ ordered_seed |  1 | ordered-seed-draft-zero         | draft     |        0 |         10 |      0
+ ordered_seed |  2 | ordered-seed-draft-positive     | draft     |        3 |         10 |     30
+ ordered_seed |  3 | ordered-seed-confirmed-positive | confirmed |        3 |         10 |     30
+(3 rows)
+
+                conname                 |                         pg_get_constraintdef                         
+----------------------------------------+----------------------------------------------------------------------
+ lab_qualification_create_uid_fkey      | FOREIGN KEY (create_uid) REFERENCES res_users(id) ON DELETE SET NULL
+ lab_qualification_pkey                 | PRIMARY KEY (id)
+ lab_qualification_quantity_nonnegative | CHECK ((quantity >= 0))
+ lab_qualification_write_uid_fkey       | FOREIGN KEY (write_uid) REFERENCES res_users(id) ON DELETE SET NULL
+(4 rows)
+

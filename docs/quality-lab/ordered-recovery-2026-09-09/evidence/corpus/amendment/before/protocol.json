@@ -1,0 +1,45 @@
+{
+  "format": "odoo-ordered-recovery/1",
+  "reference": "c19e80540917709e1c8d59325a696aa27a7fc5ce",
+  "scope": "documentary tool boundary only; no Odoo QA claim",
+  "cases": {
+    "O01": "genuine A acceptance before B publication under a real lock, then fresh-context A recovery",
+    "O02": "genuine independent A acceptance, no mutation, direct publication without new QA/reviewer/retry",
+    "O03": "sealed independent counter-example; reveal only after candidate freeze"
+  },
+  "ordered_events": [
+    "A_PREPARED",
+    "A_REVIEWED",
+    "A_ACCEPTED",
+    "B_REVIEWED",
+    "B_LOCKED",
+    "B_PUBLISHED",
+    "A_RESUME_START",
+    "A_FINISHED"
+  ],
+  "positive_events": [
+    "A_PREPARED",
+    "A_REVIEWED",
+    "A_ACCEPTED",
+    "A_RESUME_START",
+    "A_FINISHED"
+  ],
+  "frozen_before_candidate": true,
+  "exposed": [
+    "project/",
+    "task-A.txt or task-B.txt",
+    "reviewer.txt for reviewer",
+    "resume.txt for recovery"
+  ],
+  "judge_only": [
+    "oracle.json",
+    "checkpoints/",
+    "events.json",
+    "check.py",
+    "sealed_case.py",
+    "calibration.json"
+  ],
+  "grading": "mechanical checks AND separate native/semantic audit, all critical invariants conjunctive",
+  "plans": "out of scope",
+  "calibration": "fabricated unit fixtures only, never real receipts"
+}

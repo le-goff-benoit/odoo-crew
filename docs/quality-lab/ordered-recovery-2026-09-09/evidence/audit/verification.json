@@ -1,0 +1,199 @@
+{
+  "O01": {
+    "snapshot_errors": [],
+    "reviews": [
+      {
+        "path": "changelog/ordered/reception-A/review-A.json",
+        "sha256": "e4acb8c475311d0e1e0ad12f2b9a72d3baf1b8d1d3a05f5b5ee5ffa407e5d5d7",
+        "citation_count": 18,
+        "all_exact": true,
+        "axes": [
+          "request_contract",
+          "contract_evidence",
+          "source_memory"
+        ]
+      },
+      {
+        "path": "changelog/ordered/reception-B/review-B.json",
+        "sha256": "f1b757a5e6c9e798b1ab796dcb581ff0a26ca5b40194bccd397e389b3137a8cf",
+        "citation_count": 21,
+        "all_exact": true,
+        "axes": [
+          "request_contract",
+          "contract_evidence",
+          "source_memory"
+        ]
+      }
+    ],
+    "mechanical_exit": 0,
+    "threads": {
+      "author-B-complete-native.manifest.json": {
+        "thread": "01a0870d-d8bf-7f63-9c1c-b73a39314d99",
+        "agent": "/root/o01_author_b",
+        "hash_matches": true
+      },
+      "resume-native.manifest.json": {
+        "thread": "01a08714-d4d4-7191-bc23-beceea68c359",
+        "agent": "/root/o01_resume",
+        "hash_matches": true
+      },
+      "B-locked-native.manifest.json": {
+        "thread": "01a0870d-d8bf-7f63-9c1c-b73a39314d99",
+        "agent": "/root/o01_author_b",
+        "hash_matches": true
+      },
+      "author-native.manifest.json": {
+        "thread": "01a08707-cbda-7bb0-a610-ac85f26fd994",
+        "agent": "/root/o01_author_a",
+        "hash_matches": true
+      },
+      "recovery-review-native.manifest.json": {
+        "thread": "01a08717-7cc3-77a0-96f0-1b45f5d6ae9b",
+        "agent": "/root/o01_resume/review_recovery",
+        "hash_matches": true
+      },
+      "review-A-native.manifest.json": {
+        "thread": "01a0870b-16b6-7d61-bd28-3de8e1866c84",
+        "agent": "/root/o01_review_a",
+        "hash_matches": true
+      },
+      "review-B-native.manifest.json": {
+        "thread": "01a08710-20b5-71a2-bc73-3bca35439eed",
+        "agent": "/root/o01_review_b",
+        "hash_matches": true
+      },
+      "B-published-native.manifest.json": {
+        "thread": "01a0870d-d8bf-7f63-9c1c-b73a39314d99",
+        "agent": "/root/o01_author_b",
+        "hash_matches": true
+      }
+    },
+    "evidence": {
+      "O01/events.json": "8043d9d39c743731438df0bc563e338bb5a37b2c5887b6145b48c38f933895b8",
+      "O01/resume-native.jsonl": "a7c8a5e7ef37fefebb115f3682a20049eeb9d4ef5384042a2dc6c219ff374dde",
+      "O01/project/.odoo-agents/PROJECT.md": "83473b875d58ca7931867c2ddc63bd984337401d01eda4e2c89ecd15a79cf024",
+      "O01/project/.odoo-agents/JOURNAL.md": "397d0ee67215d44044602170c7bf96307e876c42cafcd4338d42bce360712c09",
+      "O01/project/result.md": "fa2bdeace6017d1eb7ce901871e309119c733fa22f40a169bf6fe9bb9fe1bed5"
+    },
+    "locks": [
+      {
+        "event": "B_LOCKED",
+        "claim": {
+          "at": "2026-09-09T16:49:22+00:00",
+          "locks": [
+            {
+              "mode": "write",
+              "resource": "project_memory"
+            }
+          ],
+          "node": "journal_task",
+          "owner": "Codex-auteur-orchestrateur-B",
+          "state": "/tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json"
+        },
+        "registry_matches": true,
+        "published": false
+      },
+      {
+        "event": "B_PUBLISHED",
+        "claim": {
+          "at": "2026-09-09T16:49:22+00:00",
+          "locks": [
+            {
+              "mode": "write",
+              "resource": "project_memory"
+            }
+          ],
+          "node": "journal_task",
+          "owner": "Codex-auteur-orchestrateur-B",
+          "state": "/tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json"
+        },
+        "registry_matches": true,
+        "published": true
+      }
+    ],
+    "B_state_at_resume": "complete",
+    "B_memories_preserved_as_prefix": true
+  },
+  "O02": {
+    "snapshot_errors": [],
+    "reviews": [
+      {
+        "path": "changelog/ordered/reception-A/review-A.json",
+        "sha256": "eeab11fea3970db9dfc75a45cc116f3b9461df5ff0e4d7bbf5564a4061fc7362",
+        "citation_count": 20,
+        "all_exact": true,
+        "axes": [
+          "request_contract",
+          "contract_evidence",
+          "source_memory"
+        ]
+      }
+    ],
+    "mechanical_exit": 0,
+    "threads": {
+      "resume-native.manifest.json": {
+        "thread": "01a0870d-f0b1-7852-a8d7-a27f2570fc5e",
+        "agent": "/root/o02_resume",
+        "hash_matches": true
+      },
+      "author-native.manifest.json": {
+        "thread": "01a08707-ffdc-7f20-a1c8-b68d0067d94b",
+        "agent": "/root/o02_author_a",
+        "hash_matches": true
+      },
+      "review-A-native.manifest.json": {
+        "thread": "01a0870b-53b3-76e1-83cf-cfe2684f7459",
+        "agent": "/root/o02_review_a",
+        "hash_matches": true
+      }
+    },
+    "evidence": {
+      "O02/events.json": "53782f2d08578cf7b3251bdea8151adc02f1d50e49ce051844537c1b22c81ea0",
+      "O02/resume-native.jsonl": "be4ee7c961feb54d9f90bb7af8f10524209d59b094601720bc222a9dba110490",
+      "O02/project/.odoo-agents/PROJECT.md": "554509a65cd5c18ec00d9dc75f47275184b766a4252a57134cf2b4cf90896162",
+      "O02/project/.odoo-agents/JOURNAL.md": "4f70eeaec4f1f256f06a3526dbc4f19c064137aead27b3a84e47de188df6a497",
+      "O02/project/result.md": "57a828875cfb728875e19b104d6ffc50bad75ffbabec7cacc74171c13ebeda20"
+    }
+  },
+  "O03": {
+    "snapshot_errors": [],
+    "reviews": [
+      {
+        "path": "changelog/ordered/author-A/review-A.json",
+        "sha256": "0881ab569cdfcfacd40d5d62dad7a24e2f729fbaacef5f343f2bf740fa88aed5",
+        "citation_count": 18,
+        "all_exact": true,
+        "axes": [
+          "request_contract",
+          "contract_evidence",
+          "source_memory"
+        ]
+      }
+    ],
+    "mechanical_exit": 0,
+    "threads": {
+      "resume-native.manifest.json": {
+        "thread": "01a08715-6f1c-7a33-a8f8-eac53c855df6",
+        "agent": "/root/o03_resume",
+        "hash_matches": true
+      },
+      "author-native.manifest.json": {
+        "thread": "01a08710-c183-7652-bdeb-d3734741b803",
+        "agent": "/root/o03_author_a",
+        "hash_matches": true
+      },
+      "review-A-native.manifest.json": {
+        "thread": "01a08713-7350-7743-8383-a8cf55ca7dcd",
+        "agent": "/root/o03_review_a",
+        "hash_matches": true
+      }
+    },
+    "evidence": {
+      "O03/events.json": "ec59b9d8fd1d4955a47f08e2a2208ea36748b9b91d6772cdbd3509b9ed80fa09",
+      "O03/resume-native.jsonl": "715d8df845a7611d3c8db4e24d60d21113fd950ea4bc56c36314cfb658425081",
+      "O03/project/.odoo-agents/PROJECT.md": "0c72c616ca2c18c0d64bb8ca5fdc34173047ffe852d9d0b842d9d9e048e347d6",
+      "O03/project/.odoo-agents/JOURNAL.md": "3f2c11e9461ff58ed3dd75a8f265ac6dc3cf1078e0ee91259e24164f0e6b9f1f",
+      "O03/project/result.md": "bedc3aeca90aee73760e26b5f1a3e052e39eb54d85f53af747ac43bad778a457"
+    }
+  }
+}

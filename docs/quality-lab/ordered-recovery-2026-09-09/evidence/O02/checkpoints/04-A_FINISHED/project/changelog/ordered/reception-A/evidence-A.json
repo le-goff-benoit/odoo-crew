@@ -1,0 +1,27 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/odoo-ordered-recovery-20260909/O02/project",
+  "scopes": [
+    "documentary/A"
+  ],
+  "sources": {
+    "documentary/A/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  },
+  "command": [
+    "python3",
+    "-c",
+    "from pathlib import Path; p=Path('documentary/A/reference.txt'); actual=p.read_text(); assert actual == 'reference_dossier=visible\\n', repr(actual); print('PASS A : documentary/A/reference.txt contient exactement reference_dossier=visible ; référence dossier visible dans la fiche interne selon le contrat documentaire. Le contrôle est limité à ce fichier. Aucun tri automatique demandé.')"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 0.016,
+  "log": {
+    "path": "/tmp/odoo-ordered-recovery-20260909/O02/project/changelog/ordered/reception-A/evidence-A.log",
+    "sha256": "e93e08378a86815139578f06a43b5724bd241728b26f316e1e7b1583c0edd47e"
+  }
+}

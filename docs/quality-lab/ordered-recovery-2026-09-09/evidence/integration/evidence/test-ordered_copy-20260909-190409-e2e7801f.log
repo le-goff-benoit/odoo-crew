@@ -1,0 +1,175 @@
+2026-09-09 17:04:10,036 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 17:04:10,036 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 17:04:10,036 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo-data/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 17:04:10,036 1 INFO ? odoo: database: odoo@ordered-recovery-d015b7aa5705-pg:default 
+2026-09-09 17:04:10,275 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 01972a3b25d6:8069 
+2026-09-09 17:04:10,301 1 INFO ordered_copy odoo.tests.common: Importing test framework 
+2026-09-09 17:04:10,318 1 INFO ordered_copy odoo.modules.loading: loading 1 modules... 
+2026-09-09 17:04:10,320 1 INFO ordered_copy odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 17:04:10,335 1 INFO ordered_copy odoo.modules.loading: updating modules list 
+2026-09-09 17:04:10,336 1 INFO ordered_copy odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 17:04:10,965 1 INFO ordered_copy odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 17:04:10,965 1 INFO ordered_copy odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 17:04:11,346 1 INFO ordered_copy odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 17:04:11,359 1 INFO ordered_copy odoo.modules.loading: loading 15 modules... 
+2026-09-09 17:04:11,388 1 INFO ordered_copy odoo.modules.loading: Loading module lab_qualification (10/15) 
+2026-09-09 17:04:11,407 1 INFO ordered_copy odoo.registry: module lab_qualification: creating or updating database tables 
+2026-09-09 17:04:11,427 1 INFO ordered_copy odoo.modules.loading: loading lab_qualification/security/ir.model.access.csv 
+2026-09-09 17:04:11,431 1 INFO ordered_copy odoo.modules.loading: loading lab_qualification/views/quantity.xml 
+2026-09-09 17:04:11,452 1 INFO ordered_copy odoo.modules.loading: Module lab_qualification loaded in 0.06s, 68 queries (+68 other) 
+2026-09-09 17:04:11,589 1 INFO ordered_copy odoo.modules.loading: 15 modules loaded in 0.23s, 68 queries (+68 extra) 
+2026-09-09 17:04:11,641 1 INFO ordered_copy odoo.registry: verifying fields for every extended model 
+2026-09-09 17:04:11,710 1 INFO ordered_copy odoo.modules.loading: Modules loaded. 
+2026-09-09 17:04:11,713 1 INFO ordered_copy odoo.registry: Registry changed, signaling through the database 
+2026-09-09 17:04:11,713 1 INFO ordered_copy odoo.registry: Registry loaded in 1.437s 
+2026-09-09 17:04:11,713 1 INFO ordered_copy odoo.service.server: Starting post tests 
+2026-09-09 17:04:11,736 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_create_confirmed_default_zero_rejected ... 
+2026-09-09 17:04:11,749 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: ====================================================================== 
+2026-09-09 17:04:11,749 1 ERROR ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: FAIL: TestConfirmation.test_create_confirmed_default_zero_rejected
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_confirmation.py", line 69, in test_create_confirmed_default_zero_rejected
+    with self.assertRaises(CheckViolation), self.cr.savepoint(), mute_logger("odoo.sql_db"):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 17:04:11,749 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_create_confirmed_positive ... 
+2026-09-09 17:04:11,754 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_create_confirmed_zero_rejected ... 
+2026-09-09 17:04:11,758 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: ====================================================================== 
+2026-09-09 17:04:11,758 1 ERROR ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: FAIL: TestConfirmation.test_create_confirmed_zero_rejected
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_confirmation.py", line 61, in test_create_confirmed_zero_rejected
+    with self.assertRaises(CheckViolation), self.cr.savepoint(), mute_logger("odoo.sql_db"):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 17:04:11,758 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_draft_write_zero ... 
+2026-09-09 17:04:11,764 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_draft_zero_explicit_and_default ... 
+2026-09-09 17:04:11,769 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_load_create_zero_confirmed_rejected ... 
+2026-09-09 17:04:11,774 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: ====================================================================== 
+2026-09-09 17:04:11,774 1 ERROR ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: FAIL: TestConfirmation.test_load_create_zero_confirmed_rejected
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_confirmation.py", line 124, in test_load_create_zero_confirmed_rejected
+    self.assertFalse(result["ids"])
+AssertionError: [14] is not false
+ 
+2026-09-09 17:04:11,775 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_load_update_zero_confirmed_rejected ... 
+2026-09-09 17:04:11,779 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: ====================================================================== 
+2026-09-09 17:04:11,779 1 ERROR ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: FAIL: TestConfirmation.test_load_update_zero_confirmed_rejected
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_confirmation.py", line 136, in test_load_update_zero_confirmed_rejected
+    self.assertFalse(result["ids"])
+AssertionError: [15] is not false
+ 
+2026-09-09 17:04:11,779 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_load_valid_records ... 
+2026-09-09 17:04:11,785 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_mixed_confirmation_atomic ... 
+2026-09-09 17:04:11,788 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: ====================================================================== 
+2026-09-09 17:04:11,788 1 ERROR ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: FAIL: TestConfirmation.test_mixed_confirmation_atomic
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_confirmation.py", line 52, in test_mixed_confirmation_atomic
+    with self.assertRaises(CheckViolation), self.cr.savepoint(), mute_logger("odoo.sql_db"):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 17:04:11,789 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_negative_create_internal_user ... 
+2026-09-09 17:04:11,793 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_negative_write_internal_user_preserved ... 
+2026-09-09 17:04:11,798 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_positive_boundary_confirmation ... 
+2026-09-09 17:04:11,802 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_write_confirmed_quantity_zero_rejected ... 
+2026-09-09 17:04:11,807 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: ====================================================================== 
+2026-09-09 17:04:11,807 1 ERROR ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: FAIL: TestConfirmation.test_write_confirmed_quantity_zero_rejected
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_confirmation.py", line 92, in test_write_confirmed_quantity_zero_rejected
+    with self.assertRaises(CheckViolation), self.cr.savepoint(), mute_logger("odoo.sql_db"):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 17:04:11,807 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_write_state_and_positive_quantity ... 
+2026-09-09 17:04:11,811 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_write_state_zero_rejected ... 
+2026-09-09 17:04:11,815 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: ====================================================================== 
+2026-09-09 17:04:11,815 1 ERROR ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: FAIL: TestConfirmation.test_write_state_zero_rejected
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_confirmation.py", line 83, in test_write_state_zero_rejected
+    with self.assertRaises(CheckViolation), self.cr.savepoint(), mute_logger("odoo.sql_db"):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 17:04:11,815 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: Starting TestConfirmation.test_zero_confirmation_rejected ... 
+2026-09-09 17:04:11,819 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: ====================================================================== 
+2026-09-09 17:04:11,819 1 ERROR ordered_copy odoo.addons.lab_qualification.tests.test_confirmation: FAIL: TestConfirmation.test_zero_confirmation_rejected
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_qualification/tests/test_confirmation.py", line 39, in test_zero_confirmation_rejected
+    with self.assertRaises(CheckViolation), self.cr.savepoint(), mute_logger("odoo.sql_db"):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 514, in _assertRaises
+    with ExitStack() as inner:
+  File "/usr/lib/python3.12/contextlib.py", line 610, in __exit__
+    raise exc_details[1]
+  File "/usr/lib/python3.12/contextlib.py", line 595, in __exit__
+    if cb(*exc_details):
+       ^^^^^^^^^^^^^^^^
+AssertionError: CheckViolation not raised
+ 
+2026-09-09 17:04:11,820 1 INFO ordered_copy odoo.addons.base.models.ir_attachment: filestore gc 1 checked, 1 removed 
+2026-09-09 17:04:11,820 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_confirmation ... 
+2026-09-09 17:04:11,822 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS confirmation 
+2026-09-09 17:04:11,822 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_negative_create ... 
+2026-09-09 17:04:11,822 1 ERROR ordered_copy odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T17:04:11.820917\'::timestamp, 1, \'Negative\',  -1, \'draft\', 10.0, \'2026-09-09T17:04:11.820917\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (28, -1, 1, 1, Negative, draft, 2026-09-09 17:04:11.820917, 2026-09-09 17:04:11.820917, 10, null).
+ 
+2026-09-09 17:04:11,823 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS negative_create 
+2026-09-09 17:04:11,823 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_negative_write ... 
+2026-09-09 17:04:11,824 1 ERROR ordered_copy odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (29,  -10.0,  -1, \'2026-09-09T17:04:11.820917\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (29, -1, 1, 1, Preserve, draft, 2026-09-09 17:04:11.820917, 2026-09-09 17:04:11.820917, 10, -10).
+ 
+2026-09-09 17:04:11,824 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS negative_write 
+2026-09-09 17:04:11,824 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_zero ... 
+2026-09-09 17:04:11,825 1 INFO ordered_copy odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS zero 
+2026-09-09 17:04:11,826 1 INFO ordered_copy odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 17:04:11,826 1 INFO ordered_copy odoo.service.server: 20 post-tests in 0.11s, 462 queries 
+2026-09-09 17:04:11,826 1 INFO ordered_copy odoo.tests.stats: lab_qualification: 24 tests 0.11s 462 queries 
+2026-09-09 17:04:11,826 1 ERROR ordered_copy odoo.tests.result: 8 failed, 0 error(s) of 20 tests when loading database 'ordered_copy' 
+2026-09-09 17:04:11,826 1 INFO ordered_copy odoo.service.server: Initiating shutdown 
+2026-09-09 17:04:11,826 1 INFO ordered_copy odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 17:04:12,285 1 INFO ordered_copy odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

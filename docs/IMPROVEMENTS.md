@@ -60,3 +60,12 @@ migrent pas les bases clients ni les plans historiques. Une parallélisation com
 de la recette, un raisonnement sémantique automatique sur tous les vieux journaux
 ou une supériorité générale d'un modèle ne sont pas déclarés livrés : ces promesses
 ne sont pas justifiées par les preuves disponibles.
+
+La [qualification ordonnée du 9 septembre](quality-lab/ordered-recovery-2026-09-09/README.md)
+complète M01–M03 et M05–M06 : réception réelle de A avant publication de B,
+reprise dans un contexte neuf, positif sans réception/QA supplémentaire et refus
+d’un reçu altéré. Elle conserve la référence c19e805, distingue deux corrections
+du banc d’un défaut candidat et ajoute sa calibration portable à la CI.
+L’épreuve Odoo utilise un module 19.0 et une copie synthétique restaurée ; elle
+ne qualifie ni une base client ni les autres séries. L’exposition intégrale aux
+consignes chiffrées n’est pas certifiée, malgré la séparation native des threads.

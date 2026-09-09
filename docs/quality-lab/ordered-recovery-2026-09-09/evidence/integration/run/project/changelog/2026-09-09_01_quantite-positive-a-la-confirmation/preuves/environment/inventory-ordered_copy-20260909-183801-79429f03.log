@@ -1,0 +1,13 @@
+2026-09-09 16:38:02,116 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 16:38:02,116 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 16:38:02,116 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo-data/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 16:38:02,117 1 INFO ? odoo: database: odoo@ordered-recovery-d015b7aa5705-pg:default 
+2026-09-09 16:38:02,366 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 16:38:02,366 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 16:38:02,389 1 INFO ordered_copy odoo.modules.loading: loading 1 modules... 
+2026-09-09 16:38:02,392 1 INFO ordered_copy odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 16:38:02,395 1 INFO ordered_copy odoo.modules.loading: loading 15 modules... 
+2026-09-09 16:38:02,522 1 INFO ordered_copy odoo.modules.loading: 15 modules loaded in 0.13s, 0 queries (+0 extra) 
+2026-09-09 16:38:02,557 1 INFO ordered_copy odoo.modules.loading: Modules loaded. 
+2026-09-09 16:38:02,571 1 INFO ordered_copy odoo.registry: Registry loaded in 0.205s 
+ORDERED_INVENTORY_JSON={"database": "ordered_copy", "module": [{"id": 346, "installed_version": "19.0.1.0.0", "name": "lab_qualification", "state": "installed"}], "records": [{"amount": 0.0, "id": 1, "name": "ordered-seed-draft-zero", "quantity": 0, "state": "draft", "unit_price": 10.0}, {"amount": 30.0, "id": 2, "name": "ordered-seed-draft-positive", "quantity": 3, "state": "draft", "unit_price": 10.0}, {"amount": 30.0, "id": 3, "name": "ordered-seed-confirmed-positive", "quantity": 3, "state": "confirmed", "unit_price": 10.0}]}

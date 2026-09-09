@@ -1,0 +1,14 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "ordered-recovery-d015b7aa5705-pg",
+    "createdb",
+    "-U",
+    "odoo",
+    "ordered_copy"
+  ],
+  "returncode": 0,
+  "seconds": 0.115,
+  "log": "/tmp/odoo-ordered-recovery-20260909/integration/evidence/create-copy-20260909-183800-181610f1.log"
+}

@@ -1,0 +1,27 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/odoo-ordered-recovery-20260909/O01/project",
+  "scopes": [
+    "documentary/B"
+  ],
+  "sources": {
+    "documentary/B/priority.txt": {
+      "sha256": "d85a64ee48c0c33b2264d79f2f20454f5f6d238de40885f81d5cadaa2e26b046",
+      "mode": 436
+    }
+  },
+  "command": [
+    "python3",
+    "-c",
+    "from pathlib import Path; p=Path('documentary/B/priority.txt'); actual=p.read_text(); assert actual == 'priority=manual\\n', repr(actual); print('PASS B: documentary/B/priority.txt contient exactement priority=manual; priorité manuelle conservée, aucun tri automatique demandé.')"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 0.016,
+  "log": {
+    "path": "/tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-B/evidence-B.log",
+    "sha256": "01db7e41f60cc1e2e73e6bf9de9943b2087d738d8679283614c2013f4d3651c4"
+  }
+}

@@ -1,0 +1,2283 @@
+AUTHOR Codex-author-A
+Initial read: cat O03/task-A.txt succeeded; instructions: documentary QA, drafts preserving memory, claim module_task_gate, prepare-reception, stop before pass for independent reviewer.
+Initial discovery: ls project/reference succeeded; HANDOFF read succeeded; cat project/demande-A.md and project/spec-A.md failed (not found); HANDOFF locates requests in changelog/ordered. No mutation performed before this log.
+$ ['find', '/tmp/odoo-ordered-recovery-20260909/O03/project', '-maxdepth', '4', '-type', 'f']
+/tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/spec-A.md
+/tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/README.md
+/tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/demande-B.md
+/tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/demande-A.md
+/tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/spec-B.md
+/tmp/odoo-ordered-recovery-20260909/O03/project/documentary/A/reference.txt
+/tmp/odoo-ordered-recovery-20260909/O03/project/documentary/B/priority.txt
+/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/JOURNAL.md
+/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/PROJECT.md
+/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/.gitignore
+/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/ordered-a.json
+/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flow-artifacts/.gitignore
+/tmp/odoo-ordered-recovery-20260909/O03/project/HANDOFF.md
+
+exit=0
+$ ['cat', '/tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/demande-A.md', '/tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/spec-A.md', '/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/PROJECT.md', '/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/JOURNAL.md']
+Afficher la référence dossier dans la fiche interne. Ne pas ajouter de tri automatique. Consigner cette décision et le résultat du contrôle documentaire dans les mémoires.
+# Contrat A
+La référence dossier est visible dans la fiche interne. Le contrôle porte uniquement sur documentary/A/reference.txt. Aucune demande de tri automatique.
+# Projet documentaire
+Le tableau conserve les décisions explicites.
+# Journal documentaire
+Initialisation du dossier.
+
+exit=0
+$ ['python3', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py', '--help']
+usage: odoo_flow.py [-h] [--graph GRAPH]
+                    {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+                    ...
+
+Valide et pilote le graphe de travail des agents Odoo. Le script ne réalise
+aucune opération Odoo. Il conserve seulement l'état du workflow, contrôle les
+transitions, expose les nœuds prêts et empêche les boucles de reprise non
+bornées. L'orchestrateur principal est l'unique écrivain du fichier d'état ;
+les agents spécialisés écrivent leurs preuves dans les chemins distincts qu'il
+leur donne. Exemples : odoo_flow.py validate odoo_flow.py analyze odoo_flow.py
+render --format mermaid odoo_flow.py start ~/projet --kind development --id
+ajout-reference odoo_flow.py ready ~/projet/.odoo-agents/flows/ajout-
+reference.json odoo_flow.py complete <état.json> briefing --outcome
+development --evidence /tmp/briefing.txt
+
+positional arguments:
+  {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+    validate            valider la définition
+    analyze             mesurer la structure
+    render              rendre le graphe
+    start               ouvrir un état persistant
+    ready               afficher ready
+    status              afficher status
+    complete            terminer un nœud prêt
+    bind-criteria       lier un contrat QA et générer sa couverture manquante
+    publish-memory      publier les deux drafts approuvés de façon reprenable
+    upgrade-recovery    ajouter explicitement la reprise mémoire à un ancien
+                        run
+    prepare-reception   figer le dossier de réception et la mémoire proposée
+    qa-report           rendre un rapport QA lié à sa couverture et à son
+                        issue
+    claim               revendiquer un nœud et ses verrous
+    release             libérer un nœud sans le terminer
+    migrate             rattacher explicitement un run à une nouvelle version
+                        compatible du graphe
+
+options:
+  -h, --help            show this help message and exit
+  --graph GRAPH
+
+exit=0
+$ ['python3', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_evidence.py', '--help']
+usage: odoo_evidence.py [-h] {run,verify} ...
+
+Exécuter un contrôle et lier son résultat au contenu réellement contrôlé.
+
+positional arguments:
+  {run,verify}
+
+options:
+  -h, --help    show this help message and exit
+
+exit=0
+$ ['python3', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py', 'status', '/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/ordered-a.json']
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O03/project
+Progression 0 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ module_task_gate
+    ORCHESTRATEUR
+    Fusionner les preuves QA normales et rendre un verdict unique.
+    Sorties: blocked, pass, retry · Preuve: qa.md et critères d'acceptation
+
+exit=0
+$ ['python3', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py', 'ready', '/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/ordered-a.json']
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O03/project
+Progression 0 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ module_task_gate
+    ORCHESTRATEUR
+    Fusionner les preuves QA normales et rendre un verdict unique.
+    Sorties: blocked, pass, retry · Preuve: qa.md et critères d'acceptation
+
+exit=0
+$ ['python3', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py', 'prepare-reception', '--help']
+usage: odoo_flow.py prepare-reception [-h] --source SOURCE --spec SPEC
+                                      --evidence EVIDENCE --memory MEMORY
+                                      [--scope SCOPE] --output OUTPUT --owner
+                                      OWNER
+                                      state
+
+positional arguments:
+  state
+
+options:
+  -h, --help           show this help message and exit
+  --source SOURCE
+  --spec SPEC
+  --evidence EVIDENCE
+  --memory MEMORY
+  --scope SCOPE
+  --output OUTPUT
+  --owner OWNER
+
+exit=0
+$ ['python3', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py', 'claim', '--help']
+usage: odoo_flow.py claim [-h] [--owner OWNER] state node
+
+positional arguments:
+  state
+  node
+
+options:
+  -h, --help     show this help message and exit
+  --owner OWNER
+
+exit=0
+$ ['python3', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_evidence.py', 'run', '--help']
+usage: odoo_evidence.py run [-h] --project PROJECT --scope SCOPE --output
+                            OUTPUT [--module MODULE] [--timeout TIMEOUT]
+                            ...
+
+positional arguments:
+  command
+
+options:
+  -h, --help         show this help message and exit
+  --project PROJECT
+  --scope SCOPE
+  --output OUTPUT
+  --module MODULE
+  --timeout TIMEOUT
+
+exit=0
+$ ['cat', '/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/ordered-a.json', '/tmp/odoo-ordered-recovery-20260909/O03/project/documentary/A/reference.txt']
+{
+  "claims": {},
+  "created_at": "2026-09-09T16:44:37+00:00",
+  "events": [],
+  "graph": "/tmp/odoo-ordered-recovery-20260909/reference/workflows/odoo-workflow.json",
+  "graph_sha256": "bdf9ff2771a08189ce7559d869dfe9f370503086e1b493077a1bc0c5d879cef9",
+  "graph_snapshot": {
+    "description": "Graphe de traitement d'une demande Odoo, de la qualification à la clôture de release.",
+    "edges": [
+      {
+        "from": "briefing",
+        "id": "brief-development",
+        "outcome": "development",
+        "to": "functional_review"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-development-complex-standard",
+        "outcome": "development_complex",
+        "to": "analyst_standard_lane"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-development-complex-project",
+        "outcome": "development_complex",
+        "to": "analyst_project_lane"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-development-complex-data",
+        "outcome": "development_complex",
+        "to": "analyst_data_lane"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-functional",
+        "outcome": "functional",
+        "to": "functional_review"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-support",
+        "outcome": "support",
+        "to": "support_diagnosis"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-close",
+        "outcome": "close",
+        "to": "close_precheck"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-validation",
+        "outcome": "validation",
+        "to": "standalone_validation"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-environment",
+        "outcome": "environment",
+        "to": "environment_action"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-feedback",
+        "outcome": "feedback",
+        "to": "feedback_action"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-documentation",
+        "outcome": "documentation",
+        "to": "documentation_action"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-technical",
+        "outcome": "technical",
+        "to": "technical_answer"
+      },
+      {
+        "from": "analyst_standard_lane",
+        "id": "lane-standard-synthesis",
+        "outcome": "done",
+        "to": "functional_synthesis"
+      },
+      {
+        "from": "analyst_project_lane",
+        "id": "lane-project-synthesis",
+        "outcome": "done",
+        "to": "functional_synthesis"
+      },
+      {
+        "from": "analyst_data_lane",
+        "id": "lane-data-synthesis",
+        "outcome": "done",
+        "to": "functional_synthesis"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-blocked",
+        "outcome": "blocked",
+        "to": "human_scope_gate"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-contradiction",
+        "outcome": "contradiction",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-answer",
+        "outcome": "answer",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-module-high-risk",
+        "outcome": "module_high_risk",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-blocked",
+        "outcome": "blocked",
+        "to": "human_high_risk_scope_gate"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-contradiction",
+        "outcome": "contradiction",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-answer",
+        "outcome": "answer",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-module",
+        "outcome": "module",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-blocked",
+        "outcome": "blocked",
+        "to": "human_scope_gate"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-contradiction",
+        "outcome": "contradiction",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-module-high-risk",
+        "outcome": "module_high_risk",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-module-high-risk",
+        "outcome": "module_high_risk",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-review",
+        "outcome": "review",
+        "to": "functional_review"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-cancel",
+        "outcome": "cancel",
+        "to": "journal_cancelled"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-module",
+        "outcome": "module",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-review",
+        "outcome": "review",
+        "to": "functional_review_high_risk"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-cancel",
+        "outcome": "cancel",
+        "to": "journal_cancelled"
+      },
+      {
+        "from": "configuration_record",
+        "id": "configuration-journal",
+        "outcome": "done",
+        "to": "journal_task"
+      },
+      {
+        "from": "module_implementation",
+        "id": "module-static",
+        "outcome": "done",
+        "to": "module_static_qa"
+      },
+      {
+        "from": "module_implementation",
+        "id": "module-runtime",
+        "outcome": "done",
+        "to": "module_runtime_qa"
+      },
+      {
+        "from": "module_implementation_high_risk",
+        "id": "module-high-static",
+        "outcome": "done",
+        "to": "module_high_static_qa"
+      },
+      {
+        "from": "module_implementation_high_risk",
+        "id": "module-high-runtime",
+        "outcome": "done",
+        "to": "module_high_runtime_qa"
+      },
+      {
+        "from": "module_implementation_high_risk",
+        "id": "module-high-client",
+        "outcome": "done",
+        "to": "module_client_copy_qa"
+      },
+      {
+        "from": "module_implementation_high_risk",
+        "id": "module-high-blocked",
+        "outcome": "blocked",
+        "to": "human_high_risk_scope_gate"
+      },
+      {
+        "from": "module_implementation",
+        "id": "module-blocked",
+        "outcome": "blocked",
+        "to": "human_implementation_gate"
+      },
+      {
+        "from": "human_implementation_gate",
+        "id": "implementation-gate-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "human_implementation_gate",
+        "id": "implementation-gate-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "human_implementation_gate",
+        "id": "implementation-gate-cancel",
+        "outcome": "cancel",
+        "to": "journal_cancelled"
+      },
+      {
+        "from": "module_static_qa",
+        "id": "module-static-gate",
+        "outcome": "done",
+        "to": "module_task_gate"
+      },
+      {
+        "from": "module_runtime_qa",
+        "id": "module-runtime-gate",
+        "outcome": "done",
+        "to": "module_task_gate"
+      },
+      {
+        "from": "module_task_gate",
+        "id": "module-gate-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "module_task_gate",
+        "id": "module-gate-retry",
+        "outcome": "retry",
+        "to": "module_implementation"
+      },
+      {
+        "from": "module_task_gate",
+        "id": "module-gate-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "module_high_static_qa",
+        "id": "module-high-static-gate",
+        "outcome": "done",
+        "to": "module_high_gate"
+      },
+      {
+        "from": "module_high_runtime_qa",
+        "id": "module-high-runtime-gate",
+        "outcome": "done",
+        "to": "module_high_gate"
+      },
+      {
+        "from": "module_client_copy_qa",
+        "id": "module-client-gate",
+        "outcome": "done",
+        "to": "module_high_gate"
+      },
+      {
+        "from": "module_high_gate",
+        "id": "module-high-gate-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "module_high_gate",
+        "id": "module-high-gate-retry",
+        "outcome": "retry",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "module_high_gate",
+        "id": "module-high-gate-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "studio_implementation",
+        "id": "studio-diff",
+        "outcome": "done",
+        "to": "studio_diff_qa"
+      },
+      {
+        "from": "studio_implementation",
+        "id": "studio-scenarios",
+        "outcome": "done",
+        "to": "studio_scenario_qa"
+      },
+      {
+        "from": "studio_implementation",
+        "id": "studio-blocked",
+        "outcome": "blocked",
+        "to": "human_high_risk_scope_gate"
+      },
+      {
+        "from": "studio_diff_qa",
+        "id": "studio-diff-gate",
+        "outcome": "done",
+        "to": "studio_task_gate"
+      },
+      {
+        "from": "studio_scenario_qa",
+        "id": "studio-scenario-gate",
+        "outcome": "done",
+        "to": "studio_task_gate"
+      },
+      {
+        "from": "studio_task_gate",
+        "id": "studio-gate-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "studio_task_gate",
+        "id": "studio-gate-retry",
+        "outcome": "retry",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "studio_task_gate",
+        "id": "studio-gate-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-usage",
+        "outcome": "usage",
+        "to": "journal_task"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-configuration",
+        "outcome": "configuration",
+        "to": "journal_task"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-data",
+        "outcome": "data",
+        "to": "data_repair_copy"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-bug",
+        "outcome": "bug",
+        "to": "bug_handoff_gate"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-bug-sensitive",
+        "outcome": "bug_sensitive",
+        "to": "bug_sensitive_handoff_gate"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-evolution",
+        "outcome": "evolution",
+        "to": "functional_review"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-unknown",
+        "outcome": "unknown",
+        "to": "journal_task"
+      },
+      {
+        "from": "bug_handoff_gate",
+        "id": "bug-handoff-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "bug_handoff_gate",
+        "id": "bug-handoff-review",
+        "outcome": "review",
+        "to": "functional_review"
+      },
+      {
+        "from": "bug_handoff_gate",
+        "id": "bug-handoff-review-high",
+        "outcome": "review_high_risk",
+        "to": "functional_review_high_risk"
+      },
+      {
+        "from": "bug_handoff_gate",
+        "id": "bug-handoff-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "bug_sensitive_handoff_gate",
+        "id": "bug-sensitive-handoff-review",
+        "outcome": "review_high_risk",
+        "to": "functional_review_high_risk"
+      },
+      {
+        "from": "bug_sensitive_handoff_gate",
+        "id": "bug-sensitive-handoff-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "data_repair_copy",
+        "id": "repair-proposed",
+        "outcome": "production_proposed",
+        "to": "human_production_gate"
+      },
+      {
+        "from": "data_repair_copy",
+        "id": "repair-local",
+        "outcome": "local_only",
+        "to": "journal_task"
+      },
+      {
+        "from": "data_repair_copy",
+        "id": "repair-blocked",
+        "outcome": "blocked",
+        "to": "journal_task"
+      },
+      {
+        "from": "human_production_gate",
+        "id": "production-no-write",
+        "outcome": "no_write",
+        "to": "journal_task"
+      },
+      {
+        "from": "human_production_gate",
+        "id": "production-confirmed",
+        "outcome": "write_confirmed",
+        "to": "production_write"
+      },
+      {
+        "from": "production_write",
+        "id": "production-journal",
+        "outcome": "done",
+        "to": "journal_task"
+      },
+      {
+        "from": "standalone_validation",
+        "id": "validation-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "standalone_validation",
+        "id": "validation-fail",
+        "outcome": "fail",
+        "to": "journal_task"
+      },
+      {
+        "from": "environment_action",
+        "id": "environment-journal",
+        "outcome": "done",
+        "to": "journal_task"
+      },
+      {
+        "from": "feedback_action",
+        "id": "feedback-finished",
+        "outcome": "done",
+        "to": "feedback_done"
+      },
+      {
+        "from": "documentation_action",
+        "id": "documentation-journal",
+        "outcome": "done",
+        "to": "journal_task"
+      },
+      {
+        "from": "close_precheck",
+        "id": "close-green",
+        "outcome": "green",
+        "to": "release_technical_qa"
+      },
+      {
+        "from": "close_precheck",
+        "id": "close-blocked",
+        "outcome": "blocked",
+        "to": "release_blocked_journal"
+      },
+      {
+        "from": "release_technical_qa",
+        "id": "release-qa-green",
+        "outcome": "green",
+        "to": "browser_qa"
+      },
+      {
+        "from": "release_technical_qa",
+        "id": "release-qa-red",
+        "outcome": "red",
+        "to": "release_repair"
+      },
+      {
+        "from": "release_technical_qa",
+        "id": "release-qa-exhausted",
+        "outcome": "exhausted",
+        "to": "release_blocked_journal"
+      },
+      {
+        "from": "release_repair",
+        "id": "release-repair-fixed",
+        "outcome": "fixed",
+        "to": "release_technical_qa"
+      },
+      {
+        "from": "release_repair",
+        "id": "release-repair-failed",
+        "outcome": "failed",
+        "to": "release_blocked_journal"
+      },
+      {
+        "from": "browser_qa",
+        "id": "browser-green",
+        "outcome": "green",
+        "to": "client_docs"
+      },
+      {
+        "from": "browser_qa",
+        "id": "browser-red",
+        "outcome": "red",
+        "to": "release_blocked_journal"
+      },
+      {
+        "from": "client_docs",
+        "id": "docs-finalize",
+        "outcome": "done",
+        "to": "release_finalize"
+      },
+      {
+        "from": "release_finalize",
+        "id": "finalize-journal",
+        "outcome": "done",
+        "to": "release_journal"
+      },
+      {
+        "from": "release_journal",
+        "id": "release-journal-closed",
+        "outcome": "done",
+        "to": "release_closed"
+      },
+      {
+        "from": "journal_task",
+        "id": "journal-memory-retry",
+        "outcome": "retry",
+        "to": "reception_recovery_gate"
+      },
+      {
+        "from": "journal_task",
+        "id": "journal-memory-blocked",
+        "outcome": "blocked",
+        "to": "memory_task_blocked"
+      },
+      {
+        "from": "reception_recovery_gate",
+        "id": "reception-memory-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "reception_recovery_gate",
+        "id": "reception-memory-blocked",
+        "outcome": "blocked",
+        "to": "memory_task_blocked"
+      },
+      {
+        "from": "journal_task",
+        "id": "journal-task-done",
+        "outcome": "done",
+        "to": "task_done"
+      },
+      {
+        "from": "journal_task_blocked",
+        "id": "journal-task-blocked",
+        "outcome": "done",
+        "to": "task_blocked"
+      },
+      {
+        "from": "journal_cancelled",
+        "id": "journal-cancelled",
+        "outcome": "done",
+        "to": "cancelled"
+      },
+      {
+        "from": "release_blocked_journal",
+        "id": "journal-release-blocked",
+        "outcome": "done",
+        "to": "release_blocked"
+      }
+    ],
+    "name": "odoo-delivery",
+    "nodes": {
+      "analyst_data_lane": {
+        "description": "Voie parallèle en lecture seule : inspecter la configuration et les données de la copie client.",
+        "evidence": [
+          "fragment données"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:data"
+          }
+        ],
+        "mode": "graph-lane",
+        "role": "odoo-analyst"
+      },
+      "analyst_project_lane": {
+        "description": "Voie parallèle en lecture seule : inspecter le custom, le projet et ses décisions.",
+        "evidence": [
+          "fragment projet"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          },
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:project"
+          }
+        ],
+        "mode": "graph-lane",
+        "role": "odoo-analyst"
+      },
+      "analyst_standard_lane": {
+        "description": "Voie parallèle en lecture seule : vérifier le standard et les sources de la série.",
+        "evidence": [
+          "fragment standard"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "odoo_sources"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:standard"
+          }
+        ],
+        "mode": "graph-lane",
+        "role": "odoo-analyst"
+      },
+      "briefing": {
+        "description": "Situer le projet, la série, la release, les modules et les données disponibles.",
+        "evidence": [
+          "sortie de odoo_briefing.py"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          }
+        ]
+      },
+      "browser_qa": {
+        "description": "Rejouer les critères utilisateur et prendre les captures finales sur la copie client.",
+        "evidence": [
+          "tests_navigateur.md et captures"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "browser"
+          },
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "mode": "release-browser",
+        "role": "odoo-tester"
+      },
+      "bug_handoff_gate": {
+        "description": "Vérifier que le diagnostic de bug porte une cause prouvée et un test rouge avant correction.",
+        "evidence": [
+          "diagnostic et test rouge"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ]
+      },
+      "bug_sensitive_handoff_gate": {
+        "description": "Vérifier le diagnostic et le test rouge d'un bug sensible avant une revue qui conserve la QA sur copie client.",
+        "evidence": [
+          "diagnostic sensible et test rouge"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ]
+      },
+      "cancelled": {
+        "description": "Intervention arrêtée après décision humaine, avec état réel consigné.",
+        "evidence": [
+          "raison de l'arrêt"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "cancelled"
+      },
+      "client_docs": {
+        "description": "Produire doc.md métier et consolidation depuis les preuves validées ; guide DOCX/PDF sur demande.",
+        "evidence": [
+          "doc.md et consolidation.md"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "release_artifacts"
+          },
+          {
+            "mode": "write",
+            "resource": "release_docs"
+          }
+        ]
+      },
+      "close_precheck": {
+        "description": "Vérifier le périmètre et préparer les versions avant la recette.",
+        "evidence": [
+          "points, modules, copie client et statut git"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          },
+          {
+            "mode": "read",
+            "resource": "release_artifacts"
+          },
+          {
+            "mode": "write",
+            "resource": "module_code"
+          }
+        ]
+      },
+      "configuration_record": {
+        "description": "Enregistrer la solution standard ou de configuration sans développer.",
+        "evidence": [
+          "demande et revue enregistrées"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ]
+      },
+      "data_repair_copy": {
+        "description": "Prouver une réparation idempotente sur la copie client, avec comptages avant et après.",
+        "evidence": [
+          "preuve de réparation sur copie"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          }
+        ],
+        "role": "odoo-support"
+      },
+      "documentation_action": {
+        "description": "Produire les livrables documentaires explicitement demandés.",
+        "evidence": [
+          "livrables documentaires"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_docs"
+          }
+        ],
+        "role": "camptocamp-docs"
+      },
+      "environment_action": {
+        "description": "Déclarer ou vérifier un environnement sans exposer de secret.",
+        "evidence": [
+          "résultat de vérification de l'instance"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_instances"
+          }
+        ],
+        "role": "odoo-env"
+      },
+      "feedback_action": {
+        "description": "Exécuter le retour d'expérience et reconstruire les profils si une leçon est promue.",
+        "evidence": [
+          "compte-rendu du retour d'expérience"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "agent_repository"
+          }
+        ],
+        "role": "odoo-feedback"
+      },
+      "feedback_done": {
+        "description": "Retour d'expérience terminé.",
+        "evidence": [
+          "référentiel validé"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "complete"
+      },
+      "functional_review": {
+        "description": "Produire la revue fonctionnelle contradictoire et choisir la voie.",
+        "evidence": [
+          "revue_fonctionnelle.md ou revue_en_cours.md"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          },
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "role": "odoo-analyst"
+      },
+      "functional_review_high_risk": {
+        "description": "Revoir un correctif sensible sans perdre l'obligation de validation sur copie client.",
+        "evidence": [
+          "revue fonctionnelle sensible"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          },
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "role": "odoo-analyst"
+      },
+      "functional_synthesis": {
+        "description": "Fusionner les voies d'analyse dans une seule revue et décider de la suite.",
+        "evidence": [
+          "revue_fonctionnelle.md ou revue_en_cours.md"
+        ],
+        "executor": "orchestrator",
+        "join": "all",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ]
+      },
+      "human_high_risk_scope_gate": {
+        "description": "Attendre un arbitrage humain sans perdre l'obligation de QA sur copie client.",
+        "evidence": [
+          "décision sensible consignée dans la revue"
+        ],
+        "executor": "human",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "max_outcome_uses": {
+          "module": 2,
+          "review": 2,
+          "studio": 2
+        }
+      },
+      "human_implementation_gate": {
+        "description": "Arbitrer une limite découverte pendant l'implémentation.",
+        "evidence": [
+          "arbitrage humain consigné"
+        ],
+        "executor": "human",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "max_outcome_uses": {
+          "module": 2,
+          "studio": 2
+        }
+      },
+      "human_production_gate": {
+        "description": "Attendre la confirmation humaine explicite d'une opération précise en production.",
+        "evidence": [
+          "confirmation de l'opération précise"
+        ],
+        "executor": "human",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "production"
+          }
+        ]
+      },
+      "human_scope_gate": {
+        "description": "Attendre une décision humaine qui change le périmètre ou la voie de réalisation.",
+        "evidence": [
+          "décision consignée dans la revue"
+        ],
+        "executor": "human",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "max_outcome_uses": {
+          "review": 2
+        }
+      },
+      "journal_cancelled": {
+        "description": "Consigner la décision humaine et l'état réel avant l'arrêt.",
+        "evidence": [
+          "entrée JOURNAL.md avec raison de l'arrêt"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "journal_task": {
+        "description": "Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.",
+        "evidence": [
+          "entrée JOURNAL.md"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "journal_task_blocked": {
+        "description": "Consigner l'échec de QA et les anomalies restantes avant l'arrêt.",
+        "evidence": [
+          "entrée JOURNAL.md avec contrôles rouges"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "memory_task_blocked": {
+        "description": "Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée.",
+        "evidence": [
+          "motif de blocage mémoire et état de publication réel"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "blocked"
+      },
+      "module_client_copy_qa": {
+        "description": "Voie QA renforcée : vérifier immédiatement les droits, la compta, la facturation ou les données existantes sur la copie client.",
+        "evidence": [
+          "fragment QA copie client"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_client"
+          }
+        ],
+        "mode": "graph-lane-client-copy",
+        "role": "odoo-tester"
+      },
+      "module_high_gate": {
+        "description": "Fusionner les trois preuves QA renforcées et rendre un verdict unique.",
+        "evidence": [
+          "qa.md et critères d'acceptation"
+        ],
+        "executor": "orchestrator",
+        "join": "all",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "max_outcome_uses": {
+          "retry": 2
+        }
+      },
+      "module_high_runtime_qa": {
+        "description": "Voie QA renforcée : installation, mise à jour et tests ciblés.",
+        "evidence": [
+          "fragment QA d'exécution renforcée"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "qa_db_module"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_high_runtime"
+          }
+        ],
+        "mode": "graph-lane-runtime",
+        "role": "odoo-tester"
+      },
+      "module_high_static_qa": {
+        "description": "Voie QA renforcée : conformité statique et revue du diff.",
+        "evidence": [
+          "fragment QA statique renforcée"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_high_static"
+          }
+        ],
+        "mode": "graph-lane-static",
+        "role": "odoo-tester"
+      },
+      "module_implementation": {
+        "description": "Implémenter le module et ses tests dans le périmètre de la revue.",
+        "evidence": [
+          "diff du code et tests",
+          "lint ciblé"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "module_code"
+          }
+        ],
+        "role": "odoo-developer"
+      },
+      "module_implementation_high_risk": {
+        "description": "Implémenter un changement sensible dont la QA sur copie client est obligatoire.",
+        "evidence": [
+          "diff du code et tests sensibles",
+          "lint ciblé"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "module_code"
+          }
+        ],
+        "role": "odoo-developer"
+      },
+      "module_runtime_qa": {
+        "description": "Voie QA normale : installer, mettre à jour et exécuter les tests ciblés.",
+        "evidence": [
+          "fragment QA d'exécution"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "qa_db_module"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_runtime"
+          }
+        ],
+        "mode": "graph-lane-runtime",
+        "role": "odoo-tester"
+      },
+      "module_static_qa": {
+        "description": "Voie QA normale : relire le diff et exécuter le lint ciblé.",
+        "evidence": [
+          "fragment QA statique"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_static"
+          }
+        ],
+        "mode": "graph-lane-static",
+        "role": "odoo-tester"
+      },
+      "module_task_gate": {
+        "description": "Fusionner les preuves QA normales et rendre un verdict unique.",
+        "evidence": [
+          "qa.md et critères d'acceptation"
+        ],
+        "executor": "orchestrator",
+        "join": "all",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "max_outcome_uses": {
+          "retry": 2
+        }
+      },
+      "production_write": {
+        "description": "Exécuter uniquement l'opération de production explicitement confirmée.",
+        "evidence": [
+          "résultat et comptage de l'opération"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "production"
+          }
+        ]
+      },
+      "reception_recovery_gate": {
+        "description": "Recevoir à nouveau les propositions mémoire depuis les bases actuelles, à contrat et preuves inchangés.",
+        "evidence": [
+          "réception indépendante renouvelée ou motif de blocage mémoire"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ],
+        "max_outcome_uses": {
+          "pass": 2
+        }
+      },
+      "release_blocked": {
+        "description": "Clôture arrêtée avec les contrôles rouges ou manquants explicitement consignés.",
+        "evidence": [
+          "réserves et contrôles rouges"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "blocked"
+      },
+      "release_blocked_journal": {
+        "description": "Consigner les contrôles rouges ou manquants avant d'arrêter la clôture.",
+        "evidence": [
+          "entrée de release dans JOURNAL.md avec réserves"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "release_closed": {
+        "description": "Release clôturée et prête pour l'action humaine suivante.",
+        "evidence": [
+          "compte-rendu de clôture"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "complete"
+      },
+      "release_finalize": {
+        "description": "Finaliser README, versions, périmètre et proposition de commit, puis retirer le marqueur d'ouverture.",
+        "evidence": [
+          "README final et release fermée"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ]
+      },
+      "release_journal": {
+        "description": "Capitaliser ce que la recette de release a révélé.",
+        "evidence": [
+          "entrée de release dans JOURNAL.md"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "release_repair": {
+        "description": "Corriger une anomalie bloquante de recette dans le périmètre de la release.",
+        "evidence": [
+          "correction et tests ciblés"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "module_code"
+          }
+        ],
+        "max_outcome_uses": {
+          "fixed": 2
+        },
+        "role": "odoo-developer"
+      },
+      "release_technical_qa": {
+        "description": "Exécuter la recette complète sur l'état exact à livrer, module par module.",
+        "evidence": [
+          "recette.md"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "qa_stack"
+          },
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "max_outcome_uses": {
+          "red": 2
+        },
+        "mode": "release",
+        "role": "odoo-tester"
+      },
+      "standalone_validation": {
+        "description": "Valider un module seul en mode QA de release.",
+        "evidence": [
+          "verdict de validation"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "qa_db_module"
+          }
+        ],
+        "role": "odoo-tester"
+      },
+      "studio_diff_qa": {
+        "description": "Voie QA Studio : vérifier que le pack et la copie ne divergent pas.",
+        "evidence": [
+          "fragment diff Studio"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "read",
+            "resource": "studio_pack"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:studio_diff"
+          }
+        ],
+        "mode": "graph-lane-studio-diff",
+        "role": "odoo-tester"
+      },
+      "studio_implementation": {
+        "description": "Construire la configuration Studio et son pack versionné sur la copie client.",
+        "evidence": [
+          "pack Studio et scénarios RPC"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "studio_pack"
+          }
+        ],
+        "role": "odoo-studio"
+      },
+      "studio_scenario_qa": {
+        "description": "Voie QA Studio : jouer les scénarios RPC et vérifier l'écran concerné.",
+        "evidence": [
+          "fragment scénarios Studio"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "browser"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:studio_runtime"
+          }
+        ],
+        "mode": "graph-lane-studio-runtime",
+        "role": "odoo-tester"
+      },
+      "studio_task_gate": {
+        "description": "Fusionner les preuves Studio et rendre un verdict unique.",
+        "evidence": [
+          "qa.md et critères d'acceptation"
+        ],
+        "executor": "orchestrator",
+        "join": "all",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "max_outcome_uses": {
+          "retry": 2
+        }
+      },
+      "support_diagnosis": {
+        "description": "Reproduire, prouver la cause, classer et préparer la suite du ticket.",
+        "evidence": [
+          "diagnostic de support"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "support_artifact"
+          }
+        ],
+        "role": "odoo-support"
+      },
+      "task_blocked": {
+        "description": "Intervention arrêtée avec une QA encore rouge après deux reprises, état réel consigné.",
+        "evidence": [
+          "anomalies restantes et contrôles rouges"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "blocked"
+      },
+      "task_done": {
+        "description": "Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.",
+        "evidence": [
+          "compte-rendu final"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "complete"
+      },
+      "technical_answer": {
+        "description": "Répondre directement à une question technique située dans la bonne série.",
+        "evidence": [
+          "réponse avec références de source"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "odoo_sources"
+          }
+        ],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "complete"
+      }
+    },
+    "schema_version": 1,
+    "start": "briefing"
+  },
+  "kind": "development",
+  "node_counts": {},
+  "outcome_counts": {},
+  "project": "/tmp/odoo-ordered-recovery-20260909/O03/project",
+  "run_id": "ordered-a",
+  "schema_version": 1,
+  "start_pending": false,
+  "status": "active",
+  "tokens": {
+    "module-runtime-gate": 1,
+    "module-static-gate": 1
+  },
+  "updated_at": "2026-09-09T16:44:37+00:00"
+}
+reference_dossier=visible
+
+exit=0
+$ ['rg', '-n', 'prepare_reception|args.memory|memory.*split|--memory', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py']
+864:def prepare_reception(state_path, graph_path, sources, spec, evidence, memories, scopes, output, owner):
+1323:    reception.add_argument('--memory', action='append', required=True)
+1465:            receipt = prepare_reception(state_path, graph_path, args.source, args.spec, args.evidence,
+1466:                                        args.memory, args.scope, args.output, args.owner)
+
+exit=0
+$ ['rg', '-n', 'prepare-reception|--memory', '/tmp/odoo-ordered-recovery-20260909/reference/docs']
+/tmp/odoo-ordered-recovery-20260909/reference/docs/RELEASE_PLAN.md:28:  --memory changelog/RELEASE/consolidation-T01.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/TASK_RECEPTION.md:26:python3 ~/.odoo19-agents/scripts/odoo_flow.py prepare-reception FLOW.json \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/TASK_RECEPTION.md:32:  --memory .odoo-agents/PROJECT.md=changelog/RELEASE/reception/PROJECT-propose.md \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/TASK_RECEPTION.md:33:  --memory .odoo-agents/JOURNAL.md=changelog/RELEASE/reception/JOURNAL-propose.md \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/TASK_RECEPTION.md:187:   déjà publié. Appeler `prepare-reception` avec une sortie neuve et les **mêmes**
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/implementation-review.md:21:Reproduction : `bind-criteria` épingle `bound-spec.md`, qui contient une obligation ; la couverture de ce contrat est formellement complète. `prepare-reception` reçoit `spec.md`, distinct, et produit son bundle. La réception indépendante cite cette autre spec ; complete reçoit les deux documents et donne pass. Aucune modification du state ni des bundles épinglés.
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/implementation-review.md:25:Traitement : lorsque `qa_contract` existe, vérifier que le groupe spec du bundle désigne exactement sa source canonique et son `source_sha256`. Vérifier à la préparation pour donner l'erreur tôt **et à la complétion**, car bind-criteria peut survenir après prepare-reception. Ne pas exiger la présence de qa_contract sur les flows historiques qui ne l'utilisent pas. Tests : spec différente refusée dans les deux ordres de liaison ; même source acceptée ; mutation de source toujours refusée ; refus sans changement claims/registry/tokens.
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/implementation-review.md:31:- prepare-reception : « préparation impossible après réception QA » ;
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/implementation-review.md:60:- **R2 fermé** : spec différente refusée à prepare-reception lorsque bind-criteria précède ; également refusée à complete lorsque prepare-reception précède la liaison du contrat. Chaque refus conserve state et registre.
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/implementation-review.md:61:- **R3 borné, non réparé** : prepare-reception refuse désormais explicitement les flows portant plan_task, sans modifier state ni registre. Le mode documentaire sans garde reste possible. Le contournement par nouveau flow demeure limité aux tâches directes ; l'ancien flow reste non terminé et la limite de concurrence après pass reste assumée.
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/README.md:100:Le candidat ajoute `odoo_reception.py`, `prepare-reception` dans `odoo_flow.py`
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/README.md:115:terminé. Ce contournement ne fonctionne pas dans un plan ; `prepare-reception`
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/README.md:178:| Garde `prepare-reception` / `check-bases` / `complete` | Livré dans un périmètre expérimental de tâches directes | Quinze tests nouveaux, contre-revue de deux failles corrigées, passage intégré réussi ; identité et jugement coopératifs, pas de garantie sémantique automatique |
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/README.md:34:la mémoire modifiée, la preuve documentaire reste valide, `prepare-reception`
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/README.md:167:ci-dessus. `prepare-reception` est utilisable dans les plans équipés de la reprise ;
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate.patch:9:-`prepare-reception` refuse explicitement les flows portant `plan_task`, issus de
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate.patch:115:+   déjà publié. Appeler `prepare-reception` avec une sortie neuve et les **mêmes**
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate.patch:161: avec `odoo_flow.py prepare-reception <flow>` :
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate.patch:484:     reception = subparsers.add_parser('prepare-reception', help='figer le dossier de réception et la mémoire proposée')
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate.patch:500:         if args.command == 'prepare-reception':
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R04/execution.log:48:                    {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R04/execution.log:63:  {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R04/execution.log:75:    prepare-reception   figer le dossier de réception et la mémoire proposée
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R04/execution.log:88:                    [--acceptance ACCEPTANCE] [--memory MEMORY]
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R04/execution.log:105:  --memory MEMORY
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design/reference/scripts/odoo_plan.py:267:    parser.add_argument('--task'); parser.add_argument('--proof'); parser.add_argument('--acceptance'); parser.add_argument('--memory'); parser.add_argument('--reason')
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R03/execution.log:20:                    {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R03/execution.log:35:  {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R03/execution.log:47:    prepare-reception   figer le dossier de réception et la mémoire proposée
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R03/execution.log:60:                    [--acceptance ACCEPTANCE] [--memory MEMORY]
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R03/execution.log:77:  --memory MEMORY
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R03/execution.log:2145:+ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py prepare-reception .odoo-agents/flows/plan-a-2844b487.json --source changelog/recovery/demande-A.md --spec changelog/recovery/spec.md --evidence changelog/recovery/initial/documentary-proof.json --scope documentary --memory .odoo-agents/PROJECT.md=changelog/recovery/reprise/PROJECT-propose.md --memory .odoo-agents/JOURNAL.md=changelog/recovery/reprise/JOURNAL-propose.md --output changelog/recovery/reprise/bundle.json --owner codex-orchestrateur-r03
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R03/execution.log:2160:267:    parser.add_argument('--task'); parser.add_argument('--proof'); parser.add_argument('--acceptance'); parser.add_argument('--memory'); parser.add_argument('--reason')
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R03/execution.log:2476:+ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py finish changelog/recovery --task A --proof changelog/recovery/reprise/documentary-proof.json --acceptance changelog/recovery/reprise/acceptance-plan.md --memory changelog/recovery/reprise/consolidation.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R03/execution.log:2511:Par les API publiques : revendication journal_task, retry motivé, revendication reception_recovery_gate, prepare-reception avec sources/spec/preuve/périmètre inchangés et nouveaux drafts complets, puis pass avec le reçu indépendant neuf.
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design/reference/scripts/odoo_bench_runtime.py:41:                 '--memory=512m', 'postgres:16']).check_returncode()
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design/reference/scripts/odoo_bench_runtime.py:69:                    '--security-opt=no-new-privileges', '--memory=2g', '--cpus=2', '--pids-limit=256',
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design/reference/scripts/odoo_qualify_rights.py:61:                '--security-opt=no-new-privileges', '--memory=2g', '--cpus=2', '--pids-limit=256',
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design/reference/scripts/odoo_qualify_rights.py:77:                 '-e', 'POSTGRES_USER=odoo', '-e', 'POSTGRES_PASSWORD=odoo', '--memory=512m', 'postgres:16'], 'postgres-start.log')
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R03/project/result.md:10:Par les API publiques : revendication journal_task, retry motivé, revendication reception_recovery_gate, prepare-reception avec sources/spec/preuve/périmètre inchangés et nouveaux drafts complets, puis pass avec le reçu indépendant neuf.
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design/reference/scripts/odoo_flow.py:1153:    reception = subparsers.add_parser('prepare-reception', help='figer le dossier de réception et la mémoire proposée')
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design/reference/scripts/odoo_flow.py:1158:    reception.add_argument('--memory', action='append', required=True)
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design/reference/scripts/odoo_flow.py:1290:        if args.command == 'prepare-reception':
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design/reference/tests/test_odoo_reception.py:283:        self.assertEqual(flow.main(['--graph', str(self.graph), 'prepare-reception', str(path),
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design/reference/tests/test_odoo_reception.py:285:                                    '--memory', '.odoo-agents/PROJECT.md=project-draft.md',
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design/reference/tests/test_odoo_reception.py:286:                                    '--memory', '.odoo-agents/JOURNAL.md=journal-draft.md', '--scope', 'module',
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/172421-635a089f.json:5:    "python3 - <<'PY'\nfrom pathlib import Path\nimport json,hashlib\nroot=Path(\"/work\"); r=\"changelog/2026-09-09_01_revue-des-locations-d-22\"; a=\".odoo-agents/flow-artifacts/needs-review\"\np=root/r/\"coverage.json\"; data=json.loads(p.read_text())\nrefs=[\n [a+\"/studio_diff.md\",a+\"/studio_diff.log\",r+\"/studio/pack.json\"],\n [a+\"/studio_runtime.md\",a+\"/studio_runtime.log\"],\n [a+\"/studio_runtime.md\",a+\"/studio_runtime.log\",r+\"/studio/red-before.log\",a+\"/versioning.log\",a+\"/studio_diff.md\"],\n [a+\"/studio_diff.md\",a+\"/implementation.md\",a+\"/studio_runtime.md\"],\n [a+\"/lifecycle.md\",r+\"/reception/PROJECT-propose.md\",r+\"/reception/JOURNAL-propose.md\",a+\"/studio_diff.md\",a+\"/studio_runtime.md\"]\n]\nnotes=[\n \"Un seul champ ajouté et trois champs initiaux identiques à l'inventaire.\",\n \"13 attendus explicites D-22, rejoués deux fois ; serveur relu et nettoyage.\",\n \"Rouge préalable, deux vrais apply sans doublon, diff nul, commit local fcf06f4.\",\n \"Périmètre livré vérifié par build/pack et base locale ; limites historiques précisées dans la voie diff.\",\n \"QA technique terminée, mémoire complète proposée et release ouverte. Réception documentaire avant publication obligatoire sous journal_task ; A5 ne sera déclaré achevé au compte-rendu qu'après publication exacte protégée par le flow.\"\n]\nfor c,paths,note in zip(data[\"criteria\"],refs,notes):\n c[\"status\"]=\"covered\"; c[\"note\"]=note\n c[\"evidence\"]=[{\"path\":x,\"sha256\":hashlib.sha256((root/x).read_bytes()).hexdigest()} for x in paths]\np.write_text(json.dumps(data,ensure_ascii=False,indent=2)+\"\\n\")\nPY\nR=/work/changelog/2026-09-09_01_revue-des-locations-d-22\nF=/work/.odoo-agents/flows/needs-review.json\npython3 ~/.odoo19-agents/scripts/odoo_flow.py qa-report \"$F\" studio_task_gate --coverage \"$R/coverage.json\" --outcome pass --output \"$R/qa.md\" --owner codex-orchestrateur\npython3 ~/.odoo19-agents/scripts/odoo_flow.py prepare-reception \"$F\" --source demande-originale.md --source decisions/2026-09-08.md --spec \"$R/revue_fonctionnelle.md\" --evidence \"$R/coverage.json\" --evidence \"$R/qa.md\" --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_diff.md --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_diff.log --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_runtime.md --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_runtime.log --evidence /work/.odoo-agents/flow-artifacts/needs-review/implementation.md --evidence /work/.odoo-agents/flow-artifacts/needs-review/versioning.log --evidence /work/.odoo-agents/flow-artifacts/needs-review/lifecycle.md --evidence \"$R/studio/red-before.log\" --scope \"$R/studio\" --memory \".odoo-agents/PROJECT.md=$R/reception/PROJECT-propose.md\" --memory \".odoo-agents/JOURNAL.md=$R/reception/JOURNAL-propose.md\" --output \"$R/reception/bundle-1.json\" --owner codex-orchestrateur\n"
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/172033-5f6c1619.log:1:usage: odoo_flow.py prepare-reception [-h] --source SOURCE --spec SPEC
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/172033-5f6c1619.log:2:                                      --evidence EVIDENCE --memory MEMORY
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/172033-5f6c1619.log:15:  --memory MEMORY
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/172522-c1b14034.log:12:`prepare-reception` refuse explicitement les flows portant `plan_task`, issus de
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/172522-c1b14034.log:30:python3 ~/.odoo19-agents/scripts/odoo_flow.py prepare-reception FLOW.json \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/172522-c1b14034.log:36:  --memory .odoo-agents/PROJECT.md=changelog/RELEASE/reception/PROJECT-propose.md \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/172522-c1b14034.log:37:  --memory .odoo-agents/JOURNAL.md=changelog/RELEASE/reception/JOURNAL-propose.md \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/172033-5f6c1619.json:5:    "python3 ~/.odoo19-agents/scripts/odoo_flow.py prepare-reception --help\npython3 ~/.odoo19-agents/scripts/odoo_flow.py qa-report --help\ncat /work/changelog/2026-09-09_01_revue-des-locations-d-22/coverage.json\n"
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/171506-97a37937.log:272:avec `odoo_flow.py prepare-reception <flow>` :
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/171506-97a37937.log:276:`--memory .odoo-agents/PROJECT.md=<proposition-project>` et
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/171506-97a37937.log:277:`--memory .odoo-agents/JOURNAL.md=<proposition-journal>`, `--output <nouveau-bundle>`
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/171506-97a37937.log:454:                    {validate,analyze,render,start,ready,status,complete,bind-criteria,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/171506-97a37937.log:469:  {validate,analyze,render,start,ready,status,complete,bind-criteria,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/171506-97a37937.log:478:    prepare-reception   figer le dossier de réception et la mémoire proposée
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/171513-a4546e90.log:657:`prepare-reception` refuse explicitement les flows portant `plan_task`, issus de
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/171513-a4546e90.log:675:python3 ~/.odoo19-agents/scripts/odoo_flow.py prepare-reception FLOW.json \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/171513-a4546e90.log:681:  --memory .odoo-agents/PROJECT.md=changelog/RELEASE/reception/PROJECT-propose.md \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/171513-a4546e90.log:682:  --memory .odoo-agents/JOURNAL.md=changelog/RELEASE/reception/JOURNAL-propose.md \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/audit/publication-snapshots.json:107:        "text": "# Résultat R03 — reprise documentaire cohérente\nLa publication et la réception de la tâche A sont terminées dans le flow existant `plan-a-2844b487`. Le contrôle public final donne `A · validated · preuve et passation toujours valides` et `C · pending · PRÊT`. C n’a pas été démarrée. La release reste ouverte.\n\n## Avant l’interruption\nHANDOFF.md indique un pass initial, avant toute publication, sans changement des fichiers reçus. `initial/review.json` est une fixture du banc : il ne prouve aucune délégation passée. `initial/documentary-proof.json` décrit un contrôle réel du fichier texte ; son intégrité et sa fraîcheur sont vérifiées. Tous les fichiers initiaux sont conservés.\n\n## Actions dans ce contexte\nLecture des demandes originales A, B et C, de la revue, des mémoires et des états publics. Aucun claim actif du contexte interrompu ne nécessitait de transfert.\nJ’ai choisi de renouveler la réception malgré l’absence de conflit mémoire : l’intégrité des fichiers ne remplace pas une relecture indépendante et le reçu hérité est explicitement fabriqué. Ce choix porte sur la provenance de réception, pas sur une QA Odoo déclarée rouge ni sur un changement du périmètre.\nPar les API publiques : revendication journal_task, retry motivé, revendication reception_recovery_gate, prepare-reception avec sources/spec/preuve/périmètre inchangés et nouveaux drafts complets, puis pass avec le reçu indépendant neuf.\nLa délégation a réellement utilisé `collaboration.spawn_agent`, `fork_turns=none`, contexte `/root/r03_positive/r03_reception`. Le relecteur a écrit uniquement son reçu et sa trace ; verdict pass sur les trois axes, conservation des deux bases comprise.\nPublication par `publish-memory` : PROJECT.md et JOURNAL.md sont identiques octet par octet aux drafts approuvés. Les textes antérieurs sont conservés. Journal_task done et task_done done ont terminé le flow, puis `odoo_plan.py finish --task A` a reçu la tâche.\nUn nouveau contrôle documentaire réel a été exécuté par `odoo_evidence.py run` sur tout `documentary` : résultat passed. Cette preuve sert à la réception finale du plan ; la preuve initiale de la réception est restée intacte.\n\n## Preuves et limites\n- Reprise : `changelog/recovery/reprise/constat.md`, `bundle.json`, `review.json`, `review-trace.md`, `delegation.md`.\n- Publication : `changelog/recovery/reprise/publication.md` ; réception du plan : `acceptance-plan.md`, `consolidation.md`, `documentary-proof.json` et son log.\n- Commandes et résultats : `/tmp/odoo-recovery-20260909/candidate-R03/execution.log`.\n- Aucun état, registre ou plan JSON édité directement ; aucune ancienne preuve modifiée. Demande B et documents antérieurs conservés.\n- Aucun développement, installation, écran ni test Odoo exécuté ou validé. Le résultat valide uniquement la cohérence documentaire autorisée. C est disponible et non commencée ; la clôture de release n’a pas été effectuée.\n"
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/native-2026-09-09/evidence/plan-after.log:40:$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T01 --proof changelog/R01/T01.json --acceptance changelog/R01/T01-acceptance.md --memory changelog/R01/T01-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/native-2026-09-09/evidence/plan-after.log:47:$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T02 --proof changelog/R01/T02.json --acceptance changelog/R01/T02-acceptance.md --memory changelog/R01/T02-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/native-2026-09-09/evidence/plan-after.log:57:$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T03 --proof changelog/R01/T03.json --acceptance changelog/R01/T03-acceptance.md --memory changelog/R01/T03-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/native-2026-09-09/evidence/plan-after.log:73:$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T01 --proof changelog/R01/T01.json --acceptance changelog/R01/T01-acceptance.md --memory changelog/R01/T01-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/native-2026-09-09/evidence/plan-after.log:84:$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T03 --proof changelog/R01/T03.json --acceptance changelog/R01/T03-acceptance.md --memory changelog/R01/T03-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/native-2026-09-09/evidence/plan-after.log:103:$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T03 --proof changelog/R01/T03.json --acceptance changelog/R01/T03-acceptance.md --memory changelog/R01/T03-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/native-2026-09-09/evidence/plan-after.log:109:$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T01 --proof changelog/R01/T01.json --acceptance changelog/R01/T01-acceptance.md --memory changelog/R01/T01-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/native-2026-09-09/evidence/plan-after.log:115:$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T02 --proof changelog/R01/T02.json --acceptance changelog/R01/T02-acceptance.md --memory changelog/R01/T02-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/native-2026-09-09/evidence/plan-after.log:121:$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/after/project/changelog/R01 --task T03 --proof changelog/R01/T03.json --acceptance changelog/R01/T03-acceptance.md --memory changelog/R01/T03-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:47:                    {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:62:  {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:74:    prepare-reception   figer le dossier de réception et la mémoire proposée
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:87:                    [--acceptance ACCEPTANCE] [--memory MEMORY]
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:104:  --memory MEMORY
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:364:+ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py prepare-reception --help
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:365:usage: odoo_flow.py prepare-reception [-h] --source SOURCE --spec SPEC
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:366:                                      --evidence EVIDENCE --memory MEMORY
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:379:  --memory MEMORY
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:405:267:    parser.add_argument('--task'); parser.add_argument('--proof'); parser.add_argument('--acceptance'); parser.add_argument('--memory'); parser.add_argument('--reason')
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:442:+ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py prepare-reception /tmp/odoo-recovery-20260909/candidate-v2-R02/project/.odoo-agents/flows/plan-a-82879e4a.json --source changelog/recovery/demande-A.md --spec changelog/recovery/spec.md --evidence changelog/recovery/initial/documentary-proof.json --scope documentary --memory .odoo-agents/PROJECT.md=changelog/recovery/resume/PROJECT-propose.md --memory .odoo-agents/JOURNAL.md=changelog/recovery/resume/JOURNAL-propose.md --output changelog/recovery/resume/bundle.json --owner codex-orchestrateur-reprise
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:484:+ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_flow.py prepare-reception .odoo-agents/flows/plan-a-82879e4a.json --source changelog/recovery/demande-A.md --spec changelog/recovery/spec.md --evidence changelog/recovery/initial/documentary-proof.json --scope documentary --memory .odoo-agents/PROJECT.md=changelog/recovery/resume/PROJECT-propose.md --memory .odoo-agents/JOURNAL.md=changelog/recovery/resume/JOURNAL-propose.md --output changelog/recovery/resume/bundle.json --owner codex-orchestrateur-reprise
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:817:+ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_plan.py finish changelog/recovery --task A --proof changelog/recovery/resume/current-documentary-proof.json --acceptance changelog/recovery/resume/plan-acceptance.md --memory changelog/recovery/resume/plan-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-v2-R02/execution.log:858:+ python3 /tmp/odoo-recovery-20260909/candidate-v2/scripts/odoo_plan.py finish changelog/recovery --task A --proof changelog/recovery/resume/current-documentary-proof.json --acceptance changelog/recovery/resume/plan-acceptance.md --memory changelog/recovery/resume/plan-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/fidelity-2026-09-09/evidence/codex-N03/commands/172454-2a8579fb.json:5:    "R=/work/changelog/2026-09-09_01_revue-des-locations-d-22\nF=/work/.odoo-agents/flows/needs-review.json\npython3 ~/.odoo19-agents/scripts/odoo_flow.py prepare-reception \"$F\" --source demande-originale.md --source decisions/2026-09-08.md --spec \"$R/revue_fonctionnelle.md\" --evidence \"$R/coverage.json\" --evidence \"$R/qa.md\" --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_diff.md --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_diff.log --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_runtime.md --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_runtime.log --evidence /work/.odoo-agents/flow-artifacts/needs-review/implementation.md --evidence /work/.odoo-agents/flow-artifacts/needs-review/versioning.log --evidence /work/.odoo-agents/flow-artifacts/needs-review/lifecycle.md --evidence \"$R/studio/red-before.log\" --scope \"$R/studio/build_review.py\" --scope \"$R/studio/test_review.py\" --scope \"$R/studio/pack.json\" --memory \".odoo-agents/PROJECT.md=$R/reception/PROJECT-propose.md\" --memory \".odoo-agents/JOURNAL.md=$R/reception/JOURNAL-propose.md\" --output \"$R/reception/bundle-1.json\" --owner codex-orchestrateur\n"
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/execution.log:185:  --memory changelog/RELEASE/consolidation-T01.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/execution.log:604:+ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py prepare-reception .odoo-agents/flows/plan-a-45ac8dd2.json --source changelog/recovery/demande-A.md --spec changelog/recovery/spec.md --evidence changelog/recovery/initial/documentary-proof.json --scope documentary --memory .odoo-agents/PROJECT.md=changelog/recovery/reprise-finale/PROJECT-propose.md --memory .odoo-agents/JOURNAL.md=changelog/recovery/reprise-finale/JOURNAL-propose.md --output changelog/recovery/reprise-finale/bundle.json --owner codex-r01-reprise-orchestrateur
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/execution.log:624:                    [--acceptance ACCEPTANCE] [--memory MEMORY]
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/execution.log:641:  --memory MEMORY
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/execution.log:870:+ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py finish changelog/recovery --task A --proof changelog/recovery/reprise-finale/plan-proof-v2.json --acceptance changelog/recovery/reprise-finale/reception-plan.md --memory changelog/recovery/reprise-finale/consolidation-plan.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/execution.log:914:+ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py finish changelog/recovery --task A --proof changelog/recovery/reprise-finale/plan-proof-v2.json --acceptance changelog/recovery/reprise-finale/reception-plan.md --memory changelog/recovery/reprise-finale/consolidation-plan.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-A.log:347:avec `odoo_flow.py prepare-reception <flow>` :
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-A.log:351:`--memory .odoo-agents/PROJECT.md=<proposition-project>` et
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-A.log:352:`--memory .odoo-agents/JOURNAL.md=<proposition-journal>`, `--output <nouveau-bundle>`
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-A.log:633:python3 ~/.odoo19-agents/scripts/odoo_flow.py prepare-reception FLOW.json \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-A.log:639:  --memory .odoo-agents/PROJECT.md=changelog/RELEASE/reception/PROJECT-propose.md \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-A.log:640:  --memory .odoo-agents/JOURNAL.md=changelog/RELEASE/reception/JOURNAL-propose.md \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-A.log:794:   déjà publié. Appeler `prepare-reception` avec une sortie neuve et les **mêmes**
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-A.log:995:                    {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-A.log:1010:  {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-A.log:1022:    prepare-reception   figer le dossier de réception et la mémoire proposée
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-A.log:1049:                    [--acceptance ACCEPTANCE] [--memory MEMORY]
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-A.log:1066:  --memory MEMORY
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:270:avec `odoo_flow.py prepare-reception <flow>` :
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:274:`--memory .odoo-agents/PROJECT.md=<proposition-project>` et
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:275:`--memory .odoo-agents/JOURNAL.md=<proposition-journal>`, `--output <nouveau-bundle>`
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:533:python3 ~/.odoo19-agents/scripts/odoo_flow.py prepare-reception FLOW.json \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:539:  --memory .odoo-agents/PROJECT.md=changelog/RELEASE/reception/PROJECT-propose.md \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:540:  --memory .odoo-agents/JOURNAL.md=changelog/RELEASE/reception/JOURNAL-propose.md \
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:694:   déjà publié. Appeler `prepare-reception` avec une sortie neuve et les **mêmes**
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:832:  --memory changelog/RELEASE/consolidation-T01.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:1163:                    {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:1178:  {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:1190:    prepare-reception   figer le dossier de réception et la mémoire proposée
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:1669:                    [--acceptance ACCEPTANCE] [--memory MEMORY]
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:1686:  --memory MEMORY
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:1691:+ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_flow.py prepare-reception .odoo-agents/flows/plan-a-da0e018e.json --source changelog/recovery/demande-A.md --spec changelog/recovery/spec.md --evidence changelog/recovery/initial/documentary-proof.json --scope documentary --memory .odoo-agents/PROJECT.md=changelog/recovery/resume/PROJECT-propose.md --memory .odoo-agents/JOURNAL.md=changelog/recovery/resume/JOURNAL-propose.md --output changelog/recovery/resume/bundle.json --owner codex-r02-orchestrateur
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:1887:+ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py finish changelog/recovery --task A --proof changelog/recovery/initial/documentary-proof.json --acceptance changelog/recovery/resume/acceptance-A.md --memory changelog/recovery/resume/consolidation-A.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R02/execution.log:1931:+ python3 /tmp/odoo-recovery-20260909/candidate/scripts/odoo_plan.py finish changelog/recovery --task A --proof changelog/recovery/initial/documentary-proof.json --acceptance changelog/recovery/resume/acceptance-A.md --memory changelog/recovery/resume/consolidation-A.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/reference-R01/execution.log:52:avec `odoo_flow.py prepare-reception <flow>` :
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/reference-R01/execution.log:56:`--memory .odoo-agents/PROJECT.md=<proposition-project>` et
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/reference-R01/execution.log:57:`--memory .odoo-agents/JOURNAL.md=<proposition-journal>`, `--output <nouveau-bundle>`
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/reference-R01/execution.log:178:                    {validate,analyze,render,start,ready,status,complete,bind-criteria,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/reference-R01/execution.log:193:  {validate,analyze,render,start,ready,status,complete,bind-criteria,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/reference-R01/execution.log:202:    prepare-reception   figer le dossier de réception et la mémoire proposée
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/reference-R01/execution.log:229:$ python3 /tmp/odoo-recovery-20260909/reference/scripts/odoo_flow.py prepare-reception /tmp/odoo-recovery-20260909/reference-R01/project/.odoo-agents/flows/recovery-a.json --source changelog/recovery/demande-A.md --source changelog/recovery/demande-B.md --spec changelog/recovery/spec.md --evidence changelog/recovery/initial/documentary-proof.json --memory .odoo-agents/PROJECT.md=changelog/recovery/initial/PROJECT-propose.md --memory .odoo-agents/JOURNAL.md=changelog/recovery/initial/JOURNAL-propose.md --scope documentary --output changelog/recovery/reception-retry.json --owner codex-reprise-reference
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/audit.md:26:**États et récit.** Le log expose `claim journal_task`, refus effectif de publication, `complete ... retry`, `claim reception_recovery_gate`, `prepare-reception`, réception neuve, publication puis complétions et `plan finish`. Le flow A est terminé sans claim ; A est `validated`, C `pending · PRÊT`, sans tentative C. Le premier finish prématuré et la première preuve documentaire échouée sont conservés ; le récit distingue leur correction du travail Odoo. L'explication de cette preuve échouée est exacte : première commande attendait `bytes([92,110])`, deuxième `bytes([10])`, fichier réel terminé par `0a`. Une suspicion émise pendant l'audit provenait de mon interprétation erronée d'une sortie JSON échappée ; elle est retirée et ne constitue pas un défaut du cas.
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design-review.md:11:- empêche `prepare-reception` avec `préparation impossible après réception QA` ;
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/design-review.md:24:6. Après preuve sur plans, retirer l'interdiction `state.get('plan_task')` de prepare-reception. Les réservations de périmètre du plan persistent pendant la reprise du même flow ; les autres tâches indépendantes peuvent continuer hors verrou de mémoire.
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-B.log:11:Available commands: validate analyze render start ready status complete bind-criteria publish-memory upgrade-recovery prepare-reception qa-report claim release migrate. Exit 0. Full help repeated below for complete transcript.
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-B.log:17:                    {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-B.log:32:  {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/recovery-2026-09-09/evidence/candidate-R01-v2/writer-B.log:44:    prepare-reception   figer le dossier de réception et la mémoire proposée
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/native-2026-09-09/evidence/plan-edges-after.log:40:$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T01 --proof changelog/R01/T01.json --acceptance changelog/R01/T01-acceptance.md --memory changelog/R01/T01-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/native-2026-09-09/evidence/plan-edges-after.log:47:$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T02 --proof changelog/R01/T02.json --acceptance changelog/R01/T02-acceptance.md --memory changelog/R01/T02-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/native-2026-09-09/evidence/plan-edges-after.log:57:$ /usr/bin/python3 /home/blegoff/odoo-agents-native-lab/scripts/odoo_plan.py finish /tmp/forward-release-plan-auvQFI/final-edges/project/changelog/R01 --task T03 --proof changelog/R01/T03.json --acceptance changelog/R01/T03-acceptance.md --memory changelog/R01/T03-memory.md
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/qualification-2026-09-09/evidence/rights/run-1/runner.py:61:                '--security-opt=no-new-privileges', '--memory=2g', '--cpus=2', '--pids-limit=256',
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/qualification-2026-09-09/evidence/rights/run-1/runner.py:77:                 '-e', 'POSTGRES_USER=odoo', '-e', 'POSTGRES_PASSWORD=odoo', '--memory=512m', 'postgres:16'], 'postgres-start.log')
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/qualification-2026-09-09/evidence/rights/run-2/runner.py:61:                '--security-opt=no-new-privileges', '--memory=2g', '--cpus=2', '--pids-limit=256',
+/tmp/odoo-ordered-recovery-20260909/reference/docs/quality-lab/qualification-2026-09-09/evidence/rights/run-2/runner.py:77:                 '-e', 'POSTGRES_USER=odoo', '-e', 'POSTGRES_PASSWORD=odoo', '--memory=512m', 'postgres:16'], 'postgres-start.log')
+
+exit=0
+SCOPE NOTE: previous rg over reference/docs unintentionally returned prior quality-lab lines. No use made of those case outputs; subsequent reference reads restricted to public API documentation and scripts.
+$ ['sed', '-n', '1,115p', '/tmp/odoo-ordered-recovery-20260909/reference/docs/TASK_RECEPTION.md']
+# Réception de la fidélité d’une tâche
+
+Le garde optionnel relie une demande originale et ses décisions, la spécification,
+les preuves et **deux fichiers de mémoire proposés**. Il contrôle leur intégrité,
+l’existence des citations et une déclaration positive de réception indépendante.
+Il ne juge pas le sens des textes, ne prouve pas l’identité du relecteur et ne
+remplace ni la couverture des critères ni la QA technique. Son périmètre est
+coopératif ; l’édition directe du flow n’est pas une frontière de sécurité.
+
+## Périmètre et reprise
+
+Le garde est disponible pour les tâches directes et celles d'un plan dont le
+snapshot possède la porte `reception_recovery_gate`. Le plan conserve sa
+réservation pendant la reprise ; sa réception finale reste obligatoire. Les
+anciens snapshots exigent une migration explicite, décrite plus bas.
+
+## Préparer avant la réception QA
+
+L’orchestrateur rédige des fichiers neufs contenant le **contenu complet futur**
+de `.odoo-agents/PROJECT.md` et `.odoo-agents/JOURNAL.md`, en conservant les éléments
+antérieurs pertinents. Il conserve les cibles actuelles jusqu’au `pass` de la
+jointure. Même sans changement de PROJECT, fournir une copie identique et en
+motiver l’absence de modification lors de la réception.
+
+```bash
+python3 ~/.odoo19-agents/scripts/odoo_flow.py prepare-reception FLOW.json \
+  --source changelog/RELEASE/demande.md \
+  --source decisions/decision.md \
+  --spec changelog/RELEASE/revue_fonctionnelle.md \
+  --evidence changelog/RELEASE/qa-runtime.md \
+  --evidence changelog/RELEASE/coverage.json \
+  --memory .odoo-agents/PROJECT.md=changelog/RELEASE/reception/PROJECT-propose.md \
+  --memory .odoo-agents/JOURNAL.md=changelog/RELEASE/reception/JOURNAL-propose.md \
+  --scope mon_module \
+  --output changelog/RELEASE/reception/bundle-1.json \
+  --owner codex-orchestrateur
+```
+
+Les chemins de cette commande sont relatifs au **projet du flow** ou absolus
+à l’intérieur de celui-ci. Les sources, la spec, les preuves et les drafts doivent
+être des fichiers non vides. La sortie est neuve et distincte des cibles mémoire ;
+les deux drafts sont distincts des sources, des cibles et l’un de l’autre. Les
+cibles canoniques ne peuvent pas être des liens redirigeant ailleurs. Le périmètre
+de code est facultatif, mais doit être indiqué quand du code est contrôlé ; il
+exclut les documents et les sorties du dossier.
+
+La préparation se fait sous verrou du flow, actif et sans revendication d’un
+autre propriétaire, avant tout `pass` d’une des trois jointures QA de tâche,
+ou pendant la revendication de `reception_recovery_gate` par cet owner.
+Le dossier `odoo-task-reception-bundle/1` contient les chemins relatifs et hashes
+SHA-256 des groupes `source`, `spec`, `evidence`, les deux couples cible/draft avec
+le hash antérieur de la cible (`null` si absente), une copie de chaque base
+existante dans un fichier neuf adjacent au bundle, et l’empreinte du code. Le flow
+épingle le chemin et le hash du dossier dans `task_reception`.
+
+Si un contrat QA est lié, le chemin et le hash de la spécification du dossier
+doivent être exactement ceux de ce contrat. Ce lien est vérifié à la préparation
+et de nouveau à la réception, y compris si `bind-criteria` est intervenu après
+la préparation.
+
+Une correction permet une nouvelle préparation dans **un autre fichier** avant
+le pass. Le flow conserve les anciens pointeurs dans `task_reception_history` et
+les dossiers précédents restent sur disque. Cette opération ne remplace pas le
+contrat QA lié par `bind-criteria` : une spécification révisée exige toujours le
+traitement explicite de ce contrat.
+
+## Fragment du relecteur
+
+Un contexte indépendant confronte les trois axes ; le relecteur écrit uniquement
+son fragment, sans modifier le dossier. Pour obtenir un squelette JSON :
+
+```bash
+python3 ~/.odoo19-agents/scripts/odoo_reception.py draft /chemin/projet/changelog/RELEASE/reception/bundle-1.json \
+  --reviewer codex-tester-reception > /chemin/projet/changelog/RELEASE/reception/review-1.json
+```
+
+Le squelette est volontairement `blocked`, avec trois axes `fail` non renseignés.
+Structure à compléter :
+
+```json
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "SHA256_DU_FICHIER_BUNDLE",
+  "reviewer": "codex-tester-reception",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {"path": "demande.md", "quote": "Passage exact de la demande."},
+        {"path": "revue.md", "quote": "Passage exact de la revue."}
+      ],
+      "explanation": "Constat de correspondance dans les deux sens."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {"path": "revue.md", "quote": "Passage exact du critère."},
+        {"path": "runtime.log", "quote": "Passage exact de la preuve."}
+      ],
+      "explanation": "Ce passage démontre les conditions du critère."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {"path": "demande.md", "quote": "Passage exact de la décision métier."},
+        {"path": "PROJECT-propose.md", "quote": "Phrase proposée dans la mémoire."},
+        {"path": "JOURNAL-propose.md", "quote": "Constat proposé dans le journal."}
+      ],
+      "explanation": "Portée et exceptions conservées ; modifications de mémoire confrontées aux sources."
+    }
+  }
+}
+```
+
+exit=0
+$ ['sed', '-n', '864,920p', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py']
+def prepare_reception(state_path, graph_path, sources, spec, evidence, memories, scopes, output, owner):
+    from odoo_coverage import GATES, digest
+    from odoo_reception import prepare, verify_contract
+    with exclusive_lock(state_path):
+        state, graph = load_state(state_path, graph_path)
+        if state.get('plan_task') and not recovery_available(graph):
+            raise FlowError('tâches planifiées : graphe avec reprise mémoire requis')
+        if state['status'] != 'active' or any(c['owner'] != owner for c in state.get('claims', {}).values()):
+            raise FlowError('réception impossible : flow terminé ou revendications d’un autre propriétaire')
+        recovering = any(e['node'] in GATES and e['outcome'] == 'pass' for e in state['events'])
+        if recovering and (not recovery_available(graph) or
+                           state.get('claims', {}).get(RECOVERY_GATE, {}).get('owner') != owner):
+            raise FlowError('préparation après QA : revendiquez reception_recovery_gate')
+        try:
+            root = Path(state['project']).resolve()
+            bundle = prepare(root, sources, spec, evidence, memories, scopes, owner)
+            verify_contract(bundle, state.get('qa_contract'))
+            if recovering:
+                _, previous = accepted_bundle(state)
+                if any(bundle[key] != previous[key] for key in ('groups', 'scopes', 'code')):
+                    raise ValueError('reprise mémoire : sources, spécification, preuves et code doivent rester identiques')
+            target = (root / output).resolve()
+            if not target.is_relative_to(root) or target.exists() or target.is_symlink():
+                raise ValueError('nouveau fichier de dossier requis dans le projet')
+            if str(target.relative_to(root)) in {row['target'] for row in bundle['memory']}:
+                raise ValueError('sortie distincte des cibles mémoire requise')
+            if any(target == (root / scope).resolve() or target.is_relative_to((root / scope).resolve()) for scope in scopes):
+                raise ValueError('dossier hors périmètre de code requis')
+            bases = []
+            for row in bundle['memory']:
+                if row['before_sha256'] is not None:
+                    base = target.with_name(target.name + '.' + Path(row['target']).name + '.base')
+                    if base.exists() or base.is_symlink():
+                        raise ValueError('nouveau fichier de base mémoire requis : ' + str(base))
+                    content = (root / row['target']).read_bytes()
+                    if digest(content) != row['before_sha256']:
+                        raise ValueError('mémoire changée pendant préparation : ' + row['target'])
+                    bases.append((row, base, content))
+            target.parent.mkdir(parents=True, exist_ok=True)
+            for row, base, content in bases:
+                with base.open('xb') as stream:
+                    stream.write(content)
+                row['base'] = {'path': str(base.relative_to(root)), 'sha256': digest(content)}
+            with target.open('x', encoding='utf-8') as stream:
+                json.dump(bundle, stream, ensure_ascii=False, indent=2)
+                stream.write('\n')
+            receipt = {'path': str(target.relative_to(root)), 'sha256': digest(target.read_bytes()),
+                       'owner': owner, 'at': now()}
+            if state.get('task_reception'):
+                state.setdefault('task_reception_history', []).append(state['task_reception'])
+            state['task_reception'] = receipt
+            write_state(state_path, state)
+        except (ValueError, KeyError, TypeError, OSError) as exc:
+            raise FlowError(f'préparation de réception refusée : {exc}') from exc
+    return receipt
+
+
+
+exit=0
+CREATE directory /tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/author-A
+$ ['python3', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_evidence.py', 'run', '--project', '/tmp/odoo-ordered-recovery-20260909/O03/project', '--scope', 'documentary/A', '--output', '/tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/author-A/documentary-proof.json', '--', 'python3', '-c', "from pathlib import Path; p=Path('documentary/A/reference.txt'); actual=p.read_text(); assert actual == 'reference_dossier=visible\\n', repr(actual); print('PASS documentary/A/reference.txt: reference_dossier=visible; contrôle documentaire de visibilité; aucun tri automatique introduit')"]
+passed
+
+exit=0
+$ ['cat', '/tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/author-A/documentary-proof.json']
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/odoo-ordered-recovery-20260909/O03/project",
+  "scopes": [
+    "documentary/A"
+  ],
+  "sources": {
+    "documentary/A/reference.txt": {
+      "sha256": "8f4df46a672d115ed0e5ec0545980347766b58db61e60a433b74ecbc5e61fa96",
+      "mode": 436
+    }
+  },
+  "command": [
+    "python3",
+    "-c",
+    "from pathlib import Path; p=Path('documentary/A/reference.txt'); actual=p.read_text(); assert actual == 'reference_dossier=visible\\n', repr(actual); print('PASS documentary/A/reference.txt: reference_dossier=visible; contrôle documentaire de visibilité; aucun tri automatique introduit')"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 0.016,
+  "log": {
+    "path": "/tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/author-A/documentary-proof.log",
+    "sha256": "e659a10f9eca0662fa80c553f2c462e5e3637a685918a2392020daa325819d5a"
+  }
+}
+
+exit=0
+WRITE NEW /tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/author-A/PROJECT-propose.md
+# Projet documentaire
+Le tableau conserve les décisions explicites.
+
+## Décision A — référence dossier
+La référence dossier est visible dans la fiche interne. Ne pas ajouter de tri automatique.
+Le contrôle documentaire exécuté sur documentary/A/reference.txt confirme reference_dossier=visible (exit 0).
+Preuve : changelog/ordered/author-A/documentary-proof.json ; aucun contrôle Odoo n’a été exécuté.
+WRITE NEW /tmp/odoo-ordered-recovery-20260909/O03/project/changelog/ordered/author-A/JOURNAL-propose.md
+# Journal documentaire
+Initialisation du dossier.
+
+## 2026-09-09 — Demande A
+Décision : afficher la référence dossier dans la fiche interne, sans ajouter de tri automatique.
+Contrôle documentaire réel exécuté via odoo_evidence.py, limité à documentary/A/reference.txt : reference_dossier=visible, résultat passed, exit 0.
+Preuve : changelog/ordered/author-A/documentary-proof.json.
+Propositions de mémoire préparées pour réception indépendante ; ce constat ne vaut ni pass du flow ni publication.
+$ ['python3', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py', 'status', '/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/ordered-a.json']
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O03/project
+Progression 0 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ module_task_gate
+    ORCHESTRATEUR
+    Fusionner les preuves QA normales et rendre un verdict unique.
+    Sorties: blocked, pass, retry · Preuve: qa.md et critères d'acceptation
+
+exit=0
+$ ['python3', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py', 'claim', '/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/ordered-a.json', 'module_task_gate', '--owner', 'codex-o03-author-A-orchestrateur']
+▶ module_task_gate · ORCHESTRATEUR
+  Démarré par codex-o03-author-A-orchestrateur
+  Fusionner les preuves QA normales et rendre un verdict unique.
+
+exit=0
+$ ['python3', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py', 'prepare-reception', '/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/ordered-a.json', '--source', 'changelog/ordered/demande-A.md', '--spec', 'changelog/ordered/spec-A.md', '--evidence', 'changelog/ordered/author-A/documentary-proof.json', '--evidence', 'changelog/ordered/author-A/documentary-proof.log', '--memory', '.odoo-agents/PROJECT.md=changelog/ordered/author-A/PROJECT-propose.md', '--memory', '.odoo-agents/JOURNAL.md=changelog/ordered/author-A/JOURNAL-propose.md', '--scope', 'documentary/A', '--output', 'changelog/ordered/author-A/bundle-A.json', '--owner', 'codex-o03-author-A-orchestrateur']
+Dossier de réception : changelog/ordered/author-A/bundle-A.json · 14ffd9c0caeb
+Réception indépendante positive requise avant pass ; publier ensuite les drafts exacts.
+
+exit=0
+$ ['python3', '/tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py', 'status', '/tmp/odoo-ordered-recovery-20260909/O03/project/.odoo-agents/flows/ordered-a.json']
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       EN COURS
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O03/project
+Progression 0 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  EN COURS
+  ▶ module_task_gate
+    ORCHESTRATEUR · propriétaire: codex-o03-author-A-orchestrateur
+    Fusionner les preuves QA normales et rendre un verdict unique.
+
+exit=0
+STOP before pass as instructed. No reviewer receipt authored; no canonical memory publication. Owner=codex-o03-author-A-orchestrateur

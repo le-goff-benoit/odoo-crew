@@ -1,0 +1,20 @@
+{
+  "command": [
+    "docker",
+    "exec",
+    "ordered-recovery-d015b7aa5705-pg",
+    "psql",
+    "-U",
+    "odoo",
+    "-d",
+    "ordered_seed",
+    "-X",
+    "-v",
+    "ON_ERROR_STOP=1",
+    "-c",
+    "SELECT current_database() AS database, id, name, state, quantity, unit_price, amount FROM lab_qualification ORDER BY id; SELECT conname, pg_get_constraintdef(oid) FROM pg_constraint WHERE conrelid='lab_qualification'::regclass ORDER BY conname;"
+  ],
+  "returncode": 0,
+  "seconds": 0.152,
+  "log": "/tmp/odoo-ordered-recovery-20260909/integration/evidence/sql-inventory-ordered_seed-20260909-183800-5ed6e7cc.log"
+}

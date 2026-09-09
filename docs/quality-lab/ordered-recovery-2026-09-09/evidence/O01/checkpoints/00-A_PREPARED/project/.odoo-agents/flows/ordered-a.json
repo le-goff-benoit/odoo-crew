@@ -1,0 +1,1700 @@
+{
+  "claims": {
+    "module_task_gate": {
+      "at": "2026-09-09T16:38:16+00:00",
+      "locks": [
+        {
+          "mode": "write",
+          "resource": "release_artifacts"
+        }
+      ],
+      "node": "module_task_gate",
+      "owner": "codex-author-a",
+      "state": "/tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json"
+    }
+  },
+  "created_at": "2026-09-09T16:36:54+00:00",
+  "events": [],
+  "graph": "/tmp/odoo-ordered-recovery-20260909/reference/workflows/odoo-workflow.json",
+  "graph_sha256": "bdf9ff2771a08189ce7559d869dfe9f370503086e1b493077a1bc0c5d879cef9",
+  "graph_snapshot": {
+    "description": "Graphe de traitement d'une demande Odoo, de la qualification à la clôture de release.",
+    "edges": [
+      {
+        "from": "briefing",
+        "id": "brief-development",
+        "outcome": "development",
+        "to": "functional_review"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-development-complex-standard",
+        "outcome": "development_complex",
+        "to": "analyst_standard_lane"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-development-complex-project",
+        "outcome": "development_complex",
+        "to": "analyst_project_lane"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-development-complex-data",
+        "outcome": "development_complex",
+        "to": "analyst_data_lane"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-functional",
+        "outcome": "functional",
+        "to": "functional_review"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-support",
+        "outcome": "support",
+        "to": "support_diagnosis"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-close",
+        "outcome": "close",
+        "to": "close_precheck"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-validation",
+        "outcome": "validation",
+        "to": "standalone_validation"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-environment",
+        "outcome": "environment",
+        "to": "environment_action"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-feedback",
+        "outcome": "feedback",
+        "to": "feedback_action"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-documentation",
+        "outcome": "documentation",
+        "to": "documentation_action"
+      },
+      {
+        "from": "briefing",
+        "id": "brief-technical",
+        "outcome": "technical",
+        "to": "technical_answer"
+      },
+      {
+        "from": "analyst_standard_lane",
+        "id": "lane-standard-synthesis",
+        "outcome": "done",
+        "to": "functional_synthesis"
+      },
+      {
+        "from": "analyst_project_lane",
+        "id": "lane-project-synthesis",
+        "outcome": "done",
+        "to": "functional_synthesis"
+      },
+      {
+        "from": "analyst_data_lane",
+        "id": "lane-data-synthesis",
+        "outcome": "done",
+        "to": "functional_synthesis"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-blocked",
+        "outcome": "blocked",
+        "to": "human_scope_gate"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-contradiction",
+        "outcome": "contradiction",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-answer",
+        "outcome": "answer",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-module-high-risk",
+        "outcome": "module_high_risk",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "functional_review",
+        "id": "review-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-blocked",
+        "outcome": "blocked",
+        "to": "human_high_risk_scope_gate"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-contradiction",
+        "outcome": "contradiction",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-answer",
+        "outcome": "answer",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-module",
+        "outcome": "module",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "functional_review_high_risk",
+        "id": "review-high-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-blocked",
+        "outcome": "blocked",
+        "to": "human_scope_gate"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-contradiction",
+        "outcome": "contradiction",
+        "to": "journal_task"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-module-high-risk",
+        "outcome": "module_high_risk",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "functional_synthesis",
+        "id": "synthesis-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-module-high-risk",
+        "outcome": "module_high_risk",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-review",
+        "outcome": "review",
+        "to": "functional_review"
+      },
+      {
+        "from": "human_scope_gate",
+        "id": "scope-cancel",
+        "outcome": "cancel",
+        "to": "journal_cancelled"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-module",
+        "outcome": "module",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-exists",
+        "outcome": "exists",
+        "to": "configuration_record"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-review",
+        "outcome": "review",
+        "to": "functional_review_high_risk"
+      },
+      {
+        "from": "human_high_risk_scope_gate",
+        "id": "scope-high-cancel",
+        "outcome": "cancel",
+        "to": "journal_cancelled"
+      },
+      {
+        "from": "configuration_record",
+        "id": "configuration-journal",
+        "outcome": "done",
+        "to": "journal_task"
+      },
+      {
+        "from": "module_implementation",
+        "id": "module-static",
+        "outcome": "done",
+        "to": "module_static_qa"
+      },
+      {
+        "from": "module_implementation",
+        "id": "module-runtime",
+        "outcome": "done",
+        "to": "module_runtime_qa"
+      },
+      {
+        "from": "module_implementation_high_risk",
+        "id": "module-high-static",
+        "outcome": "done",
+        "to": "module_high_static_qa"
+      },
+      {
+        "from": "module_implementation_high_risk",
+        "id": "module-high-runtime",
+        "outcome": "done",
+        "to": "module_high_runtime_qa"
+      },
+      {
+        "from": "module_implementation_high_risk",
+        "id": "module-high-client",
+        "outcome": "done",
+        "to": "module_client_copy_qa"
+      },
+      {
+        "from": "module_implementation_high_risk",
+        "id": "module-high-blocked",
+        "outcome": "blocked",
+        "to": "human_high_risk_scope_gate"
+      },
+      {
+        "from": "module_implementation",
+        "id": "module-blocked",
+        "outcome": "blocked",
+        "to": "human_implementation_gate"
+      },
+      {
+        "from": "human_implementation_gate",
+        "id": "implementation-gate-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "human_implementation_gate",
+        "id": "implementation-gate-studio",
+        "outcome": "studio",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "human_implementation_gate",
+        "id": "implementation-gate-cancel",
+        "outcome": "cancel",
+        "to": "journal_cancelled"
+      },
+      {
+        "from": "module_static_qa",
+        "id": "module-static-gate",
+        "outcome": "done",
+        "to": "module_task_gate"
+      },
+      {
+        "from": "module_runtime_qa",
+        "id": "module-runtime-gate",
+        "outcome": "done",
+        "to": "module_task_gate"
+      },
+      {
+        "from": "module_task_gate",
+        "id": "module-gate-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "module_task_gate",
+        "id": "module-gate-retry",
+        "outcome": "retry",
+        "to": "module_implementation"
+      },
+      {
+        "from": "module_task_gate",
+        "id": "module-gate-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "module_high_static_qa",
+        "id": "module-high-static-gate",
+        "outcome": "done",
+        "to": "module_high_gate"
+      },
+      {
+        "from": "module_high_runtime_qa",
+        "id": "module-high-runtime-gate",
+        "outcome": "done",
+        "to": "module_high_gate"
+      },
+      {
+        "from": "module_client_copy_qa",
+        "id": "module-client-gate",
+        "outcome": "done",
+        "to": "module_high_gate"
+      },
+      {
+        "from": "module_high_gate",
+        "id": "module-high-gate-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "module_high_gate",
+        "id": "module-high-gate-retry",
+        "outcome": "retry",
+        "to": "module_implementation_high_risk"
+      },
+      {
+        "from": "module_high_gate",
+        "id": "module-high-gate-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "studio_implementation",
+        "id": "studio-diff",
+        "outcome": "done",
+        "to": "studio_diff_qa"
+      },
+      {
+        "from": "studio_implementation",
+        "id": "studio-scenarios",
+        "outcome": "done",
+        "to": "studio_scenario_qa"
+      },
+      {
+        "from": "studio_implementation",
+        "id": "studio-blocked",
+        "outcome": "blocked",
+        "to": "human_high_risk_scope_gate"
+      },
+      {
+        "from": "studio_diff_qa",
+        "id": "studio-diff-gate",
+        "outcome": "done",
+        "to": "studio_task_gate"
+      },
+      {
+        "from": "studio_scenario_qa",
+        "id": "studio-scenario-gate",
+        "outcome": "done",
+        "to": "studio_task_gate"
+      },
+      {
+        "from": "studio_task_gate",
+        "id": "studio-gate-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "studio_task_gate",
+        "id": "studio-gate-retry",
+        "outcome": "retry",
+        "to": "studio_implementation"
+      },
+      {
+        "from": "studio_task_gate",
+        "id": "studio-gate-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-usage",
+        "outcome": "usage",
+        "to": "journal_task"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-configuration",
+        "outcome": "configuration",
+        "to": "journal_task"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-data",
+        "outcome": "data",
+        "to": "data_repair_copy"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-bug",
+        "outcome": "bug",
+        "to": "bug_handoff_gate"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-bug-sensitive",
+        "outcome": "bug_sensitive",
+        "to": "bug_sensitive_handoff_gate"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-evolution",
+        "outcome": "evolution",
+        "to": "functional_review"
+      },
+      {
+        "from": "support_diagnosis",
+        "id": "support-unknown",
+        "outcome": "unknown",
+        "to": "journal_task"
+      },
+      {
+        "from": "bug_handoff_gate",
+        "id": "bug-handoff-module",
+        "outcome": "module",
+        "to": "module_implementation"
+      },
+      {
+        "from": "bug_handoff_gate",
+        "id": "bug-handoff-review",
+        "outcome": "review",
+        "to": "functional_review"
+      },
+      {
+        "from": "bug_handoff_gate",
+        "id": "bug-handoff-review-high",
+        "outcome": "review_high_risk",
+        "to": "functional_review_high_risk"
+      },
+      {
+        "from": "bug_handoff_gate",
+        "id": "bug-handoff-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "bug_sensitive_handoff_gate",
+        "id": "bug-sensitive-handoff-review",
+        "outcome": "review_high_risk",
+        "to": "functional_review_high_risk"
+      },
+      {
+        "from": "bug_sensitive_handoff_gate",
+        "id": "bug-sensitive-handoff-blocked",
+        "outcome": "blocked",
+        "to": "journal_task_blocked"
+      },
+      {
+        "from": "data_repair_copy",
+        "id": "repair-proposed",
+        "outcome": "production_proposed",
+        "to": "human_production_gate"
+      },
+      {
+        "from": "data_repair_copy",
+        "id": "repair-local",
+        "outcome": "local_only",
+        "to": "journal_task"
+      },
+      {
+        "from": "data_repair_copy",
+        "id": "repair-blocked",
+        "outcome": "blocked",
+        "to": "journal_task"
+      },
+      {
+        "from": "human_production_gate",
+        "id": "production-no-write",
+        "outcome": "no_write",
+        "to": "journal_task"
+      },
+      {
+        "from": "human_production_gate",
+        "id": "production-confirmed",
+        "outcome": "write_confirmed",
+        "to": "production_write"
+      },
+      {
+        "from": "production_write",
+        "id": "production-journal",
+        "outcome": "done",
+        "to": "journal_task"
+      },
+      {
+        "from": "standalone_validation",
+        "id": "validation-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "standalone_validation",
+        "id": "validation-fail",
+        "outcome": "fail",
+        "to": "journal_task"
+      },
+      {
+        "from": "environment_action",
+        "id": "environment-journal",
+        "outcome": "done",
+        "to": "journal_task"
+      },
+      {
+        "from": "feedback_action",
+        "id": "feedback-finished",
+        "outcome": "done",
+        "to": "feedback_done"
+      },
+      {
+        "from": "documentation_action",
+        "id": "documentation-journal",
+        "outcome": "done",
+        "to": "journal_task"
+      },
+      {
+        "from": "close_precheck",
+        "id": "close-green",
+        "outcome": "green",
+        "to": "release_technical_qa"
+      },
+      {
+        "from": "close_precheck",
+        "id": "close-blocked",
+        "outcome": "blocked",
+        "to": "release_blocked_journal"
+      },
+      {
+        "from": "release_technical_qa",
+        "id": "release-qa-green",
+        "outcome": "green",
+        "to": "browser_qa"
+      },
+      {
+        "from": "release_technical_qa",
+        "id": "release-qa-red",
+        "outcome": "red",
+        "to": "release_repair"
+      },
+      {
+        "from": "release_technical_qa",
+        "id": "release-qa-exhausted",
+        "outcome": "exhausted",
+        "to": "release_blocked_journal"
+      },
+      {
+        "from": "release_repair",
+        "id": "release-repair-fixed",
+        "outcome": "fixed",
+        "to": "release_technical_qa"
+      },
+      {
+        "from": "release_repair",
+        "id": "release-repair-failed",
+        "outcome": "failed",
+        "to": "release_blocked_journal"
+      },
+      {
+        "from": "browser_qa",
+        "id": "browser-green",
+        "outcome": "green",
+        "to": "client_docs"
+      },
+      {
+        "from": "browser_qa",
+        "id": "browser-red",
+        "outcome": "red",
+        "to": "release_blocked_journal"
+      },
+      {
+        "from": "client_docs",
+        "id": "docs-finalize",
+        "outcome": "done",
+        "to": "release_finalize"
+      },
+      {
+        "from": "release_finalize",
+        "id": "finalize-journal",
+        "outcome": "done",
+        "to": "release_journal"
+      },
+      {
+        "from": "release_journal",
+        "id": "release-journal-closed",
+        "outcome": "done",
+        "to": "release_closed"
+      },
+      {
+        "from": "journal_task",
+        "id": "journal-memory-retry",
+        "outcome": "retry",
+        "to": "reception_recovery_gate"
+      },
+      {
+        "from": "journal_task",
+        "id": "journal-memory-blocked",
+        "outcome": "blocked",
+        "to": "memory_task_blocked"
+      },
+      {
+        "from": "reception_recovery_gate",
+        "id": "reception-memory-pass",
+        "outcome": "pass",
+        "to": "journal_task"
+      },
+      {
+        "from": "reception_recovery_gate",
+        "id": "reception-memory-blocked",
+        "outcome": "blocked",
+        "to": "memory_task_blocked"
+      },
+      {
+        "from": "journal_task",
+        "id": "journal-task-done",
+        "outcome": "done",
+        "to": "task_done"
+      },
+      {
+        "from": "journal_task_blocked",
+        "id": "journal-task-blocked",
+        "outcome": "done",
+        "to": "task_blocked"
+      },
+      {
+        "from": "journal_cancelled",
+        "id": "journal-cancelled",
+        "outcome": "done",
+        "to": "cancelled"
+      },
+      {
+        "from": "release_blocked_journal",
+        "id": "journal-release-blocked",
+        "outcome": "done",
+        "to": "release_blocked"
+      }
+    ],
+    "name": "odoo-delivery",
+    "nodes": {
+      "analyst_data_lane": {
+        "description": "Voie parallèle en lecture seule : inspecter la configuration et les données de la copie client.",
+        "evidence": [
+          "fragment données"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:data"
+          }
+        ],
+        "mode": "graph-lane",
+        "role": "odoo-analyst"
+      },
+      "analyst_project_lane": {
+        "description": "Voie parallèle en lecture seule : inspecter le custom, le projet et ses décisions.",
+        "evidence": [
+          "fragment projet"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          },
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:project"
+          }
+        ],
+        "mode": "graph-lane",
+        "role": "odoo-analyst"
+      },
+      "analyst_standard_lane": {
+        "description": "Voie parallèle en lecture seule : vérifier le standard et les sources de la série.",
+        "evidence": [
+          "fragment standard"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "odoo_sources"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:standard"
+          }
+        ],
+        "mode": "graph-lane",
+        "role": "odoo-analyst"
+      },
+      "briefing": {
+        "description": "Situer le projet, la série, la release, les modules et les données disponibles.",
+        "evidence": [
+          "sortie de odoo_briefing.py"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          }
+        ]
+      },
+      "browser_qa": {
+        "description": "Rejouer les critères utilisateur et prendre les captures finales sur la copie client.",
+        "evidence": [
+          "tests_navigateur.md et captures"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "browser"
+          },
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "mode": "release-browser",
+        "role": "odoo-tester"
+      },
+      "bug_handoff_gate": {
+        "description": "Vérifier que le diagnostic de bug porte une cause prouvée et un test rouge avant correction.",
+        "evidence": [
+          "diagnostic et test rouge"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ]
+      },
+      "bug_sensitive_handoff_gate": {
+        "description": "Vérifier le diagnostic et le test rouge d'un bug sensible avant une revue qui conserve la QA sur copie client.",
+        "evidence": [
+          "diagnostic sensible et test rouge"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ]
+      },
+      "cancelled": {
+        "description": "Intervention arrêtée après décision humaine, avec état réel consigné.",
+        "evidence": [
+          "raison de l'arrêt"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "cancelled"
+      },
+      "client_docs": {
+        "description": "Produire doc.md métier et consolidation depuis les preuves validées ; guide DOCX/PDF sur demande.",
+        "evidence": [
+          "doc.md et consolidation.md"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "release_artifacts"
+          },
+          {
+            "mode": "write",
+            "resource": "release_docs"
+          }
+        ]
+      },
+      "close_precheck": {
+        "description": "Vérifier le périmètre et préparer les versions avant la recette.",
+        "evidence": [
+          "points, modules, copie client et statut git"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          },
+          {
+            "mode": "read",
+            "resource": "release_artifacts"
+          },
+          {
+            "mode": "write",
+            "resource": "module_code"
+          }
+        ]
+      },
+      "configuration_record": {
+        "description": "Enregistrer la solution standard ou de configuration sans développer.",
+        "evidence": [
+          "demande et revue enregistrées"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ]
+      },
+      "data_repair_copy": {
+        "description": "Prouver une réparation idempotente sur la copie client, avec comptages avant et après.",
+        "evidence": [
+          "preuve de réparation sur copie"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          }
+        ],
+        "role": "odoo-support"
+      },
+      "documentation_action": {
+        "description": "Produire les livrables documentaires explicitement demandés.",
+        "evidence": [
+          "livrables documentaires"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_docs"
+          }
+        ],
+        "role": "camptocamp-docs"
+      },
+      "environment_action": {
+        "description": "Déclarer ou vérifier un environnement sans exposer de secret.",
+        "evidence": [
+          "résultat de vérification de l'instance"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_instances"
+          }
+        ],
+        "role": "odoo-env"
+      },
+      "feedback_action": {
+        "description": "Exécuter le retour d'expérience et reconstruire les profils si une leçon est promue.",
+        "evidence": [
+          "compte-rendu du retour d'expérience"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "agent_repository"
+          }
+        ],
+        "role": "odoo-feedback"
+      },
+      "feedback_done": {
+        "description": "Retour d'expérience terminé.",
+        "evidence": [
+          "référentiel validé"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "complete"
+      },
+      "functional_review": {
+        "description": "Produire la revue fonctionnelle contradictoire et choisir la voie.",
+        "evidence": [
+          "revue_fonctionnelle.md ou revue_en_cours.md"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          },
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "role": "odoo-analyst"
+      },
+      "functional_review_high_risk": {
+        "description": "Revoir un correctif sensible sans perdre l'obligation de validation sur copie client.",
+        "evidence": [
+          "revue fonctionnelle sensible"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "project_context"
+          },
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "role": "odoo-analyst"
+      },
+      "functional_synthesis": {
+        "description": "Fusionner les voies d'analyse dans une seule revue et décider de la suite.",
+        "evidence": [
+          "revue_fonctionnelle.md ou revue_en_cours.md"
+        ],
+        "executor": "orchestrator",
+        "join": "all",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ]
+      },
+      "human_high_risk_scope_gate": {
+        "description": "Attendre un arbitrage humain sans perdre l'obligation de QA sur copie client.",
+        "evidence": [
+          "décision sensible consignée dans la revue"
+        ],
+        "executor": "human",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "max_outcome_uses": {
+          "module": 2,
+          "review": 2,
+          "studio": 2
+        }
+      },
+      "human_implementation_gate": {
+        "description": "Arbitrer une limite découverte pendant l'implémentation.",
+        "evidence": [
+          "arbitrage humain consigné"
+        ],
+        "executor": "human",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "max_outcome_uses": {
+          "module": 2,
+          "studio": 2
+        }
+      },
+      "human_production_gate": {
+        "description": "Attendre la confirmation humaine explicite d'une opération précise en production.",
+        "evidence": [
+          "confirmation de l'opération précise"
+        ],
+        "executor": "human",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "production"
+          }
+        ]
+      },
+      "human_scope_gate": {
+        "description": "Attendre une décision humaine qui change le périmètre ou la voie de réalisation.",
+        "evidence": [
+          "décision consignée dans la revue"
+        ],
+        "executor": "human",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "functional_review"
+          }
+        ],
+        "max_outcome_uses": {
+          "review": 2
+        }
+      },
+      "journal_cancelled": {
+        "description": "Consigner la décision humaine et l'état réel avant l'arrêt.",
+        "evidence": [
+          "entrée JOURNAL.md avec raison de l'arrêt"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "journal_task": {
+        "description": "Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.",
+        "evidence": [
+          "entrée JOURNAL.md"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "journal_task_blocked": {
+        "description": "Consigner l'échec de QA et les anomalies restantes avant l'arrêt.",
+        "evidence": [
+          "entrée JOURNAL.md avec contrôles rouges"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "memory_task_blocked": {
+        "description": "Intervention arrêtée sur la réception ou la publication mémoire ; la QA passée reste conservée.",
+        "evidence": [
+          "motif de blocage mémoire et état de publication réel"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "blocked"
+      },
+      "module_client_copy_qa": {
+        "description": "Voie QA renforcée : vérifier immédiatement les droits, la compta, la facturation ou les données existantes sur la copie client.",
+        "evidence": [
+          "fragment QA copie client"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_client"
+          }
+        ],
+        "mode": "graph-lane-client-copy",
+        "role": "odoo-tester"
+      },
+      "module_high_gate": {
+        "description": "Fusionner les trois preuves QA renforcées et rendre un verdict unique.",
+        "evidence": [
+          "qa.md et critères d'acceptation"
+        ],
+        "executor": "orchestrator",
+        "join": "all",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "max_outcome_uses": {
+          "retry": 2
+        }
+      },
+      "module_high_runtime_qa": {
+        "description": "Voie QA renforcée : installation, mise à jour et tests ciblés.",
+        "evidence": [
+          "fragment QA d'exécution renforcée"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "qa_db_module"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_high_runtime"
+          }
+        ],
+        "mode": "graph-lane-runtime",
+        "role": "odoo-tester"
+      },
+      "module_high_static_qa": {
+        "description": "Voie QA renforcée : conformité statique et revue du diff.",
+        "evidence": [
+          "fragment QA statique renforcée"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_high_static"
+          }
+        ],
+        "mode": "graph-lane-static",
+        "role": "odoo-tester"
+      },
+      "module_implementation": {
+        "description": "Implémenter le module et ses tests dans le périmètre de la revue.",
+        "evidence": [
+          "diff du code et tests",
+          "lint ciblé"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "module_code"
+          }
+        ],
+        "role": "odoo-developer"
+      },
+      "module_implementation_high_risk": {
+        "description": "Implémenter un changement sensible dont la QA sur copie client est obligatoire.",
+        "evidence": [
+          "diff du code et tests sensibles",
+          "lint ciblé"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "module_code"
+          }
+        ],
+        "role": "odoo-developer"
+      },
+      "module_runtime_qa": {
+        "description": "Voie QA normale : installer, mettre à jour et exécuter les tests ciblés.",
+        "evidence": [
+          "fragment QA d'exécution"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "qa_db_module"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_runtime"
+          }
+        ],
+        "mode": "graph-lane-runtime",
+        "role": "odoo-tester"
+      },
+      "module_static_qa": {
+        "description": "Voie QA normale : relire le diff et exécuter le lint ciblé.",
+        "evidence": [
+          "fragment QA statique"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:qa_static"
+          }
+        ],
+        "mode": "graph-lane-static",
+        "role": "odoo-tester"
+      },
+      "module_task_gate": {
+        "description": "Fusionner les preuves QA normales et rendre un verdict unique.",
+        "evidence": [
+          "qa.md et critères d'acceptation"
+        ],
+        "executor": "orchestrator",
+        "join": "all",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "max_outcome_uses": {
+          "retry": 2
+        }
+      },
+      "production_write": {
+        "description": "Exécuter uniquement l'opération de production explicitement confirmée.",
+        "evidence": [
+          "résultat et comptage de l'opération"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "production"
+          }
+        ]
+      },
+      "reception_recovery_gate": {
+        "description": "Recevoir à nouveau les propositions mémoire depuis les bases actuelles, à contrat et preuves inchangés.",
+        "evidence": [
+          "réception indépendante renouvelée ou motif de blocage mémoire"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ],
+        "max_outcome_uses": {
+          "pass": 2
+        }
+      },
+      "release_blocked": {
+        "description": "Clôture arrêtée avec les contrôles rouges ou manquants explicitement consignés.",
+        "evidence": [
+          "réserves et contrôles rouges"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "blocked"
+      },
+      "release_blocked_journal": {
+        "description": "Consigner les contrôles rouges ou manquants avant d'arrêter la clôture.",
+        "evidence": [
+          "entrée de release dans JOURNAL.md avec réserves"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "release_closed": {
+        "description": "Release clôturée et prête pour l'action humaine suivante.",
+        "evidence": [
+          "compte-rendu de clôture"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "complete"
+      },
+      "release_finalize": {
+        "description": "Finaliser README, versions, périmètre et proposition de commit, puis retirer le marqueur d'ouverture.",
+        "evidence": [
+          "README final et release fermée"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ]
+      },
+      "release_journal": {
+        "description": "Capitaliser ce que la recette de release a révélé.",
+        "evidence": [
+          "entrée de release dans JOURNAL.md"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "project_memory"
+          }
+        ]
+      },
+      "release_repair": {
+        "description": "Corriger une anomalie bloquante de recette dans le périmètre de la release.",
+        "evidence": [
+          "correction et tests ciblés"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "module_code"
+          }
+        ],
+        "max_outcome_uses": {
+          "fixed": 2
+        },
+        "role": "odoo-developer"
+      },
+      "release_technical_qa": {
+        "description": "Exécuter la recette complète sur l'état exact à livrer, module par module.",
+        "evidence": [
+          "recette.md"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "qa_stack"
+          },
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "max_outcome_uses": {
+          "red": 2
+        },
+        "mode": "release",
+        "role": "odoo-tester"
+      },
+      "standalone_validation": {
+        "description": "Valider un module seul en mode QA de release.",
+        "evidence": [
+          "verdict de validation"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "qa_db_module"
+          }
+        ],
+        "role": "odoo-tester"
+      },
+      "studio_diff_qa": {
+        "description": "Voie QA Studio : vérifier que le pack et la copie ne divergent pas.",
+        "evidence": [
+          "fragment diff Studio"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "read",
+            "resource": "studio_pack"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:studio_diff"
+          }
+        ],
+        "mode": "graph-lane-studio-diff",
+        "role": "odoo-tester"
+      },
+      "studio_implementation": {
+        "description": "Construire la configuration Studio et son pack versionné sur la copie client.",
+        "evidence": [
+          "pack Studio et scénarios RPC"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "studio_pack"
+          }
+        ],
+        "role": "odoo-studio"
+      },
+      "studio_scenario_qa": {
+        "description": "Voie QA Studio : jouer les scénarios RPC et vérifier l'écran concerné.",
+        "evidence": [
+          "fragment scénarios Studio"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "browser"
+          },
+          {
+            "mode": "write",
+            "resource": "flow_artifact:{run}:studio_runtime"
+          }
+        ],
+        "mode": "graph-lane-studio-runtime",
+        "role": "odoo-tester"
+      },
+      "studio_task_gate": {
+        "description": "Fusionner les preuves Studio et rendre un verdict unique.",
+        "evidence": [
+          "qa.md et critères d'acceptation"
+        ],
+        "executor": "orchestrator",
+        "join": "all",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "release_artifacts"
+          }
+        ],
+        "max_outcome_uses": {
+          "retry": 2
+        }
+      },
+      "support_diagnosis": {
+        "description": "Reproduire, prouver la cause, classer et préparer la suite du ticket.",
+        "evidence": [
+          "diagnostic de support"
+        ],
+        "executor": "agent",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "write",
+            "resource": "module_code"
+          },
+          {
+            "mode": "write",
+            "resource": "client_copy"
+          },
+          {
+            "mode": "write",
+            "resource": "support_artifact"
+          }
+        ],
+        "role": "odoo-support"
+      },
+      "task_blocked": {
+        "description": "Intervention arrêtée avec une QA encore rouge après deux reprises, état réel consigné.",
+        "evidence": [
+          "anomalies restantes et contrôles rouges"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "blocked"
+      },
+      "task_done": {
+        "description": "Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.",
+        "evidence": [
+          "compte-rendu final"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "complete"
+      },
+      "technical_answer": {
+        "description": "Répondre directement à une question technique située dans la bonne série.",
+        "evidence": [
+          "réponse avec références de source"
+        ],
+        "executor": "orchestrator",
+        "join": "any",
+        "locks": [
+          {
+            "mode": "read",
+            "resource": "odoo_sources"
+          }
+        ],
+        "outcomes": [
+          "done"
+        ],
+        "terminal": "complete"
+      }
+    },
+    "schema_version": 1,
+    "start": "briefing"
+  },
+  "kind": "development",
+  "node_counts": {},
+  "outcome_counts": {},
+  "project": "/tmp/odoo-ordered-recovery-20260909/O01/project",
+  "run_id": "ordered-a",
+  "schema_version": 1,
+  "start_pending": false,
+  "status": "active",
+  "task_reception": {
+    "at": "2026-09-09T16:38:50+00:00",
+    "owner": "codex-author-a",
+    "path": "changelog/ordered/reception-A/bundle-A.json",
+    "sha256": "f6eb8ef06ea2b50cbf387efbea04603278d7c67d7c2afa4b41705bb4a544d54b"
+  },
+  "tokens": {
+    "module-runtime-gate": 1,
+    "module-static-gate": 1
+  },
+  "updated_at": "2026-09-09T16:38:50+00:00"
+}

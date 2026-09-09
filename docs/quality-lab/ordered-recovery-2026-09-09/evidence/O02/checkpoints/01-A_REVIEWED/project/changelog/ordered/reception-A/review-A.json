@@ -1,0 +1,107 @@
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "a55b3fc8c62d2fc239643863f1c03192c98005cc39b5380eb7c3ad53d22eac06",
+  "reviewer": "codex-independent-review-A",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/ordered/demande-A.md",
+          "quote": "Afficher la référence dossier dans la fiche interne."
+        },
+        {
+          "path": "changelog/ordered/demande-A.md",
+          "quote": "Ne pas ajouter de tri automatique."
+        },
+        {
+          "path": "changelog/ordered/demande-A.md",
+          "quote": "Consigner cette décision et le résultat du contrôle documentaire dans les mémoires."
+        },
+        {
+          "path": "changelog/ordered/spec-A.md",
+          "quote": "La référence dossier est visible dans la fiche interne."
+        },
+        {
+          "path": "changelog/ordered/spec-A.md",
+          "quote": "Le contrôle porte uniquement sur documentary/A/reference.txt."
+        },
+        {
+          "path": "changelog/ordered/spec-A.md",
+          "quote": "Aucune demande de tri automatique."
+        }
+      ],
+      "explanation": "Même objet (référence dossier), opération (affichage), canal (fiche interne) et exclusion du tri. Aucun acteur particulier ni autre borne n’est imposé. Le fichier de contrôle constitue le périmètre technique du dossier documentaire annoncé ; il ne prétend pas réduire une recette Odoo demandée. La formule du contrat sur le tri se lit avec l’interdiction explicite de la source, conservée dans les deux drafts. Le contrat est succinct et ne répète pas l’obligation de mémoire : celle-ci reste applicable et est effectivement satisfaite, décision et résultat, par les deux propositions examinées sur le troisième axe. Aucun ajout métier non autorisé."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/ordered/spec-A.md",
+          "quote": "La référence dossier est visible dans la fiche interne. Le contrôle porte uniquement sur documentary/A/reference.txt. Aucune demande de tri automatique."
+        },
+        {
+          "path": "changelog/ordered/reception-A/evidence-A.json",
+          "quote": "assert actual == 'reference_dossier=visible\\\\n', repr(actual)"
+        },
+        {
+          "path": "changelog/ordered/reception-A/evidence-A.json",
+          "quote": "\"exit_code\": 0"
+        },
+        {
+          "path": "changelog/ordered/reception-A/evidence-A.json",
+          "quote": "\"result\": \"passed\""
+        },
+        {
+          "path": "changelog/ordered/reception-A/evidence-A.json",
+          "quote": "Le contrôle est limité à ce fichier. Aucun tri automatique demandé."
+        }
+      ],
+      "explanation": "La preuve structurée enregistre une commande réelle qui lit le fichier désigné et vérifie son contenu exact, puis se termine à zéro avec result passed. Son log lié porte PASS A ; son hash et celui du fichier sont conformes. Le succès établi est celui du contrôle documentaire du marqueur reference_dossier=visible, dans le périmètre unique du contrat. L’assertion ne teste ni écran Odoo, ni utilisateurs, ni absence fonctionnelle de tri : l’exclusion du tri reste une décision de périmètre, sans ajout dans ce dossier. Aucune nouvelle exécution Odoo n’est requise ou revendiquée."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/ordered/demande-A.md",
+          "quote": "Ne pas ajouter de tri automatique. Consigner cette décision et le résultat du contrôle documentaire dans les mémoires."
+        },
+        {
+          "path": "changelog/ordered/reception-A/evidence-A.json",
+          "quote": "\"result\": \"passed\""
+        },
+        {
+          "path": "changelog/ordered/reception-A/bundle-A.json.PROJECT.md.base",
+          "quote": "Le tableau conserve les décisions explicites."
+        },
+        {
+          "path": "changelog/ordered/reception-A/bundle-A.json.JOURNAL.md.base",
+          "quote": "Initialisation du dossier."
+        },
+        {
+          "path": "changelog/ordered/reception-A/PROJECT-propose.md",
+          "quote": "La référence dossier est visible dans la fiche interne. Aucun tri automatique ne doit être ajouté pour cette demande."
+        },
+        {
+          "path": "changelog/ordered/reception-A/PROJECT-propose.md",
+          "quote": "Le contrôle documentaire A a réussi : `documentary/A/reference.txt` contient exactement `reference_dossier=visible`. Sa portée est limitée à ce fichier, conformément au contrat A ; il ne constitue pas une validation Odoo."
+        },
+        {
+          "path": "changelog/ordered/reception-A/JOURNAL-propose.md",
+          "quote": "Décision : afficher la référence dossier dans la fiche interne ; ne pas ajouter de tri automatique."
+        },
+        {
+          "path": "changelog/ordered/reception-A/JOURNAL-propose.md",
+          "quote": "Contrôle documentaire réel réussi sur `documentary/A/reference.txt` : contenu exact `reference_dossier=visible`."
+        },
+        {
+          "path": "changelog/ordered/reception-A/JOURNAL-propose.md",
+          "quote": "Contrôle limité au fichier prévu au contrat A, sans exécution Odoo."
+        }
+      ],
+      "explanation": "Les deux bases figées sont conservées intégralement en tête de leurs drafts, sans contribution antérieure supprimée ou requalifiée. Les ajouts transmettent l’affichage interne, la négation concernant le tri et le résultat positif réel, pas seulement un lien vers une preuve. Le résultat est exactement celui de la commande reçue, borné au fichier documentaire ; les textes excluent explicitement une validation ou exécution Odoo. Aucune livraison, exécution fonctionnelle, reprise ou réception antérieure n’est inventée. Les décisions et le résultat demandés sont présents dans les deux mémoires."
+    }
+  }
+}

@@ -1,0 +1,236 @@
+[
+    {
+        "Id": "17a7e0de10707a05fd0feb6e06a45b0311f5e31274b136719f924a8626b7171f",
+        "Created": "2026-09-09T16:37:45.493927219Z",
+        "Path": "docker-entrypoint.sh",
+        "Args": [
+            "postgres"
+        ],
+        "State": {
+            "Status": "running",
+            "Running": true,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 299493,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-09-09T16:37:45.520597297Z",
+            "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f",
+        "ResolvConfPath": "/home/blegoff/nobackup/docker/containers/17a7e0de10707a05fd0feb6e06a45b0311f5e31274b136719f924a8626b7171f/resolv.conf",
+        "HostnamePath": "/home/blegoff/nobackup/docker/containers/17a7e0de10707a05fd0feb6e06a45b0311f5e31274b136719f924a8626b7171f/hostname",
+        "HostsPath": "/home/blegoff/nobackup/docker/containers/17a7e0de10707a05fd0feb6e06a45b0311f5e31274b136719f924a8626b7171f/hosts",
+        "LogPath": "/home/blegoff/nobackup/docker/containers/17a7e0de10707a05fd0feb6e06a45b0311f5e31274b136719f924a8626b7171f/17a7e0de10707a05fd0feb6e06a45b0311f5e31274b136719f924a8626b7171f-json.log",
+        "Name": "/ordered-recovery-d015b7aa5705-pg",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "docker-default",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "json-file",
+                "Config": {}
+            },
+            "NetworkMode": "ordered-recovery-d015b7aa5705",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": [],
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "Tmpfs": {
+                "/var/lib/postgresql/data": ""
+            },
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 0,
+            "NanoCpus": 0,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 0,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": [],
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/asound",
+                "/proc/acpi",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/sys/firmware",
+                "/sys/devices/virtual/powercap",
+                "/sys/devices/system/cpu/cpu0/thermal_throttle",
+                "/sys/devices/system/cpu/cpu1/thermal_throttle",
+                "/sys/devices/system/cpu/cpu2/thermal_throttle",
+                "/sys/devices/system/cpu/cpu3/thermal_throttle",
+                "/sys/devices/system/cpu/cpu4/thermal_throttle",
+                "/sys/devices/system/cpu/cpu5/thermal_throttle",
+                "/sys/devices/system/cpu/cpu6/thermal_throttle",
+                "/sys/devices/system/cpu/cpu7/thermal_throttle",
+                "/sys/devices/system/cpu/cpu8/thermal_throttle",
+                "/sys/devices/system/cpu/cpu9/thermal_throttle",
+                "/sys/devices/system/cpu/cpu10/thermal_throttle",
+                "/sys/devices/system/cpu/cpu11/thermal_throttle"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "17a7e0de10707a05fd0feb6e06a45b0311f5e31274b136719f924a8626b7171f",
+                "LowerDir": "/home/blegoff/nobackup/docker/overlay2/f91130ecf4da5bf3a7aa46be1618cd2444f55e8a1eaefc92d36f4b603e267120-init/diff:/home/blegoff/nobackup/docker/overlay2/dd35806cce32da71371e5cd602c71f06db6fb24eb68ca1227949dea8bda68c4c/diff:/home/blegoff/nobackup/docker/overlay2/f21bbb7b9ba7e310b0cb2a49ee10f68f623eee27489f7ad4a03a81411f1a5ac7/diff:/home/blegoff/nobackup/docker/overlay2/c075ba6351226a5795d723f47a8ed97ba3f1b3d87365981ecc985b1056501f7b/diff:/home/blegoff/nobackup/docker/overlay2/87d4c18262c87a72e2dd04a2b2b8a15ef1556c459c676c38b436af77001252b5/diff:/home/blegoff/nobackup/docker/overlay2/ac17103ce16bf54e593d3c15319f1526b3c7d7752733f78e87cee93e9bf24e7f/diff:/home/blegoff/nobackup/docker/overlay2/4712a3dcca9ef2afdaf126923bdafe80745524fcf5ca9d9c391ac082c2097e6a/diff:/home/blegoff/nobackup/docker/overlay2/ae7fa69ad02eb1b788bcd112412dcb622770f0043e510da536d073534603b784/diff:/home/blegoff/nobackup/docker/overlay2/4fe424c2f7717b2f66c827f8f69939c75ed5e782d29791357c2c41eadc96629e/diff:/home/blegoff/nobackup/docker/overlay2/24ea02a5f8826ba5658f4f6b228f0c167ebd662dc7ef3c7ad9128e0aad67fd36/diff:/home/blegoff/nobackup/docker/overlay2/51a7b4f834658b27abbde1426b32e85f2809ba6e0395769e6d1225d62cc21254/diff:/home/blegoff/nobackup/docker/overlay2/50b5caf572d5b0d14e7fb074cc32ee742df486c620ed0e7d44be8e83b5494890/diff:/home/blegoff/nobackup/docker/overlay2/9395e6b4bd249f0ee2fcee27266c06bc2747b26929be641e65e1a2c327244401/diff:/home/blegoff/nobackup/docker/overlay2/e1b6313c4412daa581b2dd9247b8c25f19b181a51bfa827a075026ecdcfabb13/diff:/home/blegoff/nobackup/docker/overlay2/08670fc08da80680c9f9b35dbe0d9dc6915b7891c3fc077f6a0fa726aed817f6/diff",
+                "MergedDir": "/home/blegoff/nobackup/docker/overlay2/f91130ecf4da5bf3a7aa46be1618cd2444f55e8a1eaefc92d36f4b603e267120/merged",
+                "UpperDir": "/home/blegoff/nobackup/docker/overlay2/f91130ecf4da5bf3a7aa46be1618cd2444f55e8a1eaefc92d36f4b603e267120/diff",
+                "WorkDir": "/home/blegoff/nobackup/docker/overlay2/f91130ecf4da5bf3a7aa46be1618cd2444f55e8a1eaefc92d36f4b603e267120/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "17a7e0de1070",
+            "Domainname": "",
+            "User": "",
+            "AttachStdin": false,
+            "AttachStdout": false,
+            "AttachStderr": false,
+            "ExposedPorts": {
+                "5432/tcp": {}
+            },
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "POSTGRES_PASSWORD=synthetic-lab-only",
+                "POSTGRES_USER=odoo",
+                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/lib/postgresql/16/bin",
+                "GOSU_VERSION=1.19",
+                "LANG=en_US.utf8",
+                "PG_MAJOR=16",
+                "PG_VERSION=16.14-1.pgdg13+1",
+                "PGDATA=/var/lib/postgresql/data"
+            ],
+            "Cmd": [
+                "postgres"
+            ],
+            "Image": "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f",
+            "Volumes": {
+                "/var/lib/postgresql/data": {}
+            },
+            "WorkingDir": "",
+            "Entrypoint": [
+                "docker-entrypoint.sh"
+            ],
+            "OnBuild": null,
+            "Labels": {
+                "ordered-recovery-owner": "d015b7aa5705430194c69359c0ed1974"
+            },
+            "StopSignal": "SIGINT"
+        },
+        "NetworkSettings": {
+            "Bridge": "",
+            "SandboxID": "66bc11cbd55b767559ebae5ad097873f23cab9f3af3ee3bf916534866ccb5331",
+            "SandboxKey": "/var/run/docker/netns/66bc11cbd55b",
+            "Ports": {},
+            "HairpinMode": false,
+            "LinkLocalIPv6Address": "",
+            "LinkLocalIPv6PrefixLen": 0,
+            "SecondaryIPAddresses": null,
+            "SecondaryIPv6Addresses": null,
+            "EndpointID": "",
+            "Gateway": "",
+            "GlobalIPv6Address": "",
+            "GlobalIPv6PrefixLen": 0,
+            "IPAddress": "",
+            "IPPrefixLen": 0,
+            "IPv6Gateway": "",
+            "MacAddress": "",
+            "Networks": {
+                "ordered-recovery-d015b7aa5705": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "MacAddress": "de:e4:51:3c:60:a7",
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "4838741a7c4227f8b27002472257759e520ad41ed3f1bbb62999f444c1f68f7e",
+                    "EndpointID": "d87f2b8515867d3b6886febb216ef169a110436fa0449d040c351fe81655037e",
+                    "Gateway": "",
+                    "IPAddress": "192.168.32.2",
+                    "IPPrefixLen": 20,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": [
+                        "ordered-recovery-d015b7aa5705-pg",
+                        "17a7e0de1070"
+                    ]
+                }
+            }
+        }
+    }
+]

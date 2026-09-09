@@ -1,0 +1,7 @@
+{"command": ["git", "-C", "/tmp/odoo-ordered-recovery-20260909/integration/run/project", "diff", "HEAD", "--", "lab_qualification"], "returncode": 0, "seconds": 0.003, "log": "/tmp/odoo-ordered-recovery-20260909/integration/qa/reviewed-module-diff.log"}
+Traceback (most recent call last):
+  File "/tmp/odoo-ordered-recovery-20260909/integration/qa/verify.py", line 82, in <module>
+    check(digest(contract) == criteria['contract_sha256'], 'contract unchanged from bound criteria')
+  File "/tmp/odoo-ordered-recovery-20260909/integration/qa/verify.py", line 26, in check
+    raise AssertionError(name)
+AssertionError: contract unchanged from bound criteria

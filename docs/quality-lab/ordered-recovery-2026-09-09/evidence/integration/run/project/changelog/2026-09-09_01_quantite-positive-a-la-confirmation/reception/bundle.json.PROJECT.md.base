@@ -1,0 +1,10 @@
+# Projet synthétique de qualification 19.0
+
+## Compréhension métier
+La quantité peut être nulle pendant la préparation ; une confirmation doit garantir une quantité positive par tous les canaux. Le montant est quantity × unit_price.
+
+## Décisions actées
+Module existant lab_qualification, voie module, aucune interface ou permission nouvelle. Jeu initial valide de trois lignes, copie locale restaurée depuis ordered_seed. Écritures et tests uniquement sur ordered_copy ; référence conservée. Aucun redressement automatique.
+
+## Pièges connus
+Une garde dans le seul bouton ne couvre pas les imports ni les écritures directes. Les preuves backend ne valent pas recette complète de release.

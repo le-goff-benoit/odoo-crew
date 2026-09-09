@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/benchmarks/ordered_recovery/check.py", line 49, in <module>
+    p=argparse.ArgumentParser();p.add_argument('folder',type=Path);a=p.parse_args();r=check(a.folder.resolve());print(json.dumps(r,ensure_ascii=False,indent=2));raise SystemExit(0 if r['mechanical_pass'] else 1)
+  File "/home/blegoff/.odoo19-agents/benchmarks/ordered_recovery/check.py", line 45, in check
+    registry=Path(current['resource_registry']);record('no_orphan_resource_claim',not json.loads(registry.read_text()).get('claims'))
+KeyError: 'resource_registry'

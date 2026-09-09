@@ -1,0 +1,69 @@
+{
+  "scope": "Fabricated checker unit fixtures. NO native execution or real reception claimed. Semantic paraphrase is audit-only, intentionally not hardcoded.",
+  "checks": [
+    {
+      "name": "mechanically valid fabricated positive",
+      "expected": true,
+      "actual": true,
+      "matched": true,
+      "failures": []
+    },
+    {
+      "name": "reordered receipt rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "complete_ordered_ledger",
+        "strict_time_order"
+      ]
+    },
+    {
+      "name": "missing snapshot trace rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "trace_snapshots_intact"
+      ]
+    },
+    {
+      "name": "old evidence changed rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "initial_artifacts_preserved",
+        "sources_proofs_scopes_fresh"
+      ]
+    },
+    {
+      "name": "canonical draft mismatch rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "both_memories_match_accepted_drafts"
+      ]
+    },
+    {
+      "name": "positive extra retry rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "positive_no_retry_or_extra_gate"
+      ]
+    },
+    {
+      "name": "reused author context rejected",
+      "expected": false,
+      "actual": false,
+      "matched": true,
+      "failures": [
+        "separate_author_reviewer_resume"
+      ]
+    }
+  ],
+  "passed": true
+}

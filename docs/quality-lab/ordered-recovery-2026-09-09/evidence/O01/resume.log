@@ -1,0 +1,432 @@
+Reprise A en contexte neuf /root/o01_resume. Mandat resume.txt et HANDOFF lus. Anciens contextes A/B arrêtés selon mandat parent.
+Incident lecture : rg --files reference/docs a listé des chemins quality-lab hors périmètre ; aucun contenu de ces fichiers lu. Lectures ensuite ciblées uniquement.
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_briefing.py /tmp/odoo-ordered-recovery-20260909/O01/project
+
+— briefing : 4 Ko. Détail : `/tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/`, `/tmp/odoo-ordered-recovery-20260909/reference/LESSONS.md`, `/tmp/odoo-ordered-recovery-20260909/reference/SERIES_MATRIX.md`.
+# Briefing — project
+
+- **Série** : **19.0** (origine : défaut) · sources `/home/blegoff/odoo-sources/19.0` + `19.0-enterprise`
+- **Racine** : `/tmp/odoo-ordered-recovery-20260909/O01/project`
+- **Release** : aucune release ouverte — s'ouvre après le verdict de l'analyste ou du support (`odoo-release.sh open <projet> "<titre>"`)
+- **Instances déclarées** : Aucun environnement déclaré pour project. → odoo_instance.py add /tmp/odoo-ordered-recovery-20260909/O01/project
+- **Bases sur le stack 19.0** : stucki_test, neca_products_qa, rubix_20260904_project_planning, odoo_qa_19_0, neca_l1_pristine, odoo_qa_19_0_tpl_vertical_construction_software_excel, odoo_qa_19_0_tpl_vertical_construction, odoo_qa_19_0_tpl_odoo_rubixcomm_customisation, odoo_qa_19_0_tpl_vertical_construction_project_manage, odoo_qa_19_0_tpl_vertical_construction_payment_schedu, odoo_qa_19_0_56dfa754_tpl_odoo_rubixcomm_customisa, rubix_qa_blprep4, rubix_20260909_test, rubix_20260906_release_20260907, odoo_qa_19_0_56dfa754_odoo_rubixcomm_customisation, rubix_qa_blprep4_tpl, odoo_qa_19_0_35d33b66_tpl_odoo_rubixcomm_customisa, odoo_qa_19_0_35d33b66_odoo_rubixcomm_customisation, odoo_qa4_nonreg, odoo_qa_19_0_odoo_rubixcomm_customisation, odoo_qa4_prev, neca_20260908_ticket, neca_20260906_test, odoo_qa4_prev_r2
+
+## Formes attendues en 19.0
+
+**Différences avec le guide 19.0** : `ir.model.access.csv` + `ir.rule`
+Formes en vigueur : `invisible="expr"` (plus d'`attrs`/`states`) · `_compute_display_name` (plus de `name_get`) · `<list>` (plus de `<tree>`) · `<chatter/>` · `self.env._()` disponible · `@api.readonly` disponible · `models.Constraint` (plus de `_sql_constraints`) · objet `Domain` · `res.groups.privilege` (plus de `category_id`) · `res.users.group_ids` (et non `groups_id`) · `self.env.cr` obligatoire (plus de `self._cr`) · `hr.version` (plus de `hr.contract`)
+
+## Modules (relevé)
+
+*(relevé vide — relancer le scan)*
+
+## Ce que le projet sait déjà (PROJECT.md, écrit à la main)
+
+# Projet documentaire
+Le tableau conserve les décisions explicites.
+
+## Décision A reçue — référence dossier
+La référence dossier doit être visible dans la fiche interne. Ne pas ajouter de tri automatique. Cette décision reçue est conservée.
+
+## Décision B — priorité du tableau de suivi
+La priorité du tableau de suivi reste manuelle. Ne pas ajouter de tri automatique.
+Le contrôle documentaire B a réussi : documentary/B/priority.txt contient exactement `priority=manual`.
+Preuve : changelog/ordered/reception-B/evidence-B.json. Portée : uniquement documentary/B/priority.txt, fichier documentaire synthétique ; aucun contrôle Odoo.
+
+## Journal — 2 entrée(s), les 2 dernières
+
+## 2026-09-09 — Conservation de la décision A reçue
+Décision conservée : afficher la référence dossier dans la fiche interne ; ne pas ajouter de tri automatique.
+
+## 2026-09-09 — Demande B
+Demande : conserver la priorité manuelle du tableau de suivi ; ne pas ajouter de tri automatique.
+Fait : décision consignée dans les propositions mémoire ; contenu documentaire vérifié.
+Verdict : contrôle documentaire B réussi ; documentary/B/priority.txt contient exactement `priority=manual`.
+Preuve : changelog/ordered/reception-B/evidence-B.json.
+Portée : uniquement documentary/B/priority.txt, fichier synthétique ; aucun contrôle Odoo.
+Appris : la demande B conserve la priorité manuelle et n’autorise aucun tri automatique.
+
+
+## Leçons du dispositif applicables en 19.0 (LESSONS.md)
+
+- **L1 — La série d'un module n'est jamais supposée, elle est lue** [universelle] — avant de lire ou d'écrire une ligne, établir la série cible du module et n'appliquer que les règles de cette série.
+- **L2 — « Odoo 19 » ne désigne pas une seule version** [hébergement Odoo Online / SaaS — voir `PLATEFORMES.md`] — pour un projet Odoo Online / SaaS, viser la dernière `saas~19.x`, pas la 19.0 ; vérifier la forme de la sécurité dans les sources de **la** série visée.
+- **L3 — Un contrôle qui se trompe de série est pire que pas de contrôle** [universelle] — tout motif ajouté à `odoo_lint.py` porte sa portée (`since` / `before`) et est vérifié par comptage dans les sources des deux séries concernées avant d'être considéré comme vrai.
+- **L4 — Une option qui n'existe pas est ignorée sans erreur** [universelle] — vérifier toute option Odoo dans les sources de la série avant de la lancer, et ne jamais détruire avant d'avoir prouvé que la réparation marche.
+- **L5 — Reproduire dans l'outil du système cible, jamais dans le sien** [universelle] — reproduire avec l'outil du système cible ; quand un test contredit une preuve prise sur ce système, suspecter le test avant de se rétracter.
+- **L6 — Un relevé qui avale les sources vendorisées fabrique de la dette imaginaire** [universelle] — un relevé ne recense que le code dont le projet est responsable ; toute copie de sources Odoo en est écartée, et le nombre d'écartés est annoncé pour que l'omission reste visible.
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ module_task_gate → pass
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: blocked, done, retry · Preuve: entrée JOURNAL.md
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json
+ODOO FLOW · ordered-b
+────────────────────────────────────────────────────────────────────────
+État       TERMINÉ
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ task_done → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → done
+  ✓ task_done → done
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py --help
+usage: odoo_flow.py [-h] [--graph GRAPH]
+                    {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+                    ...
+
+Valide et pilote le graphe de travail des agents Odoo. Le script ne réalise
+aucune opération Odoo. Il conserve seulement l'état du workflow, contrôle les
+transitions, expose les nœuds prêts et empêche les boucles de reprise non
+bornées. L'orchestrateur principal est l'unique écrivain du fichier d'état ;
+les agents spécialisés écrivent leurs preuves dans les chemins distincts qu'il
+leur donne. Exemples : odoo_flow.py validate odoo_flow.py analyze odoo_flow.py
+render --format mermaid odoo_flow.py start ~/projet --kind development --id
+ajout-reference odoo_flow.py ready ~/projet/.odoo-agents/flows/ajout-
+reference.json odoo_flow.py complete <état.json> briefing --outcome
+development --evidence /tmp/briefing.txt
+
+positional arguments:
+  {validate,analyze,render,start,ready,status,complete,bind-criteria,publish-memory,upgrade-recovery,prepare-reception,qa-report,claim,release,migrate}
+    validate            valider la définition
+    analyze             mesurer la structure
+    render              rendre le graphe
+    start               ouvrir un état persistant
+    ready               afficher ready
+    status              afficher status
+    complete            terminer un nœud prêt
+    bind-criteria       lier un contrat QA et générer sa couverture manquante
+    publish-memory      publier les deux drafts approuvés de façon reprenable
+    upgrade-recovery    ajouter explicitement la reprise mémoire à un ancien
+                        run
+    prepare-reception   figer le dossier de réception et la mémoire proposée
+    qa-report           rendre un rapport QA lié à sa couverture et à son
+                        issue
+    claim               revendiquer un nœud et ses verrous
+    release             libérer un nœud sans le terminer
+    migrate             rattacher explicitement un run à une nouvelle version
+                        compatible du graphe
+
+options:
+  -h, --help            show this help message and exit
+  --graph GRAPH
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py claim --help
+usage: odoo_flow.py claim [-h] [--owner OWNER] state node
+
+positional arguments:
+  state
+  node
+
+options:
+  -h, --help     show this help message and exit
+  --owner OWNER
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py complete --help
+usage: odoo_flow.py complete [-h] --outcome OUTCOME [--evidence EVIDENCE]
+                             [--note NOTE] [--owner OWNER] [--human-confirmed]
+                             state node
+
+positional arguments:
+  state
+  node
+
+options:
+  -h, --help           show this help message and exit
+  --outcome OUTCOME
+  --evidence EVIDENCE
+  --note NOTE
+  --owner OWNER
+  --human-confirmed
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py prepare-reception --help
+usage: odoo_flow.py prepare-reception [-h] --source SOURCE --spec SPEC
+                                      --evidence EVIDENCE --memory MEMORY
+                                      [--scope SCOPE] --output OUTPUT --owner
+                                      OWNER
+                                      state
+
+positional arguments:
+  state
+
+options:
+  -h, --help           show this help message and exit
+  --source SOURCE
+  --spec SPEC
+  --evidence EVIDENCE
+  --memory MEMORY
+  --scope SCOPE
+  --output OUTPUT
+  --owner OWNER
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_reception.py --help
+usage: odoo_reception.py [-h] {draft,check-bases} ...
+
+Réception documentaire coopérative : intégrité et citations, pas jugement
+métier.
+
+positional arguments:
+  {draft,check-bases}
+    draft              imprimer le JSON à remplir par le relecteur
+    check-bases        vérifier les bases mémoire et la fraîcheur avant copie
+                       sous verrou mémoire
+
+options:
+  -h, --help           show this help message and exit
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py claim /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json journal_task --owner codex-o01-resume-orchestrateur
+▶ journal_task · ORCHESTRATEUR
+  Démarré par codex-o01-resume-orchestrateur
+  Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py publish-memory /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json --owner codex-o01-resume-orchestrateur
+ERREUR: publication mémoire refusée : mémoire modifiée depuis préparation : .odoo-agents/PROJECT.md
+
+exit=2
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py complete /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json journal_task --owner codex-o01-resume-orchestrateur --outcome retry --evidence changelog/ordered/reception-A-resume/publication-initiale-refusee.md
+ERREUR: preuve introuvable : changelog/ordered/reception-A-resume/publication-initiale-refusee.md
+
+exit=2
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py complete /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json journal_task --owner codex-o01-resume-orchestrateur --outcome retry --evidence /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-A-resume/publication-initiale-refusee.md
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → retry
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ reception_recovery_gate
+    ORCHESTRATEUR
+    Recevoir à nouveau les propositions mémoire depuis les bases actuelles, à contrat et preuves inchangés.
+    Sorties: blocked, pass · Preuve: réception indépendante renouvelée ou motif de blocage mémoire
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → retry
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ reception_recovery_gate
+    ORCHESTRATEUR
+    Recevoir à nouveau les propositions mémoire depuis les bases actuelles, à contrat et preuves inchangés.
+    Sorties: blocked, pass · Preuve: réception indépendante renouvelée ou motif de blocage mémoire
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → retry
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py claim /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json reception_recovery_gate --owner codex-o01-resume-orchestrateur
+▶ reception_recovery_gate · ORCHESTRATEUR
+  Démarré par codex-o01-resume-orchestrateur
+  Recevoir à nouveau les propositions mémoire depuis les bases actuelles, à contrat et preuves inchangés.
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py prepare-reception /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json --owner codex-o01-resume-orchestrateur --source changelog/ordered/demande-A.md --spec changelog/ordered/spec-A.md --evidence changelog/ordered/reception-A/evidence-A.json --evidence changelog/ordered/reception-A/qa-A.md --memory .odoo-agents/PROJECT.md=changelog/ordered/reception-A-resume/PROJECT-propose.md --memory .odoo-agents/JOURNAL.md=changelog/ordered/reception-A-resume/JOURNAL-propose.md --scope documentary/A --output changelog/ordered/reception-A-resume/bundle-A-resume.json
+Dossier de réception : changelog/ordered/reception-A-resume/bundle-A-resume.json · 17b5dcbe107c
+Réception indépendante positive requise avant pass ; publier ensuite les drafts exacts.
+
+exit=0
+Contrôle préparatoire : 29 empreintes anciennes dans reception-A-resume/anciens-artefacts-hashes.json ; groupes/scopes/code A inchangés ; bases actuelles B intégralement préfixes des drafts.
+Nouvelle réception réelle déléguée par collaboration.spawn_agent fork_turns=none à /root/o01_resume/review_recovery.
+Réception indépendante nouvelle terminée /root/o01_resume/review_recovery : PASS trois axes. Fragments review-A-resume.json et .md lus par orchestrateur ; provenance native enregistrée.
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py complete /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json reception_recovery_gate --owner codex-o01-resume-orchestrateur --outcome pass --evidence /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-A-resume/review-A-resume.json
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ reception_recovery_gate → pass
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: blocked, done, retry · Preuve: entrée JOURNAL.md
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ reception_recovery_gate → pass
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task
+    ORCHESTRATEUR
+    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+    Sorties: blocked, done, retry · Preuve: entrée JOURNAL.md
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → retry
+  ✓ reception_recovery_gate → pass
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py claim /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json journal_task --owner codex-o01-resume-orchestrateur
+▶ journal_task · ORCHESTRATEUR
+  Démarré par codex-o01-resume-orchestrateur
+  Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py publish-memory /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json --owner codex-o01-resume-orchestrateur
+Mémoire published : .odoo-agents/PROJECT.md
+Mémoire published : .odoo-agents/JOURNAL.md
+Publication vérifiée ; journal_task reste revendiqué et doit être complété.
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py complete /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json journal_task --owner codex-o01-resume-orchestrateur --outcome done --evidence /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-A-resume/publication.md --evidence /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-A-resume/verification-publication.json
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 4 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → done
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ task_done
+    ORCHESTRATEUR
+    Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
+    Sorties: done · Preuve: compte-rendu final
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 4 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ journal_task → done
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ task_done
+    ORCHESTRATEUR
+    Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
+    Sorties: done · Preuve: compte-rendu final
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → retry
+  ✓ reception_recovery_gate → pass
+  ✓ journal_task → done
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py claim /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json task_done --owner codex-o01-resume-orchestrateur
+▶ task_done · ORCHESTRATEUR
+  Démarré par codex-o01-resume-orchestrateur
+  Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py complete /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json task_done --owner codex-o01-resume-orchestrateur --outcome done --evidence /tmp/odoo-ordered-recovery-20260909/O01/project/changelog/ordered/reception-A-resume/compte-rendu.md
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       TERMINÉ
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 5 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ task_done → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-a.json
+ODOO FLOW · ordered-a
+────────────────────────────────────────────────────────────────────────
+État       TERMINÉ
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 5 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ task_done → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → retry
+  ✓ reception_recovery_gate → pass
+  ✓ journal_task → done
+  ✓ task_done → done
+
+exit=0
+$ python3 /tmp/odoo-ordered-recovery-20260909/reference/scripts/odoo_flow.py status /tmp/odoo-ordered-recovery-20260909/O01/project/.odoo-agents/flows/ordered-b.json
+ODOO FLOW · ordered-b
+────────────────────────────────────────────────────────────────────────
+État       TERMINÉ
+Flux       development
+Projet     /tmp/odoo-ordered-recovery-20260909/O01/project
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Dernière   ✓ task_done → done
+
+POSITION DANS LE GRAPHE
+  Aucun nœud actif.
+
+HISTORIQUE RÉCENT
+  ✓ module_task_gate → pass
+  ✓ journal_task → done
+  ✓ task_done → done
+
+exit=0
+Résultat final écrit dans project/result.md. A et B terminés par status API, aucune revendication active.

@@ -1,0 +1,1 @@
+Le mandat de reprise confirme que les contextes auteurs et reviewers A/B sont terminés, B avant cette reprise. API status : A prêt sur journal_task après module_task_gate pass, sans claim ; B terminal après publication. La mémoire courante contient la décision A et le résultat B, sans résultat A. Aucune reprise de QA Odoo.

@@ -1,0 +1,62 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/odoo-ordered-recovery-20260909/integration/run/project",
+  "scopes": [
+    "lab_qualification"
+  ],
+  "sources": {
+    "lab_qualification/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 436
+    },
+    "lab_qualification/__manifest__.py": {
+      "sha256": "0c4b28ed31e5e48cb3410093ef454674df23c9d4766258dca1a5c2b53275f004",
+      "mode": 436
+    },
+    "lab_qualification/models.py": {
+      "sha256": "8de0ab23cfdfb8f713347ca975ade3a0ff83b64e8ce4505675d10efd2b5219b7",
+      "mode": 436
+    },
+    "lab_qualification/security/ir.model.access.csv": {
+      "sha256": "9b7ef52061e7547f91396cb9e4827f766f28acc4ab19d353277989580de84427",
+      "mode": 436
+    },
+    "lab_qualification/tests/__init__.py": {
+      "sha256": "ed47f7d5473768022964338a974dfaa311a9d5c3a6d54e755a93aa7059bc9cfa",
+      "mode": 436
+    },
+    "lab_qualification/tests/common.py": {
+      "sha256": "ac45ccf1d429ad10c7d570dcc5b5dfc433c15bacc8be0b15cd0e37bb6874434c",
+      "mode": 436
+    },
+    "lab_qualification/tests/test_browser.py": {
+      "sha256": "539000887873e6ffe961cf977dd63f24ad34eedc7bb4ff4b49674d2f560eff81",
+      "mode": 436
+    },
+    "lab_qualification/tests/test_confirmation.py": {
+      "sha256": "bac3a683d35dcd66e05df894010df91e38e135cd85ee47ad5353d153500d9a13",
+      "mode": 436
+    },
+    "lab_qualification/tests/test_quantity.py": {
+      "sha256": "bb8f56e01d21f58524b30125485abb6c14f54b97c2991f0bd623c55dd6276601",
+      "mode": 436
+    },
+    "lab_qualification/views/quantity.xml": {
+      "sha256": "57a9886cab5355a8cef6cce64a910d26f4918cc1c69063d09ea57d2245cb207f",
+      "mode": 436
+    }
+  },
+  "command": [
+    "python3",
+    "/tmp/odoo-ordered-recovery-20260909/integration/qa/verify.py"
+  ],
+  "exit_code": 0,
+  "result": "failed",
+  "module": "lab_qualification",
+  "error": null,
+  "seconds": 0.217,
+  "log": {
+    "path": "/tmp/odoo-ordered-recovery-20260909/integration/qa/live-verification.evidence.log",
+    "sha256": "f61dec2edee23bd89cdc40412855bcd36a595c1aa35ade8f168e52b85fae3caa"
+  }
+}

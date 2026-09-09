@@ -1,0 +1,69 @@
+{
+  "format": "ordered-recovery-oracle-amendment/1",
+  "at": "2026-09-09T16:50:12.327901+00:00",
+  "cause": "Checker and checkpoint assumed optional resource_registry was mandatory; public state uses local fallback registry. Second infrastructure assumption: positive allowed journal_task done but rejected normal public task_done done terminal.",
+  "classification": "infrastructure error, not candidate defect; original failure preserved",
+  "scope": [
+    "check.py",
+    "checkpoint.py",
+    "calibrate.py",
+    "calibration.json"
+  ],
+  "candidate_unchanged": "c19e80540917709e1c8d59325a696aa27a7fc5ce",
+  "original_frozen_sha256": "6a10fb76cf02015f59ffe19ca6c0e03fefa67d76981667cc337ac142e30271ab",
+  "changed_files": {
+    "check.py": {
+      "before": "cacdfbd9506a670257a4801257c352b8b40f2f602c7425d0458269bb3354cabe",
+      "after": "21c7d06a626ad8496e51fdf9df4733a6e09a6e89c058f5889586de191c527279"
+    },
+    "checkpoint.py": {
+      "before": "09c9ae146751094a3a14f3b3aec1422131ca63f81b8b11b59a250d64a2179dec",
+      "after": "a45cf90ff38090453e9d4d5d661f9201e04f16620dadf9c34bfaf7a57f21bdb3"
+    },
+    "calibrate.py": {
+      "before": "60a694798179f51f22fc430c368ec67f9a43de06489d2d9ef9ab7aadbd859a27",
+      "after": "b08bd6076973b66b128a0f0472096967a0a62444b35af40cbcbb71b46d837129"
+    },
+    "calibration.json": {
+      "before": "7406e54bacd385ed30ff2495972749151722a538d3e17bc23ff89a91296f48a5",
+      "after": "eeb76cb19291709bc28bbaeedfcc49838c281dd810c5f47a9b76dca9053544c5"
+    }
+  },
+  "diff_sha256": "1b36d7b8ae1cd99d6e99e5dd11559f0db2307d419d5316c39c4901b9b8202be4",
+  "calibration": "15/15 expected outcomes, including public complete_node transitions on in-memory real A_RESUME_START state, actual terminal task_done and status complete; no persistence or new QA claimed.",
+  "O02_original_project_checkpoints_and_traces_unchanged": true,
+  "O02_files_hashed": 185,
+  "concurrent_external_change": {
+    "files": [
+      "mechanical.json"
+    ],
+    "note": "mechanical.json changed during audit; this worker wrote reevaluation only under corpus/amendment. All project files, checkpoints, traces, oracle and events unchanged."
+  },
+  "O02_mechanical_pass": true,
+  "public_API_audit": {
+    "public_load_state": true,
+    "actual_status": "complete",
+    "claims_type": "dict",
+    "events_type": "list",
+    "accepted_ref_check": true,
+    "public_review_and_bundle_verify_published": true,
+    "memory_targets": [
+      ".odoo-agents/JOURNAL.md",
+      ".odoo-agents/PROJECT.md"
+    ],
+    "registry_optional_field_present": false,
+    "public_registry_path": "/tmp/odoo-ordered-recovery-20260909/O02/project/.odoo-agents/flows/resource-locks.json",
+    "registry_schema": 1,
+    "limitations": "Read-only API compatibility audit; no replacement for independent semantic/native audit."
+  },
+  "grading_criteria_changed": false,
+  "remaining_audit": "native independence, exact task exposure, semantic memory preservation, unnecessary work traces",
+  "intermediate_checker_failure_preserved": "O02-intermediate-terminal-failure.json",
+  "predicate_clarification": "Allows normal task_done terminal after journal_task; still rejects extra QA, recovery, retry, duplicate journal or other transitions.",
+  "communication_correction": {
+    "initial_erroneous_report": "Worker announced O02 mechanical_pass=true after a shell call where successful py_compile masked failing checker exit status.",
+    "correction": "Worker explicitly retracted that claim upon inspecting JSON. Intermediate mechanical_pass=false retained in O02-intermediate-terminal-failure.json.",
+    "final_result": "After separate terminal-node oracle repair and calibration, checker exits zero and O02 mechanical_pass=true.",
+    "candidate_change": false
+  }
+}

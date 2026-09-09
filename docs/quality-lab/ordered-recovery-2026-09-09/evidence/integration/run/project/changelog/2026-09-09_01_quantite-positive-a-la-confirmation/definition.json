@@ -1,0 +1,36 @@
+{
+  "schema": 1,
+  "tasks": [
+    {
+      "id": "A",
+      "title": "Garantir une quantité positive pour les confirmés",
+      "request": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/demande.md",
+      "route": "module",
+      "risk": "high",
+      "acceptance": [
+        "AC01–AC11 satisfaits selon la revue figée",
+        "AC12 : rouge puis vert, lint/update/tests, réception indépendante, mémoire publiée, réception du plan ; release ouverte"
+      ],
+      "scopes": [
+        "lab_qualification"
+      ],
+      "depends_on": []
+    },
+    {
+      "id": "C",
+      "title": "Témoin de dépendance — disponibilité seule",
+      "request": "changelog/2026-09-09_01_quantite-positive-a-la-confirmation/demande-C.md",
+      "route": "standard",
+      "risk": "normal",
+      "acceptance": [
+        "Reprendre ultérieurement la passation validée de A ; non exécuté ici"
+      ],
+      "scopes": [
+        "future-handoff-check"
+      ],
+      "depends_on": [
+        "A"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "reviewer": "Codex corpus_review (independent, read-only)",
+  "at": "2026-09-09T17:07:49.602649+00:00",
+  "scope": "Ordered documentary checker/calibration/amendment, public native exports, metrics exporter and publication selection. No raw sessions or assistant analysis inspected. No Odoo runtime verdict.",
+  "verdict": "PASS_WITH_DECLARED_LIMITS",
+  "blockers_found": [],
+  "checks": {
+    "calibration_reexecuted_expected_outcomes": 15,
+    "calibration_passed": true,
+    "mechanical_reexecuted": {
+      "O01": true,
+      "O02": true,
+      "O03": true
+    },
+    "frozen_manifest_hash_verified": true,
+    "amendment_before_after_and_diff_hashes_verified": true,
+    "unchanged_frozen_files_verified": 4,
+    "native_exports_structurally_checked": 18,
+    "forbidden_native_record_metadata": 0,
+    "export_hash_or_last_cumulative_token_mismatch": 0,
+    "publication_files_secret_pattern_scanned": 1008,
+    "high_confidence_secret_pattern_hits": 0,
+    "publication_tree_symlinks": 0
+  },
+  "findings": [
+    {
+      "id": "R1",
+      "severity": "resolved-during-review",
+      "topic": "metrics detail",
+      "detail": "Initial script exposed only aggregate thread duration and omitted corpus_review. Root amended script with corpus_review, turns timing metadata and max_turn_duration_ms. Reviewed amended code. Current metrics.json remains a preliminary snapshot; regenerate after final completed contexts."
+    },
+    {
+      "id": "L1",
+      "severity": "limit",
+      "topic": "instruction isolation",
+      "detail": "Incoming messages are intentionally excluded, and some spawn/followup payloads are opaque. Export proves native operations and thread identity, but absence of extra incoming instructions remains unmeasured. Existing audit reports this explicitly; no full protocol certification or unconditional promotion follows."
+    },
+    {
+      "id": "L2",
+      "severity": "limit",
+      "topic": "publication sanitization",
+      "detail": "Exporter allowlists record types and removes incoming/system/developer/reasoning records plus task_complete last_agent_message; tool arguments/results remain verbatim. Archive copy is a selected-tree copier, not an arbitrary-data sanitizer. Checks found no forbidden native records or high-confidence real-secret patterns in current selected evidence; this is not a universal content absence proof."
+    },
+    {
+      "id": "L3",
+      "severity": "scope",
+      "topic": "cost and duration",
+      "detail": "Last cumulative thread usage is counted once per unique selected thread; cached/reasoning counters are subsets, not extra totals. Active task durations distinguish followup turns and exclude idle barriers. Root historical session omitted explicitly, so figures describe selected child campaign work and do not claim total root cost."
+    }
+  ],
+  "artifacts_checked_sha256": {
+    "export-native.py": "61842bae989ca6ea5aa16f50962103715ce0aaef4b348c6ee543ee818c134f8d",
+    "export-native-v1.py": "ab9491c19741b51ed3da14668bea77e6242efcd1648f5b55173e3d6c80e0af86",
+    "metrics.py": "657b6983ddd468e6bd4506a9c20b69de4d4357bd5bae8fec093d53deedfb6e23",
+    "archive.py": "889ba4c7eafe831295ae53b492379691e734a66ac01e245e56840e4b4c61b9bd",
+    "metrics.json": "f5ff942a7f56f4b0a981668d1f64f87d3dfecc60b49d4b446a975ec2e8a73240",
+    "protocol.json": "a7c696372fb7c8c41d2871cd2f3c4cf9c3d683349119775713f07f319d49042d"
+  }
+}
