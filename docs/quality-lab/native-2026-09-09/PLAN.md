@@ -12,8 +12,8 @@ ne constituent pas la livraison attendue.
 | Exécuter les workflows natifs | terminé avec réserves documentées | Revue, code/configuration, QA, copie, journal, flows, réponse finale |
 | Développer les propositions restantes | qualifié | Plan/reprise, contexte sourcé, scénarios métier, clôture, assainissement, optimisations |
 | Rejouer après correction des profils | fait | Comparaison et non-régression ; code produit non corrigé par le banc |
-| Adopter les corrections justifiées | retenues, installation finale attendue | Décision par changement, défaut initial et preuve après |
-| README, analyse, profils actifs, GitHub | validation terminée, installation/publication en cours | Build complet, CI, publication et vérification |
+| Adopter les corrections justifiées | adoptées et installées | Décision par changement, défaut initial et preuve après |
+| README, analyse, profils actifs, GitHub | livré, installé et CI verte | Build complet, CI, publication et vérification |
 
 Le pont du banc conserve les vrais scripts QA de chaque variante ; les CLI
 utilisent leurs outils natifs et les skills générés. Les rôles sont appliqués par
@@ -28,3 +28,9 @@ non livrables, pas les liens du code). Les essais interrompus par ces incidents 
 sont pas comptés comme défauts des modèles.
 
 Rapport et décisions détaillées : [README.md](README.md).
+
+Livraison : `959708f` sur `origin/main`, profils actifs régénérés et contrôlés
+(26 fichiers, deux blocs et pointeur personnel). Les deux jobs Python 3.10/3.12
+ont réussi : [CI de livraison](https://github.com/le-goff-benoit/odoo-skills/actions/runs/34301119016).
+Les instructions générées remplacées sont sauvegardées localement ; aucun projet
+client modifié. Ouvrir une nouvelle conversation pour charger les nouveaux profils.

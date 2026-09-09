@@ -216,3 +216,23 @@ La version retenue installe les corrections SQL/précision, les commandes
 plan/start/improve, les contrôles de contexte/réception/clôture et l'assainissement
 des instructions générées. Les optimisations sont retenues pour leur correction
 fonctionnelle ; aucun gain général de vitesse ni supériorité de modèle annoncé.
+
+## Livraison et adoption effectives
+
+Le 9 septembre 2026, la version `959708f` a été intégrée puis publiée sur
+`origin/main`. Le build actif a installé les profils Claude Code et Codex ;
+`build.sh --check` confirme 26 fichiers, deux blocs d'aiguillage et le pointeur
+personnel conformes. Les anciennes instructions générées en doublon ont été
+sauvegardées dans `~/.odoo-agents-backups/loaded-instructions/` avant migration.
+Les 1 782 empreintes du dossier de preuves sont conformes après intégration.
+
+Les deux jobs Python 3.10 et 3.12 de la
+[CI de livraison](https://github.com/le-goff-benoit/odoo-skills/actions/runs/34301119016)
+ont réussi. L'analyse privée du bureau et la mémoire locale reçoivent le reçu
+de livraison ; elles ne sont pas publiées. Aucun projet client n'a été modifié.
+
+Pour utiliser ces profils, ouvrir une nouvelle conversation puis employer
+`/odoo-new` comme auparavant. `/odoo-plan` et `/odoo-start` organisent les demandes
+multiples ; `/odoo-improve` porte la boucle défaut observé → correction candidate
+→ contre-épreuve → adoption validée. Les limites de mesure exposées dans ce
+rapport restent applicables après publication.
