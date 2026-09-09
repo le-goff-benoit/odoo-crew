@@ -1,0 +1,46 @@
+{
+  "fixture": "attestation documentaire synthétique, aucune exécution réelle revendiquée",
+  "context": {
+    "copy": "epsilon_test",
+    "build": "e14-1",
+    "equipment_pause": 71,
+    "equipment_active": 72
+  },
+  "emails_before": {
+    "71": 1,
+    "72": 1
+  },
+  "emails_after": {
+    "71": 0,
+    "72": 1
+  },
+  "planned_visits_before": [
+    {
+      "id": 301,
+      "equipment": 71,
+      "date": "2026-10-01",
+      "technician": "T01"
+    },
+    {
+      "id": 302,
+      "equipment": 71,
+      "date": "2026-11-01",
+      "technician": "T01"
+    },
+    {
+      "id": 303,
+      "equipment": 72,
+      "date": "2026-10-02",
+      "technician": "T02"
+    },
+    {
+      "id": 304,
+      "equipment": 72,
+      "date": "2026-11-02",
+      "technician": "T02"
+    }
+  ],
+  "planned_visits_after_count": 4,
+  "screens_changed": false,
+  "deployment": false
+}

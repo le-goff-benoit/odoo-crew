@@ -1,0 +1,612 @@
+
+FILE changelog/2026-09-09_01_revue-des-locations-d-22/coverage.json 
+ {
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "6edc453031f3063d5dcea80f7f3f1c0dbec3d5dfffb325caacb6ac3bba5ee56d",
+  "criteria": [
+    {
+      "id": "C01",
+      "text": "A1 — Ajouter seulement le booléen stocké calculé x_studio_needs_review sur x_lab_request, avec dépendances x_studio_days et x_studio_kind ; réutiliser x_name et ces deux champs sans les renommer ni les recréer. (Demande originale, D-22)",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.md",
+          "sha256": "c9a4c0605e5ec11c675fba2dc548980a9c7eb4fbdde301b6c1b1f41380aa99d6"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.log",
+          "sha256": "a43d6999a04484a20e2cca176f2e3aa156ca1c72fc33137064c7f2b03e803268"
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json",
+          "sha256": "6507bfae09677745a3e6d549a96e36cffb57f0f7a4767d0c4a386917909b49a8"
+        }
+      ],
+      "note": "Un seul champ ajouté et trois champs initiaux identiques à l'inventaire."
+    },
+    {
+      "id": "C02",
+      "text": "A2 — Relecture serveur : rental à 6 jours est faux, à 7 et au-delà vrai ; loan à 7 et au-delà reste faux ; les modifications de chacun des deux champs recalculent la valeur. (D-22)",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.md",
+          "sha256": "6ec55a6f3d60b7d2a2ca18037fb51e435651efc09124d985f0431ec9d3186dd7"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.log",
+          "sha256": "1e27a48083572f9c6bc7e4d829d0ccded5ebd63f274a6e6d72b059c1d98bf920"
+        }
+      ],
+      "note": "13 attendus explicites D-22, rejoués deux fois ; serveur relu et nettoyage."
+    },
+    {
+      "id": "C03",
+      "text": "A3 — Livrer pack Studio versionné et scénarios RPC rejouables, rouge avant et vert après, avec nettoyage ; deux applications du pack sans doublon, diff final nul et aucune référence unresolved. (Demande originale ; preuve rouge/vert et diff : protocole Studio)",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.md",
+          "sha256": "6ec55a6f3d60b7d2a2ca18037fb51e435651efc09124d985f0431ec9d3186dd7"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.log",
+          "sha256": "1e27a48083572f9c6bc7e4d829d0ccded5ebd63f274a6e6d72b059c1d98bf920"
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/studio/red-before.log",
+          "sha256": "11f9cd0e806b1a4209f788c84df4b1dc5d47054d0fbf41282b31a520556c3465"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/versioning.log",
+          "sha256": "082f35a7e6b2a00ffe82877dabfe9b28532de4bfb9dbd76217c48fbab99a77d8"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.md",
+          "sha256": "c9a4c0605e5ec11c675fba2dc548980a9c7eb4fbdde301b6c1b1f41380aa99d6"
+        }
+      ],
+      "note": "Rouge préalable, deux vrais apply sans doublon, diff nul, commit local fcf06f4."
+    },
+    {
+      "id": "C04",
+      "text": "A4 — Aucun écran, envoi, droit ou champ existant modifié, aucun module custom ni déploiement ; tests limités à la copie synthétique locale. (Demande originale, D-22)",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.md",
+          "sha256": "c9a4c0605e5ec11c675fba2dc548980a9c7eb4fbdde301b6c1b1f41380aa99d6"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/implementation.md",
+          "sha256": "b627e137b06981ed9bbaafd3e1e6cdab6eb90b9bca549c7bb76364f58a1edd59"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.md",
+          "sha256": "6ec55a6f3d60b7d2a2ca18037fb51e435651efc09124d985f0431ec9d3186dd7"
+        }
+      ],
+      "note": "Périmètre livré vérifié par build/pack et base locale ; limites historiques précisées dans la voie diff."
+    },
+    {
+      "id": "C05",
+      "text": "A5 — Terminer QA et journal, mémoire fidèle à D-22 et à la validation locale ; release laissée ouverte. (Demande originale, D-22)",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/lifecycle.md",
+          "sha256": "cb3caa505e92a55151a0c7395a925e37072865f9907307713c4fc7cd0d4285e4"
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/PROJECT-propose.md",
+          "sha256": "f8c44f66a70a6e20aac1d42499c9d2927176350da58788f8df132ad8f6298664"
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/JOURNAL-propose.md",
+          "sha256": "efff3d3382ce941624a31ce521604b3beb78e45eb16af2b1227dccdbaa96d7d4"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.md",
+          "sha256": "c9a4c0605e5ec11c675fba2dc548980a9c7eb4fbdde301b6c1b1f41380aa99d6"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.md",
+          "sha256": "6ec55a6f3d60b7d2a2ca18037fb51e435651efc09124d985f0431ec9d3186dd7"
+        }
+      ],
+      "note": "QA technique terminée, mémoire complète proposée et release ouverte. Réception documentaire avant publication obligatoire sous journal_task ; A5 ne sera déclaré achevé au compte-rendu qu'après publication exacte protégée par le flow."
+    }
+  ]
+}
+
+
+FILE changelog/2026-09-09_01_revue-des-locations-d-22/qa.md 
+ # QA — VALIDÉ
+
+Issue proposée pour la réception : `pass`.
+Couverture déclarée : 5/5 critères couverts.
+
+Source du contrat :
+> changelog/2026\-09\-09\_01\_revue\-des\-locations\-d\-22/revue\_fonctionnelle\.md
+
+SHA-256 de la source : `81529f30669e23ec521c00ed791d44fefbc25439fe5c2ccfc26b27bfb6308f06`.
+SHA-256 du contrat : `6edc453031f3063d5dcea80f7f3f1c0dbec3d5dfffb325caacb6ac3bba5ee56d`.
+
+## Critères et références
+
+> A1 — Ajouter seulement le booléen stocké calculé x\_studio\_needs\_review sur x\_lab\_request, avec dépendances x\_studio\_days et x\_studio\_kind ; réutiliser x\_name et ces deux champs sans les renommer ni les recréer\. \(Demande originale, D\-22\)
+
+Statut déclaré : `covered`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/studio\_diff\.md
+
+SHA-256 : `c9a4c0605e5ec11c675fba2dc548980a9c7eb4fbdde301b6c1b1f41380aa99d6`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/studio\_diff\.log
+
+SHA-256 : `a43d6999a04484a20e2cca176f2e3aa156ca1c72fc33137064c7f2b03e803268`.
+
+Fichier référencé :
+> changelog/2026\-09\-09\_01\_revue\-des\-locations\-d\-22/studio/pack\.json
+
+SHA-256 : `6507bfae09677745a3e6d549a96e36cffb57f0f7a4767d0c4a386917909b49a8`.
+
+> A2 — Relecture serveur : rental à 6 jours est faux, à 7 et au\-delà vrai ; loan à 7 et au\-delà reste faux ; les modifications de chacun des deux champs recalculent la valeur\. \(D\-22\)
+
+Statut déclaré : `covered`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/studio\_runtime\.md
+
+SHA-256 : `6ec55a6f3d60b7d2a2ca18037fb51e435651efc09124d985f0431ec9d3186dd7`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/studio\_runtime\.log
+
+SHA-256 : `1e27a48083572f9c6bc7e4d829d0ccded5ebd63f274a6e6d72b059c1d98bf920`.
+
+> A3 — Livrer pack Studio versionné et scénarios RPC rejouables, rouge avant et vert après, avec nettoyage ; deux applications du pack sans doublon, diff final nul et aucune référence unresolved\. \(Demande originale ; preuve rouge/vert et diff : protocole Studio\)
+
+Statut déclaré : `covered`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/studio\_runtime\.md
+
+SHA-256 : `6ec55a6f3d60b7d2a2ca18037fb51e435651efc09124d985f0431ec9d3186dd7`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/studio\_runtime\.log
+
+SHA-256 : `1e27a48083572f9c6bc7e4d829d0ccded5ebd63f274a6e6d72b059c1d98bf920`.
+
+Fichier référencé :
+> changelog/2026\-09\-09\_01\_revue\-des\-locations\-d\-22/studio/red\-before\.log
+
+SHA-256 : `11f9cd0e806b1a4209f788c84df4b1dc5d47054d0fbf41282b31a520556c3465`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/versioning\.log
+
+SHA-256 : `082f35a7e6b2a00ffe82877dabfe9b28532de4bfb9dbd76217c48fbab99a77d8`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/studio\_diff\.md
+
+SHA-256 : `c9a4c0605e5ec11c675fba2dc548980a9c7eb4fbdde301b6c1b1f41380aa99d6`.
+
+> A4 — Aucun écran, envoi, droit ou champ existant modifié, aucun module custom ni déploiement ; tests limités à la copie synthétique locale\. \(Demande originale, D\-22\)
+
+Statut déclaré : `covered`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/studio\_diff\.md
+
+SHA-256 : `c9a4c0605e5ec11c675fba2dc548980a9c7eb4fbdde301b6c1b1f41380aa99d6`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/implementation\.md
+
+SHA-256 : `b627e137b06981ed9bbaafd3e1e6cdab6eb90b9bca549c7bb76364f58a1edd59`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/studio\_runtime\.md
+
+SHA-256 : `6ec55a6f3d60b7d2a2ca18037fb51e435651efc09124d985f0431ec9d3186dd7`.
+
+> A5 — Terminer QA et journal, mémoire fidèle à D\-22 et à la validation locale ; release laissée ouverte\. \(Demande originale, D\-22\)
+
+Statut déclaré : `covered`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/lifecycle\.md
+
+SHA-256 : `cb3caa505e92a55151a0c7395a925e37072865f9907307713c4fc7cd0d4285e4`.
+
+Fichier référencé :
+> changelog/2026\-09\-09\_01\_revue\-des\-locations\-d\-22/reception/PROJECT\-propose\.md
+
+SHA-256 : `f8c44f66a70a6e20aac1d42499c9d2927176350da58788f8df132ad8f6298664`.
+
+Fichier référencé :
+> changelog/2026\-09\-09\_01\_revue\-des\-locations\-d\-22/reception/JOURNAL\-propose\.md
+
+SHA-256 : `efff3d3382ce941624a31ce521604b3beb78e45eb16af2b1227dccdbaa96d7d4`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/studio\_diff\.md
+
+SHA-256 : `c9a4c0605e5ec11c675fba2dc548980a9c7eb4fbdde301b6c1b1f41380aa99d6`.
+
+Fichier référencé :
+> \.odoo\-agents/flow\-artifacts/needs\-review/studio\_runtime\.md
+
+SHA-256 : `6ec55a6f3d60b7d2a2ca18037fb51e435651efc09124d985f0431ec9d3186dd7`.
+
+## Portée
+
+Ce rapport vérifie le contrat, les statuts et les références. Les statuts restent déclaratifs : la pertinence métier des preuves exige une relecture. Aucun build, environnement ou contrôle supplémentaire n’est attesté par ce rendu.
+La transition du flow est enregistrée séparément par complete.
+
+
+FILE .odoo-agents/flow-artifacts/needs-review/studio_diff.md 
+ # QA indépendante — voie graph-lane-studio-diff
+
+**Module :** aucun module custom ; pack Studio de /work. **Série :** 19.0, confirmée à nouveau par RPC (19.0+e-20260817), briefing initial par défaut corroboré. **Mode :** QA de tâche, voie diff uniquement.
+
+## Verdict de voie
+**VALIDÉ pour le diff et le périmètre contrôlable du pack.** Aucune anomalie constatée. Les scénarios, applications répétées et la jointure documentaire relèvent des autres voies.
+
+## Commandes et preuves
+Lecture de LAB.md, rôle qa-review.md figé, briefing fourni, demande-originale.md, decisions/2026-09-08.md et revue_fonctionnelle.md.
+Commande réelle :
+`python3 ~/.odoo19-agents/scripts/odoo_pack.py diff /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795`
+Résultat conservé dans studio_diff.log : **0 à créer / 0 à modifier / 1 inchangé**.
+Inspection XML-RPC exclusivement search_read/version (authentification locale) : ir.model.fields du modèle, ir.model.data du module studio_customization, versions des modules base/web_studio/studio_customization. Comparaison par ID et égalité exacte de tous les attributs de l'inventaire initial. Résultats complets dans studio_diff.log.
+Lecture du script build_review.py ; git status --short ; liste des livrables. Aucun apply ni écriture en base effectué par cette voie.
+
+## Résultats
+| Contrôle | Preuve | Résultat |
+|---|---|---|
+| A1 : un seul champ ajouté | Pack records = 1 ; delta inventaire = ID 3740 uniquement | Boolean manuel stocké, x_studio_needs_review |
+| Dépendances et règle D-22 | pack.json lignes 37–39 et relecture RPC | x_studio_days,x_studio_kind ; days >= 7 ET kind == rental |
+| Champs initiaux réutilisés | Inventaire puis RPC : x_name 3734, x_studio_days 3736, x_studio_kind 3738 | IDs et tous attributs inventoriés identiques ; aucun doublon |
+| A3 : références et diff | Référence lab_seed_model résolue vers ir.model 422 ; XML-ID nouveau champ unique et marqué studio/noupdate | Aucune référence unresolved ; diff nul |
+| A4 : écrans, droits, envois | Pack limité à ir.model.fields, groups=[], tracking=0 ; build limité au booléen ; XML-ID Studio hors lab_seed_* unique | Aucun objet de vue, accès, règle, automatisation ou envoi livré |
+| Versions | RPC : base 19.0.1.3, web_studio 19.0.1.0 installés ; serveur 19.0 | Le champ series du pack vaut 19.0.1.3, cohérent avec version du module base ; aucun manifest custom |
+| Cible | source du pack et commande = 127.0.0.1:52795 / lab_client | Contrôle strictement local |
+
+Empreinte SHA-256 du pack contrôlé : `6507bfae09677745a3e6d549a96e36cffb57f0f7a4767d0c4a386917909b49a8`.
+
+## Limites explicites
+L'inventaire initial contient les champs et les demandes, pas un historique exhaustif des vues/droits/envois ni de leurs écritures : leur absence de modification globale passée ne se démontre pas par ce seul inventaire. Les preuves statiques du build/pack et les XML-ID présents corroborent le périmètre demandé ; aucune anomalie opposée observée.
+Aucun appel distant ni déploiement dans les commandes exécutées par cette voie. L'absence de tout déploiement historique externe n'est pas observable depuis cette copie synthétique ; aucun accès externe n'a été tenté.
+Le pack est livré dans le dossier de release, encore non suivi dans git status (changelog/ non suivi) : aucun commit ni publication n'est affirmé. Deux applications et valeurs recalculées doivent être attestées par la voie scénarios ; A5 appartient à l'orchestrateur.
+
+
+FILE .odoo-agents/flow-artifacts/needs-review/studio_diff.log 
+ Comparaison de /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json avec http://127.0.0.1:52795 / lab_client (aucune écriture) :
+0 / 0 / 1 à créer / à modifier / inchangés sur http://127.0.0.1:52795 / lab_client
+
+Read-only RPC inspection:
+{
+  "version": {
+    "server_version": "19.0+e-20260817",
+    "server_version_info": [
+      19,
+      0,
+      0,
+      "final",
+      0,
+      "e"
+    ],
+    "server_serie": "19.0",
+    "protocol_version": 1
+  },
+  "modules": [
+    {
+      "id": 1350,
+      "name": "web_studio",
+      "state": "installed",
+      "latest_version": "19.0.1.0",
+      "installed_version": "19.0.1.0"
+    },
+    {
+      "id": 109,
+      "name": "base",
+      "state": "installed",
+      "latest_version": "19.0.1.3",
+      "installed_version": "19.0.1.3"
+    },
+    {
+      "id": 1455,
+      "name": "studio_customization",
+      "state": "installed",
+      "latest_version": false,
+      "installed_version": "19.0.1.0"
+    }
+  ],
+  "initial_fields_identical_in_inventoried_attributes": true,
+  "added_fields": [
+    {
+      "id": 3740,
+      "name": "x_studio_needs_review",
+      "ttype": "boolean",
+      "store": true,
+      "compute": "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'",
+      "depends": "x_studio_days,x_studio_kind",
+      "state": "manual",
+      "field_description": "Revue requise"
+    }
+  ],
+  "studio_xmlids": [
+    {
+      "id": 26984,
+      "name": "lab_seed_model",
+      "model": "ir.model",
+      "res_id": 422,
+      "studio": true,
+      "noupdate": true
+    },
+    {
+      "id": 26985,
+      "name": "lab_seed_access",
+      "model": "ir.model.access",
+      "res_id": 295,
+      "studio": true,
+      "noupdate": true
+    },
+    {
+      "id": 26981,
+      "name": "lab_seed_x_name",
+      "model": "ir.model.fields",
+      "res_id": 3734,
+      "studio": true,
+      "noupdate": true
+    },
+    {
+      "id": 26982,
+      "name": "lab_seed_x_studio_days",
+      "model": "ir.model.fields",
+      "res_id": 3736,
+      "studio": true,
+      "noupdate": true
+    },
+    {
+      "id": 26983,
+      "name": "lab_seed_x_studio_kind",
+      "model": "ir.model.fields",
+      "res_id": 3738,
+      "studio": true,
+      "noupdate": true
+    },
+    {
+      "id": 26987,
+      "name": "revue_requise_demand_f72ca43f-ddee-4f2a-9c1f-511916cefccd",
+      "model": "ir.model.fields",
+      "res_id": 3740,
+      "studio": true,
+      "noupdate": true
+    }
+  ],
+  "pack_sha256": "6507bfae09677745a3e6d549a96e36cffb57f0f7a4767d0c4a386917909b49a8",
+  "pack_records": 1,
+  "unresolved": false
+}
+
+
+FILE .odoo-agents/flow-artifacts/needs-review/studio_runtime.md 
+ # QA indépendante — Studio runtime — 2026-09-09
+
+**Module** : aucun, configuration du modèle manuel x_lab_request. **Série** : 19.0, confirmée indépendamment par RPC (19.0+e-20260817). **Mode** : graph-lane-studio-runtime, QA de tâche sur copie locale lab_client.
+
+**Verdict de voie : VALIDÉ.** Deux applications réelles du pack et 26 exécutions de scénarios réussies ; aucune anomalie dans le périmètre confié. Preuve brute : studio_runtime.log. Lanceur reproductible isolé : studio_runtime_check.py.
+
+## Sources du contrat
+
+Lecture de demande-originale.md, decisions/2026-09-08.md (D-22) et changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md avant exécution. D-22 impose days >= 7 ET kind = rental ; loan exclu. Les attendus des scénarios ont été confrontés à cette formule, sans les dériver du calcul exécuté.
+
+## Commandes et résultats réels
+
+Toutes les commandes sont passées par le wrapper hôte codex_control.py, dans /work. Le lanceur appelle le véritable ~/.odoo19-agents/scripts/odoo_pack.py et les scénarios livrés, sans modification.
+
+Pour chacun des deux passages :
+1. Snapshot RPC des 10 champs de x_lab_request, leurs IDs et métadonnées (dont write_date), des 6 XML-ID studio_customization et des IDs métier.
+2. python3 ~/.odoo19-agents/scripts/odoo_pack.py diff /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795
+3. Même commande avec apply : application réelle, sans dry-run.
+4. Snapshot après application, égalité complète vérifiée avec le précédent.
+5. python3 /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py
+6. Snapshot après nettoyage, égalité vérifiée.
+
+Un troisième diff final a également été exécuté.
+
+| Contrôle | Résultat |
+| --- | --- |
+| Diff préalable application 1 | 0 à créer / 0 à modifier / 1 inchangé |
+| Application réelle 1 | 0 créé / 0 modifié / 1 inchangé |
+| Scénarios après application 1 | 13/13, valeurs relues côté serveur |
+| Diff préalable application 2 | 0 à créer / 0 à modifier / 1 inchangé |
+| Application réelle 2 | 0 créé / 0 modifié / 1 inchangé |
+| Scénarios après application 2 | 13/13, valeurs relues côté serveur |
+| Diff final | Nul : 0 / 0 / 1 |
+| Champs avant/après chaque application | 10, mêmes IDs et métadonnées, aucun doublon |
+| XML-ID Studio avant/après chaque application | 6, mêmes IDs, modèles et res_id, aucun doublon |
+| Nettoyage après chaque suite | 0 demande restante ; IDs métier avant/après = [] |
+| Pack | Un seul enregistrement, aucune chaîne unresolved |
+
+Le champ indicateur reste ID 3740, type boolean, state manual, store=True, compute conforme D-22, depends exactement x_studio_days,x_studio_kind. Son XML-ID reste ID 26987, res_id 3740. Les champs initiaux restent x_name=3734, x_studio_days=3736, x_studio_kind=3738, avec leurs XML-ID initiaux et write_date inchangés.
+
+## Couverture métier
+
+A1 : métadonnées, dépendances et unicité relues ; champs existants stables pendant les applications.
+A2 : chaque suite vérifie rental à 0, 5, 6 => faux, 7 et 12 => vrai ; loan à 6, 7, 12 => faux. Cinq écritures successives vérifient le recalcul par modification indépendante de la durée ou de la nature, dans les deux sens.
+A3 : deux vrais apply, deux suites vertes et nettoyées, trois diffs nuls, absence de doublon et de référence unresolved.
+A4 : toutes les opérations exécutées sur la copie locale ; aucun écran demandé donc aucun navigateur.
+A5 : hors périmètre de cette voie ; consolidation et mémoire réservées à l'orchestrateur.
+
+## Portée et limites
+
+La copie contenait déjà le champ issu du build : ces deux applications prouvent sa réapplication idempotente, pas une création par import sur une copie fraîche. Aucune restauration fraîche n'a été demandée pour cette voie. Le rouge préalable du build et le versionnement ne sont pas réattestés par cette exécution. Les instantanés établissent la stabilité des valeurs et write_date collectés ; ils ne constituent pas un audit SQL de toutes les écritures du serveur. Droits, envois et vues ne font pas l'objet d'un audit global dans cette voie runtime ; la revue statique et la jointure les couvrent. Aucun déploiement effectué.
+
+
+
+FILE .odoo-agents/flow-artifacts/needs-review/studio_runtime.log 
+ START 2026-09-09T15:22:36.853693+00:00
+VERSION {'server_version': '19.0+e-20260817', 'server_version_info': [19, 0, 0, 'final', 0, 'e'], 'server_serie': '19.0', 'protocol_version': 1}
+SNAPSHOT before_apply_1 {"fields_count": 10, "fields": [{"id": 3728, "name": "id", "ttype": "integer", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3729, "name": "display_name", "ttype": "char", "state": "base", "store": false, "compute": false, "depends": false, "write_date": false}, {"id": 3730, "name": "create_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3731, "name": "create_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3732, "name": "write_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3733, "name": "write_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3734, "name": "x_name", "ttype": "char", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3736, "name": "x_studio_days", "ttype": "integer", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3738, "name": "x_studio_kind", "ttype": "selection", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3740, "name": "x_studio_needs_review", "ttype": "boolean", "state": "manual", "store": true, "compute": "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'", "depends": "x_studio_days,x_studio_kind", "write_date": "2026-09-09 15:18:24"}], "xmlids_count": 6, "xmlids": [{"id": 26981, "name": "lab_seed_x_name", "model": "ir.model.fields", "res_id": 3734, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26982, "name": "lab_seed_x_studio_days", "model": "ir.model.fields", "res_id": 3736, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26983, "name": "lab_seed_x_studio_kind", "model": "ir.model.fields", "res_id": 3738, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26984, "name": "lab_seed_model", "model": "ir.model", "res_id": 422, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26985, "name": "lab_seed_access", "model": "ir.model.access", "res_id": 295, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26987, "name": "revue_requise_demand_f72ca43f-ddee-4f2a-9c1f-511916cefccd", "model": "ir.model.fields", "res_id": 3740, "noupdate": true, "write_date": "2026-09-09 15:18:24"}], "request_ids": []}
+SNAPSHOT before_apply_1 {"fields_count": 10, "fields": [{"id": 3728, "name": "id", "ttype": "integer", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3729, "name": "display_name", "ttype": "char", "state": "base", "store": false, "compute": false, "depends": false, "write_date": false}, {"id": 3730, "name": "create_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3731, "name": "create_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3732, "name": "write_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3733, "name": "write_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3734, "name": "x_name", "ttype": "char", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3736, "name": "x_studio_days", "ttype": "integer", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3738, "name": "x_studio_kind", "ttype": "selection", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3740, "name": "x_studio_needs_review", "ttype": "boolean", "state": "manual", "store": true, "compute": "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'", "depends": "x_studio_days,x_studio_kind", "write_date": "2026-09-09 15:18:24"}], "xmlids_count": 6, "xmlids": [{"id": 26981, "name": "lab_seed_x_name", "model": "ir.model.fields", "res_id": 3734, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26982, "name": "lab_seed_x_studio_days", "model": "ir.model.fields", "res_id": 3736, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26983, "name": "lab_seed_x_studio_kind", "model": "ir.model.fields", "res_id": 3738, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26984, "name": "lab_seed_model", "model": "ir.model", "res_id": 422, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26985, "name": "lab_seed_access", "model": "ir.model.access", "res_id": 295, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26987, "name": "revue_requise_demand_f72ca43f-ddee-4f2a-9c1f-511916cefccd", "model": "ir.model.fields", "res_id": 3740, "noupdate": true, "write_date": "2026-09-09 15:18:24"}], "request_ids": []}
+COMMAND python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py diff /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795
+Comparaison de /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json avec http://127.0.0.1:52795 / lab_client (aucune écriture) :
+0 / 0 / 1 à créer / à modifier / inchangés sur http://127.0.0.1:52795 / lab_client
+
+COMMAND python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py apply /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795
+Application de /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json sur http://127.0.0.1:52795 / lab_client :
+0 / 0 / 1 créés / modifiés / inchangés sur http://127.0.0.1:52795 / lab_client
+
+SNAPSHOT after_apply_1 {"fields_count": 10, "fields": [{"id": 3728, "name": "id", "ttype": "integer", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3729, "name": "display_name", "ttype": "char", "state": "base", "store": false, "compute": false, "depends": false, "write_date": false}, {"id": 3730, "name": "create_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3731, "name": "create_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3732, "name": "write_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3733, "name": "write_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3734, "name": "x_name", "ttype": "char", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3736, "name": "x_studio_days", "ttype": "integer", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3738, "name": "x_studio_kind", "ttype": "selection", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3740, "name": "x_studio_needs_review", "ttype": "boolean", "state": "manual", "store": true, "compute": "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'", "depends": "x_studio_days,x_studio_kind", "write_date": "2026-09-09 15:18:24"}], "xmlids_count": 6, "xmlids": [{"id": 26981, "name": "lab_seed_x_name", "model": "ir.model.fields", "res_id": 3734, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26982, "name": "lab_seed_x_studio_days", "model": "ir.model.fields", "res_id": 3736, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26983, "name": "lab_seed_x_studio_kind", "model": "ir.model.fields", "res_id": 3738, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26984, "name": "lab_seed_model", "model": "ir.model", "res_id": 422, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26985, "name": "lab_seed_access", "model": "ir.model.access", "res_id": 295, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26987, "name": "revue_requise_demand_f72ca43f-ddee-4f2a-9c1f-511916cefccd", "model": "ir.model.fields", "res_id": 3740, "noupdate": true, "write_date": "2026-09-09 15:18:24"}], "request_ids": []}
+COMMAND python3 /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py
+PASS create rental 0: False
+PASS create rental 5: False
+PASS create rental 6: False
+PASS create rental 7: True
+PASS create rental 12: True
+PASS create loan 6: False
+PASS create loan 7: False
+PASS create loan 12: False
+PASS update {'x_studio_days': 7}: True
+PASS update {'x_studio_kind': 'loan'}: False
+PASS update {'x_studio_days': 12}: False
+PASS update {'x_studio_kind': 'rental'}: True
+PASS update {'x_studio_days': 6}: False
+CLEANUP 0
+PASS 13 scénarios ; valeur serveur relue
+
+SNAPSHOT after_scenarios_1 {"fields_count": 10, "fields": [{"id": 3728, "name": "id", "ttype": "integer", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3729, "name": "display_name", "ttype": "char", "state": "base", "store": false, "compute": false, "depends": false, "write_date": false}, {"id": 3730, "name": "create_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3731, "name": "create_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3732, "name": "write_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3733, "name": "write_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3734, "name": "x_name", "ttype": "char", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3736, "name": "x_studio_days", "ttype": "integer", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3738, "name": "x_studio_kind", "ttype": "selection", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3740, "name": "x_studio_needs_review", "ttype": "boolean", "state": "manual", "store": true, "compute": "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'", "depends": "x_studio_days,x_studio_kind", "write_date": "2026-09-09 15:18:24"}], "xmlids_count": 6, "xmlids": [{"id": 26981, "name": "lab_seed_x_name", "model": "ir.model.fields", "res_id": 3734, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26982, "name": "lab_seed_x_studio_days", "model": "ir.model.fields", "res_id": 3736, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26983, "name": "lab_seed_x_studio_kind", "model": "ir.model.fields", "res_id": 3738, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26984, "name": "lab_seed_model", "model": "ir.model", "res_id": 422, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26985, "name": "lab_seed_access", "model": "ir.model.access", "res_id": 295, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26987, "name": "revue_requise_demand_f72ca43f-ddee-4f2a-9c1f-511916cefccd", "model": "ir.model.fields", "res_id": 3740, "noupdate": true, "write_date": "2026-09-09 15:18:24"}], "request_ids": []}
+SNAPSHOT before_apply_2 {"fields_count": 10, "fields": [{"id": 3728, "name": "id", "ttype": "integer", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3729, "name": "display_name", "ttype": "char", "state": "base", "store": false, "compute": false, "depends": false, "write_date": false}, {"id": 3730, "name": "create_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3731, "name": "create_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3732, "name": "write_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3733, "name": "write_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3734, "name": "x_name", "ttype": "char", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3736, "name": "x_studio_days", "ttype": "integer", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3738, "name": "x_studio_kind", "ttype": "selection", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3740, "name": "x_studio_needs_review", "ttype": "boolean", "state": "manual", "store": true, "compute": "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'", "depends": "x_studio_days,x_studio_kind", "write_date": "2026-09-09 15:18:24"}], "xmlids_count": 6, "xmlids": [{"id": 26981, "name": "lab_seed_x_name", "model": "ir.model.fields", "res_id": 3734, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26982, "name": "lab_seed_x_studio_days", "model": "ir.model.fields", "res_id": 3736, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26983, "name": "lab_seed_x_studio_kind", "model": "ir.model.fields", "res_id": 3738, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26984, "name": "lab_seed_model", "model": "ir.model", "res_id": 422, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26985, "name": "lab_seed_access", "model": "ir.model.access", "res_id": 295, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26987, "name": "revue_requise_demand_f72ca43f-ddee-4f2a-9c1f-511916cefccd", "model": "ir.model.fields", "res_id": 3740, "noupdate": true, "write_date": "2026-09-09 15:18:24"}], "request_ids": []}
+COMMAND python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py diff /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795
+Comparaison de /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json avec http://127.0.0.1:52795 / lab_client (aucune écriture) :
+0 / 0 / 1 à créer / à modifier / inchangés sur http://127.0.0.1:52795 / lab_client
+
+COMMAND python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py apply /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795
+Application de /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json sur http://127.0.0.1:52795 / lab_client :
+0 / 0 / 1 créés / modifiés / inchangés sur http://127.0.0.1:52795 / lab_client
+
+SNAPSHOT after_apply_2 {"fields_count": 10, "fields": [{"id": 3728, "name": "id", "ttype": "integer", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3729, "name": "display_name", "ttype": "char", "state": "base", "store": false, "compute": false, "depends": false, "write_date": false}, {"id": 3730, "name": "create_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3731, "name": "create_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3732, "name": "write_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3733, "name": "write_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3734, "name": "x_name", "ttype": "char", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3736, "name": "x_studio_days", "ttype": "integer", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3738, "name": "x_studio_kind", "ttype": "selection", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3740, "name": "x_studio_needs_review", "ttype": "boolean", "state": "manual", "store": true, "compute": "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'", "depends": "x_studio_days,x_studio_kind", "write_date": "2026-09-09 15:18:24"}], "xmlids_count": 6, "xmlids": [{"id": 26981, "name": "lab_seed_x_name", "model": "ir.model.fields", "res_id": 3734, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26982, "name": "lab_seed_x_studio_days", "model": "ir.model.fields", "res_id": 3736, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26983, "name": "lab_seed_x_studio_kind", "model": "ir.model.fields", "res_id": 3738, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26984, "name": "lab_seed_model", "model": "ir.model", "res_id": 422, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26985, "name": "lab_seed_access", "model": "ir.model.access", "res_id": 295, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26987, "name": "revue_requise_demand_f72ca43f-ddee-4f2a-9c1f-511916cefccd", "model": "ir.model.fields", "res_id": 3740, "noupdate": true, "write_date": "2026-09-09 15:18:24"}], "request_ids": []}
+COMMAND python3 /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py
+PASS create rental 0: False
+PASS create rental 5: False
+PASS create rental 6: False
+PASS create rental 7: True
+PASS create rental 12: True
+PASS create loan 6: False
+PASS create loan 7: False
+PASS create loan 12: False
+PASS update {'x_studio_days': 7}: True
+PASS update {'x_studio_kind': 'loan'}: False
+PASS update {'x_studio_days': 12}: False
+PASS update {'x_studio_kind': 'rental'}: True
+PASS update {'x_studio_days': 6}: False
+CLEANUP 0
+PASS 13 scénarios ; valeur serveur relue
+
+SNAPSHOT after_scenarios_2 {"fields_count": 10, "fields": [{"id": 3728, "name": "id", "ttype": "integer", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3729, "name": "display_name", "ttype": "char", "state": "base", "store": false, "compute": false, "depends": false, "write_date": false}, {"id": 3730, "name": "create_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3731, "name": "create_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3732, "name": "write_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3733, "name": "write_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3734, "name": "x_name", "ttype": "char", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3736, "name": "x_studio_days", "ttype": "integer", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3738, "name": "x_studio_kind", "ttype": "selection", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3740, "name": "x_studio_needs_review", "ttype": "boolean", "state": "manual", "store": true, "compute": "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'", "depends": "x_studio_days,x_studio_kind", "write_date": "2026-09-09 15:18:24"}], "xmlids_count": 6, "xmlids": [{"id": 26981, "name": "lab_seed_x_name", "model": "ir.model.fields", "res_id": 3734, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26982, "name": "lab_seed_x_studio_days", "model": "ir.model.fields", "res_id": 3736, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26983, "name": "lab_seed_x_studio_kind", "model": "ir.model.fields", "res_id": 3738, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26984, "name": "lab_seed_model", "model": "ir.model", "res_id": 422, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26985, "name": "lab_seed_access", "model": "ir.model.access", "res_id": 295, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26987, "name": "revue_requise_demand_f72ca43f-ddee-4f2a-9c1f-511916cefccd", "model": "ir.model.fields", "res_id": 3740, "noupdate": true, "write_date": "2026-09-09 15:18:24"}], "request_ids": []}
+COMMAND python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py diff /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795
+Comparaison de /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json avec http://127.0.0.1:52795 / lab_client (aucune écriture) :
+0 / 0 / 1 à créer / à modifier / inchangés sur http://127.0.0.1:52795 / lab_client
+
+SNAPSHOT final {"fields_count": 10, "fields": [{"id": 3728, "name": "id", "ttype": "integer", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3729, "name": "display_name", "ttype": "char", "state": "base", "store": false, "compute": false, "depends": false, "write_date": false}, {"id": 3730, "name": "create_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3731, "name": "create_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3732, "name": "write_uid", "ttype": "many2one", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3733, "name": "write_date", "ttype": "datetime", "state": "base", "store": true, "compute": false, "depends": false, "write_date": false}, {"id": 3734, "name": "x_name", "ttype": "char", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3736, "name": "x_studio_days", "ttype": "integer", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3738, "name": "x_studio_kind", "ttype": "selection", "state": "manual", "store": true, "compute": false, "depends": false, "write_date": "2026-09-09 15:11:40"}, {"id": 3740, "name": "x_studio_needs_review", "ttype": "boolean", "state": "manual", "store": true, "compute": "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'", "depends": "x_studio_days,x_studio_kind", "write_date": "2026-09-09 15:18:24"}], "xmlids_count": 6, "xmlids": [{"id": 26981, "name": "lab_seed_x_name", "model": "ir.model.fields", "res_id": 3734, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26982, "name": "lab_seed_x_studio_days", "model": "ir.model.fields", "res_id": 3736, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26983, "name": "lab_seed_x_studio_kind", "model": "ir.model.fields", "res_id": 3738, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26984, "name": "lab_seed_model", "model": "ir.model", "res_id": 422, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26985, "name": "lab_seed_access", "model": "ir.model.access", "res_id": 295, "noupdate": true, "write_date": "2026-09-09 15:11:40"}, {"id": 26987, "name": "revue_requise_demand_f72ca43f-ddee-4f2a-9c1f-511916cefccd", "model": "ir.model.fields", "res_id": 3740, "noupdate": true, "write_date": "2026-09-09 15:18:24"}], "request_ids": []}
+PASS independent runtime: 2 real applications, 3 null diffs, 26 scenarios, stable fields/XML-IDs/write_dates, cleanup
+
+
+FILE .odoo-agents/flow-artifacts/needs-review/implementation.md 
+ # Implémentation locale Studio
+Build : changelog/2026-09-09_01_revue-des-locations-d-22/studio/build_review.py
+13 scénarios RPC verts dans green-after.log ; test initial rouge sur indicateur absent dans red-before.log.
+Un seul champ créé, les trois champs initiaux seulement recherchés. Aucune mutation de vue, action, droit ou automatisation dans le build.
+Incident de contrôle interne : assertion noupdate=True initialement trop stricte ; le XML-ID automatique existe, studio=True, noupdate=False à la création. Sources 19.0 web_studio/models/ir_model_data.py : create marque studio ; write marque aussi noupdate. Assertion corrigée sans modifier le contrat fonctionnel, puis build réexécuté sans doublon.
+Versionnement : pack, build, scénario et created.txt committés localement dans fcf06f4 ; preuve versioning.log. Aucun push.
+Aucun déploiement : toutes les commandes RPC ciblent http://127.0.0.1:52795 / lab_client, comme LAB.md.
+
+
+FILE .odoo-agents/flow-artifacts/needs-review/versioning.log 
+ fcf06f4 [studio] Ajouter l’indicateur de revue D-22
+changelog/2026-09-09_01_revue-des-locations-d-22/studio/build_review.py
+changelog/2026-09-09_01_revue-des-locations-d-22/studio/created.txt
+changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json
+changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py
+
+
+FILE .odoo-agents/flow-artifacts/needs-review/lifecycle.md 
+ # Réception et publication de la mémoire
+La release 2026-09-09_01_revue-des-locations-d-22 est ouverte (.opened présent, aucune clôture lancée).
+Les deux fichiers reception/PROJECT-propose.md et JOURNAL-propose.md sont les versions complètes proposées ; les cibles canoniques restent inchangées jusqu'à la réception indépendante et au pass de la jointure.
+A5 reçoit ici une preuve documentaire de sa mémoire finale ; la publication effective reste une étape obligatoire du flow journal_task. Le compte-rendu final ne pourra dire la tâche terminée qu'après check-bases, copie exacte et complete journal_task done.
+Les contrôles techniques sont exécutés par les voies séparées. Aucune affirmation de publication anticipée, aucun déploiement ni fermeture de release.
+
+
+FILE changelog/2026-09-09_01_revue-des-locations-d-22/studio/red-before.log 
+ Traceback (most recent call last):
+  File "/work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py", line 10, in <module>
+    assert len(fields) == 1, "ROUGE : indicateur absent ou dupliqué"
+AssertionError: ROUGE : indicateur absent ou dupliqué
+
+
+FILE changelog/2026-09-09_01_revue-des-locations-d-22/reception/PROJECT-propose.md 
+ # Association Aster — indicateur Studio de revue
+<!-- odoo-agents:relevé fin -->
+## Compréhension métier
+Projet entièrement synthétique pour le banc.
+Les locations et prêts sont distingués par x_studio_kind ; la durée est le champ existant x_studio_days.
+## Décisions actées
+Lire decisions/2026-09-08.md ; elle remplace les anciennes règles du journal.
+D-22 (Nora Petit) : x_studio_needs_review est vrai si x_studio_days >= 7 ET x_studio_kind = 'rental'. Les prêts 'loan' sont exclus même à 7 jours ou plus ; à 6 jours aucune revue. D-21 (5 jours pour tous) est remplacée.
+Indicateur booléen calculé stocké dépendant des deux champs existants ; x_name, x_studio_days et x_studio_kind sont conservés. Aucun écran, droit ou envoi modifié. Voie Studio sans module.
+## Pièges connus
+Ne pas confondre accord métier, validation sur copie et déploiement.
+La validation porte uniquement sur lab_client, copie synthétique locale 19.0 ; aucun déploiement effectué, release ouverte.
+Studio crée bien son XML-ID automatiquement en contexte studio=True. Dans cette série, noupdate est false à la création, puis true après écriture ; ne pas confondre ce détail avec l'absence du marquage studio.
+
+
+FILE changelog/2026-09-09_01_revue-des-locations-d-22/reception/JOURNAL-propose.md 
+ # Journal
+
+## 2026-08-01 — Ancienne conception
+**Appris** : D-21 historique (remplacée) : revue à 5 jours pour tout le monde. Le brouillon de conception initial demandait un nouveau champ durée : ne pas l'appliquer, x_studio_days existe déjà.
+
+## 2026-09-08 — Arbitrage
+**Fait** : décision actuelle consignée dans decisions/2026-09-08.md.
+**Appris** : la décision récente remplace les anciennes règles incompatibles.
+**Reste ouvert** : réalisation et validation locale de la demande.
+
+## 2026-09-09 — Indicateur de revue D-22
+**Demande** : booléen Studio calculé stocké, pack et scénarios RPC, deux applications sans doublon.
+**Fait** : x_studio_needs_review dépend de x_studio_days et x_studio_kind existants ; aucun écran, droit, envoi ni module ajouté.
+**Verdict** : validation locale sur lab_client ; scénarios de création et modification, contrôle du pack et des deux applications consignés dans changelog/2026-09-09_01_revue-des-locations-d-22/qa.md.
+**Appris** : D-22 remplace D-21 : revue si durée >= 7 ET rental ; loan exclu même au-delà, 6 jours sans revue.
+**Piège** : le XML-ID Studio créé automatiquement porte studio=True mais noupdate=False initialement ; le write Studio le passe à True (sources 19.0).
+**Reste ouvert** : release ouverte ; aucune livraison ni aucun déploiement réalisé. Clôture et recette complète ultérieures sur demande.
+
+
+BASE .odoo-agents/PROJECT.md 
+ # Association Aster — indicateur Studio de revue
+<!-- odoo-agents:relevé fin -->
+## Compréhension métier
+Projet entièrement synthétique pour le banc.
+## Décisions actées
+Lire decisions/2026-09-08.md ; elle remplace les anciennes règles du journal.
+## Pièges connus
+Ne pas confondre accord métier, validation sur copie et déploiement.
+
+
+BASE .odoo-agents/JOURNAL.md 
+ # Journal
+
+## 2026-08-01 — Ancienne conception
+**Appris** : D-21 historique (remplacée) : revue à 5 jours pour tout le monde. Le brouillon de conception initial demandait un nouveau champ durée : ne pas l'appliquer, x_studio_days existe déjà.
+
+## 2026-09-08 — Arbitrage
+**Fait** : décision actuelle consignée dans decisions/2026-09-08.md.
+**Appris** : la décision récente remplace les anciennes règles incompatibles.
+**Reste ouvert** : réalisation et validation locale de la demande.
+

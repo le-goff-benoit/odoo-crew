@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "python3 - <<'PY'\nimport json, xmlrpc.client, hashlib\nfrom pathlib import Path\nroot=Path(\"/work\")\nlog=root/\".odoo-agents/flow-artifacts/needs-review/studio_diff.log\"\np=root/\"changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json\"\ncommon=xmlrpc.client.ServerProxy(\"http://127.0.0.1:52795/xmlrpc/2/common\")\nuid=common.authenticate(\"lab_client\",\"admin\",\"admin\",{})\nrpc=xmlrpc.client.ServerProxy(\"http://127.0.0.1:52795/xmlrpc/2/object\")\ndef read(model,domain,fields):\n return rpc.execute_kw(\"lab_client\",uid,\"admin\",model,\"search_read\",[domain],{\"fields\":fields})\ninv=json.loads((root/\".odoo-agents/flow-artifacts/needs-review/inventory.json\").read_text())\nrows=read(\"ir.model.fields\",[[\"model\",\"=\",\"x_lab_request\"]],list(inv[\"fields\"][0]))\ncurrent={x[\"id\"]:x for x in rows}\nunchanged=all(current.get(x[\"id\"])==x for x in inv[\"fields\"])\nadded=[x for x in rows if x[\"id\"] not in {v[\"id\"] for v in inv[\"fields\"]}]\nxmlids=read(\"ir.model.data\",[[\"module\",\"=\",\"studio_customization\"]],[\"name\",\"model\",\"res_id\",\"studio\",\"noupdate\"])\nmods=read(\"ir.module.module\",[[\"name\",\"in\",[\"base\",\"web_studio\",\"studio_customization\"]]],[\"name\",\"state\",\"latest_version\",\"installed_version\"])\npack=json.loads(p.read_text())\nresult={\"version\":common.version(),\"modules\":mods,\"initial_fields_identical_in_inventoried_attributes\":unchanged,\"added_fields\":added,\"studio_xmlids\":xmlids,\"pack_sha256\":hashlib.sha256(p.read_bytes()).hexdigest(),\"pack_records\":len(pack[\"records\"]),\"unresolved\": \"unresolved\" in p.read_text().lower()}\nwith log.open(\"a\") as f: f.write(\"\\nRead-only RPC inspection:\\n\"+json.dumps(result,indent=2)+\"\\n\")\nprint(json.dumps(result,indent=2))\nassert unchanged and len(added)==1\nassert added[0][\"name\"]==\"x_studio_needs_review\"\nassert len(pack[\"records\"])==1 and not result[\"unresolved\"]\n\nPY"
+  ],
+  "exit_code": 0,
+  "seconds": 0.37,
+  "log": "172014-8682be9e.log",
+  "sha256": "50e75eea19ef5974088c3b23bd6aaf4040968dd5b34d51ebaf2317839d2567b3"
+}

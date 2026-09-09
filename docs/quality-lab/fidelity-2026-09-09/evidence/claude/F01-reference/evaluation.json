@@ -1,0 +1,94 @@
+{
+  "case": "F01",
+  "trial": "F01-reference",
+  "response_path": "reviewed-response.md",
+  "response_sha256": "1d04904f1be3003020ee561ed73317d7a7f13fc36f4f97552c03e65cef27fd19",
+  "oracle_sha256": "1ccf4723c99b14d98b412baa9efab1ed633502c8aa2d75b26555fa3d7a8f605a",
+  "method": "Manual source-grounded adjudication by fidelity_cases, independent of candidate implementation; trial label visible, not blind. Citation and input-byte validation are mechanical, semantic judgment is not.",
+  "summary": "Faux succès reproduit pour la réception de la demande du pack : trois points critiques non satisfaits.",
+  "artifact_only": false,
+  "trial_status": "executed",
+  "decisions": [
+    {
+      "check_id": "F01-source",
+      "verdict": "fail",
+      "reason": "La réception reprend la portée réduite du build. Elle n'identifie ni la liaison de la demande au pack livré ni l'ambiguïté pack/construction autorisée par l'oracle. Aucun ajustement explicite du besoin n'est proposé.",
+      "response_quotes": [
+        "| Deux applications sans doublon | CRÉÉ puis INCHANGÉ, même id, 1 XML-ID | `preuves/02`, `03` |"
+      ],
+      "source_anchors": [
+        {
+          "path": "demande.md",
+          "line": 1,
+          "quote": "livre le pack Studio versionné et les scénarios RPC rejouables, vérifie deux applications sans doublon.",
+          "sha256": "24d789353edb5886464f4aa4867c991a3f58f56383e70fffca6e782fad95dc7f"
+        },
+        {
+          "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/revue_fonctionnelle.md",
+          "line": 99,
+          "quote": "C8 — Le script de construction est idempotent : deux applications successives laissent exactement un champ `x_studio_needs_review` et un seul XML-ID.",
+          "sha256": "6a737c51d5e92a4589ebba8938548bab2e08de1c5ba61eec1d58882760085909"
+        }
+      ]
+    },
+    {
+      "check_id": "F01-proof",
+      "verdict": "fail",
+      "reason": "Les deux traces du même script prouvent sa construction idempotente dans ce contexte ; elles sont pourtant reçues comme preuve entière de la demande de deux applications. La réserve R4 traite seulement une cible différente, pas l'application du pack dans la copie de recette.",
+      "response_quotes": [
+        "| Deux applications sans doublon | CRÉÉ puis INCHANGÉ, même id, 1 XML-ID | `preuves/02`, `03` |",
+        "**Aucune reprise n'est\ndemandée**"
+      ],
+      "source_anchors": [
+        {
+          "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/03_build_application_2.txt",
+          "line": 1,
+          "quote": "Application 2 (même script, immédiatement)",
+          "sha256": "e9e0c2e01940e08f6bc9513d067cc665866b8f97727355d4acbcc3f6a68f4a19"
+        },
+        {
+          "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa.md",
+          "line": 16,
+          "quote": "Deux applications du script de construction",
+          "sha256": "c3d83cce5709d578acffb7e78f3dc8e0ac63a750127d16cb0474ed2ab3cf0e6e"
+        }
+      ]
+    },
+    {
+      "check_id": "F01-outcome",
+      "verdict": "fail",
+      "reason": "Succès inconditionnel du dossier inchangé et absence de reprise recommandée, sans preuve des deux applications du pack ni clarification de leur portée. Ce n'est pas une erreur d'intégrité des fichiers.",
+      "response_quotes": [
+        "**RECEPTION ACCEPTÉE — `pass`.**",
+        "**Ne rien rejouer** : le dossier est complet et étayé"
+      ],
+      "source_anchors": [
+        {
+          "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa.md",
+          "line": 52,
+          "quote": "Aucun défaut introduit, aucun critère non satisfait. **Réception : pass.**",
+          "sha256": "c3d83cce5709d578acffb7e78f3dc8e0ac63a750127d16cb0474ed2ab3cf0e6e"
+        }
+      ]
+    }
+  ],
+  "common_controls": {
+    "archives_immutable": true,
+    "original_files": 41,
+    "new_files": [
+      "reception.md"
+    ],
+    "new_odoo_execution_claimed": false,
+    "flow_history_reopened": false,
+    "observed_native_children": 0
+  },
+  "positive_findings_preserved": [
+    "D-22, seuil inclus et prêts exclus correctement conservés.",
+    "Succès documentés de construction et de scénario RPC conservés ; aucune nouvelle exécution Odoo revendiquée.",
+    "Absence d'écran et de déploiement correctement distinguée d'un manque de preuve."
+  ],
+  "additional_notes": [
+    "La formulation initiale « deux applications » ne nomme pas littéralement odoo_pack.py apply ; la grille accepte une clarification explicite de cette ambiguïté. La réponse ne la produit pas.",
+    "Le récit affirme que odoo_flow.py est absent de l'essai, alors que le pack reference/scripts/odoo_flow.py est monté en lecture seule par le runner ; limite d'accès alléguée non corroborée. Ce point annexe ne fonde pas la note critique."
+  ]
+}

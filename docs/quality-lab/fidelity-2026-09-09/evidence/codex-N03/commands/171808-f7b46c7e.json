@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "python3 - <<'PY'\nimport xmlrpc.client\no=xmlrpc.client.ServerProxy(\"http://127.0.0.1:52795/xmlrpc/2/object\")\nf=o.execute_kw(\"lab_client\",2,\"admin\",\"ir.model.fields\",\"search\",[[[\"model\",\"=\",\"x_lab_request\"],[\"name\",\"=\",\"x_studio_needs_review\"]]])\nprint(f)\nprint(o.execute_kw(\"lab_client\",2,\"admin\",\"ir.model.data\",\"search_read\",[[[\"model\",\"=\",\"ir.model.fields\"],[\"res_id\",\"in\",f]]],{\"fields\":[\"module\",\"name\",\"studio\",\"noupdate\"]}))\nPY\nsed -n '1,110p' ~/odoo-sources/19.0-enterprise/web_studio/models/studio_mixin.py\n"
+  ],
+  "exit_code": 0,
+  "seconds": 0.08,
+  "log": "171808-f7b46c7e.log",
+  "sha256": "b66d0be568d32899e5d6b3b673833bf5a79940110984884d5c89beb1e8ab4315"
+}

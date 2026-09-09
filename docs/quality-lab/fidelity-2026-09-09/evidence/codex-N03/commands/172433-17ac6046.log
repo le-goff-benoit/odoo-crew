@@ -1,0 +1,5 @@
+/home/blegoff/.odoo19-agents/scripts/odoo_reception.py:58:        raise ValueError('périmètre de code distinct des documents et de la mémoire requis')
+33:def prepare(project, sources, spec, evidence, memories, scopes, owner):
+55:              'groups': groups, 'memory': rows, 'scopes': [str(value) for value in scopes]}
+56:    result['code'] = fingerprint(root, result['scopes']) if scopes else {}
+120:    if (fingerprint(root, bundle['scopes']) if bundle['scopes'] else {}) != bundle['code']:

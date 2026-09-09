@@ -1,0 +1,31 @@
+1
+ODOO FLOW · needs-review
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /work
+Progression 2 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 1 prêt(s)
+Dernière   ✓ functional_review → studio
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ studio_implementation
+    AGENT · odoo-studio
+    Construire la configuration Studio et son pack versionné sur la copie client.
+    Sorties: blocked, done · Preuve: pack Studio et scénarios RPC
+
+HISTORIQUE RÉCENT
+  ✓ briefing → development
+  ✓ functional_review → studio
+▶ studio_implementation · AGENT · odoo-studio
+  Démarré par codex-odoo-studio
+  Construire la configuration Studio et son pack versionné sur la copie client.
+Traceback (most recent call last):
+  File "/work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py", line 10, in <module>
+    assert len(fields) == 1, "ROUGE : indicateur absent ou dupliqué"
+AssertionError: ROUGE : indicateur absent ou dupliqué
+Traceback (most recent call last):
+  File "/work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/build_review.py", line 29, in <module>
+    assert len(xmlids) == 1 and xmlids[0]["studio"] and xmlids[0]["noupdate"]
+AssertionError

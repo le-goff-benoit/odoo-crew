@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "sed -n '30,66p' ~/.odoo19-agents/scripts/odoo_reception.py\ngrep -n 'def fingerprint' ~/.odoo19-agents/scripts/*.py\n"
+  ],
+  "exit_code": 0,
+  "seconds": 0.02,
+  "log": "172439-82332968.log",
+  "sha256": "6ab252f8a84e1f65665d479eb7aedfd7db14ee403c3e1387234473d720532691"
+}

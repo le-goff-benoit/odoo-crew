@@ -1,0 +1,31 @@
+<class 'dict'>
+studio_implementation {'description': 'Construire la configuration Studio et son pack versionné sur la copie client.', 'executor': 'agent', 'role': 'odoo-studio', 'join': 'any', 'evidence': ['pack Studio et scénarios RPC'], 'locks': [{'resource': 'client_copy', 'mode': 'write'}, {'resource': 'studio_pack', 'mode': 'write'}]}
+studio_diff_qa {'description': 'Voie QA Studio : vérifier que le pack et la copie ne divergent pas.', 'executor': 'agent', 'role': 'odoo-tester', 'mode': 'graph-lane-studio-diff', 'join': 'any', 'evidence': ['fragment diff Studio'], 'locks': [{'resource': 'client_copy', 'mode': 'read'}, {'resource': 'studio_pack', 'mode': 'read'}, {'resource': 'flow_artifact:{run}:studio_diff', 'mode': 'write'}]}
+studio_scenario_qa {'description': "Voie QA Studio : jouer les scénarios RPC et vérifier l'écran concerné.", 'executor': 'agent', 'role': 'odoo-tester', 'mode': 'graph-lane-studio-runtime', 'join': 'any', 'evidence': ['fragment scénarios Studio'], 'locks': [{'resource': 'client_copy', 'mode': 'write'}, {'resource': 'browser', 'mode': 'write'}, {'resource': 'flow_artifact:{run}:studio_runtime', 'mode': 'write'}]}
+studio_task_gate {'description': 'Fusionner les preuves Studio et rendre un verdict unique.', 'executor': 'orchestrator', 'join': 'all', 'max_outcome_uses': {'retry': 2}, 'evidence': ["qa.md et critères d'acceptation"], 'locks': [{'resource': 'release_artifacts', 'mode': 'write'}]}
+ODOO FLOW · needs-review
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /work
+Progression 3 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 2 prêt(s)
+Contrat QA 5 critères liés · couverture exigée pour pass
+Dernière   ✓ studio_implementation → done
+
+POSITION DANS LE GRAPHE
+  VAGUE 1 · SÉQUENTIELLE
+  ○ studio_diff_qa
+    AGENT · odoo-tester · graph-lane-studio-diff
+    Voie QA Studio : vérifier que le pack et la copie ne divergent pas.
+    Sorties: done · Preuve: fragment diff Studio
+  VAGUE 2 · SÉQUENTIELLE
+  ○ studio_scenario_qa
+    AGENT · odoo-tester · graph-lane-studio-runtime
+    Voie QA Studio : jouer les scénarios RPC et vérifier l'écran concerné.
+    Sorties: done · Preuve: fragment scénarios Studio
+
+HISTORIQUE RÉCENT
+  ✓ briefing → development
+  ✓ functional_review → studio
+  ✓ studio_implementation → done

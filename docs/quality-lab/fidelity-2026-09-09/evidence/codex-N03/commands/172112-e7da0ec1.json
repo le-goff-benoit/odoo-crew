@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "F=/work/.odoo-agents/flows/needs-review.json\npython3 ~/.odoo19-agents/scripts/odoo_flow.py complete \"$F\" studio_diff_qa --outcome done --owner codex-odoo-tester-diff --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_diff.md --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_diff.log\npython3 ~/.odoo19-agents/scripts/odoo_flow.py status \"$F\"\npython3 ~/.odoo19-agents/scripts/odoo_flow.py claim \"$F\" studio_scenario_qa --owner codex-odoo-tester-runtime\n"
+  ],
+  "exit_code": 0,
+  "seconds": 0.15,
+  "log": "172112-e7da0ec1.log",
+  "sha256": "e62d5eb3c733740a93bfab8953cc284bf8bb08921bc9133ec63258a6d8c8257a"
+}

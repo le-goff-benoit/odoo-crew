@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "cat /work/.odoo-agents/flow-artifacts/needs-review/inventory.json; cat /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/build_review.py; git -C /work status --short; sed -n \"1,140p\" ~/.odoo19-agents/scripts/odoo_pack.py"
+  ],
+  "exit_code": 0,
+  "seconds": 0.03,
+  "log": "171949-492ab443.log",
+  "sha256": "19b62b7661b20e2597256e33857227e914124f0451b512f1ab806effdf841b66"
+}

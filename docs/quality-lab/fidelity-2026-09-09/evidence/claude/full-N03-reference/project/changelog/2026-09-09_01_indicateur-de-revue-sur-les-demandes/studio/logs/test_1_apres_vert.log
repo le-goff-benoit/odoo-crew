@@ -1,0 +1,31 @@
+[1] Definition du champ x_studio_needs_review
+  OK   nombre d'enregistrements ir.model.fields                   = 1
+  OK   ttype                                                      = 'boolean'
+  OK   state                                                      = 'manual'
+  OK   store                                                      = True
+  OK   depends (les deux sources, et rien d'autre)                = ['x_studio_days', 'x_studio_kind']
+[2] Table de verite D-22 a la creation
+  OK   creation : rental 6 jours                                  = False
+  OK   creation : rental 7 jours (seuil inclus)                   = True
+  OK   creation : rental 12 jours                                 = True
+  OK   creation : loan 7 jours                                    = False
+  OK   creation : loan 30 jours                                   = False
+  OK   creation : rental sans jours renseignes                    = False
+  OK   creation : type non renseigne, 30 jours                    = False
+  OK   creation : ni type ni jours                                = False
+[3] Recalcul a l'ecriture des sources
+  OK   avant ecriture (rental 6)                                  = False
+  OK   apres x_studio_days = 9                                    = True
+  OK   avant ecriture (rental 9)                                  = True
+  OK   apres x_studio_kind = loan                                 = False
+  OK   avant ecriture (loan 9)                                    = False
+  OK   apres x_studio_kind = rental                               = True
+[4] Stockage : recherche sur domaine
+  OK   search [(needs_review,=,True)] sur le jeu d'essai          = [2, 3, 9, 11]
+  OK   search [(needs_review,=,False)] : complement exact         = [1, 4, 5, 6, 7, 8, 10]
+[nettoyage] 11 enregistrement(s) supprime(s), reste 0
+
+SCENARIO VERT — 21 controles passes
+[nettoyage] 11 enregistrement(s) supprime(s), reste 0
+
+SCENARIO VERT — 21 controles passes

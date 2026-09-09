@@ -1,0 +1,38 @@
+{
+  "status": "provider_session_limit",
+  "observed_models": [
+    "claude-opus-5",
+    "<synthetic>"
+  ],
+  "effective_generation_model": "claude-opus-5",
+  "source_raw_sha256": "89a7fc87558e42e7b3414bd6521254d692188534210d96bb213dfe885d7069fd",
+  "events": [
+    {
+      "line": 214,
+      "sha256": "8d26edd42653ad889dc231539e01ff23a29b0d934ea703cd159c9c9c346c9fd1",
+      "type": "assistant",
+      "is_error": null,
+      "subtype": null,
+      "terminal_reason": null,
+      "api_error_status": null,
+      "error": "rate_limit",
+      "model": "<synthetic>",
+      "text": "You've hit your session limit · resets 9pm (Europe/Zurich)",
+      "total_cost_usd": null
+    },
+    {
+      "line": 215,
+      "sha256": "d1d9dadc3ccd94f6517cd07a163a5b0f41f1aee66b2c03f80f29e9462625b82d",
+      "type": "result",
+      "is_error": true,
+      "subtype": "success",
+      "terminal_reason": "api_error",
+      "api_error_status": 429,
+      "error": null,
+      "model": null,
+      "text": "You've hit your session limit · resets 9pm (Europe/Zurich)",
+      "total_cost_usd": 2.4120245
+    }
+  ],
+  "interpretation": "HTTP 429 / terminal_reason api_error / is_error true override subtype success; synthetic model belongs to error notice. No completed business answer. reception.md is an artifact written before interruption, not a completed trial."
+}

@@ -1,0 +1,135 @@
+{
+  "case": "N03",
+  "provider": "claude",
+  "config": {
+    "model": "opus",
+    "effort": "medium",
+    "delegate": true
+  },
+  "status": "incident",
+  "turns": [
+    {
+      "status": "error",
+      "exit_code": 1,
+      "seconds": 592.05,
+      "usage": {
+        "tokens": {
+          "input_tokens": 56,
+          "cache_creation_input_tokens": 65658,
+          "cache_read_input_tokens": 1341651,
+          "output_tokens": 14173,
+          "output_tokens_details": {
+            "thinking_tokens": 2457
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 65658,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 2312,
+              "cache_read_input_tokens": 73984,
+              "cache_creation_input_tokens": 1185,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 1185
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 3.34256275
+      },
+      "actual_model": "<synthetic>",
+      "tool_calls": 59,
+      "provider_completed": false,
+      "error": "success",
+      "delegation": {
+        "supported": true,
+        "started": 3,
+        "with_progress": 2,
+        "completed": 2,
+        "tasks": {
+          "ab0c93080db660225": {
+            "role": "odoo-analyst",
+            "tool_use_id": "toolu_01XQBgjC2HC28a9gvZP4PmVr",
+            "spawn_depth": 1,
+            "progress_events": 12,
+            "status": "completed"
+          },
+          "aba395b6f040077a1": {
+            "role": "odoo-studio",
+            "tool_use_id": "toolu_01V61PmzjTQ8341kcEtaWQtD",
+            "spawn_depth": 1,
+            "progress_events": 19,
+            "status": "completed"
+          },
+          "a5e73daf799f95d16": {
+            "role": "odoo-tester",
+            "tool_use_id": "toolu_01GqzQdfj7gJ5M8HGNdEh6Lv",
+            "spawn_depth": 1,
+            "progress_events": 0,
+            "status": "failed"
+          }
+        },
+        "provider_summary": {
+          "spawned": 3,
+          "requested": {
+            "background": 0,
+            "foreground": 3,
+            "unset": 0
+          },
+          "started_in_background": 0,
+          "max_depth": 1,
+          "spawned_by_subagents": 0,
+          "completed": 2,
+          "failed": 1,
+          "killed": {
+            "parent": 0,
+            "user": 0,
+            "system": 0
+          },
+          "refused": {
+            "depth_limit": 0,
+            "concurrency_limit": 0,
+            "budget": 0
+          },
+          "by_type": {
+            "odoo-analyst": 1,
+            "odoo-studio": 1,
+            "odoo-tester": 1
+          }
+        }
+      },
+      "answer_sha256": "fb0ab78e81e10a69ee31c73669daf9ed4ea382ab067fcc0c6f7812a9b06f1893"
+    }
+  ],
+  "active_turn": 0,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "field_boolean_stored": true,
+      "5_rental": true,
+      "6_rental": true,
+      "7_rental": true,
+      "8_rental": true,
+      "9_loan": true,
+      "dependency_kind": true,
+      "dependency_days": true,
+      "original_fields": true,
+      "single_model": true
+    },
+    "passed": true,
+    "log_sha256": "1bcbc2267d848e8ddea0141718193b92f4f5bd881d0aa615b35d003facced477",
+    "log": "oracle-000.log"
+  },
+  "review": null
+}

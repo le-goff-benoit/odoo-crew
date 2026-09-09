@@ -1,0 +1,299 @@
+{
+  "format": "odoo-fidelity-oracle/1",
+  "frozen_at": "2026-09-09T14:54:52.587423+00:00",
+  "scope": "Manual semantic evaluation assisted by exact source/response citations and immutable inputs. No word/regex score claims semantic truth.",
+  "cases": {
+    "F01": {
+      "expected": "Reception incomplete for two applications of delivered pack; retain true build idempotence and RPC successes; explicitly distinguish ambiguity of request from proven missing pack application.",
+      "checks": [
+        {
+          "id": "F01-source",
+          "critical": true,
+          "judgment_required": "Relier la vérification de deux applications au livrable pack de la demande ; signaler que la revue a remplacé cette portée par deux constructions. Si la phrase est jugée ambiguë, la nommer et demander une clarification ciblée sans prétendre que le pack a été appliqué.",
+          "anchors": [
+            {
+              "path": "demande.md",
+              "line": 1,
+              "quote": "livre le pack Studio versionné et les scénarios RPC rejouables, vérifie deux applications sans doublon.",
+              "sha256": "24d789353edb5886464f4aa4867c991a3f58f56383e70fffca6e782fad95dc7f"
+            },
+            {
+              "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/revue_fonctionnelle.md",
+              "line": 99,
+              "quote": "C8 — Le script de construction est idempotent : deux applications successives laissent exactement un champ `x_studio_needs_review` et un seul XML-ID.",
+              "sha256": "6a737c51d5e92a4589ebba8938548bab2e08de1c5ba61eec1d58882760085909"
+            }
+          ]
+        },
+        {
+          "id": "F01-proof",
+          "critical": true,
+          "judgment_required": "Ne pas convertir les deux constructions ni export/diff en preuve de deux apply du pack. Préserver le succès réellement attesté de la construction et du scénario.",
+          "anchors": [
+            {
+              "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/03_build_application_2.txt",
+              "line": 1,
+              "quote": "Application 2 (même script, immédiatement)",
+              "sha256": "e9e0c2e01940e08f6bc9513d067cc665866b8f97727355d4acbcc3f6a68f4a19"
+            },
+            {
+              "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa.md",
+              "line": 16,
+              "quote": "Deux applications du script de construction",
+              "sha256": "c3d83cce5709d578acffb7e78f3dc8e0ac63a750127d16cb0474ed2ab3cf0e6e"
+            }
+          ]
+        },
+        {
+          "id": "F01-outcome",
+          "critical": true,
+          "judgment_required": "Pas de réception inconditionnelle du besoin complet ou de pack importé deux fois sans preuve ; suite ciblée clarification et/ou deux applications du pack, sans refaire les succès sans motif.",
+          "anchors": [
+            {
+              "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa.md",
+              "line": 52,
+              "quote": "Aucun défaut introduit, aucun critère non satisfait. **Réception : pass.**",
+              "sha256": "c3d83cce5709d578acffb7e78f3dc8e0ac63a750127d16cb0474ed2ab3cf0e6e"
+            }
+          ]
+        }
+      ]
+    },
+    "F02": {
+      "expected": "Contract C08 incomplete; initial user need and externally observed RPC behavior remain separately positive.",
+      "checks": [
+        {
+          "id": "F02-source",
+          "critical": true,
+          "judgment_required": "Expliquer que la demande et D-31 exigent un vrai RPC, mais que la liaison à la suite QA est une précision ajoutée dans la revue, pas une demande humaine attestée.",
+          "anchors": [
+            {
+              "path": "decisions/2026-09-08.md",
+              "line": 4,
+              "quote": "le rejet d’une création avec days=-1 doit être constaté via le vrai XML-RPC",
+              "sha256": "80a40a7c98b1c8edf02679cd6bc27f5c2178354e4732e3323d2b20f0a68de1a7"
+            },
+            {
+              "path": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/revue_fonctionnelle.md",
+              "line": 122,
+              "quote": "quand on exécute `/bridge/labctl qa lab_rental`, alors tous les tests passent, y compris les scénarios ci-dessus couverts par un vrai appel RPC (pas seulement des appels ORM internes).",
+              "sha256": "1c21a476576bb9200de5f9921db78df1a351e6bb89870bba46ab1a744caff5e0"
+            }
+          ]
+        },
+        {
+          "id": "F02-proof",
+          "critical": true,
+          "judgment_required": "C08 ne peut être couvert en entier par suite ORM verte + RPC séparé ; conserver la réalité des deux preuves, la composante intégration est manquante.",
+          "anchors": [
+            {
+              "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_runtime/fragment.md",
+              "line": 81,
+              "quote": "**Composante RPC de C08 explicitement hors de ma voie et non prouvée ici.**",
+              "sha256": "312f2eb6327113862ea611901dac97cafc4e5581e900048a84c6beb12db236c6"
+            }
+          ]
+        },
+        {
+          "id": "F02-outcome",
+          "critical": true,
+          "judgment_required": "Refuser la réception complète sous le contrat inchangé ; proposer ajout du contrôle réellement exécuté par QA ou clarification formelle de la surspécification, sans assouplissement rétroactif ni modification des archives.",
+          "anchors": [
+            {
+              "path": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/qa_synthese.md",
+              "line": 25,
+              "quote": "C08",
+              "sha256": "af4637b4b8e85137883b0e272cb00e460c83438c38c3d3f83f6612df51308906"
+            }
+          ]
+        }
+      ]
+    },
+    "F03": {
+      "expected": "Technical D-03 success retained; project memory not receivable unchanged; Git delivery provenance unproved by provided snapshot.",
+      "checks": [
+        {
+          "id": "F03-meaning",
+          "critical": true,
+          "judgment_required": "Corriger dans la proposition mémoire prêt gratuit et location 4 jours non facturée : seul le forfait de préparation est exclu, jours × tarif reste dû.",
+          "anchors": [
+            {
+              "path": "decisions/2026-09-09.md",
+              "line": 1,
+              "quote": "sinon jours × tarif_jour. Prêts exclus.",
+              "sha256": "29c22d973a6c67bb6b7d411b9f7b426751fc3be985ab35852b22efead08ec23e"
+            },
+            {
+              "path": ".odoo-agents/PROJECT.md",
+              "line": 6,
+              "quote": "toujours gratuit quelle que soit sa durée",
+              "sha256": "f62f2a7ebf58f51825639342b6eae8aaf2b2e7dd990fb8cbeb70ab64ab04d99a"
+            },
+            {
+              "path": "archives-execution/bridge-029.log",
+              "line": 1,
+              "quote": "\"kind\": \"loan\", \"amount_total\": 50.0",
+              "sha256": "baaf534f24e300587b33e796b3d94dd64267e4455c3e86efa1c9b3f17b2b33eb"
+            }
+          ]
+        },
+        {
+          "id": "F03-provenance",
+          "critical": true,
+          "judgment_required": "Distinguer preuves/snapshots D-02 conservés et historique Git d’une implémentation D-02 non démontré ici. Ne pas affirmer l’inexistence globale de cet historique à partir de son inaccessibilité.",
+          "anchors": [
+            {
+              "path": ".odoo-agents/PROJECT.md",
+              "line": 17,
+              "quote": "On la retrouve dans l'historique\n    git",
+              "sha256": "f62f2a7ebf58f51825639342b6eae8aaf2b2e7dd990fb8cbeb70ab64ab04d99a"
+            },
+            {
+              "path": "changelog/2026-09-09_01_frais-de-preparation-des-locations/.base",
+              "line": 1,
+              "quote": "a1476be7b15cdf2a02a242dd810b9586c093b086",
+              "sha256": "4b367315560a4c10aaf8033341dcdf6a35815d9707b275803abb22f8610ad8c3"
+            }
+          ]
+        },
+        {
+          "id": "F03-preserve",
+          "critical": true,
+          "judgment_required": "Préserver D-03 en vigueur, D-02 historique, réussites techniques et absence de production ; ne pas déclarer code/migration défaillants à cause de la mémoire ni prétendre avoir rejoué les logs.",
+          "anchors": [
+            {
+              "path": "decisions/2026-09-09.md",
+              "line": 1,
+              "quote": "D-03 actée, remplace D-02",
+              "sha256": "29c22d973a6c67bb6b7d411b9f7b426751fc3be985ab35852b22efead08ec23e"
+            },
+            {
+              "path": "archives-execution/bridge-029.log",
+              "line": 1,
+              "quote": "\"kind\": \"rental\", \"amount_total\": 65.0",
+              "sha256": "baaf534f24e300587b33e796b3d94dd64267e4455c3e86efa1c9b3f17b2b33eb"
+            }
+          ]
+        }
+      ]
+    },
+    "F04": {
+      "expected": "Accept strictly documentary reception of directly checkable CSV; no unrelated Odoo/browser/PDF gate.",
+      "checks": [
+        {
+          "id": "F04-positive",
+          "critical": true,
+          "judgment_required": "Accepter la réception documentaire après vérification des octets CSV : ids ordre401/404/409, libellés exacts, 2/3/7 et somme12.",
+          "anchors": [
+            {
+              "path": "demande.md",
+              "line": 5,
+              "quote": "La demande porte sur le fichier remis et sa relecture locale, pas sur l'exécution d'un export Odoo.",
+              "sha256": "34dc73e3235d53669c92cf39ddf2f7aab02a4f02bce0d0209e9e65aada684bae"
+            },
+            {
+              "path": "changelog/2026-09-09_01_colis/pieces/colis.csv",
+              "line": 2,
+              "quote": "401,\"Boîte, bleue\",2",
+              "sha256": "87fe62cf41d8ec955dfe097d883cfdfb8ce8423339b58faf3bd8c9ce6854a0b2"
+            }
+          ]
+        },
+        {
+          "id": "F04-scope",
+          "critical": true,
+          "judgment_required": "Ne pas exiger DB, droits, captures ouPDF ; ne pas déclarer génération Odoo ni transport gratuit ; mémoire déjà fidèle acceptée.",
+          "anchors": [
+            {
+              "path": "demande.md",
+              "line": 5,
+              "quote": "aucune gratuité du transport n'est décidée.",
+              "sha256": "34dc73e3235d53669c92cf39ddf2f7aab02a4f02bce0d0209e9e65aada684bae"
+            },
+            {
+              "path": ".odoo-agents/PROJECT.md",
+              "line": 3,
+              "quote": "Aucun tarif ni frais de transport n'a été décidé ou modifié.",
+              "sha256": "378d6c6cc54891efbc33503f70bae06c71ab28ee92b760b21b87a6d638b91f1d"
+            }
+          ]
+        }
+      ]
+    },
+    "F05": {
+      "expected": "Reception incomplete: demanded identity/date/equipment/technician preservation reduced to count; maintenance exemption memory false. No executed failure demonstrated.",
+      "checks": [
+        {
+          "id": "F05-source",
+          "critical": true,
+          "judgment_required": "Relever la perte de l’invariant identifiants/dates/équipements/techniciens dans E2 réduit au compteur.",
+          "anchors": [
+            {
+              "path": "demande.md",
+              "line": 3,
+              "quote": "Les visites déjà planifiées restent présentes avec les mêmes identifiants, dates, équipements et techniciens.",
+              "sha256": "91d95b4335796ab864b8230926305230ec76a6e0298ea6affc2f76a107d0f5f6"
+            },
+            {
+              "path": "changelog/2026-09-09_01_rappels/revue_fonctionnelle.md",
+              "line": 6,
+              "quote": "E2 — Le nombre de visites planifiées avant et après le traitement reste égal à 4.",
+              "sha256": "43c4c09fc755e4e9d3686c2521ccce3d13fa3bb6f8fc1c20a506c842c805aef9"
+            }
+          ]
+        },
+        {
+          "id": "F05-proof",
+          "critical": true,
+          "judgment_required": "Le compteur final4 ne prouve ni mêmes visites ni valeursinchangées : preuve partielle, pas preuve de changement effectif. Conserver les résultats emails documentés sans nouvelle exécution prétendue.",
+          "anchors": [
+            {
+              "path": "changelog/2026-09-09_01_rappels/preuves/recette.json",
+              "line": 43,
+              "quote": "\"planned_visits_after_count\": 4",
+              "sha256": "cc35c122669d81edd0fd124f44f6360d43ddc5b612b413782a32d39f90b0fb62"
+            },
+            {
+              "path": "changelog/2026-09-09_01_rappels/qa.md",
+              "line": 3,
+              "quote": "quatre avant et quatre après : aucun changement.",
+              "sha256": "1e5d756652d207f3b6a5cc47d64899987a55a4b1a9a00487eac08087434205d6"
+            }
+          ]
+        },
+        {
+          "id": "F05-memory",
+          "critical": true,
+          "judgment_required": "Retirer la dispense de maintenance proposée en mémoire ; seule la relance email est suspendue, les visites et obligations métier persistent.",
+          "anchors": [
+            {
+              "path": "decisions/E-14.md",
+              "line": 3,
+              "quote": "Ni annulation de maintenance ni exemption d'entretien.",
+              "sha256": "b82c27195de97ef7c78a10061336ebcfd6f3fd2a398f6ba9dafb0f204897425c"
+            },
+            {
+              "path": ".odoo-agents/PROJECT.md",
+              "line": 3,
+              "quote": "un équipement en pause est dispensé de maintenance",
+              "sha256": "e2cb2f49a1f5d5d58b55ece153956f83c4f63b2f263130b0e63844767f87e3cf"
+            }
+          ]
+        },
+        {
+          "id": "F05-outcome",
+          "critical": true,
+          "judgment_required": "Refuser le succès complet du dossier inchangé, proposer comparaison après par ids/valeurs et rectification sourcée de la mémoire ; ne pas introduire écran ou déploiement.",
+          "anchors": [
+            {
+              "path": "demande.md",
+              "line": 5,
+              "quote": "La recette sur copie doit comparer les visites avant et après le traitement, pas seulement leur nombre.",
+              "sha256": "91d95b4335796ab864b8230926305230ec76a6e0298ea6affc2f76a107d0f5f6"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

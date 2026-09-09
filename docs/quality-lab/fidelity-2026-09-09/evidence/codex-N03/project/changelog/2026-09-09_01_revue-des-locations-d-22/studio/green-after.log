@@ -1,0 +1,15 @@
+PASS create rental 0: False
+PASS create rental 5: False
+PASS create rental 6: False
+PASS create rental 7: True
+PASS create rental 12: True
+PASS create loan 6: False
+PASS create loan 7: False
+PASS create loan 12: False
+PASS update {'x_studio_days': 7}: True
+PASS update {'x_studio_kind': 'loan'}: False
+PASS update {'x_studio_days': 12}: False
+PASS update {'x_studio_kind': 'rental'}: True
+PASS update {'x_studio_days': 6}: False
+CLEANUP 0
+PASS 13 scénarios ; valeur serveur relue

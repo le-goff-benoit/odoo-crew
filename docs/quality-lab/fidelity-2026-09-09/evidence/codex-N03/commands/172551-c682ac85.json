@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "cat .odoo-agents/flow-artifacts/needs-review/studio_runtime.md; python3 - <<\"PY\"\nfrom pathlib import Path\nfor s in Path(\".odoo-agents/flow-artifacts/needs-review/studio_runtime.log\").read_text().splitlines():\n if not s.startswith(\"SNAPSHOT\"): print(s)\nPY"
+  ],
+  "exit_code": 0,
+  "seconds": 0.04,
+  "log": "172551-c682ac85.log",
+  "sha256": "b452003888fa98406610de9e53ff3cde5819b6835d53985d7206c41a18e0511e"
+}

@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "R=/work/changelog/2026-09-09_01_revue-des-locations-d-22\nF=/work/.odoo-agents/flows/needs-review.json\npython3 ~/.odoo19-agents/scripts/odoo_flow.py prepare-reception \"$F\" --source demande-originale.md --source decisions/2026-09-08.md --spec \"$R/revue_fonctionnelle.md\" --evidence \"$R/coverage.json\" --evidence \"$R/qa.md\" --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_diff.md --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_diff.log --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_runtime.md --evidence /work/.odoo-agents/flow-artifacts/needs-review/studio_runtime.log --evidence /work/.odoo-agents/flow-artifacts/needs-review/implementation.md --evidence /work/.odoo-agents/flow-artifacts/needs-review/versioning.log --evidence /work/.odoo-agents/flow-artifacts/needs-review/lifecycle.md --evidence \"$R/studio/red-before.log\" --scope \"$R/studio/build_review.py\" --scope \"$R/studio/test_review.py\" --scope \"$R/studio/pack.json\" --memory \".odoo-agents/PROJECT.md=$R/reception/PROJECT-propose.md\" --memory \".odoo-agents/JOURNAL.md=$R/reception/JOURNAL-propose.md\" --output \"$R/reception/bundle-1.json\" --owner codex-orchestrateur\n"
+  ],
+  "exit_code": 0,
+  "seconds": 0.06,
+  "log": "172454-2a8579fb.log",
+  "sha256": "1ed13c8b8a02150657dfd834ae1e7630df29f61935a1f3f341e378ed264b2d58"
+}

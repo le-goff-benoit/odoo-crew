@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "python3 - <<'PY'\nimport json\ng=json.load(open(\"/home/blegoff/.odoo19-agents/workflows/odoo-workflow.json\"))\nprint(type(g[\"nodes\"]))\nfor n in g[\"nodes\"]:\n if isinstance(n,dict) and n.get(\"id\",\"\").startswith(\"studio\"): print(n)\n if isinstance(n,str) and n.startswith(\"studio\"): print(n,g[\"nodes\"][n])\nPY\npython3 ~/.odoo19-agents/scripts/odoo_flow.py status /work/.odoo-agents/flows/needs-review.json\n"
+  ],
+  "exit_code": 0,
+  "seconds": 0.07,
+  "log": "171835-f6ab325d.log",
+  "sha256": "5a97ff6122096482430ac5b0fb73c7ca9faca4a6a2f8bd7bd68b946d59ac36b6"
+}

@@ -138,6 +138,13 @@ ajoute un rendu QA lié à la réception, des droits testés par ORM/RPC, une vr
 restauration SQL + filestore et un parcours Chrome avec contrôle serveur. Elle
 distingue ces témoins des chaînes natives et garde les limites et incidents visibles.
 
+La [campagne de fidélité](docs/quality-lab/fidelity-2026-09-09/README.md) confronte
+ensuite la demande originale, les critères, les preuves et la mémoire. Elle
+introduit une réception documentaire en contexte neuf et un
+[garde expérimental pour les tâches directes](docs/TASK_RECEPTION.md).
+Les examens sur pièces, les parcours complets et les interruptions fournisseur
+y sont évalués séparément ; le garde reste indisponible dans les plans de release.
+
 ## Pour aller plus loin
 
 | Vous souhaitez… | Documentation |

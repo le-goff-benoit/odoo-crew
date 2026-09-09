@@ -1,0 +1,102 @@
+{
+  "format": "odoo-task-reception-bundle/1",
+  "project": "/work",
+  "owner": "codex-orchestrateur",
+  "groups": {
+    "source": [
+      {
+        "path": "demande-originale.md",
+        "sha256": "24d789353edb5886464f4aa4867c991a3f58f56383e70fffca6e782fad95dc7f"
+      },
+      {
+        "path": "decisions/2026-09-08.md",
+        "sha256": "a3f3586292c3e2e7c6fb6e3257f2871c3fb9c4695cb149996eb84e9bc219c2cf"
+      }
+    ],
+    "spec": [
+      {
+        "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+        "sha256": "81529f30669e23ec521c00ed791d44fefbc25439fe5c2ccfc26b27bfb6308f06"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "changelog/2026-09-09_01_revue-des-locations-d-22/coverage.json",
+        "sha256": "3c4472575a01e9727a257a7fbd924963032ea3c46786ef06e5a4c1454ee9e0bf"
+      },
+      {
+        "path": "changelog/2026-09-09_01_revue-des-locations-d-22/qa.md",
+        "sha256": "b8feaf3232ab6fb613f951326200ead948df9bd2e4d7a7be2b321ba2b1fe14f6"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.md",
+        "sha256": "c9a4c0605e5ec11c675fba2dc548980a9c7eb4fbdde301b6c1b1f41380aa99d6"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.log",
+        "sha256": "a43d6999a04484a20e2cca176f2e3aa156ca1c72fc33137064c7f2b03e803268"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.md",
+        "sha256": "6ec55a6f3d60b7d2a2ca18037fb51e435651efc09124d985f0431ec9d3186dd7"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.log",
+        "sha256": "1e27a48083572f9c6bc7e4d829d0ccded5ebd63f274a6e6d72b059c1d98bf920"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/implementation.md",
+        "sha256": "b627e137b06981ed9bbaafd3e1e6cdab6eb90b9bca549c7bb76364f58a1edd59"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/versioning.log",
+        "sha256": "082f35a7e6b2a00ffe82877dabfe9b28532de4bfb9dbd76217c48fbab99a77d8"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/lifecycle.md",
+        "sha256": "cb3caa505e92a55151a0c7395a925e37072865f9907307713c4fc7cd0d4285e4"
+      },
+      {
+        "path": "changelog/2026-09-09_01_revue-des-locations-d-22/studio/red-before.log",
+        "sha256": "11f9cd0e806b1a4209f788c84df4b1dc5d47054d0fbf41282b31a520556c3465"
+      }
+    ]
+  },
+  "memory": [
+    {
+      "target": ".odoo-agents/PROJECT.md",
+      "before_sha256": "75e69609c6b01a908b66efcac397370544709d28ed5a29d3a9ba9559addb9dee",
+      "draft": {
+        "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/PROJECT-propose.md",
+        "sha256": "f8c44f66a70a6e20aac1d42499c9d2927176350da58788f8df132ad8f6298664"
+      }
+    },
+    {
+      "target": ".odoo-agents/JOURNAL.md",
+      "before_sha256": "7b1f07157126aed21f02ecd5a6321e3f8c0b3cdf31456846aa70431503e9625b",
+      "draft": {
+        "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/JOURNAL-propose.md",
+        "sha256": "efff3d3382ce941624a31ce521604b3beb78e45eb16af2b1227dccdbaa96d7d4"
+      }
+    }
+  ],
+  "scopes": [
+    "/work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/build_review.py",
+    "/work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py",
+    "/work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json"
+  ],
+  "code": {
+    "changelog/2026-09-09_01_revue-des-locations-d-22/studio/build_review.py": {
+      "sha256": "717f0f20d53fe87c09cbbe5fdbed1fed036403e7c77d3377237f7ecd1c6bbc39",
+      "mode": 436
+    },
+    "changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py": {
+      "sha256": "c670a712add2831183f5ffac3cd49a0c8336ca3b272136bb0add37386054f06a",
+      "mode": 436
+    },
+    "changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json": {
+      "sha256": "6507bfae09677745a3e6d549a96e36cffb57f0f7a4767d0c4a386917909b49a8",
+      "mode": 436
+    }
+  }
+}

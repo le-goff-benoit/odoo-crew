@@ -1,0 +1,218 @@
+{
+  "fields": [
+    {
+      "id": 3734,
+      "name": "x_name",
+      "model": "x_lab_request",
+      "ttype": "char",
+      "store": true,
+      "required": false,
+      "readonly": false,
+      "state": "manual",
+      "field_description": "x_name",
+      "compute": false,
+      "depends": false,
+      "selection_ids": [],
+      "relation": false
+    },
+    {
+      "id": 3736,
+      "name": "x_studio_days",
+      "model": "x_lab_request",
+      "ttype": "integer",
+      "store": true,
+      "required": false,
+      "readonly": false,
+      "state": "manual",
+      "field_description": "x_studio_days",
+      "compute": false,
+      "depends": false,
+      "selection_ids": [],
+      "relation": false
+    },
+    {
+      "id": 3738,
+      "name": "x_studio_kind",
+      "model": "x_lab_request",
+      "ttype": "selection",
+      "store": true,
+      "required": false,
+      "readonly": false,
+      "state": "manual",
+      "field_description": "x_studio_kind",
+      "compute": false,
+      "depends": false,
+      "selection_ids": [
+        1099,
+        1098
+      ],
+      "relation": false
+    }
+  ],
+  "selection_values": [
+    {
+      "id": 1098,
+      "field_id": [
+        3738,
+        "x_studio_kind (Demande Aster)"
+      ],
+      "value": "loan",
+      "name": "Prêt",
+      "sequence": 1
+    },
+    {
+      "id": 1099,
+      "field_id": [
+        3738,
+        "x_studio_kind (Demande Aster)"
+      ],
+      "value": "rental",
+      "name": "Location",
+      "sequence": 0
+    }
+  ],
+  "acl_295": [
+    {
+      "id": 295,
+      "name": "qualification Aster internal user",
+      "model_id": [
+        422,
+        "Demande Aster"
+      ],
+      "group_id": [
+        1,
+        "Role / User"
+      ],
+      "perm_read": true,
+      "perm_write": true,
+      "perm_create": true,
+      "perm_unlink": true,
+      "active": true
+    }
+  ],
+  "all_acl_on_model": [
+    {
+      "id": 295,
+      "name": "qualification Aster internal user",
+      "group_id": [
+        1,
+        "Role / User"
+      ],
+      "perm_read": true,
+      "perm_write": true,
+      "perm_create": true,
+      "perm_unlink": true
+    }
+  ],
+  "ir_rule": [],
+  "ir_ui_view": [],
+  "base_automation": [],
+  "all_fields_on_model": [
+    {
+      "id": 3731,
+      "name": "create_date",
+      "ttype": "datetime",
+      "state": "base",
+      "store": true
+    },
+    {
+      "id": 3730,
+      "name": "create_uid",
+      "ttype": "many2one",
+      "state": "base",
+      "store": true
+    },
+    {
+      "id": 3729,
+      "name": "display_name",
+      "ttype": "char",
+      "state": "base",
+      "store": false
+    },
+    {
+      "id": 3728,
+      "name": "id",
+      "ttype": "integer",
+      "state": "base",
+      "store": true
+    },
+    {
+      "id": 3733,
+      "name": "write_date",
+      "ttype": "datetime",
+      "state": "base",
+      "store": true
+    },
+    {
+      "id": 3732,
+      "name": "write_uid",
+      "ttype": "many2one",
+      "state": "base",
+      "store": true
+    },
+    {
+      "id": 3734,
+      "name": "x_name",
+      "ttype": "char",
+      "state": "manual",
+      "store": true
+    },
+    {
+      "id": 3736,
+      "name": "x_studio_days",
+      "ttype": "integer",
+      "state": "manual",
+      "store": true
+    },
+    {
+      "id": 3738,
+      "name": "x_studio_kind",
+      "ttype": "selection",
+      "state": "manual",
+      "store": true
+    }
+  ],
+  "record_count": 0,
+  "ir_model_data_lab": [
+    {
+      "id": 26984,
+      "module": "studio_customization",
+      "name": "lab_seed_model",
+      "model": "ir.model",
+      "res_id": 422,
+      "noupdate": true
+    },
+    {
+      "id": 26985,
+      "module": "studio_customization",
+      "name": "lab_seed_access",
+      "model": "ir.model.access",
+      "res_id": 295,
+      "noupdate": true
+    },
+    {
+      "id": 26981,
+      "module": "studio_customization",
+      "name": "lab_seed_x_name",
+      "model": "ir.model.fields",
+      "res_id": 3734,
+      "noupdate": true
+    },
+    {
+      "id": 26982,
+      "module": "studio_customization",
+      "name": "lab_seed_x_studio_days",
+      "model": "ir.model.fields",
+      "res_id": 3736,
+      "noupdate": true
+    },
+    {
+      "id": 26983,
+      "module": "studio_customization",
+      "name": "lab_seed_x_studio_kind",
+      "model": "ir.model.fields",
+      "res_id": 3738,
+      "noupdate": true
+    }
+  ]
+}

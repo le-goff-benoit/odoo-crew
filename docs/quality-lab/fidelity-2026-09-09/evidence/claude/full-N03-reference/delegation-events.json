@@ -1,0 +1,53 @@
+[
+  {
+    "type": "system",
+    "subtype": "task_started",
+    "task_id": "ab0c93080db660225",
+    "task_type": "local_agent",
+    "subagent_type": "odoo-analyst",
+    "description": "Revue fonctionnelle D-22",
+    "spawn_depth": 1,
+    "tool_use_id": "toolu_01XQBgjC2HC28a9gvZP4PmVr"
+  },
+  {
+    "type": "system",
+    "subtype": "task_notification",
+    "task_id": "ab0c93080db660225",
+    "status": "completed",
+    "tool_use_id": "toolu_01XQBgjC2HC28a9gvZP4PmVr"
+  },
+  {
+    "type": "system",
+    "subtype": "task_started",
+    "task_id": "aba395b6f040077a1",
+    "task_type": "local_agent",
+    "subagent_type": "odoo-studio",
+    "description": "Champ Studio needs_review",
+    "spawn_depth": 1,
+    "tool_use_id": "toolu_01V61PmzjTQ8341kcEtaWQtD"
+  },
+  {
+    "type": "system",
+    "subtype": "task_notification",
+    "task_id": "aba395b6f040077a1",
+    "status": "completed",
+    "tool_use_id": "toolu_01V61PmzjTQ8341kcEtaWQtD"
+  },
+  {
+    "type": "system",
+    "subtype": "task_started",
+    "task_id": "a5e73daf799f95d16",
+    "task_type": "local_agent",
+    "subagent_type": "odoo-tester",
+    "description": "QA voie diff pack Studio",
+    "spawn_depth": 1,
+    "tool_use_id": "toolu_01GqzQdfj7gJ5M8HGNdEh6Lv"
+  },
+  {
+    "type": "system",
+    "subtype": "task_notification",
+    "task_id": "a5e73daf799f95d16",
+    "status": "failed",
+    "tool_use_id": "toolu_01GqzQdfj7gJ5M8HGNdEh6Lv"
+  }
+]

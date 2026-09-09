@@ -1,0 +1,55 @@
+{
+  "source": "Root observations of actual collaboration.list_agents tool responses in this conversation; transcribed subset, not a native CLI event export",
+  "observations_in_order": [
+    {
+      "agents": [
+        {
+          "name": "/root/workflow_codex",
+          "status": "running"
+        },
+        {
+          "name": "/root/workflow_codex/qa_diff",
+          "status": "running"
+        }
+      ]
+    },
+    {
+      "agents": [
+        {
+          "name": "/root/workflow_codex",
+          "status": "running"
+        },
+        {
+          "name": "/root/workflow_codex/qa_diff",
+          "status": "completed"
+        },
+        {
+          "name": "/root/workflow_codex/qa_runtime",
+          "status": "running"
+        }
+      ]
+    },
+    {
+      "agents": [
+        {
+          "name": "/root/workflow_codex",
+          "status": "completed"
+        },
+        {
+          "name": "/root/workflow_codex/reception",
+          "status": "completed"
+        }
+      ]
+    }
+  ],
+  "real_child_contexts_observed": [
+    "/root/workflow_codex/qa_diff",
+    "/root/workflow_codex/qa_runtime",
+    "/root/workflow_codex/reception"
+  ],
+  "limitations": [
+    "Tool listings prune older completed tasks; absence in final listing is not absence of execution.",
+    "fork_turns=none is attested in the orchestrator delegation artifact; list_agents itself does not expose fork arguments.",
+    "No per-child token/cost or exact concurrency duration measured; no speed gain inferred."
+  ]
+}

@@ -1,0 +1,1 @@
+Dossier documentaire entièrement synthétique figé pour réception sur pièces. Les attestations jointes ne sont pas des résultats nouvellement exécutés. La demande et les décisions font foi ; les pièces dérivées restent à recevoir.

@@ -1,0 +1,109 @@
+{
+  "case": "F03",
+  "trial": "F03-reference",
+  "response_path": "reviewed-response.md",
+  "response_sha256": "85579406fccbd0ab65c3afbb8c2445193b1d1e682ef6968058b768e06d3df57f",
+  "oracle_sha256": "1ccf4723c99b14d98b412baa9efab1ed633502c8aa2d75b26555fa3d7a8f605a",
+  "method": "Manual source-grounded adjudication by fidelity_cases, independent of candidate implementation; trial label visible, not blind. Citation and input-byte validation are mechanical, semantic judgment is not.",
+  "summary": "Artefact rédigé avant interruption fournisseur : mémoire reçue à tort sans correction des deux défauts connus. Essai incident, pas de réponse finale métier ; ne pas compter comme référence achevée ni transformer HTTP429 en échec métier.",
+  "artifact_only": true,
+  "trial_status": "incident",
+  "decisions": [
+    {
+      "check_id": "F03-meaning",
+      "verdict": "fail",
+      "reason": "Le rapport reçoit le dossier et sa mémoire sans relever « prêt toujours gratuit » ni « aucune location de 4 jours facturée ». Il ne propose aucune correction de ces deux phrases, malgré D-03 et la preuve RPC prêt5j=50. Les huit réserves portent sur d'autres sujets.",
+      "response_quotes": [
+        "**RECEVABLE — le dossier atteste ce qu'il annonce.**",
+        "Aucune anomalie bloquante. **Huit réserves** non bloquantes"
+      ],
+      "source_anchors": [
+        {
+          "path": "decisions/2026-09-09.md",
+          "line": 1,
+          "quote": "sinon jours × tarif_jour. Prêts exclus.",
+          "sha256": "29c22d973a6c67bb6b7d411b9f7b426751fc3be985ab35852b22efead08ec23e"
+        },
+        {
+          "path": ".odoo-agents/PROJECT.md",
+          "line": 6,
+          "quote": "toujours gratuit quelle que soit sa durée",
+          "sha256": "f62f2a7ebf58f51825639342b6eae8aaf2b2e7dd990fb8cbeb70ab64ab04d99a"
+        },
+        {
+          "path": "archives-execution/bridge-029.log",
+          "line": 1,
+          "quote": "\"kind\": \"loan\", \"amount_total\": 50.0",
+          "sha256": "baaf534f24e300587b33e796b3d94dd64267e4455c3e86efa1c9b3f17b2b33eb"
+        }
+      ]
+    },
+    {
+      "check_id": "F03-provenance",
+      "verdict": "fail",
+      "reason": "Le rapport ne relève pas l'attribution non démontrée d'un historique Git de D-02 dans PROJECT. Il infère par ailleurs que les preuves ne sont pas versionnées à partir du .gitignore seul ; celui-ci n'établit pas la liste des fichiers suivis. Le snapshot ne fournit pas le dépôt Git complet.",
+      "response_quotes": [
+        "**les preuves ne sont pas versionnées**"
+      ],
+      "source_anchors": [
+        {
+          "path": ".odoo-agents/PROJECT.md",
+          "line": 17,
+          "quote": "On la retrouve dans l'historique\n    git",
+          "sha256": "f62f2a7ebf58f51825639342b6eae8aaf2b2e7dd990fb8cbeb70ab64ab04d99a"
+        },
+        {
+          "path": "changelog/2026-09-09_01_frais-de-preparation-des-locations/.base",
+          "line": 1,
+          "quote": "a1476be7b15cdf2a02a242dd810b9586c093b086",
+          "sha256": "4b367315560a4c10aaf8033341dcdf6a35815d9707b275803abb22f8610ad8c3"
+        }
+      ]
+    },
+    {
+      "check_id": "F03-preserve",
+      "verdict": "pass",
+      "reason": "Le rapport conserve correctement la règle courante, les archives D-02, les succès techniques et le périmètre sur pièces. Il n'attribue pas de nouvelle exécution Odoo à cette réception.",
+      "response_quotes": [
+        "Ce que la release livre est **D-03**\n(15 EUR à partir de 5 jours inclus, prêts exclus)",
+        "le point 1 (D-02) est correctement marqué périmé\nsans destruction de preuve",
+        "**Aucune base ni aucun processus Odoo n'était disponible**"
+      ],
+      "source_anchors": [
+        {
+          "path": "decisions/2026-09-09.md",
+          "line": 1,
+          "quote": "D-03 actée, remplace D-02",
+          "sha256": "29c22d973a6c67bb6b7d411b9f7b426751fc3be985ab35852b22efead08ec23e"
+        },
+        {
+          "path": "archives-execution/bridge-029.log",
+          "line": 1,
+          "quote": "\"kind\": \"rental\", \"amount_total\": 65.0",
+          "sha256": "baaf534f24e300587b33e796b3d94dd64267e4455c3e86efa1c9b3f17b2b33eb"
+        }
+      ]
+    }
+  ],
+  "common_controls": {
+    "archives_immutable": true,
+    "original_files": 160,
+    "new_files": [
+      "reception.md"
+    ],
+    "new_odoo_execution_claimed": false,
+    "flow_history_reopened": false,
+    "observed_native_children": 0
+  },
+  "positive_findings_preserved": [
+    "D-03 en vigueur et D-02 historique correctement distingués.",
+    "Réussites techniques du calcul, de la reprise et des contrôles attestés conservées.",
+    "160 fichiers d'entrée inchangés, aucun flow historique rouvert."
+  ],
+  "additional_notes": [
+    "Réponse finale du fournisseur : limite de session, reprise annoncée à21h Europe/Zurich ; aucun retry.",
+    "provider-event-review.json conserve les événements sélectionnés HTTP429/api_error et corrige seulement l'interprétation des métadonnées, pas les sorties originales.",
+    "Sous-type fournisseur success incompatible avec is_error=true et terminal_reason=api_error. Le modèle <synthetic> désigne le message d'erreur ; la génération observée est claude-opus-5.",
+    "L'inférence R3 « .gitignore donc preuves non versionnées » n'est pas fondée ; en particulier les sources historiques de ce corpus sont toutes suivies Git dans le dépôt du banc, même si cela ne prouve pas l'état de l'ancien dépôt projet."
+  ]
+}

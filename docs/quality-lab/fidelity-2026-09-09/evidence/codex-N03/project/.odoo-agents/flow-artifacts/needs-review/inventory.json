@@ -1,0 +1,109 @@
+{
+  "version": {
+    "server_version": "19.0+e-20260817",
+    "server_version_info": [
+      19,
+      0,
+      0,
+      "final",
+      0,
+      "e"
+    ],
+    "server_serie": "19.0",
+    "protocol_version": 1
+  },
+  "fields": [
+    {
+      "id": 3731,
+      "name": "create_date",
+      "ttype": "datetime",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "base",
+      "field_description": "Created on"
+    },
+    {
+      "id": 3730,
+      "name": "create_uid",
+      "ttype": "many2one",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "base",
+      "field_description": "Created by"
+    },
+    {
+      "id": 3729,
+      "name": "display_name",
+      "ttype": "char",
+      "store": false,
+      "compute": false,
+      "depends": false,
+      "state": "base",
+      "field_description": "Display Name"
+    },
+    {
+      "id": 3728,
+      "name": "id",
+      "ttype": "integer",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "base",
+      "field_description": "ID"
+    },
+    {
+      "id": 3733,
+      "name": "write_date",
+      "ttype": "datetime",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "base",
+      "field_description": "Last Updated on"
+    },
+    {
+      "id": 3732,
+      "name": "write_uid",
+      "ttype": "many2one",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "base",
+      "field_description": "Last Updated by"
+    },
+    {
+      "id": 3734,
+      "name": "x_name",
+      "ttype": "char",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "manual",
+      "field_description": "x_name"
+    },
+    {
+      "id": 3736,
+      "name": "x_studio_days",
+      "ttype": "integer",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "manual",
+      "field_description": "x_studio_days"
+    },
+    {
+      "id": 3738,
+      "name": "x_studio_kind",
+      "ttype": "selection",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "manual",
+      "field_description": "x_studio_kind"
+    }
+  ],
+  "count": 0,
+  "records": []
+}

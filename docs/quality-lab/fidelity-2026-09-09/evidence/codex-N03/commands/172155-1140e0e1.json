@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "rg -n \"def main|argparse|--url|--password|--user|apply|diff\" ~/.odoo19-agents/scripts/odoo_pack.py | tail -55; cat /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json"
+  ],
+  "exit_code": 0,
+  "seconds": 0.02,
+  "log": "172155-1140e0e1.log",
+  "sha256": "81411a71d01344539d4925be47280f254897f999a1d72b580cf5f6fb4e2be797"
+}

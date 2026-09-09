@@ -1,0 +1,140 @@
+    return ordered, metadata
+
+
+def create_named(target, model, xmlid, vals, meta, allow_write):
+    # load crée l'objet ET son XML-ID dans la même transaction RPC.
+    columns, row = ['id'], [xmlid]
+    for name, value in vals.items():
+        kind = meta[name]['type']
+        if kind == 'many2one':
+            columns.append(name + '/.id')
+            row.append(str(value) if value else '')
+        elif kind == 'many2many':
+            columns.append(name + '/.id')
+            row.append(','.join(map(str, value[0][2])))
+        else:
+            columns.append(name)
+            row.append(json.dumps(value) if kind == 'json' or isinstance(value, (dict, list)) else
+                       '' if value is None or (value is False and kind != 'boolean') else str(value))
+    result = target.call(model, 'load', columns, [row], allow_write=allow_write,
+                         context=dict(STUDIO_CTX, module=xmlid.split('.')[0], noupdate=True,
+                                      install_mode=True))
+    if not result.get('ids') or len(result['ids']) != 1 or any(m.get('type') == 'error' for m in result.get('messages', [])):
+        raise ValueError('création/import refusé : ' + xmlid + ' : ' + str(result.get('messages')))
+    rid = result['ids'][0]
+    if target.id_of(xmlid) != rid:
+        raise ValueError('identité non confirmée après import : ' + xmlid + ' ; arrêter et vérifier la cible')
+    return rid
+
+
+def apply(target: Target, pack: dict, dry_run: bool, allow_write: bool) -> int:
+    live_meta = {}
+    records, planned_meta = preflight(target, pack)  # aucune écriture avant la validation globale
+    cache: dict = {}
+    created = updated = unchanged = 0
+    for rec in records:
+        model, xmlid = rec["model"], rec["xml_id"]
+        cache.setdefault(xmlid, target.id_of(xmlid))
+        rid = cache[xmlid]
+        if not dry_run and model not in live_meta:
+            live_meta[model] = target.call(model, "fields_get", attributes=["type"])
+        meta = planned_meta[model] if dry_run else live_meta[model]
+        # Les écritures de schéma changent les métadonnées des modèles suivants.
+        if model in ('ir.model', 'ir.model.fields', 'ir.model.fields.selection'):
+            live_meta.clear()
+        vals, m2m = {}, {}
+        for name, value in rec["values"].items():
+            if name not in meta:
+                raise ValueError(f"champ devenu indisponible après prévalidation : {xmlid}.{name}")
+            if meta[name]["type"] == "many2many":
+                ids = [resolve(target, v, cache) for v in (value or [])]
+                if UNRESOLVED in ids:
+                    raise ValueError(f"référence incomplète : {xmlid}.{name}")
+                m2m[name] = sorted(ids)
+                vals[name] = [(6, 0, ids)]
+                continue
+            resolved = resolve(target, value, cache)
+            if resolved is UNRESOLVED:
+                raise ValueError(f"référence incomplète : {xmlid}.{name}")
+            vals[name] = resolved
+        if rid is None:
+            print(f"  + {model} {xmlid}")
+            if not dry_run:
+                rid = create_named(target, model, xmlid, vals, meta, allow_write)
+                cache[xmlid] = rid
+            else:
+                cache[xmlid] = -(created + 1)  # identifiant de plan, jamais envoyé en écriture
+            created += 1
+            continue
+        current = target.call(model, "read", [rid], fields=list(vals))[0]
+        changes = {}
+        for name, value in vals.items():
+            cur = normalize(current.get(name), meta[name]["type"])
+            new = m2m[name] if name in m2m else value
+            if cur != new and not (cur in (False, "", None) and new in (False, "", None)):
+                changes[name] = (cur, new)
+        if not changes:
+            unchanged += 1
+            continue
+        print(f"  ~ {model} {xmlid} : " + ", ".join(
+            f"{k} ({str(a)[:40]!r} → {str(b)[:40]!r})" for k, (a, b) in changes.items()))
+        if not dry_run:
+            target.call(model, "write", [rid], {k: vals[k] for k in changes}, allow_write=allow_write,
+                        context=STUDIO_CTX)
+        updated += 1
+    verb = "à créer / à modifier / inchangés" if dry_run else "créés / modifiés / inchangés"
+    print(f"{created} / {updated} / {unchanged} {verb} sur {target.label}")
+    return 0
+
+
+# --------------------------------------------------------------------------- #
+
+def main(argv: list[str]) -> int:
+    args = argv[1:]
+    if not args or args[0] not in ("export", "apply", "diff", "xmlid"):
+        print(__doc__)
+        return 2
+    cmd = args.pop(0)
+
+    def take(flag, n=1):
+        if flag in args:
+            i = args.index(flag); vals = args[i + 1:i + 1 + n]; del args[i:i + 1 + n]
+            return vals if n > 1 else vals[0]
+        return None
+
+    db = take("--db"); url = take("--url"); login = take("--login") or "admin"
+    password = take("--password") or "admin"; instance = take("--instance", 2)
+    module = take("--module") or "studio_customization"; out = take("--out")
+    since = take("--since"); only_file = take("--only")
+    only = set(Path(only_file).read_text(encoding="utf-8").split()) if only_file else None
+    allow_write = "--allow-write" in args
+    if allow_write:
+        args.remove("--allow-write")
+
+    if instance:
+        target = Target.instance(*instance)
+    elif db:
+        target = Target.local(db, url, login, password)
+    else:
+        print("cible manquante : --db <base> ou --instance <projet> <nom>", file=sys.stderr)
+        return 2
+
+    if cmd == "export":
+        return export(target, module, Path(out or f"pack_{module}.json"), since, only)
+    if cmd == "xmlid":
+        model, res_id, xmlid = args[0], int(args[1]), args[2]
+        target.name_record(model, res_id, xmlid, allow_write)
+        print(f"{model}#{res_id} nommé {xmlid} sur {target.label}")
+        return 0
+    pack = json.loads(Path(args[0]).read_text(encoding="utf-8"))
+    if pack.get("format") != "odoo-pack/1":
+        raise SystemExit("format de pack inconnu")
+    if cmd == "diff":
+        print(f"Comparaison de {args[0]} avec {target.label} (aucune écriture) :")
+        return apply(target, pack, dry_run=True, allow_write=False)
+    print(f"Application de {args[0]} sur {target.label} :")
+    return apply(target, pack, dry_run=False, allow_write=allow_write)
+
+
+if __name__ == "__main__":
+    sys.exit(main(sys.argv))

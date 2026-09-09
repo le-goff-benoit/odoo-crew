@@ -739,6 +739,86 @@ def bind_criteria(state_path, graph_path, source, output, owner):
     return pinned
 
 
+def prepare_reception(state_path, graph_path, sources, spec, evidence, memories, scopes, output, owner):
+    from odoo_coverage import GATES, digest
+    from odoo_reception import prepare, verify_contract
+    with exclusive_lock(state_path):
+        state, graph = load_state(state_path, graph_path)
+        if state.get('plan_task'):
+            raise FlowError('garde expérimental indisponible pour les tâches planifiées ; réception documentaire sans garde permise')
+        if state['status'] != 'active' or any(c['owner'] != owner for c in state.get('claims', {}).values()):
+            raise FlowError('réception impossible : flow terminé ou revendications d’un autre propriétaire')
+        if any(e['node'] in GATES and e['outcome'] == 'pass' for e in state['events']):
+            raise FlowError('préparation impossible après réception QA')
+        try:
+            root = Path(state['project']).resolve()
+            bundle = prepare(root, sources, spec, evidence, memories, scopes, owner)
+            verify_contract(bundle, state.get('qa_contract'))
+            target = (root / output).resolve()
+            if not target.is_relative_to(root) or target.exists() or target.is_symlink():
+                raise ValueError('nouveau fichier de dossier requis dans le projet')
+            if str(target.relative_to(root)) in {row['target'] for row in bundle['memory']}:
+                raise ValueError('sortie distincte des cibles mémoire requise')
+            if any(target == (root / scope).resolve() or target.is_relative_to((root / scope).resolve()) for scope in scopes):
+                raise ValueError('dossier hors périmètre de code requis')
+            target.parent.mkdir(parents=True, exist_ok=True)
+            with target.open('x', encoding='utf-8') as stream:
+                json.dump(bundle, stream, ensure_ascii=False, indent=2)
+                stream.write('\n')
+            receipt = {'path': str(target.relative_to(root)), 'sha256': digest(target.read_bytes()),
+                       'owner': owner, 'at': now()}
+            if state.get('task_reception'):
+                state.setdefault('task_reception_history', []).append(state['task_reception'])
+            state['task_reception'] = receipt
+            write_state(state_path, state)
+        except (ValueError, KeyError, TypeError, OSError) as exc:
+            raise FlowError(f'préparation de réception refusée : {exc}') from exc
+    return receipt
+
+
+def verify_task_reception(state, checked_evidence, node_name, outcome, owner):
+    from odoo_coverage import GATES, digest, project_file
+    from odoo_reception import FORMAT, check_ref, verify, verify_contract
+    pinned = state.get('task_reception')
+    if not pinned:
+        return None
+    try:
+        if node_name in GATES and outcome == 'pass':
+            reviews = []
+            for value in checked_evidence:
+                try:
+                    data = json.loads(Path(value).read_bytes())
+                except (ValueError, UnicodeError):
+                    continue
+                if isinstance(data, dict) and data.get('format') == FORMAT:
+                    reviews.append((value, data))
+            if len(reviews) != 1:
+                raise ValueError('une réception odoo-task-reception/1 est requise pour pass')
+            value, review = reviews[0]
+            path = project_file(state['project'], value)
+            bundle = verify(review, pinned, state['project'])
+            verify_contract(bundle, state.get('qa_contract'))
+            if review['reviewer'].strip() == owner.strip():
+                raise ValueError('réception indépendante requise : reviewer identique au propriétaire actuel de complétion')
+            return {'path': str(path.relative_to(Path(state['project']).resolve())),
+                    'sha256': digest(path.read_bytes()), 'bundle_sha256': pinned['sha256'],
+                    'node': node_name, 'at': now()}
+        if node_name == 'journal_task' and outcome == 'done':
+            accepted = state.get('accepted_reception')
+            # Les chemins sans jointure QA restent compatibles (réponse fonctionnelle, etc.).
+            passed = any(e['node'] in GATES and e['outcome'] == 'pass' for e in state['events'])
+            if not passed:
+                return None
+            if not accepted or accepted['bundle_sha256'] != pinned['sha256']:
+                raise ValueError('réception QA acceptée absente')
+            path = check_ref(Path(state['project']).resolve(), accepted)
+            bundle = verify(json.loads(path.read_bytes()), pinned, state['project'], published=True)
+            verify_contract(bundle, state.get('qa_contract'))
+    except (ValueError, KeyError, TypeError, OSError) as exc:
+        raise FlowError(f'réception de tâche refusée : {exc}') from exc
+    return None
+
+
 def qa_report(state_path, graph_path, node_name, coverage_path, output, outcome, owner):
     from odoo_coverage import GATES, digest, project_file, render_report
     with exclusive_lock(state_path):
@@ -822,6 +902,7 @@ def complete_claimed_node(
                 verify_coverage(coverages[0], state['qa_contract'], state['project'])
             except (ValueError, KeyError, TypeError, OSError) as exc:
                 raise FlowError(f'couverture QA refusée : {exc}') from exc
+        accepted_reception = verify_task_reception(state, checked_evidence, node_name, outcome, owner)
         from odoo_evidence import verify as verify_evidence
         for value in checked_evidence:
             if Path(value).suffix == '.json':
@@ -848,6 +929,8 @@ def complete_claimed_node(
         try:
             complete_node(state, graph, node_name, outcome, checked_evidence, note)
             state["events"][-1]["evidence_sha256"] = evidence_digests
+            if accepted_reception:
+                state["accepted_reception"] = accepted_reception
         except Exception:
             if not is_human:
                 state["claims"][node_name] = claim
@@ -1067,6 +1150,16 @@ def build_parser() -> argparse.ArgumentParser:
     binding.add_argument('--output', type=Path, required=True)
     binding.add_argument('--owner', required=True)
 
+    reception = subparsers.add_parser('prepare-reception', help='figer le dossier de réception et la mémoire proposée')
+    reception.add_argument('state', type=Path)
+    reception.add_argument('--source', action='append', required=True)
+    reception.add_argument('--spec', required=True)
+    reception.add_argument('--evidence', action='append', required=True)
+    reception.add_argument('--memory', action='append', required=True)
+    reception.add_argument('--scope', action='append', default=[])
+    reception.add_argument('--output', type=Path, required=True)
+    reception.add_argument('--owner', required=True)
+
     report = subparsers.add_parser('qa-report', help='rendre un rapport QA lié à sa couverture et à son issue')
     report.add_argument('state', type=Path)
     report.add_argument('node')
@@ -1194,6 +1287,12 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         state_path = args.state.resolve()
+        if args.command == 'prepare-reception':
+            receipt = prepare_reception(state_path, graph_path, args.source, args.spec, args.evidence,
+                                        args.memory, args.scope, args.output, args.owner)
+            print(f"Dossier de réception : {receipt['path']} · {receipt['sha256'][:12]}")
+            print('Réception indépendante positive requise avant pass ; publier ensuite les drafts exacts.')
+            return 0
         if args.command == 'qa-report':
             receipt = qa_report(state_path, graph_path, args.node, args.coverage,
                                 args.output, args.outcome, args.owner)

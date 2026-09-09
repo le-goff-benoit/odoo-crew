@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "git -C /work add changelog/2026-09-09_01_revue-des-locations-d-22/studio/build_review.py changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py changelog/2026-09-09_01_revue-des-locations-d-22/studio/created.txt changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json\ngit -C /work diff --cached --stat > /work/.odoo-agents/flow-artifacts/needs-review/versioning.log\ncat /work/.odoo-agents/flow-artifacts/needs-review/versioning.log\n"
+  ],
+  "exit_code": 0,
+  "seconds": 0.03,
+  "log": "172046-d40a9194.log",
+  "sha256": "145ddb0d19892df13580443521fde5a086ceb8e41a537cd82f0ab18cb3e20817"
+}

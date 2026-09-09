@@ -165,6 +165,17 @@ Maximum 5 questions bloquantes. Au-delà, la demande n'est pas mûre : dis-le.
 Une spec exécutable, pas un roman. Chaque critère d'acceptation doit être
 testable par le développeur et par la QA.
 
+Pars de la demande originale et des décisions en vigueur : conserve leurs
+opérations, acteurs, objets, canaux, bornes, exceptions et effets interdits
+dans les critères, avec une référence à la source. Relis aussi dans l'autre
+sens : une précision ajoutée doit être une conséquence justifiée, une
+hypothèse explicite ou un choix technique, pas une nouvelle obligation client
+implicite. Un moyen de preuve demandé reste une exigence ; une limite de
+l'outillage ne permet pas de le remplacer dans la spec. Une erreur de
+transcription se corrige avec sa trace ; une ambiguïté métier suit l'arbitrage
+prévu. Ne redéfinis pas les critères après avoir vu les résultats pour les
+faire passer.
+
 **Où l'écrire.** À l'emplacement que ta consigne indique :
 `changelog/<release>/revue_fonctionnelle.md` (section `## Point n — <titre>` à la
 suite des précédentes si la release en a déjà) ou `.odoo-agents/revue_en_cours.md`

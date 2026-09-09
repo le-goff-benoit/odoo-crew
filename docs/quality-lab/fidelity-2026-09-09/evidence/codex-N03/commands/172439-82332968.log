@@ -1,0 +1,38 @@
+    return path
+
+
+def prepare(project, sources, spec, evidence, memories, scopes, owner):
+    root = Path(project).resolve()
+    if not owner.strip() or not sources or not evidence:
+        raise ValueError('propriétaire, demande et preuves requis')
+    groups = {'source': [ref(root, value) for value in sources],
+              'spec': [ref(root, spec)],
+              'evidence': [ref(root, value) for value in evidence]}
+    rows = []
+    for value in memories:
+        target, separator, proposed = value.partition('=')
+        if not separator:
+            raise ValueError('mémoire attendue sous forme TARGET=DRAFT')
+        path = memory_path(root, target)
+        rows.append({'target': target, 'before_sha256': digest(path.read_bytes()) if path.exists() else None,
+                     'draft': ref(root, proposed)})
+    if len(rows) != 2 or {row['target'] for row in rows} != TARGETS:
+        raise ValueError('PROJECT.md et JOURNAL.md requis une fois chacun')
+    inputs = {item['path'] for group in groups.values() for item in group}
+    drafts = [row['draft']['path'] for row in rows]
+    if len(set(drafts)) != 2 or (set(drafts) & (inputs | TARGETS)) or inputs & TARGETS:
+        raise ValueError('sources, drafts et cibles mémoire doivent être distincts')
+    result = {'format': BUNDLE_FORMAT, 'project': str(root), 'owner': owner,
+              'groups': groups, 'memory': rows, 'scopes': [str(value) for value in scopes]}
+    result['code'] = fingerprint(root, result['scopes']) if scopes else {}
+    if set(result['code']) & (inputs | set(drafts) | TARGETS):
+        raise ValueError('périmètre de code distinct des documents et de la mémoire requis')
+    return result
+
+
+def verify_contract(bundle, contract):
+    if contract and bundle['groups']['spec'] != [{'path': contract['source'], 'sha256': contract['source_sha256']}]:
+        raise ValueError('spécification de réception différente du contrat QA lié')
+
+
+/home/blegoff/.odoo19-agents/scripts/odoo_evidence.py:15:def fingerprint(root, scopes, *, allow_empty=False):

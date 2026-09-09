@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "mkdir -p /work/.odoo-agents/flow-artifacts/needs-review; python3 ~/.odoo19-agents/scripts/odoo_briefing.py /work > /work/.odoo-agents/flow-artifacts/needs-review/briefing.md; python3 ~/.odoo19-agents/scripts/odoo_flow.py start /work --kind development --id needs-review; python3 ~/.odoo19-agents/scripts/odoo_flow.py status /work/.odoo-agents/flows/needs-review.json; python3 ~/.odoo19-agents/scripts/odoo_flow.py claim /work/.odoo-agents/flows/needs-review.json briefing --owner codex-orchestrateur; python3 ~/.odoo19-agents/scripts/odoo_flow.py complete /work/.odoo-agents/flows/needs-review.json briefing --outcome development --evidence /work/.odoo-agents/flow-artifacts/needs-review/briefing.md --owner codex-orchestrateur; python3 ~/.odoo19-agents/scripts/odoo_flow.py ready /work/.odoo-agents/flows/needs-review.json; python3 ~/.odoo19-agents/scripts/odoo_pack.py --help; rg -n \"compute|depends|studio=True\" ~/odoo-sources/19.0/odoo/addons/base/models/ir_model.py ~/odoo-sources/19.0-enterprise/web_studio/models/studio_mixin.py | head -30"
+  ],
+  "exit_code": 0,
+  "seconds": 0.32,
+  "log": "171530-743df4dc.log",
+  "sha256": "13d192167ecd78d5a49dcbe56f2c52ac73f52d808b58a62ef3c4abb97c3c7d37"
+}

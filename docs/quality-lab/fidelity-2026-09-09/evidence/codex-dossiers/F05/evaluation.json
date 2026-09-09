@@ -1,0 +1,106 @@
+{
+  "case": "F05",
+  "response_path": "project/reception.md",
+  "response_sha256": "b7cbe09b422ea1ce1cc17317dd6347b4df37e5370b1e2766bfa5235280495421",
+  "oracle_sha256": "1ccf4723c99b14d98b412baa9efab1ed633502c8aa2d75b26555fa3d7a8f605a",
+  "method": "Manual independent semantic adjudication by fidelity_cases against frozen rubric; model/variant visible, not blind. Exact quotations and unchanged inputs checked mechanically. No CLI/DB calls.",
+  "decisions": [
+    {
+      "check_id": "F05-source",
+      "verdict": "pass",
+      "response_quotes": [
+        "**E2 réduit à tort l’obligation :**"
+      ],
+      "reason": "Identifie le remplacement de l'invariant identités/dates/équipements/techniciens par un compteur ; source originale conservée.",
+      "source_anchors": [
+        {
+          "path": "demande.md",
+          "line": 3,
+          "quote": "Les visites déjà planifiées restent présentes avec les mêmes identifiants, dates, équipements et techniciens.",
+          "sha256": "91d95b4335796ab864b8230926305230ec76a6e0298ea6affc2f76a107d0f5f6"
+        },
+        {
+          "path": "changelog/2026-09-09_01_rappels/revue_fonctionnelle.md",
+          "line": 6,
+          "quote": "E2 — Le nombre de visites planifiées avant et après le traitement reste égal à 4.",
+          "sha256": "43c4c09fc755e4e9d3686c2521ccce3d13fa3bb6f8fc1c20a506c842c805aef9"
+        }
+      ]
+    },
+    {
+      "check_id": "F05-proof",
+      "verdict": "pass",
+      "response_quotes": [
+        "Égalité du nombre couverte ; identité et contenu après absents, invariance non prouvée"
+      ],
+      "reason": "Distingue preuve partielle et altération réellement démontrée ; les succès emails de la fixture restent acquis.",
+      "source_anchors": [
+        {
+          "path": "changelog/2026-09-09_01_rappels/preuves/recette.json",
+          "line": 43,
+          "quote": "\"planned_visits_after_count\": 4",
+          "sha256": "cc35c122669d81edd0fd124f44f6360d43ddc5b612b413782a32d39f90b0fb62"
+        },
+        {
+          "path": "changelog/2026-09-09_01_rappels/qa.md",
+          "line": 3,
+          "quote": "quatre avant et quatre après : aucun changement.",
+          "sha256": "1e5d756652d207f3b6a5cc47d64899987a55a4b1a9a00487eac08087434205d6"
+        }
+      ]
+    },
+    {
+      "check_id": "F05-memory",
+      "verdict": "pass",
+      "response_quotes": [
+        "La maintenance reste due, sans dispense d’entretien"
+      ],
+      "reason": "Inverse correctement la mémoire erronée : seuls emails suspendus, maintenance et visites maintenues.",
+      "source_anchors": [
+        {
+          "path": "decisions/E-14.md",
+          "line": 3,
+          "quote": "Ni annulation de maintenance ni exemption d'entretien.",
+          "sha256": "b82c27195de97ef7c78a10061336ebcfd6f3fd2a398f6ba9dafb0f204897425c"
+        },
+        {
+          "path": ".odoo-agents/PROJECT.md",
+          "line": 3,
+          "quote": "un équipement en pause est dispensé de maintenance",
+          "sha256": "e2cb2f49a1f5d5d58b55ece153956f83c4f63b2f263130b0e63844767f87e3cf"
+        }
+      ]
+    },
+    {
+      "check_id": "F05-outcome",
+      "verdict": "pass",
+      "response_quotes": [
+        "**Verdict global : REFUSÉ en l’état.**"
+      ],
+      "reason": "Refuse le dossier inchangé, propose état après détaillé et rectification de mémoire, sans inventer défaut de code ni nouvelle exécution Odoo.",
+      "source_anchors": [
+        {
+          "path": "demande.md",
+          "line": 5,
+          "quote": "La recette sur copie doit comparer les visites avant et après le traitement, pas seulement leur nombre.",
+          "sha256": "91d95b4335796ab864b8230926305230ec76a6e0298ea6affc2f76a107d0f5f6"
+        }
+      ]
+    }
+  ],
+  "scope": "F01 passes the pre-frozen ambiguity branch conditionally; no unconditional qualification of pack import. Other cases satisfy their frozen critical checks.",
+  "common_controls": {
+    "source_files": 9,
+    "changed_inputs": [],
+    "archives_immutable": true,
+    "new_files": [
+      "reception.md"
+    ],
+    "new_odoo_execution_claimed": false,
+    "historical_flow_reopened": false
+  },
+  "additional_notes": [
+    "Les attestations complémentaires suggérées sur planification/entretien se rapportent aux bornes explicites de la demande. Elles ne sont pas utilisées pour effacer le succès déclaré des emails ou pour prétendre qu'une altération a eu lieu."
+  ],
+  "comparison_limit": "Codex new-context documentary assessment after explicit protocol amendment. No paired Claude causal improvement or complete-workflow autonomy inferred."
+}

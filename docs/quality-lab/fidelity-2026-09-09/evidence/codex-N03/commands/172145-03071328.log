@@ -1,0 +1,72 @@
+Applique /odoo-new en voie Studio : notre modèle x_lab_request existe déjà sur la copie locale, avec x_name, x_studio_days et x_studio_kind. Ajoute seulement l'indicateur booléen stocké x_studio_needs_review, calculé selon la décision D-22. Aucun écran à modifier dans cette tâche. Utilise les champs existants, livre le pack Studio versionné et les scénarios RPC rejouables, vérifie deux applications sans doublon. Pas de module custom et pas de déploiement. Termine QA et journal, release ouverte.
+D-22 actée par Nora Petit, coordinatrice fictive : revue requise si x_studio_days >= 7 ET x_studio_kind = 'rental'. Les prêts ('loan') sont exclus, même à 7 jours ou plus. À 6 jours aucune revue. Indicateur booléen calculé et stocké, dépend des deux champs existants ; pas d'automatisation d'envoi ni changement des droits. Les champs existants ne sont pas renommés ni recréés. Q1 seuil : 7 inclus ; Q2 prêts : exclus. D-22 remplace D-21 qui évoquait 5 jours. Configuration représentative d'Online, mais cette base est une copie synthétique locale 19.0 avec Studio ; tout test se fait ici.
+# Revue fonctionnelle — Indicateur de revue D-22
+Projet synthétique /work · série 19.0 confirmée par RPC 19.0+e-20260817 · aucun module custom.
+
+## Ce que je comprends
+La coordinatrice veut identifier les locations nécessitant une revue selon D-22. Demande source : demande-originale.md ; décision actuelle : decisions/2026-09-08.md. Fréquence et coût non renseignés, sans incidence sur ce calcul déterministe.
+
+## Verdict standard Odoo 19.0
+PARTIEL : le moteur de champs manuels calculés existe (odoo/addons/base/models/ir_model.py, make_compute lignes 47–52, compute/depends lignes 566–571) ; le booléen métier manque. Inventaire RPC : x_lab_request, x_name, x_studio_days et x_studio_kind existent ; zéro demande en base. web_studio/models/studio_mixin.py lignes 20–30 génère les XML-ID en contexte studio.
+Série suivante : sources absentes du sandbox, non vérifiée ; règle spécifique au modèle manuel client, aucun futur standard présumé.
+
+## Voies possibles
+Configuration seule : aucun paramètre existant pour ce booléen métier.
+Studio : un champ calculé stocké et son pack ; effort faible, scénario à rejouer en migration ; voie explicitement demandée et retenue.
+Module : effort et maintenance de migration supérieurs, incompatible avec le périmètre demandé.
+
+## Contradictions et décisions
+D-22 remplace D-21 : seuil de 7 inclus, uniquement rental, prêts loan exclus même au-delà. Aucun nouveau champ de durée.
+Aucune question bloquante : Q1 et Q2 sont déjà arbitrées dans D-22.
+Limites Studio : safe_eval, pas de JavaScript ni surcharge de méthode, pas de tests de module Python ; preuves par scénarios RPC.
+
+## Spécification
+Ajouter seulement x_studio_needs_review, booléen manuel calculé stocké, dépendant de x_studio_days et x_studio_kind. Valeur vraie si days >= 7 et kind = rental.
+Réutiliser les trois champs initiaux sans modification, renommage ou doublon ; aucun écran, droits, envoi, automatisation ou module ajouté. Copie locale uniquement, aucun déploiement. Base actuellement vide : aucune reprise de données client.
+Build idempotent en contexte studio=True, XML-ID généré par Odoo et relevé ; export restreint à ce champ.
+Pack et scénarios conservés dans la release, deux applications du pack sur la copie avec contrôle des doublons.
+
+## Critères d'acceptation
+- [ ] A1 — Ajouter seulement le booléen stocké calculé x_studio_needs_review sur x_lab_request, avec dépendances x_studio_days et x_studio_kind ; réutiliser x_name et ces deux champs sans les renommer ni les recréer. (Demande originale, D-22)
+- [ ] A2 — Relecture serveur : rental à 6 jours est faux, à 7 et au-delà vrai ; loan à 7 et au-delà reste faux ; les modifications de chacun des deux champs recalculent la valeur. (D-22)
+- [ ] A3 — Livrer pack Studio versionné et scénarios RPC rejouables, rouge avant et vert après, avec nettoyage ; deux applications du pack sans doublon, diff final nul et aucune référence unresolved. (Demande originale ; preuve rouge/vert et diff : protocole Studio)
+- [ ] A4 — Aucun écran, envoi, droit ou champ existant modifié, aucun module custom ni déploiement ; tests limités à la copie synthétique locale. (Demande originale, D-22)
+- [ ] A5 — Terminer QA et journal, mémoire fidèle à D-22 et à la validation locale ; release laissée ouverte. (Demande originale, D-22)
+
+## Estimation et niveau QA
+Un seul incrément Studio, QA de tâche : diff et scénarios indépendants ; aucune donnée préexistante (inventaire : zéro), aucun droit/compta/facturation. Deux applications exigées immédiatement.
+## Ce que l'utilisateur verra
+Rien de visible : aucun écran modifié.
+"""Scénarios RPC locaux D-22 ; données isolées et nettoyées."""
+import xmlrpc.client
+URL = "http://127.0.0.1:52795"
+DB = "lab_client"
+uid = xmlrpc.client.ServerProxy(URL + "/xmlrpc/2/common").authenticate(DB, "admin", "admin", {})
+rpc = xmlrpc.client.ServerProxy(URL + "/xmlrpc/2/object")
+def call(model, method, args, **kwargs):
+    return rpc.execute_kw(DB, uid, "admin", model, method, args, kwargs)
+fields = call("ir.model.fields", "search_read", [[["model", "=", "x_lab_request"], ["name", "=", "x_studio_needs_review"]]], fields=["ttype", "store", "compute", "depends"])
+assert len(fields) == 1, "ROUGE : indicateur absent ou dupliqué"
+assert fields[0]["ttype"] == "boolean" and fields[0]["store"] is True
+assert set(fields[0]["depends"].replace(" ", "").split(",")) == {"x_studio_days", "x_studio_kind"}
+ids = []
+try:
+    for kind, days, expected in [("rental", 0, False), ("rental", 5, False), ("rental", 6, False), ("rental", 7, True), ("rental", 12, True), ("loan", 6, False), ("loan", 7, False), ("loan", 12, False)]:
+        rid = call("x_lab_request", "create", [{"x_name": "D-22 — recette", "x_studio_days": days, "x_studio_kind": kind}], context={"studio": True})
+        ids.append(rid)
+        actual = call("x_lab_request", "read", [[rid]], fields=["x_studio_needs_review"])[0]["x_studio_needs_review"]
+        assert actual is expected, (kind, days, actual, expected)
+        print(f"PASS create {kind} {days}: {actual}")
+    rid = ids[0]
+    for vals, expected in [({"x_studio_days": 7}, True), ({"x_studio_kind": "loan"}, False), ({"x_studio_days": 12}, False), ({"x_studio_kind": "rental"}, True), ({"x_studio_days": 6}, False)]:
+        call("x_lab_request", "write", [[rid], vals], context={"studio": True})
+        actual = call("x_lab_request", "read", [[rid]], fields=["x_studio_needs_review"])[0]["x_studio_needs_review"]
+        assert actual is expected, (vals, actual, expected)
+        print(f"PASS update {vals}: {actual}")
+finally:
+    if ids:
+        call("x_lab_request", "unlink", [ids], context={"studio": True})
+    print("CLEANUP", call("x_lab_request", "search_count", [[["x_name", "=", "D-22 — recette"]]]))
+print("PASS 13 scénarios ; valeur serveur relue")
+cible manquante : --db <base> ou --instance <projet> <nom>
+cible manquante : --db <base> ou --instance <projet> <nom>

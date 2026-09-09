@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "python3 - <<\"PY\"\nimport json,pathlib\nb=json.loads(pathlib.Path(\"changelog/2026-09-09_01_revue-des-locations-d-22/reception/bundle-1.json\").read_text())\nfor f in b[\"groups\"][\"evidence\"]+[x[\"draft\"] for x in b[\"memory\"]]:\n p=pathlib.Path(f[\"path\"]); print(\"\\nFILE\",p,\"\\n\",p.read_text())\nfor x in b[\"memory\"]:\n p=pathlib.Path(x[\"target\"]);print(\"\\nBASE\",p,\"\\n\",p.read_text())\nPY"
+  ],
+  "exit_code": 0,
+  "seconds": 0.04,
+  "log": "172543-5f7562e1.log",
+  "sha256": "5582fe7fd39a53236c45a399891f924efc41846703edc28955ac2e405fb53c19"
+}

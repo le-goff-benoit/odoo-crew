@@ -1,0 +1,78 @@
+{
+  "case": "F02",
+  "response_path": "project/reception.md",
+  "response_sha256": "cba4d03f4a20fa42a039a41ab309526f24a8c3a4586e0d725b527f4cebb06a18",
+  "oracle_sha256": "1ccf4723c99b14d98b412baa9efab1ed633502c8aa2d75b26555fa3d7a8f605a",
+  "method": "Manual independent semantic adjudication by fidelity_cases against frozen rubric; model/variant visible, not blind. Exact quotations and unchanged inputs checked mechanically. No CLI/DB calls.",
+  "decisions": [
+    {
+      "check_id": "F02-source",
+      "verdict": "pass",
+      "response_quotes": [
+        "La demande impose de vrais appels pour A8, mais ne demande pas expressément leur intégration dans cette suite."
+      ],
+      "reason": "Distingue la demande RPC de la précision ajoutée par C08, sans attribuer cette dernière à l'humain.",
+      "source_anchors": [
+        {
+          "path": "decisions/2026-09-08.md",
+          "line": 4,
+          "quote": "le rejet d’une création avec days=-1 doit être constaté via le vrai XML-RPC",
+          "sha256": "80a40a7c98b1c8edf02679cd6bc27f5c2178354e4732e3323d2b20f0a68de1a7"
+        },
+        {
+          "path": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/revue_fonctionnelle.md",
+          "line": 122,
+          "quote": "quand on exécute `/bridge/labctl qa lab_rental`, alors tous les tests passent, y compris les scénarios ci-dessus couverts par un vrai appel RPC (pas seulement des appels ORM internes).",
+          "sha256": "1c21a476576bb9200de5f9921db78df1a351e6bb89870bba46ab1a744caff5e0"
+        }
+      ]
+    },
+    {
+      "check_id": "F02-proof",
+      "verdict": "pass",
+      "response_quotes": [
+        "Un appel séparé à `/bridge/labctl rpc` établit C03/C04 ; il ne prouve pas que `/bridge/labctl qa lab_rental` exécute du RPC."
+      ],
+      "reason": "Détecte la substitution du contexte d'exécution et conserve les deux familles de preuves réellement attestées.",
+      "source_anchors": [
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_runtime/fragment.md",
+          "line": 81,
+          "quote": "**Composante RPC de C08 explicitement hors de ma voie et non prouvée ici.**",
+          "sha256": "312f2eb6327113862ea611901dac97cafc4e5581e900048a84c6beb12db236c6"
+        }
+      ]
+    },
+    {
+      "check_id": "F02-outcome",
+      "verdict": "pass",
+      "response_quotes": [
+        "Ne pas présenter cette clarification comme l'exécution rétroactive du C08 original."
+      ],
+      "reason": "C08 partiel et validation globale refusée ; propose contrôle intégré ou clarification formelle, sans réécrire l'histoire.",
+      "source_anchors": [
+        {
+          "path": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/qa_synthese.md",
+          "line": 25,
+          "quote": "C08",
+          "sha256": "af4637b4b8e85137883b0e272cb00e460c83438c38c3d3f83f6612df51308906"
+        }
+      ]
+    }
+  ],
+  "scope": "F01 passes the pre-frozen ambiguity branch conditionally; no unconditional qualification of pack import. Other cases satisfy their frozen critical checks.",
+  "common_controls": {
+    "source_files": 60,
+    "changed_inputs": [],
+    "archives_immutable": true,
+    "new_files": [
+      "reception.md"
+    ],
+    "new_odoo_execution_claimed": false,
+    "historical_flow_reopened": false
+  },
+  "additional_notes": [
+    "Le refus additionnel A8 porte sur l'absence de postcondition create dans le projet reçu. L'oracle externe RPC de la qualification originelle existe ailleurs dans le dépôt mais n'est pas inclus dans ce corpus project/ figé. Ne pas transformer cette limite sur pièces en affirmation que la qualification complète n'a jamais exécuté ce contrôle. C08 suffit au refus et reste le point de la grille."
+  ],
+  "comparison_limit": "Codex new-context documentary assessment after explicit protocol amendment. No paired Claude causal improvement or complete-workflow autonomy inferred."
+}

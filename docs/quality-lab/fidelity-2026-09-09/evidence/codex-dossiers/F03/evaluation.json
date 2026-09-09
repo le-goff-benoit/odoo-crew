@@ -1,0 +1,96 @@
+{
+  "case": "F03",
+  "response_path": "project/reception.md",
+  "response_sha256": "87af81208203898f051226a21f4215f34bbf6be9ed940a77c4fdbd689e00ea23",
+  "oracle_sha256": "1ccf4723c99b14d98b412baa9efab1ed633502c8aa2d75b26555fa3d7a8f605a",
+  "method": "Manual independent semantic adjudication by fidelity_cases against frozen rubric; model/variant visible, not blind. Exact quotations and unchanged inputs checked mechanically. No CLI/DB calls.",
+  "decisions": [
+    {
+      "check_id": "F03-meaning",
+      "verdict": "pass",
+      "response_quotes": [
+        "Les prêts sont toujours sans frais de préparation ; leur total reste jours × tarif_jour."
+      ],
+      "reason": "Détecte gratuité et absence de facturation à4jours, les confronte aux vrais montants50/100/40 et propose une mémoire exacte sans modifier le calcul.",
+      "source_anchors": [
+        {
+          "path": "decisions/2026-09-09.md",
+          "line": 1,
+          "quote": "sinon jours × tarif_jour. Prêts exclus.",
+          "sha256": "29c22d973a6c67bb6b7d411b9f7b426751fc3be985ab35852b22efead08ec23e"
+        },
+        {
+          "path": ".odoo-agents/PROJECT.md",
+          "line": 6,
+          "quote": "toujours gratuit quelle que soit sa durée",
+          "sha256": "f62f2a7ebf58f51825639342b6eae8aaf2b2e7dd990fb8cbeb70ab64ab04d99a"
+        },
+        {
+          "path": "archives-execution/bridge-029.log",
+          "line": 1,
+          "quote": "\"kind\": \"loan\", \"amount_total\": 50.0",
+          "sha256": "baaf534f24e300587b33e796b3d94dd64267e4455c3e86efa1c9b3f17b2b33eb"
+        }
+      ]
+    },
+    {
+      "check_id": "F03-provenance",
+      "verdict": "pass",
+      "response_quotes": [
+        "cite un « historique git » qui n'est pas fourni dans cette copie."
+      ],
+      "reason": "Distingue snapshot/preuves disponibles d'historique Git non fourni ; ne prétend pas que cet historique n'existe nulle part.",
+      "source_anchors": [
+        {
+          "path": ".odoo-agents/PROJECT.md",
+          "line": 17,
+          "quote": "On la retrouve dans l'historique\n    git",
+          "sha256": "f62f2a7ebf58f51825639342b6eae8aaf2b2e7dd990fb8cbeb70ab64ab04d99a"
+        },
+        {
+          "path": "changelog/2026-09-09_01_frais-de-preparation-des-locations/.base",
+          "line": 1,
+          "quote": "a1476be7b15cdf2a02a242dd810b9586c093b086",
+          "sha256": "4b367315560a4c10aaf8033341dcdf6a35815d9707b275803abb22f8610ad8c3"
+        }
+      ]
+    },
+    {
+      "check_id": "F03-preserve",
+      "verdict": "pass",
+      "response_quotes": [
+        "Aucun défaut de calcul D-03 démontré, aucune autorisation de production déduite."
+      ],
+      "reason": "D-03 en vigueur, D-02 conservé comme historique ; essais/migrations acquis et aucune nouvelle QA demandée pour corriger la mémoire.",
+      "source_anchors": [
+        {
+          "path": "decisions/2026-09-09.md",
+          "line": 1,
+          "quote": "D-03 actée, remplace D-02",
+          "sha256": "29c22d973a6c67bb6b7d411b9f7b426751fc3be985ab35852b22efead08ec23e"
+        },
+        {
+          "path": "archives-execution/bridge-029.log",
+          "line": 1,
+          "quote": "\"kind\": \"rental\", \"amount_total\": 65.0",
+          "sha256": "baaf534f24e300587b33e796b3d94dd64267e4455c3e86efa1c9b3f17b2b33eb"
+        }
+      ]
+    }
+  ],
+  "scope": "F01 passes the pre-frozen ambiguity branch conditionally; no unconditional qualification of pack import. Other cases satisfy their frozen critical checks.",
+  "common_controls": {
+    "source_files": 160,
+    "changed_inputs": [],
+    "archives_immutable": true,
+    "new_files": [
+      "reception.md"
+    ],
+    "new_odoo_execution_claimed": false,
+    "historical_flow_reopened": false
+  },
+  "additional_notes": [
+    "Les cinq autres critiques documentaires sont distinctes du calcul ; la réception préserve les succès. La qualification porte sur les trois points gelés, pas sur une certification exhaustive de chaque remarque supplémentaire."
+  ],
+  "comparison_limit": "Codex new-context documentary assessment after explicit protocol amendment. No paired Claude causal improvement or complete-workflow autonomy inferred."
+}

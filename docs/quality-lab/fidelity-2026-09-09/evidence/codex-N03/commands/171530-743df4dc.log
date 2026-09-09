@@ -1,0 +1,87 @@
+
+— briefing : 3 Ko. Détail : `/work/.odoo-agents/`, `/home/blegoff/.odoo19-agents/LESSONS.md`, `/home/blegoff/.odoo19-agents/SERIES_MATRIX.md`.
+/work/.odoo-agents/flows/needs-review.json
+ODOO FLOW · needs-review
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /work
+Progression 0 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ briefing
+    ORCHESTRATEUR
+    Situer le projet, la série, la release, les modules et les données disponibles.
+    Sorties: close, development, development_complex, documentation, environment, feedback, functional, support, technical, validation · Preuve: sortie de odoo_briefing.py
+▶ briefing · ORCHESTRATEUR
+  Démarré par codex-orchestrateur
+  Situer le projet, la série, la release, les modules et les données disponibles.
+ODOO FLOW · needs-review
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /work
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 1 prêt(s)
+Dernière   ✓ briefing → development
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ functional_review
+    AGENT · odoo-analyst
+    Produire la revue fonctionnelle contradictoire et choisir la voie.
+    Sorties: answer, blocked, contradiction, exists, module, module_high_risk, studio · Preuve: revue_fonctionnelle.md ou revue_en_cours.md
+ODOO FLOW · needs-review
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /work
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 1 prêt(s)
+Dernière   ✓ briefing → development
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ functional_review
+    AGENT · odoo-analyst
+    Produire la revue fonctionnelle contradictoire et choisir la voie.
+    Sorties: answer, blocked, contradiction, exists, module, module_high_risk, studio · Preuve: revue_fonctionnelle.md ou revue_en_cours.md
+Pack de configuration Odoo : exporter, appliquer, comparer des personnalisations
+« Studio » (champs, modèles, automatisations, actions serveur, vues, menus, droits…)
+entre une base et un fichier JSON versionnable — sans module.
+
+Les créations utilisent l'import ORM `load` : objet et identifiant externe du
+pack sont enregistrés dans une même transaction. Le contexte `studio=True`
+conserve le marquage Studio lorsque ce module est installé ; `install_mode`
+évite un deuxième identifiant automatique. Les champs des modèles nouveaux,
+y compris `x_name`, doivent être présents dans le pack. `--since` ou `--only`
+restreignent l'export à la release. Une prévalidation précède toute écriture ;
+le pack entier n'est pas une transaction unique. Après une interruption, une
+réapplication retrouve les objets par leur identifiant externe stable.
+
+Tout repose sur l'identifiant externe (`ir.model.data`, `module.name`) : un
+enregistrement du pack se retrouve par son XML-ID, se crée s'il manque, se met à
+jour sinon. Appliquer deux fois donne le même résultat (idempotent). Les
+références (many2one, many2many) sont écrites `{"ref": "module.name"}` et
+résolues à l'application : un pack ne contient jamais d'identifiant numérique.
+
+    odoo_pack.py export --db <base> [--module studio_customization] [--since <ISO>] [--only <fichier>] --out pack.json
+    odoo_pack.py apply  pack.json --db <base>            # copie locale ou stack (admin/admin)
+    odoo_pack.py apply  pack.json --instance <projet> <nom> [--allow-write]   # staging / production
+    odoo_pack.py diff   pack.json --db <base>            # ce que l'application changerait
+    odoo_pack.py xmlid  --db <base> <modèle> <id> <module.name>   # nommer un enregistrement existant
+
+Cible locale : `--db <base>` sur `http://localhost:$ODOO_HTTP_PORT` (défaut 8079),
+`admin`/`admin` — ou `--url`, `--login`, `--password`. Cible distante :
+`--instance` lit `~/.odoo-agents/instances/<projet>.json` ; une production
+refuse toute écriture sans `--allow-write` ET `ODOO_PRODUCTION_CONFIRMED=<nom>`
+(règles d'`odoo_instance.py`).
+
+Modèles pris en charge, dans l'ordre de dépendance (un autre modèle passe en fin) :
+ir.model, ir.model.fields, res.groups, ir.model.access, ir.rule, ir.ui.view,
+ir.actions.server, base.automation, ir.cron, ir.actions.act_window, ir.ui.menu,
+ir.actions.report, mail.template, ir.filters, ir.default.
+
+bash: line 1: rg: command not found

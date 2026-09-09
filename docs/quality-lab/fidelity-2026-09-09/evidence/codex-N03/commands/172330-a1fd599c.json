@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "python3 - <<'PY'\nfrom pathlib import Path\nimport json\np=Path(\"/work/.odoo-agents/flows/needs-review.json\")\nd=json.loads(p.read_text())\nprint(\"flow\",d.get(\"id\"), \"reception liée\",bool(d.get(\"task_reception\")))\nPY\n"
+  ],
+  "exit_code": 0,
+  "seconds": 0.04,
+  "log": "172330-a1fd599c.log",
+  "sha256": "54398ebc8209e0552096478652dd1b96ac8eb2f92b24574c0c384ba0f55085d3"
+}

@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "R=/work/changelog/2026-09-09_01_revue-des-locations-d-22\nF=/work/.odoo-agents/flows/needs-review.json\ncat \"$R/reception/review-1.json\"\npython3 ~/.odoo19-agents/scripts/odoo_flow.py complete \"$F\" studio_task_gate --outcome pass --owner codex-orchestrateur --evidence \"$R/qa.md\" --evidence \"$R/coverage.json\" --evidence \"$R/reception/review-1.json\"\npython3 ~/.odoo19-agents/scripts/odoo_flow.py status \"$F\"\npython3 ~/.odoo19-agents/scripts/odoo_flow.py claim \"$F\" journal_task --owner codex-orchestrateur\npython3 ~/.odoo19-agents/scripts/odoo_reception.py check-bases \"$R/reception/bundle-1.json\" || exit 1\ncp \"$R/reception/PROJECT-propose.md\" /work/.odoo-agents/PROJECT.md\ncp \"$R/reception/JOURNAL-propose.md\" /work/.odoo-agents/JOURNAL.md\npython3 ~/.odoo19-agents/scripts/odoo_flow.py complete \"$F\" journal_task --outcome done --owner codex-orchestrateur --evidence /work/.odoo-agents/JOURNAL.md --evidence /work/.odoo-agents/PROJECT.md\n~/.odoo19-agents/scripts/odoo-release.sh done \"$R\" 1 \"VALIDÉ — 13 scénarios x2, deux apply sans doublon, diff nul, réception indépendante\"\npython3 ~/.odoo19-agents/scripts/odoo_flow.py status \"$F\" > /work/.odoo-agents/flow-artifacts/needs-review/final-status.log\ncat /work/.odoo-agents/flow-artifacts/needs-review/final-status.log\n"
+  ],
+  "exit_code": 0,
+  "seconds": 0.26,
+  "log": "172739-da03c510.log",
+  "sha256": "600c972fbf0d5e83f0ecbc720d387139aceea4b620a009497bccafd690e4fd0f"
+}

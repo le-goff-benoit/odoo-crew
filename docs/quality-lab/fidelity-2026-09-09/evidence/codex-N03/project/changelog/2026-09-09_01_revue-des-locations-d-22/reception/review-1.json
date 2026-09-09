@@ -1,0 +1,195 @@
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "83705f8e1c53f0fcc973a3f598fda3d7daab0132a5ef9f930380d085865913b2",
+  "reviewer": "codex-reception-independante",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "demande-originale.md",
+          "quote": "Applique /odoo-new en voie Studio : notre modèle x_lab_request existe déjà sur la copie locale, avec x_name, x_studio_days et x_studio_kind. Ajoute seulement l'indicateur booléen stocké x_studio_needs_review, calculé selon la décision D-22. Aucun écran à modifier dans cette tâche. Utilise les champs existants, livre le pack Studio versionné et les scénarios RPC rejouables, vérifie deux applications sans doublon. Pas de module custom et pas de déploiement. Termine QA et journal, release ouverte."
+        },
+        {
+          "path": "decisions/2026-09-08.md",
+          "quote": "D-22 actée par Nora Petit, coordinatrice fictive : revue requise si x_studio_days >= 7 ET x_studio_kind = 'rental'. Les prêts ('loan') sont exclus, même à 7 jours ou plus. À 6 jours aucune revue. Indicateur booléen calculé et stocké, dépend des deux champs existants ; pas d'automatisation d'envoi ni changement des droits. Les champs existants ne sont pas renommés ni recréés. Q1 seuil : 7 inclus ; Q2 prêts : exclus. D-22 remplace D-21 qui évoquait 5 jours. Configuration représentative d'Online, mais cette base est une copie synthétique locale 19.0 avec Studio ; tout test se fait ici."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+          "quote": "Ajouter seulement x_studio_needs_review, booléen manuel calculé stocké, dépendant de x_studio_days et x_studio_kind. Valeur vraie si days >= 7 et kind = rental."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+          "quote": "Réutiliser les trois champs initiaux sans modification, renommage ou doublon ; aucun écran, droits, envoi, automatisation ou module ajouté. Copie locale uniquement, aucun déploiement. Base actuellement vide : aucune reprise de données client."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+          "quote": "Build idempotent en contexte studio=True, XML-ID généré par Odoo et relevé ; export restreint à ce champ."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+          "quote": "- [ ] A2 — Relecture serveur : rental à 6 jours est faux, à 7 et au-delà vrai ; loan à 7 et au-delà reste faux ; les modifications de chacun des deux champs recalculent la valeur. (D-22)"
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+          "quote": "- [ ] A3 — Livrer pack Studio versionné et scénarios RPC rejouables, rouge avant et vert après, avec nettoyage ; deux applications du pack sans doublon, diff final nul et aucune référence unresolved. (Demande originale ; preuve rouge/vert et diff : protocole Studio)"
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+          "quote": "- [ ] A5 — Terminer QA et journal, mémoire fidèle à D-22 et à la validation locale ; release laissée ouverte. (Demande originale, D-22)"
+        }
+      ],
+      "explanation": "Projet /work sans module, série 19.0 confirmée par RPC dans les preuves ; mode réception documentaire indépendante, sources lues avant synthèse QA. La demande impose la voie Studio sur x_lab_request existant, un seul booléen calculé stocké, les trois champs existants conservés, aucun écran, module ou déploiement, pack versionné, scénarios RPC, deux applications sans doublon, QA et journal terminés en release ouverte. A1 à A5 reprennent ces obligations. La décision de Nora Petit D-22 remplace explicitement D-21 : 7 inclus ET rental, loan exclu y compris au-delà, 6 faux, deux dépendances, aucun envoi ni changement de droits. La revue conserve acteurs, objet, bornes et exclusions sans nouvelle règle métier. Recalcul après modification est une conséquence des dépendances ; rouge/vert, nettoyage, diff nul et absence unresolved sont des contrôles techniques supplémentaires explicités dans A3, conservés jusqu'aux preuves. XML-ID natif et export restreint sont des choix techniques cohérents avec Studio et l'ajout d'un seul champ. Aucun audit historique global ou import sur copie fraîche n'a été ajouté au contrat ; aucune difficulté d'outillage n'a réduit la demande."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+          "quote": "- [ ] A1 — Ajouter seulement le booléen stocké calculé x_studio_needs_review sur x_lab_request, avec dépendances x_studio_days et x_studio_kind ; réutiliser x_name et ces deux champs sans les renommer ni les recréer. (Demande originale, D-22)"
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+          "quote": "- [ ] A2 — Relecture serveur : rental à 6 jours est faux, à 7 et au-delà vrai ; loan à 7 et au-delà reste faux ; les modifications de chacun des deux champs recalculent la valeur. (D-22)"
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+          "quote": "- [ ] A3 — Livrer pack Studio versionné et scénarios RPC rejouables, rouge avant et vert après, avec nettoyage ; deux applications du pack sans doublon, diff final nul et aucune référence unresolved. (Demande originale ; preuve rouge/vert et diff : protocole Studio)"
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+          "quote": "- [ ] A4 — Aucun écran, envoi, droit ou champ existant modifié, aucun module custom ni déploiement ; tests limités à la copie synthétique locale. (Demande originale, D-22)"
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+          "quote": "- [ ] A5 — Terminer QA et journal, mémoire fidèle à D-22 et à la validation locale ; release laissée ouverte. (Demande originale, D-22)"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.md",
+          "quote": "| Champs initiaux réutilisés | Inventaire puis RPC : x_name 3734, x_studio_days 3736, x_studio_kind 3738 | IDs et tous attributs inventoriés identiques ; aucun doublon |"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.md",
+          "quote": "| A4 : écrans, droits, envois | Pack limité à ir.model.fields, groups=[], tracking=0 ; build limité au booléen ; XML-ID Studio hors lab_seed_* unique | Aucun objet de vue, accès, règle, automatisation ou envoi livré |"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.log",
+          "quote": "  \"initial_fields_identical_in_inventoried_attributes\": true,"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.log",
+          "quote": "  \"unresolved\": false"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.log",
+          "quote": "PASS create rental 6: False"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.log",
+          "quote": "PASS create rental 7: True"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.log",
+          "quote": "PASS create rental 12: True"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.log",
+          "quote": "PASS create loan 7: False"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.log",
+          "quote": "PASS create loan 12: False"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.log",
+          "quote": "PASS update {'x_studio_days': 7}: True"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.log",
+          "quote": "PASS independent runtime: 2 real applications, 3 null diffs, 26 scenarios, stable fields/XML-IDs/write_dates, cleanup"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.md",
+          "quote": "La copie contenait déjà le champ issu du build : ces deux applications prouvent sa réapplication idempotente, pas une création par import sur une copie fraîche. Aucune restauration fraîche n'a été demandée pour cette voie. Le rouge préalable du build et le versionnement ne sont pas réattestés par cette exécution. Les instantanés établissent la stabilité des valeurs et write_date collectés ; ils ne constituent pas un audit SQL de toutes les écritures du serveur. Droits, envois et vues ne font pas l'objet d'un audit global dans cette voie runtime ; la revue statique et la jointure les couvrent. Aucun déploiement effectué."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/studio/red-before.log",
+          "quote": "AssertionError: ROUGE : indicateur absent ou dupliqué"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/versioning.log",
+          "quote": "fcf06f4 [studio] Ajouter l’indicateur de revue D-22"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/implementation.md",
+          "quote": "Un seul champ créé, les trois champs initiaux seulement recherchés. Aucune mutation de vue, action, droit ou automatisation dans le build."
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/lifecycle.md",
+          "quote": "A5 reçoit ici une preuve documentaire de sa mémoire finale ; la publication effective reste une étape obligatoire du flow journal_task. Le compte-rendu final ne pourra dire la tâche terminée qu'après check-bases, copie exacte et complete journal_task done."
+        }
+      ],
+      "explanation": "A1 est étayé par le diff nul, l'ajout unique ID 3740, boolean/manual/store vrai, dépendances exactes et égalité des IDs/attributs initiaux ; le pack lu contient un seul ir.model.fields. A2 : les logs montrent deux suites de 13 attendus explicites, rental 6 faux, 7 et 12 vrais, loan 7 et 12 faux, et cinq modifications successives de durée/nature relues par RPC avec bascules dans les deux sens ; le scénario livré lit réellement le serveur et nettoie en finally. A3 : le rouge préalable est une assertion sur le champ absent ou dupliqué ; les suites finales sont vertes, CLEANUP 0. Deux commandes apply réelles distinctes donnent 0 créé/0 modifié/1 inchangé, instantanés IDs/métadonnées/write_date stables et trois diffs nuls ; absence unresolved attestée. Cela prouve la réapplication sans doublon sur la copie déjà configurée, sans prétendre création par import neuf ni audit SQL zéro écriture. Le commit local fcf06f4 couvre pack/build/scénario/created.txt et établit le versionnement postérieur au constat de fichiers non suivis de la voie diff. A4 : build et pack lus limités au champ indicateur, champs initiaux seulement recherchés, aucun objet vue/droit/envoi livré, RPC exclusivement local. Les limites historiques des voies sont honnêtes et n'invalident pas le périmètre de cette intervention. A5 : QA technique achevée, release ouverte et mémoires complètes proposées ; à ce stade normal de réception, publication encore obligatoire sous journal_task après pass, conformément à lifecycle.md. Ce pass documentaire ne déclare donc pas la tâche finale déjà terminée."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {
+          "path": "decisions/2026-09-08.md",
+          "quote": "D-22 actée par Nora Petit, coordinatrice fictive : revue requise si x_studio_days >= 7 ET x_studio_kind = 'rental'. Les prêts ('loan') sont exclus, même à 7 jours ou plus. À 6 jours aucune revue. Indicateur booléen calculé et stocké, dépend des deux champs existants ; pas d'automatisation d'envoi ni changement des droits. Les champs existants ne sont pas renommés ni recréés. Q1 seuil : 7 inclus ; Q2 prêts : exclus. D-22 remplace D-21 qui évoquait 5 jours. Configuration représentative d'Online, mais cette base est une copie synthétique locale 19.0 avec Studio ; tout test se fait ici."
+        },
+        {
+          "path": "demande-originale.md",
+          "quote": "Applique /odoo-new en voie Studio : notre modèle x_lab_request existe déjà sur la copie locale, avec x_name, x_studio_days et x_studio_kind. Ajoute seulement l'indicateur booléen stocké x_studio_needs_review, calculé selon la décision D-22. Aucun écran à modifier dans cette tâche. Utilise les champs existants, livre le pack Studio versionné et les scénarios RPC rejouables, vérifie deux applications sans doublon. Pas de module custom et pas de déploiement. Termine QA et journal, release ouverte."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/PROJECT-propose.md",
+          "quote": "D-22 (Nora Petit) : x_studio_needs_review est vrai si x_studio_days >= 7 ET x_studio_kind = 'rental'. Les prêts 'loan' sont exclus même à 7 jours ou plus ; à 6 jours aucune revue. D-21 (5 jours pour tous) est remplacée."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/PROJECT-propose.md",
+          "quote": "Indicateur booléen calculé stocké dépendant des deux champs existants ; x_name, x_studio_days et x_studio_kind sont conservés. Aucun écran, droit ou envoi modifié. Voie Studio sans module."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/PROJECT-propose.md",
+          "quote": "La validation porte uniquement sur lab_client, copie synthétique locale 19.0 ; aucun déploiement effectué, release ouverte."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/PROJECT-propose.md",
+          "quote": "Studio crée bien son XML-ID automatiquement en contexte studio=True. Dans cette série, noupdate est false à la création, puis true après écriture ; ne pas confondre ce détail avec l'absence du marquage studio."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/JOURNAL-propose.md",
+          "quote": "**Appris** : D-21 historique (remplacée) : revue à 5 jours pour tout le monde. Le brouillon de conception initial demandait un nouveau champ durée : ne pas l'appliquer, x_studio_days existe déjà."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/JOURNAL-propose.md",
+          "quote": "**Fait** : x_studio_needs_review dépend de x_studio_days et x_studio_kind existants ; aucun écran, droit, envoi ni module ajouté."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/JOURNAL-propose.md",
+          "quote": "**Verdict** : validation locale sur lab_client ; scénarios de création et modification, contrôle du pack et des deux applications consignés dans changelog/2026-09-09_01_revue-des-locations-d-22/qa.md."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/JOURNAL-propose.md",
+          "quote": "**Appris** : D-22 remplace D-21 : revue si durée >= 7 ET rental ; loan exclu même au-delà, 6 jours sans revue."
+        },
+        {
+          "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/JOURNAL-propose.md",
+          "quote": "**Reste ouvert** : release ouverte ; aucune livraison ni aucun déploiement réalisé. Clôture et recette complète ultérieures sur demande."
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/implementation.md",
+          "quote": "Incident de contrôle interne : assertion noupdate=True initialement trop stricte ; le XML-ID automatique existe, studio=True, noupdate=False à la création. Sources 19.0 web_studio/models/ir_model_data.py : create marque studio ; write marque aussi noupdate. Assertion corrigée sans modifier le contrat fonctionnel, puis build réexécuté sans doublon."
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/needs-review/lifecycle.md",
+          "quote": "Les deux fichiers reception/PROJECT-propose.md et JOURNAL-propose.md sont les versions complètes proposées ; les cibles canoniques restent inchangées jusqu'à la réception indépendante et au pass de la jointure."
+        }
+      ],
+      "explanation": "Comparaison des deux drafts complets aux cibles actuelles : les contenus pertinents antérieurs sont conservés. PROJECT reçoit la règle actuelle exacte avec Nora Petit, les deux champs existants, 7 inclus et rental conjoint, exclusion loan au-delà et 6 faux ; D-21 est explicitement remplacée. JOURNAL conserve son historique daté déjà marqué obsolète (5 jours pour tous et nouveau champ durée à ne pas appliquer), puis ajoute une entrée actuelle de sept lignes ; la réalisation restée ouverte dans l'entrée du 8 septembre demeure un fait historique et est résolue par l'entrée du 9. Aucun remplacement nécessaire n'est omis. Les nouveaux constats de validation locale et de stabilité de périmètre correspondent aux voies QA ; le détail Studio/noupdate correspond à l'incident documenté dans implementation.md et aux métadonnées relues, sans extrapolation de série. Les deux mémoires distinguent copie synthétique 19.0, validation locale, release ouverte et absence de déploiement ; aucune livraison annoncée signifie absence de livraison externe/clôture, compatible avec les artefacts versionnés localement. Ce sont des contenus futurs reçus avant pass : lifecycle.md réserve explicitement leur publication exacte à journal_task. Aucune affirmation selon laquelle les mémoires canoniques seraient déjà publiées n'est retenue."
+    }
+  }
+}

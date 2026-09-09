@@ -1,0 +1,73 @@
+usage: odoo_flow.py prepare-reception [-h] --source SOURCE --spec SPEC
+                                      --evidence EVIDENCE --memory MEMORY
+                                      [--scope SCOPE] --output OUTPUT --owner
+                                      OWNER
+                                      state
+
+positional arguments:
+  state
+
+options:
+  -h, --help           show this help message and exit
+  --source SOURCE
+  --spec SPEC
+  --evidence EVIDENCE
+  --memory MEMORY
+  --scope SCOPE
+  --output OUTPUT
+  --owner OWNER
+usage: odoo_flow.py qa-report [-h] --coverage COVERAGE --output OUTPUT
+                              --outcome {pass,retry,blocked} --owner OWNER
+                              state node
+
+positional arguments:
+  state
+  node
+
+options:
+  -h, --help            show this help message and exit
+  --coverage COVERAGE
+  --output OUTPUT
+  --outcome {pass,retry,blocked}
+  --owner OWNER
+{
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "6edc453031f3063d5dcea80f7f3f1c0dbec3d5dfffb325caacb6ac3bba5ee56d",
+  "criteria": [
+    {
+      "id": "C01",
+      "text": "A1 — Ajouter seulement le booléen stocké calculé x_studio_needs_review sur x_lab_request, avec dépendances x_studio_days et x_studio_kind ; réutiliser x_name et ces deux champs sans les renommer ni les recréer. (Demande originale, D-22)",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "C02",
+      "text": "A2 — Relecture serveur : rental à 6 jours est faux, à 7 et au-delà vrai ; loan à 7 et au-delà reste faux ; les modifications de chacun des deux champs recalculent la valeur. (D-22)",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "C03",
+      "text": "A3 — Livrer pack Studio versionné et scénarios RPC rejouables, rouge avant et vert après, avec nettoyage ; deux applications du pack sans doublon, diff final nul et aucune référence unresolved. (Demande originale ; preuve rouge/vert et diff : protocole Studio)",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "C04",
+      "text": "A4 — Aucun écran, envoi, droit ou champ existant modifié, aucun module custom ni déploiement ; tests limités à la copie synthétique locale. (Demande originale, D-22)",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "C05",
+      "text": "A5 — Terminer QA et journal, mémoire fidèle à D-22 et à la validation locale ; release laissée ouverte. (Demande originale, D-22)",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    }
+  ]
+}

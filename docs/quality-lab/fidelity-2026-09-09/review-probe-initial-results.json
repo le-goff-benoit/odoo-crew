@@ -1,0 +1,24 @@
+{
+  "owner_handoff": {
+    "outcome": "pass",
+    "reviewer": "codex-new-orchestrator",
+    "completion_owner": "codex-new-orchestrator"
+  },
+  "postpass": {
+    "errors": {
+      "reprepare": "préparation impossible après réception QA",
+      "journal_done": "réception de tâche refusée : publication différente du draft approuvé : .odoo-agents/PROJECT.md",
+      "journal_blocked": "issue invalide pour journal_task: blocked; attendue parmi done"
+    },
+    "status": "active",
+    "ready": [],
+    "journal_outcomes": [
+      "done"
+    ]
+  },
+  "spec_mismatch": {
+    "outcome": "pass",
+    "coverage_spec": "bound-spec.md",
+    "reception_spec": "spec.md"
+  }
+}

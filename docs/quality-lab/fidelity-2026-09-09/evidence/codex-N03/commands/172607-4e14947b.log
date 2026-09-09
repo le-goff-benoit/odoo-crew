@@ -1,0 +1,115 @@
+"""Scénarios RPC locaux D-22 ; données isolées et nettoyées."""
+import xmlrpc.client
+URL = "http://127.0.0.1:52795"
+DB = "lab_client"
+uid = xmlrpc.client.ServerProxy(URL + "/xmlrpc/2/common").authenticate(DB, "admin", "admin", {})
+rpc = xmlrpc.client.ServerProxy(URL + "/xmlrpc/2/object")
+def call(model, method, args, **kwargs):
+    return rpc.execute_kw(DB, uid, "admin", model, method, args, kwargs)
+fields = call("ir.model.fields", "search_read", [[["model", "=", "x_lab_request"], ["name", "=", "x_studio_needs_review"]]], fields=["ttype", "store", "compute", "depends"])
+assert len(fields) == 1, "ROUGE : indicateur absent ou dupliqué"
+assert fields[0]["ttype"] == "boolean" and fields[0]["store"] is True
+assert set(fields[0]["depends"].replace(" ", "").split(",")) == {"x_studio_days", "x_studio_kind"}
+ids = []
+try:
+    for kind, days, expected in [("rental", 0, False), ("rental", 5, False), ("rental", 6, False), ("rental", 7, True), ("rental", 12, True), ("loan", 6, False), ("loan", 7, False), ("loan", 12, False)]:
+        rid = call("x_lab_request", "create", [{"x_name": "D-22 — recette", "x_studio_days": days, "x_studio_kind": kind}], context={"studio": True})
+        ids.append(rid)
+        actual = call("x_lab_request", "read", [[rid]], fields=["x_studio_needs_review"])[0]["x_studio_needs_review"]
+        assert actual is expected, (kind, days, actual, expected)
+        print(f"PASS create {kind} {days}: {actual}")
+    rid = ids[0]
+    for vals, expected in [({"x_studio_days": 7}, True), ({"x_studio_kind": "loan"}, False), ({"x_studio_days": 12}, False), ({"x_studio_kind": "rental"}, True), ({"x_studio_days": 6}, False)]:
+        call("x_lab_request", "write", [[rid], vals], context={"studio": True})
+        actual = call("x_lab_request", "read", [[rid]], fields=["x_studio_needs_review"])[0]["x_studio_needs_review"]
+        assert actual is expected, (vals, actual, expected)
+        print(f"PASS update {vals}: {actual}")
+finally:
+    if ids:
+        call("x_lab_request", "unlink", [ids], context={"studio": True})
+    print("CLEANUP", call("x_lab_request", "search_count", [[["x_name", "=", "D-22 — recette"]]]))
+print("PASS 13 scénarios ; valeur serveur relue")
+"""Créer ou mettre à jour uniquement le booléen D-22, en contexte Studio."""
+import json
+from pathlib import Path
+import xmlrpc.client
+URL = "http://127.0.0.1:52795"
+DB = "lab_client"
+uid = xmlrpc.client.ServerProxy(URL + "/xmlrpc/2/common").authenticate(DB, "admin", "admin", {})
+rpc = xmlrpc.client.ServerProxy(URL + "/xmlrpc/2/object")
+def call(model, method, args, **kwargs):
+    return rpc.execute_kw(DB, uid, "admin", model, method, args, kwargs)
+model_ids = call("ir.model", "search", [[["model", "=", "x_lab_request"]]])
+assert len(model_ids) == 1
+existing = call("ir.model.fields", "search_read", [[["model", "=", "x_lab_request"], ["name", "in", ["x_name", "x_studio_days", "x_studio_kind"]]]], fields=["name"])
+assert len(existing) == 3
+values = {
+    "name": "x_studio_needs_review", "field_description": "Revue requise",
+    "model_id": model_ids[0], "ttype": "boolean", "state": "manual",
+    "store": True, "readonly": True,
+    "depends": "x_studio_days,x_studio_kind",
+    "compute": "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'",
+}
+ids = call("ir.model.fields", "search", [[["model", "=", "x_lab_request"], ["name", "=", values["name"]]]])
+assert len(ids) <= 1
+if ids:
+    call("ir.model.fields", "write", [ids, values], context={"studio": True})
+else:
+    ids = [call("ir.model.fields", "create", [values], context={"studio": True})]
+xmlids = call("ir.model.data", "search_read", [[["model", "=", "ir.model.fields"], ["res_id", "=", ids[0]], ["module", "=", "studio_customization"]]], fields=["module", "name", "studio", "noupdate"])
+assert len(xmlids) == 1 and xmlids[0]["studio"]
+Path(__file__).with_name("created.txt").write_text(xmlids[0]["module"] + "." + xmlids[0]["name"] + "\n")
+print(json.dumps({"field": ids[0], "xmlid": xmlids[0], "existing_fields": existing}, indent=2))
+{
+  "format": "odoo-pack/1",
+  "source": "http://127.0.0.1:52795 / lab_client",
+  "module": "studio_customization",
+  "since": null,
+  "series": "19.0.1.3",
+  "records": [
+    {
+      "model": "ir.model.fields",
+      "xml_id": "studio_customization.revue_requise_demand_f72ca43f-ddee-4f2a-9c1f-511916cefccd",
+      "noupdate": true,
+      "values": {
+        "name": "x_studio_needs_review",
+        "relation": false,
+        "relation_field": false,
+        "model_id": {
+          "ref": "studio_customization.lab_seed_model"
+        },
+        "field_description": "Revue requise",
+        "help": false,
+        "ttype": "boolean",
+        "copied": false,
+        "related": false,
+        "required": false,
+        "readonly": true,
+        "index": false,
+        "translate": false,
+        "size": 0,
+        "on_delete": false,
+        "domain": "[]",
+        "groups": [],
+        "group_expand": false,
+        "selectable": true,
+        "relation_table": false,
+        "column1": false,
+        "column2": false,
+        "compute": "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'",
+        "depends": "x_studio_days,x_studio_kind",
+        "store": true,
+        "currency_field": false,
+        "sanitize": false,
+        "sanitize_overridable": false,
+        "sanitize_tags": false,
+        "sanitize_attributes": false,
+        "sanitize_style": false,
+        "sanitize_form": false,
+        "strip_style": false,
+        "strip_classes": false,
+        "tracking": 0
+      }
+    }
+  ]
+}

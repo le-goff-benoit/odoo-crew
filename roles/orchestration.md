@@ -240,6 +240,45 @@ Le flow refuse `pass` si la couverture est absente, partielle ou modifiée ;
 preuves : un statut `covered` doit toujours être justifié par leur contenu.
 Les formats et limites sont dans `docs/QA_COVERAGE.md` du référentiel.
 
+**Réception de la demande et de la mémoire avant `pass`.** Prépare deux fichiers
+neufs contenant les versions complètes proposées de `PROJECT.md` et `JOURNAL.md`
+(contenu existant conservé, corrections nécessaires et entrée de quinze lignes
+au plus). Ne les publie pas encore. Lorsque les sous-agents sont disponibles
+et que la tâche est directe (sans `plan_task`), active le garde de réception
+avec `odoo_flow.py prepare-reception <flow>` :
+`--source` pour la demande originale et chaque décision applicable, `--spec`
+pour la revue, `--evidence` pour la couverture et les fragments/logs QA,
+`--scope` pour les répertoires de code concernés, puis
+`--memory .odoo-agents/PROJECT.md=<proposition-project>` et
+`--memory .odoo-agents/JOURNAL.md=<proposition-journal>`, `--output <nouveau-bundle>`
+et `--owner <orchestrateur>`. Les chemins sont relatifs au projet ; le format
+et un exemple complet sont dans `docs/TASK_RECEPTION.md` du référentiel.
+
+Délègue une **nouvelle conversation** à `odoo-tester`, mode réception
+documentaire, avec le bundle et un fichier de retour isolé. Ne réutilise pas
+un agent auteur de la revue, de la QA ou de la mémoire et ne lui fournis pas
+le verdict attendu. Ce relecteur confronte demande, contrat, preuves et mémoire
+proposée ; il ne modifie aucun de ces fichiers. Joins sa réception JSON aux
+preuves de `complete --outcome pass`, avec le rapport QA et la couverture.
+Le garde contrôle les empreintes et la publication, pas la justesse du jugement
+ni l'identité réelle du contexte : conserve aussi la trace de la délégation.
+
+Sur défaut de preuve, utilise les issues `retry`/`blocked` existantes. Sur
+défaut du texte proposé, corrige seulement ce texte puis prépare un nouveau
+bundle et une nouvelle réception ; conserve les tests toujours valides.
+Deux reprises au plus. Un contrat lié erroné exige une correction tracée et un
+nouveau flow/contrat, pas son affaiblissement pour obtenir le vert. Une erreur
+de transcription de l'agent n'exige pas une nouvelle permission ; une vraie
+ambiguïté métier suit l'arbitrage déjà prévu. Sans mécanisme de délégation,
+effectue cette relecture toi-même et annonce son caractère non indépendant ;
+n'active pas le garde qui exige une réception indépendante.
+
+Pour une tâche pilotée par `/odoo-start`, effectue la même réception documentaire
+en fragment Markdown, sans ce garde expérimental : un conflit mémoire après QA
+n'a pas encore de voie d'arrêt/reprise compatible avec le plan. La réception du
+plan existante reste applicable ; ne crée pas un flow extérieur pour contourner
+ses réservations.
+
 ```bash
 export ODOO_ADDONS_DIR=<répertoire contenant le module>
 ~/.odoo19-agents/scripts/odoo-test.sh <module> --quick --tags /<module>:<TestClasse>   # un seul chargement
@@ -271,6 +310,19 @@ Seule exception : l'humain le demande explicitement.
 ## Étape 4 — Capitaliser (deux minutes, ne se saute pas)
 
 Une chaîne qui ne laisse pas de trace oblige la suivante à tout redécouvrir.
+
+Si une réception est liée au flow, après `claim journal_task`, exécute
+`python3 ~/.odoo19-agents/scripts/odoo_reception.py check-bases <bundle>`
+sous ce verrou pour vérifier les cibles et les pièces, puis publie **exactement**
+les deux propositions approuvées. Ne les paraphrase pas à ce stade : le garde
+de `complete journal_task --outcome done` vérifie leur identité avec les
+propositions. Si une autre tâche a changé la mémoire depuis sa préparation,
+ne l'écrase pas ; consigne l'incident, libère la revendication et reprends dans
+un nouveau flow avec une nouvelle réception, puisque le premier a déjà passé
+sa QA. Ne déclare pas le premier terminé. Le
+contrôle porte sur les fichiers complets et peut donc invalider une proposition
+pour une modification concurrente pourtant indépendante. Les points ci-dessous
+décrivent le contenu préparé à l'étape 3 ; sans réception liée, écris-le ici.
 
 1. **Entrée de journal** dans `<projet>/.odoo-agents/JOURNAL.md` — **quinze
    lignes au plus** : date, demande, fait, verdict, **Appris**, reste ouvert.

@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "cat /work/.odoo-agents/flow-artifacts/needs-review/briefing.md; cat /work/demande-originale.md; cat /work/decisions/2026-09-08.md; cat /work/changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md; cat /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json; python3 ~/.odoo19-agents/scripts/odoo_pack.py diff --help; rg --files /work/.odoo-agents /work/changelog/2026-09-09_01_revue-des-locations-d-22"
+  ],
+  "exit_code": 127,
+  "seconds": 0.05,
+  "log": "171928-9b94af5b.log",
+  "sha256": "530ed0fb0a3908aaab1ad329c659d68d40e4ac5614bba01b24e1eec673b5397d"
+}

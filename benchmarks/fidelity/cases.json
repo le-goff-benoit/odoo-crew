@@ -1,0 +1,1438 @@
+{
+  "format": "odoo-fidelity-corpus/1",
+  "frozen_at": "2026-09-09T14:52:49.272164+00:00",
+  "reference": "58d3e5d1fe46f408efb107ea56051cc0e13d13a6",
+  "method": "Offline reception of immutable archived dossiers; no new Odoo execution claimed. Rubric remains outside generator workspace.",
+  "cases": [
+    {
+      "id": "F01",
+      "title": "Réception Studio après réalisation",
+      "kind": "known",
+      "source_project": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project",
+      "files": [
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.gitignore",
+          "target": ".gitignore",
+          "sha256": "32dae3052f331ee34d628ef535709b301259a45df7c7522c4d35dcf49873f00b"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/JOURNAL.md",
+          "target": ".odoo-agents/JOURNAL.md",
+          "sha256": "38f4747ee2593465458551072bb4813702fde8e441c9262aeb840b45d91bd10b"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/PROJECT.md",
+          "target": ".odoo-agents/PROJECT.md",
+          "sha256": "bd855440405c78a81ebe8de48caa2e1ef702c9bbed4bf902813d6093956fd818"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/config",
+          "target": ".odoo-agents/config",
+          "sha256": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/flow-artifacts/.gitignore",
+          "target": ".odoo-agents/flow-artifacts/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/flow-artifacts/lab-needs-review/briefing.md",
+          "target": ".odoo-agents/flow-artifacts/lab-needs-review/briefing.md",
+          "sha256": "bdff60a858d2a491c19c6692cad8ae9539e7fdf03361fa729c64eb1fdf9cd1aa"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/flow-artifacts/lab-needs-review/coverage.json",
+          "target": ".odoo-agents/flow-artifacts/lab-needs-review/coverage.json",
+          "sha256": "246c733b831763b5346282ab962495e1df7a8ebb09b7db39f9d01afe09525cfd"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/flow-artifacts/lab-needs-review/qa_rapport_point1.md",
+          "target": ".odoo-agents/flow-artifacts/lab-needs-review/qa_rapport_point1.md",
+          "sha256": "3fd0473eeea78fa03cf248277e8b57373fc17a2ebfec0cbcb982333bdf8358c9"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/flow-artifacts/lab-needs-review/studio_diff_qa.md",
+          "target": ".odoo-agents/flow-artifacts/lab-needs-review/studio_diff_qa.md",
+          "sha256": "938480c0a60b4d290485abdfaed70ff6397a214f4a4f99faa99196988f3dacc4"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/flow-artifacts/lab-needs-review/studio_scenario_qa.md",
+          "target": ".odoo-agents/flow-artifacts/lab-needs-review/studio_scenario_qa.md",
+          "sha256": "94083ecc660780073f10f72e78d8d8536b5d93b4314487b31ae1fac0c90334bd"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/flows/.gitignore",
+          "target": ".odoo-agents/flows/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/flows/.lab-needs-review.json.lock",
+          "target": ".odoo-agents/flows/.lab-needs-review.json.lock",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/flows/.resource-locks.json.lock",
+          "target": ".odoo-agents/flows/.resource-locks.json.lock",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/flows/lab-needs-review.json",
+          "target": ".odoo-agents/flows/lab-needs-review.json",
+          "sha256": "4fa006ba85dff2d37301b80c1002f793bd11b14d448141a04006e1ac82695599"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/.odoo-agents/flows/resource-locks.json",
+          "target": ".odoo-agents/flows/resource-locks.json",
+          "sha256": "f61df7db999c6b5627de6e8f882661b65f014f421c466cee5d96c8f094516382"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/LAB.md",
+          "target": "LAB.md",
+          "sha256": "889709eb326c55c8003871107b87e3c1f99bd8ccb183472aac8d6ebf68d48875"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/.base",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/.base",
+          "sha256": "4af68a3929fbe55f2c9949dc4f27879abc67c307f59897c99b1881d0151f868d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/.opened",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/.opened",
+          "sha256": "bb70a0ec24c43564f42153b937486242b838f3e2484ff9c392fefe65f416ec03"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/README.md",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/README.md",
+          "sha256": "c54da037e3e7a1e73bba02694c230d698fe49c69ae23bddaff2f2611dd772ebb"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/demande.md",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/demande.md",
+          "sha256": "24d789353edb5886464f4aa4867c991a3f58f56383e70fffca6e782fad95dc7f"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa.md",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa.md",
+          "sha256": "c3d83cce5709d578acffb7e78f3dc8e0ac63a750127d16cb0474ed2ab3cf0e6e"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa_rapport_point1.md",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa_rapport_point1.md",
+          "sha256": "3fd0473eeea78fa03cf248277e8b57373fc17a2ebfec0cbcb982333bdf8358c9"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/revue_fonctionnelle.md",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/revue_fonctionnelle.md",
+          "sha256": "6a737c51d5e92a4589ebba8938548bab2e08de1c5ba61eec1d58882760085909"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/README.md",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/README.md",
+          "sha256": "c30c708e71e4cff05aac07aa233d86665316fc9c0816cd037cde13da39cae3c7"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/build_01_needs_review.py",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/build_01_needs_review.py",
+          "sha256": "83e364aed7fff0c6b89c028df5888e08804572ea252148ee15fff6c475d0b986"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/created.txt",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/created.txt",
+          "sha256": "0f79438b3193d4e37fb462e4bc944e6b1081b1d99e835a4c56a56cc9d1b9e077"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/pack.json",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/pack.json",
+          "sha256": "ae83f479b6e2b7b4c0b96ab52da303ed02342391aeae2331b9854ce08be9fb7d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/01_scenario_avant.txt",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/01_scenario_avant.txt",
+          "sha256": "01bd469da19979930779d6aef1a193b99a6eb967575646e7c3077ced71ad6d67"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/02_build_application_1.txt",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/02_build_application_1.txt",
+          "sha256": "8517a34d355a53c9c968bfe653131ea5a594c5b38bd56ffaecf464067bebc8f2"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/03_build_application_2.txt",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/03_build_application_2.txt",
+          "sha256": "e9e0c2e01940e08f6bc9513d067cc665866b8f97727355d4acbcc3f6a68f4a19"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/04_scenario_apres.txt",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/04_scenario_apres.txt",
+          "sha256": "ad0de272e0f4c6f14cb78f22f87e88b68e448688d4329891c74bbf0f5be17317"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/05_pack_export.txt",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/05_pack_export.txt",
+          "sha256": "28e8da43952e874be96cf06b7d10f0c7c3ff8c200728b9bf9104efcc02712119"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/06_pack_diff.txt",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/06_pack_diff.txt",
+          "sha256": "c911526d51470a987215b9662d28b6806c8d83f631acfc3d38af6153923a6620"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/07_qa_pack_diff.txt",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/07_qa_pack_diff.txt",
+          "sha256": "c911526d51470a987215b9662d28b6806c8d83f631acfc3d38af6153923a6620"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/08_qa_etat_base.txt",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/08_qa_etat_base.txt",
+          "sha256": "bba1db70a5058b8423da2bfdb4fb82874069344dfa80f28264ac753d65849178"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/09_qa_scenario_rejeu.txt",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/09_qa_scenario_rejeu.txt",
+          "sha256": "403e8d92604e1a56172c57e29503cdf505f2e94884efcca3028f469963bc9bee"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/test_01_needs_review.py",
+          "target": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/test_01_needs_review.py",
+          "sha256": "33bcb5ea184eeebcb0b10d67b6bb2a5526e0ad8c8f91f0750b8ed0689f8274be"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/decisions/2026-09-08.md",
+          "target": "decisions/2026-09-08.md",
+          "sha256": "a3f3586292c3e2e7c6fb6e3257f2871c3fb9c4695cb149996eb84e9bc219c2cf"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/demande.md",
+          "target": "demande.md",
+          "sha256": "24d789353edb5886464f4aa4867c991a3f58f56383e70fffca6e782fad95dc7f"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/project/inbox/.gitignore",
+          "target": "inbox/.gitignore",
+          "sha256": "ed1fad6fc1b488921bda2481930847e10fef14f8d0b4720007fd2305d73563b9"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N03-replay/environment.json",
+          "target": "archives-execution/environment.json",
+          "sha256": "d77c50af1ac079145bae8e7a07c8a461533f6c39da4f20ffb671e3baa2ec7f73"
+        }
+      ]
+    },
+    {
+      "id": "F02",
+      "title": "Réception module après reprise",
+      "kind": "known",
+      "source_project": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project",
+      "files": [
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.contrainte-jours-positifs.lock",
+          "target": ".contrainte-jours-positifs.lock",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/JOURNAL.md",
+          "target": ".odoo-agents/JOURNAL.md",
+          "sha256": "9a506719decc99625f71508b30a3049c080bf11aa69217f064bdec308ca86d28"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/PROJECT.md",
+          "target": ".odoo-agents/PROJECT.md",
+          "sha256": "f6f6efeddfe014910db47507c58b0f994382de8f712a246a259de31c1203e996"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/config",
+          "target": ".odoo-agents/config",
+          "sha256": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/.gitignore",
+          "target": ".odoo-agents/flow-artifacts/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/briefing.txt",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/briefing.txt",
+          "sha256": "bd53d64938ae918af43fba15949fb278f0c6304ff6d50753424ffe77751e49de"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/implementation.md",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/implementation.md",
+          "sha256": "4617d23b61a33623731e28939e03f57d64cbbd902e00e4364e604a455fefaedc"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/logs/lint.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/logs/lint.log",
+          "sha256": "6af8dab6ba45a817336e4f99bf0cac24c1d6a1ad76d4bf3e5cad30a0e7f80863"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/logs/qa.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/logs/qa.log",
+          "sha256": "c2630a561df8f3fd4838a8568a35613804550fb0efdec3b4981aea04e2ad811c"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/fragment.md",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/fragment.md",
+          "sha256": "81c59b8e7d47b1305a7268896190c27e4030add07fc00180593cf83d266c9fca"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/01_create_negative.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/01_create_negative.log",
+          "sha256": "c5d9384541b522a16db7358cb1a06594db7ebf6293aff0e1414479284810000a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/02_create_zero.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/02_create_zero.log",
+          "sha256": "7d640eda7a8ac212452ef048c7c3e2f87f3c516715740d8d01542d92ea6ced99"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/03_create_base_for_write.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/03_create_base_for_write.log",
+          "sha256": "0554c9b0825998959eac23942d7d7b969fd1944eec42ead524d3b5767ad8f39a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/04_read_base_before.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/04_read_base_before.log",
+          "sha256": "3b36dbc0679138246adb1ee31335b7c170ae95f023774d6b4b118a856ca67fa7"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/05_write_negative.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/05_write_negative.log",
+          "sha256": "c5d9384541b522a16db7358cb1a06594db7ebf6293aff0e1414479284810000a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/06_read_base_after.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/06_read_base_after.log",
+          "sha256": "3b36dbc0679138246adb1ee31335b7c170ae95f023774d6b4b118a856ca67fa7"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/07_write_zero.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/07_write_zero.log",
+          "sha256": "0be694460085656f05bf98a51c2e1aeacae073ef0282af69cb81ce8c1846633c"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/08_read_zero_after.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/08_read_zero_after.log",
+          "sha256": "eb0b58e149462f36b6e6f9394c8da716850cdf71baf4fb56ebab3b11f9e30b3f"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/update.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/update.log",
+          "sha256": "2bf8fcf27346f003fc127cee6f23b48a22715415b85f5a8bcf5135d75b747a72"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/01_create_negative.json",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/01_create_negative.json",
+          "sha256": "2e2b68b240e2c0da0c64abe06b35aad0d2a8fb2968111cc602a2d67a1881f4ff"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/02_create_zero.json",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/02_create_zero.json",
+          "sha256": "c24ac667efd3336918e0b043c153dcb4663bbef4f34da0bdd7f65b18c3699ada"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/03_create_base_for_write.json",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/03_create_base_for_write.json",
+          "sha256": "febab3c967249b7a27a6a29bad24a4d0fbbe7657304cbff7c091a12c29a5976b"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/04_read_base_before.json",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/04_read_base_before.json",
+          "sha256": "a9bbcd83258498bb6c28f0494928577136394fd32c3d46d16b65040e6e434764"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/05_write_negative.json",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/05_write_negative.json",
+          "sha256": "a7300226cbc83828f3308f9bcffb9663fb2bce8b8b20ce43cd57ae19602a9591"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/06_read_base_after.json",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/06_read_base_after.json",
+          "sha256": "fb607f0829b028c0eaa6bdc14639dc8b9af58bddc91210f3d40ad215fd39f0bd"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/07_write_zero.json",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/07_write_zero.json",
+          "sha256": "9bb79a6b5cdf3a10d6e95757be84c04b53b715790bad744a25dba82659ae37e2"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/08_read_zero_after.json",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/08_read_zero_after.json",
+          "sha256": "a9bbcd83258498bb6c28f0494928577136394fd32c3d46d16b65040e6e434764"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_runtime/fragment.md",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_runtime/fragment.md",
+          "sha256": "312f2eb6327113862ea611901dac97cafc4e5581e900048a84c6beb12db236c6"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_runtime/logs/qa_fresh.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_runtime/logs/qa_fresh.log",
+          "sha256": "7a1fe39f02c3ace41fee4e8c7162bfd6b68b048e3bb3bc51e35a6135fe9f9ca3"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_runtime/logs/qa_update.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_runtime/logs/qa_update.log",
+          "sha256": "a852ecc76153d07816d16fd1f20ac277cb622a1e28aa51241fdb178edb8c4e19"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_static/fragment.md",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_static/fragment.md",
+          "sha256": "cde123f3489832fddbedb2f3442bb3f817e756a6c1a329939bb33e825827c5a3"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_static/logs/lint.log",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_static/logs/lint.log",
+          "sha256": "6af8dab6ba45a817336e4f99bf0cac24c1d6a1ad76d4bf3e5cad30a0e7f80863"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flow-artifacts/contrainte-jours-positifs/reprise/interruption.md",
+          "target": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/reprise/interruption.md",
+          "sha256": "cf004143a792abf11c9a4a9b7f446fb453c8ed45832f323fd007f3ee06cd4118"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flows/.contrainte-jours-positifs.json.lock",
+          "target": ".odoo-agents/flows/.contrainte-jours-positifs.json.lock",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flows/.gitignore",
+          "target": ".odoo-agents/flows/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flows/.resource-locks.json.lock",
+          "target": ".odoo-agents/flows/.resource-locks.json.lock",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flows/contrainte-jours-positifs.json",
+          "target": ".odoo-agents/flows/contrainte-jours-positifs.json",
+          "sha256": "f694bde5fbbf3c37b3aa625b3f064ac0d86643112efe185f666d9d746dfe932a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/flows/resource-locks.json",
+          "target": ".odoo-agents/flows/resource-locks.json",
+          "sha256": "507c3f18974aabcfb5497319227dcae09a7f9c2caee98cc8313d75e68167d541"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/probe_initial.json",
+          "target": ".odoo-agents/probe_initial.json",
+          "sha256": "f468f0a9c145e53c71aadbcca9c1d3310007b2b4a5e3e8323920e50df4a51e4d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/.odoo-agents/recovery-interruption.json",
+          "target": ".odoo-agents/recovery-interruption.json",
+          "sha256": "6349bca6b3c193c711247daad730f2e3eb29d2998ed5c53902d86047621e7d9d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/LAB.md",
+          "target": "LAB.md",
+          "sha256": "8af708c1240644de11e99d4107f79e88b9a0c3307b72633afa23380a18f9fe7b"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/.base",
+          "target": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/.base",
+          "sha256": "d8dc6950c06f8fa85bb62461c926141bbddd67409c4b9a7600e773e45f42c1dd"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/.opened",
+          "target": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/.opened",
+          "sha256": "d0ac80015be1b7ed4b12d0819e34486e21022d92a0765730f06091715f53273e"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/README.md",
+          "target": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/README.md",
+          "sha256": "07a182a3987db7e8120fbccb3051cef24d0ac598c6ee182acdcbb9e4cb2c7c66"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/compte_rendu.md",
+          "target": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/compte_rendu.md",
+          "sha256": "4e4c2356a6f5c6e9300f8f3aa12a63693cff628707fdc768019e7c086e65584a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/coverage.json",
+          "target": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/coverage.json",
+          "sha256": "53001982625af63cc67798930d7416ddb1d325095e2d8af8773dfe6da2abcee8"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/demande.md",
+          "target": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/demande.md",
+          "sha256": "f9fbd2fb9698557b13e7120b3d8c4a48e889013fd4a18bffc5254e055bd884dd"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/qa.md",
+          "target": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/qa.md",
+          "sha256": "bc660fc03eb61b6bfd9a2130bb91877951095d1a31486b5cd3957ab86e63a2df"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/qa_synthese.md",
+          "target": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/qa_synthese.md",
+          "sha256": "af4637b4b8e85137883b0e272cb00e460c83438c38c3d3f83f6612df51308906"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/revue_fonctionnelle.md",
+          "target": "changelog/2026-09-09_01_interdiction-des-durees-negatives-sur-le/revue_fonctionnelle.md",
+          "sha256": "1c21a476576bb9200de5f9921db78df1a351e6bb89870bba46ab1a744caff5e0"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/decisions/2026-09-08.md",
+          "target": "decisions/2026-09-08.md",
+          "sha256": "80a40a7c98b1c8edf02679cd6bc27f5c2178354e4732e3323d2b20f0a68de1a7"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/demande.md",
+          "target": "demande.md",
+          "sha256": "581abfa49072bf81ec2d0a3e40892a181ba7c0e2a556ae2f6a44369939331496"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/inbox/.gitignore",
+          "target": "inbox/.gitignore",
+          "sha256": "ed1fad6fc1b488921bda2481930847e10fef14f8d0b4720007fd2305d73563b9"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/lab_rental/__init__.py",
+          "target": "lab_rental/__init__.py",
+          "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/lab_rental/__manifest__.py",
+          "target": "lab_rental/__manifest__.py",
+          "sha256": "2ebdab76d34e1af805136d3238d39506369f73976491c26e37c10743513e82f4"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/lab_rental/models/__init__.py",
+          "target": "lab_rental/models/__init__.py",
+          "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/lab_rental/models/business.py",
+          "target": "lab_rental/models/business.py",
+          "sha256": "93f397df238eebc4722f4141cf0d35ebdac7b039f15505a6d5c049426a3705e4"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/lab_rental/security/ir.model.access.csv",
+          "target": "lab_rental/security/ir.model.access.csv",
+          "sha256": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/lab_rental/tests/__init__.py",
+          "target": "lab_rental/tests/__init__.py",
+          "sha256": "f13ad538e591920bc3d4b355276fb31eae811777d7e407d974cc9e1dfa8124a9"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/recovery/final-project/lab_rental/tests/test_days_constraint.py",
+          "target": "lab_rental/tests/test_days_constraint.py",
+          "sha256": "c42d36a77c18be7bbee4729a48c512b11a7ec40b85c2b885362f5481f20f6ea4"
+        }
+      ]
+    },
+    {
+      "id": "F03",
+      "title": "Réception mémoire après nouvelle décision",
+      "kind": "known",
+      "source_project": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1",
+      "files": [
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.frais-preparation.lock",
+          "target": ".frais-preparation.lock",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/JOURNAL.md",
+          "target": ".odoo-agents/JOURNAL.md",
+          "sha256": "5b1c1b204cf6a26258f621000c8527b291568e3924ef8f6fb54df673681ba852"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/PROJECT.md",
+          "target": ".odoo-agents/PROJECT.md",
+          "sha256": "f62f2a7ebf58f51825639342b6eae8aaf2b2e7dd990fb8cbeb70ab64ab04d99a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/config",
+          "target": ".odoo-agents/config",
+          "sha256": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/.gitignore",
+          "target": ".odoo-agents/flow-artifacts/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation/briefing.md",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation/briefing.md",
+          "sha256": "8869c75f9f169b88af53e624efe8c37da319057602d612e54cd5973d565063d7"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation/compte_rendu.md",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation/compte_rendu.md",
+          "sha256": "039afe784f562705e3a895616d90a283b8f7d7f6dd61560cdf0762c33e29a1f3"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "sha256": "591b5a109a540c7636f29bcbab2ae2edc770fb078de68e3f43cbc13dfd174b2b"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation/copie_client_avant.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_avant.txt",
+          "sha256": "535333c894850fbde313f09903093baea4b1fc982d0635326bf1f305c85afbd4"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation/copie_client_postconditions.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_postconditions.txt",
+          "sha256": "7c3136e3f0e05e3eebe5e539cf80b4292821cb3d888c63a4e05d0346eef9c24a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation/coverage.json",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation/coverage.json",
+          "sha256": "3ea7107a44e8c55439d3f94037b8dc1036fbfd4d54fe021d6b7414b0db1d681f"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation/diff.patch",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation/diff.patch",
+          "sha256": "52e036ac8bde6865c5e4365902124c5420a6ad9600d3163cc0848696d11428f2"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation/lint.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation/lint.txt",
+          "sha256": "65d7d084166d8ddaa78303e6de00134787b716278a8a065ad6151bda55844dee"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation/qa_client_copy.md",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation/qa_client_copy.md",
+          "sha256": "f551015ac51672dc3f2ef95ca91a6f0548b436b7197462224e2e234fb9839804"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "sha256": "ffed384fec801b9e21940124eafbc7a01b1ca3e4c77aaf6122c666dcd9dd9fda"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation/qa_high_static.md",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_static.md",
+          "sha256": "1ff85c06f96b8e96cc483ac1f4cc5d9f136e44406a00c7e4dcc8f23fb5ec250d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/briefing.md",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/briefing.md",
+          "sha256": "779693c6b1cb4c35f32d17aca2b40ff4bc87d874c8c6b8b5c9f4d9dfa90a9bea"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/compte_rendu.md",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/compte_rendu.md",
+          "sha256": "c4e7d3334fb81c84fd135bb36b73bbea2d3cd87c0f7d4e34d9fb565e0b097814"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/copie_client_apres.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/copie_client_apres.txt",
+          "sha256": "12f20a2ae33a0732e4013e50d51182c700079935058de71624876f8c5379c1f5"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/copie_client_avant.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/copie_client_avant.txt",
+          "sha256": "7a1e767efbaf160f2984e17f7fe827070dfb95c0c2e101c0da0ec9b668c6cc2e"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/copie_client_idempotence.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/copie_client_idempotence.txt",
+          "sha256": "d3c872773a009f7a82e35eb114828c6394f155dc21e102a491b3adabc43af3e5"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/copie_client_postconditions.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/copie_client_postconditions.txt",
+          "sha256": "2665a2aa7ed6648b5cb330b2efcabbd743c331a5c352775d053adb93841a1525"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/copie_client_update.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/copie_client_update.txt",
+          "sha256": "1ab848722e9f07d637c1a05c63d8eada8a45a00bc96ac82c2c72114719bd669a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/copie_client_update2.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/copie_client_update2.txt",
+          "sha256": "ee10457df46a3e87b0037638b9ed28541b9f35f4a507d744c04d8e7749662a46"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/coverage.json",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/coverage.json",
+          "sha256": "db0e304ef224da60b79a47e011aa9f5adea350b4057bb2b226be10ca67ff805d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/diff.patch",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/diff.patch",
+          "sha256": "3f278229546194a99c8df00d4873fd46322b0c2b4ce7117f19b0d1665723a756"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/lint.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/lint.txt",
+          "sha256": "65d7d084166d8ddaa78303e6de00134787b716278a8a065ad6151bda55844dee"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/qa_client_copy.md",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/qa_client_copy.md",
+          "sha256": "3c9ec7445eeff202b6f76c0bd3fd3c596ecb6c5dddbb2a7759747342289567c3"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/qa_high_runtime.md",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/qa_high_runtime.md",
+          "sha256": "8c34cdfa3ba050f7ae095c8aaaf3596e208902b5f931c6fc26e35c151db083d8"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/qa_high_static.md",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/qa_high_static.md",
+          "sha256": "fb7774f38fcdc9bda4bf5bc16f62f441aaf196446b6a339be5333bbf8cf0049c"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/qa_reception_point2.md",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/qa_reception_point2.md",
+          "sha256": "9775e6b6006478b26ed84a652cdc1d6030092c21805f9d77e80f0319786913ab"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/qa_runtime.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/qa_runtime.txt",
+          "sha256": "cee484fd82d3ee0c3b0bd30321869cb62c24009d2688f35ed5cf1c74c5a9788a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/qa_runtime_update.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/qa_runtime_update.txt",
+          "sha256": "417b9aaa825f5df222928a8e0013e8b99eb7b10017ef4c7c24af948c09a5cd7b"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flow-artifacts/frais-preparation-d03/rpc_seuil.txt",
+          "target": ".odoo-agents/flow-artifacts/frais-preparation-d03/rpc_seuil.txt",
+          "sha256": "2973779c053efff1614063dd8f5c87762553d9f89322779cf72722f63c679dfb"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flows/.frais-preparation-d03.json.lock",
+          "target": ".odoo-agents/flows/.frais-preparation-d03.json.lock",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flows/.frais-preparation.json.lock",
+          "target": ".odoo-agents/flows/.frais-preparation.json.lock",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flows/.gitignore",
+          "target": ".odoo-agents/flows/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flows/.resource-locks.json.lock",
+          "target": ".odoo-agents/flows/.resource-locks.json.lock",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flows/frais-preparation-d03.json",
+          "target": ".odoo-agents/flows/frais-preparation-d03.json",
+          "sha256": "dcaef6d5ce4bcfc76c2c52bddb63754c16ca7ca1e3026462b5c40b54cc9c6fd1"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flows/frais-preparation.json",
+          "target": ".odoo-agents/flows/frais-preparation.json",
+          "sha256": "2bbc28470181654b0465f80826f777d677dbf06b95072735463ed2f58c12ca82"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/flows/resource-locks.json",
+          "target": ".odoo-agents/flows/resource-locks.json",
+          "sha256": "ae983fee0af0802b98d9710e924e8004b9c0ca8e965cce312d36453a9b5d05c0"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/rpc/creation_seuil.json",
+          "target": ".odoo-agents/rpc/creation_seuil.json",
+          "sha256": "cbc5d2786fc4d8d8b3d02b8f1309dcbf34f19c4e800114f79bcbdfd38d6e4049"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/rpc/creation_seuil_d03.json",
+          "target": ".odoo-agents/rpc/creation_seuil_d03.json",
+          "sha256": "638c2869df180c54b321a959821358be8e75ea3277bd561154d85a8294b39acd"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/rpc/etat_avant.json",
+          "target": ".odoo-agents/rpc/etat_avant.json",
+          "sha256": "4e860345a615e1335a12347de90cae3f66711004e24f605d72f8d245caed3558"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/rpc/lecture_seuil.json",
+          "target": ".odoo-agents/rpc/lecture_seuil.json",
+          "sha256": "5abb81cfdd489a43c6e808af28b87535125dddebcf5822c9a58904bb746a32da"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/rpc/lecture_seuil_d03.json",
+          "target": ".odoo-agents/rpc/lecture_seuil_d03.json",
+          "sha256": "a6c3bdadfc9ab4df2fbf2da682421fefab9ae7e6b1dea56c5458c5bea647a3fd"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/rpc/module_etat.json",
+          "target": ".odoo-agents/rpc/module_etat.json",
+          "sha256": "cb9335d8421017195bb1081df64040e625e13daca2de99d8f1bc301448aaa4f7"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/rpc/nettoyage.json",
+          "target": ".odoo-agents/rpc/nettoyage.json",
+          "sha256": "edd61a5447e3151dbfbe915f8f1608872fdd3b453e9386ddd442485aeef061fd"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/rpc/nettoyage_d03.json",
+          "target": ".odoo-agents/rpc/nettoyage_d03.json",
+          "sha256": "a3de22981135f5ca453688d1bf9c960d8cae6c1b44dde5cbae9f53aad9ae5c21"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/shell/etat_point2_apres.py",
+          "target": ".odoo-agents/shell/etat_point2_apres.py",
+          "sha256": "c474c545a400ac2af4440d408fc1fda70d0d768b491221e1ff7a4a066f33c75e"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/shell/etat_point2_avant.py",
+          "target": ".odoo-agents/shell/etat_point2_avant.py",
+          "sha256": "78f272ea811dd921cd26d5155eca2437b19763a74a3df877e1022840f326fe3e"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/shell/postconditions.py",
+          "target": ".odoo-agents/shell/postconditions.py",
+          "sha256": "40cac338dcc7f769214dd4fbbadaebe7175c6d2af23a208bd40e3faa74c97bdf"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/shell/postconditions_point2.py",
+          "target": ".odoo-agents/shell/postconditions_point2.py",
+          "sha256": "9c0cad1854fa6b6d7290f876197f4a2a696d9a53967dbe80a7c4b92fe2b6ffad"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/shell/reprise_idempotence.py",
+          "target": ".odoo-agents/shell/reprise_idempotence.py",
+          "sha256": "f80b90a4b0209afd31c9eee6efceb2d9db57554a98e33cd9148f67272987a5bf"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/.odoo-agents/shell/seed_avant.py",
+          "target": ".odoo-agents/shell/seed_avant.py",
+          "sha256": "bf928074bf090d073c92ecd73d869c8ac61ff51e509ff7b1d8ca958e9bdb96a5"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/LAB.md",
+          "target": "LAB.md",
+          "sha256": "a27622835a53bb5f2e3f959bfaa230713c525a8b77da3c44a4a9aecc47113c9a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/changelog/2026-09-09_01_frais-de-preparation-des-locations/.base",
+          "target": "changelog/2026-09-09_01_frais-de-preparation-des-locations/.base",
+          "sha256": "4b367315560a4c10aaf8033341dcdf6a35815d9707b275803abb22f8610ad8c3"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/changelog/2026-09-09_01_frais-de-preparation-des-locations/.opened",
+          "target": "changelog/2026-09-09_01_frais-de-preparation-des-locations/.opened",
+          "sha256": "52c6e7e9acf15f2b49adc21a1541bf9010a94beffdac7c470e5729a9a658a217"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/changelog/2026-09-09_01_frais-de-preparation-des-locations/README.md",
+          "target": "changelog/2026-09-09_01_frais-de-preparation-des-locations/README.md",
+          "sha256": "5ed930c87cb712cbd65958e2141f1107895329d17276edcdc07a86035836df08"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/changelog/2026-09-09_01_frais-de-preparation-des-locations/demande.md",
+          "target": "changelog/2026-09-09_01_frais-de-preparation-des-locations/demande.md",
+          "sha256": "d44862548f8901a2746ce74ba5f72870e9eb743a04fe9784e180b9b5a71cb6b7"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/changelog/2026-09-09_01_frais-de-preparation-des-locations/qa.md",
+          "target": "changelog/2026-09-09_01_frais-de-preparation-des-locations/qa.md",
+          "sha256": "3ec7db462debca7ceed1659799d104f53ce0d82d49553e2e4d52856462711448"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/changelog/2026-09-09_01_frais-de-preparation-des-locations/qa_rapport_tache1.md",
+          "target": "changelog/2026-09-09_01_frais-de-preparation-des-locations/qa_rapport_tache1.md",
+          "sha256": "07fb789075b10af1f33080ad9c3661f50745d73cd8b4ca3a4bcb8012741ae71d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/changelog/2026-09-09_01_frais-de-preparation-des-locations/revue_fonctionnelle.md",
+          "target": "changelog/2026-09-09_01_frais-de-preparation-des-locations/revue_fonctionnelle.md",
+          "sha256": "a846395461647c7233b71dda05335f77539553486c4dc5d2ed710e10dbdd3321"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/changelog/2026-09-09_01_frais-de-preparation-des-locations/revue_fonctionnelle_point2.md",
+          "target": "changelog/2026-09-09_01_frais-de-preparation-des-locations/revue_fonctionnelle_point2.md",
+          "sha256": "7e666b30d7efd346f8f289606b52ea2f3afb5ca10289e84c4bc6cd1596a049d4"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/decisions/2026-09-08.md",
+          "target": "decisions/2026-09-08.md",
+          "sha256": "bb2f63985c09f27d7c8ee0905c8b2e4f61e04ebd52ef24dd7eb67e1d5b93b54d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/decisions/2026-09-09.md",
+          "target": "decisions/2026-09-09.md",
+          "sha256": "29c22d973a6c67bb6b7d411b9f7b426751fc3be985ab35852b22efead08ec23e"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/demande.md",
+          "target": "demande.md",
+          "sha256": "2e327e1632435465f914a10c56c0bf09197426c407fab2ed682af2ff39dcf9ac"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/inbox/.gitignore",
+          "target": "inbox/.gitignore",
+          "sha256": "ed1fad6fc1b488921bda2481930847e10fef14f8d0b4720007fd2305d73563b9"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/lab_rental/__init__.py",
+          "target": "lab_rental/__init__.py",
+          "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/lab_rental/__manifest__.py",
+          "target": "lab_rental/__manifest__.py",
+          "sha256": "acf05131fb71284bcfeb1cefe1dcb7b33e7008783b529357c40dcf21b7fd1ddf"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/lab_rental/migrations/19.0.1.1.0/post-migrate.py",
+          "target": "lab_rental/migrations/19.0.1.1.0/post-migrate.py",
+          "sha256": "ac3c35a325f3fda8b2f3abda891288e49ffc19c553946f1237b02cbb40a8d830"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/lab_rental/migrations/19.0.1.2.0/post-migrate.py",
+          "target": "lab_rental/migrations/19.0.1.2.0/post-migrate.py",
+          "sha256": "6394ec7696d3945a1cc8b41f88e0d0624370551ece6e400703eac8b3d3d9937f"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/lab_rental/models/__init__.py",
+          "target": "lab_rental/models/__init__.py",
+          "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/lab_rental/models/business.py",
+          "target": "lab_rental/models/business.py",
+          "sha256": "b4c8abba63725ed5711405b87d33ccc467118008b950c9c22ccf6a81d83ee219"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/lab_rental/security/ir.model.access.csv",
+          "target": "lab_rental/security/ir.model.access.csv",
+          "sha256": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/lab_rental/tests/__init__.py",
+          "target": "lab_rental/tests/__init__.py",
+          "sha256": "938bf5f0ef721e3901fd3efe04934cdcbdc4fe860d49a335db4df964ae88d0b9"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-1/lab_rental/tests/test_preparation_fee.py",
+          "target": "lab_rental/tests/test_preparation_fee.py",
+          "sha256": "f087b768aad5ed66e67386b1240546d43898cf1c1e1c32415a58152dd0b5ce3c"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/JOURNAL.md",
+          "target": "historique/D02/.odoo-agents/JOURNAL.md",
+          "sha256": "b1e76e28cfeca4d6916b3762b5d517800c80bde9ef45bf38ccd6c5f92f293669"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/PROJECT.md",
+          "target": "historique/D02/.odoo-agents/PROJECT.md",
+          "sha256": "ddfbaffe63ec22eaaa526ca2cc2f77037135db5ce759fc0109c74f943021b161"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/config",
+          "target": "historique/D02/.odoo-agents/config",
+          "sha256": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/.gitignore",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/frais-preparation/briefing.md",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/frais-preparation/briefing.md",
+          "sha256": "8869c75f9f169b88af53e624efe8c37da319057602d612e54cd5973d565063d7"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/frais-preparation/compte_rendu.md",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/frais-preparation/compte_rendu.md",
+          "sha256": "039afe784f562705e3a895616d90a283b8f7d7f6dd61560cdf0762c33e29a1f3"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "sha256": "591b5a109a540c7636f29bcbab2ae2edc770fb078de68e3f43cbc13dfd174b2b"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/frais-preparation/copie_client_avant.txt",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/frais-preparation/copie_client_avant.txt",
+          "sha256": "535333c894850fbde313f09903093baea4b1fc982d0635326bf1f305c85afbd4"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/frais-preparation/copie_client_postconditions.txt",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/frais-preparation/copie_client_postconditions.txt",
+          "sha256": "7c3136e3f0e05e3eebe5e539cf80b4292821cb3d888c63a4e05d0346eef9c24a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/frais-preparation/coverage.json",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/frais-preparation/coverage.json",
+          "sha256": "3ea7107a44e8c55439d3f94037b8dc1036fbfd4d54fe021d6b7414b0db1d681f"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/frais-preparation/diff.patch",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/frais-preparation/diff.patch",
+          "sha256": "52e036ac8bde6865c5e4365902124c5420a6ad9600d3163cc0848696d11428f2"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/frais-preparation/lint.txt",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/frais-preparation/lint.txt",
+          "sha256": "65d7d084166d8ddaa78303e6de00134787b716278a8a065ad6151bda55844dee"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/frais-preparation/qa_client_copy.md",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/frais-preparation/qa_client_copy.md",
+          "sha256": "f551015ac51672dc3f2ef95ca91a6f0548b436b7197462224e2e234fb9839804"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "sha256": "ffed384fec801b9e21940124eafbc7a01b1ca3e4c77aaf6122c666dcd9dd9fda"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/frais-preparation/qa_high_static.md",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/frais-preparation/qa_high_static.md",
+          "sha256": "1ff85c06f96b8e96cc483ac1f4cc5d9f136e44406a00c7e4dcc8f23fb5ec250d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "target": "historique/D02/.odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flows/.frais-preparation.json.lock",
+          "target": "historique/D02/.odoo-agents/flows/.frais-preparation.json.lock",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flows/.gitignore",
+          "target": "historique/D02/.odoo-agents/flows/.gitignore",
+          "sha256": "240a3e0d37d2e86b614063f5347eb02d4f99ca6c254de6b82871ff8d95532a7d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flows/.resource-locks.json.lock",
+          "target": "historique/D02/.odoo-agents/flows/.resource-locks.json.lock",
+          "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flows/frais-preparation.json",
+          "target": "historique/D02/.odoo-agents/flows/frais-preparation.json",
+          "sha256": "2bbc28470181654b0465f80826f777d677dbf06b95072735463ed2f58c12ca82"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/flows/resource-locks.json",
+          "target": "historique/D02/.odoo-agents/flows/resource-locks.json",
+          "sha256": "f303ff8723b2bc66161305c20b8e19abfad0104a3932f9544e3f561b9677ad63"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/rpc/creation_seuil.json",
+          "target": "historique/D02/.odoo-agents/rpc/creation_seuil.json",
+          "sha256": "cbc5d2786fc4d8d8b3d02b8f1309dcbf34f19c4e800114f79bcbdfd38d6e4049"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/rpc/etat_avant.json",
+          "target": "historique/D02/.odoo-agents/rpc/etat_avant.json",
+          "sha256": "4e860345a615e1335a12347de90cae3f66711004e24f605d72f8d245caed3558"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/rpc/lecture_seuil.json",
+          "target": "historique/D02/.odoo-agents/rpc/lecture_seuil.json",
+          "sha256": "5abb81cfdd489a43c6e808af28b87535125dddebcf5822c9a58904bb746a32da"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/rpc/module_etat.json",
+          "target": "historique/D02/.odoo-agents/rpc/module_etat.json",
+          "sha256": "cb9335d8421017195bb1081df64040e625e13daca2de99d8f1bc301448aaa4f7"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/rpc/nettoyage.json",
+          "target": "historique/D02/.odoo-agents/rpc/nettoyage.json",
+          "sha256": "edd61a5447e3151dbfbe915f8f1608872fdd3b453e9386ddd442485aeef061fd"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/shell/postconditions.py",
+          "target": "historique/D02/.odoo-agents/shell/postconditions.py",
+          "sha256": "40cac338dcc7f769214dd4fbbadaebe7175c6d2af23a208bd40e3faa74c97bdf"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/.odoo-agents/shell/seed_avant.py",
+          "target": "historique/D02/.odoo-agents/shell/seed_avant.py",
+          "sha256": "bf928074bf090d073c92ecd73d869c8ac61ff51e509ff7b1d8ca958e9bdb96a5"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/LAB.md",
+          "target": "historique/D02/LAB.md",
+          "sha256": "a27622835a53bb5f2e3f959bfaa230713c525a8b77da3c44a4a9aecc47113c9a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/changelog/2026-09-09_01_frais-de-preparation-des-locations/.base",
+          "target": "historique/D02/changelog/2026-09-09_01_frais-de-preparation-des-locations/.base",
+          "sha256": "4b367315560a4c10aaf8033341dcdf6a35815d9707b275803abb22f8610ad8c3"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/changelog/2026-09-09_01_frais-de-preparation-des-locations/.opened",
+          "target": "historique/D02/changelog/2026-09-09_01_frais-de-preparation-des-locations/.opened",
+          "sha256": "52c6e7e9acf15f2b49adc21a1541bf9010a94beffdac7c470e5729a9a658a217"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/changelog/2026-09-09_01_frais-de-preparation-des-locations/README.md",
+          "target": "historique/D02/changelog/2026-09-09_01_frais-de-preparation-des-locations/README.md",
+          "sha256": "9b615dd062e7e6c4806bc1f87ac3e89b88c59838693df6636ca8c72b3268c31a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/changelog/2026-09-09_01_frais-de-preparation-des-locations/demande.md",
+          "target": "historique/D02/changelog/2026-09-09_01_frais-de-preparation-des-locations/demande.md",
+          "sha256": "2e327e1632435465f914a10c56c0bf09197426c407fab2ed682af2ff39dcf9ac"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/changelog/2026-09-09_01_frais-de-preparation-des-locations/qa.md",
+          "target": "historique/D02/changelog/2026-09-09_01_frais-de-preparation-des-locations/qa.md",
+          "sha256": "80b885bb27a2de378a5d2271d94eabd7718be562d0b8a28cf26e0e7c7a46570b"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/changelog/2026-09-09_01_frais-de-preparation-des-locations/qa_rapport_tache1.md",
+          "target": "historique/D02/changelog/2026-09-09_01_frais-de-preparation-des-locations/qa_rapport_tache1.md",
+          "sha256": "07fb789075b10af1f33080ad9c3661f50745d73cd8b4ca3a4bcb8012741ae71d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/changelog/2026-09-09_01_frais-de-preparation-des-locations/revue_fonctionnelle.md",
+          "target": "historique/D02/changelog/2026-09-09_01_frais-de-preparation-des-locations/revue_fonctionnelle.md",
+          "sha256": "a846395461647c7233b71dda05335f77539553486c4dc5d2ed710e10dbdd3321"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/decisions/2026-09-08.md",
+          "target": "historique/D02/decisions/2026-09-08.md",
+          "sha256": "bb2f63985c09f27d7c8ee0905c8b2e4f61e04ebd52ef24dd7eb67e1d5b93b54d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/demande.md",
+          "target": "historique/D02/demande.md",
+          "sha256": "2e327e1632435465f914a10c56c0bf09197426c407fab2ed682af2ff39dcf9ac"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/inbox/.gitignore",
+          "target": "historique/D02/inbox/.gitignore",
+          "sha256": "ed1fad6fc1b488921bda2481930847e10fef14f8d0b4720007fd2305d73563b9"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/lab_rental/__init__.py",
+          "target": "historique/D02/lab_rental/__init__.py",
+          "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/lab_rental/__manifest__.py",
+          "target": "historique/D02/lab_rental/__manifest__.py",
+          "sha256": "5c00018b74b06bd57d18a7b8c4071b54488deeaa76526f60663a54f9c048074c"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/lab_rental/migrations/19.0.1.1.0/post-migrate.py",
+          "target": "historique/D02/lab_rental/migrations/19.0.1.1.0/post-migrate.py",
+          "sha256": "ac3c35a325f3fda8b2f3abda891288e49ffc19c553946f1237b02cbb40a8d830"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/lab_rental/models/__init__.py",
+          "target": "historique/D02/lab_rental/models/__init__.py",
+          "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/lab_rental/models/business.py",
+          "target": "historique/D02/lab_rental/models/business.py",
+          "sha256": "614bd6261014d583d8f9c10f18f2b26a54de5763f70fc51a07faa53e1769a31f"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/lab_rental/security/ir.model.access.csv",
+          "target": "historique/D02/lab_rental/security/ir.model.access.csv",
+          "sha256": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/lab_rental/tests/__init__.py",
+          "target": "historique/D02/lab_rental/tests/__init__.py",
+          "sha256": "938bf5f0ef721e3901fd3efe04934cdcbdc4fe860d49a335db4df964ae88d0b9"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/after-0/lab_rental/tests/test_preparation_fee.py",
+          "target": "historique/D02/lab_rental/tests/test_preparation_fee.py",
+          "sha256": "ab80bd0f6dbe9bc868ff80f909fb77f364dab2cb4b1d4b29d60459965f314a08"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-000.log",
+          "target": "archives-execution/bridge-000.log",
+          "sha256": "30cf56b5d6b19d7ad615bd1fa59508de593020f3630ed75336c683d432bf062f"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-001.log",
+          "target": "archives-execution/bridge-001.log",
+          "sha256": "516bc357e7b42fa1e4c1756351762e967d210f0d0a8dc288157072eb197704b4"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-002.log",
+          "target": "archives-execution/bridge-002.log",
+          "sha256": "df7d9d3e09c6f3ec26c308a2382f239067a40e4cddc1e4b7318feedddf3cd558"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-003.log",
+          "target": "archives-execution/bridge-003.log",
+          "sha256": "69093f7f283fad2e922d615c213f3726951ab47241810c4f8ac44ea7a4b5fd44"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-004.log",
+          "target": "archives-execution/bridge-004.log",
+          "sha256": "9fe2d7683974666420111ad5f0a69d4220b9f185cb3b30b341c988e8ce9a6b05"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-005.log",
+          "target": "archives-execution/bridge-005.log",
+          "sha256": "21e8cd18106fdd0aca7131ff818a95fa9680e23d2e13c29886e08256b212cfdd"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-006.log",
+          "target": "archives-execution/bridge-006.log",
+          "sha256": "65d7d084166d8ddaa78303e6de00134787b716278a8a065ad6151bda55844dee"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-007.log",
+          "target": "archives-execution/bridge-007.log",
+          "sha256": "65d7d084166d8ddaa78303e6de00134787b716278a8a065ad6151bda55844dee"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-008.log",
+          "target": "archives-execution/bridge-008.log",
+          "sha256": "cf90787f65b1eba8de95c5a2a84a4e33b5c92aef18b9ed3f84efeaca14e70d2d"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-009.log",
+          "target": "archives-execution/bridge-009.log",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-010.log",
+          "target": "archives-execution/bridge-010.log",
+          "sha256": "8723dca9b80d66d4bf5ab1cd28abe32f06aa5ce922e5062ec5bafca0a8d8bc16"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-011.log",
+          "target": "archives-execution/bridge-011.log",
+          "sha256": "0f1c97453d366deee0a657e48b873695d826c4bb6060dea57d22610d50689e5e"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-012.log",
+          "target": "archives-execution/bridge-012.log",
+          "sha256": "8b9a3c4d7e1b3e8c365f3411da474e613a33efaab14491f4d3a0e22a30bb999c"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-013.log",
+          "target": "archives-execution/bridge-013.log",
+          "sha256": "a755822667ae53913616886db313903a1c3c5ddc95e1f127e335c540b8ee3fff"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-014.log",
+          "target": "archives-execution/bridge-014.log",
+          "sha256": "b0770b2f529ecd27dfd2789566de03bc37bfe0711702ca3d8ee9b6e7ad94eb24"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-015.log",
+          "target": "archives-execution/bridge-015.log",
+          "sha256": "1adb2e4cac6ac58890eea6ad0db9c93d6420d3bf5a4221f2cfbf7cb37b068faf"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-016.log",
+          "target": "archives-execution/bridge-016.log",
+          "sha256": "9126cc1294d926889e8c41f582bf04aa5461f2c22f7763b8997720682b2fd5db"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-017.log",
+          "target": "archives-execution/bridge-017.log",
+          "sha256": "0be694460085656f05bf98a51c2e1aeacae073ef0282af69cb81ce8c1846633c"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-018.log",
+          "target": "archives-execution/bridge-018.log",
+          "sha256": "65d7d084166d8ddaa78303e6de00134787b716278a8a065ad6151bda55844dee"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-019.log",
+          "target": "archives-execution/bridge-019.log",
+          "sha256": "65d7d084166d8ddaa78303e6de00134787b716278a8a065ad6151bda55844dee"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-020.log",
+          "target": "archives-execution/bridge-020.log",
+          "sha256": "cee484fd82d3ee0c3b0bd30321869cb62c24009d2688f35ed5cf1c74c5a9788a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-021.log",
+          "target": "archives-execution/bridge-021.log",
+          "sha256": "417b9aaa825f5df222928a8e0013e8b99eb7b10017ef4c7c24af948c09a5cd7b"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-022.log",
+          "target": "archives-execution/bridge-022.log",
+          "sha256": "7a1e767efbaf160f2984e17f7fe827070dfb95c0c2e101c0da0ec9b668c6cc2e"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-023.log",
+          "target": "archives-execution/bridge-023.log",
+          "sha256": "1ab848722e9f07d637c1a05c63d8eada8a45a00bc96ac82c2c72114719bd669a"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-024.log",
+          "target": "archives-execution/bridge-024.log",
+          "sha256": "e8331500540cb699e34069ae64b4cc538031ea0e597c4a33d6990095ee887bcc"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-025.log",
+          "target": "archives-execution/bridge-025.log",
+          "sha256": "ee10457df46a3e87b0037638b9ed28541b9f35f4a507d744c04d8e7749662a46"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-026.log",
+          "target": "archives-execution/bridge-026.log",
+          "sha256": "00e043f59b01900f38c76ca37d30a516ffb29a87c3545986568306fcdac21d36"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-027.log",
+          "target": "archives-execution/bridge-027.log",
+          "sha256": "2f367d554a066710758c8eb87d5595eda8f221fda52d8d3d1a4614d94056ddd8"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-028.log",
+          "target": "archives-execution/bridge-028.log",
+          "sha256": "06316993ca3a28a78d828017fa33a6c9e440f0d623852567b9801202114a4ffc"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-029.log",
+          "target": "archives-execution/bridge-029.log",
+          "sha256": "baaf534f24e300587b33e796b3d94dd64267e4455c3e86efa1c9b3f17b2b33eb"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-030.log",
+          "target": "archives-execution/bridge-030.log",
+          "sha256": "0be694460085656f05bf98a51c2e1aeacae073ef0282af69cb81ce8c1846633c"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/bridge-031.log",
+          "target": "archives-execution/bridge-031.log",
+          "sha256": "ce0095726c9043affbd61762c137bfc703987c5dda92f06ce7b03b0e7e87617b"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/prompt-0.txt",
+          "target": "archives-execution/prompt-0.txt",
+          "sha256": "b944dccb8abbaf2cdbb6b496a38171b2cbade9a93a4e1fbd72dafe520e3cb959"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/prompt-1.txt",
+          "target": "archives-execution/prompt-1.txt",
+          "sha256": "03961b59450e498aab95b87c743c9840479982ded8123cad76fdd61053206e4c"
+        },
+        {
+          "source": "docs/quality-lab/qualification-2026-09-09/evidence/native/complete-N01/environment.json",
+          "target": "archives-execution/environment.json",
+          "sha256": "410476dfb896819555b2766adba331be66e1a6eef0f9d7f1e175c882bd47ef43"
+        }
+      ]
+    },
+    {
+      "id": "F04",
+      "title": "Réception documentaire liste de colis",
+      "kind": "positive",
+      "source_project": "benchmarks/fidelity/fixtures/F04",
+      "files": [
+        {
+          "source": "benchmarks/fidelity/fixtures/F04/.odoo-agents/JOURNAL.md",
+          "target": ".odoo-agents/JOURNAL.md",
+          "sha256": "14d85a609a01997e94dff55a0a89b31a3df5c0f4202dc7bbdd5731e15bf38f5e"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F04/.odoo-agents/PROJECT.md",
+          "target": ".odoo-agents/PROJECT.md",
+          "sha256": "378d6c6cc54891efbc33503f70bae06c71ab28ee92b760b21b87a6d638b91f1d"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F04/.odoo-agents/config",
+          "target": ".odoo-agents/config",
+          "sha256": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F04/DOSSIER.md",
+          "target": "DOSSIER.md",
+          "sha256": "d2bf4b83d8f20a9254dbb019c114e1ade02a82d20aa5b781785160f2c21a1ead"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F04/changelog/2026-09-09_01_colis/pieces/colis.csv",
+          "target": "changelog/2026-09-09_01_colis/pieces/colis.csv",
+          "sha256": "87fe62cf41d8ec955dfe097d883cfdfb8ce8423339b58faf3bd8c9ce6854a0b2"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F04/changelog/2026-09-09_01_colis/qa.md",
+          "target": "changelog/2026-09-09_01_colis/qa.md",
+          "sha256": "918c25ae0034403863f5e20a0d8f10cb079c6e12287b97074a5eaa6e1160a39c"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F04/changelog/2026-09-09_01_colis/revue_fonctionnelle.md",
+          "target": "changelog/2026-09-09_01_colis/revue_fonctionnelle.md",
+          "sha256": "257f6c124bbd8788d64cf924b1700bdc71aac2b7697dd64823a61e04550ffa5f"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F04/demande.md",
+          "target": "demande.md",
+          "sha256": "34dc73e3235d53669c92cf39ddf2f7aab02a4f02bce0d0209e9e65aada684bae"
+        }
+      ]
+    },
+    {
+      "id": "F05",
+      "title": "Réception rappels de maintenance",
+      "kind": "heldout",
+      "source_project": "benchmarks/fidelity/fixtures/F05",
+      "files": [
+        {
+          "source": "benchmarks/fidelity/fixtures/F05/.odoo-agents/JOURNAL.md",
+          "target": ".odoo-agents/JOURNAL.md",
+          "sha256": "d34137a4c3835c90d76a5f267232f0bb422cd94055eee6f42d4a8e832f58a1bb"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F05/.odoo-agents/PROJECT.md",
+          "target": ".odoo-agents/PROJECT.md",
+          "sha256": "e2cb2f49a1f5d5d58b55ece153956f83c4f63b2f263130b0e63844767f87e3cf"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F05/.odoo-agents/config",
+          "target": ".odoo-agents/config",
+          "sha256": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F05/DOSSIER.md",
+          "target": "DOSSIER.md",
+          "sha256": "d2bf4b83d8f20a9254dbb019c114e1ade02a82d20aa5b781785160f2c21a1ead"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F05/changelog/2026-09-09_01_rappels/preuves/recette.json",
+          "target": "changelog/2026-09-09_01_rappels/preuves/recette.json",
+          "sha256": "cc35c122669d81edd0fd124f44f6360d43ddc5b612b413782a32d39f90b0fb62"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F05/changelog/2026-09-09_01_rappels/qa.md",
+          "target": "changelog/2026-09-09_01_rappels/qa.md",
+          "sha256": "1e5d756652d207f3b6a5cc47d64899987a55a4b1a9a00487eac08087434205d6"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F05/changelog/2026-09-09_01_rappels/revue_fonctionnelle.md",
+          "target": "changelog/2026-09-09_01_rappels/revue_fonctionnelle.md",
+          "sha256": "43c4c09fc755e4e9d3686c2521ccce3d13fa3bb6f8fc1c20a506c842c805aef9"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F05/decisions/E-14.md",
+          "target": "decisions/E-14.md",
+          "sha256": "b82c27195de97ef7c78a10061336ebcfd6f3fd2a398f6ba9dafb0f204897425c"
+        },
+        {
+          "source": "benchmarks/fidelity/fixtures/F05/demande.md",
+          "target": "demande.md",
+          "sha256": "91d95b4335796ab864b8230926305230ec76a6e0298ea6affc2f76a107d0f5f6"
+        }
+      ]
+    }
+  ]
+}

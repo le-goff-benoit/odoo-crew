@@ -1,0 +1,73 @@
+{
+  "checks": {
+    "flow_complete": true,
+    "claims_empty": true,
+    "terminal_task_done": true,
+    "request_copies_identical": true,
+    "bundle_hash": true,
+    "receipt_hash": true,
+    "receipt_bundle_link": true,
+    "receipt_three_axes_pass": true,
+    "receipt_citations_exact": true,
+    "frozen_groups": true,
+    "drafts_fresh": true,
+    "memory_published_exact": true,
+    "code_scope_hashes_modes": true,
+    "qa_contract_original_exact": true,
+    "bundle_spec_matches_contract": true,
+    "oracle_ten_true": true,
+    "oracle_log_hash": true,
+    "cleanup_no_resources": true,
+    "event_evidence_fresh": false,
+    "coverage_verified": true,
+    "command_log_hashes": true,
+    "two_actual_apply_commands": true,
+    "two_rpc_suites": true,
+    "two_cleanups": true,
+    "runtime_final_assertion": true,
+    "versioning_commit_exists": true,
+    "release_open": true,
+    "historical_review_content_retained": true
+  },
+  "all_boolean_checks_pass": false,
+  "apply_commands": [
+    "COMMAND python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py apply /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795",
+    "COMMAND python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py apply /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795"
+  ],
+  "rpc_scenario_pass_lines": 26,
+  "versioning_commit": "fcf06f4726b9df21343af01a6e0694470ffec5f5",
+  "command_count": 53,
+  "delegation": {
+    "source": "orchestrator native collaboration observations; not inferred from flow owner names",
+    "three_reported_contexts": [
+      "/root/workflow_codex/qa_diff",
+      "/root/workflow_codex/qa_runtime",
+      "/root/workflow_codex/reception"
+    ],
+    "direct_list_agents_confirmation_now": [
+      "/root/workflow_codex",
+      "/root/workflow_codex/reception"
+    ],
+    "historical_qa_contexts_not_in_current_live_list": true,
+    "root_observation_transcription": "codex-N03/collaboration-observations.json",
+    "root_observation_sha256": "9b788f21a5696bff97e0d8a6f809eceac9a5579e4bf3bb5d629e841a98cf27b4",
+    "native_contexts_observed": [
+      "/root/workflow_codex/qa_diff",
+      "/root/workflow_codex/qa_runtime",
+      "/root/workflow_codex/reception"
+    ],
+    "not_native_cli_event_export": true
+  },
+  "limits": [
+    "No Odoo/DB rerun; read-only verification of retained artifacts",
+    "Two applications on already-configured copy, no fresh import creation demonstrated",
+    "A5 journal completion verified at terminal state, not solely prepass coverage"
+  ],
+  "historical_evidence_exception": {
+    "node": "functional_review",
+    "original_path": "/work/.odoo-agents/revue_en_cours.md",
+    "original_path_exists": false,
+    "relocated_path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+    "relocated_same_sha256": true
+  }
+}

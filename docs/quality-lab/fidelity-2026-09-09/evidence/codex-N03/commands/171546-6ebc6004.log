@@ -1,0 +1,139 @@
+▶ functional_review · AGENT · odoo-analyst
+  Démarré par codex-odoo-analyst
+  Produire la revue fonctionnelle contradictoire et choisir la voie.
+{
+  "version": {
+    "server_version": "19.0+e-20260817",
+    "server_version_info": [
+      19,
+      0,
+      0,
+      "final",
+      0,
+      "e"
+    ],
+    "server_serie": "19.0",
+    "protocol_version": 1
+  },
+  "fields": [
+    {
+      "id": 3731,
+      "name": "create_date",
+      "ttype": "datetime",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "base",
+      "field_description": "Created on"
+    },
+    {
+      "id": 3730,
+      "name": "create_uid",
+      "ttype": "many2one",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "base",
+      "field_description": "Created by"
+    },
+    {
+      "id": 3729,
+      "name": "display_name",
+      "ttype": "char",
+      "store": false,
+      "compute": false,
+      "depends": false,
+      "state": "base",
+      "field_description": "Display Name"
+    },
+    {
+      "id": 3728,
+      "name": "id",
+      "ttype": "integer",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "base",
+      "field_description": "ID"
+    },
+    {
+      "id": 3733,
+      "name": "write_date",
+      "ttype": "datetime",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "base",
+      "field_description": "Last Updated on"
+    },
+    {
+      "id": 3732,
+      "name": "write_uid",
+      "ttype": "many2one",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "base",
+      "field_description": "Last Updated by"
+    },
+    {
+      "id": 3734,
+      "name": "x_name",
+      "ttype": "char",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "manual",
+      "field_description": "x_name"
+    },
+    {
+      "id": 3736,
+      "name": "x_studio_days",
+      "ttype": "integer",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "manual",
+      "field_description": "x_studio_days"
+    },
+    {
+      "id": 3738,
+      "name": "x_studio_kind",
+      "ttype": "selection",
+      "store": true,
+      "compute": false,
+      "depends": false,
+      "state": "manual",
+      "field_description": "x_studio_kind"
+    }
+  ],
+  "count": 0,
+  "records": []
+}
+47:def make_compute(text, deps):
+48:    """ Return a compute function from its code body and dependencies. """
+52:    return api.depends(*deps)(func)
+57:    # protect all modified fields, to avoid them being recomputed
+226:    inherited_model_ids = fields.Many2many('ir.model', compute='_inherited_models', string="Inherited models",
+233:    modules = fields.Char(compute='_in_modules', string='In Apps', help='List of modules in which the object is defined or inherited')
+234:    view_ids = fields.One2many('ir.ui.view', compute='_view_ids', string='Views')
+235:    count = fields.Integer(compute='_compute_count', string="Count (Incl. Archived)",
+240:    @api.depends()
+248:    @api.depends()
+257:    @api.depends()
+262:    @api.depends()
+263:    def _compute_count(self):
+521:    relation_field_id = fields.Many2one('ir.model.fields', compute='_compute_relation_field_id',
+529:                            compute='_compute_selection', inverse='_inverse_selection')
+533:                            compute='_compute_copied', store=True, readonly=False,
+536:    related_field_id = fields.Many2one('ir.model.fields', compute='_compute_related_field_id',
+562:    modules = fields.Char(compute='_in_modules', string='In Apps', help='List of modules in which the field is defined')
+566:    compute = fields.Text(help="Code to compute the value of the field.\n"
+571:    depends = fields.Char(string='Dependencies', help="Dependencies of compute method; "
+14:    _name = 'studio.mixin'
+20:        if self.env.context.get('studio') and not self.env.context.get('install_mode'):
+22:                ob.create_studio_model_data(ob.display_name)
+28:        if self.env.context.get('studio') and not self.env.context.get('install_mode'):
+30:                record.create_studio_model_data(record.display_name)
+19.0
+19.0-enterprise

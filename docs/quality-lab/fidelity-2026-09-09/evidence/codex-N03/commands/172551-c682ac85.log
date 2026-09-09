@@ -1,0 +1,109 @@
+# QA indépendante — Studio runtime — 2026-09-09
+
+**Module** : aucun, configuration du modèle manuel x_lab_request. **Série** : 19.0, confirmée indépendamment par RPC (19.0+e-20260817). **Mode** : graph-lane-studio-runtime, QA de tâche sur copie locale lab_client.
+
+**Verdict de voie : VALIDÉ.** Deux applications réelles du pack et 26 exécutions de scénarios réussies ; aucune anomalie dans le périmètre confié. Preuve brute : studio_runtime.log. Lanceur reproductible isolé : studio_runtime_check.py.
+
+## Sources du contrat
+
+Lecture de demande-originale.md, decisions/2026-09-08.md (D-22) et changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md avant exécution. D-22 impose days >= 7 ET kind = rental ; loan exclu. Les attendus des scénarios ont été confrontés à cette formule, sans les dériver du calcul exécuté.
+
+## Commandes et résultats réels
+
+Toutes les commandes sont passées par le wrapper hôte codex_control.py, dans /work. Le lanceur appelle le véritable ~/.odoo19-agents/scripts/odoo_pack.py et les scénarios livrés, sans modification.
+
+Pour chacun des deux passages :
+1. Snapshot RPC des 10 champs de x_lab_request, leurs IDs et métadonnées (dont write_date), des 6 XML-ID studio_customization et des IDs métier.
+2. python3 ~/.odoo19-agents/scripts/odoo_pack.py diff /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795
+3. Même commande avec apply : application réelle, sans dry-run.
+4. Snapshot après application, égalité complète vérifiée avec le précédent.
+5. python3 /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py
+6. Snapshot après nettoyage, égalité vérifiée.
+
+Un troisième diff final a également été exécuté.
+
+| Contrôle | Résultat |
+| --- | --- |
+| Diff préalable application 1 | 0 à créer / 0 à modifier / 1 inchangé |
+| Application réelle 1 | 0 créé / 0 modifié / 1 inchangé |
+| Scénarios après application 1 | 13/13, valeurs relues côté serveur |
+| Diff préalable application 2 | 0 à créer / 0 à modifier / 1 inchangé |
+| Application réelle 2 | 0 créé / 0 modifié / 1 inchangé |
+| Scénarios après application 2 | 13/13, valeurs relues côté serveur |
+| Diff final | Nul : 0 / 0 / 1 |
+| Champs avant/après chaque application | 10, mêmes IDs et métadonnées, aucun doublon |
+| XML-ID Studio avant/après chaque application | 6, mêmes IDs, modèles et res_id, aucun doublon |
+| Nettoyage après chaque suite | 0 demande restante ; IDs métier avant/après = [] |
+| Pack | Un seul enregistrement, aucune chaîne unresolved |
+
+Le champ indicateur reste ID 3740, type boolean, state manual, store=True, compute conforme D-22, depends exactement x_studio_days,x_studio_kind. Son XML-ID reste ID 26987, res_id 3740. Les champs initiaux restent x_name=3734, x_studio_days=3736, x_studio_kind=3738, avec leurs XML-ID initiaux et write_date inchangés.
+
+## Couverture métier
+
+A1 : métadonnées, dépendances et unicité relues ; champs existants stables pendant les applications.
+A2 : chaque suite vérifie rental à 0, 5, 6 => faux, 7 et 12 => vrai ; loan à 6, 7, 12 => faux. Cinq écritures successives vérifient le recalcul par modification indépendante de la durée ou de la nature, dans les deux sens.
+A3 : deux vrais apply, deux suites vertes et nettoyées, trois diffs nuls, absence de doublon et de référence unresolved.
+A4 : toutes les opérations exécutées sur la copie locale ; aucun écran demandé donc aucun navigateur.
+A5 : hors périmètre de cette voie ; consolidation et mémoire réservées à l'orchestrateur.
+
+## Portée et limites
+
+La copie contenait déjà le champ issu du build : ces deux applications prouvent sa réapplication idempotente, pas une création par import sur une copie fraîche. Aucune restauration fraîche n'a été demandée pour cette voie. Le rouge préalable du build et le versionnement ne sont pas réattestés par cette exécution. Les instantanés établissent la stabilité des valeurs et write_date collectés ; ils ne constituent pas un audit SQL de toutes les écritures du serveur. Droits, envois et vues ne font pas l'objet d'un audit global dans cette voie runtime ; la revue statique et la jointure les couvrent. Aucun déploiement effectué.
+
+START 2026-09-09T15:22:36.853693+00:00
+VERSION {'server_version': '19.0+e-20260817', 'server_version_info': [19, 0, 0, 'final', 0, 'e'], 'server_serie': '19.0', 'protocol_version': 1}
+COMMAND python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py diff /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795
+Comparaison de /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json avec http://127.0.0.1:52795 / lab_client (aucune écriture) :
+0 / 0 / 1 à créer / à modifier / inchangés sur http://127.0.0.1:52795 / lab_client
+
+COMMAND python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py apply /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795
+Application de /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json sur http://127.0.0.1:52795 / lab_client :
+0 / 0 / 1 créés / modifiés / inchangés sur http://127.0.0.1:52795 / lab_client
+
+COMMAND python3 /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py
+PASS create rental 0: False
+PASS create rental 5: False
+PASS create rental 6: False
+PASS create rental 7: True
+PASS create rental 12: True
+PASS create loan 6: False
+PASS create loan 7: False
+PASS create loan 12: False
+PASS update {'x_studio_days': 7}: True
+PASS update {'x_studio_kind': 'loan'}: False
+PASS update {'x_studio_days': 12}: False
+PASS update {'x_studio_kind': 'rental'}: True
+PASS update {'x_studio_days': 6}: False
+CLEANUP 0
+PASS 13 scénarios ; valeur serveur relue
+
+COMMAND python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py diff /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795
+Comparaison de /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json avec http://127.0.0.1:52795 / lab_client (aucune écriture) :
+0 / 0 / 1 à créer / à modifier / inchangés sur http://127.0.0.1:52795 / lab_client
+
+COMMAND python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py apply /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795
+Application de /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json sur http://127.0.0.1:52795 / lab_client :
+0 / 0 / 1 créés / modifiés / inchangés sur http://127.0.0.1:52795 / lab_client
+
+COMMAND python3 /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py
+PASS create rental 0: False
+PASS create rental 5: False
+PASS create rental 6: False
+PASS create rental 7: True
+PASS create rental 12: True
+PASS create loan 6: False
+PASS create loan 7: False
+PASS create loan 12: False
+PASS update {'x_studio_days': 7}: True
+PASS update {'x_studio_kind': 'loan'}: False
+PASS update {'x_studio_days': 12}: False
+PASS update {'x_studio_kind': 'rental'}: True
+PASS update {'x_studio_days': 6}: False
+CLEANUP 0
+PASS 13 scénarios ; valeur serveur relue
+
+COMMAND python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py diff /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795
+Comparaison de /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json avec http://127.0.0.1:52795 / lab_client (aucune écriture) :
+0 / 0 / 1 à créer / à modifier / inchangés sur http://127.0.0.1:52795 / lab_client
+
+PASS independent runtime: 2 real applications, 3 null diffs, 26 scenarios, stable fields/XML-IDs/write_dates, cleanup

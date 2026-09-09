@@ -1,0 +1,13 @@
+# Journal de campagne — 9 septembre 2026
+- Demande : poursuivre la fidélité demande → critères → preuves → mémoire en autonomie.
+- Référence 58d3e5d ; protocole, cinq dossiers et grille figés avant essais.
+- Neuf appels Claude : un achevé, huit incidents quota ; 7,46691775 USD déclarés.
+- Amendement explicite : cinq contextes Codex neufs et parcours N03 séparé.
+- Dossiers reçus selon grille, positif accepté, cas inédit détecté ; réserve F01 conservée.
+- N03 : trois enfants réels, deux apply, 13 scénarios RPC ×2, oracle10/10, nettoyage.
+- Mémoire proposée reçue en contexte neuf puis publiée exactement ; flow complet.
+- Ancien chemin de revue déplacé : trace historique partielle, SHA identique retrouvé.
+- Garde corrigé pour transfert owner et mauvaise spec ; plans exclus pour reprise post-pass absente.
+- Adopté : profils sources et garde borné aux tâches directes ; 176 tests, build/parité et lint verts.
+- Appris : une preuve d'intégrité ne remplace ni le jugement sémantique ni l'observation des vrais agents.
+- Ouvert : concurrence post-pass/plans, chemins historiques, clarification F01, paire Claude achevée.

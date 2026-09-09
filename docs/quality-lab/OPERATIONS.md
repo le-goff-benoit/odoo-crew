@@ -243,3 +243,28 @@ conservant les réponses originales et leur réévaluation séparée. La
 [qualification du 9 septembre](qualification-2026-09-09/README.md) documente les
 incidents et les dimensions réellement testées. Ces témoins étalonnent le banc,
 pas la capacité d'un LLM à concevoir tous les contrôles concernés.
+
+## Réception de fidélité et incidents fournisseur
+
+`benchmarks/fidelity/` contient cinq dossiers figés, leur matérialiseur et une
+grille indépendante avec citations exactes. Transmettre seulement `project/` et
+`prompt.txt` au relecteur, jamais l'oracle ni les résultats précédents. Les
+archives demeurent immuables ; comparer leurs empreintes après réception. Le
+vérificateur contrôle les pièces et citations, pas la justesse sémantique d'une
+note. Une réception documentaire ne relance pas Odoo et ne remplace pas un
+parcours intégré avec publication de la mémoire.
+
+La [campagne de fidélité](fidelity-2026-09-09/README.md) conserve son protocole
+Claude initial et l'amendement Codex distinct après épuisement du quota de
+session. Les appels refusés avant génération restent des incidents fournisseur,
+pas des échecs métier ; un oracle rouge sur une base non traitée ne les requalifie
+pas. Un rapport produit avant interruption peut être étudié comme artefact, sans
+déclarer l'appel terminé. Un changement de fournisseur, de transport ou de
+délégation ouvre une série distincte, sans comparaison causale à réglages constants.
+
+Le champ `actual_model` peut être remplacé par `<synthetic>` dans le message de
+quota du fournisseur, et `provider_error` conserver la chaîne trompeuse `success`.
+Dans cette campagne, les états bruts sont préservés et les événements de génération
+et d'erreur sont classés séparément. Le code de sortie, l'absence de terminaison
+métier et le message de quota font foi pour l'incident ; aucun coût manquant ne
+devient zéro par déduction.

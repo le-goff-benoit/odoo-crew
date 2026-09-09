@@ -1,0 +1,68 @@
+{
+  "case": "F04",
+  "response_path": "project/reception.md",
+  "response_sha256": "e750eb0b73710323830345eef467abf42299ef60a90420cd869a08642910c3f0",
+  "oracle_sha256": "1ccf4723c99b14d98b412baa9efab1ed633502c8aa2d75b26555fa3d7a8f605a",
+  "method": "Manual independent semantic adjudication by fidelity_cases against frozen rubric; model/variant visible, not blind. Exact quotations and unchanged inputs checked mechanically. No CLI/DB calls.",
+  "decisions": [
+    {
+      "check_id": "F04-positive",
+      "verdict": "pass",
+      "response_quotes": [
+        "**Verdict : VALIDÉ dans le périmètre documentaire demandé.**"
+      ],
+      "reason": "Accepte le vrai positif ; cite toutes les cellules et la somme12 et décrit le contrôle local CSV. L'artefact fourni a été vérifié indépendamment avant gel.",
+      "source_anchors": [
+        {
+          "path": "demande.md",
+          "line": 5,
+          "quote": "La demande porte sur le fichier remis et sa relecture locale, pas sur l'exécution d'un export Odoo.",
+          "sha256": "34dc73e3235d53669c92cf39ddf2f7aab02a4f02bce0d0209e9e65aada684bae"
+        },
+        {
+          "path": "changelog/2026-09-09_01_colis/pieces/colis.csv",
+          "line": 2,
+          "quote": "401,\"Boîte, bleue\",2",
+          "sha256": "87fe62cf41d8ec955dfe097d883cfdfb8ce8423339b58faf3bd8c9ce6854a0b2"
+        }
+      ]
+    },
+    {
+      "check_id": "F04-scope",
+      "verdict": "pass",
+      "response_quotes": [
+        "Aucune correction du CSV, du contrat ou de la mémoire n'est requise."
+      ],
+      "reason": "Respecte absence d'Odoo/PDF/navigateur demandée et aucune gratuité du transport ; mémoire déjà fidèle acceptée.",
+      "source_anchors": [
+        {
+          "path": "demande.md",
+          "line": 5,
+          "quote": "aucune gratuité du transport n'est décidée.",
+          "sha256": "34dc73e3235d53669c92cf39ddf2f7aab02a4f02bce0d0209e9e65aada684bae"
+        },
+        {
+          "path": ".odoo-agents/PROJECT.md",
+          "line": 3,
+          "quote": "Aucun tarif ni frais de transport n'a été décidé ou modifié.",
+          "sha256": "378d6c6cc54891efbc33503f70bae06c71ab28ee92b760b21b87a6d638b91f1d"
+        }
+      ]
+    }
+  ],
+  "scope": "F01 passes the pre-frozen ambiguity branch conditionally; no unconditional qualification of pack import. Other cases satisfy their frozen critical checks.",
+  "common_controls": {
+    "source_files": 8,
+    "changed_inputs": [],
+    "archives_immutable": true,
+    "new_files": [
+      "reception.md"
+    ],
+    "new_odoo_execution_claimed": false,
+    "historical_flow_reopened": false
+  },
+  "additional_notes": [
+    "Aucun faux blocage observé sur le positif : pas d'exigence ajoutée d'installation, navigateur, PDF ou preuve serveur."
+  ],
+  "comparison_limit": "Codex new-context documentary assessment after explicit protocol amendment. No paired Claude causal improvement or complete-workflow autonomy inferred."
+}

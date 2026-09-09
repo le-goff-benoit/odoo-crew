@@ -1,0 +1,30 @@
+{
+  "file_sha256": {
+    "scripts/odoo_flow.py": "344739da7f3cda30d8680b791ce31b545a05847e6ceb96228c36481042410fea",
+    "scripts/odoo_reception.py": "d3958ac2622580a28326617928f39a3cff36c1a95fb3cd20775dcd98e4b7ff09",
+    "tests/test_odoo_reception.py": "8c2be0fb1c2e30d25c97f1d8026ad2960737872daa09a4631b42e3d2d2f296b1"
+  },
+  "owner_self": {
+    "refused": "réception de tâche refusée : réception indépendante requise : reviewer identique au propriétaire actuel de complétion",
+    "state_unchanged": true,
+    "registry_unchanged": true
+  },
+  "owner_distinct": {
+    "outcome": "pass"
+  },
+  "spec_bind_first": {
+    "refused": "préparation de réception refusée : spécification de réception différente du contrat QA lié",
+    "state_unchanged": true,
+    "registry_unchanged": true
+  },
+  "spec_prepare_first": {
+    "refused": "réception de tâche refusée : spécification de réception différente du contrat QA lié",
+    "state_unchanged": true,
+    "registry_unchanged": true
+  },
+  "plan_refused": {
+    "refused": "garde expérimental indisponible pour les tâches planifiées ; réception documentaire sans garde permise",
+    "state_unchanged": true,
+    "registry_unchanged": true
+  }
+}

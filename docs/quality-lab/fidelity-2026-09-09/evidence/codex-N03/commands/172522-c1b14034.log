@@ -1,0 +1,277 @@
+# Réception de la fidélité d’une tâche
+
+Le garde optionnel relie une demande originale et ses décisions, la spécification,
+les preuves et **deux fichiers de mémoire proposés**. Il contrôle leur intégrité,
+l’existence des citations et une déclaration positive de réception indépendante.
+Il ne juge pas le sens des textes, ne prouve pas l’identité du relecteur et ne
+remplace ni la couverture des critères ni la QA technique. Son périmètre est
+coopératif ; l’édition directe du flow n’est pas une frontière de sécurité.
+
+## Périmètre expérimental
+
+`prepare-reception` refuse explicitement les flows portant `plan_task`, issus de
+l’exécution d’un plan de release. Une modification concurrente de mémoire après
+le pass pourrait sinon bloquer définitivement leur publication et la suite du
+plan, sans transition de reprise appropriée dans le graphe actuel. Ces tâches
+peuvent recevoir la même **réception documentaire indépendante sans activer ce
+garde**. Aucun nœud, mécanisme d’annulation ni comportement de plan n’est modifié.
+Le garde reste limité aux tâches autonomes avec sources disponibles ; cette
+campagne ne qualifie pas son emploi dans les plans de release.
+
+## Préparer avant la réception QA
+
+L’orchestrateur rédige des fichiers neufs contenant le **contenu complet futur**
+de `.odoo-agents/PROJECT.md` et `.odoo-agents/JOURNAL.md`, en conservant les éléments
+antérieurs pertinents. Il conserve les cibles actuelles jusqu’au `pass` de la
+jointure. Même sans changement de PROJECT, fournir une copie identique et en
+motiver l’absence de modification lors de la réception.
+
+```bash
+python3 ~/.odoo19-agents/scripts/odoo_flow.py prepare-reception FLOW.json \
+  --source changelog/RELEASE/demande.md \
+  --source decisions/decision.md \
+  --spec changelog/RELEASE/revue_fonctionnelle.md \
+  --evidence changelog/RELEASE/qa-runtime.md \
+  --evidence changelog/RELEASE/coverage.json \
+  --memory .odoo-agents/PROJECT.md=changelog/RELEASE/reception/PROJECT-propose.md \
+  --memory .odoo-agents/JOURNAL.md=changelog/RELEASE/reception/JOURNAL-propose.md \
+  --scope mon_module \
+  --output changelog/RELEASE/reception/bundle-1.json \
+  --owner codex-orchestrateur
+```
+
+Les chemins de cette commande sont relatifs au **projet du flow** ou absolus
+à l’intérieur de celui-ci. Les sources, la spec, les preuves et les drafts doivent
+être des fichiers non vides. La sortie est neuve et distincte des cibles mémoire ;
+les deux drafts sont distincts des sources, des cibles et l’un de l’autre. Les
+cibles canoniques ne peuvent pas être des liens redirigeant ailleurs. Le périmètre
+de code est facultatif, mais doit être indiqué quand du code est contrôlé ; il
+exclut les documents et les sorties du dossier.
+
+La préparation se fait sous verrou du flow, actif et sans revendication d’un
+autre propriétaire, avant tout `pass` d’une des trois jointures QA de tâche.
+Le dossier `odoo-task-reception-bundle/1` contient les chemins relatifs et hashes
+SHA-256 des groupes `source`, `spec`, `evidence`, les deux couples cible/draft avec
+le hash antérieur de la cible (`null` si absente), et l’empreinte du code. Le flow
+épingle le chemin et le hash du dossier dans `task_reception`.
+
+Si un contrat QA est lié, le chemin et le hash de la spécification du dossier
+doivent être exactement ceux de ce contrat. Ce lien est vérifié à la préparation
+et de nouveau à la réception, y compris si `bind-criteria` est intervenu après
+la préparation.
+
+Une correction permet une nouvelle préparation dans **un autre fichier** avant
+le pass. Le flow conserve les anciens pointeurs dans `task_reception_history` et
+les dossiers précédents restent sur disque. Cette opération ne remplace pas le
+contrat QA lié par `bind-criteria` : une spécification révisée exige toujours le
+traitement explicite de ce contrat.
+
+## Fragment du relecteur
+
+Un contexte indépendant confronte les trois axes ; le relecteur écrit uniquement
+son fragment, sans modifier le dossier. Pour obtenir un squelette JSON :
+
+```bash
+python3 ~/.odoo19-agents/scripts/odoo_reception.py draft /chemin/projet/changelog/RELEASE/reception/bundle-1.json \
+  --reviewer codex-tester-reception > /chemin/projet/changelog/RELEASE/reception/review-1.json
+```
+
+Le squelette est volontairement `blocked`, avec trois axes `fail` non renseignés.
+Structure à compléter :
+
+```json
+{
+  "format": "odoo-task-reception/1",
+  "bundle_sha256": "SHA256_DU_FICHIER_BUNDLE",
+  "reviewer": "codex-tester-reception",
+  "mode": "independent",
+  "verdict": "pass",
+  "checks": {
+    "request_contract": {
+      "status": "pass",
+      "citations": [
+        {"path": "demande.md", "quote": "Passage exact de la demande."},
+        {"path": "revue.md", "quote": "Passage exact de la revue."}
+      ],
+      "explanation": "Constat de correspondance dans les deux sens."
+    },
+    "contract_evidence": {
+      "status": "pass",
+      "citations": [
+        {"path": "revue.md", "quote": "Passage exact du critère."},
+        {"path": "runtime.log", "quote": "Passage exact de la preuve."}
+      ],
+      "explanation": "Ce passage démontre les conditions du critère."
+    },
+    "source_memory": {
+      "status": "pass",
+      "citations": [
+        {"path": "demande.md", "quote": "Passage exact de la décision métier."},
+        {"path": "PROJECT-propose.md", "quote": "Phrase proposée dans la mémoire."},
+        {"path": "JOURNAL-propose.md", "quote": "Constat proposé dans le journal."}
+      ],
+      "explanation": "Portée et exceptions conservées ; modifications de mémoire confrontées aux sources."
+    }
+  }
+}
+```
+
+Les chemins des citations reprennent exactement les chemins relatifs du bundle.
+Les citations sont des sous-chaînes exactes, non vides, des fichiers gelés.
+Chaque axe doit citer au moins un fichier de chacun des deux groupes confrontés :
+source/spec, spec/evidence, source/draft. Le relecteur doit couvrir **toutes les
+obligations et modifications pertinentes** : ce minimum mécanique de deux
+groupes ne démontre pas l’exhaustivité sémantique. Une explication non vide est
+requise ; son exactitude demeure une responsabilité de la relecture.
+
+Les trois clés d’axes sont obligatoires exactement. Les statuts sont `pass|fail`,
+le verdict `pass|revise|blocked` et le mode `independent|self`. Seuls trois axes
+`pass`, un verdict `pass`, le mode `independent` et un reviewer déclaré différent
+de l’owner de préparation **et du propriétaire actuel de complétion** peuvent
+autoriser la jointure. `self` documente une auto-relecture,
+mais **n’autorise pas** le pass d’un flow avec ce garde. Changer seulement de nom
+ne démontre pas une délégation réelle : conserver séparément la trace native du
+sous-agent quand cette propriété est mesurée.
+
+## Réception puis publication
+
+Fournir le fragment à `complete ... --outcome pass --evidence review-1.json`, avec
+la couverture et le rapport QA si ces contrôles sont activés. Les trois jointures
+concernées sont `module_task_gate`, `module_high_gate`, `studio_task_gate`. La
+réception est reconnue par son contenu, quelle que soit l’extension du fichier ;
+une seule réception doit être fournie. Le garde contrôle l’intégrité des sources,
+preuves, drafts, code et cibles mémoire encore inchangées. Il vérifie aussi la
+fraîcheur des preuves structurées d’exécution et des références d’une couverture
+imbriquée. Il ne transforme pas un log libre en preuve de code contrôlé.
+
+Une complétion réussie enregistre `accepted_reception` avec chemin et hash du
+fragment. Un refus ne consomme ni claim, ni verrou, ni jeton. `retry` et `blocked`
+restent accessibles avec un constat même si le dossier est périmé ; le nœud
+`journal_task_blocked` permet de consigner cet échec.
+
+Au nœud `journal_task`, l’orchestrateur, propriétaire du verrou mémoire, publie
+les **octets exacts** des deux drafts approuvés, puis termine avec `done`. La
+publication n’est pas automatisée par ce garde. Après la revendication de
+`journal_task`, vérifier les bases et la fraîcheur en lecture seule, puis garder
+le verrou mémoire pendant la copie :
+
+```bash
+python3 ~/.odoo19-agents/scripts/odoo_reception.py check-bases /chemin/projet/changelog/RELEASE/reception/bundle-1.json
+```
+
+Un code de sortie non nul interdit de poursuivre la copie. Ce contrôle relit les
+hashes antérieurs des cibles et les fichiers référencés par le bundle fourni ;
+le lien au hash épinglé par le flow reste vérifié à `complete`.
+Les hashes antérieurs doivent encore correspondre : une tâche concurrente peut avoir écrit entre la
+réception QA et la prise du verrou mémoire. Ne pas écraser ce travail ; préparer
+une nouvelle réception dans un nouveau flow si le premier a déjà passé sa QA.
+À `done`, le garde revalide le fragment, le dossier, ses sources et le code, puis
+exige l’identité des cibles publiées avec les drafts approuvés.
+
+Le hash porte sur **tout** PROJECT/JOURNAL. Cela peut imposer une nouvelle
+réception après une modification concurrente sans rapport avec la tâche. Cette
+limite est conservatrice et explicite ; ce garde ne réalise pas une fusion de
+régions ni une comparaison métier. Les flows historiques sans `task_reception`,
+les parcours sans jointure QA et le graphe existant restent inchangés.
+{
+  "format": "odoo-task-reception-bundle/1",
+  "project": "/work",
+  "owner": "codex-orchestrateur",
+  "groups": {
+    "source": [
+      {
+        "path": "demande-originale.md",
+        "sha256": "24d789353edb5886464f4aa4867c991a3f58f56383e70fffca6e782fad95dc7f"
+      },
+      {
+        "path": "decisions/2026-09-08.md",
+        "sha256": "a3f3586292c3e2e7c6fb6e3257f2871c3fb9c4695cb149996eb84e9bc219c2cf"
+      }
+    ],
+    "spec": [
+      {
+        "path": "changelog/2026-09-09_01_revue-des-locations-d-22/revue_fonctionnelle.md",
+        "sha256": "81529f30669e23ec521c00ed791d44fefbc25439fe5c2ccfc26b27bfb6308f06"
+      }
+    ],
+    "evidence": [
+      {
+        "path": "changelog/2026-09-09_01_revue-des-locations-d-22/coverage.json",
+        "sha256": "3c4472575a01e9727a257a7fbd924963032ea3c46786ef06e5a4c1454ee9e0bf"
+      },
+      {
+        "path": "changelog/2026-09-09_01_revue-des-locations-d-22/qa.md",
+        "sha256": "b8feaf3232ab6fb613f951326200ead948df9bd2e4d7a7be2b321ba2b1fe14f6"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.md",
+        "sha256": "c9a4c0605e5ec11c675fba2dc548980a9c7eb4fbdde301b6c1b1f41380aa99d6"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/studio_diff.log",
+        "sha256": "a43d6999a04484a20e2cca176f2e3aa156ca1c72fc33137064c7f2b03e803268"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.md",
+        "sha256": "6ec55a6f3d60b7d2a2ca18037fb51e435651efc09124d985f0431ec9d3186dd7"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/studio_runtime.log",
+        "sha256": "1e27a48083572f9c6bc7e4d829d0ccded5ebd63f274a6e6d72b059c1d98bf920"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/implementation.md",
+        "sha256": "b627e137b06981ed9bbaafd3e1e6cdab6eb90b9bca549c7bb76364f58a1edd59"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/versioning.log",
+        "sha256": "082f35a7e6b2a00ffe82877dabfe9b28532de4bfb9dbd76217c48fbab99a77d8"
+      },
+      {
+        "path": ".odoo-agents/flow-artifacts/needs-review/lifecycle.md",
+        "sha256": "cb3caa505e92a55151a0c7395a925e37072865f9907307713c4fc7cd0d4285e4"
+      },
+      {
+        "path": "changelog/2026-09-09_01_revue-des-locations-d-22/studio/red-before.log",
+        "sha256": "11f9cd0e806b1a4209f788c84df4b1dc5d47054d0fbf41282b31a520556c3465"
+      }
+    ]
+  },
+  "memory": [
+    {
+      "target": ".odoo-agents/PROJECT.md",
+      "before_sha256": "75e69609c6b01a908b66efcac397370544709d28ed5a29d3a9ba9559addb9dee",
+      "draft": {
+        "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/PROJECT-propose.md",
+        "sha256": "f8c44f66a70a6e20aac1d42499c9d2927176350da58788f8df132ad8f6298664"
+      }
+    },
+    {
+      "target": ".odoo-agents/JOURNAL.md",
+      "before_sha256": "7b1f07157126aed21f02ecd5a6321e3f8c0b3cdf31456846aa70431503e9625b",
+      "draft": {
+        "path": "changelog/2026-09-09_01_revue-des-locations-d-22/reception/JOURNAL-propose.md",
+        "sha256": "efff3d3382ce941624a31ce521604b3beb78e45eb16af2b1227dccdbaa96d7d4"
+      }
+    }
+  ],
+  "scopes": [
+    "/work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/build_review.py",
+    "/work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py",
+    "/work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json"
+  ],
+  "code": {
+    "changelog/2026-09-09_01_revue-des-locations-d-22/studio/build_review.py": {
+      "sha256": "717f0f20d53fe87c09cbbe5fdbed1fed036403e7c77d3377237f7ecd1c6bbc39",
+      "mode": 436
+    },
+    "changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py": {
+      "sha256": "c670a712add2831183f5ffac3cd49a0c8336ca3b272136bb0add37386054f06a",
+      "mode": 436
+    },
+    "changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json": {
+      "sha256": "6507bfae09677745a3e6d549a96e36cffb57f0f7a4767d0c4a386917909b49a8",
+      "mode": 436
+    }
+  }
+}

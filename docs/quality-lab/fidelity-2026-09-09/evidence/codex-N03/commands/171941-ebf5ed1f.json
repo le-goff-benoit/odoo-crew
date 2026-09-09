@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "find /work/.odoo-agents/flow-artifacts /work/changelog/2026-09-09_01_revue-des-locations-d-22 -maxdepth 3 -type f; python3 ~/.odoo19-agents/scripts/odoo_pack.py diff /work/changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json --db lab_client --url http://127.0.0.1:52795 > /work/.odoo-agents/flow-artifacts/needs-review/studio_diff.log 2>&1; cat /work/.odoo-agents/flow-artifacts/needs-review/studio_diff.log"
+  ],
+  "exit_code": 0,
+  "seconds": 0.47,
+  "log": "171941-ebf5ed1f.log",
+  "sha256": "e91f077fd4f183170c8d765a8d7929b09fe7d7431c6fff674d42d14ed99c3a5a"
+}

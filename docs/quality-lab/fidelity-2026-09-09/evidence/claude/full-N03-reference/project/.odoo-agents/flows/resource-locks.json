@@ -1,0 +1,26 @@
+{
+  "claims": [
+    {
+      "at": "2026-09-09T15:05:00+00:00",
+      "locks": [
+        {
+          "mode": "read",
+          "resource": "client_copy"
+        },
+        {
+          "mode": "read",
+          "resource": "studio_pack"
+        },
+        {
+          "mode": "write",
+          "resource": "flow_artifact:indicateur-revue:studio_diff"
+        }
+      ],
+      "node": "studio_diff_qa",
+      "owner": "claude-odoo-tester-diff",
+      "state": "/work/.odoo-agents/flows/indicateur-revue.json"
+    }
+  ],
+  "schema_version": 1,
+  "updated_at": "2026-09-09T15:05:00+00:00"
+}

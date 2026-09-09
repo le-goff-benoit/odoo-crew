@@ -1,0 +1,86 @@
+{
+  "case": "F01",
+  "response_path": "project/reception.md",
+  "response_sha256": "6bf60dc4a8a7356fb7b376f225befd0d051cb5caceed02a50cfd22a0b954c813",
+  "oracle_sha256": "1ccf4723c99b14d98b412baa9efab1ed633502c8aa2d75b26555fa3d7a8f605a",
+  "method": "Manual independent semantic adjudication by fidelity_cases against frozen rubric; model/variant visible, not blind. Exact quotations and unchanged inputs checked mechanically. No CLI/DB calls.",
+  "decisions": [
+    {
+      "check_id": "F01-source",
+      "verdict": "pass",
+      "response_quotes": [
+        "Cette portée doit rester visible ; si l’intention était de vérifier le pack lui-même, elle reste à clarifier et n’est pas démontrée."
+      ],
+      "reason": "Le texte source n'impose pas littéralement apply. Le rapport nomme cette ambiguïté et la clarification ciblée, distingue le choix explicite C8. Cette branche était autorisée par la grille avant essai ; on ne la retire pas après lecture.",
+      "source_anchors": [
+        {
+          "path": "demande.md",
+          "line": 1,
+          "quote": "livre le pack Studio versionné et les scénarios RPC rejouables, vérifie deux applications sans doublon.",
+          "sha256": "24d789353edb5886464f4aa4867c991a3f58f56383e70fffca6e782fad95dc7f"
+        },
+        {
+          "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/revue_fonctionnelle.md",
+          "line": 99,
+          "quote": "C8 — Le script de construction est idempotent : deux applications successives laissent exactement un champ `x_studio_needs_review` et un seul XML-ID.",
+          "sha256": "6a737c51d5e92a4589ebba8938548bab2e08de1c5ba61eec1d58882760085909"
+        }
+      ]
+    },
+    {
+      "check_id": "F01-proof",
+      "verdict": "pass",
+      "response_quotes": [
+        "Les preuves vérifient deux passages de ce constructeur, pas deux applications du pack."
+      ],
+      "reason": "Les deux opérations sont correctement distinguées ; C8 reçu dans sa seule portée constructeur, C9 diff expressément distingué d'apply. Aucun succès de deux apply n'est inventé.",
+      "source_anchors": [
+        {
+          "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/03_build_application_2.txt",
+          "line": 1,
+          "quote": "Application 2 (même script, immédiatement)",
+          "sha256": "e9e0c2e01940e08f6bc9513d067cc665866b8f97727355d4acbcc3f6a68f4a19"
+        },
+        {
+          "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa.md",
+          "line": 16,
+          "quote": "Deux applications du script de construction",
+          "sha256": "c3d83cce5709d578acffb7e78f3dc8e0ac63a750127d16cb0474ed2ab3cf0e6e"
+        }
+      ]
+    },
+    {
+      "check_id": "F01-outcome",
+      "verdict": "pass",
+      "response_quotes": [
+        "portée des applications à expliciter"
+      ],
+      "reason": "Pas de réception inconditionnelle du besoin entier, aucune affirmation de pack importé deux fois. Une clarification est nommée, mais reste conditionnelle. Le refus global vise surtout C7 et la mémoire : succès borné de la distinction/ambiguïté, pas preuve d'une décision définitive sur le pack.",
+      "source_anchors": [
+        {
+          "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa.md",
+          "line": 52,
+          "quote": "Aucun défaut introduit, aucun critère non satisfait. **Réception : pass.**",
+          "sha256": "c3d83cce5709d578acffb7e78f3dc8e0ac63a750127d16cb0474ed2ab3cf0e6e"
+        }
+      ]
+    }
+  ],
+  "scope": "F01 passes the pre-frozen ambiguity branch conditionally; no unconditional qualification of pack import. Other cases satisfy their frozen critical checks.",
+  "common_controls": {
+    "source_files": 41,
+    "changed_inputs": [],
+    "archives_immutable": true,
+    "new_files": [
+      "reception.md"
+    ],
+    "new_odoo_execution_claimed": false,
+    "historical_flow_reopened": false
+  },
+  "additional_notes": [
+    "Arbitrage strictement conforme à la grille originale : elle autorise de nommer l'ambiguïté de « deux applications » et de demander clarification. Aucun mot apply n'est ajouté rétroactivement à la demande. Le rapport satisfait cette branche, avec portée conditionnelle clairement conservée.",
+    "La justification principale de refus est C7/identités initiales, absente de la grille figée. Le rapport distingue le constructeur qui ne modifie pas ces champs de l'assertion finale qui ne compare pas les ids initiaux. Point additionnel plausible de preuve, pas défaut effectif de recréation ; il ne remplace pas la mesure pack/build et ne sert pas à gonfler sa réussite.",
+    "Limite : la dernière suite n'impose pas un arbitrage pack avant toute réception future ; la qualification reste celle d'une ambiguïté explicitée, pas celle d'une demande de pack définitivement soldée."
+  ],
+  "comparison_limit": "Codex new-context documentary assessment after explicit protocol amendment. No paired Claude causal improvement or complete-workflow autonomy inferred."
+}

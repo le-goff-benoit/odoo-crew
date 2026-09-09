@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "python3 ~/.odoo19-agents/scripts/odoo_flow.py claim /work/.odoo-agents/flows/needs-review.json functional_review --owner codex-odoo-analyst; python3 - <<\"PY\"\nimport xmlrpc.client,json,pathlib\nu=\"http://127.0.0.1:52795\"; db=\"lab_client\"\nc=xmlrpc.client.ServerProxy(u+\"/xmlrpc/2/common\"); uid=c.authenticate(db,\"admin\",\"admin\",{})\no=xmlrpc.client.ServerProxy(u+\"/xmlrpc/2/object\")\ndef call(m,f,a=[],kw={}): return o.execute_kw(db,uid,\"admin\",m,f,a,kw)\nr={\"version\":c.version(),\"fields\":call(\"ir.model.fields\",\"search_read\",[[[\"model\",\"=\",\"x_lab_request\"]]],{\"fields\":[\"name\",\"ttype\",\"store\",\"compute\",\"depends\",\"state\",\"field_description\"]}),\"count\":call(\"x_lab_request\",\"search_count\",[[]]),\"records\":call(\"x_lab_request\",\"search_read\",[[]],{\"fields\":[\"x_name\",\"x_studio_days\",\"x_studio_kind\"]})}\npathlib.Path(\"/work/.odoo-agents/flow-artifacts/needs-review/inventory.json\").write_text(json.dumps(r,indent=2))\nprint(json.dumps(r,indent=2))\nPY\ngrep -n \"compute\\|depends\" ~/odoo-sources/19.0/odoo/addons/base/models/ir_model.py | head -20; grep -n \"studio\" ~/odoo-sources/19.0-enterprise/web_studio/models/studio_mixin.py | head -15; ls ~/odoo-sources"
+  ],
+  "exit_code": 0,
+  "seconds": 0.69,
+  "log": "171546-6ebc6004.log",
+  "sha256": "037b4967d6198814fef9a2a55fc17ddc4f24b82d1d8ab712eb44ebac4c51f9eb"
+}

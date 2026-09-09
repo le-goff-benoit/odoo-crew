@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "git -C /work diff --cached --name-only\ngit -C /work -c user.name=\"Codex Odoo\" -c user.email=\"codex@localhost\" commit -m \"[studio] Ajouter l’indicateur de revue D-22\" -- changelog/2026-09-09_01_revue-des-locations-d-22/studio/build_review.py changelog/2026-09-09_01_revue-des-locations-d-22/studio/test_review.py changelog/2026-09-09_01_revue-des-locations-d-22/studio/created.txt changelog/2026-09-09_01_revue-des-locations-d-22/studio/pack.json\ngit -C /work log -1 --format='%h %s' > /work/.odoo-agents/flow-artifacts/needs-review/versioning.log\ngit -C /work ls-files changelog/2026-09-09_01_revue-des-locations-d-22/studio >> /work/.odoo-agents/flow-artifacts/needs-review/versioning.log\ncat /work/.odoo-agents/flow-artifacts/needs-review/versioning.log\n"
+  ],
+  "exit_code": 0,
+  "seconds": 0.03,
+  "log": "172150-f0cd8e37.log",
+  "sha256": "44ac1fc5c9f3f1925effa9bf0317bc17b057a22532e659977e6fcfed5002cdf2"
+}

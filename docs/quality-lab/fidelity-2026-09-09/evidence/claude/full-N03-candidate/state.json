@@ -1,0 +1,90 @@
+{
+  "case": "N03",
+  "provider": "claude",
+  "config": {
+    "model": "opus",
+    "effort": "medium",
+    "delegate": true
+  },
+  "status": "incident",
+  "turns": [
+    {
+      "status": "error",
+      "exit_code": 1,
+      "seconds": 1.58,
+      "usage": {
+        "tokens": {
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "output_tokens": 0,
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "",
+          "iterations": [],
+          "speed": "standard"
+        },
+        "cost_usd": 0
+      },
+      "actual_model": "<synthetic>",
+      "tool_calls": 0,
+      "provider_completed": false,
+      "error": "success",
+      "delegation": {
+        "supported": true,
+        "started": 0,
+        "with_progress": 0,
+        "completed": 0,
+        "tasks": {},
+        "provider_summary": {
+          "spawned": 0,
+          "requested": {
+            "background": 0,
+            "foreground": 0,
+            "unset": 0
+          },
+          "started_in_background": 0,
+          "max_depth": 0,
+          "spawned_by_subagents": 0,
+          "completed": 0,
+          "failed": 0,
+          "killed": {
+            "parent": 0,
+            "user": 0,
+            "system": 0
+          },
+          "refused": {
+            "depth_limit": 0,
+            "concurrency_limit": 0,
+            "budget": 0
+          },
+          "by_type": {}
+        }
+      },
+      "answer_sha256": "fb0ab78e81e10a69ee31c73669daf9ed4ea382ab067fcc0c6f7812a9b06f1893"
+    }
+  ],
+  "active_turn": 0,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "field_boolean_stored": false,
+      "original_fields": true,
+      "single_model": true
+    },
+    "passed": false,
+    "log_sha256": "a90d45462d1b48356af940e6d384e66c853fb4228d46d0073d146e21dbc402f5",
+    "log": "oracle-000.log"
+  },
+  "review": null
+}

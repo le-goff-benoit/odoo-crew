@@ -1,0 +1,42 @@
+{
+  "reference": "58d3e5d1fe46f408efb107ea56051cc0e13d13a6",
+  "hypothesis": "Une réception dans un contexte indépendant, partant de la demande originale et couvrant la mémoire proposée avant la jointure QA, détecte pertes/ajouts de portée, substitutions de preuves et dérives de mémoire ; publication contrôlée empêche altération ultérieure du texte reçu.",
+  "treatment": "Mode réception de odoo-tester + préparation mémoire avant QA + bundle et garde optionnel de fraîcheur/publication ; pas de nouveau graphe ni garantie sémantique mécanique.",
+  "provider": "claude",
+  "model": "opus",
+  "effort": "medium",
+  "delegation": true,
+  "limits": {
+    "max_calls": 10,
+    "dossiers": {
+      "calls": 7,
+      "seconds": 600,
+      "max_budget_usd": 6
+    },
+    "full_workflows": {
+      "calls": 2,
+      "seconds": 1200,
+      "max_budget_usd": 12
+    },
+    "reserve": {
+      "calls": 1,
+      "seconds": 600,
+      "max_budget_usd": 6
+    },
+    "configured_total_usd": 72,
+    "max_candidate_revisions_without_progress": 2
+  },
+  "jobs": [
+    "F01 demande/pack référence puis candidat",
+    "F03 mémoire référence puis candidat",
+    "F02 critère RPC candidat",
+    "F04 témoin positif candidat",
+    "F05 cas inédit candidat",
+    "N03 complet référence et candidat, mêmes réglages/délégation"
+  ],
+  "rubric_owner": "fidelity_cases, indépendante du candidat, figée avant exposition",
+  "native_rubric": "benchmarks/native/cases/N03/case.json de la référence + demande→contrat→preuves→mémoire contrôlés séparément, pas de succès global déduit de l’oracle seul",
+  "stop": "Pas de relance cachée ; incident fournisseur/banc distinct du défaut métier, appels arrêtés aux plafonds; adoption par changement après contrôle connu+positif+inédit et parcours complet. Aucune donnée cliente ni production.",
+  "evaluation": "originaux préservés, citations exactes contrôlées, arbitrage indépendant des désaccords critiques, anciennes preuves non réécrites ; cas positif ne doit pas être bloqué par dette ou exigence nouvelle.",
+  "cost": "Coûts natifs déclarés seulement, pas de comparaison statistique ou causale de vitesse sur ces répétitions ; coûts manquants restent inconnus."
+}

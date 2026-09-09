@@ -1,0 +1,11 @@
+{
+  "argv": [
+    "bash",
+    "-lc",
+    "R=/work/changelog/2026-09-09_01_revue-des-locations-d-22\ncp \"$R/studio/build.log\" \"$R/studio/build-first.log\"\nsed -i 's/ and xmlids\\[0\\]\\[\"noupdate\"\\]//' \"$R/studio/build_review.py\"\npython3 \"$R/studio/build_review.py\" > \"$R/studio/build.log\" 2>&1\npython3 \"$R/studio/test_review.py\" > \"$R/studio/green-after.log\" 2>&1\npython3 ~/.odoo19-agents/scripts/odoo_pack.py export --db lab_client --url http://127.0.0.1:52795 --only \"$R/studio/created.txt\" --out \"$R/studio/pack.json\"\ncat \"$R/studio/green-after.log\"\ncat \"$R/studio/pack.json\"\npython3 ~/.odoo19-agents/scripts/odoo_flow.py complete /work/.odoo-agents/flows/needs-review.json studio_implementation --outcome done --owner codex-odoo-studio --evidence \"$R/studio/pack.json\" --evidence \"$R/studio/green-after.log\"\npython3 ~/.odoo19-agents/scripts/odoo_flow.py bind-criteria /work/.odoo-agents/flows/needs-review.json --source \"$R/revue_fonctionnelle.md\" --output \"$R/coverage.json\" --owner codex-orchestrateur\n"
+  ],
+  "exit_code": 0,
+  "seconds": 1.85,
+  "log": "171826-295f0071.log",
+  "sha256": "14ec9feff07e6b2c2db52f3425c405a32a706bf7d29ecd84c8b4feffafc61b3b"
+}

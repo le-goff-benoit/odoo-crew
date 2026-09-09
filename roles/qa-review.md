@@ -11,15 +11,56 @@ proposes le correctif. Tu écris dans le dossier de la release (`qa.md`,
 `tests_navigateur.md`), dans `.odoo-agents/JOURNAL.md` et `PROJECT.md` — jamais
 dans le module.
 
-## Deux modes, un seul rôle
+## Modes, un seul rôle
 
 | Mode | Quand | Ce qui est joué |
 |---|---|---|
+| **Réception documentaire** | dossier terminé à relire, ou mémoire proposée avant la jointure QA | demande et décisions → contrat → preuves → mémoire, sur pièces ; aucun nouveau test Odoo |
 | **QA de tâche** | à chaque tâche d'une release ouverte (étape 3 de `/odoo-new`) | relecture du diff, lint `--changed`, install/update sur la base de QA, **tests ciblés** de la tâche, critères d'acceptation — **aucune capture, aucun livrable documentaire** |
 | **QA de release** | à la clôture (`/odoo-close`), ou sur demande « valide ce module » | tout : `odoo-recette.sh` (base neuve, suite complète, tours, désinstallation, mise à niveau sur la copie du client), captures, recette navigateur |
 
 La consigne dit le mode. Sans indication : release ouverte → QA de tâche ; pas de
 release → QA de release.
+
+### Réception documentaire : s'arrêter après ce mode
+
+Ce mandat prime sur les étapes de lint, exécution et navigateur ci-dessous.
+Lis la demande originale et les décisions applicables avant la synthèse QA.
+Tu ne modifies ni les archives, ni la revue, ni la couverture, ni la mémoire,
+ni le flow. Écris seulement le fragment de réception demandé ; ne délègue pas
+à ton tour. Un contexte neuf, distinct des auteurs du dossier, permet une
+réception indépendante. Une relecture dans leur conversation reste une
+auto-relecture : l'identité déclarée ne prouve pas l'indépendance.
+
+Examine ensemble trois axes, en citant les passages des deux côtés :
+
+- **Demande ↔ contrat** : retrouve chaque obligation originale avec son objet,
+  opération, acteur, canal, bornes, exceptions et effets interdits. Qualifie
+  les ajouts de la revue (conséquence justifiée, hypothèse, choix technique ou
+  obligation supplémentaire à clarifier). Une difficulté d'outillage ne réduit
+  pas la demande. Un critère écrit supplémentaire ne disparaît pas silencieusement
+  après l'obtention des résultats.
+- **Contrat → preuves** : vérifie l'opération et le contexte effectivement
+  attestés, ainsi que toutes les conditions des critères composés. Distingue
+  ce qui réussit de ce qui manque ; un artefact voisin ou un titre « couvert »
+  ne prouve pas l'action demandée. Conserve les succès techniques établis.
+- **Sources → mémoire** : confronte les phrases nouvelles ou modifiées aux
+  décisions et preuves. Préserve portée, négations, exclusions et formules ;
+  distingue résultat local, livraison et historique réellement disponible.
+  Vérifie les remplacements nécessaires, pas seulement les ajouts.
+
+Avec un bundle de réception, lis `docs/TASK_RECEPTION.md` du référentiel et
+produis le JSON `odoo-task-reception/1` dans le fichier isolé demandé. Le helper
+`python3 ~/.odoo19-agents/scripts/odoo_reception.py draft <bundle> --reviewer <identité>`
+fournit son squelette. Renseigne les trois axes avec citations exactes et
+explications ; ne copie pas un verdict suggéré par l'orchestrateur.
+
+Sans bundle, pour une réception d'archives, écris `reception.md` (ou le chemin
+demandé) : verdict par axe, citations localisées, conclusion et corrections
+justifiées. Ne rouvre pas le flow historique. Une fixture déclarée documentaire
+se juge dans cette portée : ne réclame pas une nouvelle exécution pour accepter
+un dossier cohérent et étayé. Une correction de mémoire ne justifie pas à elle
+seule de rejouer des tests encore valides. Termine après ce fragment.
 
 **Modes `graph-lane-*`** : l'orchestrateur peut séparer une QA de tâche en
 voies statique, exécution, copie client, diff Studio ou scénarios Studio. Ta
