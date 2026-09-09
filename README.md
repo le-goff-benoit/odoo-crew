@@ -4,55 +4,103 @@
 
 **Du besoin métier à la livraison, avancez avec des spécialistes à vos côtés.**
 
-Vous êtes consultant fonctionnel ou chef de projet Odoo ? Confiez vos demandes
-à une équipe d’agents qui analyse, réalise et vérifie le travail. Vous gardez
-la main sur les décisions métier, avec un suivi des résultats et des prochaines étapes.
+Consultant fonctionnel ou chef de projet Odoo ? Confiez vos demandes aux agents
+pour cadrer, réaliser et vérifier le travail. Vous gardez la main sur les décisions
+métier, avec un suivi des résultats et des prochaines étapes.
 
-Disponible dans **Claude Code et Codex**, avec une méthode commune et des
-consignes adaptées à la version Odoo de votre projet.
+Disponible dans **Claude Code et Codex**, avec une méthode commune adaptée à la
+version Odoo de votre projet.
 
-[Commencer](INSTALL.md) · [Découvrir les résultats des essais](docs/quality-lab/README.md)
+[Commencer](INSTALL.md) · [Qualité et résultats des essais](docs/quality-lab/README.md)
 
 ## À chacun son rôle, à vous le pilotage
 
 | Votre spécialiste | Ce qu’il vous apporte |
 |---|---|
-| **Analyste fonctionnel** | Clarifie le besoin, vérifie ce qu’Odoo sait déjà faire et vous aide à choisir entre standard, Studio et développement. |
-| **Développeur** | Réalise les évolutions spécifiques et leurs tests, en tenant compte des règles de votre projet. |
+| **Analyste fonctionnel** | Clarifie le besoin, vérifie le standard et compare configuration, Studio et développement. |
+| **Développeur** | Réalise les évolutions spécifiques et leurs tests, selon les règles du projet. |
 | **Expert Studio** | Configure les champs, écrans et automatisations, avec un suivi des changements. |
-| **Responsable qualité** | Vérifie les résultats attendus et signale ce qui reste à corriger avant la livraison. |
+| **Responsable qualité** | Vérifie les résultats attendus et identifie ce qui reste à corriger. |
 | **Support** | Recherche la cause d’un problème et propose un contournement ou la suite à donner. |
 
-L’agent principal coordonne ces rôles, organise les étapes et vous sollicite
-lorsqu’une décision est nécessaire. La préparation de livraison rassemble
-les changements, les résultats des contrôles et la documentation métier.
+L’**agent principal orchestre le travail** : il mobilise les rôles nécessaires,
+regroupe leurs résultats et vous sollicite pour les décisions manquantes.
+Il peut déléguer des tâches indépendantes à des sous-agents, lorsque l’outil le permet.
 
-## Ce que vous gagnez au quotidien
+## Comment les agents travaillent ensemble
 
-- **Des demandes mieux cadrées** : les questions et choix manquants remontent avant la réalisation.
-- **Un projet qui garde sa mémoire** : les règles client et décisions prises sont retrouvées d’une intervention à l’autre.
-- **Une release plus facile à piloter** : tâches, dépendances, avancement et points bloquants restent visibles.
-- **Une base pour vos estimations** : temps d’exécution prévu par agent et par tâche, puis comparaison au réalisé. Vous appliquez vos propres barèmes.
-- **Une livraison étayée** : des vérifications sur une copie locale et des résultats consultables. Guides utilisateur et communications client sont disponibles sur demande.
+**Une évolution : comprendre avant de réaliser.**
 
-## Commencez par une demande concrète
+```text
+Votre demande --> Analyste
+                     |
+                     +--> Standard suffisant --> Recommandation
+                     |
+                     +--> Developpeur ou Studio --> Qualite --> Resultat verifie
+                                   ^                   |
+                                   +--- corrections ---+
+```
 
-Après l’[installation](INSTALL.md), ouvrez votre projet dans Claude Code ou Codex
-et décrivez le résultat souhaité :
+Chaque tâche conserve ses décisions et ses résultats dans la mémoire du projet.
+Un blocage ou un contrôle qui reste en échec vous est signalé.
 
-> « Prépare une release pour ces trois demandes, relève les décisions à prendre
-> et estime le temps d’exécution des agents pour chaque tâche. »
+**Une release : organiser plusieurs demandes jusqu’à la livraison.**
 
-| Vous voulez… | Utilisez… |
-|---|---|
-| Préparer une release | `/odoo-plan` |
-| Estimer le travail des agents | `/odoo-estimate` |
-| Lancer le plan | `/odoo-start` |
-| Réaliser une évolution | `/odoo-new` |
-| Préparer la livraison | `/odoo-close` |
+```text
+/odoo-plan --> /odoo-estimate --> /odoo-start
+  Cadrer         Prevoir          Executer les taches
+                                       |
+                                       v
+                                  /odoo-close
+                            Recette complete + documentation
+                            + bilan du temps prevu / realise
+```
 
-Pour une question fonctionnelle ou un ticket de support, décrivez simplement
-votre besoin. Le rôle adapté prend le relais.
+L’orchestrateur suit les dépendances. Les contrôles ciblés accompagnent chaque
+tâche ; la recette complète vérifie l’ensemble à la clôture.
+
+**Un ticket : diagnostiquer, puis orienter la suite.**
+
+```text
+Votre ticket --> Support --> Diagnostic
+                                |
+                                +--> Usage / configuration --> Explication
+                                +--> Bug prouve -------------> /odoo-new
+                                +--> Nouveau besoin ---------> Analyste
+                                +--> Donnees a reparer ------> Essai sur copie
+```
+
+## Les commandes, selon votre besoin
+
+Après l’[installation](INSTALL.md), ouvrez votre projet dans Claude Code ou Codex.
+Indiquez la commande et décrivez le résultat souhaité :
+
+```text
+/odoo-plan Prepare une release pour ces trois demandes,
+avec les decisions a prendre et les priorites.
+```
+
+| Commande | Quand l’utiliser | Ce que vous obtenez |
+|---|---|---|
+| **`/odoo-plan`** | Organiser plusieurs demandes | Un plan de release, les critères attendus et les dépendances. |
+| **`/odoo-estimate`** | Prévoir le travail des agents | Des minutes par agent et tâche, avec fourchette et hypothèses. |
+| **`/odoo-start`** | Lancer ou reprendre le plan | L’exécution des tâches prêtes et un suivi de l’avancement. |
+| **`/odoo-new`** | Réaliser une évolution précise | Analyse, réalisation, contrôles ciblés et mémoire du résultat. |
+| **`/odoo-close`** | Préparer la livraison | Recette complète, documentation métier et bilan prévu/réalisé disponible. |
+| **`/odoo-env`** | Déclarer ou vérifier un environnement | Des accès configurés et vérifiés, sans partager de secret dans la conversation. |
+| **`/odoo-feedback "remarque"`** | Retenir une règle ou une difficulté | Une remarque conservée dans le journal du projet. |
+| **`/odoo-feedback`** | Faire le point sur les enseignements | Une revue des retours d’expérience et des améliorations à éprouver. |
+| **`/odoo-improve`** | Tester une amélioration des agents | Un essai, une correction et une décision d’adoption après vérification. |
+
+Pour une question fonctionnelle, un ticket, une relecture ou un guide utilisateur,
+décrivez simplement votre besoin : le rôle ou skill adapté prend le relais.
+
+## Ce que vous gardez d’une intervention à l’autre
+
+**Les règles client et décisions**, pour éviter de repartir de zéro.
+**Les preuves de vérification**, pour préparer vos livraisons.
+**Les temps prévus et mesurés**, pour affiner vos estimations et appliquer vos
+propres barèmes. Guides utilisateur et communications client sont disponibles sur demande.
 
 **Vous gardez le contrôle.** Les décisions métier vous appartiennent. Toute
 écriture en production requiert votre accord explicite ; la clôture d’une

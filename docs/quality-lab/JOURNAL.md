@@ -8,3 +8,10 @@
 - Conservé : détail du pilote dans benchmarks/PILOTE.md ; archives et preuves historiques inchangées.
 - Vérifié : 251 tests toujours découverts et réussis ; 79 liens locaux valides ; image copiée à l’identique.
 - Suite : ajouter les nouvelles campagnes à l’index et leurs tests dans le domaine correspondant.
+
+## 9 septembre 2026 — parcours visibles et commandes
+
+- Demande : petits graphiques ASCII, commandes plus explicites et nouvelle bannière fournie.
+- Réalisé : trois parcours (évolution, release, support), rôle de l’orchestrateur et tableau des huit commandes, avec les deux usages de feedback.
+- Image : nouvelle bannière copiée à l’identique ; même lien depuis le README.
+- Contrôles : liens et commandes confrontés au générateur et à l’aiguillage ; suite et génération vérifiées avant publication.
