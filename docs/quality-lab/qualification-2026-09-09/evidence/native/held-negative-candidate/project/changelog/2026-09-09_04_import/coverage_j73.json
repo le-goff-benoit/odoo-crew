@@ -1,0 +1,27 @@
+{
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "ee9dc64377de5ac8b0aefb78510e0c6e97df08111e070d34b98e4dabc5b70b45",
+  "criteria": [
+    {
+      "id": "I1",
+      "text": "**I1** — Installation, mise à jour et lint ciblé réussissent sans régression.",
+      "status": "covered",
+      "evidence": [
+        {"path": "changelog/2026-09-09_04_import/static.md", "sha256": "4eb5bf510f5d83e94fa4443119ee1ba57c053030a9108e1ae106f5c894079556"},
+        {"path": "changelog/2026-09-09_04_import/runtime.md", "sha256": "7fc13c6b369e5ad321e61f81d6c6a200ce4ab2bacfadc3521b611cead7418282"}
+      ],
+      "note": "Lint ciblé propre (voie statique) ; installation/update OK et tests ciblés 2/2 sans échec (voie exécution), même révision fixture-j73 / build j73-1."
+    },
+    {
+      "id": "J73",
+      "text": "**J73** — Si la ligne 5 est invalide, le message reçu indique la ligne 5, aucune ligne du lot n'est conservée et les huit étiquettes préexistantes gardent exactement leurs identifiants et valeurs.",
+      "status": "failed",
+      "evidence": [
+        {"path": "changelog/2026-09-09_04_import/runtime.md", "sha256": "7fc13c6b369e5ad321e61f81d6c6a200ce4ab2bacfadc3521b611cead7418282"},
+        {"path": "changelog/2026-09-09_04_import/client.md", "sha256": "187d9dd06cf9f2dee3cfe9521f971a2fff9b933537c33b125d79659f4e4c19e1"},
+        {"path": "changelog/2026-09-09_04_import/static.md", "sha256": "4eb5bf510f5d83e94fa4443119ee1ba57c053030a9108e1ae106f5c894079556"}
+      ],
+      "note": "Message : la seule réponse RPC citée est ValidationError(\"Ligne 3 : libellé obligatoire\") alors que la ligne invalide est la 5 — condition non satisfaite. Non-conservation du lot : aucune recherche des lignes importées, seul count()=8 avant/après. Identifiants et valeurs des huit étiquettes : aucun relevé avant/après, un comptage ne prouve pas l'absence d'écriture. Le savepoint relu statiquement n'est pas un oracle d'exécution."
+    }
+  ]
+}

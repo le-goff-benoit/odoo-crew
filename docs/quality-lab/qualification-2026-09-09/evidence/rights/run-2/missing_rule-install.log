@@ -1,0 +1,194 @@
+2026-09-09 14:05:33,273 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:05:33,274 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 14:05:33,274 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:05:33,274 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 14:05:33,274 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 14:05:33,274 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo/addons/19.0', '/mnt/quality', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 14:05:33,274 1 INFO ? odoo: database: odoo@quality-rights-9c52ab471b-db:default 
+2026-09-09 14:05:33,604 1 INFO qualification_1 odoo.modules.loading: Initializing database qualification_1 
+2026-09-09 14:05:34,972 1 INFO qualification_1 odoo.modules.loading: loading 1 modules... 
+2026-09-09 14:05:34,972 1 INFO qualification_1 odoo.modules.loading: Loading module base (1/1) 
+2026-09-09 14:05:34,996 1 INFO qualification_1 odoo.registry: module base: creating or updating database tables 
+2026-09-09 14:05:35,501 1 INFO qualification_1 odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-09 14:05:35,501 1 INFO qualification_1 odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-09 14:05:35,502 1 INFO qualification_1 odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-09 14:05:35,597 1 INFO qualification_1 odoo.models: Prepare computation of res.partner.user_id 
+2026-09-09 14:05:35,597 1 INFO qualification_1 odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-09 14:05:35,597 1 INFO qualification_1 odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-09 14:05:35,597 1 INFO qualification_1 odoo.models: Prepare computation of res.partner.lang 
+2026-09-09 14:05:35,597 1 INFO qualification_1 odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-09 14:05:35,597 1 INFO qualification_1 odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-09 14:05:35,597 1 INFO qualification_1 odoo.models: Prepare computation of res.partner.properties 
+2026-09-09 14:05:35,597 1 INFO qualification_1 odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-09 14:05:35,626 1 INFO qualification_1 odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-09 14:05:35,659 1 INFO qualification_1 odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-09 14:05:35,659 1 INFO qualification_1 odoo.models: Prepare computation of res.company.logo_web 
+2026-09-09 14:05:35,662 1 INFO qualification_1 odoo.models: Computing parent_path for table res_company... 
+2026-09-09 14:05:35,690 1 INFO qualification_1 odoo.models: Prepare computation of res.users.signature 
+2026-09-09 14:05:35,690 1 INFO qualification_1 odoo.models: Prepare computation of res.users.share 
+2026-09-09 14:05:36,652 1 INFO qualification_1 odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-09 14:05:36,656 1 INFO qualification_1 odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-09 14:05:36,677 1 INFO qualification_1 odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-09 14:05:36,699 1 INFO qualification_1 odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-09-09 14:05:36,728 1 INFO qualification_1 odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-09-09 14:05:37,088 1 INFO qualification_1 odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-09-09 14:05:37,096 1 INFO qualification_1 odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-09-09 14:05:37,711 1 INFO qualification_1 odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-09-09 14:05:37,727 1 INFO qualification_1 odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-09-09 14:05:38,404 1 INFO qualification_1 odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-09-09 14:05:38,413 1 INFO qualification_1 odoo.modules.loading: loading base/security/base_groups.xml 
+2026-09-09 14:05:38,589 1 INFO qualification_1 odoo.modules.loading: loading base/security/base_security.xml 
+2026-09-09 14:05:38,724 1 INFO qualification_1 odoo.modules.loading: loading base/wizard/wizard_ir_model_menu_create_views.xml 
+2026-09-09 14:05:38,734 1 INFO qualification_1 odoo.modules.loading: loading base/views/base_menus.xml 
+2026-09-09 14:05:38,776 1 INFO qualification_1 odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-09-09 14:05:38,794 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-09-09 14:05:38,804 1 INFO qualification_1 odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-09-09 14:05:39,161 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-09-09 14:05:39,321 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-09-09 14:05:39,345 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-09-09 14:05:39,376 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-09-09 14:05:39,418 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-09-09 14:05:39,439 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-09-09 14:05:39,470 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-09-09 14:05:39,493 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-09-09 14:05:39,653 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-09-09 14:05:39,687 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-09-09 14:05:39,709 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-09-09 14:05:39,727 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-09-09 14:05:39,752 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-09-09 14:05:39,797 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-09-09 14:05:39,811 1 INFO qualification_1 odoo.modules.loading: loading base/data/ir_config_parameter_data.xml 
+2026-09-09 14:05:39,815 1 INFO qualification_1 odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-09-09 14:05:39,822 1 INFO qualification_1 odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-09-09 14:05:39,825 1 INFO qualification_1 odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-09-09 14:05:39,831 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-09-09 14:05:39,843 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-09-09 14:05:39,855 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-09-09 14:05:39,895 1 INFO qualification_1 odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-09-09 14:05:39,919 1 INFO qualification_1 odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-09-09 14:05:40,004 1 INFO qualification_1 odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-09-09 14:05:40,009 1 INFO qualification_1 odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-09-09 14:05:40,016 1 INFO qualification_1 odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-09-09 14:05:40,024 1 INFO qualification_1 odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-09-09 14:05:40,034 1 INFO qualification_1 odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-09-09 14:05:40,041 1 INFO qualification_1 odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-09-09 14:05:40,050 1 INFO qualification_1 odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-09-09 14:05:40,055 1 INFO qualification_1 odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-09-09 14:05:40,066 1 INFO qualification_1 odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-09-09 14:05:40,078 1 INFO qualification_1 odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-09-09 14:05:40,091 1 INFO qualification_1 odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-09-09 14:05:40,112 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-09-09 14:05:40,133 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-09-09 14:05:40,154 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-09-09 14:05:40,219 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-09-09 14:05:40,265 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-09-09 14:05:40,322 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-09-09 14:05:40,357 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_groups_views.xml 
+2026-09-09 14:05:40,381 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-09-09 14:05:40,429 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_users_apikeys_views.xml 
+2026-09-09 14:05:40,433 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_device_views.xml 
+2026-09-09 14:05:40,446 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-09-09 14:05:40,453 1 INFO qualification_1 odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-09-09 14:05:40,458 1 INFO qualification_1 odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-09-09 14:05:40,473 1 INFO qualification_1 odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-09-09 14:05:40,552 1 INFO qualification_1 odoo.modules.loading: Module base loaded in 5.58s, 8454 queries (+8454 other) 
+2026-09-09 14:05:40,552 1 INFO qualification_1 odoo.modules.loading: 1 modules loaded in 5.58s, 8454 queries (+8454 extra) 
+2026-09-09 14:05:40,553 1 INFO qualification_1 odoo.modules.loading: updating modules list 
+2026-09-09 14:05:40,554 1 INFO qualification_1 odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 14:05:41,007 1 INFO qualification_1 odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Synthetic rights qualification'] to user __system__ #1 via n/a 
+2026-09-09 14:05:41,039 1 INFO qualification_1 odoo.modules.loading: loading 15 modules... 
+2026-09-09 14:05:41,039 1 INFO qualification_1 odoo.modules.loading: Loading module quality_rights (2/15) 
+2026-09-09 14:05:41,041 1 INFO qualification_1 odoo.registry: module quality_rights: creating or updating database tables 
+2026-09-09 14:05:41,066 1 INFO qualification_1 odoo.modules.loading: loading quality_rights/security/ir.model.access.csv 
+2026-09-09 14:05:41,070 1 INFO qualification_1 odoo.modules.loading: loading quality_rights/security/rules.xml 
+2026-09-09 14:05:41,076 1 INFO qualification_1 odoo.modules.loading: Module quality_rights loaded in 0.04s, 61 queries (+61 other) 
+2026-09-09 14:05:41,076 1 INFO qualification_1 odoo.modules.loading: Loading module rpc (3/15) 
+2026-09-09 14:05:41,084 1 INFO qualification_1 odoo.modules.loading: Module rpc loaded in 0.01s, 10 queries (+10 other) 
+2026-09-09 14:05:41,084 1 INFO qualification_1 odoo.modules.loading: Loading module web (4/15) 
+2026-09-09 14:05:41,100 1 INFO qualification_1 odoo.registry: module web: creating or updating database tables 
+2026-09-09 14:05:41,404 1 INFO qualification_1 odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-09-09 14:05:41,408 1 INFO qualification_1 odoo.modules.loading: loading web/security/web_security.xml 
+2026-09-09 14:05:41,416 1 INFO qualification_1 odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-09-09 14:05:41,459 1 INFO qualification_1 odoo.modules.loading: loading web/views/report_templates.xml 
+2026-09-09 14:05:41,517 1 INFO qualification_1 odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-09-09 14:05:41,527 1 INFO qualification_1 odoo.modules.loading: loading web/views/partner_view.xml 
+2026-09-09 14:05:41,536 1 INFO qualification_1 odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-09-09 14:05:41,540 1 INFO qualification_1 odoo.modules.loading: loading web/views/memory_template.xml 
+2026-09-09 14:05:41,547 1 INFO qualification_1 odoo.modules.loading: loading web/views/speedscope_config_wizard.xml 
+2026-09-09 14:05:41,554 1 INFO qualification_1 odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-09-09 14:05:41,559 1 INFO qualification_1 odoo.modules.loading: loading web/views/ir_ui_view_views.xml 
+2026-09-09 14:05:41,568 1 INFO qualification_1 odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-09-09 14:05:41,572 1 INFO qualification_1 odoo.modules.loading: loading web/data/report_layout.xml 
+2026-09-09 14:05:41,599 1 INFO qualification_1 odoo.modules.loading: Module web loaded in 0.52s, 1237 queries (+1237 other) 
+2026-09-09 14:05:41,599 1 INFO qualification_1 odoo.modules.loading: Loading module api_doc (5/15) 
+2026-09-09 14:05:41,604 1 INFO qualification_1 odoo.registry: module api_doc: creating or updating database tables 
+2026-09-09 14:05:41,614 1 INFO qualification_1 odoo.modules.loading: loading api_doc/security/res_groups.xml 
+2026-09-09 14:05:41,626 1 INFO qualification_1 odoo.modules.loading: loading api_doc/views/docclient.xml 
+2026-09-09 14:05:41,641 1 INFO qualification_1 odoo.modules.loading: Module api_doc loaded in 0.04s, 63 queries (+63 other) 
+2026-09-09 14:05:41,641 1 INFO qualification_1 odoo.modules.loading: Loading module auth_totp (6/15) 
+2026-09-09 14:05:41,656 1 INFO qualification_1 odoo.registry: module auth_totp: creating or updating database tables 
+2026-09-09 14:05:41,705 1 INFO qualification_1 odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-09-09 14:05:41,721 1 INFO qualification_1 odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-09-09 14:05:41,725 1 INFO qualification_1 odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-09-09 14:05:41,733 1 INFO qualification_1 odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-09-09 14:05:41,754 1 INFO qualification_1 odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-09-09 14:05:41,760 1 INFO qualification_1 odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-09-09 14:05:41,774 1 INFO qualification_1 odoo.modules.loading: Module auth_totp loaded in 0.13s, 218 queries (+218 other) 
+2026-09-09 14:05:41,774 1 INFO qualification_1 odoo.modules.loading: Loading module base_import (7/15) 
+2026-09-09 14:05:41,795 1 INFO qualification_1 odoo.registry: module base_import: creating or updating database tables 
+2026-09-09 14:05:42,058 1 INFO qualification_1 odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-09-09 14:05:42,069 1 INFO qualification_1 odoo.modules.loading: Module base_import loaded in 0.30s, 961 queries (+961 other) 
+2026-09-09 14:05:42,069 1 INFO qualification_1 odoo.modules.loading: Loading module base_import_module (8/15) 
+2026-09-09 14:05:42,074 1 INFO qualification_1 odoo.registry: module base_import_module: creating or updating database tables 
+2026-09-09 14:05:42,124 1 INFO qualification_1 odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-09-09 14:05:42,128 1 INFO qualification_1 odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-09-09 14:05:42,144 1 INFO qualification_1 odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-09-09 14:05:42,174 1 INFO qualification_1 odoo.modules.loading: Module base_import_module loaded in 0.11s, 172 queries (+172 other) 
+2026-09-09 14:05:42,174 1 INFO qualification_1 odoo.modules.loading: Loading module base_setup (9/15) 
+2026-09-09 14:05:42,181 1 INFO qualification_1 odoo.registry: module base_setup: creating or updating database tables 
+2026-09-09 14:05:42,207 1 INFO qualification_1 odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-09-09 14:05:42,211 1 INFO qualification_1 odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-09-09 14:05:42,236 1 INFO qualification_1 odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-09-09 14:05:42,249 1 INFO qualification_1 odoo.modules.loading: Module base_setup loaded in 0.07s, 152 queries (+152 other) 
+2026-09-09 14:05:42,249 1 INFO qualification_1 odoo.modules.loading: Loading module bus (10/15) 
+2026-09-09 14:05:42,261 1 INFO qualification_1 odoo.registry: module bus: creating or updating database tables 
+2026-09-09 14:05:42,318 1 INFO qualification_1 odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-09-09 14:05:42,324 1 INFO qualification_1 odoo.modules.loading: Module bus loaded in 0.07s, 159 queries (+159 other) 
+2026-09-09 14:05:42,324 1 INFO qualification_1 odoo.modules.loading: Loading module web_tour (11/15) 
+2026-09-09 14:05:42,328 1 INFO qualification_1 odoo.registry: module web_tour: creating or updating database tables 
+2026-09-09 14:05:42,333 1 INFO qualification_1 odoo.models: Prepare computation of res.users.tour_enabled 
+2026-09-09 14:05:42,383 1 INFO qualification_1 odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-09-09 14:05:42,387 1 INFO qualification_1 odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-09-09 14:05:42,409 1 INFO qualification_1 odoo.modules.loading: Module web_tour loaded in 0.09s, 180 queries (+180 other) 
+2026-09-09 14:05:42,409 1 INFO qualification_1 odoo.modules.loading: Loading module auth_passkey (12/15) 
+2026-09-09 14:05:42,437 1 INFO qualification_1 odoo.registry: module auth_passkey: creating or updating database tables 
+2026-09-09 14:05:42,504 1 INFO qualification_1 odoo.modules.loading: loading auth_passkey/views/auth_passkey_key_views.xml 
+2026-09-09 14:05:42,527 1 INFO qualification_1 odoo.modules.loading: loading auth_passkey/views/auth_passkey_login_templates.xml 
+2026-09-09 14:05:42,542 1 INFO qualification_1 odoo.modules.loading: loading auth_passkey/views/res_users_identitycheck_views.xml 
+2026-09-09 14:05:42,553 1 INFO qualification_1 odoo.modules.loading: loading auth_passkey/views/res_users_views.xml 
+2026-09-09 14:05:42,571 1 INFO qualification_1 odoo.modules.loading: loading auth_passkey/security/ir.model.access.csv 
+2026-09-09 14:05:42,578 1 INFO qualification_1 odoo.modules.loading: loading auth_passkey/security/security.xml 
+2026-09-09 14:05:42,603 1 INFO qualification_1 odoo.modules.loading: Module auth_passkey loaded in 0.19s, 218 queries (+218 other) 
+2026-09-09 14:05:42,603 1 INFO qualification_1 odoo.modules.loading: Loading module html_editor (13/15) 
+2026-09-09 14:05:42,730 1 INFO qualification_1 odoo.registry: module html_editor: creating or updating database tables 
+2026-09-09 14:05:43,037 1 INFO qualification_1 odoo.modules.loading: loading html_editor/security/ir.model.access.csv 
+2026-09-09 14:05:43,045 1 INFO qualification_1 odoo.modules.loading: Module html_editor loaded in 0.44s, 1039 queries (+1039 other) 
+2026-09-09 14:05:43,045 1 INFO qualification_1 odoo.modules.loading: Loading module iap (14/15) 
+2026-09-09 14:05:43,049 1 INFO qualification_1 odoo.registry: module iap: creating or updating database tables 
+2026-09-09 14:05:43,093 1 INFO qualification_1 odoo.modules.loading: loading iap/data/services.xml 
+2026-09-09 14:05:43,098 1 INFO qualification_1 odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-09-09 14:05:43,104 1 INFO qualification_1 odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-09-09 14:05:43,107 1 INFO qualification_1 odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-09-09 14:05:43,127 1 INFO qualification_1 odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-09-09 14:05:43,156 1 INFO qualification_1 odoo.modules.loading: Module iap loaded in 0.11s, 182 queries (+182 other) 
+2026-09-09 14:05:43,156 1 INFO qualification_1 odoo.modules.loading: Loading module web_unsplash (15/15) 
+2026-09-09 14:05:43,168 1 INFO qualification_1 odoo.registry: module web_unsplash: creating or updating database tables 
+2026-09-09 14:05:43,206 1 INFO qualification_1 odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-09-09 14:05:43,235 1 INFO qualification_1 odoo.modules.loading: Module web_unsplash loaded in 0.08s, 93 queries (+93 other) 
+2026-09-09 14:05:43,235 1 INFO qualification_1 odoo.modules.loading: 15 modules loaded in 2.20s, 4745 queries (+4745 extra) 
+2026-09-09 14:05:43,349 1 INFO qualification_1 odoo.modules.loading: Modules loaded. 
+2026-09-09 14:05:43,356 1 INFO qualification_1 odoo.registry: Registry changed, signaling through the database 
+2026-09-09 14:05:43,356 1 INFO qualification_1 odoo.registry: Registry loaded in 9.774s 
+2026-09-09 14:05:43,356 1 INFO qualification_1 odoo.service.server: Initiating shutdown 
+2026-09-09 14:05:43,356 1 INFO qualification_1 odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 14:05:43,357 1 INFO qualification_1 odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

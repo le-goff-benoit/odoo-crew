@@ -216,3 +216,30 @@ même budget sur le dossier complet ; un cas court seul ne permet pas l'adoption
 Conserver les contradictions éventuelles entre le titre de QA, la couverture
 et l'issue du flow. Le [contrat de l'outil](../QA_COVERAGE.md) précise son format,
 son activation optionnelle et la compatibilité des flows existants.
+
+
+## Qualification locale des transports et des erreurs
+
+Les trois lanceurs de `benchmarks/qualification/` n'appellent aucun modèle et
+ne touchent que leurs ressources Docker synthétiques. Les dossiers de sortie
+doivent être neufs :
+
+```bash
+python3 scripts/odoo_qualify_rights.py --output /tmp/qualification-droits
+python3 scripts/odoo_qualify_restore.py --output /tmp/qualification-restauration
+python3 scripts/odoo_qualify_versions.py --output /tmp/qualification-versions
+```
+
+Droits : témoin et mutant d'une règle multi-société, ORM et XML-RPC avec utilisateur
+ordinaire, audits administrateur séparés. Restauration : copie inchangée du vrai
+restaurateur, ZIP SQL + filestore, neutralisation et voisin synthétique inchangé.
+Versions : témoin ORM adapté à 18.0/19.0, Chrome19 et assertion serveur, puis mutant
+volontairement faux. Les images locales requises et limites sont dans leurs README.
+
+Une sortie Odoo zéro avec test navigateur sauté reste rouge. Le runner exige
+les résultats métier et les traces de navigateur ; son répertoire de profil est
+inscriptible par l'utilisateur du conteneur. Un défaut d'oracle se corrige en
+conservant les réponses originales et leur réévaluation séparée. La
+[qualification du 9 septembre](qualification-2026-09-09/README.md) documente les
+incidents et les dimensions réellement testées. Ces témoins étalonnent le banc,
+pas la capacité d'un LLM à concevoir tous les contrôles concernés.

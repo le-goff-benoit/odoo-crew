@@ -1,0 +1,7 @@
+<odoo>
+    <record id="company_rule" model="ir.rule">
+        <field name="name">Synthetic company isolation</field>
+        <field name="model_id" ref="model_quality_rights_record"/>
+        <field name="domain_force">[('company_id', 'in', company_ids)]</field>
+    </record>
+</odoo>

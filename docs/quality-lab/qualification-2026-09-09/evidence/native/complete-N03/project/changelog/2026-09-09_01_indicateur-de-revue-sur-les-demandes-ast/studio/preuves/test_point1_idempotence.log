@@ -1,0 +1,49 @@
+[OK ] précondition — le champ existe
+
+état de référence : champs du modèle=10, champs nommés needs_review=1, XML-ID studio_customization=5, modèles x_lab_request=1, valeurs de sélection x_studio_kind=2
+
+───────── application n°1 ─────────
+
+$ /usr/bin/python3 build_point1.py
+champ x_studio_needs_review déjà présent et conforme — rien à créer
+identifiant(s) externe(s) relevé(s) : studio_customization.revue_requise_demand_07727582-796e-43d5-a494-4c149b785c9b
+[OK ] tour 1 — build_point1.py — code 0
+
+$ /usr/bin/python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py apply /work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/pack.json --db lab_client --url http://127.0.0.1:48687 --password admin
+Application de /work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/pack.json sur http://127.0.0.1:48687 / lab_client :
+0 / 0 / 1 créés / modifiés / inchangés sur http://127.0.0.1:48687 / lab_client
+[OK ] tour 1 — odoo_pack.py apply — code 0
+[OK ] tour 1 — champs du modèle inchangé — 10 → 10
+[OK ] tour 1 — champs nommés needs_review inchangé — 1 → 1
+[OK ] tour 1 — XML-ID studio_customization inchangé — 5 → 5
+[OK ] tour 1 — modèles x_lab_request inchangé — 1 → 1
+[OK ] tour 1 — valeurs de sélection x_studio_kind inchangé — 2 → 2
+
+───────── application n°2 ─────────
+
+$ /usr/bin/python3 build_point1.py
+champ x_studio_needs_review déjà présent et conforme — rien à créer
+identifiant(s) externe(s) relevé(s) : studio_customization.revue_requise_demand_07727582-796e-43d5-a494-4c149b785c9b
+[OK ] tour 2 — build_point1.py — code 0
+
+$ /usr/bin/python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py apply /work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/pack.json --db lab_client --url http://127.0.0.1:48687 --password admin
+Application de /work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/pack.json sur http://127.0.0.1:48687 / lab_client :
+0 / 0 / 1 créés / modifiés / inchangés sur http://127.0.0.1:48687 / lab_client
+[OK ] tour 2 — odoo_pack.py apply — code 0
+[OK ] tour 2 — champs du modèle inchangé — 10 → 10
+[OK ] tour 2 — champs nommés needs_review inchangé — 1 → 1
+[OK ] tour 2 — XML-ID studio_customization inchangé — 5 → 5
+[OK ] tour 2 — modèles x_lab_request inchangé — 1 → 1
+[OK ] tour 2 — valeurs de sélection x_studio_kind inchangé — 2 → 2
+
+───────── diff final ─────────
+
+$ /usr/bin/python3 /home/blegoff/.odoo19-agents/scripts/odoo_pack.py diff /work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/pack.json --db lab_client --url http://127.0.0.1:48687 --password admin
+Comparaison de /work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/pack.json avec http://127.0.0.1:48687 / lab_client (aucune écriture) :
+0 / 0 / 1 à créer / à modifier / inchangés sur http://127.0.0.1:48687 / lab_client
+[OK ] diff — exécution — code 0
+[OK ] diff — ligne de compteurs lisible — 0 / 0 / 1 à créer / à modifier / inchangés sur http://127.0.0.1:48687 / lab_client
+[OK ] diff — aucun écart entre le pack et la copie — 0 à créer, 0 à modifier, 1 inchangé(s)
+[OK ] created.txt sans doublon — 1 ligne(s)
+
+SCÉNARIO IDEMPOTENCE VERT — deux applications, aucun doublon

@@ -1,0 +1,2 @@
+# Voie exécution
+Attestation primaire synthétique de cet exercice, révision fixture-p62, build p62-1, base qa_p62. Installation et mise à jour réussies, 0 failed, 0 errors of 4 tests. Export réel appelé avec ids=[811,821,823]. CSV relu par csv.DictReader en UTF-8 : ids_exact=true, rows=3, unique_ids=3, quantity_sum=12 ; libellés originaux ["Pièce, gauche", "Équerre", "Vis"] strictement égaux après parsing. Pièce jointe export.csv. Aucun contrôle obligatoire absent.

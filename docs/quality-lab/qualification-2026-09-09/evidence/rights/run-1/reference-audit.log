@@ -1,0 +1,16 @@
+2026-09-09 14:04:39,471 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:04:39,471 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 14:04:39,471 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:04:39,471 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 14:04:39,471 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 14:04:39,472 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo/addons/19.0', '/mnt/quality', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 14:04:39,472 1 INFO ? odoo: database: odoo@quality-rights-1175e27c07-db:default 
+2026-09-09 14:04:39,648 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 14:04:39,648 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 14:04:39,660 1 INFO qualification_0 odoo.modules.loading: loading 1 modules... 
+2026-09-09 14:04:39,662 1 INFO qualification_0 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 14:04:39,664 1 INFO qualification_0 odoo.modules.loading: loading 15 modules... 
+2026-09-09 14:04:39,755 1 INFO qualification_0 odoo.modules.loading: 15 modules loaded in 0.09s, 0 queries (+0 extra) 
+2026-09-09 14:04:39,781 1 INFO qualification_0 odoo.modules.loading: Modules loaded. 
+2026-09-09 14:04:39,789 1 INFO qualification_0 odoo.registry: Registry loaded in 0.140s 
+QUALIFICATION_AUDIT=[{"id": 1, "name": "A original", "company_id": [2, "Qualification company A"], "value": 12}, {"id": 2, "name": "B original", "company_id": [3, "Qualification company B"], "value": 20}, {"id": 3, "name": "ORM own import", "company_id": [2, "Qualification company A"], "value": 31}, {"id": 6, "name": "RPC own import", "company_id": [2, "Qualification company A"], "value": 41}]

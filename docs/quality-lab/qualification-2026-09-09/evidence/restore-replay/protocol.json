@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "series": "19.0",
+  "max_scenarios": 3,
+  "budget_seconds": 900,
+  "transport": "Unmodified restore script copied beside isolated Compose stack, no host ports, internal network, explicit qualification project, fresh volumes",
+  "scenarios": [
+    {"id": "complete", "expect": "exit zero, ready banner, attachment bytes intact, neutralized database, seeded cron and outgoing server disabled, local admin and base URL set, source and neighbor unchanged"},
+    {"id": "missing_dump", "expect": "nonzero exit before target database creation, no ready banner, neighbor unchanged"},
+    {"id": "invalid_update", "expect": "nonzero exit and no ready banner for nonexistent update module; restored database remains inspectable and neutralized; neighbor unchanged"}
+  ],
+  "limits": ["Synthetic base-only database on Odoo 19.0", "No customer backup or production", "No payment provider or enterprise module neutralization tested", "Missing dump is tested, not every truncated archive or disk failure", "Failure leaves a local database; atomic rollback is not required by this protocol"]
+}

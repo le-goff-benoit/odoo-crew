@@ -1,0 +1,20 @@
+champs de x_lab_request :
+  {"id": 3728, "name": "id", "ttype": "integer", "store": true, "readonly": true, "compute": false, "depends": false, "state": "base"}
+  {"id": 3729, "name": "display_name", "ttype": "char", "store": false, "readonly": true, "compute": false, "depends": false, "state": "base"}
+  {"id": 3730, "name": "create_uid", "ttype": "many2one", "store": true, "readonly": true, "compute": false, "depends": false, "state": "base"}
+  {"id": 3731, "name": "create_date", "ttype": "datetime", "store": true, "readonly": true, "compute": false, "depends": false, "state": "base"}
+  {"id": 3732, "name": "write_uid", "ttype": "many2one", "store": true, "readonly": true, "compute": false, "depends": false, "state": "base"}
+  {"id": 3733, "name": "write_date", "ttype": "datetime", "store": true, "readonly": true, "compute": false, "depends": false, "state": "base"}
+  {"id": 3734, "name": "x_name", "ttype": "char", "store": true, "readonly": false, "compute": false, "depends": false, "state": "manual"}
+  {"id": 3736, "name": "x_studio_days", "ttype": "integer", "store": true, "readonly": false, "compute": false, "depends": false, "state": "manual"}
+  {"id": 3738, "name": "x_studio_kind", "ttype": "selection", "store": true, "readonly": false, "compute": false, "depends": false, "state": "manual"}
+  {"id": 3742, "name": "x_studio_needs_review", "ttype": "boolean", "store": true, "readonly": true, "compute": "for record in self:\n    record['x_studio_needs_review'] = (record['x_studio_days'] or 0) >= 7 and record['x_studio_kind'] == 'rental'\n", "depends": "x_studio_days,x_studio_kind", "state": "manual"}
+
+ir.model.data du modèle et de ses champs :
+  {'id': 26981, 'complete_name': 'studio_customization.lab_seed_x_name', 'model': 'ir.model.fields', 'res_id': 3734, 'noupdate': True}
+  {'id': 26982, 'complete_name': 'studio_customization.lab_seed_x_studio_days', 'model': 'ir.model.fields', 'res_id': 3736, 'noupdate': True}
+  {'id': 26983, 'complete_name': 'studio_customization.lab_seed_x_studio_kind', 'model': 'ir.model.fields', 'res_id': 3738, 'noupdate': True}
+  {'id': 26984, 'complete_name': 'studio_customization.lab_seed_model', 'model': 'ir.model', 'res_id': 422, 'noupdate': True}
+  {'id': 26988, 'complete_name': 'studio_customization.revue_requise_demand_2e8e5590-3d9c-4448-bdda-83f7970c31eb', 'model': 'ir.model.fields', 'res_id': 3742, 'noupdate': False}
+
+enregistrements résiduels x_lab_request : 0

@@ -1,0 +1,62 @@
+{
+  "checks": {
+    "authenticate_admin": true,
+    "create_read_existing_fields": true,
+    "write_read_existing_fields": true,
+    "unlink": true,
+    "stable_acl_xmlid": true,
+    "no_requested_field_yet": true,
+    "cleanup": true
+  },
+  "status": "pass",
+  "uid": 2,
+  "before": [
+    {
+      "id": 1,
+      "x_name": "qualification preflight",
+      "x_studio_days": 6,
+      "x_studio_kind": "rental"
+    }
+  ],
+  "after": [
+    {
+      "id": 1,
+      "x_studio_days": 7,
+      "x_studio_kind": "loan"
+    }
+  ],
+  "acl": [
+    {
+      "id": 295,
+      "model_id": [
+        422,
+        "Demande Aster"
+      ],
+      "group_id": [
+        1,
+        "Role / User"
+      ],
+      "perm_read": true,
+      "perm_write": true,
+      "perm_create": true,
+      "perm_unlink": true
+    }
+  ],
+  "acl_xmlid": "studio_customization.lab_seed_access",
+  "cleanup": {
+    "container": {
+      "exit_code": 0,
+      "remaining": []
+    },
+    "volume": {
+      "exit_code": 0,
+      "remaining": []
+    },
+    "network": {
+      "exit_code": 0,
+      "remaining": []
+    }
+  },
+  "seconds": 34.996,
+  "prefix": "quality-native-fbd4e07498"
+}

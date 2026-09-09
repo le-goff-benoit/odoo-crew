@@ -1,0 +1,52 @@
+2026-09-09 14:05:47,118 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:05:47,118 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 14:05:47,118 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:05:47,118 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 14:05:47,119 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 14:05:47,119 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo/addons/19.0', '/mnt/quality', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 14:05:47,119 1 INFO ? odoo: database: odoo@quality-rights-9c52ab471b-db:default 
+2026-09-09 14:05:47,355 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8069 
+2026-09-09 14:05:47,368 1 INFO qualification_1 odoo.modules.loading: loading 1 modules... 
+2026-09-09 14:05:47,370 1 INFO qualification_1 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 14:05:47,373 1 INFO qualification_1 odoo.modules.loading: loading 15 modules... 
+2026-09-09 14:05:47,481 1 INFO qualification_1 odoo.modules.loading: 15 modules loaded in 0.11s, 0 queries (+0 extra) 
+2026-09-09 14:05:47,515 1 INFO qualification_1 odoo.modules.loading: Modules loaded. 
+2026-09-09 14:05:47,525 1 INFO qualification_1 odoo.registry: Registry loaded in 0.170s 
+2026-09-09 14:05:47,527 1 INFO qualification_1 odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-09-09 14:05:47,540 1 WARNING qualification_1 odoo.addons.rpc.controllers.xmlrpc: The /xmlrpc, /xmlrpc/2 and /jsonrpc endpoints are deprecated in Odoo 19 and scheduled for removal in Odoo 22. Please report the problem to the client making the request.
+Mute this logger: --log-handler odoo.addons.rpc.controllers.xmlrpc:ERROR
+https://www.odoo.com/documentation/latest/developer/reference/external_api.html#migrating-from-xml-rpc-json-rpc 
+2026-09-09 14:05:47,838 1 INFO None odoo.addons.base.models.res_users: Login successful for login:qualification_user from n/a 
+2026-09-09 14:05:47,841 1 INFO None werkzeug: 127.0.0.1 - - [09/Sep/2026 14:05:47] "POST /xmlrpc/2/common HTTP/1.1" 200 - 12 0.005 0.404
+2026-09-09 14:05:47,844 1 WARNING qualification_1 odoo.addons.rpc.controllers.xmlrpc: The /xmlrpc, /xmlrpc/2 and /jsonrpc endpoints are deprecated in Odoo 19 and scheduled for removal in Odoo 22. Please report the problem to the client making the request.
+Mute this logger: --log-handler odoo.addons.rpc.controllers.xmlrpc:ERROR
+https://www.odoo.com/documentation/latest/developer/reference/external_api.html#migrating-from-xml-rpc-json-rpc 
+2026-09-09 14:05:48,118 1 INFO qualification_1 werkzeug: 127.0.0.1 - - [09/Sep/2026 14:05:48] "POST /xmlrpc/2/object#quality.rights.record.search_read HTTP/1.1" 200 - 16 0.005 0.270
+2026-09-09 14:05:48,120 1 WARNING qualification_1 odoo.addons.rpc.controllers.xmlrpc: The /xmlrpc, /xmlrpc/2 and /jsonrpc endpoints are deprecated in Odoo 19 and scheduled for removal in Odoo 22. Please report the problem to the client making the request.
+Mute this logger: --log-handler odoo.addons.rpc.controllers.xmlrpc:ERROR
+https://www.odoo.com/documentation/latest/developer/reference/external_api.html#migrating-from-xml-rpc-json-rpc 
+2026-09-09 14:05:48,121 1 INFO qualification_1 werkzeug: 127.0.0.1 - - [09/Sep/2026 14:05:48] "POST /xmlrpc/2/object#quality.rights.record.read HTTP/1.1" 200 - 3 0.001 0.002
+2026-09-09 14:05:48,122 1 WARNING qualification_1 odoo.addons.rpc.controllers.xmlrpc: The /xmlrpc, /xmlrpc/2 and /jsonrpc endpoints are deprecated in Odoo 19 and scheduled for removal in Odoo 22. Please report the problem to the client making the request.
+Mute this logger: --log-handler odoo.addons.rpc.controllers.xmlrpc:ERROR
+https://www.odoo.com/documentation/latest/developer/reference/external_api.html#migrating-from-xml-rpc-json-rpc 
+2026-09-09 14:05:48,126 1 INFO qualification_1 werkzeug: 127.0.0.1 - - [09/Sep/2026 14:05:48] "POST /xmlrpc/2/object#quality.rights.record.write HTTP/1.1" 200 - 6 0.001 0.004
+2026-09-09 14:05:48,128 1 WARNING qualification_1 odoo.addons.rpc.controllers.xmlrpc: The /xmlrpc, /xmlrpc/2 and /jsonrpc endpoints are deprecated in Odoo 19 and scheduled for removal in Odoo 22. Please report the problem to the client making the request.
+Mute this logger: --log-handler odoo.addons.rpc.controllers.xmlrpc:ERROR
+https://www.odoo.com/documentation/latest/developer/reference/external_api.html#migrating-from-xml-rpc-json-rpc 
+2026-09-09 14:05:48,129 1 INFO qualification_1 werkzeug: 127.0.0.1 - - [09/Sep/2026 14:05:48] "POST /xmlrpc/2/object#quality.rights.record.write HTTP/1.1" 200 - 4 0.001 0.002
+2026-09-09 14:05:48,130 1 WARNING qualification_1 odoo.addons.rpc.controllers.xmlrpc: The /xmlrpc, /xmlrpc/2 and /jsonrpc endpoints are deprecated in Odoo 19 and scheduled for removal in Odoo 22. Please report the problem to the client making the request.
+Mute this logger: --log-handler odoo.addons.rpc.controllers.xmlrpc:ERROR
+https://www.odoo.com/documentation/latest/developer/reference/external_api.html#migrating-from-xml-rpc-json-rpc 
+2026-09-09 14:05:48,132 1 INFO qualification_1 werkzeug: 127.0.0.1 - - [09/Sep/2026 14:05:48] "POST /xmlrpc/2/object#quality.rights.record.read HTTP/1.1" 200 - 3 0.001 0.002
+2026-09-09 14:05:48,133 1 WARNING qualification_1 odoo.addons.rpc.controllers.xmlrpc: The /xmlrpc, /xmlrpc/2 and /jsonrpc endpoints are deprecated in Odoo 19 and scheduled for removal in Odoo 22. Please report the problem to the client making the request.
+Mute this logger: --log-handler odoo.addons.rpc.controllers.xmlrpc:ERROR
+https://www.odoo.com/documentation/latest/developer/reference/external_api.html#migrating-from-xml-rpc-json-rpc 
+2026-09-09 14:05:48,138 1 INFO qualification_1 werkzeug: 127.0.0.1 - - [09/Sep/2026 14:05:48] "POST /xmlrpc/2/object#quality.rights.record.load HTTP/1.1" 200 - 13 0.002 0.004
+2026-09-09 14:05:48,141 1 WARNING qualification_1 odoo.addons.rpc.controllers.xmlrpc: The /xmlrpc, /xmlrpc/2 and /jsonrpc endpoints are deprecated in Odoo 19 and scheduled for removal in Odoo 22. Please report the problem to the client making the request.
+Mute this logger: --log-handler odoo.addons.rpc.controllers.xmlrpc:ERROR
+https://www.odoo.com/documentation/latest/developer/reference/external_api.html#migrating-from-xml-rpc-json-rpc 
+2026-09-09 14:05:48,144 1 INFO qualification_1 werkzeug: 127.0.0.1 - - [09/Sep/2026 14:05:48] "POST /xmlrpc/2/object#quality.rights.record.read HTTP/1.1" 200 - 3 0.002 0.003
+2026-09-09 14:05:48,147 1 WARNING qualification_1 odoo.addons.rpc.controllers.xmlrpc: The /xmlrpc, /xmlrpc/2 and /jsonrpc endpoints are deprecated in Odoo 19 and scheduled for removal in Odoo 22. Please report the problem to the client making the request.
+Mute this logger: --log-handler odoo.addons.rpc.controllers.xmlrpc:ERROR
+https://www.odoo.com/documentation/latest/developer/reference/external_api.html#migrating-from-xml-rpc-json-rpc 
+2026-09-09 14:05:48,151 1 INFO qualification_1 werkzeug: 127.0.0.1 - - [09/Sep/2026 14:05:48] "POST /xmlrpc/2/object#quality.rights.record.load HTTP/1.1" 200 - 9 0.002 0.004

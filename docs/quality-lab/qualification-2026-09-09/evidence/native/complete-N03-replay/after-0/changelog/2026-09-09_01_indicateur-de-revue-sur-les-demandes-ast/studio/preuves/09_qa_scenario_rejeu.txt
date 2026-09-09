@@ -1,0 +1,13 @@
+### QA — rejeu indépendant du scénario
+C1   VERT  booléen stocké calculé, readonly, manual, depends sur les deux champs · ttype=boolean store=True readonly=True depends=x_studio_days,x_studio_kind state=manual
+C2   VERT  location de 7 jours (seuil inclus) → True
+C3   VERT  location de 6 jours → False et de 30 jours → True
+C4   VERT  prêt de 7 et de 30 jours → False
+C5   VERT  genre vide, durée nulle ou négative → False, sans erreur
+C6   VERT  6j→7j bascule à True, puis rental→loan revient à False · False → True → False
+C7   VERT  x_name / x_studio_days / x_studio_kind inchangés, aucun doublon · 3 champ(s) d'origine, 5 XML-ID lab_seed_*
+C8   VERT  exactement un champ x_studio_needs_review et un identifiant externe · champs=1 xmlids=1
+nett VERT  données de recette supprimées · 0 reste(nt)
+
+RECETTE studio point 1 : 9/9 vert(s)
+sortie=0

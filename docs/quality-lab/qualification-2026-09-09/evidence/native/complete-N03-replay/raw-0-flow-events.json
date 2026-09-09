@@ -1,0 +1,293 @@
+{
+  "raw_sha256": "005f798b88fa5930fa23c9f83a06b35a516c77e01f23b3b12e276d473c0ef6a4",
+  "events": [
+    {
+      "event_sha256": "5b688d5dcc5d46a0f4bdd0c8c9622f46ba3fc9fcf797dacad973465ca854ebe6",
+      "block": {
+        "type": "tool_use",
+        "id": "toolu_01WnkDD8hceK5tTfeAM3eMRu",
+        "name": "Bash",
+        "input": {
+          "command": "FLOW=$(python3 ~/.odoo19-agents/scripts/odoo_flow.py start /work --kind development --id lab-needs-review) && echo \"FLOW=$FLOW\" | tee /tmp/flow.env && python3 ~/.odoo19-agents/scripts/odoo_flow.py status \"$FLOW\"",
+          "description": "Start development flow and show status"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    },
+    {
+      "event_sha256": "e4a817f69b3f8e3003baa36ff6c2a02cce6b1bdafa89ba5441dd9f23b36d97f7",
+      "block": {
+        "tool_use_id": "toolu_01WnkDD8hceK5tTfeAM3eMRu",
+        "type": "tool_result",
+        "content": "FLOW=/work/.odoo-agents/flows/lab-needs-review.json\nODOO FLOW · lab-needs-review\n────────────────────────────────────────────────────────────────────────\nÉtat       PRÊT\nFlux       development\nProjet     /work\nProgression 0 étape(s) franchie(s)\nNœuds agent 0 revendiqué(s) · 0 prêt(s)\n\nPOSITION DANS LE GRAPHE\n  PROCHAINE ÉTAPE\n  ○ briefing\n    ORCHESTRATEUR\n    Situer le projet, la série, la release, les modules et les données disponibles.\n    Sorties: close, development, development_complex, documentation, environment, feedback, functional, support, technical, validation · Preuve: sortie de odoo_briefing.py",
+        "is_error": false
+      }
+    },
+    {
+      "event_sha256": "392ba05c4791a91f87b25c5d54f5518a30e145514098c1017ed31b4d84768926",
+      "block": {
+        "type": "tool_use",
+        "id": "toolu_011qEmwKDGiMS4DQ8gPXAYDQ",
+        "name": "Bash",
+        "input": {
+          "command": "FLOW=/work/.odoo-agents/flows/lab-needs-review.json && mkdir -p .odoo-agents/flow-artifacts/lab-needs-review && python3 ~/.odoo19-agents/scripts/odoo_briefing.py /work > .odoo-agents/flow-artifacts/lab-needs-review/briefing.md 2>&1 && python3 ~/.odoo19-agents/scripts/odoo_flow.py claim \"$FLOW\" briefing --owner claude-orchestrateur && python3 ~/.odoo19-agents/scripts/odoo_flow.py complete \"$FLOW\" briefing --outcome development --evidence .odoo-agents/flow-artifacts/lab-needs-review/briefing.md --owner claude-orchestrateur",
+          "description": "Claim and complete briefing node"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    },
+    {
+      "event_sha256": "98165c2eb288aeeada346dd7ea699362170c158ca3c2452d902c641c3de1f47f",
+      "block": {
+        "tool_use_id": "toolu_011qEmwKDGiMS4DQ8gPXAYDQ",
+        "type": "tool_result",
+        "content": "▶ briefing · ORCHESTRATEUR\n  Démarré par claude-orchestrateur\n  Situer le projet, la série, la release, les modules et les données disponibles.\nODOO FLOW · lab-needs-review\n────────────────────────────────────────────────────────────────────────\nÉtat       PRÊT\nFlux       development\nProjet     /work\nProgression 1 étape(s) franchie(s)\nNœuds agent 0 revendiqué(s) · 1 prêt(s)\nDernière   ✓ briefing → development\n\nPOSITION DANS LE GRAPHE\n  PROCHAINE ÉTAPE\n  ○ functional_review\n    AGENT · odoo-analyst\n    Produire la revue fonctionnelle contradictoire et choisir la voie.\n    Sorties: answer, blocked, contradiction, exists, module, module_high_risk, studio · Preuve: revue_fonctionnelle.md ou revue_en_cours.md",
+        "is_error": false
+      }
+    },
+    {
+      "event_sha256": "5a4f7b3ba5331a9852a29a2e360ce46bbb297caab8a19dd4bbd2c8fef9017ce6",
+      "block": {
+        "type": "tool_use",
+        "id": "toolu_019KuAS88kKQmuFKHHU4JMYv",
+        "name": "Bash",
+        "input": {
+          "command": "FLOW=/work/.odoo-agents/flows/lab-needs-review.json; R=$(cat /tmp/release.txt); python3 ~/.odoo19-agents/scripts/odoo_flow.py claim \"$FLOW\" functional_review --owner claude-odoo-analyst && python3 ~/.odoo19-agents/scripts/odoo_flow.py complete \"$FLOW\" functional_review --outcome studio --evidence \"$R/revue_fonctionnelle.md\" --owner claude-odoo-analyst",
+          "description": "Complete functional review node with studio outcome"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    },
+    {
+      "event_sha256": "f6f7300b4670c01bd8db308e505dd969b1bf4e7601d505336748b0a5129141fa",
+      "block": {
+        "tool_use_id": "toolu_019KuAS88kKQmuFKHHU4JMYv",
+        "type": "tool_result",
+        "content": "▶ functional_review · AGENT · odoo-analyst\n  Démarré par claude-odoo-analyst\n  Produire la revue fonctionnelle contradictoire et choisir la voie.\nODOO FLOW · lab-needs-review\n────────────────────────────────────────────────────────────────────────\nÉtat       PRÊT\nFlux       development\nProjet     /work\nProgression 2 étape(s) franchie(s)\nNœuds agent 0 revendiqué(s) · 1 prêt(s)\nDernière   ✓ functional_review → studio\n\nPOSITION DANS LE GRAPHE\n  PROCHAINE ÉTAPE\n  ○ studio_implementation\n    AGENT · odoo-studio\n    Construire la configuration Studio et son pack versionné sur la copie client.\n    Sorties: blocked, done · Preuve: pack Studio et scénarios RPC",
+        "is_error": false
+      }
+    },
+    {
+      "event_sha256": "3b68701007bd3759aa357e40819048569285c213a565ef71caa3ed0e9da46448",
+      "block": {
+        "type": "tool_use",
+        "id": "toolu_016aJ6C1Y6KH2wHjk8W87ssZ",
+        "name": "Bash",
+        "input": {
+          "command": "FLOW=/work/.odoo-agents/flows/lab-needs-review.json; R=$(cat /tmp/release.txt); python3 ~/.odoo19-agents/scripts/odoo_flow.py claim \"$FLOW\" studio_implementation --owner claude-odoo-studio && python3 ~/.odoo19-agents/scripts/odoo_flow.py complete \"$FLOW\" studio_implementation --outcome done --evidence \"$R/studio/README.md\" --owner claude-odoo-studio",
+          "description": "Complete studio implementation node"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    },
+    {
+      "event_sha256": "4ac2ecba7b4ce24ab9882dbc97c18d703092347fe959a1cbfa45eaf0dc195b00",
+      "block": {
+        "tool_use_id": "toolu_016aJ6C1Y6KH2wHjk8W87ssZ",
+        "type": "tool_result",
+        "content": "▶ studio_implementation · AGENT · odoo-studio\n  Démarré par claude-odoo-studio\n  Construire la configuration Studio et son pack versionné sur la copie client.\nODOO FLOW · lab-needs-review\n────────────────────────────────────────────────────────────────────────\nÉtat       PRÊT\nFlux       development\nProjet     /work\nProgression 3 étape(s) franchie(s)\nNœuds agent 0 revendiqué(s) · 2 prêt(s)\nDernière   ✓ studio_implementation → done\n\nPOSITION DANS LE GRAPHE\n  VAGUE 1 · SÉQUENTIELLE\n  ○ studio_diff_qa\n    AGENT · odoo-tester · graph-lane-studio-diff\n    Voie QA Studio : vérifier que le pack et la copie ne divergent pas.\n    Sorties: done · Preuve: fragment diff Studio\n  VAGUE 2 · SÉQUENTIELLE\n  ○ studio_scenario_qa\n    AGENT · odoo-tester · graph-lane-studio-runtime\n    Voie QA Studio : jouer les scénarios RPC et vérifier l'écran concerné.\n    Sorties: done · Preuve: fragment scénarios Studio",
+        "is_error": false
+      }
+    },
+    {
+      "event_sha256": "d2b773787688035ab94094e4d57bef0c6f36d48d91ef95bee78273577a5cf1b9",
+      "block": {
+        "type": "tool_use",
+        "id": "toolu_01RiX6mjNZP13utYJzRTfFBF",
+        "name": "Bash",
+        "input": {
+          "command": "A=/work/.odoo-agents/flow-artifacts/lab-needs-review; R=$(cat /tmp/release.txt); R_REL=\"changelog/$(basename $R)\"\ncat > \"$A/studio_diff_qa.md\" <<EOF\n# Fragment QA — voie « diff Studio » (point 1)\n\n**Testeur** claude-odoo-tester-diff · **Base** copie synthétique locale \\`lab_client\\` (19.0) · **2026-09-09**\n\n## Contrôles\n\n| Contrôle | Commande | Résultat | Preuve |\n|---|---|---|---|\n| Le pack ne diverge pas de la copie | \\`odoo_pack.py diff pack.json --db lab_client\\` | **0 à créer / 0 à modifier / 1 inchangé** (sortie 0) | \\`$R_REL/studio/preuves/07_qa_pack_diff.txt\\` |\n| Aucune référence \\`unresolved\\` dans le pack | \\`grep -c unresolved pack.json\\` | **0** ; \\`model_id\\` résolu en \\`studio_customization.lab_seed_model\\` | \\`$R_REL/studio/pack.json\\` |\n| Un seul champ livré, un seul XML-ID | relevé \\`ir.model.fields\\` + \\`ir.model.data\\` | 1 champ \\`x_studio_needs_review\\` (id 3742), 1 XML-ID \\`studio_customization.revue_requise_demand_2e8e5590-…\\` | \\`$R_REL/studio/preuves/08_qa_etat_base.txt\\` |\n| Idempotence de la construction | 2 exécutions successives de \\`build_01_needs_review.py\\` | 1ʳᵉ **CRÉÉ**, 2ᵈᵉ **INCHANGÉ**, même id, même XML-ID → aucun doublon | \\`preuves/02_build_application_1.txt\\`, \\`preuves/03_build_application_2.txt\\` |\n| Champs existants intacts | relevé \\`ir.model.fields\\` / \\`ir.model.data\\` | \\`x_name\\` (3734), \\`x_studio_days\\` (3736), \\`x_studio_kind\\` (3738) inchangés, XML-ID \\`lab_seed_*\\` conservés, aucun doublon | \\`preuves/08_qa_etat_base.txt\\` |\n| Définition conforme à la spec | relevé du champ | booléen, \\`store=true\\`, \\`readonly=true\\`, \\`state=manual\\`, \\`depends=x_studio_days,x_studio_kind\\` | \\`preuves/08_qa_etat_base.txt\\` |\n| Marquage Studio | contexte \\`{\"studio\": True}\\` sur \\`create\\` | XML-ID généré par Odoo sous \\`studio_customization\\`, forme \\`<libellé>_<uuid>\\` — indiscernable d'un travail fait dans Studio | \\`preuves/02_build_application_1.txt\\` |\n\n## Contrôles non applicables ou non exécutés\n\n- **Lint Ruff / \\`odoo-lint.sh --changed\\`** : *non exécuté*. Aucun module custom n'est\n  livré ; le lint du banc (\\`labctl lint MODULE\\`) n'accepte qu'un module et Ruff n'est\n  pas installé hors image QA. Substitut exécuté : \\`python3 -m py_compile\\` sur les deux\n  scripts de la release → **OK**. À dire tel quel, ce n'est pas un lint.\n- **\\`odoo-test.sh\\` / install-update** : sans objet pour un point \\`[studio]\\` (aucun module).\n- **Capture d'écran** : sans objet, \\`ir.ui.view\\` sur \\`x_lab_request\\` = **0** avant comme\n  après ; aucune vue créée ni modifiée.\n\n## Verdict de la voie\n\n**VERT** — le pack fait foi, la copie lui est conforme, la construction est idempotente\net n'a rien dupliqué.\nEOF\nFLOW=/work/.odoo-agents/flows/lab-needs-review.json\npython3 ~/.odoo19-agents/scripts/odoo_flow.py claim \"$FLOW\" studio_diff_qa --owner claude-odoo-tester-diff && python3 ~/.odoo19-agents/scripts/odoo_flow.py complete \"$FLOW\" studio_diff_qa --outcome done --evidence \"$A/studio_diff_qa.md\" --owner claude-odoo-tester-diff",
+          "description": "Write diff QA fragment and complete node"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    },
+    {
+      "event_sha256": "ed083c6c776a4939df3710e3e70d02943f80c53f7f3a040f9073ef3920a9becd",
+      "block": {
+        "tool_use_id": "toolu_01RiX6mjNZP13utYJzRTfFBF",
+        "type": "tool_result",
+        "content": "▶ studio_diff_qa · AGENT · odoo-tester · graph-lane-studio-diff\n  Démarré par claude-odoo-tester-diff\n  Voie QA Studio : vérifier que le pack et la copie ne divergent pas.\nODOO FLOW · lab-needs-review\n────────────────────────────────────────────────────────────────────────\nÉtat       PRÊT\nFlux       development\nProjet     /work\nProgression 4 étape(s) franchie(s)\nNœuds agent 0 revendiqué(s) · 1 prêt(s)\nDernière   ✓ studio_diff_qa → done\n\nPOSITION DANS LE GRAPHE\n  PROCHAINE ÉTAPE\n  ○ studio_scenario_qa\n    AGENT · odoo-tester · graph-lane-studio-runtime\n    Voie QA Studio : jouer les scénarios RPC et vérifier l'écran concerné.\n    Sorties: done · Preuve: fragment scénarios Studio",
+        "is_error": false
+      }
+    },
+    {
+      "event_sha256": "436b9e4c455530440a875ddaf9ff1cdf3a7a7081f7c83a8b33920a1bd64e05b2",
+      "block": {
+        "type": "tool_use",
+        "id": "toolu_016jZovz3jNQHPH3WZ1icNwL",
+        "name": "Bash",
+        "input": {
+          "command": "A=/work/.odoo-agents/flow-artifacts/lab-needs-review; R=$(cat /tmp/release.txt); R_REL=\"changelog/$(basename $R)\"\ncat > \"$A/studio_scenario_qa.md\" <<EOF\n# Fragment QA — voie « scénarios RPC » (point 1)\n\n**Testeur** claude-odoo-tester-runtime · **Base** \\`lab_client\\` (19.0) · **2026-09-09**\n\nScénario : \\`$R_REL/studio/test_01_needs_review.py\\`, rejoué par le testeur après coup,\nserveur neuf, valeurs relues **côté serveur** (jamais la valeur envoyée), données de\nrecette supprimées à la fin.\n\n| Cas | Attendu (D-22) | Obtenu | État |\n|---|---|---|---|\n| C1 définition du champ | booléen stocké, calculé, readonly, manual, \\`depends\\` sur les deux champs | conforme | VERT |\n| C2 location 7 jours | True (seuil **inclus**) | True | VERT |\n| C3 location 6 j / 30 j | False / True | False / True | VERT |\n| C4 prêt 7 j / 30 j | False / False (prêts **exclus**) | False / False | VERT |\n| C5 genre vide, durée 0, durée −3 | False, sans erreur | False ×3 | VERT |\n| C6 recalcul 6 j→7 j puis rental→loan | True puis False | False → True → False | VERT |\n| C7 champs existants intacts, aucun doublon | 3 champs d'origine, XML-ID \\`lab_seed_*\\` conservés | 3 champs, 5 XML-ID \\`lab_seed_*\\` | VERT |\n| C8 unicité | 1 champ, 1 XML-ID | champs=1 xmlids=1 | VERT |\n| nettoyage | 0 donnée « — recette » résiduelle | 0 | VERT |\n\n**9/9 vert, sortie 0.** Preuve : \\`$R_REL/studio/preuves/09_qa_scenario_rejeu.txt\\`.\n\n## Rouge avant, vert après\n\nSur la copie remise à l'état initial (champ supprimé), le scénario est **ROUGE**\n(C1, sortie 1) : \\`$R_REL/studio/preuves/01_scenario_avant.txt\\`.\nAprès \\`build_01_needs_review.py\\`, il est **VERT** 9/9 :\n\\`$R_REL/studio/preuves/04_scenario_apres.txt\\`. Le scénario discrimine donc bien.\n\n## Ce que ce passage RPC ne prouve pas\n\n- Ni le rendu visuel, ni les droits d'un autre utilisateur (limite du transport RPC).\n  Sans objet ici : **aucune vue** n'existe sur \\`x_lab_request\\` (0 avant, 0 après) et\n  aucun droit n'a été touché — c'est exactement le périmètre demandé.\n- Le champ reste invisible à l'écran : c'est le périmètre, pas un défaut. À reprendre\n  si la release doit un jour l'afficher.\n\n## Anomalie corrigée en cours de tâche (transparence)\n\nLa première version des deux scripts empaquetait un niveau de liste en trop dans\nl'appel \\`execute_kw\\`, ce qui faisait échouer \\`read\\` et \\`unlink\\` par un\n\\`TypeError: unhashable type: 'list'\\` côté serveur. Corrigé (signature explicite\n\\`rpc(model, method, args, kwargs)\\`), puis **toute la séquence a été rejouée depuis\nune copie remise à zéro** : les preuves conservées sont celles de la version corrigée.\n\n## Verdict de la voie\n\n**VERT** — les huit critères de comportement de la spec sont couverts par une exécution réelle.\nEOF\nFLOW=/work/.odoo-agents/flows/lab-needs-review.json\npython3 ~/.odoo19-agents/scripts/odoo_flow.py claim \"$FLOW\" studio_scenario_qa --owner claude-odoo-tester-runtime && python3 ~/.odoo19-agents/scripts/odoo_flow.py complete \"$FLOW\" studio_scenario_qa --outcome done --evidence \"$A/studio_scenario_qa.md\" --owner claude-odoo-tester-runtime",
+          "description": "Write scenario QA fragment and complete node"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    },
+    {
+      "event_sha256": "20637bb4a27b213091eb5fa6634d93961e3a12ad4c28770d4a8e4d859858135f",
+      "block": {
+        "tool_use_id": "toolu_016jZovz3jNQHPH3WZ1icNwL",
+        "type": "tool_result",
+        "content": "▶ studio_scenario_qa · AGENT · odoo-tester · graph-lane-studio-runtime\n  Démarré par claude-odoo-tester-runtime\n  Voie QA Studio : jouer les scénarios RPC et vérifier l'écran concerné.\nODOO FLOW · lab-needs-review\n────────────────────────────────────────────────────────────────────────\nÉtat       PRÊT\nFlux       development\nProjet     /work\nProgression 5 étape(s) franchie(s)\nNœuds agent 0 revendiqué(s) · 0 prêt(s)\nDernière   ✓ studio_scenario_qa → done\n\nPOSITION DANS LE GRAPHE\n  PROCHAINE ÉTAPE\n  ○ studio_task_gate\n    ORCHESTRATEUR\n    Fusionner les preuves Studio et rendre un verdict unique.\n    Sorties: blocked, pass, retry · Preuve: qa.md et critères d'acceptation",
+        "is_error": false
+      }
+    },
+    {
+      "event_sha256": "c13806d61a6591d2e3f1f80645cbcb3196a301e11c74abcbb275ed6b15efdaf4",
+      "block": {
+        "type": "tool_use",
+        "id": "toolu_01AP4NAZSRrri5jYLgJ2ZdcW",
+        "name": "Bash",
+        "input": {
+          "command": "FLOW=/work/.odoo-agents/flows/lab-needs-review.json; R=$(cat /tmp/release.txt); A=/work/.odoo-agents/flow-artifacts/lab-needs-review\npython3 ~/.odoo19-agents/scripts/odoo_flow.py claim \"$FLOW\" studio_task_gate --owner claude-orchestrateur\npython3 ~/.odoo19-agents/scripts/odoo_flow.py bind-criteria \"$FLOW\" --source \"$R/revue_fonctionnelle.md\" --output \"$A/coverage.json\" --owner claude-orchestrateur\necho \"--- coverage ---\"; cat \"$A/coverage.json\"",
+          "description": "Claim gate and bind acceptance criteria"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    },
+    {
+      "event_sha256": "abf2a3803fc5ec8efab6f311e5e3694f4420f12dbd464831bba16801e26f1087",
+      "block": {
+        "tool_use_id": "toolu_01AP4NAZSRrri5jYLgJ2ZdcW",
+        "type": "tool_result",
+        "content": "▶ studio_task_gate · ORCHESTRATEUR\n  Démarré par claude-orchestrateur\n  Fusionner les preuves Studio et rendre un verdict unique.\nContrat QA lié : 10 critères · 1ad2d824f6ad\nCouverture à renseigner : /work/.odoo-agents/flow-artifacts/lab-needs-review/coverage.json\n--- coverage ---\n{\n  \"format\": \"odoo-qa-coverage/1\",\n  \"contract_sha256\": \"1ad2d824f6adb9ef798da4903c2bc606fbe288ccb731811b86e7c2c4ad993fff\",\n  \"criteria\": [\n    {\n      \"id\": \"C01\",\n      \"text\": \"C1 — Le champ `x_studio_needs_review` existe sur `x_lab_request` : type booléen, `store = True`, `compute` renseigné, `depends = x_studio_days,x_studio_kind`, `readonly = True`, état `manual`.\",\n      \"status\": \"missing\",\n      \"evidence\": [],\n      \"note\": \"\"\n    },\n    {\n      \"id\": \"C02\",\n      \"text\": \"C2 — Une location de 7 jours (`x_studio_kind = 'rental'`, `x_studio_days = 7`) donne `x_studio_needs_review = True` après relecture serveur (seuil inclus).\",\n      \"status\": \"missing\",\n      \"evidence\": [],\n      \"note\": \"\"\n    },\n    {\n      \"id\": \"C03\",\n      \"text\": \"C3 — Une location de 6 jours donne `False` ; une location de 30 jours donne `True`.\",\n      \"status\": \"missing\",\n      \"evidence\": [],\n      \"note\": \"\"\n    },\n    {\n      \"id\": \"C04\",\n      \"text\": \"C4 — Un prêt (`loan`) donne `False` à 7 jours comme à 30 jours.\",\n      \"status\": \"missing\",\n      \"evidence\": [],\n      \"note\": \"\"\n    },\n    {\n      \"id\": \"C05\",\n      \"text\": \"C5 — Un genre vide et une durée nulle ou négative donnent `False` (pas d'erreur).\",\n      \"status\": \"missing\",\n      \"evidence\": [],\n      \"note\": \"\"\n    },\n    {\n      \"id\": \"C06\",\n      \"text\": \"C6 — Le recalcul suit la modification : passer une demande de 6 à 7 jours la fait basculer à `True` ; repasser `rental` en `loan` la fait revenir à `False`.\",\n      \"status\": \"missing\",\n      \"evidence\": [],\n      \"note\": \"\"\n    },\n    {\n      \"id\": \"C07\",\n      \"text\": \"C7 — Les champs existants `x_name`, `x_studio_days`, `x_studio_kind` sont inchangés (mêmes ids, mêmes XML-ID `lab_seed_*`) et aucun doublon n'a été créé.\",\n      \"status\": \"missing\",\n      \"evidence\": [],\n      \"note\": \"\"\n    },\n    {\n      \"id\": \"C08\",\n      \"text\": \"C8 — Le script de construction est idempotent : deux applications successives laissent exactement un champ `x_studio_needs_review` et un seul XML-ID.\",\n      \"status\": \"missing\",\n      \"evidence\": [],\n      \"note\": \"\"\n    },\n    {\n      \"id\": \"C09\",\n      \"text\": \"C9 — Le pack `pack.json` est exporté, `odoo_pack.py diff` ne rapporte aucun écart sur la copie, et il ne contient aucune référence `unresolved`.\",\n      \"status\": \"missing\",\n      \"evidence\": [],\n      \"note\": \"\"\n    },\n    {\n      \"id\": \"C10\",\n      \"text\": \"C10 — Le XML-ID créé est relevé dans `created.txt`, sous `studio_customization`, marqué Studio.\",\n      \"status\": \"missing\",\n      \"evidence\": [],\n      \"note\": \"\"\n    }\n  ]\n}",
+        "is_error": false
+      }
+    },
+    {
+      "event_sha256": "53237a0c378fb9235fe81004cd40a7e288e6b18297536cc14209a04f6fab8eba",
+      "block": {
+        "type": "tool_use",
+        "id": "toolu_01Pm2g6JD2e5UXkxQjsWEZfN",
+        "name": "Bash",
+        "input": {
+          "command": "FLOW=/work/.odoo-agents/flows/lab-needs-review.json; A=/work/.odoo-agents/flow-artifacts/lab-needs-review\npython3 ~/.odoo19-agents/scripts/odoo_flow.py qa-report \"$FLOW\" studio_task_gate --coverage \"$A/coverage.json\" --outcome pass --output \"$A/qa_rapport_point1.md\" --owner claude-orchestrateur && echo \"=== rapport ===\" && head -40 \"$A/qa_rapport_point1.md\"",
+          "description": "Generate QA reception report"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    },
+    {
+      "event_sha256": "2f172e4f65d28f285480961d86e104f2c3c7931be8995f7c080e837cef04175e",
+      "block": {
+        "tool_use_id": "toolu_01Pm2g6JD2e5UXkxQjsWEZfN",
+        "type": "tool_result",
+        "content": "Rapport QA : /work/.odoo-agents/flow-artifacts/lab-needs-review/qa_rapport_point1.md · issue pass · 3fd0473eeea7\n=== rapport ===\n# QA — VALIDÉ\n\nIssue proposée pour la réception : `pass`.\nCouverture déclarée : 10/10 critères couverts.\n\nSource du contrat :\n> changelog/2026\\-09\\-09\\_01\\_indicateur\\-de\\-revue\\-sur\\-les\\-demandes\\-ast/revue\\_fonctionnelle\\.md\n\nSHA-256 de la source : `6a737c51d5e92a4589ebba8938548bab2e08de1c5ba61eec1d58882760085909`.\nSHA-256 du contrat : `1ad2d824f6adb9ef798da4903c2bc606fbe288ccb731811b86e7c2c4ad993fff`.\n\n## Critères et références\n\n> C1 — Le champ \\`x\\_studio\\_needs\\_review\\` existe sur \\`x\\_lab\\_request\\` : type booléen, \\`store = True\\`, \\`compute\\` renseigné, \\`depends = x\\_studio\\_days,x\\_studio\\_kind\\`, \\`readonly = True\\`, état \\`manual\\`\\.\n\nStatut déclaré : `covered`.\n\nFichier référencé :\n> changelog/2026\\-09\\-09\\_01\\_indicateur\\-de\\-revue\\-sur\\-les\\-demandes\\-ast/studio/preuves/08\\_qa\\_etat\\_base\\.txt\n\nSHA-256 : `bba1db70a5058b8423da2bfdb4fb82874069344dfa80f28264ac753d65849178`.\n\nFichier référencé :\n> changelog/2026\\-09\\-09\\_01\\_indicateur\\-de\\-revue\\-sur\\-les\\-demandes\\-ast/studio/preuves/09\\_qa\\_scenario\\_rejeu\\.txt\n\nSHA-256 : `403e8d92604e1a56172c57e29503cdf505f2e94884efcca3028f469963bc9bee`.\n\n> C2 — Une location de 7 jours \\(\\`x\\_studio\\_kind = 'rental'\\`, \\`x\\_studio\\_days = 7\\`\\) donne \\`x\\_studio\\_needs\\_review = True\\` après relecture serveur \\(seuil inclus\\)\\.\n\nStatut déclaré : `covered`.\n\nFichier référencé :\n> changelog/2026\\-09\\-09\\_01\\_indicateur\\-de\\-revue\\-sur\\-les\\-demandes\\-ast/studio/preuves/09\\_qa\\_scenario\\_rejeu\\.txt\n\nSHA-256 : `403e8d92604e1a56172c57e29503cdf505f2e94884efcca3028f469963bc9bee`.\n\n> C3 — Une location de 6 jours donne \\`False\\` ; une location de 30 jours donne \\`True\\`\\.\n\nStatut déclaré : `covered`.",
+        "is_error": false
+      }
+    },
+    {
+      "event_sha256": "05fd56c164c7a4e1eff7baad5eb1b4faa31b7fb56f8d8400c343c0ce510b1ec9",
+      "block": {
+        "type": "tool_use",
+        "id": "toolu_01E4xLdieVmfJ1Jy5t7wFD1w",
+        "name": "Bash",
+        "input": {
+          "command": "FLOW=/work/.odoo-agents/flows/lab-needs-review.json; R=$(cat /tmp/release.txt)\npython3 ~/.odoo19-agents/scripts/odoo_flow.py complete \"$FLOW\" studio_task_gate --outcome pass --evidence \"$R/qa_rapport_point1.md\" --owner claude-orchestrateur",
+          "description": "Complete the studio task gate with pass"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    },
+    {
+      "event_sha256": "3403d1d1eda03a8514aea770b97fc5c88be1aa19db16548af60029c927a14f23",
+      "block": {
+        "type": "tool_result",
+        "content": "Exit code 2\nERREUR: couverture QA refusée : une preuve odoo-qa-coverage/1 est requise pour pass",
+        "is_error": true,
+        "tool_use_id": "toolu_01E4xLdieVmfJ1Jy5t7wFD1w"
+      }
+    },
+    {
+      "event_sha256": "211478544b1879d516233972d8b2098d60a07062dd24efb52e6a62e754f77140",
+      "block": {
+        "type": "tool_use",
+        "id": "toolu_012i9q45ga3LH6fzSgudZbvf",
+        "name": "Bash",
+        "input": {
+          "command": "FLOW=/work/.odoo-agents/flows/lab-needs-review.json; A=/work/.odoo-agents/flow-artifacts/lab-needs-review\npython3 ~/.odoo19-agents/scripts/odoo_flow.py complete \"$FLOW\" studio_task_gate --outcome pass --evidence \"$A/qa_rapport_point1.md\" --evidence \"$A/coverage.json\" --owner claude-orchestrateur",
+          "description": "Complete gate with report and coverage evidence"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    },
+    {
+      "event_sha256": "08ba43f91c2ac345ab7219f3a169b37a5048a8bd78143c20d06327838d5a03ca",
+      "block": {
+        "tool_use_id": "toolu_012i9q45ga3LH6fzSgudZbvf",
+        "type": "tool_result",
+        "content": "ODOO FLOW · lab-needs-review\n────────────────────────────────────────────────────────────────────────\nÉtat       PRÊT\nFlux       development\nProjet     /work\nProgression 6 étape(s) franchie(s)\nNœuds agent 0 revendiqué(s) · 0 prêt(s)\nContrat QA 10 critères liés · couverture exigée pour pass\nDernière   ✓ studio_task_gate → pass\n\nPOSITION DANS LE GRAPHE\n  PROCHAINE ÉTAPE\n  ○ journal_task\n    ORCHESTRATEUR\n    Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.\n    Sorties: done · Preuve: entrée JOURNAL.md",
+        "is_error": false
+      }
+    },
+    {
+      "event_sha256": "64fa388ec30fca8d9a9399b829b2b2702b100ca76d065cfa8dcb1a5f0b2dd588",
+      "block": {
+        "type": "tool_use",
+        "id": "toolu_01CNhVHarYxiMPr1JMUx8ws1",
+        "name": "Bash",
+        "input": {
+          "command": "FLOW=/work/.odoo-agents/flows/lab-needs-review.json\npython3 ~/.odoo19-agents/scripts/odoo_flow.py claim \"$FLOW\" journal_task --owner claude-orchestrateur && python3 ~/.odoo19-agents/scripts/odoo_flow.py complete \"$FLOW\" journal_task --outcome done --evidence /work/.odoo-agents/JOURNAL.md --owner claude-orchestrateur",
+          "description": "Complete journal node"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    },
+    {
+      "event_sha256": "647414d938c0360da6378ded3296bd8a5e5a7593877399ade84a6866d615711b",
+      "block": {
+        "tool_use_id": "toolu_01CNhVHarYxiMPr1JMUx8ws1",
+        "type": "tool_result",
+        "content": "▶ journal_task · ORCHESTRATEUR\n  Démarré par claude-orchestrateur\n  Écrire la mémoire courte de l'intervention et mettre à jour la fiche projet si nécessaire.\nODOO FLOW · lab-needs-review\n────────────────────────────────────────────────────────────────────────\nÉtat       PRÊT\nFlux       development\nProjet     /work\nProgression 7 étape(s) franchie(s)\nNœuds agent 0 revendiqué(s) · 0 prêt(s)\nContrat QA 10 critères liés · couverture exigée pour pass\nDernière   ✓ journal_task → done\n\nPOSITION DANS LE GRAPHE\n  PROCHAINE ÉTAPE\n  ○ task_done\n    ORCHESTRATEUR\n    Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.\n    Sorties: done · Preuve: compte-rendu final",
+        "is_error": false
+      }
+    },
+    {
+      "event_sha256": "e2319177d841364b740320f605bb189c201870667e7a239db64873325c194864",
+      "block": {
+        "type": "tool_use",
+        "id": "toolu_01XCwgBD3TV5B8TTvnVLBjsB",
+        "name": "Bash",
+        "input": {
+          "command": "R=$(cat /tmp/release.txt); FLOW=/work/.odoo-agents/flows/lab-needs-review.json\ncat \"$R/README.md\"; echo \"=== arbo ===\"; find \"$R\" -type f | sort\npython3 ~/.odoo19-agents/scripts/odoo_flow.py claim \"$FLOW\" task_done --owner claude-orchestrateur >/dev/null 2>&1\npython3 ~/.odoo19-agents/scripts/odoo_flow.py complete \"$FLOW\" task_done --outcome done --evidence \"$R/qa.md\" --owner claude-orchestrateur",
+          "description": "Show release README, tree, and close the flow"
+        },
+        "caller": {
+          "type": "direct"
+        }
+      }
+    },
+    {
+      "event_sha256": "1c0bd45c3cd29c0483bcd382d9c1ddd3df9977ffba43445cd094ab8203fb92b9",
+      "block": {
+        "tool_use_id": "toolu_01XCwgBD3TV5B8TTvnVLBjsB",
+        "type": "tool_result",
+        "content": "<!-- release ouverte -->\n# Indicateur de revue sur les demandes Aster\n\nRelease ouverte le 09.09.2026. **Suivi vivant** tant que ce release est\nouvert : une ligne par point, son test ciblé, son état. La recette complète, les\ncaptures et les livrables client se font à la clôture (`/odoo-close`), qui\nréécrit ce fichier dans sa forme finale.\n\n## Points\n\n| # | Point | Test ciblé | État |\n|---|---|---|---|\n| 1 | [studio] Indicateur booléen stocké x_studio_needs_review sur x_lab_request (D-22) | — | VALIDÉ — diff pack sans écart, scénarios RPC 9/9, deux applications sans doublon |\n\n## Notes de travail\n\n<!-- Ce qui a été décidé ou découvert en cours de release et qui doit survivre à la\n     conversation : hypothèses posées, arbitrages, pistes écartées. Une ligne par\n     note, datée. -->\n=== arbo ===\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/.base\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/.opened\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/README.md\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/demande.md\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa.md\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/qa_rapport_point1.md\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/revue_fonctionnelle.md\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/README.md\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/__pycache__/build_01_needs_review.cpython-310.pyc\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/__pycache__/test_01_needs_review.cpython-310.pyc\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/build_01_needs_review.py\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/created.txt\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/pack.json\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/01_scenario_avant.txt\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/02_build_application_1.txt\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/03_build_application_2.txt\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/04_scenario_apres.txt\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/05_pack_export.txt\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/06_pack_diff.txt\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/07_qa_pack_diff.txt\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/08_qa_etat_base.txt\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/09_qa_scenario_rejeu.txt\n/work/changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/test_01_needs_review.py\nODOO FLOW · lab-needs-review\n────────────────────────────────────────────────────────────────────────\nÉtat       TERMINÉ\nFlux       development\nProjet     /work\nProgression 8 étape(s) franchie(s)\nNœuds agent 0 revendiqué(s) · 0 prêt(s)\nContrat QA 10 critères liés · couverture exigée pour pass\nDernière   ✓ task_done → done\n\nPOSITION DANS LE GRAPHE\n  Aucun nœud actif.",
+        "is_error": false
+      }
+    }
+  ]
+}

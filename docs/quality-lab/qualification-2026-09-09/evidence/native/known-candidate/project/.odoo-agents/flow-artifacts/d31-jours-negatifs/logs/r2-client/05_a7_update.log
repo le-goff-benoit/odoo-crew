@@ -1,0 +1,34 @@
+2026-09-09 07:49:22,427 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 07:49:22,427 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 07:49:22,427 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 07:49:22,427 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 07:49:22,427 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 07:49:22,616 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 07:49:22,620 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 07:49:22,635 1 INFO lab_client odoo.modules.loading: updating modules list 
+2026-09-09 07:49:22,636 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 07:49:23,376 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 07:49:23,377 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 07:49:23,821 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 07:49:23,821 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Atelier Boréal — frais de préparation des locations'] to user __system__ #1 via n/a 
+2026-09-09 07:49:24,482 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_rental', defaulting to '' 
+2026-09-09 07:49:24,716 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-09 07:49:24,729 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 07:49:24,729 1 INFO lab_client odoo.modules.loading: Loading module lab_rental (2/21) 
+2026-09-09 07:49:24,732 1 INFO lab_client odoo.registry: module lab_rental: creating or updating database tables 
+2026-09-09 07:49:24,741 1 INFO lab_client odoo.schema: check constraint "lab_rental_check_days_positive" of relation "lab_rental" is violated by some row
+ 
+2026-09-09 07:49:24,757 1 INFO lab_client odoo.modules.loading: loading lab_rental/security/ir.model.access.csv 
+2026-09-09 07:49:24,763 1 INFO lab_client odoo.modules.loading: Module lab_rental loaded in 0.03s, 48 queries (+48 other) 
+2026-09-09 07:49:24,870 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.14s, 48 queries (+48 extra) 
+2026-09-09 07:49:24,905 1 WARNING lab_client odoo.schema: check constraint "lab_rental_check_days_positive" of relation "lab_rental" is violated by some row
+ 
+2026-09-09 07:49:24,926 1 INFO lab_client odoo.registry: verifying fields for every extended model 
+2026-09-09 07:49:24,928 1 ERROR lab_client odoo.schema: check constraint "lab_rental_check_days_positive" of relation "lab_rental" is violated by some row
+ 
+2026-09-09 07:49:25,001 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 07:49:25,005 1 INFO lab_client odoo.registry: Registry changed, signaling through the database 
+2026-09-09 07:49:25,005 1 INFO lab_client odoo.registry: Registry loaded in 2.407s 
+2026-09-09 07:49:25,005 1 INFO lab_client odoo.service.server: Initiating shutdown 
+2026-09-09 07:49:25,005 1 INFO lab_client odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 07:49:25,005 1 INFO lab_client odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

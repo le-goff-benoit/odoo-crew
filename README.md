@@ -111,7 +111,7 @@ agents et des outils : tests SQL, précision des règles métier, transmission d
 contexte et reprise des tâches notamment.
 
 - **20 parcours terminés avec leurs contrôles métier réussis**, sur Odoo 19.
-- **124 tests d’outillage réussis** sous Python 3.10 et 3.12 pour la version livrée.
+- **124 tests d’outillage réussis** sous Python 3.10 et 3.12 pour la campagne initiale.
 - Les incidents d’essai et les réserves de qualité sont conservés dans le rapport.
 
 Ces résultats portent sur des cas synthétiques : ils ne garantissent pas toutes
@@ -133,7 +133,10 @@ réellement retourné par Odoo. Les deux variantes de consigne restent non adopt
 La [réception structurée des critères](docs/quality-lab/coverage-2026-09-09/README.md)
 ajoute ensuite un garde optionnel au flow : une couverture absente ou partielle
 ne permet plus `pass` lorsqu'un contrat est lié. Les essais montrent le blocage
-attendu et l'acceptation d'un cas complet ; le libellé des rapports reste à améliorer.
+attendu et l'acceptation d'un cas complet. La [qualification autonome](docs/quality-lab/qualification-2026-09-09/README.md)
+ajoute un rendu QA lié à la réception, des droits testés par ORM/RPC, une vraie
+restauration SQL + filestore et un parcours Chrome avec contrôle serveur. Elle
+distingue ces témoins des chaînes natives et garde les limites et incidents visibles.
 
 ## Pour aller plus loin
 

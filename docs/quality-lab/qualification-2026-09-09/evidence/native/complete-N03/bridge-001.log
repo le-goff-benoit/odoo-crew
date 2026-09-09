@@ -1,0 +1,56 @@
+2026-09-09 14:19:05,048 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:19:05,048 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 14:19:05,048 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:19:05,048 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 14:19:05,048 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 14:19:05,048 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 14:19:05,048 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 14:19:05,207 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 14:19:05,208 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 14:19:05,222 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 14:19:05,226 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 14:19:05,233 1 INFO lab_client odoo.modules.loading: loading 47 modules... 
+2026-09-09 14:19:05,508 1 INFO lab_client odoo.modules.loading: 47 modules loaded in 0.28s, 0 queries (+0 extra) 
+2026-09-09 14:19:05,565 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 14:19:05,584 1 INFO lab_client odoo.registry: Registry loaded in 0.376s 
+2026-09-09 14:19:05,596 1 ERROR lab_client odoo.sql_db: bad query: b'SELECT "x_studio_needs_review" FROM "x_lab_request" WHERE id = 1'
+ERROR: column "x_studio_needs_review" does not exist
+LINE 1: SELECT "x_studio_needs_review" FROM "x_lab_request" WHERE id...
+               ^
+ 
+2026-09-09 14:19:05,597 1 ERROR lab_client odoo.sql_db: bad query: b'DELETE FROM "x_lab_request" WHERE id IN (1)'
+ERROR: current transaction is aborted, commands ignored until end of transaction block
+ 
+Traceback (most recent call last):
+  File "<string>", line 57, in <module>
+  File "<string>", line 33, in valeur_en_base
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 440, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.UndefinedColumn: column "x_studio_needs_review" does not exist
+LINE 1: SELECT "x_studio_needs_review" FROM "x_lab_request" WHERE id...
+               ^
+
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/usr/bin/odoo", line 6, in <module>
+    odoo.cli.main()
+  File "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 133, in main
+    command().run(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 162, in run
+    self.shell(dbnames[0])
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 148, in shell
+    self.console(local_vars)
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 82, in console
+    exec(sys.stdin.read(), local_vars)
+  File "<string>", line 89, in <module>
+  File "/usr/lib/python3/dist-packages/odoo/addons/mail/models/models.py", line 49, in unlink
+    result = super().unlink()
+             ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 4235, in unlink
+    cr.execute(SQL(
+  File "/usr/lib/python3/dist-packages/odoo/sql_db.py", line 440, in execute
+    self._obj.execute(query, params)
+psycopg2.errors.InFailedSqlTransaction: current transaction is aborted, commands ignored until end of transaction block
+

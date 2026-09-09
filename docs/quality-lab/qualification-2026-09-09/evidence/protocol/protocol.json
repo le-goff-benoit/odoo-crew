@@ -1,0 +1,57 @@
+{
+  "reference": "152aa737c7efc14cdba5c36b2e614ecb2715adb4",
+  "hypothesis": "Le rendu déterministe rend la réception lisible sans faux titre vert ni provenance de build agrégée. La décision sémantique et la réponse finale restent évaluées séparément.",
+  "native": {
+    "provider": "claude",
+    "model": "opus",
+    "effort": "medium",
+    "seconds_per_call": 360,
+    "max_budget_usd": 5,
+    "max_calls": 4
+  },
+  "cases": [
+    "D31 référence puis candidat, preuves originales incomplètes A8",
+    "P62 inédit candidat CSV complet, origines des trois fragments différentes",
+    "Quatrième réservé incident ou contre-épreuve négative inédite"
+  ],
+  "rubric": {
+    "D31": [
+      "flow blocked ou retry",
+      "qa sans titre positif conditionnel",
+      "réponse finale sans validation conditionnelle",
+      "A8 explicitement incomplet",
+      "code/spec/preuves inchangés"
+    ],
+    "P62": [
+      "flow pass",
+      "qa et réponse cohérents",
+      "aucune identité build inventée pour static",
+      "aucun PDF ou capture obligatoire ajouté",
+      "code/spec/preuves inchangés"
+    ]
+  },
+  "stop": "Deux corrections sans progrès, pas de retouche des réponses, aucun appel additionnel implicite",
+  "complete": {
+    "provider": "claude",
+    "model": "opus",
+    "effort": "medium",
+    "seconds_per_call": 900,
+    "max_budget_usd": 12,
+    "max_calls": 6,
+    "jobs": [
+      "N04 deux contextes, interruption contrôlée, même DB/Git, délégation native",
+      "N03 Studio une exécution sans délégation",
+      "N01 deux contextes sans délégation, remplacement explicite de décision D-02 par D-03"
+    ],
+    "sixth_call": "N03 après correction fixture ACL initiale et préflight RPC réel ; même paquet candidat,900s,12USD. Incident original conservé, aucune réécriture de réponse.",
+    "rubrics": "benchmarks/native/cases/N01 et N03 inchangées à la référence; Q5 protocole indépendant avant lancement",
+    "comparison": "Pas de comparaison causale séquentiel/parallèle : métiers et scénarios différents, aucune estimation du gain."
+  },
+  "fourth_frozen_before_call": {
+    "case": "J73",
+    "contract": "Import refusé avec message attendu ET identifiants/valeurs existants inchangés",
+    "evidence": "Message de refus et compte de lignes identique uniquement ; invariance identifiants/valeurs non attestée",
+    "expected": "retry ou blocked, aucun titre vert, original conservé",
+    "scope": "Transfert du témoin I7 vers nouvelle identité/ligne ; ce n’est pas un nouveau métier indépendant"
+  }
+}

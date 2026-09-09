@@ -1,0 +1,43 @@
+{
+  "name": "qualification-restore-075f6c8355",
+  "services": {
+    "db": {
+      "image": "pgvector/pgvector:pg16",
+      "environment": {
+        "POSTGRES_USER": "odoo",
+        "POSTGRES_PASSWORD": "odoo",
+        "POSTGRES_DB": "postgres"
+      },
+      "volumes": [
+        "pgdata:/var/lib/postgresql/data"
+      ]
+    },
+    "odoo": {
+      "image": "odoo-qa:19.0",
+      "command": [
+        "sleep",
+        "infinity"
+      ],
+      "environment": {
+        "HOST": "db",
+        "USER": "odoo",
+        "PASSWORD": "odoo"
+      },
+      "volumes": [
+        "./odoo.conf:/etc/odoo/odoo.conf:ro",
+        "filestore:/var/lib/odoo",
+        "/tmp/odoo-qualification-restore-20260909-replay/addons:/mnt/extra-addons:ro",
+        "./artifacts:/mnt/artifacts"
+      ]
+    }
+  },
+  "volumes": {
+    "pgdata": {},
+    "filestore": {}
+  },
+  "networks": {
+    "default": {
+      "internal": true
+    }
+  }
+}

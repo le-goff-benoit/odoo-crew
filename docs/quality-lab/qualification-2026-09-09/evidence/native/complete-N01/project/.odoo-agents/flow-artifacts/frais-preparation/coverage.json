@@ -1,0 +1,250 @@
+{
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "ebe8ae3fa71dc289110e941f7a60f7681f7e488011565b8dec2d6084da5c4480",
+  "criteria": [
+    {
+      "id": "C01",
+      "text": "Étant donné une location (`kind = rental`) de 4 jours à 10 EUR/jour, quand le montant est calculé, alors `amount_total` vaut 52.0 (borne inclusive, Q1).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "sha256": "ffed384fec801b9e21940124eafbc7a01b1ca3e4c77aaf6122c666dcd9dd9fda"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "sha256": "591b5a109a540c7636f29bcbab2ae2edc770fb078de68e3f43cbc13dfd174b2b"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_postconditions.txt",
+          "sha256": "7c3136e3f0e05e3eebe5e539cf80b4292821cb3d888c63a4e05d0346eef9c24a"
+        }
+      ],
+      "note": "test_rental_at_threshold_bears_the_fee : 52.0 obtenu. Confirmé sur la copie client (id 2 : 40.0 → 52.0) et par création XML-RPC réelle (amount_total 52.0)."
+    },
+    {
+      "id": "C02",
+      "text": "Étant donné une location de 3 jours à 10 EUR/jour, quand le montant est calculé, alors `amount_total` vaut 30.0 (sous le seuil, pas de frais).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "sha256": "ffed384fec801b9e21940124eafbc7a01b1ca3e4c77aaf6122c666dcd9dd9fda"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "sha256": "591b5a109a540c7636f29bcbab2ae2edc770fb078de68e3f43cbc13dfd174b2b"
+        }
+      ],
+      "note": "test_rental_below_threshold_has_no_fee : 30.0 obtenu. Copie client id 1 inchangé à 30.0."
+    },
+    {
+      "id": "C03",
+      "text": "Étant donné une location de 7 jours à 10 EUR/jour, quand le montant est calculé, alors `amount_total` vaut 82.0 (au-dessus du seuil, frais appliqués une seule fois).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "sha256": "ffed384fec801b9e21940124eafbc7a01b1ca3e4c77aaf6122c666dcd9dd9fda"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "sha256": "591b5a109a540c7636f29bcbab2ae2edc770fb078de68e3f43cbc13dfd174b2b"
+        }
+      ],
+      "note": "test_rental_above_threshold_bears_the_fee_once : 82.0 obtenu (7×10 + 12, forfait unique). Copie client id 3 : 140.0 → 152.0, soit +12.0 et non +9.80."
+    },
+    {
+      "id": "C04",
+      "text": "Étant donné un prêt (`kind = loan`) de 4 jours à 10 EUR/jour, quand le montant est calculé, alors `amount_total` vaut 40.0 (prêts exclus, Q2).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "sha256": "ffed384fec801b9e21940124eafbc7a01b1ca3e4c77aaf6122c666dcd9dd9fda"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "sha256": "591b5a109a540c7636f29bcbab2ae2edc770fb078de68e3f43cbc13dfd174b2b"
+        }
+      ],
+      "note": "test_loan_at_threshold_has_no_fee : 40.0 obtenu. Copie client id 6 inchangé à 40.0 alors que la location de même durée a bougé."
+    },
+    {
+      "id": "C05",
+      "text": "Étant donné un prêt de 10 jours à 10 EUR/jour, quand le montant est calculé, alors `amount_total` vaut 100.0 (aucun frais quelle que soit la durée).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "sha256": "ffed384fec801b9e21940124eafbc7a01b1ca3e4c77aaf6122c666dcd9dd9fda"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "sha256": "591b5a109a540c7636f29bcbab2ae2edc770fb078de68e3f43cbc13dfd174b2b"
+        }
+      ],
+      "note": "test_long_loan_has_no_fee : 100.0 obtenu. Copie client id 7 inchangé à 100.0."
+    },
+    {
+      "id": "C06",
+      "text": "Étant donné une location de 0 jour à 0 EUR/jour, quand le montant est calculé, alors `amount_total` vaut 0.0 (aucun frais sur un enregistrement vide).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "sha256": "ffed384fec801b9e21940124eafbc7a01b1ca3e4c77aaf6122c666dcd9dd9fda"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "sha256": "591b5a109a540c7636f29bcbab2ae2edc770fb078de68e3f43cbc13dfd174b2b"
+        }
+      ],
+      "note": "test_empty_rental_is_free : 0.0 obtenu. Copie client id 5 inchangé à 0.0."
+    },
+    {
+      "id": "C07",
+      "text": "Étant donné une location de 5 jours à 0 EUR/jour, quand le montant est calculé, alors `amount_total` vaut 12.0 (le forfait ne dépend pas du tarif).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "sha256": "ffed384fec801b9e21940124eafbc7a01b1ca3e4c77aaf6122c666dcd9dd9fda"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "sha256": "591b5a109a540c7636f29bcbab2ae2edc770fb078de68e3f43cbc13dfd174b2b"
+        }
+      ],
+      "note": "test_fee_does_not_depend_on_the_daily_rate : 12.0 obtenu. Copie client id 4 : 0.0 → 12.0."
+    },
+    {
+      "id": "C08",
+      "text": "Étant donné une location de 3 jours déjà enregistrée, quand `days` passe à 4, alors `amount_total` stocké est recalculé et vaut 52.0 (le champ stocké suit la modification).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "sha256": "ffed384fec801b9e21940124eafbc7a01b1ca3e4c77aaf6122c666dcd9dd9fda"
+        }
+      ],
+      "note": "test_crossing_the_threshold_updates_the_stored_total : 30.0 puis 52.0 après passage de days à 4, lu sur le champ stocké."
+    },
+    {
+      "id": "C09",
+      "text": "Étant donné une location de 5 jours, quand `kind` passe à `loan`, alors `amount_total` stocké perd les 12 EUR (le recalcul est symétrique).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "sha256": "ffed384fec801b9e21940124eafbc7a01b1ca3e4c77aaf6122c666dcd9dd9fda"
+        }
+      ],
+      "note": "test_turning_a_rental_into_a_loan_removes_the_fee : 62.0 puis 50.0 après bascule de kind."
+    },
+    {
+      "id": "C10",
+      "text": "Étant donné le montant d'une location, quand on le compare à D-01, alors aucun montant proportionnel (7 %) n'apparaît : le forfait est fixe et vaut toujours 12.0.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_runtime.txt",
+          "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_runtime.md",
+          "sha256": "ffed384fec801b9e21940124eafbc7a01b1ca3e4c77aaf6122c666dcd9dd9fda"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "sha256": "591b5a109a540c7636f29bcbab2ae2edc770fb078de68e3f43cbc13dfd174b2b"
+        }
+      ],
+      "note": "test_the_fee_is_flat_and_never_proportional : écart de 12.0 à 10 EUR/jour comme à 1000 EUR/jour. Sur la copie client, id 3 prend +12.0 et non +9.80 (7 % de 140)."
+    },
+    {
+      "id": "C11",
+      "text": "Étant donné la copie `lab_client` après mise à jour du module, quand on compare les montants avant et après, alors seules les locations de 4 jours et plus ont augmenté, et de 12.0 exactement.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_avant.txt",
+          "sha256": "535333c894850fbde313f09903093baea4b1fc982d0635326bf1f305c85afbd4"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_apres.txt",
+          "sha256": "591b5a109a540c7636f29bcbab2ae2edc770fb078de68e3f43cbc13dfd174b2b"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_postconditions.txt",
+          "sha256": "7c3136e3f0e05e3eebe5e539cf80b4292821cb3d888c63a4e05d0346eef9c24a"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_client_copy.md",
+          "sha256": "f551015ac51672dc3f2ef95ca91a6f0548b436b7197462224e2e234fb9839804"
+        }
+      ],
+      "note": "Copie lab_client mise à niveau (post-migrate 19.0.1.1.0 exécuté) : seuls les id 2, 3 et 4 (locations ≥ 4 jours) ont augmenté, de 12.0 exactement ; les sept lignes avant/après sont relevées. Deuxième mise à niveau : aucun montant ne dérive."
+    },
+    {
+      "id": "C12",
+      "text": "Étant donné le module après la tâche, quand on l'inspecte, alors aucune vue, aucun droit et aucune dépendance n'ont été ajoutés.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/copie_client_postconditions.txt",
+          "sha256": "7c3136e3f0e05e3eebe5e539cf80b4292821cb3d888c63a4e05d0346eef9c24a"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/diff.patch",
+          "sha256": "52e036ac8bde6865c5e4365902124c5420a6ad9600d3163cc0848696d11428f2"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/lint.txt",
+          "sha256": "65d7d084166d8ddaa78303e6de00134787b716278a8a065ad6151bda55844dee"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/frais-preparation/qa_high_static.md",
+          "sha256": "1ff85c06f96b8e96cc483ac1f4cc5d9f136e44406a00c7e4dcc8f23fb5ec250d"
+        }
+      ],
+      "note": "Postconditions relevées en base sur lab_client : VUES 0, ACTIONS 0, MENUS 0, RÈGLES 0, ligne d'accès identique à l'origine, champs inchangés. Le manifest ne gagne aucune dépendance ; le diff n'ajoute ni vue ni droit."
+    }
+  ]
+}

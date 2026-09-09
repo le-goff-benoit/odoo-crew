@@ -1,0 +1,162 @@
+{
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "e34015f93922f231b04353290226591159774e945d86fd3e1518e982255d4128",
+  "criteria": [
+    {
+      "id": "C01",
+      "text": "Étant donné le module `lab_rental` mis à jour sur `lab_client`, quand on lit le code source du modèle, alors la contrainte `days >= 0` est déclarée via `models.Constraint('CHECK(days >= 0)', ...)` (pas `_sql_constraints`).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_static/fragment.md",
+          "sha256": "cde123f3489832fddbedb2f3442bb3f817e756a6c1a329939bb33e825827c5a3"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_static/logs/lint.log",
+          "sha256": "6af8dab6ba45a817336e4f99bf0cac24c1d6a1ad76d4bf3e5cad30a0e7f80863"
+        }
+      ],
+      "note": "Voie statique : models.Constraint('CHECK(days >= 0)', ...) en lab_rental/models/business.py:8-11, message litteral exact ; _sql_constraints absent."
+    },
+    {
+      "id": "C02",
+      "text": "Étant donné la copie `lab_client`, quand on met à jour le module `lab_rental` (`/bridge/labctl update`), alors la mise à jour se termine sans erreur (aucune ligne existante ne viole `days >= 0`).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/update.log",
+          "sha256": "2bf8fcf27346f003fc127cee6f23b48a22715415b85f5a8bcf5135d75b747a72"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/fragment.md",
+          "sha256": "81c59b8e7d47b1305a7268896190c27e4030add07fc00180593cf83d266c9fca"
+        }
+      ],
+      "note": "Voie copie client : /bridge/labctl update sur lab_client, module lab_rental charge, 0 erreur dans le journal (seule la dette author reste en avertissement)."
+    },
+    {
+      "id": "C03",
+      "text": "Étant donné `lab_client` via un appel XML-RPC réel (`/bridge/labctl rpc`), quand on appelle `create` sur `lab.rental` avec `days=-1`, alors l'appel échoue (`Fault`) et le message renvoyé contient exactement la phrase « Le nombre de jours doit être positif ou nul. ».",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/01_create_negative.json",
+          "sha256": "2e2b68b240e2c0da0c64abe06b35aad0d2a8fb2968111cc602a2d67a1881f4ff"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/01_create_negative.log",
+          "sha256": "c5d9384541b522a16db7358cb1a06594db7ebf6293aff0e1414479284810000a"
+        }
+      ],
+      "note": "XML-RPC reel create(days=-1) : outcome=fault, fault_string = 'The operation cannot be completed: Le nombre de jours doit etre positif ou nul.' -- la phrase metier attendue y figure mot a mot (A8)."
+    },
+    {
+      "id": "C04",
+      "text": "Étant donné un enregistrement `lab.rental` existant valide (`days >= 0`) créé en amont via XML-RPC, quand on appelle `write` dessus avec `days=-1` via XML-RPC réel, alors l'appel échoue avec le même message que le critère précédent, et les valeurs de l'enregistrement (`days`, `daily_rate`, `amount_total`) restent inchangées après l'échec (relecture par `search_read` ou `read`).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/05_write_negative.json",
+          "sha256": "a7300226cbc83828f3308f9bcffb9663fb2bce8b8b20ce43cd57ae19602a9591"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/05_write_negative.log",
+          "sha256": "c5d9384541b522a16db7358cb1a06594db7ebf6293aff0e1414479284810000a"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/04_read_base_before.log",
+          "sha256": "3b36dbc0679138246adb1ee31335b7c170ae95f023774d6b4b118a856ca67fa7"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/06_read_base_after.log",
+          "sha256": "3b36dbc0679138246adb1ee31335b7c170ae95f023774d6b4b118a856ca67fa7"
+        }
+      ],
+      "note": "XML-RPC reel write(days=-1) sur id 3 : meme fault_string ; relecture avant/apres identique (days=5, daily_rate=20.0, amount_total=100.0)."
+    },
+    {
+      "id": "C05",
+      "text": "Étant donné `lab.rental`, quand on crée ou modifie un enregistrement avec `days=0`, alors l'opération réussit (via XML-RPC réel), sans erreur.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/02_create_zero.log",
+          "sha256": "7d640eda7a8ac212452ef048c7c3e2f87f3c516715740d8d01542d92ea6ced99"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/07_write_zero.log",
+          "sha256": "0be694460085656f05bf98a51c2e1aeacae073ef0282af69cb81ce8c1846633c"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/08_read_zero_after.log",
+          "sha256": "eb0b58e149462f36b6e6f9394c8da716850cdf71baf4fb56ebab3b11f9e30b3f"
+        }
+      ],
+      "note": "XML-RPC reel : create(days=0) rend id 2, write(days=0) rend true, relecture days=0 -- le jour nul reste valide."
+    },
+    {
+      "id": "C06",
+      "text": "Étant donné un enregistrement `lab.rental` avec `days` et `daily_rate` quelconques valides, quand on le lit après création ou modification, alors `amount_total == days * daily_rate`.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/04_read_base_before.log",
+          "sha256": "3b36dbc0679138246adb1ee31335b7c170ae95f023774d6b4b118a856ca67fa7"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/08_read_zero_after.log",
+          "sha256": "eb0b58e149462f36b6e6f9394c8da716850cdf71baf4fb56ebab3b11f9e30b3f"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_runtime/logs/qa_fresh.log",
+          "sha256": "7a1fe39f02c3ace41fee4e8c7162bfd6b68b048e3bb3bc51e35a6135fe9f9ca3"
+        }
+      ],
+      "note": "amount_total = days * daily_rate verifie par RPC reel (5x20=100 puis 0x20=0) et par test_amount_total_matches_days_times_daily_rate sur lab_qa : calcul du total inchange."
+    },
+    {
+      "id": "C07",
+      "text": "Étant donné une création `lab.rental` valide suivie d'une tentative de `write(days=-1)` refusée sur ce même enregistrement, quand on relit l'enregistrement, alors il existe toujours en base avec ses valeurs d'avant tentative (aucune perte, aucun enregistrement partiel).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/06_read_base_after.json",
+          "sha256": "fb607f0829b028c0eaa6bdc14639dc8b9af58bddc91210f3d40ad215fd39f0bd"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/06_read_base_after.log",
+          "sha256": "3b36dbc0679138246adb1ee31335b7c170ae95f023774d6b4b118a856ca67fa7"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_runtime/logs/qa_fresh.log",
+          "sha256": "7a1fe39f02c3ace41fee4e8c7162bfd6b68b048e3bb3bc51e35a6135fe9f9ca3"
+        }
+      ],
+      "note": "Apres le rejet du write, search_read par nom rend exactement un enregistrement id 3 avec ses valeurs d'avant tentative : location valide conservee, aucun doublon ni enregistrement partiel."
+    },
+    {
+      "id": "C08",
+      "text": "Étant donné la suite de tests du module, quand on exécute `/bridge/labctl qa lab_rental`, alors tous les tests passent, y compris les scénarios ci-dessus couverts par un vrai appel RPC (pas seulement des appels ORM internes).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_runtime/logs/qa_fresh.log",
+          "sha256": "7a1fe39f02c3ace41fee4e8c7162bfd6b68b048e3bb3bc51e35a6135fe9f9ca3"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_high_runtime/logs/qa_update.log",
+          "sha256": "a852ecc76153d07816d16fd1f20ac277cb622a1e28aa51241fdb178edb8c4e19"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/01_create_negative.log",
+          "sha256": "c5d9384541b522a16db7358cb1a06594db7ebf6293aff0e1414479284810000a"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/logs/05_write_negative.log",
+          "sha256": "c5d9384541b522a16db7358cb1a06594db7ebf6293aff0e1414479284810000a"
+        }
+      ],
+      "note": "Suite complete du module verte sur base neuve (install=ok) et apres mise a jour (update=ok), 5 tests 0 echec 0 erreur ; la composante 'vrai appel RPC' du critere est portee par les journaux XML-RPC de la voie copie client, pas par les tests ORM."
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "original_run": "run-1",
+  "rpc_checks": {
+    "ordinary_user_authenticated": true,
+    "search_isolated": true,
+    "read_foreign_denied": true,
+    "write_foreign_denied": true,
+    "write_own_succeeds": true,
+    "import_own_succeeds": true,
+    "import_foreign_denied": true
+  },
+  "rpc_secure": true,
+  "orm_secure": true,
+  "postconditions": {
+    "rpc_foreign_unchanged": true,
+    "rpc_foreign_import_absent": true,
+    "rpc_own_exact_value": true
+  },
+  "reason": "Correct XML-RPC v2 AccessError mapping; reevaluation of unchanged original responses."
+}

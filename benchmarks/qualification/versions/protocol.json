@@ -1,0 +1,18 @@
+{
+  "id": "Q4-versions-browser-20260909",
+  "scope": "Synthetic quantity constraint and browser confirmation; no general version compatibility claim",
+  "series": ["18.0", "19.0"],
+  "max_runs": 3,
+  "runs": ["18.0-positive", "19.0-positive", "19.0-mutant"],
+  "timeout_seconds_per_run": 360,
+  "oracles": {
+    "zero": "quantity zero persists with amount zero",
+    "negative_create": "SQL rejects quantity -1 on create",
+    "negative_write": "SQL rejects quantity -1 on write, quantity and amount preserved",
+    "confirmation": "ORM action transitions draft to confirmed",
+    "browser_19": "Chrome loads real Odoo form, clicks object button, observes Confirmed, server reads confirmed and amount 30",
+    "mutant": "Same browser scenario completes, then deliberately false server expectation draft must fail"
+  },
+  "pass_requirements": "returncode zero, zero Odoo failures/errors, all expected unique success markers; browser requires Chrome start plus browser success and server confirmation",
+  "limits": ["One execution per scenario", "Admin UI only; no ACL coverage", "No Odoo17 or SaaS execution", "No latency or productivity comparison"]
+}

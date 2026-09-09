@@ -1,0 +1,16 @@
+2026-09-09 14:05:44,344 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:05:44,344 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 14:05:44,344 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:05:44,345 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 14:05:44,345 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 14:05:44,345 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo/addons/19.0', '/mnt/quality', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 14:05:44,345 1 INFO ? odoo: database: odoo@quality-rights-9c52ab471b-db:default 
+2026-09-09 14:05:44,628 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 14:05:44,628 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 14:05:44,646 1 INFO qualification_1 odoo.modules.loading: loading 1 modules... 
+2026-09-09 14:05:44,650 1 INFO qualification_1 odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 14:05:44,654 1 INFO qualification_1 odoo.modules.loading: loading 15 modules... 
+2026-09-09 14:05:44,772 1 INFO qualification_1 odoo.modules.loading: 15 modules loaded in 0.12s, 0 queries (+0 extra) 
+2026-09-09 14:05:44,797 1 INFO qualification_1 odoo.modules.loading: Modules loaded. 
+2026-09-09 14:05:44,812 1 INFO qualification_1 odoo.registry: Registry loaded in 0.184s 
+QUALIFICATION_SEED={"user": 5, "company_a": 2, "company_b": 3, "a": 1, "b": 2}

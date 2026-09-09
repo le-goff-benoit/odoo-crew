@@ -1,0 +1,217 @@
+{
+  "status": "error",
+  "prefix": "quality-rights-1175e27c07",
+  "trials": [
+    {
+      "name": "reference",
+      "seed": {
+        "user": 5,
+        "company_a": 2,
+        "company_b": 3,
+        "a": 1,
+        "b": 2
+      },
+      "orm": {
+        "checks": {
+          "ordinary_user": true,
+          "search_isolated": true,
+          "read_foreign_denied": true,
+          "write_foreign_denied": true,
+          "write_own_succeeds": true,
+          "import_own_succeeds": true,
+          "import_foreign_denied": true,
+          "foreign_unchanged": true,
+          "foreign_import_absent": true
+        },
+        "observations": {
+          "uid": 5,
+          "su": false,
+          "company_ids": [
+            2
+          ],
+          "search_ids": [
+            1
+          ],
+          "read_foreign_error": "Uh-oh! Looks like you have stumbled upon some top-secret records.\n\nSorry, Synthetic limited user (id=5) doesn't have 'read' access to:\n- Synthetic company isolation record (quality.rights.record)\n\nIf you really, really need access, perhaps you can win over your friendly administrator with a batch of freshly baked cookies.\n\nThis seems to be a multi-company issue, but you do not have access to the proper company to access the record anyhow.",
+          "write_foreign_error": "Uh-oh! Looks like you have stumbled upon some top-secret records.\n\nSorry, Synthetic limited user (id=5) doesn't have 'write' access to:\n- Synthetic company isolation record (quality.rights.record)\n\nIf you really, really need access, perhaps you can win over your friendly administrator with a batch of freshly baked cookies.\n\nThis seems to be a multi-company issue, but you do not have access to the proper company to access the record anyhow.",
+          "import_own": {
+            "ids": [
+              3
+            ],
+            "messages": [],
+            "nextrow": 0
+          },
+          "import_foreign": {
+            "ids": false,
+            "messages": [
+              {
+                "rows": {
+                  "from": 0,
+                  "to": 0
+                },
+                "record": 0,
+                "type": "error",
+                "message": "Uh-oh! Looks like you have stumbled upon some top-secret records.\n\nSorry, Synthetic limited user (id=5) doesn't have 'create' access to:\n- Synthetic company isolation record (quality.rights.record)\n\nIf you really, really need access, perhaps you can win over your friendly administrator with a batch of freshly baked cookies.\n\nThis seems to be a multi-company issue, but you do not have access to the proper company to access the record anyhow."
+              }
+            ],
+            "nextrow": 0
+          },
+          "admin_postconditions": [
+            {
+              "id": 1,
+              "name": "A original",
+              "company_id": [
+                2,
+                "Qualification company A"
+              ],
+              "value": 11
+            },
+            {
+              "id": 2,
+              "name": "B original",
+              "company_id": [
+                3,
+                "Qualification company B"
+              ],
+              "value": 20
+            },
+            {
+              "id": 3,
+              "name": "ORM own import",
+              "company_id": [
+                2,
+                "Qualification company A"
+              ],
+              "value": 31
+            }
+          ]
+        },
+        "secure": true
+      },
+      "rpc": {
+        "checks": {
+          "ordinary_user_authenticated": true,
+          "search_isolated": true,
+          "read_foreign_denied": false,
+          "write_foreign_denied": false,
+          "write_own_succeeds": true,
+          "import_own_succeeds": true,
+          "import_foreign_denied": true
+        },
+        "observations": {
+          "uid": 5,
+          "search_rows": [
+            {
+              "id": 1,
+              "name": "A original",
+              "company_id": [
+                2,
+                "Qualification company A"
+              ],
+              "value": 11
+            },
+            {
+              "id": 3,
+              "name": "ORM own import",
+              "company_id": [
+                2,
+                "Qualification company A"
+              ],
+              "value": 31
+            }
+          ],
+          "read_foreign_fault": {
+            "code": 4,
+            "message": "Uh-oh! Looks like you have stumbled upon some top-secret records.\n\nSorry, Synthetic limited user (id=5) doesn't have 'read' access to:\n- Synthetic company isolation record (quality.rights.record)\n\nIf you really, really need access, perhaps you can win over your friendly administrator with a batch of freshly baked cookies.\n\nThis seems to be a multi-company issue, but you do not have access to the proper company to access the record anyhow."
+          },
+          "write_foreign_fault": {
+            "code": 4,
+            "message": "Uh-oh! Looks like you have stumbled upon some top-secret records.\n\nSorry, Synthetic limited user (id=5) doesn't have 'write' access to:\n- Synthetic company isolation record (quality.rights.record)\n\nIf you really, really need access, perhaps you can win over your friendly administrator with a batch of freshly baked cookies.\n\nThis seems to be a multi-company issue, but you do not have access to the proper company to access the record anyhow."
+          },
+          "import_own": {
+            "ids": [
+              6
+            ],
+            "messages": [],
+            "nextrow": 0
+          },
+          "import_foreign": {
+            "ids": false,
+            "messages": [
+              {
+                "rows": {
+                  "from": 0,
+                  "to": 0
+                },
+                "record": 0,
+                "type": "error",
+                "message": "Uh-oh! Looks like you have stumbled upon some top-secret records.\n\nSorry, Synthetic limited user (id=5) doesn't have 'create' access to:\n- Synthetic company isolation record (quality.rights.record)\n\nIf you really, really need access, perhaps you can win over your friendly administrator with a batch of freshly baked cookies.\n\nThis seems to be a multi-company issue, but you do not have access to the proper company to access the record anyhow."
+              }
+            ],
+            "nextrow": 0
+          }
+        },
+        "secure": false
+      },
+      "privileged_postconditions": {
+        "rpc_foreign_unchanged": true,
+        "rpc_foreign_import_absent": true,
+        "rpc_own_exact_value": true
+      },
+      "final_rows": [
+        {
+          "id": 1,
+          "name": "A original",
+          "company_id": [
+            2,
+            "Qualification company A"
+          ],
+          "value": 12
+        },
+        {
+          "id": 2,
+          "name": "B original",
+          "company_id": [
+            3,
+            "Qualification company B"
+          ],
+          "value": 20
+        },
+        {
+          "id": 3,
+          "name": "ORM own import",
+          "company_id": [
+            2,
+            "Qualification company A"
+          ],
+          "value": 31
+        },
+        {
+          "id": 6,
+          "name": "RPC own import",
+          "company_id": [
+            2,
+            "Qualification company A"
+          ],
+          "value": 41
+        }
+      ],
+      "secure": false,
+      "expected_secure": true,
+      "expectation_met": false,
+      "seconds": 14.14
+    }
+  ],
+  "protocol_sha256": "b1b1626a37cea7e2a136cf13e5e9461f8c4402ff92f3017603bb624bdeacc371",
+  "image_ids": {
+    "odoo-qa:19.0": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d",
+    "postgres:16": "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f"
+  },
+  "error": "Reference invalid; mutation execution withheld",
+  "cleanup": {
+    "containers": "",
+    "networks": "",
+    "verified": true
+  },
+  "seconds": 15.29
+}

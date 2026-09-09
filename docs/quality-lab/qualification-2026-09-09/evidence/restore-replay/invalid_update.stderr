@@ -1,0 +1,31 @@
+ Container qualification-restore-075f6c8355-db-1  Running
+ Container qualification-restore-075f6c8355-odoo-1  Running
+2026-09-09 14:26:39,805 80 WARNING ? odoo.tools.config: option addons_path, no such directory '/mnt/enterprise-addons', skipped 
+2026-09-09 14:26:39,805 80 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:26:39,805 80 WARNING ? odoo.tools.config: option addons_path, no such directory '/mnt/enterprise-addons', skipped 
+2026-09-09 14:26:39,806 80 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:26:39,806 80 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 14:26:39,806 80 INFO ? odoo.cli.neutralize: Starting qualification_invalid_update database neutralization 
+2026-09-09 14:26:39,824 80 INFO ? odoo.modules.neutralize: Neutralization finished 
+2026-09-09 14:26:41,910 94 WARNING ? odoo.tools.config: option addons_path, no such directory '/mnt/enterprise-addons', skipped 
+2026-09-09 14:26:41,910 94 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:26:41,910 94 WARNING ? odoo.tools.config: option addons_path, no such directory '/mnt/enterprise-addons', skipped 
+2026-09-09 14:26:41,910 94 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:26:41,910 94 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 14:26:41,911 94 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 14:26:41,911 94 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 14:26:41,911 94 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 14:26:42,266 94 INFO qualification_invalid_update odoo.modules.loading: loading 1 modules... 
+2026-09-09 14:26:42,272 94 INFO qualification_invalid_update odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-09 14:26:42,294 94 INFO qualification_invalid_update odoo.modules.loading: updating modules list 
+2026-09-09 14:26:42,295 94 INFO qualification_invalid_update odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 14:26:43,408 94 WARNING qualification_invalid_update odoo.modules.loading: invalid module names, ignored: qualification_nonexistent_module 
+2026-09-09 14:26:43,420 94 INFO qualification_invalid_update odoo.modules.loading: loading 14 modules... 
+2026-09-09 14:26:43,623 94 INFO qualification_invalid_update odoo.modules.loading: 14 modules loaded in 0.20s, 0 queries (+0 extra) 
+2026-09-09 14:26:43,828 94 INFO qualification_invalid_update odoo.modules.loading: Modules loaded. 
+2026-09-09 14:26:43,843 94 INFO qualification_invalid_update odoo.registry: Registry changed, signaling through the database 
+2026-09-09 14:26:43,844 94 INFO qualification_invalid_update odoo.registry: Registry loaded in 1.604s 
+2026-09-09 14:26:43,845 94 INFO qualification_invalid_update odoo.service.server: Initiating shutdown 
+2026-09-09 14:26:43,845 94 INFO qualification_invalid_update odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 14:26:43,845 94 INFO qualification_invalid_update odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+Mise à jour non validée.

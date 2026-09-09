@@ -1,0 +1,161 @@
+diff --git a/lab_rental/__manifest__.py b/lab_rental/__manifest__.py
+index c686fd4..73ef8b0 100644
+--- a/lab_rental/__manifest__.py
++++ b/lab_rental/__manifest__.py
+@@ -1 +1 @@
+-{'name': 'Atelier Boréal — frais de préparation des locations', 'version': '19.0.1.0.0', 'license': 'LGPL-3', 'depends': ['base'], 'data': ['security/ir.model.access.csv'], 'installable': True}
++{'name': 'Atelier Boréal — frais de préparation des locations', 'author': 'Camptocamp', 'version': '19.0.1.1.0', 'license': 'LGPL-3', 'depends': ['base'], 'data': ['security/ir.model.access.csv'], 'installable': True}
+diff --git a/lab_rental/models/business.py b/lab_rental/models/business.py
+index fff6156..e195535 100644
+--- a/lab_rental/models/business.py
++++ b/lab_rental/models/business.py
+@@ -5,13 +5,35 @@ class LabRental(models.Model):
+     _name = 'lab.rental'
+     _description = 'Location synthétique'
+ 
++    #=== CONSTANTS ===#
++
++    PREPARATION_FEE = 12.0
++    PREPARATION_FEE_MIN_DAYS = 4
++
++    #=== FIELDS ===#
++
+     name = fields.Char(required=True)
+     days = fields.Integer(default=0)
+     daily_rate = fields.Float(default=0)
+     kind = fields.Selection([('rental', 'Location'), ('loan', 'Prêt')], default='rental', required=True)
+     amount_total = fields.Float(compute='_compute_amount_total', store=True)
+ 
++    #=== COMPUTE METHODS ===#
++
+     @api.depends('days', 'daily_rate', 'kind')
+     def _compute_amount_total(self):
+         for record in self:
+-            record.amount_total = record.days * record.daily_rate
++            record.amount_total = record.days * record.daily_rate + record._preparation_fee()
++
++    #=== BUSINESS METHODS ===#
++
++    def _preparation_fee(self):
++        """Return the flat preparation fee due for this rental.
++
++        Decision D-02 (2026-09-08): a fixed 12 EUR fee applies to rentals of four
++        days or more, the bound being inclusive. Loans never bear the fee, whatever
++        their duration. The fee is flat, not proportional: D-01 (7%) is superseded.
++        """
++        self.ensure_one()
++        is_long_enough = self.days >= self.PREPARATION_FEE_MIN_DAYS
++        return self.PREPARATION_FEE if self.kind == 'rental' and is_long_enough else 0.0
+--- fichiers ajoutés ---
+diff --git a/lab_rental/tests/test_preparation_fee.py b/lab_rental/tests/test_preparation_fee.py
+new file mode 100644
+index 0000000..d27094e
+--- /dev/null
++++ b/lab_rental/tests/test_preparation_fee.py
+@@ -0,0 +1,85 @@
++from odoo.tests import TransactionCase, tagged
++
++
++@tagged('post_install', '-at_install')
++class TestPreparationFee(TransactionCase):
++    """Decision D-02 (decisions/2026-09-08.md): flat 12 EUR preparation fee on
++    rentals of four days or more, loans excluded. Expected amounts come from the
++    decision itself, never from the method under test.
++    """
++
++    @classmethod
++    def setUpClass(cls):
++        super().setUpClass()
++        cls.Rental = cls.env['lab.rental']
++
++    def _rental(self, days, daily_rate, kind='rental'):
++        return self.Rental.create({
++            'name': f'{kind} {days}d',
++            'days': days,
++            'daily_rate': daily_rate,
++            'kind': kind,
++        })
++
++    #=== Q1 — the four-day bound is inclusive ===#
++
++    def test_rental_below_threshold_has_no_fee(self):
++        """Three days: under the bound, the total is the bare rental price."""
++        self.assertEqual(self._rental(3, 10.0).amount_total, 30.0)
++
++    def test_rental_at_threshold_bears_the_fee(self):
++        """Four days: the bound is inclusive, so the fee is due."""
++        self.assertEqual(self._rental(4, 10.0).amount_total, 52.0)
++
++    def test_rental_above_threshold_bears_the_fee_once(self):
++        """Seven days: the fee is flat, it is not charged per day."""
++        self.assertEqual(self._rental(7, 10.0).amount_total, 82.0)
++
++    #=== Q2 — loans are excluded ===#
++
++    def test_loan_at_threshold_has_no_fee(self):
++        """A four-day loan stays free of charge, unlike a four-day rental."""
++        self.assertEqual(self._rental(4, 10.0, kind='loan').amount_total, 40.0)
++
++    def test_long_loan_has_no_fee(self):
++        """No duration ever makes a loan bear the preparation fee."""
++        self.assertEqual(self._rental(10, 10.0, kind='loan').amount_total, 100.0)
++
++    #=== Boundary values of the domain ===#
++
++    def test_empty_rental_is_free(self):
++        """Zero day and zero rate: nothing is due, not even the fee."""
++        self.assertEqual(self._rental(0, 0.0).amount_total, 0.0)
++
++    def test_fee_does_not_depend_on_the_daily_rate(self):
++        """D-02 conditions the fee on kind and duration only, not on the price."""
++        self.assertEqual(self._rental(5, 0.0).amount_total, 12.0)
++
++    #=== The stored field follows the record ===#
++
++    def test_crossing_the_threshold_updates_the_stored_total(self):
++        """Going from three to four days adds the fee to the stored total."""
++        rental = self._rental(3, 10.0)
++        self.assertEqual(rental.amount_total, 30.0)
++        rental.days = 4
++        self.assertEqual(rental.amount_total, 52.0)
++
++    def test_turning_a_rental_into_a_loan_removes_the_fee(self):
++        """The recomputation is symmetric: the fee disappears with the kind."""
++        rental = self._rental(5, 10.0)
++        self.assertEqual(rental.amount_total, 62.0)
++        rental.kind = 'loan'
++        self.assertEqual(rental.amount_total, 50.0)
++
++    #=== D-01 (7% proportional fee) is superseded and must not come back ===#
++
++    def test_the_fee_is_flat_and_never_proportional(self):
++        """Two rentals of the same duration bear the very same fee, 12 EUR.
++
++        Under superseded decision D-01 the fee was 7% of the price, so it grew
++        with the daily rate. This test fails if that rule ever comes back.
++        """
++        cheap = self._rental(6, 10.0)
++        expensive = self._rental(6, 1000.0)
++        self.assertEqual(cheap.amount_total - 6 * 10.0, 12.0)
++        self.assertEqual(expensive.amount_total - 6 * 1000.0, 12.0)
+diff --git a/lab_rental/migrations/19.0.1.1.0/post-migrate.py b/lab_rental/migrations/19.0.1.1.0/post-migrate.py
+new file mode 100644
+index 0000000..6deca03
+--- /dev/null
++++ b/lab_rental/migrations/19.0.1.1.0/post-migrate.py
+@@ -0,0 +1,15 @@
++from odoo import SUPERUSER_ID, api
++
++
++def migrate(cr, version):
++    """Recompute the stored total of the rentals already in database.
++
++    Changing the body of a compute method does not refresh a stored field: an
++    upgrade alone would leave the rentals booked before decision D-02 without
++    their preparation fee. The recomputation is idempotent — it derives the
++    total from days, daily rate and kind, and writes nothing else.
++    """
++    env = api.Environment(cr, SUPERUSER_ID, {})
++    rentals = env['lab.rental'].search([])
++    env.add_to_compute(rentals._fields['amount_total'], rentals)
++    env.flush_all()

@@ -1,0 +1,11 @@
+{
+  "cause": "tmpfs /var/lib/odoo root:root0750 prevents Chrome profile creation by odoo100:101",
+  "correction": "tmpfs mode1777; internal Docker network; explicit silent-skip detection; no shared image changes",
+  "authorised_extra_runs": 2,
+  "scenarios": [
+    "19.0-positive",
+    "19.0-mutant"
+  ],
+  "original_runs_preserved": true,
+  "replay_timeout_seconds": 360
+}

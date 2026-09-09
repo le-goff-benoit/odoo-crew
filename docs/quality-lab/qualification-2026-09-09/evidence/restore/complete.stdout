@@ -1,0 +1,27 @@
+ODOO_SERIES=19.0
+Sauvegarde : /tmp/odoo-qualification-restore-20260909/qualification-complete.zip (zip-sql)
+Base cible : qualification_complete  →  http://localhost:8079  (admin/admin)
+Import du dump…
+Dépôt du filestore…
+Neutralisation (odoo neutralize)…
+Réglages locaux (admin/admin, web.base.url, assets)…
+  2026-09-09 14:04:09,442 52 WARNING ? odoo.tools.config: option addons_path, no such directory '/mnt/enterprise-addons', skipped 
+  2026-09-09 14:04:09,442 52 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+  2026-09-09 14:04:09,442 52 WARNING ? odoo.tools.config: option addons_path, no such directory '/mnt/enterprise-addons', skipped 
+  2026-09-09 14:04:09,442 52 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+  2026-09-09 14:04:09,442 52 INFO ? odoo: Odoo version 19.0-20260817 
+  2026-09-09 14:04:09,442 52 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+  2026-09-09 14:04:09,442 52 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/usr/lib/python3/dist-packages/addons']) 
+  2026-09-09 14:04:09,442 52 INFO ? odoo: database: odoo@db:5432 
+  2026-09-09 14:04:09,600 52 INFO ? odoo.service.server: Initiating shutdown 
+  2026-09-09 14:04:09,600 52 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+  2026-09-09 14:04:09,615 52 INFO qualification_complete odoo.modules.loading: loading 1 modules... 
+  2026-09-09 14:04:09,619 52 INFO qualification_complete odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+  2026-09-09 14:04:09,622 52 INFO qualification_complete odoo.modules.loading: loading 14 modules... 
+  2026-09-09 14:04:09,708 52 INFO qualification_complete odoo.modules.loading: 14 modules loaded in 0.09s, 0 queries (+0 extra) 
+  2026-09-09 14:04:09,726 52 INFO qualification_complete odoo.modules.loading: Modules loaded. 
+  2026-09-09 14:04:09,733 52 INFO qualification_complete odoo.registry: Registry loaded in 0.132s 
+  Modules installés : 14
+
+Base qualification_complete prête : http://localhost:8079/web?db=qualification_complete  (admin / admin)
+Pour la viser par défaut : export ODOO_TEST_DB=qualification_complete

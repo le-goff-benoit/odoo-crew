@@ -1,0 +1,422 @@
+{
+  "status": "pass",
+  "checks": {
+    "apply_1_exit": true,
+    "apply_2_exit": true,
+    "second_identical": true,
+    "one_added_field": true,
+    "one_added_xmlid": true,
+    "acl_unchanged": true,
+    "delivered_xmlid": true,
+    "boolean_stored": true,
+    "rpc_6_rental": true,
+    "rpc_7_rental": true,
+    "rpc_8_rental": true,
+    "rpc_7_loan": true,
+    "dependency_days": true,
+    "dependency_kind": true,
+    "test_records_removed": true,
+    "pack_unchanged": true,
+    "cleanup": true
+  },
+  "before": {
+    "fields": [
+      {
+        "id": 3728,
+        "name": "id",
+        "ttype": "integer",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3729,
+        "name": "display_name",
+        "ttype": "char",
+        "store": false,
+        "depends": false
+      },
+      {
+        "id": 3730,
+        "name": "create_uid",
+        "ttype": "many2one",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3731,
+        "name": "create_date",
+        "ttype": "datetime",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3732,
+        "name": "write_uid",
+        "ttype": "many2one",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3733,
+        "name": "write_date",
+        "ttype": "datetime",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3734,
+        "name": "x_name",
+        "ttype": "char",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3736,
+        "name": "x_studio_days",
+        "ttype": "integer",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3738,
+        "name": "x_studio_kind",
+        "ttype": "selection",
+        "store": true,
+        "depends": false
+      }
+    ],
+    "xmlids": [
+      {
+        "id": 26981,
+        "name": "lab_seed_x_name",
+        "model": "ir.model.fields",
+        "res_id": 3734
+      },
+      {
+        "id": 26982,
+        "name": "lab_seed_x_studio_days",
+        "model": "ir.model.fields",
+        "res_id": 3736
+      },
+      {
+        "id": 26983,
+        "name": "lab_seed_x_studio_kind",
+        "model": "ir.model.fields",
+        "res_id": 3738
+      },
+      {
+        "id": 26984,
+        "name": "lab_seed_model",
+        "model": "ir.model",
+        "res_id": 422
+      },
+      {
+        "id": 26985,
+        "name": "lab_seed_access",
+        "model": "ir.model.access",
+        "res_id": 295
+      }
+    ],
+    "acl": [
+      {
+        "id": 295,
+        "group_id": [
+          1,
+          "Role / User"
+        ],
+        "perm_read": true,
+        "perm_write": true,
+        "perm_create": true,
+        "perm_unlink": true
+      }
+    ]
+  },
+  "after_first": {
+    "fields": [
+      {
+        "id": 3728,
+        "name": "id",
+        "ttype": "integer",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3729,
+        "name": "display_name",
+        "ttype": "char",
+        "store": false,
+        "depends": false
+      },
+      {
+        "id": 3730,
+        "name": "create_uid",
+        "ttype": "many2one",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3731,
+        "name": "create_date",
+        "ttype": "datetime",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3732,
+        "name": "write_uid",
+        "ttype": "many2one",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3733,
+        "name": "write_date",
+        "ttype": "datetime",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3734,
+        "name": "x_name",
+        "ttype": "char",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3736,
+        "name": "x_studio_days",
+        "ttype": "integer",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3738,
+        "name": "x_studio_kind",
+        "ttype": "selection",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3740,
+        "name": "x_studio_needs_review",
+        "ttype": "boolean",
+        "store": true,
+        "depends": "x_studio_days,x_studio_kind"
+      }
+    ],
+    "xmlids": [
+      {
+        "id": 26981,
+        "name": "lab_seed_x_name",
+        "model": "ir.model.fields",
+        "res_id": 3734
+      },
+      {
+        "id": 26982,
+        "name": "lab_seed_x_studio_days",
+        "model": "ir.model.fields",
+        "res_id": 3736
+      },
+      {
+        "id": 26983,
+        "name": "lab_seed_x_studio_kind",
+        "model": "ir.model.fields",
+        "res_id": 3738
+      },
+      {
+        "id": 26984,
+        "name": "lab_seed_model",
+        "model": "ir.model",
+        "res_id": 422
+      },
+      {
+        "id": 26985,
+        "name": "lab_seed_access",
+        "model": "ir.model.access",
+        "res_id": 295
+      },
+      {
+        "id": 26986,
+        "name": "revue_requise_demand_2e8e5590-3d9c-4448-bdda-83f7970c31eb",
+        "model": "ir.model.fields",
+        "res_id": 3740
+      }
+    ],
+    "acl": [
+      {
+        "id": 295,
+        "group_id": [
+          1,
+          "Role / User"
+        ],
+        "perm_read": true,
+        "perm_write": true,
+        "perm_create": true,
+        "perm_unlink": true
+      }
+    ]
+  },
+  "after_second": {
+    "fields": [
+      {
+        "id": 3728,
+        "name": "id",
+        "ttype": "integer",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3729,
+        "name": "display_name",
+        "ttype": "char",
+        "store": false,
+        "depends": false
+      },
+      {
+        "id": 3730,
+        "name": "create_uid",
+        "ttype": "many2one",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3731,
+        "name": "create_date",
+        "ttype": "datetime",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3732,
+        "name": "write_uid",
+        "ttype": "many2one",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3733,
+        "name": "write_date",
+        "ttype": "datetime",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3734,
+        "name": "x_name",
+        "ttype": "char",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3736,
+        "name": "x_studio_days",
+        "ttype": "integer",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3738,
+        "name": "x_studio_kind",
+        "ttype": "selection",
+        "store": true,
+        "depends": false
+      },
+      {
+        "id": 3740,
+        "name": "x_studio_needs_review",
+        "ttype": "boolean",
+        "store": true,
+        "depends": "x_studio_days,x_studio_kind"
+      }
+    ],
+    "xmlids": [
+      {
+        "id": 26981,
+        "name": "lab_seed_x_name",
+        "model": "ir.model.fields",
+        "res_id": 3734
+      },
+      {
+        "id": 26982,
+        "name": "lab_seed_x_studio_days",
+        "model": "ir.model.fields",
+        "res_id": 3736
+      },
+      {
+        "id": 26983,
+        "name": "lab_seed_x_studio_kind",
+        "model": "ir.model.fields",
+        "res_id": 3738
+      },
+      {
+        "id": 26984,
+        "name": "lab_seed_model",
+        "model": "ir.model",
+        "res_id": 422
+      },
+      {
+        "id": 26985,
+        "name": "lab_seed_access",
+        "model": "ir.model.access",
+        "res_id": 295
+      },
+      {
+        "id": 26986,
+        "name": "revue_requise_demand_2e8e5590-3d9c-4448-bdda-83f7970c31eb",
+        "model": "ir.model.fields",
+        "res_id": 3740
+      }
+    ],
+    "acl": [
+      {
+        "id": 295,
+        "group_id": [
+          1,
+          "Role / User"
+        ],
+        "perm_read": true,
+        "perm_write": true,
+        "perm_create": true,
+        "perm_unlink": true
+      }
+    ]
+  },
+  "rpc": [
+    {
+      "days": 6,
+      "kind": "rental",
+      "value": false
+    },
+    {
+      "days": 7,
+      "kind": "rental",
+      "value": true
+    },
+    {
+      "days": 8,
+      "kind": "rental",
+      "value": true
+    },
+    {
+      "days": 7,
+      "kind": "loan",
+      "value": false
+    }
+  ],
+  "cleanup": {
+    "container": {
+      "exit_code": 0,
+      "remaining": []
+    },
+    "volume": {
+      "exit_code": 0,
+      "remaining": []
+    },
+    "network": {
+      "exit_code": 0,
+      "remaining": []
+    }
+  },
+  "seconds": 27.798,
+  "prefix": "quality-native-9bd6f2a04b"
+}

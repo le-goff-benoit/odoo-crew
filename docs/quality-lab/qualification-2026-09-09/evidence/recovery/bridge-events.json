@@ -1,0 +1,218 @@
+[
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/probe_initial.json"
+    ],
+    "seconds": 1.87,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "30cf56b5d6b19d7ad615bd1fa59508de593020f3630ed75336c683d432bf062f",
+    "project_sha256": "6ae9e287a366577559f4da089711b3532babc30b9c4b4088d6cc105c61239f94"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.73,
+    "exit_code": 1,
+    "log": "bridge-001.log",
+    "sha256": "6af8dab6ba45a817336e4f99bf0cac24c1d6a1ad76d4bf3e5cad30a0e7f80863",
+    "project_sha256": "d26708c413f279e8e97f9f4fec66d54e4e343ef1d2a9ca66024ac1daad249839"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--tags",
+      "/lab_rental:TestLabRentalDaysConstraint"
+    ],
+    "seconds": 16.14,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "c2630a561df8f3fd4838a8568a35613804550fb0efdec3b4981aea04e2ad811c",
+    "project_sha256": "d26708c413f279e8e97f9f4fec66d54e4e343ef1d2a9ca66024ac1daad249839",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 7,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 5
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.98,
+    "exit_code": 1,
+    "log": "bridge-003.log",
+    "sha256": "6af8dab6ba45a817336e4f99bf0cac24c1d6a1ad76d4bf3e5cad30a0e7f80863",
+    "project_sha256": "0b3a42eee7ff56560eec99502c67877cac8172b26354eeefe55a55db384634cf"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 7.01,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "2bf8fcf27346f003fc127cee6f23b48a22715415b85f5a8bcf5135d75b747a72",
+    "project_sha256": "187ea938aec33acef158ffdc5cac05b21170a0d4892092b3ab5fee437d1d101b"
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/01_create_negative.json"
+    ],
+    "seconds": 2.7,
+    "exit_code": 1,
+    "log": "bridge-005.log",
+    "sha256": "c5d9384541b522a16db7358cb1a06594db7ebf6293aff0e1414479284810000a",
+    "project_sha256": "160c511ffd8f04228f189d62c39cb94a9a78323be951304abe7b2ee6b78a4eb6"
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/02_create_zero.json"
+    ],
+    "seconds": 2.68,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "7d640eda7a8ac212452ef048c7c3e2f87f3c516715740d8d01542d92ea6ced99",
+    "project_sha256": "d88e6626acc40e0ab67aba68eea75f0065f419fa66f97720dc009cff5ab21cf1"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--fresh"
+    ],
+    "seconds": 22.54,
+    "exit_code": 0,
+    "log": "bridge-007.log",
+    "sha256": "7a1fe39f02c3ace41fee4e8c7162bfd6b68b048e3bb3bc51e35a6135fe9f9ca3",
+    "project_sha256": "014ac70b24cff1f0fe335883d6e1d227f5c89e0836e63dff2731363b94a26a74",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 7,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 5
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/03_create_base_for_write.json"
+    ],
+    "seconds": 2.67,
+    "exit_code": 0,
+    "log": "bridge-008.log",
+    "sha256": "0554c9b0825998959eac23942d7d7b969fd1944eec42ead524d3b5767ad8f39a",
+    "project_sha256": "bfab8d317ec2747859c95424dd5593bf1e1637e8c89a520be6833601eeee69a6"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 1.03,
+    "exit_code": 1,
+    "log": "bridge-009.log",
+    "sha256": "6af8dab6ba45a817336e4f99bf0cac24c1d6a1ad76d4bf3e5cad30a0e7f80863",
+    "project_sha256": "25573be1a96c499fe68883fa5233c65e0a7c7008da9859f01687af4ce9bf3b40"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--update"
+    ],
+    "seconds": 10.83,
+    "exit_code": 0,
+    "log": "bridge-010.log",
+    "sha256": "a852ecc76153d07816d16fd1f20ac277cb622a1e28aa51241fdb178edb8c4e19",
+    "project_sha256": "aacba96fe9f4dba757d7e8d0766ea1320f82bfc9fc3440f00d9d9d7dbc5aaa61",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 7,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 5
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/04_read_base_before.json"
+    ],
+    "seconds": 3.89,
+    "exit_code": 0,
+    "log": "bridge-011.log",
+    "sha256": "3b36dbc0679138246adb1ee31335b7c170ae95f023774d6b4b118a856ca67fa7",
+    "project_sha256": "faf558567359172c243c03b3af6d5febee00a5d25117f741538b3f6b392d99a9"
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/05_write_negative.json"
+    ],
+    "seconds": 2.77,
+    "exit_code": 1,
+    "log": "bridge-012.log",
+    "sha256": "c5d9384541b522a16db7358cb1a06594db7ebf6293aff0e1414479284810000a",
+    "project_sha256": "3f8f896a9fa3955629fbfc3c08c100120aef1f5450271360ce5417f44522a6c2"
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/06_read_base_after.json"
+    ],
+    "seconds": 3.22,
+    "exit_code": 0,
+    "log": "bridge-013.log",
+    "sha256": "3b36dbc0679138246adb1ee31335b7c170ae95f023774d6b4b118a856ca67fa7",
+    "project_sha256": "2ad7a2283997415e60f3b38c497b84c486bbfe2f4efe6d5bef6ef8eb57abf12e"
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/07_write_zero.json"
+    ],
+    "seconds": 4.12,
+    "exit_code": 0,
+    "log": "bridge-014.log",
+    "sha256": "0be694460085656f05bf98a51c2e1aeacae073ef0282af69cb81ce8c1846633c",
+    "project_sha256": "98cdb57f6625e0e2bd1431b121d4d8f6e7928dd81e487df71f65edd0da04b70a"
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/flow-artifacts/contrainte-jours-positifs/qa_client/rpc/08_read_zero_after.json"
+    ],
+    "seconds": 3.58,
+    "exit_code": 0,
+    "log": "bridge-015.log",
+    "sha256": "eb0b58e149462f36b6e6f9394c8da716850cdf71baf4fb56ebab3b11f9e30b3f",
+    "project_sha256": "8c2ae06926d1bd79218738ea8071f8e3e67d7dd9c79d0f86297d12a741584109"
+  }
+]

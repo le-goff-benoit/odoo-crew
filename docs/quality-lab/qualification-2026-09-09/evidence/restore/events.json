@@ -1,0 +1,501 @@
+[
+  {
+    "label": "images",
+    "command": [
+      "docker",
+      "image",
+      "inspect",
+      "odoo-qa:19.0",
+      "pgvector/pgvector:pg16"
+    ],
+    "exit_code": 0,
+    "seconds": 0.013
+  },
+  {
+    "label": "config",
+    "command": [
+      "docker",
+      "compose",
+      "config",
+      "--format",
+      "json"
+    ],
+    "exit_code": 0,
+    "seconds": 0.051
+  },
+  {
+    "label": "up",
+    "command": [
+      "docker",
+      "compose",
+      "up",
+      "-d"
+    ],
+    "exit_code": 0,
+    "seconds": 0.214
+  },
+  {
+    "label": "ready-0",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "db",
+      "pg_isready",
+      "-U",
+      "odoo"
+    ],
+    "exit_code": 2,
+    "seconds": 0.093
+  },
+  {
+    "label": "ready-1",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "db",
+      "pg_isready",
+      "-U",
+      "odoo"
+    ],
+    "exit_code": 0,
+    "seconds": 0.098
+  },
+  {
+    "label": "initialize",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "odoo",
+      "odoo",
+      "-c",
+      "/etc/odoo/odoo.conf",
+      "-d",
+      "qualification_source",
+      "-i",
+      "base",
+      "--without-demo=all",
+      "--stop-after-init",
+      "--no-http"
+    ],
+    "exit_code": 0,
+    "seconds": 7.882
+  },
+  {
+    "label": "seed",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "odoo",
+      "odoo",
+      "shell",
+      "-c",
+      "/etc/odoo/odoo.conf",
+      "-d",
+      "qualification_source",
+      "--no-http"
+    ],
+    "exit_code": 0,
+    "seconds": 0.649
+  },
+  {
+    "label": "neighbor-create",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "db",
+      "psql",
+      "-U",
+      "odoo",
+      "-d",
+      "postgres",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-Atc",
+      "CREATE DATABASE qualification_neighbor"
+    ],
+    "exit_code": 0,
+    "seconds": 0.121
+  },
+  {
+    "label": "neighbor-seed",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "db",
+      "psql",
+      "-U",
+      "odoo",
+      "-d",
+      "qualification_neighbor",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-Atc",
+      "CREATE TABLE sentinel (value text); INSERT INTO sentinel VALUES ('qualification unchanged')"
+    ],
+    "exit_code": 0,
+    "seconds": 0.104
+  },
+  {
+    "label": "neighbor-file",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "odoo",
+      "sh",
+      "-c",
+      "mkdir -p /var/lib/odoo/filestore/qualification_neighbor && printf qualification-neighbor > /var/lib/odoo/filestore/qualification_neighbor/sentinel"
+    ],
+    "exit_code": 0,
+    "seconds": 0.083
+  },
+  {
+    "label": "neighbor-before-db",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "db",
+      "psql",
+      "-U",
+      "odoo",
+      "-d",
+      "qualification_neighbor",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-Atc",
+      "SELECT value FROM sentinel"
+    ],
+    "exit_code": 0,
+    "seconds": 0.1
+  },
+  {
+    "label": "neighbor-before-file",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "odoo",
+      "cat",
+      "/var/lib/odoo/filestore/qualification_neighbor/sentinel"
+    ],
+    "exit_code": 0,
+    "seconds": 0.087
+  },
+  {
+    "label": "source-dump",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "db",
+      "pg_dump",
+      "-U",
+      "odoo",
+      "--no-owner",
+      "--no-privileges",
+      "qualification_source"
+    ],
+    "exit_code": 0,
+    "seconds": 0.196
+  },
+  {
+    "label": "source-filestore",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "odoo",
+      "cat",
+      "/var/lib/odoo/filestore/qualification_source/22/224e918e817490c8db63de0a31df81746bbdc051"
+    ],
+    "exit_code": 0,
+    "seconds": 0.079
+  },
+  {
+    "label": "complete",
+    "command": [
+      "bash",
+      "/tmp/odoo-qualification-restore-20260909/pack/scripts/odoo-restore.sh",
+      "/tmp/odoo-qualification-restore-20260909/qualification-complete.zip",
+      "--db",
+      "qualification_complete",
+      "--series",
+      "19.0"
+    ],
+    "exit_code": 0,
+    "seconds": 3.066
+  },
+  {
+    "label": "complete-exists",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "db",
+      "psql",
+      "-U",
+      "odoo",
+      "-d",
+      "postgres",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-Atc",
+      "SELECT count(*) FROM pg_database WHERE datname='qualification_complete'"
+    ],
+    "exit_code": 0,
+    "seconds": 0.096
+  },
+  {
+    "label": "complete-neighbor-db",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "db",
+      "psql",
+      "-U",
+      "odoo",
+      "-d",
+      "qualification_neighbor",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-Atc",
+      "SELECT value FROM sentinel"
+    ],
+    "exit_code": 0,
+    "seconds": 0.099
+  },
+  {
+    "label": "complete-neighbor-file",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "odoo",
+      "cat",
+      "/var/lib/odoo/filestore/qualification_neighbor/sentinel"
+    ],
+    "exit_code": 0,
+    "seconds": 0.091
+  },
+  {
+    "label": "complete-postconditions",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "odoo",
+      "odoo",
+      "shell",
+      "-c",
+      "/etc/odoo/odoo.conf",
+      "-d",
+      "qualification_complete",
+      "--no-http"
+    ],
+    "exit_code": 0,
+    "seconds": 0.647
+  },
+  {
+    "label": "missing_dump",
+    "command": [
+      "bash",
+      "/tmp/odoo-qualification-restore-20260909/pack/scripts/odoo-restore.sh",
+      "/tmp/odoo-qualification-restore-20260909/qualification-missing.zip",
+      "--db",
+      "qualification_missing_dump",
+      "--series",
+      "19.0"
+    ],
+    "exit_code": 1,
+    "seconds": 0.009
+  },
+  {
+    "label": "missing_dump-exists",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "db",
+      "psql",
+      "-U",
+      "odoo",
+      "-d",
+      "postgres",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-Atc",
+      "SELECT count(*) FROM pg_database WHERE datname='qualification_missing_dump'"
+    ],
+    "exit_code": 0,
+    "seconds": 0.092
+  },
+  {
+    "label": "missing_dump-neighbor-db",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "db",
+      "psql",
+      "-U",
+      "odoo",
+      "-d",
+      "qualification_neighbor",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-Atc",
+      "SELECT value FROM sentinel"
+    ],
+    "exit_code": 0,
+    "seconds": 0.093
+  },
+  {
+    "label": "missing_dump-neighbor-file",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "odoo",
+      "cat",
+      "/var/lib/odoo/filestore/qualification_neighbor/sentinel"
+    ],
+    "exit_code": 0,
+    "seconds": 0.082
+  },
+  {
+    "label": "invalid_update",
+    "command": [
+      "bash",
+      "/tmp/odoo-qualification-restore-20260909/pack/scripts/odoo-restore.sh",
+      "/tmp/odoo-qualification-restore-20260909/qualification-complete.zip",
+      "--db",
+      "qualification_invalid_update",
+      "--series",
+      "19.0",
+      "--update",
+      "qualification_nonexistent_module"
+    ],
+    "exit_code": 1,
+    "seconds": 4.351
+  },
+  {
+    "label": "invalid_update-exists",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "db",
+      "psql",
+      "-U",
+      "odoo",
+      "-d",
+      "postgres",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-Atc",
+      "SELECT count(*) FROM pg_database WHERE datname='qualification_invalid_update'"
+    ],
+    "exit_code": 0,
+    "seconds": 0.099
+  },
+  {
+    "label": "invalid_update-neighbor-db",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "db",
+      "psql",
+      "-U",
+      "odoo",
+      "-d",
+      "qualification_neighbor",
+      "-v",
+      "ON_ERROR_STOP=1",
+      "-Atc",
+      "SELECT value FROM sentinel"
+    ],
+    "exit_code": 0,
+    "seconds": 0.105
+  },
+  {
+    "label": "invalid_update-neighbor-file",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "odoo",
+      "cat",
+      "/var/lib/odoo/filestore/qualification_neighbor/sentinel"
+    ],
+    "exit_code": 0,
+    "seconds": 0.082
+  },
+  {
+    "label": "invalid_update-postconditions",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "odoo",
+      "odoo",
+      "shell",
+      "-c",
+      "/etc/odoo/odoo.conf",
+      "-d",
+      "qualification_invalid_update",
+      "--no-http"
+    ],
+    "exit_code": 0,
+    "seconds": 0.617
+  },
+  {
+    "label": "source-after",
+    "command": [
+      "docker",
+      "compose",
+      "exec",
+      "-T",
+      "odoo",
+      "odoo",
+      "shell",
+      "-c",
+      "/etc/odoo/odoo.conf",
+      "-d",
+      "qualification_source",
+      "--no-http"
+    ],
+    "exit_code": 0,
+    "seconds": 0.67
+  }
+]

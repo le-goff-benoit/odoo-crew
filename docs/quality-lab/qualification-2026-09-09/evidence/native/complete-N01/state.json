@@ -1,0 +1,183 @@
+{
+  "case": "N01",
+  "provider": "claude",
+  "config": {
+    "model": "opus",
+    "effort": "medium",
+    "delegate": false
+  },
+  "status": "executed",
+  "turns": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 540.27,
+      "usage": {
+        "tokens": {
+          "input_tokens": 126,
+          "cache_creation_input_tokens": 89293,
+          "cache_read_input_tokens": 3749394,
+          "output_tokens": 35219,
+          "output_tokens_details": {
+            "thinking_tokens": 4882
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 89293,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 1838,
+              "cache_read_input_tokens": 95178,
+              "cache_creation_input_tokens": 1707,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 1707
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 3.6498449999999996
+      },
+      "actual_model": "claude-opus-5",
+      "tool_calls": 62,
+      "provider_completed": true,
+      "error": null,
+      "delegation": {
+        "supported": true,
+        "started": 0,
+        "with_progress": 0,
+        "completed": 0,
+        "tasks": {},
+        "provider_summary": {
+          "spawned": 0,
+          "requested": {
+            "background": 0,
+            "foreground": 0,
+            "unset": 0
+          },
+          "started_in_background": 0,
+          "max_depth": 0,
+          "spawned_by_subagents": 0,
+          "completed": 0,
+          "failed": 0,
+          "killed": {
+            "parent": 0,
+            "user": 0,
+            "system": 0
+          },
+          "refused": {
+            "depth_limit": 0,
+            "concurrency_limit": 0,
+            "budget": 0
+          },
+          "by_type": {}
+        }
+      },
+      "answer_sha256": "299805106d4703c35a72756e6709b70515e238da8dd61ba719f34dc3c18d3bf4"
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 539.84,
+      "usage": {
+        "tokens": {
+          "input_tokens": 100,
+          "cache_creation_input_tokens": 88403,
+          "cache_read_input_tokens": 3016711,
+          "output_tokens": 37752,
+          "output_tokens_details": {
+            "thinking_tokens": 4193
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 88403,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 1624,
+              "cache_read_input_tokens": 92182,
+              "cache_creation_input_tokens": 1229,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 1229
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 3.3379255000000003
+      },
+      "actual_model": "claude-opus-5",
+      "tool_calls": 49,
+      "provider_completed": true,
+      "error": null,
+      "delegation": {
+        "supported": true,
+        "started": 0,
+        "with_progress": 0,
+        "completed": 0,
+        "tasks": {},
+        "provider_summary": {
+          "spawned": 0,
+          "requested": {
+            "background": 0,
+            "foreground": 0,
+            "unset": 0
+          },
+          "started_in_background": 0,
+          "max_depth": 0,
+          "spawned_by_subagents": 0,
+          "completed": 0,
+          "failed": 0,
+          "killed": {
+            "parent": 0,
+            "user": 0,
+            "system": 0
+          },
+          "refused": {
+            "depth_limit": 0,
+            "concurrency_limit": 0,
+            "budget": 0
+          },
+          "by_type": {}
+        }
+      },
+      "answer_sha256": "a90a5a75c6171629791a88a248d560a418195e6fb081021e2620a18e9d692f17"
+    }
+  ],
+  "active_turn": 1,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "4_rental": true,
+      "5_rental": true,
+      "6_rental": true,
+      "7_loan": true,
+      "0_rental": true,
+      "dependencies": true,
+      "stored": true
+    },
+    "passed": true,
+    "log_sha256": "6f26eb3e1e1921973c7ceae475e5f5083f36af7cc2ebf9e9cde8bbd2f17751e7",
+    "log": "oracle-000.log"
+  },
+  "review": null
+}

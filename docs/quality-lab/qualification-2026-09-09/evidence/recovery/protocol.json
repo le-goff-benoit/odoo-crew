@@ -1,0 +1,12 @@
+{
+  "case": "N04R", "base_case": "N04", "reference": "152aa737c7efc14cdba5c36b2e614ecb2715adb4",
+  "purpose": "Real native delegated workflow resumed after controlled interruption with unchanged live Lab, databases, project and Git history.",
+  "provider": "claude", "model": "opus", "effort": "medium", "delegate": true,
+  "maximum_calls": 2, "seconds_per_call": 900, "max_budget_usd_per_call": 12,
+  "stop_condition": "First turn only: implementation completion event exists, >=2 QA claims active and >=2 native local_agent QA starts received. Kill process group once; no restart if trigger absent.",
+  "resume_condition": "All observed old process identities absent, bridge drained, same PostgreSQL container/database OIDs/cluster identity and same project/Git inode+HEAD verified.",
+  "a8": "Negative rental create through actual XML-RPC returns exactly the nonempty configured French text: Le nombre de jours doit être positif ou nul.",
+  "oracle": {"sql": "Unmodified independent N04_check.py", "rpc": "Negative create through Lab.rpc, exact expected message substring, model search_read rows identical before and after; positive and zero behavior checked by SQL oracle."},
+  "acceptance": ["Full native functional review, implementation and delegated QA occur", "Interruption leaves active QA claims with all previous workers dead before reassignment", "Same Lab/DB/Git retained across contexts; decisions preserved", "Resumed orchestrator resolves claims, produces QA+journal and completes flow with release open", "Original criteria coverage and readable QA verdict agree", "Final SQL and RPC independent checks all pass", "No manual repair of generated implementation or evidence", "Cleanup verified and actual provider usage retained; unknown costs marked unknown"],
+  "limits": ["Single recovery trial, not provider comparison or latency gain", "No automatic retry beyond two specified calls", "A8 is a frozen explicit extension of N04; no browser rendering or ordinary-user rights claim", "A budget exhaustion or timeout remains incomplete, not a business failure"]
+}

@@ -1,0 +1,1 @@
+{'name': 'Atelier Boréal — frais de préparation des locations', 'author': 'Camptocamp', 'version': '19.0.1.1.0', 'license': 'LGPL-3', 'depends': ['base'], 'data': ['security/ir.model.access.csv'], 'installable': True}

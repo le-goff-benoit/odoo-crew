@@ -1,0 +1,44 @@
+{
+  "answer": "`[3/4 tester] REFUSÉ — 8 critères sur 9 prouvés deux fois, A8 partiel → jointure en reprise, release laissée ouverte`\n\n# D-31 — interdiction des durées négatives : jointure QA renforcée\n\n**Projet** Éole (`/work`) · **série** 19.0 (`__manifest__.py`) · **release** `2026-09-09_01_interdiction-des-durees-negatives-de-loc` (point n°1) · **module** `lab_rental` · **flow** `d31-jours-negatifs`, nœud `module_high_gate` → **`retry`**\n\n## À décider\nRien à arbitrer pour reprendre : la reprise est technique et bornée. Deux points attendent en revanche un arbitrage **avant toute mise à niveau d'une base peuplée** (hors périmètre de cette tâche) : le sort des lignes `days < 0` existantes (mise à 0 ou suppression — non tranché par D-31, à remonter à Luc Roy), et la clé `author` absente du manifest, qui met le lint en échec et devra tomber avant la clôture.\n\n## Verdict\n**REFUSÉ — reprise ciblée sur A8**, sans défaut de code. Les trois voies convergent : la contrainte est conforme à la forme 19.0 (`models.Constraint`, ni `_sql_constraints` ni `@api.constrains`), les six tests passent sur base QA neuve comme en suite complète, et la copie `lab_client` rejoue A1→A7 en dur. Le refus tient à une **preuve manquante**, pas à une anomalie : la première condition d'A8 — « le message configuré est bien celui remonté à l'utilisateur » — n'est traversée par aucune voie. Ni un `TransactionCase` ni `labctl shell` ne passent par `service/model.py`, donc la traduction en `ValidationError` n'est vue nulle part. Un critère composé dont une condition n'est pas prouvée est `partial` : il interdit « VALIDÉ » et le garde de couverture interdit l'issue `pass`.\n\nPoint saillant des preuves : **A7 confirme le risque n°1 de la revue**. Sur une base portant une ligne `days = -3`, l'update se termine « Modules loaded. » sans exception, module `installed`, et la contrainte **n'est pas posée** — seuls les journaux `odoo.schema` le disent. La règle D-31 ne serait donc pas appliquée chez un client sans purge préalable et sans contrôle explicite de `pg_constraint`.\n\n## Couverture\n| Critère | État | Preuve |\n|---|---|---|\n| A1–A5 | covered | 6/6 tests sur base QA neuve **et** scénarios ORM sur `lab_client` (valeurs relues ORM + SQL direct) |\n| A6 | covered | `pg_constraint` = `CHECK ((days >= 0))` après `-u`, revérifié à l'état final |\n| A7 | covered | update « vert » sans contrainte posée, nettoyage, réapplication propre |\n| A8 | **partial** | message non vide et zéro `_sql_constraints` prouvés ; chemin RPC/UI non joué |\n| A9 | covered | Ruff *All checks passed!* ; seule erreur `author`, dette antérieure |\n\n## Ce que j'ai écrit\n`changelog/…/qa.md` (verdict unique, B1, six réserves, angles morts) et `changelog/…/qa_coverage.json` (contrat `cf836fabee21`, empreintes SHA-256 des journaux cités), plus deux notes datées dans le README de la release. Les trois fragments QA, la revue, la spécification et le code sont **intacts** ; le point n°1 reste « à faire ». Je n'ai rejoué aucun contrôle : aucune base ni exécution Odoo n'était disponible, et les journaux existants sont repris comme preuves d'entrée, relus et recoupés un à un — pas comme une exécution nouvelle.\n\n## Reste à faire\n1. **Reprise (nœud `module_implementation_high_risk`, prêt, non revendiqué)** : ajouter un contrôle qui traverse la couche de service — `HttpCase` sur `/web/dataset/call_kw` en création à `days = -1`, assertion sur le message rendu ; à défaut, un appel direct à `_sql_error_to_message`. Puis une seule voie d'exécution suffit à repasser A8 ; les huit autres critères restent acquis. C'est la reprise n°1 sur les 2 permises.\n2. **Capitalisation** (`journal_task`) non faite : elle est en aval de `pass`. Les deux « Appris » sont rédigés en fin de `qa.md`, prêts à verser.\n3. **Pour la clôture** : procédure de reprise §7 obligatoire avant tout `-u` sur base peuplée ; `author` au manifest ; `days` reste `NULL`-able (accepté, H3) ; la copie `lab_client` a été reconstituée entre la revue et la QA — synthétique et volatile, elle ne prouve rien sur les volumes réels.\n4. **Leçon candidate au dispositif** : « une contrainte de table posée sur des données violantes échoue en silence à l'`-u` » dépasse ce projet — `/odoo-feedback` la promeut si vous le jugez utile.\n\nJe m'arrête ici : la release reste ouverte, aucune étape aval n'est démarrée.",
+  "usage": {
+    "tokens": {
+      "input_tokens": 56,
+      "cache_creation_input_tokens": 100697,
+      "cache_read_input_tokens": 1782138,
+      "output_tokens": 20561,
+      "output_tokens_details": {
+        "thinking_tokens": 5924
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 100697,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 2095,
+          "cache_read_input_tokens": 99980,
+          "cache_creation_input_tokens": 717,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 717
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "cost_usd": 2.413644999999999
+  },
+  "actual_model": "claude-opus-5",
+  "actual_effort": null,
+  "provider_error": null,
+  "completed_event": true,
+  "tool_calls": 39
+}

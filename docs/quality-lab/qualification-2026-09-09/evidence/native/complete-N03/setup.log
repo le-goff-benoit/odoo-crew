@@ -1,0 +1,495 @@
+2026-09-09 14:13:32,439 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:13:32,439 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 14:13:32,439 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:13:32,439 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 14:13:32,439 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 14:13:32,439 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 14:13:32,439 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 14:13:32,649 1 INFO lab_client odoo.modules.loading: Initializing database lab_client 
+2026-09-09 14:13:34,183 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 14:13:34,183 1 INFO lab_client odoo.modules.loading: Loading module base (1/1) 
+2026-09-09 14:13:34,201 1 INFO lab_client odoo.registry: module base: creating or updating database tables 
+2026-09-09 14:13:34,371 1 INFO lab_client odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-09 14:13:34,371 1 INFO lab_client odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-09 14:13:34,371 1 INFO lab_client odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-09 14:13:34,426 1 INFO lab_client odoo.models: Prepare computation of res.partner.user_id 
+2026-09-09 14:13:34,426 1 INFO lab_client odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-09 14:13:34,426 1 INFO lab_client odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-09 14:13:34,426 1 INFO lab_client odoo.models: Prepare computation of res.partner.lang 
+2026-09-09 14:13:34,426 1 INFO lab_client odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-09 14:13:34,426 1 INFO lab_client odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-09 14:13:34,426 1 INFO lab_client odoo.models: Prepare computation of res.partner.properties 
+2026-09-09 14:13:34,426 1 INFO lab_client odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-09 14:13:34,439 1 INFO lab_client odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-09 14:13:34,451 1 INFO lab_client odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-09 14:13:34,451 1 INFO lab_client odoo.models: Prepare computation of res.company.logo_web 
+2026-09-09 14:13:34,452 1 INFO lab_client odoo.models: Computing parent_path for table res_company... 
+2026-09-09 14:13:34,463 1 INFO lab_client odoo.models: Prepare computation of res.users.signature 
+2026-09-09 14:13:34,463 1 INFO lab_client odoo.models: Prepare computation of res.users.share 
+2026-09-09 14:13:35,267 1 INFO lab_client odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-09 14:13:35,270 1 INFO lab_client odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-09 14:13:35,306 1 INFO lab_client odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-09 14:13:35,334 1 INFO lab_client odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-09-09 14:13:35,373 1 INFO lab_client odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-09-09 14:13:35,683 1 INFO lab_client odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-09-09 14:13:35,687 1 INFO lab_client odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-09-09 14:13:36,260 1 INFO lab_client odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-09-09 14:13:36,264 1 INFO lab_client odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-09-09 14:13:36,671 1 INFO lab_client odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-09-09 14:13:36,680 1 INFO lab_client odoo.modules.loading: loading base/security/base_groups.xml 
+2026-09-09 14:13:36,845 1 INFO lab_client odoo.modules.loading: loading base/security/base_security.xml 
+2026-09-09 14:13:36,970 1 INFO lab_client odoo.modules.loading: loading base/wizard/wizard_ir_model_menu_create_views.xml 
+2026-09-09 14:13:36,978 1 INFO lab_client odoo.modules.loading: loading base/views/base_menus.xml 
+2026-09-09 14:13:37,016 1 INFO lab_client odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-09-09 14:13:37,024 1 INFO lab_client odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-09-09 14:13:37,028 1 INFO lab_client odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-09-09 14:13:37,177 1 INFO lab_client odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-09-09 14:13:37,282 1 INFO lab_client odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-09-09 14:13:37,291 1 INFO lab_client odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-09-09 14:13:37,301 1 INFO lab_client odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-09-09 14:13:37,320 1 INFO lab_client odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-09-09 14:13:37,329 1 INFO lab_client odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-09-09 14:13:37,344 1 INFO lab_client odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-09-09 14:13:37,355 1 INFO lab_client odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-09-09 14:13:37,433 1 INFO lab_client odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-09-09 14:13:37,445 1 INFO lab_client odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-09-09 14:13:37,456 1 INFO lab_client odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-09-09 14:13:37,471 1 INFO lab_client odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-09-09 14:13:37,482 1 INFO lab_client odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-09-09 14:13:37,522 1 INFO lab_client odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-09-09 14:13:37,541 1 INFO lab_client odoo.modules.loading: loading base/data/ir_config_parameter_data.xml 
+2026-09-09 14:13:37,543 1 INFO lab_client odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-09-09 14:13:37,557 1 INFO lab_client odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-09-09 14:13:37,560 1 INFO lab_client odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-09-09 14:13:37,569 1 INFO lab_client odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-09-09 14:13:37,591 1 INFO lab_client odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-09-09 14:13:37,607 1 INFO lab_client odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-09-09 14:13:37,672 1 INFO lab_client odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-09-09 14:13:37,701 1 INFO lab_client odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-09-09 14:13:37,729 1 INFO lab_client odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-09-09 14:13:37,732 1 INFO lab_client odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-09-09 14:13:37,740 1 INFO lab_client odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-09-09 14:13:37,753 1 INFO lab_client odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-09-09 14:13:37,767 1 INFO lab_client odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-09-09 14:13:37,779 1 INFO lab_client odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-09-09 14:13:37,799 1 INFO lab_client odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-09-09 14:13:37,808 1 INFO lab_client odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-09-09 14:13:37,821 1 INFO lab_client odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-09-09 14:13:37,836 1 INFO lab_client odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-09-09 14:13:37,850 1 INFO lab_client odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-09-09 14:13:37,872 1 INFO lab_client odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-09-09 14:13:37,891 1 INFO lab_client odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-09-09 14:13:37,909 1 INFO lab_client odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-09-09 14:13:37,989 1 INFO lab_client odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-09-09 14:13:38,017 1 INFO lab_client odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-09-09 14:13:38,056 1 INFO lab_client odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-09-09 14:13:38,092 1 INFO lab_client odoo.modules.loading: loading base/views/res_groups_views.xml 
+2026-09-09 14:13:38,133 1 INFO lab_client odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-09-09 14:13:38,220 1 INFO lab_client odoo.modules.loading: loading base/views/res_users_apikeys_views.xml 
+2026-09-09 14:13:38,225 1 INFO lab_client odoo.modules.loading: loading base/views/res_device_views.xml 
+2026-09-09 14:13:38,245 1 INFO lab_client odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-09-09 14:13:38,252 1 INFO lab_client odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-09-09 14:13:38,260 1 INFO lab_client odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-09-09 14:13:38,283 1 INFO lab_client odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-09-09 14:13:38,376 1 INFO lab_client odoo.modules.loading: Module base loaded in 4.19s, 8374 queries (+8374 other) 
+2026-09-09 14:13:38,376 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 4.19s, 8374 queries (+8374 extra) 
+2026-09-09 14:13:38,379 1 INFO lab_client odoo.modules.loading: updating modules list 
+2026-09-09 14:13:38,380 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 14:13:39,672 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Studio'] to user __system__ #1 via n/a 
+2026-09-09 14:13:39,762 1 INFO lab_client odoo.modules.loading: loading 47 modules... 
+2026-09-09 14:13:39,762 1 INFO lab_client odoo.modules.loading: Loading module rpc (2/47) 
+2026-09-09 14:13:39,780 1 INFO lab_client odoo.modules.loading: Module rpc loaded in 0.02s, 9 queries (+9 other) 
+2026-09-09 14:13:39,780 1 INFO lab_client odoo.modules.loading: Loading module web (3/47) 
+2026-09-09 14:13:39,814 1 INFO lab_client odoo.registry: module web: creating or updating database tables 
+2026-09-09 14:13:40,096 1 INFO lab_client odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-09-09 14:13:40,101 1 INFO lab_client odoo.modules.loading: loading web/security/web_security.xml 
+2026-09-09 14:13:40,107 1 INFO lab_client odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-09-09 14:13:40,137 1 INFO lab_client odoo.modules.loading: loading web/views/report_templates.xml 
+2026-09-09 14:13:40,192 1 INFO lab_client odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-09-09 14:13:40,201 1 INFO lab_client odoo.modules.loading: loading web/views/partner_view.xml 
+2026-09-09 14:13:40,207 1 INFO lab_client odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-09-09 14:13:40,209 1 INFO lab_client odoo.modules.loading: loading web/views/memory_template.xml 
+2026-09-09 14:13:40,212 1 INFO lab_client odoo.modules.loading: loading web/views/speedscope_config_wizard.xml 
+2026-09-09 14:13:40,216 1 INFO lab_client odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-09-09 14:13:40,221 1 INFO lab_client odoo.modules.loading: loading web/views/ir_ui_view_views.xml 
+2026-09-09 14:13:40,226 1 INFO lab_client odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-09-09 14:13:40,229 1 INFO lab_client odoo.modules.loading: loading web/data/report_layout.xml 
+2026-09-09 14:13:40,255 1 INFO lab_client odoo.modules.loading: Module web loaded in 0.48s, 1232 queries (+1232 other) 
+2026-09-09 14:13:40,256 1 INFO lab_client odoo.modules.loading: Loading module api_doc (4/47) 
+2026-09-09 14:13:40,259 1 INFO lab_client odoo.registry: module api_doc: creating or updating database tables 
+2026-09-09 14:13:40,268 1 INFO lab_client odoo.modules.loading: loading api_doc/security/res_groups.xml 
+2026-09-09 14:13:40,279 1 INFO lab_client odoo.modules.loading: loading api_doc/views/docclient.xml 
+2026-09-09 14:13:40,289 1 INFO lab_client odoo.modules.loading: Module api_doc loaded in 0.03s, 63 queries (+63 other) 
+2026-09-09 14:13:40,289 1 INFO lab_client odoo.modules.loading: Loading module auth_totp (5/47) 
+2026-09-09 14:13:40,297 1 INFO lab_client odoo.registry: module auth_totp: creating or updating database tables 
+2026-09-09 14:13:40,333 1 INFO lab_client odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-09-09 14:13:40,345 1 INFO lab_client odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-09-09 14:13:40,351 1 INFO lab_client odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-09-09 14:13:40,357 1 INFO lab_client odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-09-09 14:13:40,384 1 INFO lab_client odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-09-09 14:13:40,393 1 INFO lab_client odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-09-09 14:13:40,411 1 INFO lab_client odoo.modules.loading: Module auth_totp loaded in 0.12s, 218 queries (+218 other) 
+2026-09-09 14:13:40,411 1 INFO lab_client odoo.modules.loading: Loading module base_import (6/47) 
+2026-09-09 14:13:40,437 1 INFO lab_client odoo.registry: module base_import: creating or updating database tables 
+2026-09-09 14:13:40,726 1 INFO lab_client odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-09-09 14:13:40,736 1 INFO lab_client odoo.modules.loading: Module base_import loaded in 0.32s, 956 queries (+956 other) 
+2026-09-09 14:13:40,736 1 INFO lab_client odoo.modules.loading: Loading module base_import_module (7/47) 
+2026-09-09 14:13:40,742 1 INFO lab_client odoo.registry: module base_import_module: creating or updating database tables 
+2026-09-09 14:13:40,779 1 INFO lab_client odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-09-09 14:13:40,781 1 INFO lab_client odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-09-09 14:13:40,791 1 INFO lab_client odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-09-09 14:13:40,815 1 INFO lab_client odoo.modules.loading: Module base_import_module loaded in 0.08s, 172 queries (+172 other) 
+2026-09-09 14:13:40,815 1 INFO lab_client odoo.modules.loading: Loading module base_setup (8/47) 
+2026-09-09 14:13:40,822 1 INFO lab_client odoo.registry: module base_setup: creating or updating database tables 
+2026-09-09 14:13:40,854 1 INFO lab_client odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-09-09 14:13:40,857 1 INFO lab_client odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-09-09 14:13:40,884 1 INFO lab_client odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-09-09 14:13:40,900 1 INFO lab_client odoo.modules.loading: Module base_setup loaded in 0.08s, 152 queries (+152 other) 
+2026-09-09 14:13:40,901 1 INFO lab_client odoo.modules.loading: Loading module bus (9/47) 
+2026-09-09 14:13:40,914 1 INFO lab_client odoo.registry: module bus: creating or updating database tables 
+2026-09-09 14:13:40,972 1 INFO lab_client odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-09-09 14:13:40,979 1 INFO lab_client odoo.modules.loading: Module bus loaded in 0.08s, 159 queries (+159 other) 
+2026-09-09 14:13:40,979 1 INFO lab_client odoo.modules.loading: Loading module http_routing (10/47) 
+2026-09-09 14:13:40,983 1 INFO lab_client odoo.registry: module http_routing: creating or updating database tables 
+2026-09-09 14:13:40,997 1 INFO lab_client odoo.modules.loading: loading http_routing/views/http_routing_template.xml 
+2026-09-09 14:13:41,034 1 INFO lab_client odoo.modules.loading: loading http_routing/views/res_lang_views.xml 
+2026-09-09 14:13:41,057 1 INFO lab_client odoo.modules.loading: Module http_routing loaded in 0.08s, 114 queries (+114 other) 
+2026-09-09 14:13:41,057 1 INFO lab_client odoo.modules.loading: Loading module resource (11/47) 
+2026-09-09 14:13:41,069 1 INFO lab_client odoo.registry: module resource: creating or updating database tables 
+2026-09-09 14:13:41,165 1 INFO lab_client odoo.modules.loading: loading resource/data/resource_data.xml 
+2026-09-09 14:13:41,182 1 INFO lab_client odoo.modules.loading: loading resource/security/ir.model.access.csv 
+2026-09-09 14:13:41,190 1 INFO lab_client odoo.modules.loading: loading resource/security/resource_security.xml 
+2026-09-09 14:13:41,204 1 INFO lab_client odoo.modules.loading: loading resource/views/resource_resource_views.xml 
+2026-09-09 14:13:41,223 1 INFO lab_client odoo.modules.loading: loading resource/views/resource_calendar_leaves_views.xml 
+2026-09-09 14:13:41,239 1 INFO lab_client odoo.modules.loading: loading resource/views/resource_calendar_attendance_views.xml 
+2026-09-09 14:13:41,246 1 INFO lab_client odoo.modules.loading: loading resource/views/resource_calendar_views.xml 
+2026-09-09 14:13:41,262 1 INFO lab_client odoo.modules.loading: loading resource/views/menuitems.xml 
+2026-09-09 14:13:41,274 1 INFO lab_client odoo.modules.loading: Module resource loaded in 0.22s, 414 queries (+414 other) 
+2026-09-09 14:13:41,274 1 INFO lab_client odoo.modules.loading: Loading module web_cohort (12/47) 
+2026-09-09 14:13:41,297 1 INFO lab_client odoo.registry: module web_cohort: creating or updating database tables 
+2026-09-09 14:13:41,532 1 INFO lab_client odoo.modules.loading: Module web_cohort loaded in 0.26s, 969 queries (+969 other) 
+2026-09-09 14:13:41,532 1 INFO lab_client odoo.modules.loading: Loading module web_gantt (13/47) 
+2026-09-09 14:13:41,555 1 INFO lab_client odoo.registry: module web_gantt: creating or updating database tables 
+2026-09-09 14:13:41,819 1 INFO lab_client odoo.modules.loading: Module web_gantt loaded in 0.29s, 965 queries (+965 other) 
+2026-09-09 14:13:41,819 1 INFO lab_client odoo.modules.loading: Loading module web_grid (14/47) 
+2026-09-09 14:13:41,851 1 INFO lab_client odoo.registry: module web_grid: creating or updating database tables 
+2026-09-09 14:13:42,164 1 INFO lab_client odoo.modules.loading: Module web_grid loaded in 0.34s, 965 queries (+965 other) 
+2026-09-09 14:13:42,164 1 INFO lab_client odoo.modules.loading: Loading module web_tour (15/47) 
+2026-09-09 14:13:42,172 1 INFO lab_client odoo.registry: module web_tour: creating or updating database tables 
+2026-09-09 14:13:42,176 1 INFO lab_client odoo.models: Prepare computation of res.users.tour_enabled 
+2026-09-09 14:13:42,218 1 INFO lab_client odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-09-09 14:13:42,224 1 INFO lab_client odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-09-09 14:13:42,249 1 INFO lab_client odoo.modules.loading: Module web_tour loaded in 0.08s, 180 queries (+180 other) 
+2026-09-09 14:13:42,249 1 INFO lab_client odoo.modules.loading: Loading module auth_passkey (16/47) 
+2026-09-09 14:13:42,273 1 INFO lab_client odoo.registry: module auth_passkey: creating or updating database tables 
+2026-09-09 14:13:42,308 1 INFO lab_client odoo.modules.loading: loading auth_passkey/views/auth_passkey_key_views.xml 
+2026-09-09 14:13:42,321 1 INFO lab_client odoo.modules.loading: loading auth_passkey/views/auth_passkey_login_templates.xml 
+2026-09-09 14:13:42,329 1 INFO lab_client odoo.modules.loading: loading auth_passkey/views/res_users_identitycheck_views.xml 
+2026-09-09 14:13:42,334 1 INFO lab_client odoo.modules.loading: loading auth_passkey/views/res_users_views.xml 
+2026-09-09 14:13:42,348 1 INFO lab_client odoo.modules.loading: loading auth_passkey/security/ir.model.access.csv 
+2026-09-09 14:13:42,352 1 INFO lab_client odoo.modules.loading: loading auth_passkey/security/security.xml 
+2026-09-09 14:13:42,365 1 INFO lab_client odoo.modules.loading: Module auth_passkey loaded in 0.12s, 218 queries (+218 other) 
+2026-09-09 14:13:42,365 1 INFO lab_client odoo.modules.loading: Loading module html_editor (17/47) 
+2026-09-09 14:13:42,459 1 INFO lab_client odoo.registry: module html_editor: creating or updating database tables 
+2026-09-09 14:13:42,785 1 INFO lab_client odoo.modules.loading: loading html_editor/security/ir.model.access.csv 
+2026-09-09 14:13:42,793 1 INFO lab_client odoo.modules.loading: Module html_editor loaded in 0.43s, 1057 queries (+1057 other) 
+2026-09-09 14:13:42,793 1 INFO lab_client odoo.modules.loading: Loading module iap (18/47) 
+2026-09-09 14:13:42,795 1 INFO lab_client odoo.registry: module iap: creating or updating database tables 
+2026-09-09 14:13:42,825 1 INFO lab_client odoo.modules.loading: loading iap/data/services.xml 
+2026-09-09 14:13:42,828 1 INFO lab_client odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-09-09 14:13:42,833 1 INFO lab_client odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-09-09 14:13:42,837 1 INFO lab_client odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-09-09 14:13:42,851 1 INFO lab_client odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-09-09 14:13:42,864 1 INFO lab_client odoo.modules.loading: Module iap loaded in 0.07s, 182 queries (+182 other) 
+2026-09-09 14:13:42,864 1 INFO lab_client odoo.modules.loading: Loading module web_enterprise (19/47) 
+2026-09-09 14:13:42,869 1 INFO lab_client odoo.registry: module web_enterprise: creating or updating database tables 
+2026-09-09 14:13:42,888 1 INFO lab_client odoo.modules.loading: loading web_enterprise/views/webclient_templates.xml 
+2026-09-09 14:13:42,896 1 INFO lab_client odoo.modules.loading: loading web_enterprise/views/res_users_views.xml 
+2026-09-09 14:13:42,911 1 INFO lab_client odoo.modules.loading: Module web_enterprise loaded in 0.05s, 113 queries (+113 other) 
+2026-09-09 14:13:42,911 1 INFO lab_client odoo.modules.loading: Loading module web_map (20/47) 
+2026-09-09 14:13:42,937 1 INFO lab_client odoo.registry: module web_map: creating or updating database tables 
+2026-09-09 14:13:42,944 1 INFO lab_client odoo.models: Prepare computation of res.partner.contact_address_complete 
+2026-09-09 14:13:43,210 1 INFO lab_client odoo.modules.loading: loading web_map/views/res_config_settings.xml 
+2026-09-09 14:13:43,225 1 INFO lab_client odoo.modules.loading: loading web_map/views/res_partner_views.xml 
+2026-09-09 14:13:43,244 1 INFO lab_client odoo.modules.loading: Module web_map loaded in 0.33s, 1086 queries (+1086 other) 
+2026-09-09 14:13:43,244 1 INFO lab_client odoo.modules.loading: Loading module mail (21/47) 
+2026-09-09 14:13:43,284 1 INFO lab_client odoo.registry: module mail: creating or updating database tables 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.partner_ids 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.activity_user_id 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.activity_type_id 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.template_id 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.activity_date_deadline_range 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.activity_summary 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.followers_type 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.followers_partner_field_name 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.mail_post_method 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.activity_date_deadline_range_type 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.activity_user_type 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.activity_user_field_name 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.activity_note 
+2026-09-09 14:13:43,390 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.mail_post_autofollow 
+2026-09-09 14:13:43,436 1 INFO lab_client odoo.models: Prepare computation of res.users.notification_type 
+2026-09-09 14:13:43,472 1 INFO lab_client odoo.models: Prepare computation of res.partner.email_normalized 
+<string>:38: (ERROR/3) Unexpected indentation.
+<string>:43: (WARNING/2) Block quote ends without a blank line; unexpected unindent.
+2026-09-09 14:13:44,388 1 INFO lab_client odoo.modules.loading: loading mail/data/mail_groups.xml 
+2026-09-09 14:13:44,404 1 INFO lab_client odoo.modules.loading: loading mail/wizard/mail_activity_schedule_views.xml 
+2026-09-09 14:13:44,416 1 INFO lab_client odoo.modules.loading: loading mail/wizard/mail_blacklist_remove_views.xml 
+2026-09-09 14:13:44,422 1 INFO lab_client odoo.modules.loading: loading mail/wizard/mail_compose_message_views.xml 
+2026-09-09 14:13:44,438 1 INFO lab_client odoo.modules.loading: loading mail/wizard/mail_template_preview_views.xml 
+2026-09-09 14:13:44,447 1 INFO lab_client odoo.modules.loading: loading mail/wizard/mail_followers_edit_views.xml 
+2026-09-09 14:13:44,459 1 INFO lab_client odoo.modules.loading: loading mail/wizard/mail_template_reset_views.xml 
+2026-09-09 14:13:44,468 1 INFO lab_client odoo.modules.loading: loading mail/views/fetchmail_views.xml 
+2026-09-09 14:13:44,487 1 INFO lab_client odoo.modules.loading: loading mail/views/ir_cron_views.xml 
+2026-09-09 14:13:44,497 1 INFO lab_client odoo.modules.loading: loading mail/views/ir_filters_views.xml 
+2026-09-09 14:13:44,511 1 INFO lab_client odoo.modules.loading: loading mail/views/ir_mail_server_views.xml 
+2026-09-09 14:13:44,519 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_message_subtype_views.xml 
+2026-09-09 14:13:44,533 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_tracking_value_views.xml 
+2026-09-09 14:13:44,546 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_notification_views.xml 
+2026-09-09 14:13:44,558 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_message_views.xml 
+2026-09-09 14:13:44,587 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_message_schedule_views.xml 
+2026-09-09 14:13:44,601 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_mail_views.xml 
+2026-09-09 14:13:44,620 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_followers_views.xml 
+2026-09-09 14:13:44,627 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_ice_server_views.xml 
+2026-09-09 14:13:44,639 1 INFO lab_client odoo.modules.loading: loading mail/views/discuss_channel_member_views.xml 
+2026-09-09 14:13:44,648 1 INFO lab_client odoo.modules.loading: loading mail/views/discuss_channel_rtc_session_views.xml 
+2026-09-09 14:13:44,663 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_link_preview_views.xml 
+2026-09-09 14:13:44,681 1 INFO lab_client odoo.modules.loading: loading mail/views/discuss/discuss_gif_favorite_views.xml 
+2026-09-09 14:13:44,693 1 INFO lab_client odoo.modules.loading: loading mail/views/discuss_channel_views.xml 
+2026-09-09 14:13:44,722 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_canned_response_views.xml 
+2026-09-09 14:13:44,746 1 INFO lab_client odoo.modules.loading: loading mail/views/res_role_views.xml 
+2026-09-09 14:13:44,761 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_activity_views.xml 
+2026-09-09 14:13:44,840 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_activity_plan_views.xml 
+2026-09-09 14:13:44,879 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_activity_plan_template_views.xml 
+2026-09-09 14:13:44,891 1 INFO lab_client odoo.modules.loading: loading mail/views/res_config_settings_views.xml 
+2026-09-09 14:13:44,913 1 INFO lab_client odoo.modules.loading: loading mail/data/ir_config_parameter_data.xml 
+2026-09-09 14:13:44,919 1 INFO lab_client odoo.modules.loading: loading mail/data/res_partner_data.xml 
+2026-09-09 14:13:44,986 1 INFO lab_client odoo.modules.loading: loading mail/data/mail_message_subtype_data.xml 
+2026-09-09 14:13:44,994 1 INFO lab_client odoo.modules.loading: loading mail/data/mail_templates_chatter.xml 
+2026-09-09 14:13:45,015 1 INFO lab_client odoo.modules.loading: loading mail/data/mail_templates_email_layouts.xml 
+2026-09-09 14:13:45,036 1 INFO lab_client odoo.modules.loading: loading mail/data/mail_templates_mailgateway.xml 
+2026-09-09 14:13:45,055 1 INFO lab_client odoo.modules.loading: loading mail/data/discuss_channel_data.xml 
+2026-09-09 14:13:45,089 1 INFO lab_client odoo.modules.loading: loading mail/data/mail_activity_type_data.xml 
+2026-09-09 14:13:45,102 1 INFO lab_client odoo.modules.loading: loading mail/data/security_notifications_templates.xml 
+2026-09-09 14:13:45,107 1 INFO lab_client odoo.modules.loading: loading mail/data/ir_cron_data.xml 
+2026-09-09 14:13:45,224 1 INFO lab_client odoo.modules.loading: loading mail/data/ir_actions_client.xml 
+2026-09-09 14:13:45,231 1 INFO lab_client odoo.modules.loading: loading mail/security/mail_security.xml 
+2026-09-09 14:13:45,378 1 INFO lab_client odoo.modules.loading: loading mail/security/ir.model.access.csv 
+2026-09-09 14:13:45,417 1 INFO lab_client odoo.modules.loading: loading mail/views/discuss_public_templates.xml 
+2026-09-09 14:13:45,424 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_alias_domain_views.xml 
+2026-09-09 14:13:45,440 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_alias_views.xml 
+2026-09-09 14:13:45,460 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_gateway_allowed_views.xml 
+2026-09-09 14:13:45,472 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_guest_views.xml 
+2026-09-09 14:13:45,483 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_message_reaction_views.xml 
+2026-09-09 14:13:45,494 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_templates_public.xml 
+2026-09-09 14:13:45,503 1 INFO lab_client odoo.modules.loading: loading mail/views/res_users_views.xml 
+2026-09-09 14:13:45,526 1 INFO lab_client odoo.modules.loading: loading mail/views/res_users_settings_views.xml 
+2026-09-09 14:13:45,540 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_template_views.xml 
+2026-09-09 14:13:45,562 1 INFO lab_client odoo.modules.loading: loading mail/views/ir_actions_server_views.xml 
+2026-09-09 14:13:45,580 1 INFO lab_client odoo.modules.loading: loading mail/views/ir_model_views.xml 
+2026-09-09 14:13:45,611 1 INFO lab_client odoo.modules.loading: loading mail/views/res_partner_views.xml 
+2026-09-09 14:13:45,659 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_blacklist_views.xml 
+2026-09-09 14:13:45,673 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_menus.xml 
+2026-09-09 14:13:45,750 1 INFO lab_client odoo.modules.loading: loading mail/views/discuss/discuss_menus.xml 
+2026-09-09 14:13:45,753 1 INFO lab_client odoo.modules.loading: loading mail/views/discuss/discuss_call_history_views.xml 
+2026-09-09 14:13:45,764 1 INFO lab_client odoo.modules.loading: loading mail/views/res_company_views.xml 
+2026-09-09 14:13:45,771 1 INFO lab_client odoo.modules.loading: loading mail/views/mail_scheduled_message_views.xml 
+2026-09-09 14:13:45,776 1 INFO lab_client odoo.modules.loading: loading mail/data/mail_canned_response_data.xml 
+2026-09-09 14:13:45,781 1 INFO lab_client odoo.modules.loading: loading mail/data/mail_templates_invite.xml 
+2026-09-09 14:13:45,789 1 INFO lab_client odoo.modules.loading: loading mail/data/web_tour_tour.xml 
+2026-09-09 14:13:45,826 1 INFO lab_client odoo.modules.loading: Module mail loaded in 2.58s, 5016 queries (+5017 other) 
+2026-09-09 14:13:45,826 1 INFO lab_client odoo.modules.loading: Loading module web_mobile (22/47) 
+2026-09-09 14:13:45,837 1 INFO lab_client odoo.registry: module web_mobile: creating or updating database tables 
+2026-09-09 14:13:45,876 1 INFO lab_client odoo.modules.loading: loading web_mobile/views/views.xml 
+2026-09-09 14:13:45,898 1 INFO lab_client odoo.modules.loading: Module web_mobile loaded in 0.07s, 94 queries (+94 other) 
+2026-09-09 14:13:45,898 1 INFO lab_client odoo.modules.loading: Loading module web_unsplash (23/47) 
+2026-09-09 14:13:45,907 1 INFO lab_client odoo.registry: module web_unsplash: creating or updating database tables 
+2026-09-09 14:13:45,944 1 INFO lab_client odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-09-09 14:13:45,975 1 INFO lab_client odoo.modules.loading: Module web_unsplash loaded in 0.08s, 103 queries (+103 other) 
+2026-09-09 14:13:45,975 1 INFO lab_client odoo.modules.loading: Loading module ai_auto_install (24/47) 
+2026-09-09 14:13:46,070 1 INFO lab_client odoo.modules.loading: Module ai_auto_install loaded in 0.09s, 15 queries (+15 other) 
+2026-09-09 14:13:46,071 1 INFO lab_client odoo.modules.loading: Loading module auth_signup (25/47) 
+2026-09-09 14:13:46,085 1 INFO lab_client odoo.registry: module auth_signup: creating or updating database tables 
+2026-09-09 14:13:46,120 1 INFO lab_client odoo.modules.loading: loading auth_signup/data/ir_config_parameter_data.xml 
+2026-09-09 14:13:46,126 1 INFO lab_client odoo.modules.loading: loading auth_signup/data/ir_cron_data.xml 
+2026-09-09 14:13:46,140 1 INFO lab_client odoo.modules.loading: loading auth_signup/data/mail_template_data.xml 
+2026-09-09 14:13:46,215 1 INFO lab_client odoo.modules.loading: loading auth_signup/views/res_config_settings_views.xml 
+2026-09-09 14:13:46,231 1 INFO lab_client odoo.modules.loading: loading auth_signup/views/res_users_views.xml 
+2026-09-09 14:13:46,256 1 INFO lab_client odoo.modules.loading: loading auth_signup/views/auth_signup_login_templates.xml 
+2026-09-09 14:13:46,277 1 INFO lab_client odoo.modules.loading: loading auth_signup/views/auth_signup_templates_email.xml 
+2026-09-09 14:13:46,283 1 INFO lab_client odoo.modules.loading: loading auth_signup/views/webclient_templates.xml 
+2026-09-09 14:13:46,303 1 INFO lab_client odoo.modules.loading: Module auth_signup loaded in 0.23s, 255 queries (+255 other) 
+2026-09-09 14:13:46,303 1 INFO lab_client odoo.modules.loading: Loading module auth_totp_mail (26/47) 
+2026-09-09 14:13:46,310 1 INFO lab_client odoo.registry: module auth_totp_mail: creating or updating database tables 
+2026-09-09 14:13:46,334 1 INFO lab_client odoo.modules.loading: loading auth_totp_mail/data/ir_action_data.xml 
+2026-09-09 14:13:46,349 1 INFO lab_client odoo.modules.loading: loading auth_totp_mail/data/mail_template_data.xml 
+2026-09-09 14:13:46,379 1 INFO lab_client odoo.modules.loading: loading auth_totp_mail/data/security_notifications_template.xml 
+2026-09-09 14:13:46,387 1 INFO lab_client odoo.modules.loading: loading auth_totp_mail/views/res_config_settings_views.xml 
+2026-09-09 14:13:46,402 1 INFO lab_client odoo.modules.loading: loading auth_totp_mail/views/res_users_views.xml 
+2026-09-09 14:13:46,419 1 INFO lab_client odoo.modules.loading: loading auth_totp_mail/views/templates.xml 
+2026-09-09 14:13:46,439 1 INFO lab_client odoo.modules.loading: Module auth_totp_mail loaded in 0.14s, 189 queries (+189 other) 
+2026-09-09 14:13:46,439 1 INFO lab_client odoo.modules.loading: Loading module base_install_request (27/47) 
+2026-09-09 14:13:46,445 1 INFO lab_client odoo.registry: module base_install_request: creating or updating database tables 
+2026-09-09 14:13:46,485 1 INFO lab_client odoo.modules.loading: loading base_install_request/security/ir.model.access.csv 
+2026-09-09 14:13:46,493 1 INFO lab_client odoo.modules.loading: loading base_install_request/wizard/base_module_install_request_views.xml 
+2026-09-09 14:13:46,506 1 INFO lab_client odoo.modules.loading: loading base_install_request/data/mail_template_data.xml 
+2026-09-09 14:13:46,511 1 INFO lab_client odoo.modules.loading: loading base_install_request/data/mail_templates_module_install.xml 
+2026-09-09 14:13:46,515 1 INFO lab_client odoo.modules.loading: loading base_install_request/views/ir_module_module_views.xml 
+2026-09-09 14:13:46,529 1 INFO lab_client odoo.modules.loading: Module base_install_request loaded in 0.09s, 154 queries (+154 other) 
+2026-09-09 14:13:46,529 1 INFO lab_client odoo.modules.loading: Loading module google_gmail (28/47) 
+2026-09-09 14:13:46,536 1 INFO lab_client odoo.registry: module google_gmail: creating or updating database tables 
+2026-09-09 14:13:46,567 1 INFO lab_client odoo.modules.loading: loading google_gmail/views/fetchmail_server_views.xml 
+2026-09-09 14:13:46,579 1 INFO lab_client odoo.modules.loading: loading google_gmail/views/ir_mail_server_views.xml 
+2026-09-09 14:13:46,588 1 INFO lab_client odoo.modules.loading: loading google_gmail/views/res_config_settings_views.xml 
+2026-09-09 14:13:46,606 1 INFO lab_client odoo.modules.loading: loading google_gmail/views/templates.xml 
+2026-09-09 14:13:46,615 1 INFO lab_client odoo.modules.loading: Module google_gmail loaded in 0.09s, 155 queries (+155 other) 
+2026-09-09 14:13:46,615 1 INFO lab_client odoo.modules.loading: Loading module iap_mail (29/47) 
+2026-09-09 14:13:46,618 1 INFO lab_client odoo.registry: module iap_mail: creating or updating database tables 
+2026-09-09 14:13:46,645 1 INFO lab_client odoo.modules.loading: loading iap_mail/data/mail_templates.xml 
+2026-09-09 14:13:46,659 1 INFO lab_client odoo.modules.loading: loading iap_mail/views/iap_views.xml 
+2026-09-09 14:13:46,676 1 INFO lab_client odoo.modules.loading: Module iap_mail loaded in 0.06s, 70 queries (+70 other) 
+2026-09-09 14:13:46,676 1 INFO lab_client odoo.modules.loading: Loading module mail_bot (30/47) 
+2026-09-09 14:13:46,687 1 INFO lab_client odoo.registry: module mail_bot: creating or updating database tables 
+2026-09-09 14:13:46,717 1 INFO lab_client odoo.modules.loading: loading mail_bot/views/res_users_views.xml 
+2026-09-09 14:13:46,729 1 INFO lab_client odoo.modules.loading: loading mail_bot/data/mailbot_data.xml 
+2026-09-09 14:13:46,738 1 INFO lab_client odoo.modules.loading: Module mail_bot loaded in 0.06s, 109 queries (+109 other) 
+2026-09-09 14:13:46,738 1 INFO lab_client odoo.modules.loading: Loading module mail_enterprise (31/47) 
+2026-09-09 14:13:46,742 1 INFO lab_client odoo.registry: module mail_enterprise: creating or updating database tables 
+2026-09-09 14:13:46,761 1 INFO lab_client odoo.modules.loading: Module mail_enterprise loaded in 0.02s, 19 queries (+19 other) 
+2026-09-09 14:13:46,761 1 INFO lab_client odoo.modules.loading: Loading module microsoft_outlook (32/47) 
+2026-09-09 14:13:46,773 1 INFO lab_client odoo.registry: module microsoft_outlook: creating or updating database tables 
+2026-09-09 14:13:46,811 1 INFO lab_client odoo.modules.loading: loading microsoft_outlook/views/fetchmail_server_views.xml 
+2026-09-09 14:13:46,821 1 INFO lab_client odoo.modules.loading: loading microsoft_outlook/views/ir_mail_server_views.xml 
+2026-09-09 14:13:46,829 1 INFO lab_client odoo.modules.loading: loading microsoft_outlook/views/res_config_settings_views.xml 
+2026-09-09 14:13:46,844 1 INFO lab_client odoo.modules.loading: loading microsoft_outlook/views/templates.xml 
+2026-09-09 14:13:46,853 1 INFO lab_client odoo.modules.loading: Module microsoft_outlook loaded in 0.09s, 158 queries (+158 other) 
+2026-09-09 14:13:46,853 1 INFO lab_client odoo.modules.loading: Loading module phone_validation (33/47) 
+2026-09-09 14:13:46,906 1 INFO lab_client odoo.registry: module phone_validation: creating or updating database tables 
+2026-09-09 14:13:46,915 1 INFO lab_client odoo.models: Prepare computation of res.partner.phone_sanitized 
+2026-09-09 14:13:47,408 1 INFO lab_client odoo.modules.loading: loading phone_validation/security/ir.model.access.csv 
+2026-09-09 14:13:47,426 1 INFO lab_client odoo.modules.loading: loading phone_validation/views/phone_blacklist_views.xml 
+2026-09-09 14:13:47,446 1 INFO lab_client odoo.modules.loading: loading phone_validation/views/res_partner_views.xml 
+2026-09-09 14:13:47,456 1 INFO lab_client odoo.modules.loading: loading phone_validation/wizard/phone_blacklist_remove_view.xml 
+2026-09-09 14:13:47,471 1 INFO lab_client odoo.modules.loading: Module phone_validation loaded in 0.62s, 1660 queries (+1660 other) 
+2026-09-09 14:13:47,471 1 INFO lab_client odoo.modules.loading: Loading module privacy_lookup (34/47) 
+2026-09-09 14:13:47,484 1 INFO lab_client odoo.registry: module privacy_lookup: creating or updating database tables 
+2026-09-09 14:13:47,561 1 INFO lab_client odoo.modules.loading: loading privacy_lookup/wizard/privacy_lookup_wizard_views.xml 
+2026-09-09 14:13:47,603 1 INFO lab_client odoo.modules.loading: loading privacy_lookup/views/privacy_log_views.xml 
+2026-09-09 14:13:47,623 1 INFO lab_client odoo.modules.loading: loading privacy_lookup/security/ir.model.access.csv 
+2026-09-09 14:13:47,634 1 INFO lab_client odoo.modules.loading: loading privacy_lookup/data/ir_actions_server_data.xml 
+2026-09-09 14:13:47,666 1 INFO lab_client odoo.modules.loading: Module privacy_lookup loaded in 0.20s, 296 queries (+296 other) 
+2026-09-09 14:13:47,666 1 INFO lab_client odoo.modules.loading: Loading module resource_mail (35/47) 
+2026-09-09 14:13:47,672 1 INFO lab_client odoo.registry: module resource_mail: creating or updating database tables 
+2026-09-09 14:13:47,697 1 INFO lab_client odoo.modules.loading: Module resource_mail loaded in 0.03s, 36 queries (+36 other) 
+2026-09-09 14:13:47,697 1 INFO lab_client odoo.modules.loading: Loading module iap_extract (36/47) 
+2026-09-09 14:13:47,703 1 INFO lab_client odoo.registry: module iap_extract: creating or updating database tables 
+2026-09-09 14:13:47,718 1 INFO lab_client odoo.modules.loading: loading iap_extract/data/config_parameter_endpoint.xml 
+2026-09-09 14:13:47,721 1 INFO lab_client odoo.modules.loading: loading iap_extract/data/iap_service_data.xml 
+2026-09-09 14:13:47,723 1 INFO lab_client odoo.modules.loading: loading iap_extract/data/mail_template_data.xml 
+2026-09-09 14:13:47,732 1 INFO lab_client odoo.modules.loading: Module iap_extract loaded in 0.04s, 52 queries (+52 other) 
+2026-09-09 14:13:47,732 1 INFO lab_client odoo.modules.loading: Loading module mail_mobile (37/47) 
+2026-09-09 14:13:47,755 1 INFO lab_client odoo.registry: module mail_mobile: creating or updating database tables 
+2026-09-09 14:13:47,838 1 INFO lab_client odoo.modules.loading: loading mail_mobile/data/mail_mobile_data.xml 
+2026-09-09 14:13:47,851 1 INFO lab_client odoo.modules.loading: loading mail_mobile/views/res_config_settings_views.xml 
+2026-09-09 14:13:47,870 1 INFO lab_client odoo.modules.loading: Module mail_mobile loaded in 0.14s, 211 queries (+211 other) 
+2026-09-09 14:13:47,870 1 INFO lab_client odoo.modules.loading: Loading module partner_autocomplete (38/47) 
+2026-09-09 14:13:47,887 1 INFO lab_client odoo.registry: module partner_autocomplete: creating or updating database tables 
+2026-09-09 14:13:47,952 1 INFO lab_client odoo.modules.loading: loading partner_autocomplete/views/res_company_views.xml 
+2026-09-09 14:13:47,966 1 INFO lab_client odoo.modules.loading: loading partner_autocomplete/views/res_config_settings_views.xml 
+2026-09-09 14:13:47,979 1 INFO lab_client odoo.modules.loading: loading partner_autocomplete/data/iap_service_data.xml 
+2026-09-09 14:13:47,990 1 INFO lab_client odoo.modules.loading: Module partner_autocomplete loaded in 0.12s, 144 queries (+144 other) 
+2026-09-09 14:13:47,990 1 INFO lab_client odoo.modules.loading: Loading module portal (39/47) 
+2026-09-09 14:13:48,014 1 INFO lab_client odoo.registry: module portal: creating or updating database tables 
+2026-09-09 14:13:48,130 1 INFO lab_client odoo.modules.loading: loading portal/security/ir.model.access.csv 
+2026-09-09 14:13:48,150 1 INFO lab_client odoo.modules.loading: loading portal/data/mail_templates.xml 
+2026-09-09 14:13:48,158 1 INFO lab_client odoo.modules.loading: loading portal/views/address_templates.xml 
+2026-09-09 14:13:48,196 1 INFO lab_client odoo.modules.loading: loading portal/views/mail_templates_public.xml 
+2026-09-09 14:13:48,202 1 INFO lab_client odoo.modules.loading: loading portal/views/portal_templates.xml 
+2026-09-09 14:13:48,301 1 INFO lab_client odoo.modules.loading: loading portal/views/res_config_settings_views.xml 
+2026-09-09 14:13:48,318 1 INFO lab_client odoo.modules.loading: loading portal/wizard/portal_share_views.xml 
+2026-09-09 14:13:48,330 1 INFO lab_client odoo.modules.loading: loading portal/wizard/portal_wizard_views.xml 
+2026-09-09 14:13:48,366 1 INFO lab_client odoo.modules.loading: Module portal loaded in 0.38s, 556 queries (+556 other) 
+2026-09-09 14:13:48,367 1 INFO lab_client odoo.modules.loading: Loading module sms (40/47) 
+2026-09-09 14:13:48,421 1 INFO lab_client odoo.registry: module sms: creating or updating database tables 
+2026-09-09 14:13:48,427 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.sms_template_id 
+2026-09-09 14:13:48,427 1 INFO lab_client odoo.models: Prepare computation of ir.actions.server.sms_method 
+2026-09-09 14:13:48,980 1 INFO lab_client odoo.modules.loading: loading sms/data/iap_service_data.xml 
+2026-09-09 14:13:48,984 1 INFO lab_client odoo.modules.loading: loading sms/data/ir_cron_data.xml 
+2026-09-09 14:13:49,005 1 INFO lab_client odoo.modules.loading: loading sms/wizard/sms_account_code_views.xml 
+2026-09-09 14:13:49,016 1 INFO lab_client odoo.modules.loading: loading sms/wizard/sms_account_phone_views.xml 
+2026-09-09 14:13:49,022 1 INFO lab_client odoo.modules.loading: loading sms/wizard/sms_account_sender_views.xml 
+2026-09-09 14:13:49,029 1 INFO lab_client odoo.modules.loading: loading sms/wizard/sms_composer_views.xml 
+2026-09-09 14:13:49,041 1 INFO lab_client odoo.modules.loading: loading sms/wizard/sms_template_preview_views.xml 
+2026-09-09 14:13:49,050 1 INFO lab_client odoo.modules.loading: loading sms/wizard/sms_template_reset_views.xml 
+2026-09-09 14:13:49,056 1 INFO lab_client odoo.modules.loading: loading sms/views/ir_actions_server_views.xml 
+2026-09-09 14:13:49,066 1 INFO lab_client odoo.modules.loading: loading sms/views/mail_notification_views.xml 
+2026-09-09 14:13:49,077 1 INFO lab_client odoo.modules.loading: loading sms/views/res_config_settings_views.xml 
+2026-09-09 14:13:49,085 1 INFO lab_client odoo.modules.loading: loading sms/views/res_partner_views.xml 
+2026-09-09 14:13:49,095 1 INFO lab_client odoo.modules.loading: loading sms/views/iap_account_views.xml 
+2026-09-09 14:13:49,102 1 INFO lab_client odoo.modules.loading: loading sms/views/sms_sms_views.xml 
+2026-09-09 14:13:49,116 1 INFO lab_client odoo.modules.loading: loading sms/views/sms_template_views.xml 
+2026-09-09 14:13:49,128 1 INFO lab_client odoo.modules.loading: loading sms/security/ir.model.access.csv 
+2026-09-09 14:13:49,140 1 INFO lab_client odoo.modules.loading: loading sms/security/sms_security.xml 
+2026-09-09 14:13:49,151 1 INFO lab_client odoo.modules.loading: Module sms loaded in 0.78s, 2097 queries (+2097 other) 
+2026-09-09 14:13:49,151 1 INFO lab_client odoo.modules.loading: Loading module snailmail (41/47) 
+2026-09-09 14:13:49,206 1 INFO lab_client odoo.registry: module snailmail: creating or updating database tables 
+2026-09-09 14:13:49,341 1 INFO lab_client odoo.modules.loading: loading snailmail/data/iap_service_data.xml 
+2026-09-09 14:13:49,345 1 INFO lab_client odoo.modules.loading: loading snailmail/data/snailmail_data.xml 
+2026-09-09 14:13:49,360 1 INFO lab_client odoo.modules.loading: loading snailmail/views/report_assets.xml 
+2026-09-09 14:13:49,371 1 INFO lab_client odoo.modules.loading: loading snailmail/views/snailmail_views.xml 
+2026-09-09 14:13:49,387 1 INFO lab_client odoo.modules.loading: loading snailmail/security/ir.model.access.csv 
+2026-09-09 14:13:49,411 1 INFO lab_client odoo.modules.loading: Module snailmail loaded in 0.26s, 422 queries (+422 other) 
+2026-09-09 14:13:49,411 1 INFO lab_client odoo.modules.loading: Loading module auth_passkey_portal (42/47) 
+2026-09-09 14:13:49,417 1 INFO lab_client odoo.modules.loading: loading auth_passkey_portal/views/templates.xml 
+2026-09-09 14:13:49,444 1 INFO lab_client odoo.modules.loading: Module auth_passkey_portal loaded in 0.03s, 22 queries (+22 other) 
+2026-09-09 14:13:49,444 1 INFO lab_client odoo.modules.loading: Loading module auth_totp_portal (43/47) 
+2026-09-09 14:13:49,452 1 INFO lab_client odoo.registry: module auth_totp_portal: creating or updating database tables 
+2026-09-09 14:13:49,473 1 INFO lab_client odoo.modules.loading: loading auth_totp_portal/security/security.xml 
+2026-09-09 14:13:49,484 1 INFO lab_client odoo.modules.loading: loading auth_totp_portal/views/templates.xml 
+2026-09-09 14:13:49,495 1 INFO lab_client odoo.modules.loading: Module auth_totp_portal loaded in 0.05s, 70 queries (+70 other) 
+2026-09-09 14:13:49,495 1 INFO lab_client odoo.modules.loading: Loading module digest (44/47) 
+2026-09-09 14:13:49,505 1 INFO lab_client odoo.registry: module digest: creating or updating database tables 
+2026-09-09 14:13:49,577 1 INFO lab_client odoo.modules.loading: loading digest/security/ir.model.access.csv 
+2026-09-09 14:13:49,583 1 INFO lab_client odoo.modules.loading: loading digest/data/digest_data.xml 
+2026-09-09 14:13:49,597 1 INFO lab_client odoo.modules.loading: loading digest/data/digest_tips_data.xml 
+2026-09-09 14:13:49,606 1 INFO lab_client odoo.modules.loading: loading digest/data/ir_cron_data.xml 
+2026-09-09 14:13:49,620 1 INFO lab_client odoo.modules.loading: loading digest/data/res_config_settings_data.xml 
+2026-09-09 14:13:49,623 1 INFO lab_client odoo.modules.loading: loading digest/views/digest_views.xml 
+2026-09-09 14:13:49,651 1 INFO lab_client odoo.modules.loading: loading digest/views/digest_templates.xml 
+2026-09-09 14:13:49,655 1 INFO lab_client odoo.modules.loading: loading digest/views/res_config_settings_views.xml 
+2026-09-09 14:13:49,676 1 INFO lab_client odoo.modules.loading: Module digest loaded in 0.18s, 326 queries (+326 other) 
+2026-09-09 14:13:49,676 1 INFO lab_client odoo.modules.loading: Loading module base_automation (45/47) 
+2026-09-09 14:13:49,684 1 INFO lab_client odoo.registry: module base_automation: creating or updating database tables 
+2026-09-09 14:13:49,735 1 INFO lab_client odoo.modules.loading: loading base_automation/security/ir.model.access.csv 
+2026-09-09 14:13:49,740 1 INFO lab_client odoo.modules.loading: loading base_automation/data/base_automation_data.xml 
+2026-09-09 14:13:49,756 1 INFO lab_client odoo.modules.loading: loading base_automation/data/digest_data.xml 
+2026-09-09 14:13:49,759 1 INFO lab_client odoo.modules.loading: loading base_automation/views/base_automation_views.xml 
+2026-09-09 14:13:49,784 1 INFO lab_client odoo.modules.loading: loading base_automation/views/ir_actions_server_views.xml 
+2026-09-09 14:13:49,805 1 INFO lab_client odoo.modules.loading: Module base_automation loaded in 0.13s, 236 queries (+236 other) 
+2026-09-09 14:13:49,805 1 INFO lab_client odoo.modules.loading: Loading module digest_enterprise (46/47) 
+2026-09-09 14:13:49,811 1 INFO lab_client odoo.modules.loading: loading digest_enterprise/data/digest_data.xml 
+2026-09-09 14:13:49,822 1 INFO lab_client odoo.modules.loading: Module digest_enterprise loaded in 0.02s, 20 queries (+20 other) 
+2026-09-09 14:13:49,822 1 INFO lab_client odoo.modules.loading: Loading module web_studio (47/47) 
+2026-09-09 14:13:49,928 1 INFO lab_client odoo.registry: module web_studio: creating or updating database tables 
+2026-09-09 14:13:50,531 1 INFO lab_client odoo.modules.loading: loading web_studio/views/assets.xml 
+2026-09-09 14:13:50,542 1 INFO lab_client odoo.modules.loading: loading web_studio/views/actions.xml 
+2026-09-09 14:13:50,548 1 INFO lab_client odoo.modules.loading: loading web_studio/views/ir_actions_report_xml.xml 
+2026-09-09 14:13:50,561 1 INFO lab_client odoo.modules.loading: loading web_studio/views/ir_model_data.xml 
+2026-09-09 14:13:50,571 1 INFO lab_client odoo.modules.loading: loading web_studio/views/base_automation_views.xml 
+2026-09-09 14:13:50,576 1 INFO lab_client odoo.modules.loading: loading web_studio/views/studio_approval_views.xml 
+2026-09-09 14:13:50,620 1 INFO lab_client odoo.modules.loading: loading web_studio/views/reset_view_arch_wizard.xml 
+2026-09-09 14:13:50,629 1 INFO lab_client odoo.modules.loading: loading web_studio/views/studio_export_wizard_views.xml 
+2026-09-09 14:13:50,639 1 INFO lab_client odoo.modules.loading: loading web_studio/views/studio_export_model_views.xml 
+2026-09-09 14:13:50,654 1 INFO lab_client odoo.modules.loading: loading web_studio/data/mail_templates.xml 
+2026-09-09 14:13:50,658 1 INFO lab_client odoo.modules.loading: loading web_studio/data/web_tour_tour.xml 
+2026-09-09 14:13:50,661 1 INFO lab_client odoo.modules.loading: loading web_studio/wizard/base_module_uninstall_view.xml 
+2026-09-09 14:13:50,671 1 INFO lab_client odoo.modules.loading: loading web_studio/security/ir.model.access.csv 
+2026-09-09 14:13:50,682 1 INFO lab_client odoo.modules.loading: loading web_studio/security/studio_security.xml 
+2026-09-09 14:13:50,704 1 INFO lab_client odoo.modules.loading: Module web_studio loaded in 0.88s, 2222 queries (+2222 other) 
+2026-09-09 14:13:50,704 1 INFO lab_client odoo.modules.loading: 47 modules loaded in 10.94s, 23931 queries (+23932 extra) 
+2026-09-09 14:13:50,967 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 14:13:50,974 1 INFO lab_client odoo.registry: Registry changed, signaling through the database 
+2026-09-09 14:13:50,975 1 INFO lab_client odoo.registry: Registry loaded in 18.333s 
+2026-09-09 14:13:50,975 1 INFO lab_client odoo.service.server: Initiating shutdown 
+2026-09-09 14:13:50,975 1 INFO lab_client odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 14:13:50,975 1 INFO lab_client odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

@@ -1,0 +1,339 @@
+2026-09-09 14:11:19,706 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 14:11:19,706 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 14:11:19,706 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo-data/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 14:11:19,706 1 INFO ? odoo: database: odoo@qualification-versions-93e747668f-pg:default 
+2026-09-09 14:11:19,905 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8069 
+2026-09-09 14:11:19,925 1 INFO qualification_19_0_positive odoo.tests.common: Importing test framework 
+2026-09-09 14:11:19,933 1 INFO qualification_19_0_positive odoo.modules.loading: Initializing database qualification_19_0_positive 
+2026-09-09 14:11:20,466 1 INFO qualification_19_0_positive odoo.modules.loading: loading 1 modules... 
+2026-09-09 14:11:20,466 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module base (1/1) 
+2026-09-09 14:11:20,481 1 INFO qualification_19_0_positive odoo.registry: module base: creating or updating database tables 
+2026-09-09 14:11:20,642 1 INFO qualification_19_0_positive odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-09 14:11:20,642 1 INFO qualification_19_0_positive odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-09 14:11:20,642 1 INFO qualification_19_0_positive odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-09 14:11:20,686 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.partner.user_id 
+2026-09-09 14:11:20,686 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-09 14:11:20,686 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-09 14:11:20,686 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.partner.lang 
+2026-09-09 14:11:20,686 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-09 14:11:20,686 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-09 14:11:20,686 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.partner.properties 
+2026-09-09 14:11:20,686 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-09 14:11:20,698 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-09 14:11:20,711 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-09 14:11:20,711 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.company.logo_web 
+2026-09-09 14:11:20,712 1 INFO qualification_19_0_positive odoo.models: Computing parent_path for table res_company... 
+2026-09-09 14:11:20,730 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.users.signature 
+2026-09-09 14:11:20,730 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.users.share 
+2026-09-09 14:11:21,373 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-09 14:11:21,377 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-09 14:11:21,400 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-09 14:11:21,418 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-09-09 14:11:21,441 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-09-09 14:11:21,662 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-09-09 14:11:21,672 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-09-09 14:11:22,209 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-09-09 14:11:22,218 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-09-09 14:11:22,513 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-09-09 14:11:22,522 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/security/base_groups.xml 
+2026-09-09 14:11:22,626 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/security/base_security.xml 
+2026-09-09 14:11:22,727 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/wizard/wizard_ir_model_menu_create_views.xml 
+2026-09-09 14:11:22,735 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/base_menus.xml 
+2026-09-09 14:11:22,767 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-09-09 14:11:22,780 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-09-09 14:11:22,785 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-09-09 14:11:22,989 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-09-09 14:11:23,063 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-09-09 14:11:23,073 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-09-09 14:11:23,081 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-09-09 14:11:23,095 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-09-09 14:11:23,104 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-09-09 14:11:23,116 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-09-09 14:11:23,126 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-09-09 14:11:23,221 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-09-09 14:11:23,233 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-09-09 14:11:23,243 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-09-09 14:11:23,254 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-09-09 14:11:23,270 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-09-09 14:11:23,306 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-09-09 14:11:23,324 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/ir_config_parameter_data.xml 
+2026-09-09 14:11:23,327 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-09-09 14:11:23,337 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-09-09 14:11:23,340 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-09-09 14:11:23,346 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-09-09 14:11:23,364 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-09-09 14:11:23,379 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-09-09 14:11:23,418 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-09-09 14:11:23,448 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-09-09 14:11:23,487 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-09-09 14:11:23,491 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-09-09 14:11:23,494 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-09-09 14:11:23,500 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-09-09 14:11:23,510 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-09-09 14:11:23,515 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-09-09 14:11:23,523 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-09-09 14:11:23,528 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-09-09 14:11:23,535 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-09-09 14:11:23,547 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-09-09 14:11:23,558 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-09-09 14:11:23,574 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-09-09 14:11:23,588 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-09-09 14:11:23,599 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-09-09 14:11:23,655 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-09-09 14:11:23,676 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-09-09 14:11:23,707 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-09-09 14:11:23,727 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_groups_views.xml 
+2026-09-09 14:11:23,749 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-09-09 14:11:23,795 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_users_apikeys_views.xml 
+2026-09-09 14:11:23,799 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_device_views.xml 
+2026-09-09 14:11:23,810 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-09-09 14:11:23,814 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-09-09 14:11:23,819 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-09-09 14:11:23,834 1 INFO qualification_19_0_positive odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-09-09 14:11:24,048 1 INFO qualification_19_0_positive odoo.modules.loading: Module base loaded in 3.58s, 8454 queries (+8454 other) 
+2026-09-09 14:11:24,049 1 INFO qualification_19_0_positive odoo.modules.loading: 1 modules loaded in 3.58s, 8454 queries (+8454 extra) 
+2026-09-09 14:11:24,050 1 INFO qualification_19_0_positive odoo.modules.loading: updating modules list 
+2026-09-09 14:11:24,051 1 INFO qualification_19_0_positive odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 14:11:24,383 1 INFO qualification_19_0_positive odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 14:11:24,414 1 INFO qualification_19_0_positive odoo.modules.loading: loading 15 modules... 
+2026-09-09 14:11:24,414 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module rpc (2/15) 
+2026-09-09 14:11:24,425 1 INFO qualification_19_0_positive odoo.modules.loading: Module rpc loaded in 0.01s, 9 queries (+9 other) 
+2026-09-09 14:11:24,425 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module web (3/15) 
+2026-09-09 14:11:24,442 1 INFO qualification_19_0_positive odoo.registry: module web: creating or updating database tables 
+2026-09-09 14:11:24,683 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-09-09 14:11:24,688 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/security/web_security.xml 
+2026-09-09 14:11:24,694 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-09-09 14:11:24,734 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/views/report_templates.xml 
+2026-09-09 14:11:24,800 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-09-09 14:11:24,814 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/views/partner_view.xml 
+2026-09-09 14:11:24,820 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-09-09 14:11:24,824 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/views/memory_template.xml 
+2026-09-09 14:11:24,829 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/views/speedscope_config_wizard.xml 
+2026-09-09 14:11:24,835 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-09-09 14:11:24,842 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/views/ir_ui_view_views.xml 
+2026-09-09 14:11:24,851 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-09-09 14:11:24,854 1 INFO qualification_19_0_positive odoo.modules.loading: loading web/data/report_layout.xml 
+2026-09-09 14:11:24,898 1 INFO qualification_19_0_positive odoo.modules.loading: Module web loaded in 0.47s, 1232 queries (+1232 other) 
+2026-09-09 14:11:24,898 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module api_doc (4/15) 
+2026-09-09 14:11:24,902 1 INFO qualification_19_0_positive odoo.registry: module api_doc: creating or updating database tables 
+2026-09-09 14:11:24,916 1 INFO qualification_19_0_positive odoo.modules.loading: loading api_doc/security/res_groups.xml 
+2026-09-09 14:11:24,936 1 INFO qualification_19_0_positive odoo.modules.loading: loading api_doc/views/docclient.xml 
+2026-09-09 14:11:24,952 1 INFO qualification_19_0_positive odoo.modules.loading: Module api_doc loaded in 0.05s, 63 queries (+63 other) 
+2026-09-09 14:11:24,952 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module auth_totp (5/15) 
+2026-09-09 14:11:24,962 1 INFO qualification_19_0_positive odoo.registry: module auth_totp: creating or updating database tables 
+2026-09-09 14:11:25,009 1 INFO qualification_19_0_positive odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-09-09 14:11:25,019 1 INFO qualification_19_0_positive odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-09-09 14:11:25,022 1 INFO qualification_19_0_positive odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-09-09 14:11:25,025 1 INFO qualification_19_0_positive odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-09-09 14:11:25,048 1 INFO qualification_19_0_positive odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-09-09 14:11:25,052 1 INFO qualification_19_0_positive odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-09-09 14:11:25,066 1 INFO qualification_19_0_positive odoo.modules.loading: Module auth_totp loaded in 0.11s, 218 queries (+218 other) 
+2026-09-09 14:11:25,066 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module base_import (6/15) 
+2026-09-09 14:11:25,083 1 INFO qualification_19_0_positive odoo.registry: module base_import: creating or updating database tables 
+2026-09-09 14:11:25,309 1 INFO qualification_19_0_positive odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-09-09 14:11:25,318 1 INFO qualification_19_0_positive odoo.modules.loading: Module base_import loaded in 0.25s, 956 queries (+956 other) 
+2026-09-09 14:11:25,318 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module base_import_module (7/15) 
+2026-09-09 14:11:25,321 1 INFO qualification_19_0_positive odoo.registry: module base_import_module: creating or updating database tables 
+2026-09-09 14:11:25,350 1 INFO qualification_19_0_positive odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-09-09 14:11:25,354 1 INFO qualification_19_0_positive odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-09-09 14:11:25,367 1 INFO qualification_19_0_positive odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-09-09 14:11:25,390 1 INFO qualification_19_0_positive odoo.modules.loading: Module base_import_module loaded in 0.07s, 172 queries (+172 other) 
+2026-09-09 14:11:25,390 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module base_setup (8/15) 
+2026-09-09 14:11:25,396 1 INFO qualification_19_0_positive odoo.registry: module base_setup: creating or updating database tables 
+2026-09-09 14:11:25,416 1 INFO qualification_19_0_positive odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-09-09 14:11:25,419 1 INFO qualification_19_0_positive odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-09-09 14:11:25,436 1 INFO qualification_19_0_positive odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-09-09 14:11:25,446 1 INFO qualification_19_0_positive odoo.modules.loading: Module base_setup loaded in 0.06s, 152 queries (+152 other) 
+2026-09-09 14:11:25,447 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module bus (9/15) 
+2026-09-09 14:11:25,457 1 INFO qualification_19_0_positive odoo.registry: module bus: creating or updating database tables 
+2026-09-09 14:11:25,500 1 INFO qualification_19_0_positive odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-09-09 14:11:25,510 1 INFO qualification_19_0_positive odoo.modules.loading: Module bus loaded in 0.06s, 159 queries (+159 other) 
+2026-09-09 14:11:25,510 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module lab_qualification (10/15) 
+2026-09-09 14:11:25,512 1 INFO qualification_19_0_positive odoo.registry: module lab_qualification: creating or updating database tables 
+2026-09-09 14:11:25,528 1 INFO qualification_19_0_positive odoo.modules.loading: loading lab_qualification/security/ir.model.access.csv 
+2026-09-09 14:11:25,531 1 INFO qualification_19_0_positive odoo.modules.loading: loading lab_qualification/views/quantity.xml 
+2026-09-09 14:11:25,541 1 INFO qualification_19_0_positive odoo.modules.loading: Module lab_qualification loaded in 0.03s, 81 queries (+81 other) 
+2026-09-09 14:11:25,541 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module web_tour (11/15) 
+2026-09-09 14:11:25,545 1 INFO qualification_19_0_positive odoo.registry: module web_tour: creating or updating database tables 
+2026-09-09 14:11:25,548 1 INFO qualification_19_0_positive odoo.models: Prepare computation of res.users.tour_enabled 
+2026-09-09 14:11:25,581 1 INFO qualification_19_0_positive odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-09-09 14:11:25,585 1 INFO qualification_19_0_positive odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-09-09 14:11:25,605 1 INFO qualification_19_0_positive odoo.modules.loading: Module web_tour loaded in 0.06s, 180 queries (+180 other) 
+2026-09-09 14:11:25,605 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module auth_passkey (12/15) 
+2026-09-09 14:11:25,624 1 INFO qualification_19_0_positive odoo.registry: module auth_passkey: creating or updating database tables 
+2026-09-09 14:11:25,654 1 INFO qualification_19_0_positive odoo.modules.loading: loading auth_passkey/views/auth_passkey_key_views.xml 
+2026-09-09 14:11:25,667 1 INFO qualification_19_0_positive odoo.modules.loading: loading auth_passkey/views/auth_passkey_login_templates.xml 
+2026-09-09 14:11:25,679 1 INFO qualification_19_0_positive odoo.modules.loading: loading auth_passkey/views/res_users_identitycheck_views.xml 
+2026-09-09 14:11:25,687 1 INFO qualification_19_0_positive odoo.modules.loading: loading auth_passkey/views/res_users_views.xml 
+2026-09-09 14:11:25,699 1 INFO qualification_19_0_positive odoo.modules.loading: loading auth_passkey/security/ir.model.access.csv 
+2026-09-09 14:11:25,703 1 INFO qualification_19_0_positive odoo.modules.loading: loading auth_passkey/security/security.xml 
+2026-09-09 14:11:25,723 1 INFO qualification_19_0_positive odoo.modules.loading: Module auth_passkey loaded in 0.12s, 218 queries (+218 other) 
+2026-09-09 14:11:25,723 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module html_editor (13/15) 
+2026-09-09 14:11:25,818 1 INFO qualification_19_0_positive odoo.registry: module html_editor: creating or updating database tables 
+2026-09-09 14:11:26,060 1 INFO qualification_19_0_positive odoo.modules.loading: loading html_editor/security/ir.model.access.csv 
+2026-09-09 14:11:26,073 1 INFO qualification_19_0_positive odoo.modules.loading: Module html_editor loaded in 0.35s, 1043 queries (+1043 other) 
+2026-09-09 14:11:26,073 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module iap (14/15) 
+2026-09-09 14:11:26,076 1 INFO qualification_19_0_positive odoo.registry: module iap: creating or updating database tables 
+2026-09-09 14:11:26,105 1 INFO qualification_19_0_positive odoo.modules.loading: loading iap/data/services.xml 
+2026-09-09 14:11:26,108 1 INFO qualification_19_0_positive odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-09-09 14:11:26,112 1 INFO qualification_19_0_positive odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-09-09 14:11:26,116 1 INFO qualification_19_0_positive odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-09-09 14:11:26,129 1 INFO qualification_19_0_positive odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-09-09 14:11:26,143 1 INFO qualification_19_0_positive odoo.modules.loading: Module iap loaded in 0.07s, 182 queries (+182 other) 
+2026-09-09 14:11:26,143 1 INFO qualification_19_0_positive odoo.modules.loading: Loading module web_unsplash (15/15) 
+2026-09-09 14:11:26,147 1 INFO qualification_19_0_positive odoo.registry: module web_unsplash: creating or updating database tables 
+2026-09-09 14:11:26,180 1 INFO qualification_19_0_positive odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-09-09 14:11:26,203 1 INFO qualification_19_0_positive odoo.modules.loading: Module web_unsplash loaded in 0.06s, 93 queries (+93 other) 
+2026-09-09 14:11:26,203 1 INFO qualification_19_0_positive odoo.modules.loading: 15 modules loaded in 1.79s, 4758 queries (+4758 extra) 
+2026-09-09 14:11:26,317 1 INFO qualification_19_0_positive odoo.modules.loading: Modules loaded. 
+2026-09-09 14:11:26,320 1 INFO qualification_19_0_positive odoo.registry: Registry changed, signaling through the database 
+2026-09-09 14:11:26,321 1 INFO qualification_19_0_positive odoo.registry: Registry loaded in 6.415s 
+2026-09-09 14:11:26,321 1 INFO qualification_19_0_positive odoo.service.server: Starting post tests 
+2026-09-09 14:11:26,331 1 INFO qualification_19_0_positive odoo.addons.base.models.ir_qweb: Pregenerating assets bundles 
+2026-09-09 14:11:26,590 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1b64f44/api_doc.assets.min.js (id:14) 
+2026-09-09 14:11:26,595 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/5f9240e/bus.websocket_worker_assets.min.js (id:15) 
+2026-09-09 14:11:26,598 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/63ee1ff/html_editor.assets_history_diff.min.js (id:16) 
+2026-09-09 14:11:26,600 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/9f73438/html_editor.assets_image_cropper.min.js (id:17) 
+2026-09-09 14:11:26,642 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/4d8ad13/web.__assets_tests_call__.min.js (id:18) 
+2026-09-09 14:11:26,647 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/bd39c8f/web._assets_jquery.min.js (id:19) 
+2026-09-09 14:11:26,656 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/4bcc693/web.ace_lib.min.js (id:20) 
+2026-09-09 14:11:26,659 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/e672eaf/web.assets_clickbot.min.js (id:21) 
+2026-09-09 14:11:26,719 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c97da82/web.assets_emoji.min.js (id:22) 
+2026-09-09 14:11:26,957 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/4b4d75d/web.assets_frontend_lazy.min.js (id:23) 
+2026-09-09 14:11:26,962 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/10d8e96/web.assets_frontend_minimal.min.js (id:24) 
+2026-09-09 14:11:27,006 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/674f916/web.assets_tests.min.js (id:25) 
+2026-09-09 14:11:28,273 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/976a989/web.assets_unit_tests.min.js (id:26) 
+2026-09-09 14:11:29,064 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/43d86dc/web.assets_unit_tests_setup.min.js (id:27) 
+2026-09-09 14:11:29,659 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/22639b9/web.assets_web.min.js (id:28) 
+2026-09-09 14:11:29,666 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/fa709f0/web.chartjs_lib.min.js (id:29) 
+2026-09-09 14:11:29,673 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ea18231/web.fullcalendar_lib.min.js (id:30) 
+2026-09-09 14:11:29,685 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/0fefbae/web.qunit_suite_tests.min.js (id:31) 
+2026-09-09 14:11:29,699 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/8b0af72/web.report_assets_common.min.js (id:32) 
+2026-09-09 14:11:29,701 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.report_assets_pdf.min.js (id:33) 
+2026-09-09 14:11:30,379 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/93ae9a4/web.tests_assets.min.js (id:34) 
+2026-09-09 14:11:30,404 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c9c387d/web_tour.interactive.min.js (id:35) 
+2026-09-09 14:11:30,405 1 INFO qualification_19_0_positive odoo.addons.base.models.ir_qweb: JS Assets bundles generated in 3.8441390991210938 seconds 
+2026-09-09 14:11:30,637 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/8dfd90a/api_doc.assets.min.css (id:36) 
+2026-09-09 14:11:30,639 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/bus.websocket_worker_assets.min.css (id:37) 
+2026-09-09 14:11:30,641 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/f483e76/html_editor.assets_history_diff.min.css (id:38) 
+2026-09-09 14:11:30,644 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/491d521/html_editor.assets_image_cropper.min.css (id:39) 
+2026-09-09 14:11:30,645 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.__assets_tests_call__.min.css (id:40) 
+2026-09-09 14:11:30,647 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web._assets_jquery.min.css (id:41) 
+2026-09-09 14:11:30,648 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.ace_lib.min.css (id:42) 
+2026-09-09 14:11:30,649 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_clickbot.min.css (id:43) 
+2026-09-09 14:11:30,650 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_emoji.min.css (id:44) 
+2026-09-09 14:11:31,081 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/9cb6bc0/web.assets_frontend.min.css (id:45) 
+2026-09-09 14:11:31,473 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/9cb6bc0/web.assets_frontend_lazy.min.css (id:46) 
+2026-09-09 14:11:31,475 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_frontend_minimal.min.css (id:47) 
+2026-09-09 14:11:31,477 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_tests.min.css (id:48) 
+2026-09-09 14:11:31,478 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_unit_tests.min.css (id:49) 
+2026-09-09 14:11:32,041 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c6b7943/web.assets_unit_tests_setup.min.css (id:50) 
+2026-09-09 14:11:32,592 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/db640a1/web.assets_web.min.css (id:51) 
+2026-09-09 14:11:33,169 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/d2b9f46/web.assets_web_dark.min.css (id:52) 
+2026-09-09 14:11:33,758 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c4043e3/web.assets_web_print.min.css (id:53) 
+2026-09-09 14:11:33,760 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.chartjs_lib.min.css (id:54) 
+2026-09-09 14:11:33,761 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.fullcalendar_lib.min.css (id:55) 
+2026-09-09 14:11:33,762 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.qunit_suite_tests.min.css (id:56) 
+2026-09-09 14:11:34,083 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/0a2915f/web.report_assets_common.min.css (id:57) 
+2026-09-09 14:11:34,086 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/daa1158/web.report_assets_pdf.min.css (id:58) 
+2026-09-09 14:11:34,683 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1e024f8/web.tests_assets.min.css (id:59) 
+2026-09-09 14:11:34,685 1 INFO qualification_19_0_positive odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web_tour.interactive.min.css (id:60) 
+2026-09-09 14:11:34,686 1 INFO qualification_19_0_positive odoo.addons.base.models.ir_qweb: CSS Assets bundles generated in 4.280766248703003 seconds 
+2026-09-09 14:11:34,698 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser: Starting TestBrowserConfirmation.test_browser_confirmation ... 
+2026-09-09 14:11:35,243 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Chrome pid: 10 
+2026-09-09 14:11:35,244 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Chrome headless temporary user profile dir: /tmp/tmp8ggg_8nu_chrome_odoo 
+2026-09-09 14:11:35,244 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Issuing json command http://127.0.0.1:44855/json/version 
+2026-09-09 14:11:35,245 1 INFO qualification_19_0_positive odoo.tests.common.requests: request SplitResult(scheme='http', netloc='127.0.0.1:44855', path='/json/version', query='', fragment='') with timeout 3 increased to 10s during tests 
+2026-09-09 14:11:35,247 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Browser version: Chrome/152.0.7977.75 
+2026-09-09 14:11:35,247 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Issuing json command http://127.0.0.1:44855/json 
+2026-09-09 14:11:35,247 1 INFO qualification_19_0_positive odoo.tests.common.requests: request SplitResult(scheme='http', netloc='127.0.0.1:44855', path='/json', query='', fragment='') with timeout 3 increased to 10s during tests 
+2026-09-09 14:11:35,248 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Websocket url found: ws://127.0.0.1:44855/devtools/page/BBB93FBEB6AF07195820ADE8DBE2B603 
+2026-09-09 14:11:35,250 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Enable chrome headless console log notification 
+2026-09-09 14:11:35,251 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Chrome headless enable page notifications 
+2026-09-09 14:11:35,258 1 INFO qualification_19_0_positive odoo.addons.base.models.res_users: Login successful for login:admin from n/a 
+2026-09-09 14:11:35,261 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Setting session cookie in browser 
+2026-09-09 14:11:35,261 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Open "http://127.0.0.1:8069/odoo/action-86/1" in browser 
+2026-09-09 14:11:35,261 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Navigating to: "http://127.0.0.1:8069/odoo/action-86/1" 
+2026-09-09 14:11:35,267 1 INFO qualification_19_0_positive odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-09-09 14:11:35,308 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /odoo/action-86/1 HTTP/1.1" 200 - 38 0.007 0.035
+2026-09-09 14:11:35,310 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Navigation result: {'frameId': 'BBB93FBEB6AF07195820ADE8DBE2B603', 'loaderId': '89B9175056E63A15EBE9CB0775ABAB74', 'isDownload': False} 
+2026-09-09 14:11:35,310 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Evaluate ready code "odoo.isReady === true" 
+2026-09-09 14:11:35,331 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/assets/22639b9/web.assets_web.min.js HTTP/1.1" 200 - 2 0.001 0.006
+2026-09-09 14:11:35,334 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/assets/db640a1/web.assets_web.min.css HTTP/1.1" 200 - 2 0.001 0.008
+2026-09-09 14:11:35,345 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/webclient/load_menus HTTP/1.1" 200 - 11 0.004 0.015
+2026-09-09 14:11:35,349 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 5 0.001 0.020
+2026-09-09 14:11:35,361 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/assets/674f916/web.assets_tests.min.js HTTP/1.1" 200 - 2 0.000 0.002
+2026-09-09 14:11:35,369 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/assets/c4043e3/web.assets_web_print.min.css HTTP/1.1" 200 - 2 0.000 0.003
+2026-09-09 14:11:35,527 1 INFO ? werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 0 0.000 0.002
+2026-09-09 14:11:35,528 1 INFO ? werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/static/img/odoo-icon-192x192.png HTTP/1.1" 200 - 0 0.000 0.002
+2026-09-09 14:11:35,533 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/webclient/translations?hash=&lang=en_US HTTP/1.1" 200 - 1 0.000 0.003
+2026-09-09 14:11:35,541 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation.browser: Owl is running in 'dev' mode. 
+2026-09-09 14:11:35,544 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /bus/websocket_worker_bundle?v=19.0-2 HTTP/1.1" 200 - 2 0.000 0.002
+2026-09-09 14:11:35,548 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/service-worker.js HTTP/1.1" 200 - 0 0.000 0.001
+2026-09-09 14:11:35,562 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /odoo HTTP/1.1" 200 - 8 0.002 0.006
+2026-09-09 14:11:35,571 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /odoo/offline HTTP/1.1" 200 - 5 0.002 0.013
+2026-09-09 14:11:35,596 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Evaluate test code "
+            (async () => {
+                const wait = async (predicate) => {
+                    for (let index = 0; index < 150; index++) {
+                        const value = predicate();
+                        if (value) return value;
+                        await new Promise(resolve => setTimeout(resolve, 100));
+                    }
+                    throw new Error('Expected real form state not reached');
+                };
+                const button = await wait(() => document.querySelector('button[name="action_confirm"]'));
+                if (!document.body.textContent.includes('Browser witness')) {
+                    throw new Error('Wrong record displayed');
+                }
+                button.click();
+                await wait(() => document.querySelector('.o_statusbar_status button[data-value="confirmed"].o_arrow_button_current'));
+                console.log('QUALIFICATION_BROWSER_CLICK_OK');
+                console.log('test successful');
+            })().catch(error => console.error(error));
+            " 
+2026-09-09 14:11:35,599 1 INFO ? werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/static/lib/odoo_ui_icons/fonts/odoo_ui_icons.woff2 HTTP/1.1" 200 - 0 0.000 0.002
+2026-09-09 14:11:35,600 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 200 - 14 0.005 0.010
+2026-09-09 14:11:35,607 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/image/res.partner/3/avatar_128?unique=1788963084000 HTTP/1.1" 200 - 6 0.002 0.019
+2026-09-09 14:11:35,611 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "POST /web/action/load HTTP/1.1" 200 - 8 0.001 0.024
+2026-09-09 14:11:35,612 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /websocket?version=19.0-2 HTTP/1.1" 101 - 0 0.000 0.008
+2026-09-09 14:11:35,629 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "POST /web/dataset/call_kw/lab.qualification/get_views#lab.qualification.get_views HTTP/1.1" 200 - 14 0.004 0.007
+2026-09-09 14:11:35,641 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "POST /web/dataset/call_kw/lab.qualification/web_read#lab.qualification.web_read HTTP/1.1" 200 - 2 0.000 0.002
+2026-09-09 14:11:35,698 1 INFO ? werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 0 0.000 0.001
+2026-09-09 14:11:35,705 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "POST /web/dataset/call_button/lab.qualification/action_confirm#lab.qualification.action_confirm HTTP/1.1" 200 - 2 0.001 0.002
+2026-09-09 14:11:35,713 1 INFO qualification_19_0_positive werkzeug: 127.0.0.1 - - [09/Sep/2026 14:11:35] "POST /web/dataset/call_kw/lab.qualification/web_read#lab.qualification.web_read HTTP/1.1" 200 - 1 0.000 0.002
+2026-09-09 14:11:35,799 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation.browser: QUALIFICATION_BROWSER_CLICK_OK 
+2026-09-09 14:11:35,800 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation.browser: test successful 
+2026-09-09 14:11:35,824 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation.browser: heap 9185816 (allocated 9961472) 
+2026-09-09 14:11:35,827 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Closing chrome headless with pid 10 
+2026-09-09 14:11:35,827 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Closing websocket connection 
+2026-09-09 14:11:35,827 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Terminating chrome headless with pid 10 
+2026-09-09 14:11:35,922 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Chrome Log in: /tmp/odoo_tests/qualification_19_0_positive/chrome_logs/chrome_log_20260909_141135_921972_test_browser_confirmation.txt 
+2026-09-09 14:11:35,922 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Removing chrome user profile "/tmp/tmp8ggg_8nu_chrome_odoo" 
+2026-09-09 14:11:35,930 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_browser: QUALIFICATION_PASS browser_server 
+2026-09-09 14:11:35,934 1 INFO qualification_19_0_positive odoo.addons.base.models.ir_attachment: filestore gc 42 checked, 0 removed 
+2026-09-09 14:11:35,934 1 WARNING qualification_19_0_positive odoo.tests.common: A child process was found, terminating it: psutil.Process(pid=18, name='chrome_crashpad', status='zombie', started='14:11:34') 
+2026-09-09 14:11:35,935 1 WARNING qualification_19_0_positive odoo.tests.common: A child process was found, terminating it: psutil.Process(pid=20, name='chrome_crashpad', status='zombie', started='14:11:34') 
+2026-09-09 14:11:35,936 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_confirmation ... 
+2026-09-09 14:11:35,939 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS confirmation 
+2026-09-09 14:11:35,939 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_negative_create ... 
+2026-09-09 14:11:35,941 1 ERROR qualification_19_0_positive odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T14:11:35.936352\'::timestamp, 1, \'Negative\',  -1, \'draft\', 10.0, \'2026-09-09T14:11:35.936352\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (3, -1, 1, 1, Negative, draft, 2026-09-09 14:11:35.936352, 2026-09-09 14:11:35.936352, 10, null).
+ 
+2026-09-09 14:11:35,941 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS negative_create 
+2026-09-09 14:11:35,942 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_negative_write ... 
+2026-09-09 14:11:35,944 1 ERROR qualification_19_0_positive odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (4,  -10.0,  -1, \'2026-09-09T14:11:35.936352\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (4, -1, 1, 1, Preserve, draft, 2026-09-09 14:11:35.936352, 2026-09-09 14:11:35.936352, 10, -10).
+ 
+2026-09-09 14:11:35,945 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS negative_write 
+2026-09-09 14:11:35,945 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_zero ... 
+2026-09-09 14:11:35,947 1 INFO qualification_19_0_positive odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS zero 
+2026-09-09 14:11:35,948 1 INFO qualification_19_0_positive odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 14:11:35,948 1 INFO qualification_19_0_positive odoo.service.server: 5 post-tests in 9.63s, 527 queries 
+2026-09-09 14:11:35,949 1 INFO qualification_19_0_positive odoo.tests.stats: lab_qualification: 9 tests 1.25s 189 queries 
+2026-09-09 14:11:35,949 1 INFO qualification_19_0_positive odoo.tests.result: 0 failed, 0 error(s) of 5 tests when loading database 'qualification_19_0_positive' 
+2026-09-09 14:11:35,949 1 INFO qualification_19_0_positive odoo.service.server: Initiating shutdown 
+2026-09-09 14:11:35,949 1 INFO qualification_19_0_positive odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 14:11:36,212 1 INFO qualification_19_0_positive odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

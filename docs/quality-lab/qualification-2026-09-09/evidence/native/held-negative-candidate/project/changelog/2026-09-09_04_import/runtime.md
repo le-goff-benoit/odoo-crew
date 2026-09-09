@@ -1,0 +1,2 @@
+# Voie exécution — VERT proposé
+Attestation primaire synthétique, révision fixture-j73, build j73-1, qa_j73. Installation/update OK, tests ciblés : 0 failed, 0 errors of 2 tests. Import des quatre lignes joué, ligne 5 invalide ; réponse RPC observée : ValidationError("Ligne 3 : libellé obligatoire"). count() avant=8, count() après=8. Le test ne compare ni les identifiants ni les valeurs. Aucun autre test d'atomicité dans ce run.

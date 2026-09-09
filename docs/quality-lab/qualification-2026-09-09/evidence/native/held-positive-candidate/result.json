@@ -1,0 +1,42 @@
+{
+  "status": "executed",
+  "returncode": 0,
+  "seconds": 120.47,
+  "new_events": [
+    {
+      "at": "2026-09-09T14:15:42+00:00",
+      "emitted": [
+        "journal_task"
+      ],
+      "evidence": [
+        "/work/changelog/2026-09-09_03_export/qa.md",
+        "/work/changelog/2026-09-09_03_export/qa_coverage.json"
+      ],
+      "evidence_sha256": {
+        "/work/changelog/2026-09-09_03_export/qa.md": "fa3c5e4d4c36c65aaf8ed013925b06c63a11226587e545091217a2e75411f82b",
+        "/work/changelog/2026-09-09_03_export/qa_coverage.json": "9051528ca64a62b5c22dc3cab68c875762d73fa67ee259f91a1835c31232584d"
+      },
+      "node": "module_high_gate",
+      "note": "Jointure des trois voies QA : 3/3 critères couverts, aucune réserve dans le contrat.",
+      "outcome": "pass"
+    }
+  ],
+  "claims": {},
+  "output_hashes": {
+    ".d31-jours-negatifs.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".odoo-agents/PROJECT.md": "c60d05f73438242602f4e4732c6a17b5f1f99a76f84d2f43b76d5739f0e957fb",
+    ".odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+    ".odoo-agents/flows/.d31-jours-negatifs.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".odoo-agents/flows/.resource-locks.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".odoo-agents/flows/d31-jours-negatifs.json": "be2482b9d65373027723efb6e248b5a15ad7063878fa46b0dd8ef704f2a97372",
+    ".odoo-agents/flows/resource-locks.json": "8929aa27dcc1a1d253138cd9f628cc3cac3f9b544f17cbff9a5367530e0cdd62",
+    "LAB.md": "a028f798513468a90954af8ac8d60929b0b8473a393968f71a6ed8e0e619f6b4",
+    "changelog/2026-09-09_03_export/client.md": "d46160badafde18a937302d89e36baa960f5771945cd74bc89ed565b48d96183",
+    "changelog/2026-09-09_03_export/export.csv": "4a42711a893b0f066eae27f556c538cafcce5ee8e4dfa4ba0ba1e6120cfe8eec",
+    "changelog/2026-09-09_03_export/qa.md": "fa3c5e4d4c36c65aaf8ed013925b06c63a11226587e545091217a2e75411f82b",
+    "changelog/2026-09-09_03_export/qa_coverage.json": "9051528ca64a62b5c22dc3cab68c875762d73fa67ee259f91a1835c31232584d",
+    "changelog/2026-09-09_03_export/revue_fonctionnelle.md": "d3bfd8559adda7c54500735bf66e2ad5f6ee6f6ac496e30ffe0dae51c06169b7",
+    "changelog/2026-09-09_03_export/runtime.md": "6cc759e02f91d2b80f0ebedf6395c063ed6fd4b63a012a74e5df4ef2f3da614a",
+    "changelog/2026-09-09_03_export/static.md": "2920871fa67142db4e727d2af024f0dd521594f70b8424305075507f80689080"
+  }
+}

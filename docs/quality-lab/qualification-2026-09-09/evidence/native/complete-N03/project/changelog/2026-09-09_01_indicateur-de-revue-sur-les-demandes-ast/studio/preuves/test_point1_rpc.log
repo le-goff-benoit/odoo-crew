@@ -1,0 +1,25 @@
+[OK ] V1 le champ x_studio_needs_review existe
+[OK ] V2 ttype = boolean — boolean
+[OK ] V2 state = manual — manual
+[OK ] V2 store = True — True
+[OK ] V2 readonly = True — True
+[OK ] V2 depends = x_studio_days,x_studio_kind — 'x_studio_days,x_studio_kind'
+[OK ] V2 compute conforme — "for record in self:\n    record['x_studio_needs_review'] = record['x_studio_days'] >= 7 and record['x_studio_kind'] == 'rental'\n"
+[OK ] V3 identifiant externe dans studio_customization — studio_customization.revue_requise_demand_07727582-796e-43d5-a494-4c149b785c9b
+[OK ] V4 un seul champ 'needs_review' — x_studio_needs_review
+[OK ] V4 les XML-ID lab_seed_* d'origine sont intacts — lab_seed_model, lab_seed_x_name, lab_seed_x_studio_days, lab_seed_x_studio_kind
+[OK ] V4 x_name toujours présent et manuel
+[OK ] V4 lab_seed_x_name pointe toujours le même ir.model.fields — XML-ID → 3734, champ → 3734
+[OK ] V4 x_studio_days toujours présent et manuel
+[OK ] V4 lab_seed_x_studio_days pointe toujours le même ir.model.fields — XML-ID → 3736, champ → 3736
+[OK ] V4 x_studio_kind toujours présent et manuel
+[OK ] V4 lab_seed_x_studio_kind pointe toujours le même ir.model.fields — XML-ID → 3738, champ → 3738
+[OK ] V5 aucune ACL sur x_lab_request — 0 trouvé(s)
+[OK ] V5 aucune règle d'enregistrement sur x_lab_request — 0 trouvé(s)
+[OK ] V5 aucune vue sur x_lab_request — 0 trouvé(s)
+[OK ] V5 aucune automatisation sur x_lab_request — 0 trouvé(s)
+[OK ] V5 aucune action serveur sur x_lab_request — 0 trouvé(s)
+[OK ] V5 aucune action planifiée sur x_lab_request — 0 trouvé(s)
+[OK ] V6 création refusée faute d'ACL (limite documentée) — <Fault 4: "You are not allowed to create 'Demande Aster' (x_lab_request) records.\n\nNo group currently allows this oper
+
+SCÉNARIO RPC VERT — toutes les vérifications passent

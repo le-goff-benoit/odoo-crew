@@ -1,0 +1,81 @@
+{
+  "prefix": "qualification-versions-93e747668f",
+  "runs": [
+    {
+      "pass": true,
+      "expected_outcome": "pass",
+      "returncode": 0,
+      "markers": [
+        "browser_server",
+        "confirmation",
+        "negative_create",
+        "negative_write",
+        "zero"
+      ],
+      "odoo_summaries": [
+        [
+          0,
+          0,
+          5
+        ]
+      ],
+      "chrome_process_observed": true,
+      "browser_click_observed": true,
+      "server_state_confirmed": true,
+      "skip_observed": false,
+      "skip_reasons": [],
+      "scenario": "19.0-positive",
+      "seconds": 17.226,
+      "timeout": false
+    },
+    {
+      "pass": true,
+      "expected_outcome": "reject_false_server_assertion",
+      "returncode": 1,
+      "markers": [
+        "confirmation",
+        "negative_create",
+        "negative_write",
+        "zero"
+      ],
+      "odoo_summaries": [
+        [
+          1,
+          0,
+          5
+        ]
+      ],
+      "chrome_process_observed": true,
+      "browser_click_observed": true,
+      "server_state_confirmed": false,
+      "skip_observed": false,
+      "skip_reasons": [],
+      "scenario": "19.0-mutant",
+      "seconds": 16.822,
+      "timeout": false
+    }
+  ],
+  "images": {
+    "odoo-qa:18.0": {
+      "id": "sha256:9c0907287de571a1d7859fa71215b71c943ad4ad0cdd604d831259014734fbad",
+      "digests": []
+    },
+    "odoo-qa:19.0": {
+      "id": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d",
+      "digests": []
+    },
+    "postgres:16": {
+      "id": "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f",
+      "digests": [
+        "postgres@sha256:4b7183ac05f8ef417db21fd72d71047a4238340c261d3cc3ddb6d579ab5071ae"
+      ]
+    }
+  },
+  "cleanup": {
+    "containers": [],
+    "networks": [],
+    "verified": true
+  },
+  "browser_only": true,
+  "pass": true
+}

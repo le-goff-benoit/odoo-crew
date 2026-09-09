@@ -1,0 +1,62 @@
+{
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "e34015f93922f231b04353290226591159774e945d86fd3e1518e982255d4128",
+  "criteria": [
+    {
+      "id": "C01",
+      "text": "Étant donné le module `lab_rental` mis à jour sur `lab_client`, quand on lit le code source du modèle, alors la contrainte `days >= 0` est déclarée via `models.Constraint('CHECK(days >= 0)', ...)` (pas `_sql_constraints`).",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "C02",
+      "text": "Étant donné la copie `lab_client`, quand on met à jour le module `lab_rental` (`/bridge/labctl update`), alors la mise à jour se termine sans erreur (aucune ligne existante ne viole `days >= 0`).",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "C03",
+      "text": "Étant donné `lab_client` via un appel XML-RPC réel (`/bridge/labctl rpc`), quand on appelle `create` sur `lab.rental` avec `days=-1`, alors l'appel échoue (`Fault`) et le message renvoyé contient exactement la phrase « Le nombre de jours doit être positif ou nul. ».",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "C04",
+      "text": "Étant donné un enregistrement `lab.rental` existant valide (`days >= 0`) créé en amont via XML-RPC, quand on appelle `write` dessus avec `days=-1` via XML-RPC réel, alors l'appel échoue avec le même message que le critère précédent, et les valeurs de l'enregistrement (`days`, `daily_rate`, `amount_total`) restent inchangées après l'échec (relecture par `search_read` ou `read`).",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "C05",
+      "text": "Étant donné `lab.rental`, quand on crée ou modifie un enregistrement avec `days=0`, alors l'opération réussit (via XML-RPC réel), sans erreur.",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "C06",
+      "text": "Étant donné un enregistrement `lab.rental` avec `days` et `daily_rate` quelconques valides, quand on le lit après création ou modification, alors `amount_total == days * daily_rate`.",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "C07",
+      "text": "Étant donné une création `lab.rental` valide suivie d'une tentative de `write(days=-1)` refusée sur ce même enregistrement, quand on relit l'enregistrement, alors il existe toujours en base avec ses valeurs d'avant tentative (aucune perte, aucun enregistrement partiel).",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    },
+    {
+      "id": "C08",
+      "text": "Étant donné la suite de tests du module, quand on exécute `/bridge/labctl qa lab_rental`, alors tous les tests passent, y compris les scénarios ci-dessus couverts par un vrai appel RPC (pas seulement des appels ORM internes).",
+      "status": "missing",
+      "evidence": [],
+      "note": ""
+    }
+  ]
+}

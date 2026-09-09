@@ -1,0 +1,31 @@
+2026-09-09 14:19:46,630 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:19:46,630 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 14:19:46,630 1 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+2026-09-09 14:19:46,630 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 14:19:46,631 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 14:19:46,631 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 14:19:46,631 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 14:19:46,868 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 14:19:46,868 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 14:19:46,881 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 14:19:46,883 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-09 14:19:46,897 1 INFO lab_client odoo.modules.loading: loading 47 modules... 
+2026-09-09 14:19:47,271 1 INFO lab_client odoo.modules.loading: 47 modules loaded in 0.37s, 0 queries (+0 extra) 
+2026-09-09 14:19:47,341 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 14:19:47,365 1 INFO lab_client odoo.registry: Registry loaded in 0.497s 
+2026-09-09 14:19:47,396 1 INFO lab_client odoo.models.unlink: User #1 deleted x_lab_request records with IDs: [2, 3, 4, 5, 6, 7, 8, 9] 
+[OK ] C1 7 jours, location → revue requise — attendu True, obtenu True
+[OK ] C2 30 jours, location → revue requise — attendu True, obtenu True
+[OK ] C3 6 jours, location → pas de revue — attendu False, obtenu False
+[OK ] C4 7 jours, prêt → pas de revue — attendu False, obtenu False
+[OK ] C5 30 jours, prêt → pas de revue — attendu False, obtenu False
+[OK ] C6 0 jour, type vide → pas de revue — attendu False, obtenu False
+[OK ] C7 état initial à 6 jours — attendu False, obtenu False
+[OK ] C7 recalcul après 6 → 7 jours — attendu True, obtenu True
+[OK ] C7 recalcul après 7 → 6 jours — attendu False, obtenu False
+[OK ] C8 état initial en location — attendu True, obtenu True
+[OK ] C8 recalcul après location → prêt — attendu False, obtenu False
+[OK ] C8 valeur relue après invalidation du cache — attendu False, obtenu False
+nettoyage : 0 enregistrement(s) restant(s) sur x_lab_request
+
+SCÉNARIO ORM VERT — toutes les vérifications passent

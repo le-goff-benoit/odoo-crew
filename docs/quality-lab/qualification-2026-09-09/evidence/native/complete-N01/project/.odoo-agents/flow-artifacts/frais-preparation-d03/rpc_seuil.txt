@@ -1,0 +1,8 @@
+== create ==
+{"transport": "xmlrpc", "outcome": "result", "result": [9, 10, 11]}
+== read ==
+{"transport": "xmlrpc", "outcome": "result", "result": [{"id": 9, "name": "RPC location 4 jours", "days": 4, "daily_rate": 10.0, "kind": "rental", "amount_total": 40.0}, {"id": 10, "name": "RPC location 5 jours", "days": 5, "daily_rate": 10.0, "kind": "rental", "amount_total": 65.0}, {"id": 11, "name": "RPC pret 5 jours", "days": 5, "daily_rate": 10.0, "kind": "loan", "amount_total": 50.0}]}
+== unlink ==
+{"transport": "xmlrpc", "outcome": "result", "result": true}
+== etat final ==
+{"transport": "xmlrpc", "outcome": "result", "result": [{"id": 1, "name": "Location 3 jours", "days": 3, "daily_rate": 10.0, "kind": "rental", "amount_total": 30.0}, {"id": 2, "name": "Location 4 jours", "days": 4, "daily_rate": 10.0, "kind": "rental", "amount_total": 40.0}, {"id": 3, "name": "Location 7 jours", "days": 7, "daily_rate": 20.0, "kind": "rental", "amount_total": 155.0}, {"id": 4, "name": "Location 5 jours tarif nul", "days": 5, "daily_rate": 0.0, "kind": "rental", "amount_total": 15.0}, {"id": 5, "name": "Location vide", "days": 0, "daily_rate": 0.0, "kind": "rental", "amount_total": 0.0}, {"id": 6, "name": "Pret 4 jours", "days": 4, "daily_rate": 10.0, "kind": "loan", "amount_total": 40.0}, {"id": 7, "name": "Pret 10 jours", "days": 10, "daily_rate": 10.0, "kind": "loan", "amount_total": 100.0}]}

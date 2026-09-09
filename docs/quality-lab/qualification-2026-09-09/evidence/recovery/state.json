@@ -1,0 +1,230 @@
+{
+  "status": "executed",
+  "protocol_sha256": "261aae9f1bc7583383484a402fd9c4c2236c54bc3029d32233677d82aed2fc43",
+  "calls": [
+    {
+      "status": "controlled_interruption",
+      "exit_code": -9,
+      "seconds": 481.1,
+      "usage": null,
+      "actual_model": "claude-opus-5",
+      "provider_completed": false,
+      "provider_error": null,
+      "delegation": {
+        "supported": true,
+        "started": 4,
+        "with_progress": 3,
+        "completed": 2,
+        "tasks": {
+          "af080092d15a7ba6e": {
+            "role": "odoo-analyst",
+            "tool_use_id": "toolu_01HD41Ux2c8d7726wXwAsXpm",
+            "spawn_depth": 1,
+            "progress_events": 21,
+            "status": "completed"
+          },
+          "aef8d102b6d903896": {
+            "role": "odoo-developer",
+            "tool_use_id": "toolu_01MjiRSeLSifdCKjoh5kjCiS",
+            "spawn_depth": 1,
+            "progress_events": 27,
+            "status": "completed"
+          },
+          "af197dfe8cc1199bf": {
+            "role": "odoo-tester",
+            "tool_use_id": "toolu_01DnhNrCY2GExYEqZtwBUTE9",
+            "spawn_depth": 1,
+            "progress_events": 13,
+            "status": "incomplete"
+          },
+          "afcd4e768ca54be73": {
+            "role": "odoo-tester",
+            "tool_use_id": "toolu_018BBBb8tVYUBKUzCMSJJEx5",
+            "spawn_depth": 1,
+            "progress_events": 0,
+            "status": "incomplete"
+          }
+        },
+        "provider_summary": null
+      },
+      "old_processes_absent": true,
+      "remaining_processes": [],
+      "observed_process_count": 55
+    },
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 400.59,
+      "usage": {
+        "tokens": {
+          "input_tokens": 34,
+          "cache_creation_input_tokens": 20645,
+          "cache_read_input_tokens": 1162452,
+          "output_tokens": 11655,
+          "output_tokens_details": {
+            "thinking_tokens": 1491
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 20645,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 1391,
+              "cache_read_input_tokens": 78389,
+              "cache_creation_input_tokens": 442,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 442
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 2.880514700000001
+      },
+      "actual_model": "claude-opus-5",
+      "provider_completed": true,
+      "provider_error": null,
+      "delegation": {
+        "supported": true,
+        "started": 3,
+        "with_progress": 3,
+        "completed": 3,
+        "tasks": {
+          "a2278a3093e8573cc": {
+            "role": "odoo-tester",
+            "tool_use_id": "toolu_012mENAx2rJxJp7myzoxdHoG",
+            "spawn_depth": 1,
+            "progress_events": 14,
+            "status": "completed"
+          },
+          "a39980f3c0c13aabe": {
+            "role": "odoo-tester",
+            "tool_use_id": "toolu_01E5jeMPmPazGJPNUUPHPZKH",
+            "spawn_depth": 1,
+            "progress_events": 11,
+            "status": "completed"
+          },
+          "a551cdd993ec849fb": {
+            "role": "odoo-tester",
+            "tool_use_id": "toolu_0131T3wWofZnRKGeF21y6Dwi",
+            "spawn_depth": 1,
+            "progress_events": 19,
+            "status": "completed"
+          }
+        },
+        "provider_summary": {
+          "spawned": 3,
+          "requested": {
+            "background": 0,
+            "foreground": 0,
+            "unset": 3
+          },
+          "started_in_background": 3,
+          "max_depth": 1,
+          "spawned_by_subagents": 0,
+          "completed": 3,
+          "failed": 0,
+          "killed": {
+            "parent": 0,
+            "user": 0,
+            "system": 0
+          },
+          "refused": {
+            "depth_limit": 0,
+            "concurrency_limit": 0,
+            "budget": 0
+          },
+          "by_type": {
+            "odoo-tester": 3
+          }
+        }
+      },
+      "old_processes_absent": true,
+      "remaining_processes": [],
+      "observed_process_count": 54
+    }
+  ],
+  "manual_code_repairs": 0,
+  "same_environment_before_resume": true,
+  "final_identity": {
+    "container": "4c50fd22b467422cff49774dd77a01c5ab455f68c79de959af528e7f16f2c5c3",
+    "postgres": {
+      "cluster": "7683538560637653031",
+      "postmaster": "2026-09-09 14:13:49.175681+00",
+      "databases": [
+        {
+          "name": "lab_client",
+          "oid": "16385"
+        },
+        {
+          "name": "lab_qa",
+          "oid": "22929"
+        }
+      ]
+    },
+    "project_inode": 19832998,
+    "git_inode": 19833017,
+    "head": "28fbbd694077444cfa427b4e5c9923ae64abed3e",
+    "rows": [
+      {
+        "id": 2,
+        "name": "QA-CLIENT-ZERO-02",
+        "days": 0,
+        "daily_rate": 15,
+        "amount_total": 0
+      },
+      {
+        "id": 3,
+        "name": "QA-CLIENT-BASE-03",
+        "days": 0,
+        "daily_rate": 20,
+        "amount_total": 0
+      }
+    ],
+    "decision_hashes": {
+      "2026-09-08.md": "80a40a7c98b1c8edf02679cd6bc27f5c2178354e4732e3323d2b20f0a68de1a7"
+    },
+    "module_hashes": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "2ebdab76d34e1af805136d3238d39506369f73976491c26e37c10743513e82f4",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "93f397df238eebc4722f4141cf0d35ebdac7b039f15505a6d5c049426a3705e4",
+      "security/ir.model.access.csv": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6",
+      "tests/__init__.py": "f13ad538e591920bc3d4b355276fb31eae811777d7e407d974cc9e1dfa8124a9",
+      "tests/test_days_constraint.py": "c42d36a77c18be7bbee4729a48c512b11a7ec40b85c2b885362f5481f20f6ea4"
+    }
+  },
+  "sql_oracle": {
+    "exit_code": 0,
+    "checks": {
+      "zero_allowed": true,
+      "negative_create": true,
+      "negative_write": true,
+      "valid_record_preserved": true
+    },
+    "passed": true,
+    "log_sha256": "d8263542934cf9b4ab07aad78e66eb54f47eb0cc7ca7817f5706e1a098ea0818",
+    "log": "oracle-000.log"
+  },
+  "rpc_oracle": {
+    "negative_fault": true,
+    "exact_message_received": true,
+    "rows_preserved": true
+  },
+  "qualification_review": "pending independent review; executed does not mean qualified",
+  "cleanup": {
+    "containers": "",
+    "networks": "",
+    "verified": true
+  }
+}

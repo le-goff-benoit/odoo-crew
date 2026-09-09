@@ -1,0 +1,62 @@
+{
+  "claims": [
+    {
+      "at": "2026-09-09T14:21:22+00:00",
+      "locks": [
+        {
+          "mode": "read",
+          "resource": "module_code"
+        },
+        {
+          "mode": "write",
+          "resource": "flow_artifact:contrainte-jours-positifs:qa_high_static"
+        }
+      ],
+      "node": "module_high_static_qa",
+      "owner": "claude-odoo-tester-high_static_qa",
+      "state": "/work/.odoo-agents/flows/contrainte-jours-positifs.json"
+    },
+    {
+      "at": "2026-09-09T14:21:22+00:00",
+      "locks": [
+        {
+          "mode": "read",
+          "resource": "module_code"
+        },
+        {
+          "mode": "write",
+          "resource": "qa_db_module"
+        },
+        {
+          "mode": "write",
+          "resource": "flow_artifact:contrainte-jours-positifs:qa_high_runtime"
+        }
+      ],
+      "node": "module_high_runtime_qa",
+      "owner": "claude-odoo-tester-high_runtime_qa",
+      "state": "/work/.odoo-agents/flows/contrainte-jours-positifs.json"
+    },
+    {
+      "at": "2026-09-09T14:21:22+00:00",
+      "locks": [
+        {
+          "mode": "read",
+          "resource": "module_code"
+        },
+        {
+          "mode": "write",
+          "resource": "client_copy"
+        },
+        {
+          "mode": "write",
+          "resource": "flow_artifact:contrainte-jours-positifs:qa_client"
+        }
+      ],
+      "node": "module_client_copy_qa",
+      "owner": "claude-odoo-tester-client_copy_qa",
+      "state": "/work/.odoo-agents/flows/contrainte-jours-positifs.json"
+    }
+  ],
+  "schema_version": 1,
+  "updated_at": "2026-09-09T14:21:22+00:00"
+}

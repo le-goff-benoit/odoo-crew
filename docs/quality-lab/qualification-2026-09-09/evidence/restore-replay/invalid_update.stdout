@@ -1,0 +1,25 @@
+ODOO_SERIES=19.0
+Sauvegarde : /tmp/odoo-qualification-restore-20260909-replay/qualification-complete.zip (zip-sql)
+Base cible : qualification_invalid_update  →  http://localhost:8079  (admin/admin)
+Import du dump…
+Dépôt du filestore…
+Neutralisation (odoo neutralize)…
+Réglages locaux (admin/admin, web.base.url, assets)…
+  2026-09-09 14:26:40,274 86 WARNING ? odoo.tools.config: option addons_path, no such directory '/mnt/enterprise-addons', skipped 
+  2026-09-09 14:26:40,274 86 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+  2026-09-09 14:26:40,274 86 WARNING ? odoo.tools.config: option addons_path, no such directory '/mnt/enterprise-addons', skipped 
+  2026-09-09 14:26:40,274 86 WARNING ? odoo.tools.config: option addons_path, invalid addons directory '/mnt/extra-addons', skipped 
+  2026-09-09 14:26:40,274 86 INFO ? odoo: Odoo version 19.0-20260817 
+  2026-09-09 14:26:40,274 86 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+  2026-09-09 14:26:40,274 86 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/usr/lib/python3/dist-packages/addons']) 
+  2026-09-09 14:26:40,274 86 INFO ? odoo: database: odoo@db:5432 
+  2026-09-09 14:26:40,584 86 INFO ? odoo.service.server: Initiating shutdown 
+  2026-09-09 14:26:40,584 86 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+  2026-09-09 14:26:40,605 86 INFO qualification_invalid_update odoo.modules.loading: loading 1 modules... 
+  2026-09-09 14:26:40,608 86 INFO qualification_invalid_update odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+  2026-09-09 14:26:40,611 86 INFO qualification_invalid_update odoo.modules.loading: loading 14 modules... 
+  2026-09-09 14:26:40,782 86 INFO qualification_invalid_update odoo.modules.loading: 14 modules loaded in 0.17s, 0 queries (+0 extra) 
+  2026-09-09 14:26:40,811 86 INFO qualification_invalid_update odoo.modules.loading: Modules loaded. 
+  2026-09-09 14:26:40,827 86 INFO qualification_invalid_update odoo.registry: Registry loaded in 0.242s 
+  Modules installés : 14
+Mise à jour de : qualification_nonexistent_module…

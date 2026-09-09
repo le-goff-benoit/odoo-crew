@@ -1,0 +1,429 @@
+[
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/rpc/etat_avant.json"
+    ],
+    "seconds": 1.83,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "30cf56b5d6b19d7ad615bd1fa59508de593020f3630ed75336c683d432bf062f",
+    "project_sha256": "4406151ad28cc65d042b5f9bff5616fe368d00d9549d740f29dd0a59f4001869"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/shell/seed_avant.py"
+    ],
+    "seconds": 0.88,
+    "exit_code": 0,
+    "log": "bridge-001.log",
+    "sha256": "516bc357e7b42fa1e4c1756351762e967d210f0d0a8dc288157072eb197704b4",
+    "project_sha256": "de8fff14a6e4117a7f8d288b7c1bcbef78039dab24e35a68962d07f0ab079f1c"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/shell/seed_avant.py"
+    ],
+    "seconds": 0.89,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "df7d9d3e09c6f3ec26c308a2382f239067a40e4cddc1e4b7318feedddf3cd558",
+    "project_sha256": "ab63bd56ed90bad68968f8a6fd8fa2b4e82d6012528dc51e4ced3d2b8f0ef406"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.4,
+    "exit_code": 0,
+    "log": "bridge-003.log",
+    "sha256": "69093f7f283fad2e922d615c213f3726951ab47241810c4f8ac44ea7a4b5fd44",
+    "project_sha256": "9b8e654b48d102aece48437d44115f6b60aa36d21b4e8fac3f024cba960c60fb"
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/rpc/etat_avant.json"
+    ],
+    "seconds": 1.85,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "9fe2d7683974666420111ad5f0a69d4220b9f185cb3b30b341c988e8ce9a6b05",
+    "project_sha256": "9b8e654b48d102aece48437d44115f6b60aa36d21b4e8fac3f024cba960c60fb"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.64,
+    "exit_code": 1,
+    "log": "bridge-005.log",
+    "sha256": "21e8cd18106fdd0aca7131ff818a95fa9680e23d2e13c29886e08256b212cfdd",
+    "project_sha256": "55da93b3e2544814d8e432a5f3e51cb0f468c1a5616ebd575dda768af29967ee"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.63,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "65d7d084166d8ddaa78303e6de00134787b716278a8a065ad6151bda55844dee",
+    "project_sha256": "cf420180cb507c54b9febce64492996ebdca83db370d22258225e1685e028486"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.67,
+    "exit_code": 0,
+    "log": "bridge-007.log",
+    "sha256": "65d7d084166d8ddaa78303e6de00134787b716278a8a065ad6151bda55844dee",
+    "project_sha256": "038601d7c2734ae9053e30837bbced204fc8eb14e20cda5b79817c3202315080"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--fresh",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 15.04,
+    "exit_code": 0,
+    "log": "bridge-008.log",
+    "sha256": "cf90787f65b1eba8de95c5a2a84a4e33b5c92aef18b9ed3f84efeaca14e70d2d",
+    "project_sha256": "7ac919f8a2453f8af09789cffb992e7900b97ea438b532857591801c23b4b1e2",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 12,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 10
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--fresh",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 15.11,
+    "exit_code": 0,
+    "log": "bridge-009.log",
+    "sha256": "a5c01c8c1b22ec1daa341f1f5ce3a8e717810ce5c6731bf1da7792f7c44aa609",
+    "project_sha256": "cdde4fc67ea100050e159903ba3fc772c94c6cd1782728b700895ed772971e39",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 12,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 10
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--update",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 4.48,
+    "exit_code": 0,
+    "log": "bridge-010.log",
+    "sha256": "8723dca9b80d66d4bf5ab1cd28abe32f06aa5ce922e5062ec5bafca0a8d8bc16",
+    "project_sha256": "20a6da5273730b6dd0cd2e5e33aa04a9e53692f293ae4db753a6ed52d4d60e2c",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 12,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 10
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.46,
+    "exit_code": 0,
+    "log": "bridge-011.log",
+    "sha256": "0f1c97453d366deee0a657e48b873695d826c4bb6060dea57d22610d50689e5e",
+    "project_sha256": "20a6da5273730b6dd0cd2e5e33aa04a9e53692f293ae4db753a6ed52d4d60e2c"
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/rpc/etat_avant.json"
+    ],
+    "seconds": 1.95,
+    "exit_code": 0,
+    "log": "bridge-012.log",
+    "sha256": "8b9a3c4d7e1b3e8c365f3411da474e613a33efaab14491f4d3a0e22a30bb999c",
+    "project_sha256": "37eb4405a03e23a12a447f8d56dedfc10cd73fbd6bbe2aa00bfc9d2e541132af"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.34,
+    "exit_code": 0,
+    "log": "bridge-013.log",
+    "sha256": "a755822667ae53913616886db313903a1c3c5ddc95e1f127e335c540b8ee3fff",
+    "project_sha256": "d2d81ac2a84ad80345985a1bcbfae6681f28f9957db0552849eae4f7309dbecc"
+  },
+  {
+    "args": [
+      "shell",
+      "/work/.odoo-agents/shell/postconditions.py"
+    ],
+    "seconds": 0.9,
+    "exit_code": 0,
+    "log": "bridge-014.log",
+    "sha256": "b0770b2f529ecd27dfd2789566de03bc37bfe0711702ca3d8ee9b6e7ad94eb24",
+    "project_sha256": "4cfbdfe0c200a22ee91c64ded6907ec0b8ba2f74f758009cebc03f8bcd82f18c"
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/rpc/creation_seuil.json"
+    ],
+    "seconds": 1.89,
+    "exit_code": 0,
+    "log": "bridge-015.log",
+    "sha256": "1adb2e4cac6ac58890eea6ad0db9c93d6420d3bf5a4221f2cfbf7cb37b068faf",
+    "project_sha256": "6f977d6a343ec463741ac0de7c8f7db46b419372a794e9e6cd5676b62d9ec235"
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/rpc/lecture_seuil.json"
+    ],
+    "seconds": 1.94,
+    "exit_code": 0,
+    "log": "bridge-016.log",
+    "sha256": "9126cc1294d926889e8c41f582bf04aa5461f2c22f7763b8997720682b2fd5db",
+    "project_sha256": "f80104f891cdcc9224f37d738660b61b6cd547ecac52a93c119fcf13c9a4252e"
+  },
+  {
+    "args": [
+      "rpc",
+      "/work/.odoo-agents/rpc/nettoyage.json"
+    ],
+    "seconds": 1.87,
+    "exit_code": 0,
+    "log": "bridge-017.log",
+    "sha256": "0be694460085656f05bf98a51c2e1aeacae073ef0282af69cb81ce8c1846633c",
+    "project_sha256": "d44195ade9aae55e77d254295a7b1d29f7cace6a19e1e8275238e136e742ed34"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 0.92,
+    "exit_code": 0,
+    "log": "bridge-018.log",
+    "sha256": "65d7d084166d8ddaa78303e6de00134787b716278a8a065ad6151bda55844dee",
+    "project_sha256": "97897d53ce7d43bf98d002ec98637d812253ef477fb587179f235fbe2fd3d6a6"
+  },
+  {
+    "args": [
+      "lint",
+      "lab_rental"
+    ],
+    "seconds": 1.22,
+    "exit_code": 0,
+    "log": "bridge-019.log",
+    "sha256": "65d7d084166d8ddaa78303e6de00134787b716278a8a065ad6151bda55844dee",
+    "project_sha256": "0045f1b70eb029f37d0d358361bc7907b8ee5888fa33b52f241eb75f5d77f234"
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--fresh",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 23.28,
+    "exit_code": 0,
+    "log": "bridge-020.log",
+    "sha256": "cee484fd82d3ee0c3b0bd30321869cb62c24009d2688f35ed5cf1c74c5a9788a",
+    "project_sha256": "c67adc48c0f4b80e1e745d1684725550676e083d39277ec3df827787681c24e7",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 14,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 12
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_rental",
+      "--quick",
+      "--update",
+      "--tags",
+      "/lab_rental:TestPreparationFee"
+    ],
+    "seconds": 8.03,
+    "exit_code": 0,
+    "log": "bridge-021.log",
+    "sha256": "417b9aaa825f5df222928a8e0013e8b99eb7b10017ef4c7c24af948c09a5cd7b",
+    "project_sha256": "45ee0056d57456f6d9802da2863c1797a1c4478581fc6cdfe1389fb819cb6410",
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 14,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 12
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "shell",
+      ".odoo-agents/shell/etat_point2_avant.py"
+    ],
+    "seconds": 1.58,
+    "exit_code": 0,
+    "log": "bridge-022.log",
+    "sha256": "7a1e767efbaf160f2984e17f7fe827070dfb95c0c2e101c0da0ec9b668c6cc2e",
+    "project_sha256": "01a93e27ce375b9d3c62761b6b0de60de6653db2b5adb0a28b1670ffab1d81f6"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 8.62,
+    "exit_code": 0,
+    "log": "bridge-023.log",
+    "sha256": "1ab848722e9f07d637c1a05c63d8eada8a45a00bc96ac82c2c72114719bd669a",
+    "project_sha256": "9c6d1730d53ccf52040bc77470de831fe15237c1a0f3d9a2f067603294222353"
+  },
+  {
+    "args": [
+      "shell",
+      ".odoo-agents/shell/etat_point2_apres.py"
+    ],
+    "seconds": 1.43,
+    "exit_code": 0,
+    "log": "bridge-024.log",
+    "sha256": "e8331500540cb699e34069ae64b4cc538031ea0e597c4a33d6990095ee887bcc",
+    "project_sha256": "47c8b1164b5bed7ef5fa3db35f94f42988d95cee0658e93e1445491cb840039b"
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 3.39,
+    "exit_code": 0,
+    "log": "bridge-025.log",
+    "sha256": "ee10457df46a3e87b0037638b9ed28541b9f35f4a507d744c04d8e7749662a46",
+    "project_sha256": "3171b888293c7c4bc92f42478eb73a110df85897595c1384165e46f6b2e1e7d2"
+  },
+  {
+    "args": [
+      "shell",
+      ".odoo-agents/shell/postconditions_point2.py"
+    ],
+    "seconds": 0.93,
+    "exit_code": 0,
+    "log": "bridge-026.log",
+    "sha256": "00e043f59b01900f38c76ca37d30a516ffb29a87c3545986568306fcdac21d36",
+    "project_sha256": "6cf9de7b4653a211e0d8561235986d2d7c0e96aee727365ae0c2d6654592f4e8"
+  },
+  {
+    "args": [
+      "shell",
+      ".odoo-agents/shell/reprise_idempotence.py"
+    ],
+    "seconds": 1.27,
+    "exit_code": 0,
+    "log": "bridge-027.log",
+    "sha256": "2f367d554a066710758c8eb87d5595eda8f221fda52d8d3d1a4614d94056ddd8",
+    "project_sha256": "9bf3b060c583290e7c32769b1f6bd4f8202023c0dfe8d6c3333b5d95522e9853"
+  },
+  {
+    "args": [
+      "rpc",
+      ".odoo-agents/rpc/creation_seuil_d03.json"
+    ],
+    "seconds": 2.61,
+    "exit_code": 0,
+    "log": "bridge-028.log",
+    "sha256": "06316993ca3a28a78d828017fa33a6c9e440f0d623852567b9801202114a4ffc",
+    "project_sha256": "803151eb3fb2cbd862e9d51b3c71ef245c09cbd237f36b6b6d7714ee68bd71ab"
+  },
+  {
+    "args": [
+      "rpc",
+      ".odoo-agents/rpc/lecture_seuil_d03.json"
+    ],
+    "seconds": 2.63,
+    "exit_code": 0,
+    "log": "bridge-029.log",
+    "sha256": "baaf534f24e300587b33e796b3d94dd64267e4455c3e86efa1c9b3f17b2b33eb",
+    "project_sha256": "803151eb3fb2cbd862e9d51b3c71ef245c09cbd237f36b6b6d7714ee68bd71ab"
+  },
+  {
+    "args": [
+      "rpc",
+      ".odoo-agents/rpc/nettoyage_d03.json"
+    ],
+    "seconds": 2.7,
+    "exit_code": 0,
+    "log": "bridge-030.log",
+    "sha256": "0be694460085656f05bf98a51c2e1aeacae073ef0282af69cb81ce8c1846633c",
+    "project_sha256": "5840603adc60c11e55876a5b5136fc9ed728d9d8591a815a0f210cbec8c66968"
+  },
+  {
+    "args": [
+      "rpc",
+      ".odoo-agents/rpc/etat_avant.json"
+    ],
+    "seconds": 2.87,
+    "exit_code": 0,
+    "log": "bridge-031.log",
+    "sha256": "ce0095726c9043affbd61762c137bfc703987c5dda92f06ce7b03b0e7e87617b",
+    "project_sha256": "5840603adc60c11e55876a5b5136fc9ed728d9d8591a815a0f210cbec8c66968"
+  }
+]

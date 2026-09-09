@@ -1,0 +1,76 @@
+{
+  "project": "qualification-restore-160334f402",
+  "scenarios": {
+    "complete": {
+      "exit_code": 0,
+      "checks": {
+        "neighbor_unchanged": true,
+        "expected_exit": true,
+        "expected_banner": true,
+        "expected_database": true,
+        "attachment_bytes": true,
+        "cron_disabled": true,
+        "mail_disabled": true,
+        "neutralized": true,
+        "admin_active": true,
+        "local_url": true,
+        "url_frozen": true
+      },
+      "pass": true
+    },
+    "missing_dump": {
+      "exit_code": 1,
+      "checks": {
+        "neighbor_unchanged": true,
+        "expected_exit": true,
+        "expected_banner": true,
+        "expected_database": true
+      },
+      "pass": true
+    },
+    "invalid_update": {
+      "exit_code": 1,
+      "checks": {
+        "neighbor_unchanged": true,
+        "expected_exit": true,
+        "expected_banner": true,
+        "expected_database": true,
+        "attachment_bytes": true,
+        "cron_disabled": true,
+        "mail_disabled": true,
+        "neutralized": true,
+        "admin_active": true,
+        "local_url": true,
+        "url_frozen": true
+      },
+      "pass": true
+    }
+  },
+  "status": "pass",
+  "limits": [
+    "Synthetic base-only database on Odoo 19.0",
+    "No customer backup or production",
+    "No payment provider or enterprise module neutralization tested",
+    "Missing dump is tested, not every truncated archive or disk failure",
+    "Failure leaves a local database; atomic rollback is not required by this protocol"
+  ],
+  "source_unchanged": true,
+  "cleanup": {
+    "exit_code": 0,
+    "remaining": {
+      "container": {
+        "exit_code": 0,
+        "ids": []
+      },
+      "volume": {
+        "exit_code": 0,
+        "ids": []
+      },
+      "network": {
+        "exit_code": 0,
+        "ids": []
+      }
+    }
+  },
+  "seconds": 31.437
+}

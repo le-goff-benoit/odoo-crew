@@ -1,0 +1,68 @@
+{
+  "verdict": "partially_qualified",
+  "qualified": [
+    "real_native_delegation",
+    "controlled_interruption",
+    "same_live_environment_at_recovery_boundary",
+    "abandoned_claim_release_and_reassignment",
+    "decision_and_implementation_preservation",
+    "final_sql_and_rpc_contract",
+    "cleanup"
+  ],
+  "not_qualified": [
+    "full_semantic_acceptance_coverage_C08"
+  ],
+  "reason": "The original C08 explicitly attaches real RPC scenarios to running the module QA suite. The suite contains ORM tests only. Separate client-copy RPC proves A8 and runtime behavior but does not satisfy that literal suite obligation. Native covered/pass and VALIDÉ8/8 are retained unchanged and rejected for full qualification.",
+  "native_flow_status": "complete",
+  "native_gate_outcome": "pass",
+  "claims_released": 3,
+  "final_claims": {},
+  "module_unchanged_after_interruption": true,
+  "decisions_unchanged_after_interruption": true,
+  "same_environment_before_resume": true,
+  "git_head_unchanged": true,
+  "live_client_container_unchanged": true,
+  "client_rows_at_interruption": 0,
+  "qa_database_recreated_after_resume_by_authorized_fresh_qa": true,
+  "qa_native_lifetime_overlap_seconds": 78.865,
+  "overlap_scope": "received native start-to-completion envelopes; not CPU execution, not bridge parallelism, not latency improvement",
+  "cost_first_call_usd": null,
+  "cost_completed_call_native_cumulative_usd": 2.880514700000001,
+  "cost_total_usd": null,
+  "configured_cap_per_call_usd": 12,
+  "configured_cap_two_calls_usd": 24,
+  "cost_note": "First call killed before final accounting. Repeated native result events carry cumulative cost and must not be summed. modelUsage includes opus5,sonnet5,haiku4.5 despite root requested opus.",
+  "human_interventions_after_authorization": 0,
+  "supervisor_interventions": [
+    "one process-group SIGKILL at predefined QA condition",
+    "bridge drain and old-process identity verification",
+    "one recovery note added; no generated code/evidence repair"
+  ],
+  "agent_recovery_operations": [
+    "release3 abandoned claims with interruption proof",
+    "reassign3 QA lanes",
+    "complete QA+coverage+report+journal+flow"
+  ],
+  "sql_oracle": {
+    "exit_code": 0,
+    "checks": {
+      "zero_allowed": true,
+      "negative_create": true,
+      "negative_write": true,
+      "valid_record_preserved": true
+    },
+    "passed": true,
+    "log_sha256": "d8263542934cf9b4ab07aad78e66eb54f47eb0cc7ca7817f5706e1a098ea0818",
+    "log": "oracle-000.log"
+  },
+  "rpc_oracle": {
+    "negative_fault": true,
+    "exact_message_received": true,
+    "rows_preserved": true
+  },
+  "cleanup": {
+    "containers": "",
+    "networks": "",
+    "verified": true
+  }
+}

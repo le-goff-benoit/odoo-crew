@@ -1,0 +1,109 @@
+{
+  "case": "N03",
+  "provider": "claude",
+  "config": {
+    "model": "opus",
+    "effort": "medium",
+    "delegate": false
+  },
+  "status": "executed",
+  "turns": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 669.15,
+      "usage": {
+        "tokens": {
+          "input_tokens": 128,
+          "cache_creation_input_tokens": 112941,
+          "cache_read_input_tokens": 4769732,
+          "output_tokens": 47636,
+          "output_tokens_details": {
+            "thinking_tokens": 9199
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 112941,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 1442,
+              "cache_read_input_tokens": 120248,
+              "cache_creation_input_tokens": 285,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 285
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 4.707001999999999
+      },
+      "actual_model": "claude-opus-5",
+      "tool_calls": 63,
+      "provider_completed": true,
+      "error": null,
+      "delegation": {
+        "supported": true,
+        "started": 0,
+        "with_progress": 0,
+        "completed": 0,
+        "tasks": {},
+        "provider_summary": {
+          "spawned": 0,
+          "requested": {
+            "background": 0,
+            "foreground": 0,
+            "unset": 0
+          },
+          "started_in_background": 0,
+          "max_depth": 0,
+          "spawned_by_subagents": 0,
+          "completed": 0,
+          "failed": 0,
+          "killed": {
+            "parent": 0,
+            "user": 0,
+            "system": 0
+          },
+          "refused": {
+            "depth_limit": 0,
+            "concurrency_limit": 0,
+            "budget": 0
+          },
+          "by_type": {}
+        }
+      },
+      "answer_sha256": "9c54b01f038da544a10285427c62ae75dd283f01243e9b12a32f7b77ddf97ad2"
+    }
+  ],
+  "active_turn": 0,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "field_boolean_stored": true,
+      "5_rental": true,
+      "6_rental": true,
+      "7_rental": true,
+      "8_rental": true,
+      "9_loan": true,
+      "dependency_kind": true,
+      "dependency_days": true,
+      "original_fields": true,
+      "single_model": true
+    },
+    "passed": true,
+    "log_sha256": "6ee0bd4b9c010112e925a00dca7366f359f8b789ad9a4fce990005049f5298f4",
+    "log": "oracle-000.log"
+  },
+  "review": null
+}

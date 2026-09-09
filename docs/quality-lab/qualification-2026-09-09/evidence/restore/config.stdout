@@ -1,0 +1,91 @@
+{
+  "name": "qualification-restore-160334f402",
+  "networks": {
+    "default": {
+      "name": "qualification-restore-160334f402_default",
+      "ipam": {},
+      "internal": true
+    }
+  },
+  "services": {
+    "db": {
+      "command": null,
+      "entrypoint": null,
+      "environment": {
+        "POSTGRES_DB": "postgres",
+        "POSTGRES_PASSWORD": "odoo",
+        "POSTGRES_USER": "odoo"
+      },
+      "image": "pgvector/pgvector:pg16",
+      "networks": {
+        "default": null
+      },
+      "volumes": [
+        {
+          "type": "volume",
+          "source": "pgdata",
+          "target": "/var/lib/postgresql/data",
+          "volume": {}
+        }
+      ]
+    },
+    "odoo": {
+      "command": [
+        "sleep",
+        "infinity"
+      ],
+      "entrypoint": null,
+      "environment": {
+        "HOST": "db",
+        "PASSWORD": "odoo",
+        "USER": "odoo"
+      },
+      "image": "odoo-qa:19.0",
+      "networks": {
+        "default": null
+      },
+      "volumes": [
+        {
+          "type": "bind",
+          "source": "/tmp/odoo-qualification-restore-20260909/pack/stack/odoo.conf",
+          "target": "/etc/odoo/odoo.conf",
+          "read_only": true,
+          "bind": {
+            "create_host_path": true
+          }
+        },
+        {
+          "type": "volume",
+          "source": "filestore",
+          "target": "/var/lib/odoo",
+          "volume": {}
+        },
+        {
+          "type": "bind",
+          "source": "/tmp/odoo-qualification-restore-20260909/addons",
+          "target": "/mnt/extra-addons",
+          "read_only": true,
+          "bind": {
+            "create_host_path": true
+          }
+        },
+        {
+          "type": "bind",
+          "source": "/tmp/odoo-qualification-restore-20260909/pack/stack/artifacts",
+          "target": "/mnt/artifacts",
+          "bind": {
+            "create_host_path": true
+          }
+        }
+      ]
+    }
+  },
+  "volumes": {
+    "filestore": {
+      "name": "qualification-restore-160334f402_filestore"
+    },
+    "pgdata": {
+      "name": "qualification-restore-160334f402_pgdata"
+    }
+  }
+}

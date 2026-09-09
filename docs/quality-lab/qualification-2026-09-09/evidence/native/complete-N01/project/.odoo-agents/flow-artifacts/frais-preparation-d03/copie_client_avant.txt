@@ -1,0 +1,22 @@
+2026-09-09 14:27:09,683 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 14:27:09,683 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 14:27:09,684 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 14:27:09,684 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 14:27:09,684 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-09 14:27:09,956 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-09 14:27:09,956 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 14:27:09,979 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-09 14:27:09,985 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-09 14:27:09,992 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-09 14:27:10,153 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.16s, 0 queries (+0 extra) 
+2026-09-09 14:27:10,187 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-09 14:27:10,209 1 INFO lab_client odoo.registry: Registry loaded in 0.252s 
+VERSION_INSTALLEE 19.0.1.1.0 installed
+id  libelle                        j   tarif     type    avant
+1   Location 3 jours               3    10.0   rental     30.0
+2   Location 4 jours               4    10.0   rental     52.0
+3   Location 7 jours               7    20.0   rental    152.0
+4   Location 5 jours tarif nul     5     0.0   rental     12.0
+5   Location vide                  0     0.0   rental      0.0
+6   Pret 4 jours                   4    10.0     loan     40.0
+7   Pret 10 jours                 10    10.0     loan    100.0

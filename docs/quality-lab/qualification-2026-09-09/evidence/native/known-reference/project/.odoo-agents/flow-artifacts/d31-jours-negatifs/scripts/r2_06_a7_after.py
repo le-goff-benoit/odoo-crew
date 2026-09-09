@@ -1,0 +1,11 @@
+cr = env.cr
+cr.execute("""SELECT conname, pg_get_constraintdef(oid) FROM pg_constraint WHERE conrelid='lab_rental'::regclass ORDER BY conname""")
+rows = cr.fetchall()
+print("PREUVE r2 / A7 apres update (donnee violante presente)")
+print("pg_constraint =", rows)
+present = any(r[0] == 'lab_rental_check_days_positive' for r in rows)
+print("contrainte reposee malgre la ligne violante =", present)
+cr.execute("SELECT count(*) FROM lab_rental WHERE days < 0")
+print("lignes violantes toujours en base =", cr.fetchone()[0])
+module = env['ir.module.module'].sudo().search([('name', '=', 'lab_rental')])
+print("module state =", module.state)

@@ -1,0 +1,277 @@
+2026-09-09 14:08:27,210 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-09 14:08:27,210 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-09 14:08:27,211 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-09 14:08:27,211 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-09 14:08:27,211 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo-data/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-09 14:08:27,211 1 INFO ? odoo: database: odoo@qualification-versions-ea190848e3-pg:default 
+2026-09-09 14:08:27,412 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on e5cb9661c8b1:8069 
+2026-09-09 14:08:27,424 1 INFO qualification_19_0_mutant odoo.tests.common: Importing test framework 
+2026-09-09 14:08:27,434 1 INFO qualification_19_0_mutant odoo.modules.loading: Initializing database qualification_19_0_mutant 
+2026-09-09 14:08:27,895 1 INFO qualification_19_0_mutant odoo.modules.loading: loading 1 modules... 
+2026-09-09 14:08:27,895 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module base (1/1) 
+2026-09-09 14:08:27,909 1 INFO qualification_19_0_mutant odoo.registry: module base: creating or updating database tables 
+2026-09-09 14:08:28,050 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-09 14:08:28,050 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-09 14:08:28,050 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-09 14:08:28,088 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.partner.user_id 
+2026-09-09 14:08:28,088 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-09 14:08:28,088 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-09 14:08:28,088 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.partner.lang 
+2026-09-09 14:08:28,088 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-09 14:08:28,088 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-09 14:08:28,088 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.partner.properties 
+2026-09-09 14:08:28,088 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-09 14:08:28,100 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-09 14:08:28,108 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-09 14:08:28,108 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.company.logo_web 
+2026-09-09 14:08:28,108 1 INFO qualification_19_0_mutant odoo.models: Computing parent_path for table res_company... 
+2026-09-09 14:08:28,118 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.users.signature 
+2026-09-09 14:08:28,118 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.users.share 
+2026-09-09 14:08:28,762 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-09 14:08:28,765 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-09 14:08:28,784 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-09 14:08:28,800 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-09-09 14:08:28,820 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-09-09 14:08:29,091 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-09-09 14:08:29,095 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-09-09 14:08:29,637 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-09-09 14:08:29,642 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-09-09 14:08:29,919 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-09-09 14:08:29,926 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/security/base_groups.xml 
+2026-09-09 14:08:30,022 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/security/base_security.xml 
+2026-09-09 14:08:30,105 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/wizard/wizard_ir_model_menu_create_views.xml 
+2026-09-09 14:08:30,111 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/base_menus.xml 
+2026-09-09 14:08:30,138 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-09-09 14:08:30,146 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-09-09 14:08:30,149 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-09-09 14:08:30,317 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-09-09 14:08:30,430 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-09-09 14:08:30,444 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-09-09 14:08:30,457 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-09-09 14:08:30,481 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-09-09 14:08:30,491 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-09-09 14:08:30,502 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-09-09 14:08:30,512 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-09-09 14:08:30,602 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-09-09 14:08:30,613 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-09-09 14:08:30,623 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-09-09 14:08:30,633 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-09-09 14:08:30,651 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-09-09 14:08:30,693 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-09-09 14:08:30,709 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/ir_config_parameter_data.xml 
+2026-09-09 14:08:30,712 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-09-09 14:08:30,724 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-09-09 14:08:30,728 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-09-09 14:08:30,736 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-09-09 14:08:30,751 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-09-09 14:08:30,759 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-09-09 14:08:30,802 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-09-09 14:08:30,829 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-09-09 14:08:30,864 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-09-09 14:08:30,867 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-09-09 14:08:30,873 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-09-09 14:08:30,884 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-09-09 14:08:30,896 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-09-09 14:08:30,903 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-09-09 14:08:30,911 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-09-09 14:08:30,916 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-09-09 14:08:30,922 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-09-09 14:08:30,928 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-09-09 14:08:30,936 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-09-09 14:08:30,956 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-09-09 14:08:30,973 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-09-09 14:08:30,983 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-09-09 14:08:31,026 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-09-09 14:08:31,049 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-09-09 14:08:31,080 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-09-09 14:08:31,100 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_groups_views.xml 
+2026-09-09 14:08:31,121 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-09-09 14:08:31,191 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_users_apikeys_views.xml 
+2026-09-09 14:08:31,195 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_device_views.xml 
+2026-09-09 14:08:31,205 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-09-09 14:08:31,209 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-09-09 14:08:31,213 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-09-09 14:08:31,223 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-09-09 14:08:31,389 1 INFO qualification_19_0_mutant odoo.modules.loading: Module base loaded in 3.49s, 8454 queries (+8454 other) 
+2026-09-09 14:08:31,389 1 INFO qualification_19_0_mutant odoo.modules.loading: 1 modules loaded in 3.49s, 8454 queries (+8454 extra) 
+2026-09-09 14:08:31,391 1 INFO qualification_19_0_mutant odoo.modules.loading: updating modules list 
+2026-09-09 14:08:31,392 1 INFO qualification_19_0_mutant odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-09 14:08:31,751 1 INFO qualification_19_0_mutant odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Synthetic qualification'] to user __system__ #1 via n/a 
+2026-09-09 14:08:31,781 1 INFO qualification_19_0_mutant odoo.modules.loading: loading 15 modules... 
+2026-09-09 14:08:31,782 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module rpc (2/15) 
+2026-09-09 14:08:31,791 1 INFO qualification_19_0_mutant odoo.modules.loading: Module rpc loaded in 0.01s, 9 queries (+9 other) 
+2026-09-09 14:08:31,791 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module web (3/15) 
+2026-09-09 14:08:31,807 1 INFO qualification_19_0_mutant odoo.registry: module web: creating or updating database tables 
+2026-09-09 14:08:32,005 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-09-09 14:08:32,009 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/security/web_security.xml 
+2026-09-09 14:08:32,014 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-09-09 14:08:32,043 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/views/report_templates.xml 
+2026-09-09 14:08:32,089 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-09-09 14:08:32,097 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/views/partner_view.xml 
+2026-09-09 14:08:32,101 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-09-09 14:08:32,104 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/views/memory_template.xml 
+2026-09-09 14:08:32,106 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/views/speedscope_config_wizard.xml 
+2026-09-09 14:08:32,110 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-09-09 14:08:32,113 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/views/ir_ui_view_views.xml 
+2026-09-09 14:08:32,118 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-09-09 14:08:32,120 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web/data/report_layout.xml 
+2026-09-09 14:08:32,149 1 INFO qualification_19_0_mutant odoo.modules.loading: Module web loaded in 0.36s, 1232 queries (+1232 other) 
+2026-09-09 14:08:32,149 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module api_doc (4/15) 
+2026-09-09 14:08:32,152 1 INFO qualification_19_0_mutant odoo.registry: module api_doc: creating or updating database tables 
+2026-09-09 14:08:32,161 1 INFO qualification_19_0_mutant odoo.modules.loading: loading api_doc/security/res_groups.xml 
+2026-09-09 14:08:32,171 1 INFO qualification_19_0_mutant odoo.modules.loading: loading api_doc/views/docclient.xml 
+2026-09-09 14:08:32,179 1 INFO qualification_19_0_mutant odoo.modules.loading: Module api_doc loaded in 0.03s, 63 queries (+63 other) 
+2026-09-09 14:08:32,180 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module auth_totp (5/15) 
+2026-09-09 14:08:32,188 1 INFO qualification_19_0_mutant odoo.registry: module auth_totp: creating or updating database tables 
+2026-09-09 14:08:32,221 1 INFO qualification_19_0_mutant odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-09-09 14:08:32,233 1 INFO qualification_19_0_mutant odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-09-09 14:08:32,236 1 INFO qualification_19_0_mutant odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-09-09 14:08:32,240 1 INFO qualification_19_0_mutant odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-09-09 14:08:32,254 1 INFO qualification_19_0_mutant odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-09-09 14:08:32,258 1 INFO qualification_19_0_mutant odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-09-09 14:08:32,268 1 INFO qualification_19_0_mutant odoo.modules.loading: Module auth_totp loaded in 0.09s, 218 queries (+218 other) 
+2026-09-09 14:08:32,268 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module base_import (6/15) 
+2026-09-09 14:08:32,285 1 INFO qualification_19_0_mutant odoo.registry: module base_import: creating or updating database tables 
+2026-09-09 14:08:32,495 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-09-09 14:08:32,501 1 INFO qualification_19_0_mutant odoo.modules.loading: Module base_import loaded in 0.23s, 956 queries (+956 other) 
+2026-09-09 14:08:32,501 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module base_import_module (7/15) 
+2026-09-09 14:08:32,505 1 INFO qualification_19_0_mutant odoo.registry: module base_import_module: creating or updating database tables 
+2026-09-09 14:08:32,535 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-09-09 14:08:32,538 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-09-09 14:08:32,548 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-09-09 14:08:32,569 1 INFO qualification_19_0_mutant odoo.modules.loading: Module base_import_module loaded in 0.07s, 172 queries (+172 other) 
+2026-09-09 14:08:32,569 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module base_setup (8/15) 
+2026-09-09 14:08:32,573 1 INFO qualification_19_0_mutant odoo.registry: module base_setup: creating or updating database tables 
+2026-09-09 14:08:32,594 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-09-09 14:08:32,596 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-09-09 14:08:32,610 1 INFO qualification_19_0_mutant odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-09-09 14:08:32,618 1 INFO qualification_19_0_mutant odoo.modules.loading: Module base_setup loaded in 0.05s, 152 queries (+152 other) 
+2026-09-09 14:08:32,618 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module bus (9/15) 
+2026-09-09 14:08:32,628 1 INFO qualification_19_0_mutant odoo.registry: module bus: creating or updating database tables 
+2026-09-09 14:08:32,669 1 INFO qualification_19_0_mutant odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-09-09 14:08:32,676 1 INFO qualification_19_0_mutant odoo.modules.loading: Module bus loaded in 0.06s, 159 queries (+159 other) 
+2026-09-09 14:08:32,676 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module lab_qualification (10/15) 
+2026-09-09 14:08:32,678 1 INFO qualification_19_0_mutant odoo.registry: module lab_qualification: creating or updating database tables 
+2026-09-09 14:08:32,692 1 INFO qualification_19_0_mutant odoo.modules.loading: loading lab_qualification/security/ir.model.access.csv 
+2026-09-09 14:08:32,695 1 INFO qualification_19_0_mutant odoo.modules.loading: loading lab_qualification/views/quantity.xml 
+2026-09-09 14:08:32,705 1 INFO qualification_19_0_mutant odoo.modules.loading: Module lab_qualification loaded in 0.03s, 81 queries (+81 other) 
+2026-09-09 14:08:32,705 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module web_tour (11/15) 
+2026-09-09 14:08:32,708 1 INFO qualification_19_0_mutant odoo.registry: module web_tour: creating or updating database tables 
+2026-09-09 14:08:32,711 1 INFO qualification_19_0_mutant odoo.models: Prepare computation of res.users.tour_enabled 
+2026-09-09 14:08:32,743 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-09-09 14:08:32,747 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-09-09 14:08:32,768 1 INFO qualification_19_0_mutant odoo.modules.loading: Module web_tour loaded in 0.06s, 180 queries (+180 other) 
+2026-09-09 14:08:32,768 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module auth_passkey (12/15) 
+2026-09-09 14:08:32,785 1 INFO qualification_19_0_mutant odoo.registry: module auth_passkey: creating or updating database tables 
+2026-09-09 14:08:32,819 1 INFO qualification_19_0_mutant odoo.modules.loading: loading auth_passkey/views/auth_passkey_key_views.xml 
+2026-09-09 14:08:32,831 1 INFO qualification_19_0_mutant odoo.modules.loading: loading auth_passkey/views/auth_passkey_login_templates.xml 
+2026-09-09 14:08:32,840 1 INFO qualification_19_0_mutant odoo.modules.loading: loading auth_passkey/views/res_users_identitycheck_views.xml 
+2026-09-09 14:08:32,845 1 INFO qualification_19_0_mutant odoo.modules.loading: loading auth_passkey/views/res_users_views.xml 
+2026-09-09 14:08:32,855 1 INFO qualification_19_0_mutant odoo.modules.loading: loading auth_passkey/security/ir.model.access.csv 
+2026-09-09 14:08:32,859 1 INFO qualification_19_0_mutant odoo.modules.loading: loading auth_passkey/security/security.xml 
+2026-09-09 14:08:32,872 1 INFO qualification_19_0_mutant odoo.modules.loading: Module auth_passkey loaded in 0.10s, 218 queries (+218 other) 
+2026-09-09 14:08:32,872 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module html_editor (13/15) 
+2026-09-09 14:08:32,953 1 INFO qualification_19_0_mutant odoo.registry: module html_editor: creating or updating database tables 
+2026-09-09 14:08:33,173 1 INFO qualification_19_0_mutant odoo.modules.loading: loading html_editor/security/ir.model.access.csv 
+2026-09-09 14:08:33,181 1 INFO qualification_19_0_mutant odoo.modules.loading: Module html_editor loaded in 0.31s, 1043 queries (+1043 other) 
+2026-09-09 14:08:33,181 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module iap (14/15) 
+2026-09-09 14:08:33,183 1 INFO qualification_19_0_mutant odoo.registry: module iap: creating or updating database tables 
+2026-09-09 14:08:33,213 1 INFO qualification_19_0_mutant odoo.modules.loading: loading iap/data/services.xml 
+2026-09-09 14:08:33,215 1 INFO qualification_19_0_mutant odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-09-09 14:08:33,218 1 INFO qualification_19_0_mutant odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-09-09 14:08:33,222 1 INFO qualification_19_0_mutant odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-09-09 14:08:33,234 1 INFO qualification_19_0_mutant odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-09-09 14:08:33,246 1 INFO qualification_19_0_mutant odoo.modules.loading: Module iap loaded in 0.06s, 182 queries (+182 other) 
+2026-09-09 14:08:33,246 1 INFO qualification_19_0_mutant odoo.modules.loading: Loading module web_unsplash (15/15) 
+2026-09-09 14:08:33,250 1 INFO qualification_19_0_mutant odoo.registry: module web_unsplash: creating or updating database tables 
+2026-09-09 14:08:33,266 1 INFO qualification_19_0_mutant odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-09-09 14:08:33,278 1 INFO qualification_19_0_mutant odoo.modules.loading: Module web_unsplash loaded in 0.03s, 93 queries (+93 other) 
+2026-09-09 14:08:33,278 1 INFO qualification_19_0_mutant odoo.modules.loading: 15 modules loaded in 1.50s, 4758 queries (+4758 extra) 
+2026-09-09 14:08:33,365 1 INFO qualification_19_0_mutant odoo.modules.loading: Modules loaded. 
+2026-09-09 14:08:33,368 1 INFO qualification_19_0_mutant odoo.registry: Registry changed, signaling through the database 
+2026-09-09 14:08:33,368 1 INFO qualification_19_0_mutant odoo.registry: Registry loaded in 5.956s 
+2026-09-09 14:08:33,368 1 INFO qualification_19_0_mutant odoo.service.server: Starting post tests 
+2026-09-09 14:08:33,377 1 INFO qualification_19_0_mutant odoo.addons.base.models.ir_qweb: Pregenerating assets bundles 
+2026-09-09 14:08:33,463 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1b64f44/api_doc.assets.min.js (id:14) 
+2026-09-09 14:08:33,468 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/5f9240e/bus.websocket_worker_assets.min.js (id:15) 
+2026-09-09 14:08:33,470 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/63ee1ff/html_editor.assets_history_diff.min.js (id:16) 
+2026-09-09 14:08:33,472 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/9f73438/html_editor.assets_image_cropper.min.js (id:17) 
+2026-09-09 14:08:33,510 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/4d8ad13/web.__assets_tests_call__.min.js (id:18) 
+2026-09-09 14:08:33,513 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/bd39c8f/web._assets_jquery.min.js (id:19) 
+2026-09-09 14:08:33,518 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/4bcc693/web.ace_lib.min.js (id:20) 
+2026-09-09 14:08:33,522 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/e672eaf/web.assets_clickbot.min.js (id:21) 
+2026-09-09 14:08:33,582 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c97da82/web.assets_emoji.min.js (id:22) 
+2026-09-09 14:08:33,809 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/4b4d75d/web.assets_frontend_lazy.min.js (id:23) 
+2026-09-09 14:08:33,813 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/10d8e96/web.assets_frontend_minimal.min.js (id:24) 
+2026-09-09 14:08:33,851 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/674f916/web.assets_tests.min.js (id:25) 
+2026-09-09 14:08:34,962 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/976a989/web.assets_unit_tests.min.js (id:26) 
+2026-09-09 14:08:35,691 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/43d86dc/web.assets_unit_tests_setup.min.js (id:27) 
+2026-09-09 14:08:36,293 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/22639b9/web.assets_web.min.js (id:28) 
+2026-09-09 14:08:36,297 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/fa709f0/web.chartjs_lib.min.js (id:29) 
+2026-09-09 14:08:36,302 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ea18231/web.fullcalendar_lib.min.js (id:30) 
+2026-09-09 14:08:36,312 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/0fefbae/web.qunit_suite_tests.min.js (id:31) 
+2026-09-09 14:08:36,327 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/8b0af72/web.report_assets_common.min.js (id:32) 
+2026-09-09 14:08:36,328 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.report_assets_pdf.min.js (id:33) 
+2026-09-09 14:08:37,011 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/93ae9a4/web.tests_assets.min.js (id:34) 
+2026-09-09 14:08:37,035 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c9c387d/web_tour.interactive.min.js (id:35) 
+2026-09-09 14:08:37,035 1 INFO qualification_19_0_mutant odoo.addons.base.models.ir_qweb: JS Assets bundles generated in 3.599576234817505 seconds 
+2026-09-09 14:08:37,255 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/8dfd90a/api_doc.assets.min.css (id:36) 
+2026-09-09 14:08:37,257 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/bus.websocket_worker_assets.min.css (id:37) 
+2026-09-09 14:08:37,259 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/f483e76/html_editor.assets_history_diff.min.css (id:38) 
+2026-09-09 14:08:37,260 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/491d521/html_editor.assets_image_cropper.min.css (id:39) 
+2026-09-09 14:08:37,261 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.__assets_tests_call__.min.css (id:40) 
+2026-09-09 14:08:37,262 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web._assets_jquery.min.css (id:41) 
+2026-09-09 14:08:37,263 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.ace_lib.min.css (id:42) 
+2026-09-09 14:08:37,264 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_clickbot.min.css (id:43) 
+2026-09-09 14:08:37,264 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_emoji.min.css (id:44) 
+2026-09-09 14:08:37,666 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/9cb6bc0/web.assets_frontend.min.css (id:45) 
+2026-09-09 14:08:38,045 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/9cb6bc0/web.assets_frontend_lazy.min.css (id:46) 
+2026-09-09 14:08:38,046 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_frontend_minimal.min.css (id:47) 
+2026-09-09 14:08:38,048 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_tests.min.css (id:48) 
+2026-09-09 14:08:38,049 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_unit_tests.min.css (id:49) 
+2026-09-09 14:08:38,595 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c6b7943/web.assets_unit_tests_setup.min.css (id:50) 
+2026-09-09 14:08:39,137 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/db640a1/web.assets_web.min.css (id:51) 
+2026-09-09 14:08:39,701 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/d2b9f46/web.assets_web_dark.min.css (id:52) 
+2026-09-09 14:08:40,271 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c4043e3/web.assets_web_print.min.css (id:53) 
+2026-09-09 14:08:40,273 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.chartjs_lib.min.css (id:54) 
+2026-09-09 14:08:40,274 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.fullcalendar_lib.min.css (id:55) 
+2026-09-09 14:08:40,275 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.qunit_suite_tests.min.css (id:56) 
+2026-09-09 14:08:40,578 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/d6a75ff/web.report_assets_common.min.css (id:57) 
+2026-09-09 14:08:40,580 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/daa1158/web.report_assets_pdf.min.css (id:58) 
+2026-09-09 14:08:41,121 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1e024f8/web.tests_assets.min.css (id:59) 
+2026-09-09 14:08:41,123 1 INFO qualification_19_0_mutant odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web_tour.interactive.min.css (id:60) 
+2026-09-09 14:08:41,123 1 INFO qualification_19_0_mutant odoo.addons.base.models.ir_qweb: CSS Assets bundles generated in 4.087882995605469 seconds 
+2026-09-09 14:08:41,136 1 INFO qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_browser: Starting TestBrowserConfirmation.test_browser_confirmation ... 
+2026-09-09 14:08:51,207 1 WARNING qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Chrome headless failed to start:
+[10:10:0909/140841.199719:ERROR:third_party/crashpad/crashpad/util/linux/socket.cc:120] recvmsg: Connection reset by peer (104)
+ 
+2026-09-09 14:08:51,207 1 INFO qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Chrome Log in: /tmp/odoo_tests/qualification_19_0_mutant/chrome_logs/chrome_log_20260909_140851_207501_test_browser_confirmation.txt 
+2026-09-09 14:08:51,207 1 INFO qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_browser.TestBrowserConfirmation.test_browser_confirmation: Removing chrome user profile "/tmp/tmpvwia933u_chrome_odoo" 
+2026-09-09 14:08:51,207 1 INFO qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_browser: skipped TestBrowserConfirmation.test_browser_confirmation : Failed to detect chrome devtools port after 10.0s. 
+2026-09-09 14:08:51,213 1 INFO qualification_19_0_mutant odoo.addons.base.models.ir_attachment: filestore gc 42 checked, 0 removed 
+2026-09-09 14:08:51,214 1 WARNING qualification_19_0_mutant odoo.tests.common: A child process was found, terminating it: psutil.Process(pid=15, name='cat', status='zombie', started='14:08:41') 
+2026-09-09 14:08:51,214 1 WARNING qualification_19_0_mutant odoo.tests.common: A child process was found, terminating it: psutil.Process(pid=16, name='cat', status='zombie', started='14:08:41') 
+2026-09-09 14:08:51,214 1 WARNING qualification_19_0_mutant odoo.tests.common: A child process was found, terminating it: psutil.Process(pid=18, name='chrome_crashpad', status='zombie', started='14:08:41') 
+2026-09-09 14:08:51,215 1 INFO qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_confirmation ... 
+2026-09-09 14:08:51,218 1 INFO qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS confirmation 
+2026-09-09 14:08:51,218 1 INFO qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_negative_create ... 
+2026-09-09 14:08:51,220 1 ERROR qualification_19_0_mutant odoo.sql_db: bad query: b'INSERT INTO "lab_qualification" ("create_date", "create_uid", "name", "quantity", "state", "unit_price", "write_date", "write_uid") VALUES (\'2026-09-09T14:08:51.215511\'::timestamp, 1, \'Negative\',  -1, \'draft\', 10.0, \'2026-09-09T14:08:51.215511\'::timestamp, 1) RETURNING "id"'
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (3, -1, 1, 1, Negative, draft, 2026-09-09 14:08:51.215511, 2026-09-09 14:08:51.215511, 10, null).
+ 
+2026-09-09 14:08:51,220 1 INFO qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS negative_create 
+2026-09-09 14:08:51,221 1 INFO qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_negative_write ... 
+2026-09-09 14:08:51,223 1 ERROR qualification_19_0_mutant odoo.sql_db: bad query: b' UPDATE "lab_qualification"\n                    SET "amount" = "__tmp"."amount"::double precision, "quantity" = "__tmp"."quantity"::int4, "write_date" = "__tmp"."write_date"::timestamp, "write_uid" = "__tmp"."write_uid"::int4\n                    FROM (VALUES (4,  -10.0,  -1, \'2026-09-09T14:08:51.215511\'::timestamp, 1)) AS "__tmp"("id", "amount", "quantity", "write_date", "write_uid")\n                    WHERE "lab_qualification"."id" = "__tmp"."id"\n                '
+ERROR: new row for relation "lab_qualification" violates check constraint "lab_qualification_quantity_nonnegative"
+DETAIL:  Failing row contains (4, -1, 1, 1, Preserve, draft, 2026-09-09 14:08:51.215511, 2026-09-09 14:08:51.215511, 10, -10).
+ 
+2026-09-09 14:08:51,224 1 INFO qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS negative_write 
+2026-09-09 14:08:51,224 1 INFO qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_quantity: Starting TestQuantity.test_zero ... 
+2026-09-09 14:08:51,226 1 INFO qualification_19_0_mutant odoo.addons.lab_qualification.tests.test_quantity: QUALIFICATION_PASS zero 
+2026-09-09 14:08:51,227 1 INFO qualification_19_0_mutant odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-09 14:08:51,227 1 INFO qualification_19_0_mutant odoo.service.server: 5 post-tests in 17.86s, 392 queries 
+2026-09-09 14:08:51,228 1 INFO qualification_19_0_mutant odoo.tests.stats: lab_qualification: 9 tests 10.09s 54 queries 
+2026-09-09 14:08:51,228 1 INFO qualification_19_0_mutant odoo.tests.result: 0 failed, 0 error(s) of 5 tests when loading database 'qualification_19_0_mutant' 
+2026-09-09 14:08:51,228 1 INFO qualification_19_0_mutant odoo.service.server: Initiating shutdown 
+2026-09-09 14:08:51,228 1 INFO qualification_19_0_mutant odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-09 14:08:51,628 1 INFO qualification_19_0_mutant odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

@@ -1,0 +1,83 @@
+{
+  "calls": [
+    {
+      "case": "known-reference",
+      "seconds": 283.03,
+      "cost_usd": 2.413644999999999,
+      "model": "claude-opus-5",
+      "outcome": "executed"
+    },
+    {
+      "case": "known-candidate",
+      "seconds": 243.54,
+      "cost_usd": 2.1336610000000005,
+      "model": "claude-opus-5",
+      "outcome": "executed"
+    },
+    {
+      "case": "held-positive-candidate",
+      "seconds": 120.47,
+      "cost_usd": 0.8835734999999999,
+      "model": "claude-opus-5",
+      "outcome": "executed"
+    },
+    {
+      "case": "held-negative-candidate",
+      "seconds": 142.84,
+      "cost_usd": 0.9150065,
+      "model": "claude-opus-5",
+      "outcome": "executed"
+    },
+    {
+      "case": "complete-N01-turn0",
+      "seconds": 540.27,
+      "cost_usd": 3.6498449999999996,
+      "model": "claude-opus-5",
+      "outcome": "completed"
+    },
+    {
+      "case": "complete-N01-turn1",
+      "seconds": 539.84,
+      "cost_usd": 3.3379255000000003,
+      "model": "claude-opus-5",
+      "outcome": "completed"
+    },
+    {
+      "case": "complete-N03-turn0",
+      "seconds": 669.15,
+      "cost_usd": 4.707001999999999,
+      "model": "claude-opus-5",
+      "outcome": "completed"
+    },
+    {
+      "case": "complete-N03-replay-turn0",
+      "seconds": 526.19,
+      "cost_usd": 3.7977810000000005,
+      "model": "claude-opus-5",
+      "outcome": "completed"
+    },
+    {
+      "case": "recovery-turn0",
+      "seconds": 481.1,
+      "cost_usd": null,
+      "model": "claude-opus-5",
+      "outcome": "controlled_interruption"
+    },
+    {
+      "case": "recovery-turn1",
+      "seconds": 400.59,
+      "cost_usd": 2.880514700000001,
+      "model": "claude-opus-5",
+      "outcome": "completed"
+    }
+  ],
+  "count": 10,
+  "reported_subtotal_usd": 24.7189542,
+  "unreported_calls": 1,
+  "summed_cli_seconds": 3947.0200000000004,
+  "configured_budget_usd": 92,
+  "human_interventions_after_authorization": 0,
+  "cost_scope": "CLI provider results only; excludes current Codex session/subagents, Docker infrastructure and operator review; total unknown due interrupted call",
+  "comparison": "descriptive only, no causal speed/cost gain",
+  "requested_settings": "Claude opus / medium; actual effort not returned; aggregate recovery usage also contains Sonnet/Haiku without attribution to individual children"
+}

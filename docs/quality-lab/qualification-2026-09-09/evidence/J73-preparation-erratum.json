@@ -1,0 +1,8 @@
+{
+  "case": "J73",
+  "detected_after_execution": true,
+  "preparation_error": "Le remplacement de ligne 3 par ligne 5 a laissé intacte la réponse RPC Ligne 3 avec majuscule ; quatre lignes importées et ligne 5 rendent aussi la numérotation ambiguë.",
+  "consequence": "Le dossier négatif cumule erreur de message et postconditions non prouvées. Le refus est cohérent mais ne mesure pas isolément la détection d’invariance insuffisante.",
+  "decision": "Réponse et fixtures originales conservées ; ne pas attribuer un effet spécifique à ce transfert. Adoption du rendu étayée séparément par D31/P62 et tests déterministes. Aucun appel supplémentaire au-delà du budget.",
+  "other_observations": "Le candidat a créé JOURNAL.md alors que le prompt demandait arrêt après jointure ; aucune étape aval du flow engagée."
+}

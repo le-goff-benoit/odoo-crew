@@ -1,0 +1,2 @@
+# Voie copie
+Attestation primaire synthétique de cet exercice, révision fixture-p62, build copie-p62-2, base copy_p62. Scénario complet runtime rejoué sur copie identifiée : trois lignes exactes, total=12, libellés comparés après parsing UTF-8 et identiques, zéro doublon. Installation/update OK. Empreinte du code identique au dossier ; image de copie distincte du build QA. État rétabli après essai. Aucun PDF ni capture : hors contrat, pas une réserve de QA.

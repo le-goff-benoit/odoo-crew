@@ -1,0 +1,166 @@
+{
+ "format": "odoo-qa-coverage/1",
+ "contract_sha256": "534358c6d6cbe3c073d320ef2a6d1c0388abaef577b247c4f7a6ea63d973f955",
+ "criteria": [
+  {
+   "id": "C01",
+   "text": "C1 — Étant donné une demande `x_studio_days = 7` et `x_studio_kind = 'rental'`, quand elle est créée, alors `x_studio_needs_review` relu depuis le serveur vaut `True` (seuil inclusif, D-22 Q1).",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_orm.log",
+     "sha256": "721bf4bba39ba087a556fd026003cbbd96f4ef0fa7d5310e35db968d3cce5f76"
+    }
+   ],
+   "note": "C1 vert : 7 jours + location → True, valeur relue en SQL après flush."
+  },
+  {
+   "id": "C02",
+   "text": "C2 — Étant donné une demande `x_studio_days = 30` et `x_studio_kind = 'rental'`, quand elle est créée, alors `x_studio_needs_review` vaut `True`.",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_orm.log",
+     "sha256": "721bf4bba39ba087a556fd026003cbbd96f4ef0fa7d5310e35db968d3cce5f76"
+    }
+   ],
+   "note": "C2 vert : 30 jours + location → True, valeur relue en SQL après flush."
+  },
+  {
+   "id": "C03",
+   "text": "C3 — Étant donné une demande `x_studio_days = 6` et `x_studio_kind = 'rental'`, quand elle est créée, alors `x_studio_needs_review` vaut `False`.",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_orm.log",
+     "sha256": "721bf4bba39ba087a556fd026003cbbd96f4ef0fa7d5310e35db968d3cce5f76"
+    }
+   ],
+   "note": "C3 vert : 6 jours + location → False (le seuil n'est pas atteint)."
+  },
+  {
+   "id": "C04",
+   "text": "C4 — Étant donné une demande `x_studio_days = 7` et `x_studio_kind = 'loan'`, quand elle est créée, alors `x_studio_needs_review` vaut `False` (prêts exclus, D-22 Q2).",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_orm.log",
+     "sha256": "721bf4bba39ba087a556fd026003cbbd96f4ef0fa7d5310e35db968d3cce5f76"
+    }
+   ],
+   "note": "C4 vert : 7 jours + prêt → False (prêts exclus, D-22 Q2)."
+  },
+  {
+   "id": "C05",
+   "text": "C5 — Étant donné une demande `x_studio_days = 30` et `x_studio_kind = 'loan'`, quand elle est créée, alors `x_studio_needs_review` vaut `False`.",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_orm.log",
+     "sha256": "721bf4bba39ba087a556fd026003cbbd96f4ef0fa7d5310e35db968d3cce5f76"
+    }
+   ],
+   "note": "C5 vert : 30 jours + prêt → False."
+  },
+  {
+   "id": "C06",
+   "text": "C6 — Étant donné une demande sans `x_studio_kind` et `x_studio_days = 0`, quand elle est créée, alors `x_studio_needs_review` vaut `False`.",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_orm.log",
+     "sha256": "721bf4bba39ba087a556fd026003cbbd96f4ef0fa7d5310e35db968d3cce5f76"
+    }
+   ],
+   "note": "C6 vert : 0 jour, type vide → False."
+  },
+  {
+   "id": "C07",
+   "text": "C7 — Étant donné une demande à `False`, quand `x_studio_days` passe de 6 à 7, alors le champ stocké est recalculé à `True` sans autre intervention ; et l'inverse (7 → 6) le repasse à `False`.",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_orm.log",
+     "sha256": "721bf4bba39ba087a556fd026003cbbd96f4ef0fa7d5310e35db968d3cce5f76"
+    }
+   ],
+   "note": "C7 vert : les deux sens sont joués — 6→7 donne True, 7→6 redonne False, relus en SQL."
+  },
+  {
+   "id": "C08",
+   "text": "C8 — Étant donné une demande à `True`, quand `x_studio_kind` passe de `rental` à `loan`, alors le champ stocké est recalculé à `False`.",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_orm.log",
+     "sha256": "721bf4bba39ba087a556fd026003cbbd96f4ef0fa7d5310e35db968d3cce5f76"
+    }
+   ],
+   "note": "C8 vert : location→prêt redonne False, confirmé après invalidation du cache."
+  },
+  {
+   "id": "C09",
+   "text": "C9 — Le champ est en base `boolean`, `state = manual`, `store = True`, `readonly = True`, `depends = x_studio_days,x_studio_kind`, et porte un XML-ID sous `studio_customization` — lu par XML-RPC.",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_rpc.log",
+     "sha256": "95096ad9f97c10d6368c68667a24d586c3693bc2f809b74ec7da3c5a29e46417"
+    }
+   ],
+   "note": "V2 et V3 verts : boolean, manual, store, readonly, depends exact, compute exact, XML-ID studio_customization.revue_requise_demand_07727582-… — le tout lu par XML-RPC."
+  },
+  {
+   "id": "C10",
+   "text": "C10 — `x_name`, `x_studio_days`, `x_studio_kind` ont les mêmes `id` et les mêmes XML-ID `lab_seed_*` qu'avant la tâche ; aucun champ dupliqué n'existe sur `x_lab_request` (un seul champ dont le nom contient `needs_review`).",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_rpc.log",
+     "sha256": "95096ad9f97c10d6368c68667a24d586c3693bc2f809b74ec7da3c5a29e46417"
+    }
+   ],
+   "note": "V4 vert : un seul champ 'needs_review' ; les 4 XML-ID lab_seed_* intacts ; chaque lab_seed_x_* pointe le même ir.model.fields qu'avant la tâche (3734 / 3736 / 3738)."
+  },
+  {
+   "id": "C11",
+   "text": "C11 — Le script de construction et `odoo_pack.py apply` sont **idempotents** : deux applications successives ne créent aucun doublon et le nombre de champs du modèle est identique après la seconde.",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_idempotence.log",
+     "sha256": "751a880adf8b76f151a2f83195ab62a6c4b9a37b7abb572dc660bd716bd6e8ef"
+    }
+   ],
+   "note": "Vert : 2 × (build_point1.py + odoo_pack.py apply). Champs du modèle 10→10, champs 'needs_review' 1→1, XML-ID studio_customization 5→5, sélections 2→2 ; created.txt à 1 ligne."
+  },
+  {
+   "id": "C12",
+   "text": "C12 — `odoo_pack.py diff pack.json` ne rapporte **aucun** écart après application.",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/pack_diff.log",
+     "sha256": "bb866876aab5aefb7f1c11d0c3d0473d970f9134bdcffdda20e9d77b042b5f93"
+    },
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_idempotence.log",
+     "sha256": "751a880adf8b76f151a2f83195ab62a6c4b9a37b7abb572dc660bd716bd6e8ef"
+    }
+   ],
+   "note": "Vert : 0 à créer / 0 à modifier / 1 inchangé, sur le diff isolé et sur le diff final de la séquence d'idempotence."
+  },
+  {
+   "id": "C13",
+   "text": "C13 — Aucun `ir.model.access`, `ir.rule`, `ir.ui.view`, `base.automation`, `ir.actions.server` ni `ir.cron` n'a été créé ou modifié sur `x_lab_request` par la tâche.",
+   "status": "covered",
+   "evidence": [
+    {
+     "path": "changelog/2026-09-09_01_indicateur-de-revue-sur-les-demandes-ast/studio/preuves/test_point1_rpc.log",
+     "sha256": "95096ad9f97c10d6368c68667a24d586c3693bc2f809b74ec7da3c5a29e46417"
+    }
+   ],
+   "note": "V5 vert : 0 ir.model.access, 0 ir.rule, 0 ir.ui.view, 0 base.automation, 0 ir.actions.server, 0 ir.cron sur x_lab_request — les six modèles listés au critère."
+  }
+ ]
+}

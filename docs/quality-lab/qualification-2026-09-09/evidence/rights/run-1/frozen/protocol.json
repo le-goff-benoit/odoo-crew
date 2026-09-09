@@ -1,0 +1,9 @@
+{
+  "series": "19.0",
+  "purpose": "Qualify actual company isolation under an ordinary user through ORM and XML-RPC, including import.",
+  "variants": [{"name": "reference", "rule_active": true, "expected_secure": true}, {"name": "missing_rule", "rule_active": false, "expected_secure": false}],
+  "budget": {"maximum_variants": 3, "maximum_seconds": 900, "paid_llm_calls": 0},
+  "contract": ["The user belongs only to company A and is neither superuser nor system administrator.", "Search returns A records only; direct reads and writes of B records are refused.", "An A write and an A import succeed with exact resulting values and identifiers.", "A B import is refused with no resulting row.", "Identical checks apply over authenticated XML-RPC using that same ordinary user.", "Administrator reads only audit postconditions; they never establish user permissions."],
+  "oracle": "oracle_orm.py and oracle_rpc.py are fixed before execution and separate from the tested model/rule. Both evaluate the same secure contract without knowing the variant. The driver compares their results to the separately fixed expected_secure.",
+  "limits": ["Synthetic model, Odoo 19.0 only", "No accounting or browser validation", "Import invokes the actual model.load server method, not a browser CSV wizard", "Two variants are calibration, not exhaustive security assurance"]
+}

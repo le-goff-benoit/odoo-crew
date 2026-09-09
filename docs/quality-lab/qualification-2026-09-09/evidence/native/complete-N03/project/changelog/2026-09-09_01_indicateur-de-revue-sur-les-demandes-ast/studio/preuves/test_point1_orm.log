@@ -1,0 +1,15 @@
+[OK ] C1 7 jours, location → revue requise — attendu True, obtenu True
+[OK ] C2 30 jours, location → revue requise — attendu True, obtenu True
+[OK ] C3 6 jours, location → pas de revue — attendu False, obtenu False
+[OK ] C4 7 jours, prêt → pas de revue — attendu False, obtenu False
+[OK ] C5 30 jours, prêt → pas de revue — attendu False, obtenu False
+[OK ] C6 0 jour, type vide → pas de revue — attendu False, obtenu False
+[OK ] C7 état initial à 6 jours — attendu False, obtenu False
+[OK ] C7 recalcul après 6 → 7 jours — attendu True, obtenu True
+[OK ] C7 recalcul après 7 → 6 jours — attendu False, obtenu False
+[OK ] C8 état initial en location — attendu True, obtenu True
+[OK ] C8 recalcul après location → prêt — attendu False, obtenu False
+[OK ] C8 valeur relue après invalidation du cache — attendu False, obtenu False
+nettoyage : 0 enregistrement(s) restant(s) sur x_lab_request
+
+SCÉNARIO ORM VERT — toutes les vérifications passent

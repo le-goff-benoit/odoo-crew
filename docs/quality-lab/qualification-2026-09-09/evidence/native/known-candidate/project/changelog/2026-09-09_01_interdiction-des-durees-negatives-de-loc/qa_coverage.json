@@ -1,0 +1,194 @@
+{
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "cf836fabee213c0ac8f5869ad864b6739b8098b8e1b49ff863c167b6b2a62540",
+  "criteria": [
+    {
+      "id": "A1",
+      "text": "**A1** — Étant donné une location valide, quand on crée `lab.rental` avec `days = -1`,\n      alors la base refuse : `psycopg2.errors.CheckViolation` au flush, sous `mute_logger('odoo.sql_db')`.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/03_a1_a5.log",
+          "sha256": "24d80ca750233e3827bffa04d291cd6ab57b28ca95a032ff44a8eadefc17b32f"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-runtime/run1-fresh-tags.log",
+          "sha256": "9da0b6271c66486e56415b4ebb2ef6959fa43e081865ef5c94f5595ad8be8e6f"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-runtime/run2-suite-complete.log",
+          "sha256": "22ef159106901226c489252ffb8e33937cf1d574390c00856504077f4d576611"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/module_client_copy_qa.md",
+          "sha256": "55b1f0b7074c7f4506358c7bbbe0a91ac3562180977dedc830a6fc2a00befb47"
+        }
+      ],
+      "note": "Copie lab_client : CheckViolation levee dans un savepoint (03_a1_a5.log, « A1 = OK »). Base QA neuve : test_create_negative_days_is_rejected vert dans les deux runs (6/6)."
+    },
+    {
+      "id": "A2",
+      "text": "**A2** — Étant donné une location existante à `days = 5`, quand on écrit `days = -3`,\n      alors la base refuse de la même manière et la valeur en base reste `5`.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/03_a1_a5.log",
+          "sha256": "24d80ca750233e3827bffa04d291cd6ab57b28ca95a032ff44a8eadefc17b32f"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-runtime/run1-fresh-tags.log",
+          "sha256": "9da0b6271c66486e56415b4ebb2ef6959fa43e081865ef5c94f5595ad8be8e6f"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-runtime/run2-suite-complete.log",
+          "sha256": "22ef159106901226c489252ffb8e33937cf1d574390c00856504077f4d576611"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/module_client_copy_qa.md",
+          "sha256": "55b1f0b7074c7f4506358c7bbbe0a91ac3562180977dedc830a6fc2a00befb47"
+        }
+      ],
+      "note": "03_a1_a5.log : « A2 = OK », valeur relue 5 par l'ORM et par SELECT direct, A2_intacte = True. Test test_write_negative_days_is_rejected vert sur lab_qa."
+    },
+    {
+      "id": "A3",
+      "text": "**A3** — Étant donné une création avec `days = 0`, alors elle réussit et `amount_total == 0.0`.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/03_a1_a5.log",
+          "sha256": "24d80ca750233e3827bffa04d291cd6ab57b28ca95a032ff44a8eadefc17b32f"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-runtime/run1-fresh-tags.log",
+          "sha256": "9da0b6271c66486e56415b4ebb2ef6959fa43e081865ef5c94f5595ad8be8e6f"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-runtime/run2-suite-complete.log",
+          "sha256": "22ef159106901226c489252ffb8e33937cf1d574390c00856504077f4d576611"
+        }
+      ],
+      "note": "03_a1_a5.log : « A3 = OK » (creation days=0 acceptee, amount_total 0.0) ; test_zero_days_is_accepted vert dans les deux runs."
+    },
+    {
+      "id": "A4",
+      "text": "**A4** — Étant donné `days = 4` et `daily_rate = 12.5`, alors `amount_total == 50.0`\n      (non-régression du compute stocké).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/03_a1_a5.log",
+          "sha256": "24d80ca750233e3827bffa04d291cd6ab57b28ca95a032ff44a8eadefc17b32f"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-runtime/run1-fresh-tags.log",
+          "sha256": "9da0b6271c66486e56415b4ebb2ef6959fa43e081865ef5c94f5595ad8be8e6f"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-runtime/run2-suite-complete.log",
+          "sha256": "22ef159106901226c489252ffb8e33937cf1d574390c00856504077f4d576611"
+        }
+      ],
+      "note": "03_a1_a5.log : « A4 = OK » (4 x 12.5 = 50.0) ; test_positive_days_amount_total vert dans les deux runs. Compute stocke inchange (business.py:19-22)."
+    },
+    {
+      "id": "A5",
+      "text": "**A5** — Étant donné une location valide créée puis un rejet (A1 ou A2) encadré par\n      `self.env.cr.savepoint()`, alors, après le rejet, la location valide est toujours lisible avec\n      ses valeurs intactes et le curseur reste utilisable pour la suite du test.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/03_a1_a5.log",
+          "sha256": "24d80ca750233e3827bffa04d291cd6ab57b28ca95a032ff44a8eadefc17b32f"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-runtime/run1-fresh-tags.log",
+          "sha256": "9da0b6271c66486e56415b4ebb2ef6959fa43e081865ef5c94f5595ad8be8e6f"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-runtime/run2-suite-complete.log",
+          "sha256": "22ef159106901226c489252ffb8e33937cf1d574390c00856504077f4d576611"
+        }
+      ],
+      "note": "03_a1_a5.log : « A5 = OK », curseur utilisable apres le rejet (A5_curseur_utilisable_count = 3) ; test_valid_rental_survives_rejection vert sur lab_qa (savepoint + relecture SQL)."
+    },
+    {
+      "id": "A6",
+      "text": "**A6** — Après `-u lab_rental` sur la copie, la contrainte existe réellement :\n      `SELECT conname, pg_get_constraintdef(oid) FROM pg_constraint WHERE conrelid='lab_rental'::regclass`\n      retourne `lab_rental_check_days_positive` avec `CHECK ((days >= 0))`. Preuve à joindre à la QA.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/02_a6_after_update.log",
+          "sha256": "2f13dd4c8edc0ffc563cd35db3fdaa3abf19653f5b39801757e9cf496cd26be5"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/09_final_state.log",
+          "sha256": "b6a856805959e75d8973014e61a1b71e96bd5b7fe062d89afc6edfb93c90a638"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/01_update.log",
+          "sha256": "b1253e90394abd89e217653e5066e0ce00986cade3fd4c383f122c195d0951ba"
+        }
+      ],
+      "note": "Apres -u explicite sur lab_client deja installee : pg_constraint retourne lab_rental_check_days_positive avec CHECK ((days >= 0)) (02_a6_after_update.log), reconfirme en etat final (09_final_state.log). La voie base neuve ne prouvait que la pose a l'installation."
+    },
+    {
+      "id": "A7",
+      "text": "**A7** — Comportement sur données violantes, à jouer **explicitement** puisque la copie est vide :\n      insérer une ligne `days = -3` en contournant l'ORM (`INSERT` SQL direct) **avant** l'update,\n      rejouer l'update, et constater/documenter que la contrainte n'est **pas** posée alors que l'update\n      se termine sans erreur (risque 1). Nettoyer la ligne, réappliquer, vérifier A6. Si ce contrôle ne\n      peut pas être joué, le dire explicitement dans la QA — pas de succès supposé.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/04_a7_before.log",
+          "sha256": "69db81c521e2f7f42266996d90afe2252823cd3bb57775e11fd6eafb477e8271"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/05_a7_update.log",
+          "sha256": "b5e6175fe07f6b61b899160ce2d5455e1a066f8ccaa6be48a54c164afe4d017f"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/06_a7_after.log",
+          "sha256": "4aa043c7ec6c693b6bfe667744715c3c55d77bd4f5d5be3c85dfece20b5afbdd"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/07_cleanup.log",
+          "sha256": "66147145dd578f4065e28b7934070f788c8c4ae01b5b328dcdfa6a4b8002dd9d"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/08_reapply_update.log",
+          "sha256": "bcf40385da957189ae3d134c68975a023d1fcbf57480c06c487843826c5b7269"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/09_final_state.log",
+          "sha256": "b6a856805959e75d8973014e61a1b71e96bd5b7fe062d89afc6edfb93c90a638"
+        }
+      ],
+      "note": "Scenario joue en entier : DROP CONSTRAINT + INSERT SQL direct days=-3 (04), rejeu de l'update qui se termine sans exception (05, odoo.schema « is violated by some row » en INFO/WARNING/ERROR), constat contrainte non reposee et ligne violante toujours presente (06), nettoyage (07), reapplication (08) et A6 revérifie (09). Le risque n1 de la revue est confirme, documente, et la procedure de reprise en decoule."
+    },
+    {
+      "id": "A8",
+      "text": "**A8** — Le message d'erreur configuré est bien celui remonté à l'utilisateur (non vide),\n      et le module ne contient plus aucune occurrence de `_sql_constraints`.",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-client/10_a8_message.log",
+          "sha256": "c79501f0ac9f5f81555c9d151b11243893b14d1f4879098c6340eaa637878f9a"
+        },
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/module_high_static_qa.md",
+          "sha256": "1ed04659dc01f6f5dd021b5405a4f630a1ed41d00d2e8bbdd09e570e38fe063f"
+        }
+      ],
+      "note": "Prouve : message configure non vide et identique a l'attendu sur l'objet models.Constraint (10_a8_message.log), aucune occurrence de _sql_constraints ni @api.constrains dans le module (grep de la voie statique). NON prouve : que ce message est bien celui remonte a l'utilisateur — la traduction en ValidationError se fait dans odoo/service/model.py:207-214 via _sql_error_to_message, chemin qu'aucune des trois voies ne traverse (TransactionCase et labctl shell restent en execution serveur directe). Condition obligatoire du critere non couverte."
+    },
+    {
+      "id": "A9",
+      "text": "**A9** — `labctl lint lab_rental` sans écart nouveau imputable au diff de la tâche.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": ".odoo-agents/flow-artifacts/d31-jours-negatifs/logs/r2-static/lint.log",
+          "sha256": "b0eedb907728188993c593a730b88b5f3dd243a032fda440e60cf2fb1e63a9d2"
+        }
+      ],
+      "note": "labctl lint lab_rental : ruff bloquant « All checks passed! », ruff conseils « aucun ». Seule erreur = cle author absente de __manifest__.py, dette anterieure (manifest non touche par le diff : version 19.0.1.0.0 et data inchanges). Aucun ecart nouveau imputable au diff."
+    }
+  ]
+}
