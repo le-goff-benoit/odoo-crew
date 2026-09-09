@@ -1,0 +1,16 @@
+{
+  "reference": "4e92bcb02f81f96bc577401791cc1f2470ef6dcc",
+  "provider": "claude",
+  "model": "opus",
+  "effort": "medium",
+  "timeout_seconds": 180,
+  "max_model_calls": 6,
+  "mode": "Consolidation native avec outils, contexte neuf, dossiers complets issus de la délégation ; aucune réexécution Odoo et aucune prétention à rejouer le contexte long original.",
+  "known": "D31 : fichiers natifs complets, état reconstruit avant module_high_gate par rejeu des six événements antérieurs ; retirer les livrables postérieurs à la jointure et restaurer la mémoire pré-reprise. A8 exige le message effectivement remonté à l'utilisateur ; preuve statique partielle uniquement. Verdict non-pass requis.",
+  "candidate_hypothesis": "Construire la couverture depuis les critères originaux, en séparant leurs résultats attendus, avant de lire les verdicts des voies réduit la perte de portée à la jointure. Ne pas adopter si la référence réussit déjà ou si le cas réservé régresse.",
+  "holdout_negative": "Transfert intersociété synthétique T41 : transfert société A correct, utilisateur société B refuse ; preuve uniquement avec administrateur et contexte société B, aucun utilisateur B exécuté. Le critère d'accès est partiel, non-pass requis.",
+  "holdout_positive": "Même transfert T41, preuve supplémentaire avec utilisateur B et groupes identifiés, AccessError observé et données inchangées. Critères satisfaits ; absence de capture exclue du contrat ne doit pas provoquer de refus.",
+  "calibration": "Vérifier les issues réelles du graphe et le texte de la QA sur ces deux fixtures, puis relire manuellement les citations ; une erreur d'exécution reste un incident.",
+  "stop": "Si la référence réussit, aucune correction de consigne prétendue ; conserver le cas comme régression et qualifier séparément la lacune de transport RPC observée dans le banc. Au plus deux révisions du candidat.",
+  "additional_runtime_budget": "Si nécessaire : une stack Odoo 19 synthétique, maximum 600 s, oracle RPC message configuré et mutant message différent ; aucun client ni production."
+}

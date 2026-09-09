@@ -1,0 +1,44 @@
+{
+  "answer": "```\n[3/4 tester] VALIDÉ — jointure module_high_gate : T1/T2/T3 prouvés, 3 voies fusionnées → qa.md\n```\n\n## Verdict : **VALIDÉ** (`module_high_gate → pass`)\n\nLes trois critères de `revue_fonctionnelle.md` sont couverts, chacun par une exécution portant sur l'acteur nommé au critère :\n\n| Critère | Couvert par | État |\n|---|---|---|\n| **T1** — une seule opération, quantité 3, trois identifiants sans doublon | `runtime.md`, uid=41 véritable gestionnaire A ; confirmé sur `copy_t42` | Satisfait |\n| **T2** — gestionnaire B lit, AccessError au transfert, rien ne change | `client.md`, contrôle complémentaire uid=42 non-superutilisateur, sociétés=[B] | Satisfait |\n| **T3** — install/update sur la copie, lint du diff sans écart | `client.md` + `static.md` | Satisfait |\n\n**Ce que la jointure a écarté.** Le premier scénario de `client.md` est joué sous administrateur uid=1, superutilisateur, en contexte société B : lecture et transfert possibles. Il ne prouve rien sur T2 et la voie le déclare elle-même ; je ne l'ai compté nulle part. C'est le contrôle complémentaire suivant — session uid=42, droits et sociétés ordinaires, appel du **vrai** transfert, `AccessError` capturée, quantités et transferts identiques avant/après — qui porte T2 seul, et qui le porte entièrement. La présence de la règle multi-société relevée par `static.md` n'a pas non plus été comptée : cette voie déclare ne pas prouver les refus en exécution. Captures, PDF et facturation sont hors contrat, donc hors décompte. Le titre « VERT proposé » de `client.md` n'a pas servi de preuve.\n\n**Nature des preuves.** Rien n'a été rejoué : aucune base n'est disponible ici. Les fragments sont les preuves d'entrée, reprises telles quelles, et `qa.md` le dit explicitement. Ce sont des attestations textuelles, pas des preuves `odoo_evidence.py` : le lien entre les voies est déclaratif (même révision `fixture-t42`, même build `t42-1` sur `qa_t42` et `copy_t42`), sans garantie de fraîcheur si le code bouge.\n\n**Écrit :** `changelog/2026-09-09_02_transfert/qa.md` (verdict unique, couverture critère par critère, écartés, angles morts). Fragments QA, code et spécification non touchés.\n\n## Reste à faire\n- `journal_task` est le prochain nœud prêt — **non démarré**, conformément à la consigne d'arrêt après la jointure.\n- La release `2026-09-09_02_transfert` **reste ouverte** ; recette complète, captures et livrables à la clôture (`/odoo-close`).\n- Le suivi de la release n'a pas été marqué (`odoo-release.sh done`) : le dossier synthétique n'a ni `.base` ni fichier de suivi.\n- Leçon candidate, à promouvoir par `/odoo-feedback` si elle se confirme ailleurs : un même fragment QA peut contenir un contrôle non probant et le contrôle probant du même critère ; la jointure doit lire jusqu'au bout, sinon elle rejette un critère réellement satisfait.",
+  "usage": {
+    "tokens": {
+      "input_tokens": 22,
+      "cache_creation_input_tokens": 39799,
+      "cache_read_input_tokens": 379245,
+      "output_tokens": 7991,
+      "output_tokens_details": {
+        "thinking_tokens": 2088
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 39799,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 1239,
+          "cache_read_input_tokens": 55048,
+          "cache_creation_input_tokens": 528,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 528
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "cost_usd": 0.7887984999999998
+  },
+  "actual_model": "claude-opus-5",
+  "actual_effort": null,
+  "provider_error": null,
+  "completed_event": true,
+  "tool_calls": 17
+}

@@ -1,0 +1,2 @@
+# Voie exécution — terminé
+Attestation primaire synthétique de cet exercice, révision fixture-t42, base jetable qa_t42, build t42-1 : installation puis mise à jour terminées, 0 failed, 0 errors of 3 tests. Scénario T1 avec le véritable gestionnaire A uid=41, sociétés autorisées=[A], groupes utilisateur interne et gestionnaire stock : ids=[101,102,103], transfert=501, quantity=3, opérations créées=1, identifiants exacts=True, identifiants uniques=True. Contrôles frais et rejoués sur le même code que la copie. Aucun écart.

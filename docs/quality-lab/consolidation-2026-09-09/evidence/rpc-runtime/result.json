@@ -1,0 +1,124 @@
+{
+  "checks": {
+    "create_configured_message": true,
+    "write_configured_message": true,
+    "valid_preserved": true,
+    "zero_allowed": true,
+    "no_failed_create_persisted": true,
+    "mutant_rejected": false,
+    "fresh_registry_after_restore": true
+  },
+  "calls": [
+    {
+      "label": "valid",
+      "exit_code": 0,
+      "response": {
+        "transport": "xmlrpc",
+        "outcome": "result",
+        "result": 1
+      }
+    },
+    {
+      "label": "zero",
+      "exit_code": 0,
+      "response": {
+        "transport": "xmlrpc",
+        "outcome": "result",
+        "result": 2
+      }
+    },
+    {
+      "label": "negative_create",
+      "exit_code": 1,
+      "response": {
+        "transport": "xmlrpc",
+        "outcome": "fault",
+        "fault_code": 2,
+        "fault_string": "The operation cannot be completed: Le nombre de jours d'une location ne peut pas être négatif."
+      }
+    },
+    {
+      "label": "negative_write",
+      "exit_code": 1,
+      "response": {
+        "transport": "xmlrpc",
+        "outcome": "fault",
+        "fault_code": 2,
+        "fault_string": "The operation cannot be completed: Le nombre de jours d'une location ne peut pas être négatif."
+      }
+    },
+    {
+      "label": "preserved",
+      "exit_code": 0,
+      "response": {
+        "transport": "xmlrpc",
+        "outcome": "result",
+        "result": [
+          {
+            "id": 1,
+            "days": 5,
+            "amount_total": 62.5
+          },
+          {
+            "id": 2,
+            "days": 0,
+            "amount_total": 0.0
+          }
+        ]
+      }
+    },
+    {
+      "label": "count",
+      "exit_code": 0,
+      "response": {
+        "transport": "xmlrpc",
+        "outcome": "result",
+        "result": 2
+      }
+    },
+    {
+      "label": "mutant_message",
+      "exit_code": 1,
+      "response": {
+        "transport": "xmlrpc",
+        "outcome": "fault",
+        "fault_code": 2,
+        "fault_string": "The operation cannot be completed: Le nombre de jours d'une location ne peut pas être négatif."
+      }
+    },
+    {
+      "label": "restored_message",
+      "exit_code": 1,
+      "response": {
+        "transport": "xmlrpc",
+        "outcome": "fault",
+        "fault_code": 2,
+        "fault_string": "The operation cannot be completed: Le nombre de jours d'une location ne peut pas être négatif."
+      }
+    }
+  ],
+  "prefix": "quality-native-ac46f1b800",
+  "reference_missing_transport": "actions autorisées : qa MODULE [options], lint MODULE, update, shell FICHIER",
+  "model_sha256": {
+    "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+    "__manifest__.py": "5e7900398e39fce48777430bdba33f779ed11406b13f1e46129535bae60dec1f",
+    "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+    "models/business.py": "c7aeeea79b1f02e104b2035fdfafe65aced13854c0147c9eded37738fd01b299",
+    "security/ir.model.access.csv": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6",
+    "tests/__init__.py": "f13ad538e591920bc3d4b355276fb31eae811777d7e407d974cc9e1dfa8124a9",
+    "tests/test_days_constraint.py": "104691edac794b30da8f4bc75505c512f2b3a0c719aa5fb40540c2edd5148aaf"
+  },
+  "sql_oracle": {
+    "exit_code": 0,
+    "checks": {
+      "zero_allowed": true,
+      "negative_create": true,
+      "negative_write": true,
+      "valid_record_preserved": true
+    },
+    "passed": true,
+    "log_sha256": "0b87fad88a01f0ca0f70d8bc5226280513444fbf3ec4e0563d9d68089477ba36",
+    "log": "oracle-000.log"
+  },
+  "seconds": 50.14
+}

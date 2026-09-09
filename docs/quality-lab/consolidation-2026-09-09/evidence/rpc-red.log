@@ -1,0 +1,57 @@
+test_rpc_preserves_business_fault_and_stops_http (test_odoo_native_rpc.NativeRpcTests) ... ERROR
+test_rpc_rejects_other_target_and_malformed_request_before_start (test_odoo_native_rpc.NativeRpcTests) ... ERROR
+test_rpc_success_is_response_not_test_verdict (test_odoo_native_rpc.NativeRpcTests) ... ERROR
+test_rpc_transport_error_still_stops_http (test_odoo_native_rpc.NativeRpcTests) ... ERROR
+
+======================================================================
+ERROR: test_rpc_preserves_business_fault_and_stops_http (test_odoo_native_rpc.NativeRpcTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/test_odoo_native_rpc.py", line 32, in test_rpc_preserves_business_fault_and_stops_http
+    with patch.object(self.lab, 'start_http'), patch.object(self.lab, 'stop_http') as stop, patch('xmlrpc.client.ServerProxy', return_value=rpc):
+  File "/usr/lib/python3.10/unittest/mock.py", line 1447, in __enter__
+    original, local = self.get_original()
+  File "/usr/lib/python3.10/unittest/mock.py", line 1420, in get_original
+    raise AttributeError(
+AttributeError: <odoo_bench_native.Lab object at 0x7eb76e7739a0> does not have the attribute 'start_http'
+
+======================================================================
+ERROR: test_rpc_rejects_other_target_and_malformed_request_before_start (test_odoo_native_rpc.NativeRpcTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/test_odoo_native_rpc.py", line 54, in test_rpc_rejects_other_target_and_malformed_request_before_start
+    with patch.object(self.lab, 'start_http') as start:
+  File "/usr/lib/python3.10/unittest/mock.py", line 1447, in __enter__
+    original, local = self.get_original()
+  File "/usr/lib/python3.10/unittest/mock.py", line 1420, in get_original
+    raise AttributeError(
+AttributeError: <odoo_bench_native.Lab object at 0x7eb76e7af550> does not have the attribute 'start_http'
+
+======================================================================
+ERROR: test_rpc_success_is_response_not_test_verdict (test_odoo_native_rpc.NativeRpcTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/test_odoo_native_rpc.py", line 45, in test_rpc_success_is_response_not_test_verdict
+    with patch.object(self.lab, 'start_http'), patch.object(self.lab, 'stop_http'), patch('xmlrpc.client.ServerProxy', return_value=rpc):
+  File "/usr/lib/python3.10/unittest/mock.py", line 1447, in __enter__
+    original, local = self.get_original()
+  File "/usr/lib/python3.10/unittest/mock.py", line 1420, in get_original
+    raise AttributeError(
+AttributeError: <odoo_bench_native.Lab object at 0x7eb76e7af700> does not have the attribute 'start_http'
+
+======================================================================
+ERROR: test_rpc_transport_error_still_stops_http (test_odoo_native_rpc.NativeRpcTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/test_odoo_native_rpc.py", line 63, in test_rpc_transport_error_still_stops_http
+    with patch.object(self.lab, 'start_http', side_effect=RuntimeError('HTTP indisponible')), patch.object(self.lab, 'stop_http') as stop:
+  File "/usr/lib/python3.10/unittest/mock.py", line 1447, in __enter__
+    original, local = self.get_original()
+  File "/usr/lib/python3.10/unittest/mock.py", line 1420, in get_original
+    raise AttributeError(
+AttributeError: <odoo_bench_native.Lab object at 0x7eb76e7ae9b0> does not have the attribute 'start_http'
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.008s
+
+FAILED (errors=4)

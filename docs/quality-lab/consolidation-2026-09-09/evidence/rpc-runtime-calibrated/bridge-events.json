@@ -1,0 +1,112 @@
+[
+  {
+    "args": [
+      "rpc",
+      "/tmp/odoo-consolidation-20260909/rpc-runtime-calibrated/project/valid.json"
+    ],
+    "seconds": 3.69,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "7db207f65482ad70efbb34c405642a85813ab9fde2909ec51ac711b4b4318c17",
+    "project_sha256": "926c1fb0485cb2033a540c639e4fb867e3c46a21bcf18ab411f06895b84cf353"
+  },
+  {
+    "args": [
+      "rpc",
+      "/tmp/odoo-consolidation-20260909/rpc-runtime-calibrated/project/zero.json"
+    ],
+    "seconds": 3.28,
+    "exit_code": 0,
+    "log": "bridge-001.log",
+    "sha256": "e23fe9f35e421fed5104dc5120fb0967fb6f36d2707837f9e8a1e84c51401697",
+    "project_sha256": "993862b8378568ced2e4d431539014f2e841d2707a3d620079ea49f0bd4a4127"
+  },
+  {
+    "args": [
+      "rpc",
+      "/tmp/odoo-consolidation-20260909/rpc-runtime-calibrated/project/negative_create.json"
+    ],
+    "seconds": 3.67,
+    "exit_code": 1,
+    "log": "bridge-002.log",
+    "sha256": "9037675ce53d9f6d79aed29ac3f706da06204d3298ccc349164fcede0560c07c",
+    "project_sha256": "4b572f61848995018a5fe89f4eeb70033c8f1ea2088e5b163b91b6db16d34c28"
+  },
+  {
+    "args": [
+      "rpc",
+      "/tmp/odoo-consolidation-20260909/rpc-runtime-calibrated/project/negative_write.json"
+    ],
+    "seconds": 3.3,
+    "exit_code": 1,
+    "log": "bridge-003.log",
+    "sha256": "9037675ce53d9f6d79aed29ac3f706da06204d3298ccc349164fcede0560c07c",
+    "project_sha256": "3e1a3b5bf116aa0d7bda266ce2bb241aeff6bb497494b15dbbdbc768a22b64e9"
+  },
+  {
+    "args": [
+      "rpc",
+      "/tmp/odoo-consolidation-20260909/rpc-runtime-calibrated/project/preserved.json"
+    ],
+    "seconds": 3.01,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "85f8161dd230e9678472ac8da21eafc3880e6a81973d6575b29686e2f46efea3",
+    "project_sha256": "cca73da7ae0e88e5d6df06fe45c5b793cfd8a09ec45cec9c106b5626767e1322"
+  },
+  {
+    "args": [
+      "rpc",
+      "/tmp/odoo-consolidation-20260909/rpc-runtime-calibrated/project/count.json"
+    ],
+    "seconds": 3.19,
+    "exit_code": 0,
+    "log": "bridge-005.log",
+    "sha256": "e23fe9f35e421fed5104dc5120fb0967fb6f36d2707837f9e8a1e84c51401697",
+    "project_sha256": "63763b0a40a22ce4546844af059f015280fd4516cd9649e28f9ed644f76643fa"
+  },
+  {
+    "args": [
+      "shell",
+      "/tmp/odoo-consolidation-20260909/rpc-runtime-calibrated/project/mutate_message.py"
+    ],
+    "seconds": 2.04,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "7476b6b21d1412984c1872cd5070283edc67ca8665ec1063591851b4f507d1b9",
+    "project_sha256": "74a9709a7d26e9339b0bbed59c23842161ec78d325c6a0200e2fb23f99019177"
+  },
+  {
+    "args": [
+      "rpc",
+      "/tmp/odoo-consolidation-20260909/rpc-runtime-calibrated/project/mutant_message.json"
+    ],
+    "seconds": 3.53,
+    "exit_code": 1,
+    "log": "bridge-007.log",
+    "sha256": "f94074fb37e836b4f55ed9700f90b4d36059556a5bd6562f9312de5c40988fd5",
+    "project_sha256": "e3feda0b661017d0bd6fdebc37882eaa3633eee7ed12cc1fdc13027193728d86"
+  },
+  {
+    "args": [
+      "shell",
+      "/tmp/odoo-consolidation-20260909/rpc-runtime-calibrated/project/mutate_message.py"
+    ],
+    "seconds": 1.95,
+    "exit_code": 0,
+    "log": "bridge-008.log",
+    "sha256": "355f21dbcee9607a7fb1d48cf23f9aed06325b124c13a1990945f225865d7242",
+    "project_sha256": "c41fb67e43d39545cb306c33e5dd820c3dd7dd92504170ae1ec8c64e51e81548"
+  },
+  {
+    "args": [
+      "rpc",
+      "/tmp/odoo-consolidation-20260909/rpc-runtime-calibrated/project/restored_message.json"
+    ],
+    "seconds": 3.89,
+    "exit_code": 1,
+    "log": "bridge-009.log",
+    "sha256": "9037675ce53d9f6d79aed29ac3f706da06204d3298ccc349164fcede0560c07c",
+    "project_sha256": "6bc09c9a89585adb68cfe5f15688c6737d0abbbfff66ee6d6e75eb34b08e0dfa"
+  }
+]

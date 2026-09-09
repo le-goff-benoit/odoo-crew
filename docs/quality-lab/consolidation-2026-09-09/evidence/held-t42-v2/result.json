@@ -1,0 +1,37 @@
+{
+  "status": "executed",
+  "returncode": 0,
+  "seconds": 110.7,
+  "new_events": [
+    {
+      "at": "2026-09-09T08:38:25+00:00",
+      "emitted": [
+        "journal_task"
+      ],
+      "evidence": [
+        "/work/changelog/2026-09-09_02_transfert/qa.md"
+      ],
+      "evidence_sha256": {
+        "/work/changelog/2026-09-09_02_transfert/qa.md": "e908181535ab9dc9842b93a35f58e659c6925b1e1145f1de2d6b0e2fd885ef25"
+      },
+      "node": "module_high_gate",
+      "note": "T1/T2/T3 prouves ; scenario admin de client.md ecarte, T2 porte par le controle uid=42 ; preuves reprises des fragments, aucune execution nouvelle",
+      "outcome": "pass"
+    }
+  ],
+  "claims": {},
+  "output_hashes": {
+    ".odoo-agents/PROJECT.md": "bbe0235295f698c14a5cab49df4fb53a285979f75c11ce289d550bc1b030896d",
+    ".odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+    ".odoo-agents/flows/.d31-jours-negatifs.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".odoo-agents/flows/.resource-locks.json.lock": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    ".odoo-agents/flows/d31-jours-negatifs.json": "cc22188470204bf2a2a73802439b00300b20cdf13df60586ae0d2535f61ae661",
+    ".odoo-agents/flows/resource-locks.json": "982abc04739e7961174054d434e153c5ef70a486bd90ef5d5ef3c64aa3508407",
+    "LAB.md": "36522c0f389049493d051f6c6c2191e9436c0ede70d3cf6b0b86628df1a22a5b",
+    "changelog/2026-09-09_02_transfert/client.md": "d22cf66149628462de013f7c0a91e8d1c7871c0165f748bdadc386794f0c999f",
+    "changelog/2026-09-09_02_transfert/qa.md": "e908181535ab9dc9842b93a35f58e659c6925b1e1145f1de2d6b0e2fd885ef25",
+    "changelog/2026-09-09_02_transfert/revue_fonctionnelle.md": "9640f198c3a487bba921fe8f9f858bd6877a900d23a14cd6555a2932ea9e4996",
+    "changelog/2026-09-09_02_transfert/runtime.md": "81fdef3ca27e1ac7002147d9c79de66c32f13587869794bd2708a9b38df75a9f",
+    "changelog/2026-09-09_02_transfert/static.md": "c213fb97ebcc22857cba57ee6bb7785c42e25bff2043b2cfa8c5149ca1fa1b50"
+  }
+}

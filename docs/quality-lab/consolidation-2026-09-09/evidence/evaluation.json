@@ -1,0 +1,90 @@
+[
+  {
+    "id": "known-reference",
+    "execution": "timeout",
+    "seconds": 180.01,
+    "model": "claude-opus-5",
+    "expected": "non-pass",
+    "gate": "pass",
+    "decision_conformant": false,
+    "completed_event": false,
+    "provider_error": null,
+    "changed_existing_files": [
+      ".odoo-agents/flows/d31-jours-negatifs.json",
+      ".odoo-agents/flows/resource-locks.json",
+      "changelog/2026-09-09_01_interdiction-des-durees-negatives-de-loc/README.md"
+    ],
+    "raw_sha256": "c73a1ccdf1e4a3b13c91d61e292d118b9f881222e02ad3b47ea61a3e0689f00a"
+  },
+  {
+    "id": "known-candidate",
+    "execution": "timeout",
+    "seconds": 180.01,
+    "model": "claude-opus-5",
+    "expected": "non-pass",
+    "gate": null,
+    "decision_conformant": null,
+    "completed_event": false,
+    "provider_error": null,
+    "changed_existing_files": [],
+    "raw_sha256": "b381b8ace01d9849b779f9cdfd7f0dcb5b193b182080070fc4b3e1d60961cd35"
+  },
+  {
+    "id": "held-negative-candidate",
+    "execution": "executed",
+    "seconds": 125.4,
+    "model": "claude-opus-5",
+    "expected": "non-pass",
+    "gate": "blocked",
+    "decision_conformant": true,
+    "completed_event": true,
+    "provider_error": null,
+    "changed_existing_files": [
+      ".odoo-agents/flows/d31-jours-negatifs.json"
+    ],
+    "raw_sha256": "3027a1c6564eabed22120ab297462bd6242bd845b31d1fde5e2d8455f52327f3"
+  },
+  {
+    "id": "held-positive-candidate",
+    "execution": "executed",
+    "seconds": 138.58,
+    "model": "claude-opus-5",
+    "expected": "pass",
+    "gate": "pass",
+    "decision_conformant": true,
+    "completed_event": true,
+    "provider_error": null,
+    "changed_existing_files": [
+      ".odoo-agents/flows/d31-jours-negatifs.json"
+    ],
+    "raw_sha256": "f13286dc7253b1b8c982cb4eb5ace1e047e5d7fb2d7e78ed0f7cbaca070cd5f6"
+  },
+  {
+    "id": "known-v2",
+    "execution": "timeout",
+    "seconds": 180.01,
+    "model": "claude-opus-5",
+    "expected": "non-pass",
+    "gate": null,
+    "decision_conformant": null,
+    "completed_event": false,
+    "provider_error": null,
+    "changed_existing_files": [],
+    "raw_sha256": "33b9bf970ba3e44eaaa758a5945748f24a842d533254845c33f0e4ec968ccce0"
+  },
+  {
+    "id": "held-t42-v2",
+    "execution": "executed",
+    "seconds": 110.7,
+    "model": "claude-opus-5",
+    "expected": "pass",
+    "gate": "pass",
+    "decision_conformant": true,
+    "completed_event": true,
+    "provider_error": null,
+    "changed_existing_files": [
+      ".odoo-agents/flows/d31-jours-negatifs.json"
+    ],
+    "raw_sha256": "b2e7a567bd4bab6b856dfd4bd197f0138b69a079638f1b86477bfa9fa4380f44"
+  }
+]

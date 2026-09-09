@@ -126,6 +126,10 @@ distingue les agents réellement démarrés des étapes simplement réservées e
 précise les prochaines dimensions à tester. Le mode de délégation du banc
 reste expérimental.
 
+La [poursuite sur la consolidation et le RPC](docs/quality-lab/consolidation-2026-09-09/README.md)
+reproduit le faux succès de QA et ajoute au banc la vérification du message
+réellement retourné par Odoo. Les deux variantes de consigne restent non adoptées.
+
 ## Pour aller plus loin
 
 | Vous souhaitez… | Documentation |

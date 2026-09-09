@@ -22,12 +22,22 @@ import tarfile
 import threading
 import time
 import uuid
+import xmlrpc.client
 
 from odoo_bench import atomic_json, digest, now, parse_output, provider_environment
 from odoo_test_result import inspect_log
 
 ROOT = Path(__file__).resolve().parents[1]
 HOME_PATH = Path.home()
+
+
+class RpcTransport(xmlrpc.client.Transport):
+    def make_connection(self, host):
+        connection = super().make_connection(host)
+        connection.timeout = 5
+        return connection
+
+
 CLIENT = '''#!/usr/bin/env python3
 import json, socket, sys
 s=socket.socket(socket.AF_UNIX); s.connect('/bridge/control.sock')
@@ -264,36 +274,79 @@ class Lab:
         r.check_returncode()
         if 'LAB_SEEDED' not in r.stdout:
             raise RuntimeError('amorçage non attesté')
+        self.url = None
         if self.case['kind'] == 'studio':
-            # Port aléatoire de boucle locale seulement, aucune exposition distante.
-            r = self.compose(['run', '-d', '--no-deps', '--name', self.prefix + '-web',
-                              'odoo', 'odoo', '-c', '/etc/odoo/odoo.conf',
-                              '-d', 'lab_client', '--db-filter=^lab_client$', '--max-cron-threads=0'])
-            r.check_returncode()
-            networks = json.loads(execute(['docker', 'inspect', self.prefix + '-web', '--format={{json .NetworkSettings.Networks}}']).stdout)
-            target_ip = next(iter(networks.values()))['IPAddress']
-            self.proxy = Proxy(('127.0.0.1', 0), ProxyHandler)
-            self.proxy.target = (target_ip, 8069)
-            threading.Thread(target=self.proxy.serve_forever, daemon=True).start()
-            self.url = 'http://127.0.0.1:' + str(self.proxy.server_address[1])
-            import xmlrpc.client
-            for _ in range(90):
-                try:
-                    with xmlrpc.client.ServerProxy(self.url + '/xmlrpc/2/common') as rpc:
-                        if not rpc.authenticate('lab_client', 'admin', 'admin', {}):
-                            raise RuntimeError('auth synthétique non prête')
-                    break
-                except Exception:
-                    time.sleep(.5)
-            else:
-                (self.folder / 'web-error.log').write_text(execute(['docker', 'logs', self.prefix + '-web']).stdout)
-                raise RuntimeError('HTTP synthétique indisponible')
-        else:
-            self.url = None
+            self.start_http()
         atomic_json(self.folder / 'environment.json', {
             'prefix': self.prefix, 'image_id': execute(['docker', 'image', 'inspect', '--format={{.Id}}', 'odoo-qa:19.0']).stdout.strip(),
             'series': '19.0', 'database': 'lab_client', 'qa_database': 'lab_qa', 'url': self.url,
             'initial_project': source_hashes(self.project)})
+
+    def start_http(self):
+        # Port aléatoire de boucle locale seulement, aucune exposition distante.
+        r = self.compose(['run', '-d', '--no-deps', '--name', self.prefix + '-web',
+                          'odoo', 'odoo', '-c', '/etc/odoo/odoo.conf',
+                          '-d', 'lab_client', '--db-filter=^lab_client$', '--max-cron-threads=0'])
+        r.check_returncode()
+        networks = json.loads(execute(['docker', 'inspect', self.prefix + '-web', '--format={{json .NetworkSettings.Networks}}']).stdout)
+        target_ip = next(iter(networks.values()))['IPAddress']
+        self.proxy = Proxy(('127.0.0.1', 0), ProxyHandler)
+        self.proxy.target = (target_ip, 8069)
+        threading.Thread(target=self.proxy.serve_forever, daemon=True).start()
+        self.url = 'http://127.0.0.1:' + str(self.proxy.server_address[1])
+        for _ in range(90):
+            try:
+                with xmlrpc.client.ServerProxy(self.url + '/xmlrpc/2/common', transport=RpcTransport()) as rpc:
+                    if not rpc.authenticate('lab_client', 'admin', 'admin', {}):
+                        raise RuntimeError('auth synthétique non prête')
+                break
+            except Exception:
+                time.sleep(.5)
+        else:
+            (self.folder / 'web-error.log').write_text(execute(['docker', 'logs', self.prefix + '-web']).stdout)
+            raise RuntimeError('HTTP synthétique indisponible')
+
+    def stop_http(self):
+        if self.proxy:
+            self.proxy.shutdown()
+            self.proxy.server_close()
+            self.proxy = None
+        execute(['docker', 'rm', '-f', self.prefix + '-web'], timeout=30)
+        self.url = None
+
+    def rpc(self, script):
+        """Traverser le vrai service, dans le modèle et la base synthétiques du cas.
+
+        Un serveur neuf à chaque appel évite de tester un ancien registre après
+        sync/update. Le code de sortie signale le Fault, pas un verdict de QA.
+        """
+        request = json.loads(script.read_text())
+        if (not isinstance(request, dict) or set(request) != {'model', 'method', 'args', 'kwargs'}
+                or request['model'] != self.case['model']
+                or not isinstance(request['method'], str)
+                or not re.fullmatch(r'[a-zA-Z][a-zA-Z0-9_]*', request['method'])
+                or not isinstance(request['args'], list) or not isinstance(request['kwargs'], dict)):
+            raise ValueError('RPC : model du cas, method publique, args liste et kwargs objet requis ; aucune cible externe')
+
+        try:
+            self.start_http()
+            with xmlrpc.client.ServerProxy(self.url + '/xmlrpc/2/common', transport=RpcTransport()) as common:
+                uid = common.authenticate('lab_client', 'admin', 'admin', {})
+            if not uid:
+                raise RuntimeError('authentification synthétique RPC refusée')
+            try:
+                with xmlrpc.client.ServerProxy(self.url + '/xmlrpc/2/object', transport=RpcTransport(), allow_none=True) as rpc:
+                    value = rpc.execute_kw('lab_client', uid, 'admin', request['model'], request['method'],
+                                           request['args'], request['kwargs'])
+                result = {'transport': 'xmlrpc', 'outcome': 'result', 'result': value}
+                code = 0
+            except xmlrpc.client.Fault as exc:
+                result = {'transport': 'xmlrpc', 'outcome': 'fault',
+                          'fault_code': exc.faultCode, 'fault_string': exc.faultString}
+                code = 1
+            return subprocess.CompletedProcess(['rpc'], code, json.dumps(result, ensure_ascii=False, default=str) + '\n')
+        finally:
+            self.stop_http()
 
     def handle(self, args):
         with self.lock:
@@ -327,8 +380,13 @@ class Lab:
                 if script.stat().st_size > 1024 * 1024:
                     raise ValueError('script trop volumineux')
                 r = self.odoo([], script.read_text())
+            elif args[0] == 'rpc' and len(args) == 2 and self.case['module']:
+                script = inside(args[1], self.project)
+                if script.stat().st_size > 1024 * 1024:
+                    raise ValueError('requête trop volumineuse')
+                r = self.rpc(script)
             else:
-                raise ValueError('actions autorisées : qa MODULE [options], lint MODULE, update, shell FICHIER')
+                raise ValueError('actions autorisées : qa MODULE [options], lint MODULE, update, shell FICHIER, rpc FICHIER.json (module)')
             index = len(self.events)
             log = f'bridge-{index:03d}.log'
             (self.folder / log).write_text(r.stdout)
@@ -355,9 +413,7 @@ class Lab:
                 'log_sha256': digest(result.stdout.encode()), 'log': history.name}
 
     def close(self):
-        if self.proxy:
-            self.proxy.shutdown(); self.proxy.server_close()
-        execute(['docker', 'rm', '-f', self.prefix + '-web'], timeout=30)
+        self.stop_http()
         self.compose(['down', '--volumes', '--remove-orphans'], timeout=60)
 
 
@@ -444,6 +500,12 @@ def _trial(folder, pack, case, provider, config, timeout):
                        'Utilise `/bridge/labctl update` pour mettre à niveau le module sur la copie existante lab_client. '
                        'Utilise `/bridge/labctl shell CHEMIN.py` pour exécuter un fichier de /work dans le vrai shell Odoo '
                        'sur lab_client ; env est disponible, appelle env.cr.commit() pour conserver les écritures voulues. '
+                       'Pour un module, `/bridge/labctl rpc CHEMIN.json` traverse le vrai XML-RPC sur lab_client '
+                       'avec admin synthétique et un serveur neuf à chaque appel. Le JSON contient exactement '
+                       '`model` (modèle du cas), `method` (publique), `args` (liste) et `kwargs` (objet). '
+                       'Le résultat JSON conserve la réponse ou le Fault intégral (sortie 1) ; '
+                       'vérifie le message attendu et les postconditions, un Fault quelconque ne prouve pas le critère. '
+                       'Ce passage RPC ne prouve ni le rendu visuel ni les droits d’un autre utilisateur. '
                        'Les journaux complets de tes appels sont rendus par le pont ; sauvegarde tes preuves dans le projet. '
                        'Ne tente pas d’installer Docker ni de démarrer une autre stack. '
                        'La copie existante est déjà initialisée avec le module et les données synthétiques. '

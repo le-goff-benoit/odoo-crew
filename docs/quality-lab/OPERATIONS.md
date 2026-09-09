@@ -157,6 +157,24 @@ QA, mise à jour de la copie et scripts ORM dans
 les conteneurs du banc. Aucun socket Docker ni dossier client n'est transmis au
 modèle. Les cas, correcteurs et rapports du dépôt sont masqués pendant ses appels.
 Studio emploie un proxy HTTP de boucle locale vers sa seule copie synthétique.
+Pour les modules, `labctl rpc FICHIER.json` ouvre un serveur temporaire neuf et
+appelle le vrai XML-RPC sous l'administrateur synthétique. Le fichier doit porter
+exactement `model` (celui du cas), `method` (publique), `args` (liste), `kwargs`
+(objet) ; aucune URL, base ou identité externe n'est acceptée. Exemple :
+
+```json
+{"model":"lab.rental","method":"create","args":[{"name":"Essai RPC","days":-1}],"kwargs":{}}
+```
+
+Un Fault est conservé intégralement et renvoie le code **1**. Pour un scénario
+négatif, vérifier son message et les postconditions ; ce code seul n'est pas un
+verdict de test. Le service est arrêté après l'appel ; les commandes restent
+sérialisées et le module est synchronisé avant chaque commande. Ce transport
+ne prouve pas le rendu navigateur ni les droits d'un utilisateur ordinaire.
+L'oracle SQL reste séparé de la preuve RPC. En 19.0, le message enregistré dans
+`ir.model.constraint` peut primer sur le texte Python : la [contre-épreuve RPC](consolidation-2026-09-09/README.md)
+conserve l'essai de mutation inopérant puis sa correction.
+
 Par défaut, les rôles sont appliqués par l'orchestrateur et la délégation est
 désactivée. Le mode expérimental `--delegate-claude` expose les sous-agents
 Claude et ajoute un relevé `delegation` à chaque tour : identifiants, rôle,

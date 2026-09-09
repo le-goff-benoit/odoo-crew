@@ -72,3 +72,10 @@ Elle ne prouve pas une supériorité statistique ni une amélioration générale
   Compteurs corrigés, option du banc expérimentale installée, 129 tests verts.
   Consigne de consolidation testée puis non adoptée : aucun gain démontré.
   Preuves, réserves et prochains essais : [délégation et reprise](delegation-2026-09-09/README.md).
+
+- 9 septembre, poursuite : faux `pass` reproduit à la jointure D31 sur fichiers complets.
+  Six appels Claude : deux variantes inachevées sur D31, trois cas courts conformes ;
+  variantes retirées, défaut de consolidation maintenu ouvert.
+  Transport RPC des modules ajouté : message réel et données vérifiés, mutation
+  initiale inopérante conservée puis contre-épreuve corrigée, oracle SQL 4/4.
+  Deux stacks nettoyées ; 136 tests verts. [Résultats et limites](consolidation-2026-09-09/README.md).

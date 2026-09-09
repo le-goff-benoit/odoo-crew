@@ -1,0 +1,8 @@
+{
+  "reason": "V1 atteint 180 s avant verdict sur dossier complet. V2 explicite le traitement immédiat de la preuve absente, sans réaudit complet du code.",
+  "max_additional_model_calls": 2,
+  "settings": "Claude opus medium 180 s identiques",
+  "known": "D31 mêmes fichiers",
+  "new_holdout": "T42 : gestionnaire B autorisé à lire les trois unités, transfert interdit ; les deux appels et les postconditions sont prouvés sous ses droits ordinaires. La lecture autorisée ne doit pas provoquer de faux refus. Contrat et preuves dérivés de T41 en changeant explicitement cette seule règle.",
+  "rule": "Aucune adoption si issue attendue non enregistrée dans le flow ou si exécution inachevée."
+}

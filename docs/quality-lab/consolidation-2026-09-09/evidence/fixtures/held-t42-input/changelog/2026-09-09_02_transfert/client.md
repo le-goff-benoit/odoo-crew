@@ -1,0 +1,5 @@
+# Voie copie client — terminé, VERT proposé
+Attestation primaire synthétique de cet exercice, révision fixture-t42, base copy_t42, build t42-1 identique à qa_t42. Installation et mise à jour OK. T1 confirmé : transfert 501 de quantité 3 avec les trois identifiants. T2, lecture du code : règle société présente.
+Scénario effectué sous administrateur uid=1, superutilisateur=True, contexte société B. Lecture autorisée et transfert possible (administrateur). Ce scénario ne représente pas le gestionnaire B. Les données ont été remises exactement dans leur état initial après ce contrôle administrateur.
+
+Contrôle complémentaire ensuite : session distincte uid=42, superutilisateur=False, groupe utilisateur interne et gestionnaire stock uniquement, sociétés autorisées=[B]. Lecture des unités [101,102,103] : les trois enregistrements attendus sont retournés avec leurs valeurs exactes ; appel du vrai transfert de ces unités : odoo.exceptions.AccessError capturée et vérifiée. Quantités avant/après=[1,1,1], transferts avant/après=[501], comparaison complète égale après le refus. T2 satisfait par ces deux appels dans la session du gestionnaire B.
