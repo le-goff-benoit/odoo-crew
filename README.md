@@ -1,183 +1,64 @@
-# Agents Odoo — Claude Code & Codex
+![Votre équipe d’agents Odoo, réunie autour de votre projet](docs/assets/agents-odoo-banner.png)
 
-**Des agents qui prennent le temps de comprendre le métier, réalisent les changements et vérifient le résultat.**
+# Votre équipe d’agents pour les projets Odoo
 
-Ce projet donne à Claude Code et Codex une méthode de travail commune pour vos
-projets Odoo : analyser la demande, choisir une solution adaptée, la réaliser,
-la tester et conserver les décisions utiles pour la suite.
+**Du besoin métier à la livraison, avancez avec des spécialistes à vos côtés.**
 
-Il accompagne les questions fonctionnelles, le support, les développements et
-les configurations Studio, jusqu’à la préparation d’une livraison.
+Vous êtes consultant fonctionnel ou chef de projet Odoo ? Confiez vos demandes
+à une équipe d’agents qui analyse, réalise et vérifie le travail. Vous gardez
+la main sur les décisions métier, avec un suivi des résultats et des prochaines étapes.
 
-[Installer ou mettre à jour](INSTALL.md) · [Voir les améliorations éprouvées](docs/IMPROVEMENTS.md)
+Disponible dans **Claude Code et Codex**, avec une méthode commune et des
+consignes adaptées à la version Odoo de votre projet.
 
-## Ce qui fait la différence
+[Commencer](INSTALL.md) · [Découvrir les résultats des essais](docs/quality-lab/README.md)
 
-### Comprendre le besoin avant de développer
+## À chacun son rôle, à vous le pilotage
 
-L’analyste confronte la demande au fonctionnement réel du client et aux
-possibilités d’Odoo. Il vérifie si le standard répond déjà au besoin, compare
-configuration, Studio et développement, et relève les décisions manquantes.
-L’objectif : une solution utile au métier et dont l’entretien reste maîtrisé.
-
-### Garder le contexte du client d’une demande à l’autre
-
-Les règles métier, les décisions prises et les pièges connus sont conservés dans
-le projet. Une nouvelle intervention retrouve ce contexte, même dans une nouvelle
-conversation. Les décisions remplacées restent identifiables pour éviter de
-réappliquer une ancienne règle.
-
-### Tester ce qui compte pour le client
-
-Les contrôles s’appuient sur des résultats attendus concrets : un montant juste,
-un document validé qui reste inchangé, une règle appliquée au bon utilisateur.
-Les changements sensibles — droits, comptabilité, facturation ou données
-existantes — demandent des vérifications renforcées sur une copie client.
-Les tests exécutés et leurs limites accompagnent le verdict.
-
-### Avancer avec un suivi clair
-
-Le travail est réparti entre analyse, réalisation et contrôle. Vous pouvez suivre
-l’étape en cours, ce qui est terminé et ce qui attend une décision.
-Pour plusieurs demandes, un plan organise les priorités et les dépendances,
-puis permet de reprendre le travail. Une validation doit être réexaminée si les
-éléments sur lesquels elle repose ont changé.
-
-### Retrouver la même méthode dans Claude Code et Codex
-
-Les deux outils utilisent les mêmes définitions de rôles et les mêmes règles de
-travail. Le dispositif tient compte de la version du projet : Odoo 17, 18, 19 et
-les versions SaaS référencées. Les différences entre versions sont documentées
-pour guider l’analyse et le développement.
-
-### Améliorer les agents à partir de leurs résultats
-
-Un banc d’essai permet de soumettre des demandes Odoo aux agents, d’observer leurs
-erreurs et de tester des corrections de leurs instructions. Une amélioration
-est adoptée après vérification. Les cas et les résultats sont disponibles dans
-ce dépôt pour adapter les prochaines expériences à vos besoins.
-
-## Au quotidien
-
-Après [installation](INSTALL.md), ouvrez une conversation dans votre projet et
-décrivez votre demande. Pour une évolution, utilisez par exemple :
-
-```text
-/odoo-new Lors de la validation d’une commande, prévenir le commercial
-si la référence client est absente. Une commande déjà validée doit rester inchangée.
-```
-
-Le parcours habituel est :
-
-**Comprendre → réaliser → vérifier → conserver les décisions et les résultats.**
-
-Les étapes s’enchaînent sans redemander votre accord à chaque passage.
-L’agent revient vers vous lorsqu’une décision métier manque ou qu’un blocage
-empêche de poursuivre correctement.
-
-| Votre besoin | Point d’entrée |
+| Votre spécialiste | Ce qu’il vous apporte |
 |---|---|
-| Développer ou configurer une évolution | `/odoo-new` |
-| Organiser plusieurs demandes avant de commencer | `/odoo-plan` |
-| Estimer les minutes d'exécution par agent et lot de travail | `/odoo-estimate` |
-| Lancer ou reprendre les tâches du plan | `/odoo-start` |
-| Vérifier l’ensemble et préparer la livraison | `/odoo-close` |
-| Signaler une règle client ou une leçon à retenir | `/odoo-feedback "votre remarque"` |
-| Tester et améliorer les agents et leurs instructions | `/odoo-improve` |
-| Déclarer les accès à un environnement | `/odoo-env` |
+| **Analyste fonctionnel** | Clarifie le besoin, vérifie ce qu’Odoo sait déjà faire et vous aide à choisir entre standard, Studio et développement. |
+| **Développeur** | Réalise les évolutions spécifiques et leurs tests, en tenant compte des règles de votre projet. |
+| **Expert Studio** | Configure les champs, écrans et automatisations, avec un suivi des changements. |
+| **Responsable qualité** | Vérifie les résultats attendus et signale ce qui reste à corriger avant la livraison. |
+| **Support** | Recherche la cause d’un problème et propose un contournement ou la suite à donner. |
 
-Vous pouvez aussi poser une question fonctionnelle, confier un ticket de support
-ou demander une relecture en langage naturel. Le rôle adapté est alors mobilisé.
+L’agent principal coordonne ces rôles, organise les étapes et vous sollicite
+lorsqu’une décision est nécessaire. La préparation de livraison rassemble
+les changements, les résultats des contrôles et la documentation métier.
 
-L'[estimation des agents](docs/EFFORT.md) donne une fourchette par tâche et rôle,
-avec hypothèses et niveau de confiance. À la clôture, un bilan compare prévision
-et durées mesurées, reprend les jetons et les coûts IA disponibles et s'exporte
-en CSV. Les prévisions initiales restent conservées ; vous appliquez vos propres
-barèmes. Les premières estimations reposent sur un jugement explicite, à calibrer
-avec les releases exécutées.
+## Ce que vous gagnez au quotidien
 
-## Des contrôles adaptés au moment du projet
+- **Des demandes mieux cadrées** : les questions et choix manquants remontent avant la réalisation.
+- **Un projet qui garde sa mémoire** : les règles client et décisions prises sont retrouvées d’une intervention à l’autre.
+- **Une release plus facile à piloter** : tâches, dépendances, avancement et points bloquants restent visibles.
+- **Une base pour vos estimations** : temps d’exécution prévu par agent et par tâche, puis comparaison au réalisé. Vous appliquez vos propres barèmes.
+- **Une livraison étayée** : des vérifications sur une copie locale et des résultats consultables. Guides utilisateur et communications client sont disponibles sur demande.
 
-Chaque demande reçoit une vérification ciblée. À la clôture d’une **release**
-(un ensemble de changements à livrer), une vérification complète contrôle leur
-bon fonctionnement ensemble. Les changements sensibles sont contrôlés dès leur
-réalisation.
+## Commencez par une demande concrète
 
-La livraison rassemble les demandes, les décisions, les résultats des tests et
-une documentation métier. Un guide Word/PDF, des captures ou une communication
-client peuvent être demandés selon le besoin. La clôture ne déploie pas
-automatiquement les changements et n’envoie pas de message au client.
+Après l’[installation](INSTALL.md), ouvrez votre projet dans Claude Code ou Codex
+et décrivez le résultat souhaité :
 
-Les essais se font normalement sur une copie locale du client. La production
-reste en lecture seule par défaut ; toute écriture nécessite une confirmation
-explicite pour l’opération concernée.
+> « Prépare une release pour ces trois demandes, relève les décisions à prendre
+> et estime le temps d’exécution des agents pour chaque tâche. »
 
-## Une qualité vérifiée, avec des limites visibles
-
-La campagne du 9 septembre 2026 a conduit à des modifications effectives des
-agents et des outils : tests SQL, précision des règles métier, transmission du
-contexte et reprise des tâches notamment.
-
-- **20 parcours terminés avec leurs contrôles métier réussis**, sur Odoo 19.
-- **124 tests d’outillage réussis** sous Python 3.10 et 3.12 pour la campagne initiale.
-- Les incidents d’essai et les réserves de qualité sont conservés dans le rapport.
-
-Ces résultats portent sur des cas synthétiques : ils ne garantissent pas toutes
-les situations client. Ils ne démontrent ni une supériorité générale d’un modèle,
-ni un gain global de vitesse. Les prochaines améliorations doivent à leur tour
-être mises à l’épreuve.
-
-[Lire les résultats et leurs limites](docs/quality-lab/native-2026-09-09/README.md)
-
-Un [essai complémentaire de délégation et de reprise](docs/quality-lab/delegation-2026-09-09/README.md)
-distingue les agents réellement démarrés des étapes simplement réservées et
-précise les prochaines dimensions à tester. Le mode de délégation du banc
-reste expérimental.
-
-La [poursuite sur la consolidation et le RPC](docs/quality-lab/consolidation-2026-09-09/README.md)
-reproduit le faux succès de QA et ajoute au banc la vérification du message
-réellement retourné par Odoo. Les deux variantes de consigne restent non adoptées.
-
-La [réception structurée des critères](docs/quality-lab/coverage-2026-09-09/README.md)
-ajoute ensuite un garde optionnel au flow : une couverture absente ou partielle
-ne permet plus `pass` lorsqu'un contrat est lié. Les essais montrent le blocage
-attendu et l'acceptation d'un cas complet. La [qualification autonome](docs/quality-lab/qualification-2026-09-09/README.md)
-ajoute un rendu QA lié à la réception, des droits testés par ORM/RPC, une vraie
-restauration SQL + filestore et un parcours Chrome avec contrôle serveur. Elle
-distingue ces témoins des chaînes natives et garde les limites et incidents visibles.
-
-La [campagne de fidélité](docs/quality-lab/fidelity-2026-09-09/README.md) confronte
-ensuite la demande originale, les critères, les preuves et la mémoire. Elle
-introduit une réception documentaire en contexte neuf et un
-[garde de publication exacte](docs/TASK_RECEPTION.md).
-Les examens sur pièces, les parcours complets et les interruptions fournisseur
-y sont évalués séparément. La [campagne de reprise](docs/quality-lab/recovery-2026-09-09/README.md)
-éprouve ensuite les conflits mémoire, les publications interrompues et les plans,
-avec des contextes Codex distincts sur des tâches documentaires synthétiques.
-La [qualification ordonnée](docs/quality-lab/ordered-recovery-2026-09-09/README.md)
-vérifie ensuite un vrai reçu A antérieur à B, le positif sans réception superflue
-et une tâche Odoo 19.0 sur copie synthétique restaurée. Les traces natives et
-leurs limites de visibilité sont conservées ; la calibration du banc entre en CI.
-
-La [comparaison solo/délégation](docs/quality-lab/delegation-comparison-2026-09-09/README.md)
-reçoit six livrables et confirme deux correctifs avec un oracle indépendant. Un
-seul diagnostic utilise un sous-agent : il est plus lent et consomme davantage,
-sans gain de note. La délégation reste un choix au cas par cas. Une consigne
-commune rend explicite le langage attendu par un chef de projet : résultat,
-impact, prochaine action et décisions compréhensibles. Ses trois essais de
-communication passent sans régression, sans gain de qualité démontré.
-
-## Pour aller plus loin
-
-| Vous souhaitez… | Documentation |
+| Vous voulez… | Utilisez… |
 |---|---|
-| Installer le dispositif ou le mettre à jour | [Installation](INSTALL.md) |
-| Comprendre les rôles, le suivi et les mécanismes techniques | [Guide technique](docs/ARCHITECTURE.md) |
-| Organiser les demandes et reprendre une release | [Plans et reprise](docs/RELEASE_PLAN.md) |
-| Structurer la connaissance métier du client | [Contexte, décisions et scénarios](docs/CLIENT_KNOWLEDGE.md) |
-| Adapter les essais et suivre leur avancement | [Mode opératoire du laboratoire](docs/quality-lab/OPERATIONS.md) |
-| Relier les propositions aux changements et à leurs preuves | [Améliorations suivies](docs/IMPROVEMENTS.md) |
+| Préparer une release | `/odoo-plan` |
+| Estimer le travail des agents | `/odoo-estimate` |
+| Lancer le plan | `/odoo-start` |
+| Réaliser une évolution | `/odoo-new` |
+| Préparer la livraison | `/odoo-close` |
 
-Les rôles et instructions partagés évoluent dans ce dépôt, puis sont installés
-pour les deux outils. Après une mise à jour, ouvrez une nouvelle conversation
-pour charger les nouveaux profils.
+Pour une question fonctionnelle ou un ticket de support, décrivez simplement
+votre besoin. Le rôle adapté prend le relais.
+
+**Vous gardez le contrôle.** Les décisions métier vous appartiennent. Toute
+écriture en production requiert votre accord explicite ; la clôture d’une
+release ne déclenche pas son déploiement.
+
+---
+
+[Installation](INSTALL.md) · [Estimation et suivi](docs/EFFORT.md) ·
+[Qualité et amélioration](docs/quality-lab/README.md) · [Guide technique](docs/ARCHITECTURE.md)

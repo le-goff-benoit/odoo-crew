@@ -33,6 +33,11 @@ référentiel, scripts, stack). L'aiguillage Odoo de `~/.claude/CLAUDE.md` et
 
 ## Scripts
 
+- Navigation qualité : `docs/quality-lab/README.md` pour les résultats,
+  `benchmarks/README.md` pour les scénarios, `tests/README.md` pour les contrôles.
+  Les tests sont classés dans `tests/{pilotage,outillage,laboratoire}/` ;
+  conserver la découverte récursive `python3 -m unittest discover -s tests -v`.
+
 - Un script se teste **en bac à sable** : copie d'un projet dans le scratchpad,
   permissions de lecture pour l'utilisateur effectif du conteneur, base par
   module (`odoo_qa_<série>_<module>`) ; jamais sur un projet réel, jamais sur

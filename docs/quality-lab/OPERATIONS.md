@@ -1,5 +1,7 @@
 # Exploiter et adapter le laboratoire
 
+[Accueil qualité et résultats](README.md) · [Catalogue des scénarios](../../benchmarks/README.md) · [Tests automatiques](../../tests/README.md)
+
 Le laboratoire sépare quatre mesures : réponse utile, code exécutable, verdict
 QA fiable et fidélité aux décisions client. Un succès sur une dimension ne
 remplace pas les autres. Chaque amélioration doit nommer le défaut qu'elle vise,

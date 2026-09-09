@@ -1,96 +1,46 @@
-# Banc d’essai qualité Odoo
+# Scénarios pour améliorer les agents
 
-Ce laboratoire évalue des demandes synthétiques indépendantes des projets client.
-Le pilote contient trois dossiers exécutables : B03 (qualification métier), B06
-(verdict QA et droits), B10 (évolution des décisions et transmission du contexte).
-Les sept autres cas sont un backlog explicite, pas des tests opérationnels.
+[Accueil qualité](../docs/quality-lab/README.md) · [Résultats des campagnes](../docs/quality-lab/README.md#résultats-par-sujet)
 
-## Exécuter
+Ce dossier contient les **cas à rejouer et leurs critères de réussite**.
+Les tests automatiques sont dans [`tests/`](../tests/README.md) ; les résultats
+obtenus sont dans [`docs/quality-lab/`](../docs/quality-lab/README.md).
 
-Python 3.10+, Linux avec bubblewrap, CLI Codex et Claude déjà authentifiées.
-L’adaptateur Codex attend une installation npm avec Node dans le même préfixe.
-L’adaptateur Claude attend le binaire installé localement. Le réseau fournisseur
-est nécessaire ; les identifiants sont montés en lecture seule et jamais copiés
-vers les résultats. Leur renouvellement éventuel se fait hors du laboratoire.
+## Choisir selon ce que vous voulez vérifier
 
-```bash
-python3 scripts/odoo_bench.py validate
-python3 scripts/odoo_bench.py plan --config benchmarks/configs/pilot-local.example.json --output /tmp/odoo-quality-runs
-python3 scripts/odoo_bench.py run /tmp/odoo-quality-runs/IDENTIFIANT
-python3 scripts/odoo_bench.py status /tmp/odoo-quality-runs/IDENTIFIANT
-python3 scripts/odoo_bench.py stop /tmp/odoo-quality-runs/IDENTIFIANT
-python3 scripts/odoo_bench.py resume /tmp/odoo-quality-runs/IDENTIFIANT
-```
+| Objectif | Cas et ressources |
+|---|---|
+| Qualité d’une analyse et respect des décisions | [Dossiers initiaux](cases/), [dossiers approfondis](cases-v2/) |
+| Développement et règles métier | [Contrats de développement](cases-dev/), [location/livraison](odoo/), [notes de frais](odoo-expense/) |
+| Parcours complet avec les vrais outils des agents | [Cas natifs et correcteurs](native/) |
+| Fidélité de la demande jusqu’à la mémoire du projet | [Fidélité](fidelity/README.md) |
+| Reprise après interruption ou conflit | [Reprise](recovery/README.md), [reprise ordonnée](ordered_recovery/) |
+| Intérêt réel de la délégation | [Comparaison solo / sous-agents](delegation_comparison/) |
+| Droits, restauration, versions et navigateur Odoo | [Qualification technique](qualification/) |
 
-Copier la configuration et choisir explicitement modèle et effort. Les valeurs
-fournies sont les réglages locaux du pilote, aucune recommandation universelle.
-Un plan fige demandes, rôles, corrigés et leurs empreintes. L’exécution est
-séquentielle, limitée à 600 secondes par réponse. Le terminal affiche un battement
-toutes les cinq secondes ; `state.json` et `report.md` permettent de suivre la
-campagne depuis un autre terminal. Un verrou empêche deux exécuteurs concurrents.
-`resume` lance seulement les essais encore en attente : un essai interrompu,
-échoué ou terminé n’est jamais rejoué automatiquement, car il peut avoir coûté.
+Les [configurations](configs/), [variantes de consignes](variants/) et
+[grilles du correcteur](judge/) servent à préparer les comparaisons.
+Un dossier de cas n’est pas nécessairement un parcours exécutable : les
+statuts et limites figurent dans son contrat ou son rapport de campagne.
 
-Le processus ne voit que le dossier temporaire vide, les outils système et son
-authentification ; le dossier est fourni par stdin. Le dépôt, les projets clients
-et la grille de correction ne sont pas montés. Les outils de l’assistant sont
-désactivés. Ce mode mesure une réponse sur dossier, pas le routage natif des skills,
-la lecture effective d’un briefing, ni du code exécuté dans Odoo.
+## Lancer un essai
 
-## Corriger une réponse
+Pour une nouvelle amélioration, utilisez `/odoo-improve` avec le défaut observé
+et le résultat attendu. Il organise la reproduction, la correction et sa vérification.
 
-Un succès technique reste « non évaluée ». Après lecture de `answer.md`, produire
-un JSON avec l’empreinte de la réponse, le nom de l’évaluateur et **tous** les
-critères du `case.json` figé. Exemple de structure (à compléter intégralement) :
+Pour intervenir directement sur le banc :
 
-```json
-{
-  "reviewer": "nom et méthode de revue, limites ou conflit éventuel",
-  "answer_sha256": "empreinte de state.json",
-  "criteria": {
-    "reject": {"grade": "pass", "evidence": "citation ou localisation précise"}
-  }
-}
-```
+- [Mode opératoire](../docs/quality-lab/OPERATIONS.md) : choisir le type d’essai et ses commandes.
+- [Guide du pilote sur dossier](PILOTE.md) : configuration, exécution et correction des réponses.
+- [Tests automatiques](../tests/README.md) : vérifications locales sans appel à un modèle.
 
-```bash
-python3 scripts/odoo_bench.py review /tmp/odoo-quality-runs/IDENTIFIANT B06-codex /tmp/review.json
-```
+Les campagnes avec agents et les essais Odoo sont lancés explicitement, dans
+un environnement équipé. Les résultats locaux vont dans un dossier de travail
+hors du dépôt ; seules les preuves vérifiées et sans données client sont publiées.
 
-Jugements autorisés : `pass`, `fail`, `uncertain`. Une erreur critique donne
-`rejected`, tous les critères réussis donnent `accepted`, le reste demande une
-revue. Une dimension absente vaut **non mesurée**, jamais 100 %. Le code exige
-une preuve renseignée ; sa pertinence reste une responsabilité de l’évaluateur.
-Conserver les désaccords et faire arbitrer les cas ambigus. Une correction par
-l’assistant qui conçoit le banc reste exploratoire : ce n’est pas un juge aveugle.
+## Ranger un nouveau cas
 
-## Adapter et apprendre
-
-1. Relier une proposition du document d’analyse à un défaut observable et à une
-   dimension : réponse, développement, QA, connaissance métier.
-2. Écrire un dossier synthétique et sa rubrique **avant** les réponses. Prévoir
-   ambiguïtés, contradictions, droits et décisions qui changent dans le temps.
-3. Figer la référence, puis une seule variation des consignes. Garder identiques
-   modèle, effort, dossier et environnement pour mesurer l’effet des instructions.
-4. Comparer ensuite modèles et efforts à consignes constantes. Répéter les essais
-   et alterner leur ordre ; le pilote à une répétition ne permet pas de classement.
-5. Garder des cas réservés hors des itérations d’ajustement. Une amélioration qui
-   récite le corrigé sans généraliser doit échouer à ces cas.
-6. Promouvoir seulement après non-régression sur les critères critiques et gains
-   documentés. La vitesse et les tokens sont secondaires à la qualité métier.
-
-La suite ajoute B10 v2/B11, trois variantes avec ordre contrebalancé, B12
-génération de code, un oracle Odoo et un correcteur masqué. Voir
-[le mode opératoire](../docs/quality-lab/OPERATIONS.md). Les résultats bruts restent
-locaux. Ne publier que des dossiers synthétiques et des rapports vérifiés sans
-secrets ni informations client. Aucune modification automatique des rôles actifs.
-
-## Parcours natifs
-
-Les cas `native/cases/N01` à `N05` utilisent les CLI et les skills générés, le
-graphe, les outils QA et une copie Odoo synthétique. Leurs correcteurs sont dans
-`native/oracles` et restent masqués aux agents. N05 est le contre-exemple de
-précision découvert pendant N02 : il ne compte pas comme cas inédit.
-Voir [l'exploitation du laboratoire](../docs/quality-lab/OPERATIONS.md) pour les
-commandes et [la campagne native](../docs/quality-lab/native-2026-09-09/PLAN.md)
-pour les résultats, incidents et décisions d'adoption.
+Ajoutez-le dans la famille correspondante ci-dessus, avec la demande synthétique
+et ses critères attendus. Gardez le correcteur séparé du dossier vu par l’agent.
+Le rapport de l’exécution rejoint une campagne datée dans `docs/quality-lab/`.
+Les identifiants historiques restent stables pour permettre les comparaisons.

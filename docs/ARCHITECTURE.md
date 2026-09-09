@@ -9,7 +9,7 @@ Pour installer ou mettre à jour le dispositif, voir [INSTALL.md](../INSTALL.md)
 
 Pour améliorer le dispositif, `/odoo-improve` pilote la boucle **essai → défaut
 observé → correction → contre-épreuve → adoption dans les profils**. Le
-[banc d’essai qualité](../benchmarks/README.md) distingue réponses sur dossier,
+[espace qualité et amélioration](quality-lab/README.md) distingue réponses sur dossier,
 parcours natifs avec outils et oracles Odoo. Les
 [propositions suivies](../docs/IMPROVEMENTS.md) relient chaque changement à sa preuve
 et à ses limites.
