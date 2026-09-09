@@ -1,0 +1,1 @@
+Message ligne 3 reçu ; aucune ligne importée ; les huit identifiants et toutes leurs valeurs comparés et inchangés.

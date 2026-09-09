@@ -79,3 +79,11 @@ Elle ne prouve pas une supériorité statistique ni une amélioration générale
   Transport RPC des modules ajouté : message réel et données vérifiés, mutation
   initiale inopérante conservée puis contre-épreuve corrigée, oracle SQL 4/4.
   Deux stacks nettoyées ; 136 tests verts. [Résultats et limites](consolidation-2026-09-09/README.md).
+
+- 9 septembre, réception structurée : contrat QA optionnel épinglé dans le flow,
+  couverture exhaustive exigée au pass ; anciens flows préservés.
+  Quatre appels Claude à 360 s : D31 référence pass erroné, candidat blocked ;
+  CSV complet accepté, import à invariance non prouvée bloqué. Garde et usage adoptés.
+  Relecture indépendante : fraîcheur par extension corrigée avec tests rouges/verts.
+  147 tests verts ; titre QA contradictoire et traçabilité suraffirmée conservés
+  comme réserves. [Preuves et décision d'adoption](coverage-2026-09-09/README.md).

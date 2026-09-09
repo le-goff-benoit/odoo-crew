@@ -707,38 +707,6 @@ def release_claim(
             write_registry(lock_registry, registry)
 
 
-def bind_criteria(state_path, graph_path, source, output, owner):
-    from odoo_coverage import contract, draft, GATES
-    with exclusive_lock(state_path):
-        state, graph = load_state(state_path, graph_path)
-        # À la jointure, son propriétaire lie le contrat ; avant les voies,
-        # l'orchestrateur le fait sans revendication concurrente.
-        claims = state.get('claims', {})
-        if state['status'] != 'active' or any(c['owner'] != owner for c in claims.values()):
-            raise FlowError('liaison impossible : flow terminé ou revendications d’un autre propriétaire')
-        if any(e['node'] in GATES and e['outcome'] == 'pass' for e in state['events']):
-            raise FlowError('liaison impossible après réception QA')
-        try:
-            pinned = contract(state['project'], str(source))
-            if state.get('qa_contract') and state['qa_contract'] != pinned:
-                raise ValueError('contrat déjà lié : aucun remplacement implicite ; ouvrir un nouveau flow pour un contrat révisé')
-            root = Path(state['project']).resolve()
-            target = output.resolve()
-            if not target.is_relative_to(root) or target.exists() or target.is_symlink():
-                raise ValueError('nouveau fichier de couverture requis dans le projet')
-            # Ne pas écraser la spec, le flow ou une preuve existante.
-            target.parent.mkdir(parents=True, exist_ok=True)
-            with target.open('x') as stream:
-                json.dump(draft(pinned), stream, ensure_ascii=False, indent=2)
-                stream.write('\n')
-            state['qa_contract'] = pinned
-            state.setdefault('qa_contract_binding', {'owner': owner, 'at': now()})
-            write_state(state_path, state)
-        except (ValueError, TypeError, OSError) as exc:
-            raise FlowError(str(exc)) from exc
-    return pinned
-
-
 def complete_claimed_node(
     state_path: Path,
     graph_path: Path,
@@ -755,20 +723,6 @@ def complete_claimed_node(
             raise FlowError(f"nœud inconnu : {node_name}")
         node = graph["nodes"][node_name]
         checked_evidence = evidence_files(evidence)
-        from odoo_coverage import FORMAT, GATES, verify as verify_coverage
-        if state.get('qa_contract') and node_name in GATES and outcome == 'pass':
-            try:
-                coverages = []
-                for value in checked_evidence:
-                    if Path(value).suffix == '.json':
-                        proof = json.loads(Path(value).read_text())
-                        if isinstance(proof, dict) and proof.get('format') == FORMAT:
-                            coverages.append(proof)
-                if len(coverages) != 1:
-                    raise ValueError('une preuve odoo-qa-coverage/1 est requise pour pass')
-                verify_coverage(coverages[0], state['qa_contract'], state['project'])
-            except (ValueError, KeyError, TypeError, OSError) as exc:
-                raise FlowError(f'couverture QA refusée : {exc}') from exc
         from odoo_evidence import verify as verify_evidence
         for value in checked_evidence:
             if Path(value).suffix == '.json':
@@ -868,8 +822,6 @@ def format_dashboard(
         f"Progression {summary['completed_events']} étape(s) franchie(s)",
         f"Nœuds agent {claimed_agent_nodes} revendiqué(s) · {ready_agents} prêt(s)",
     ]
-    if state.get('qa_contract'):
-        lines.append(f"Contrat QA {len(state['qa_contract']['criteria'])} critères liés · couverture exigée pour pass")
     if events:
         last = events[-1]
         lines.append(f"Dernière   ✓ {last['node']} → {last['outcome']}")
@@ -1008,12 +960,6 @@ def build_parser() -> argparse.ArgumentParser:
     complete.add_argument("--owner", default="orchestrator")
     complete.add_argument("--human-confirmed", action="store_true")
 
-    binding = subparsers.add_parser('bind-criteria', help='lier un contrat QA et générer sa couverture manquante')
-    binding.add_argument('state', type=Path)
-    binding.add_argument('--source', type=Path, required=True)
-    binding.add_argument('--output', type=Path, required=True)
-    binding.add_argument('--owner', required=True)
-
     claim = subparsers.add_parser("claim", help="revendiquer un nœud et ses verrous")
     claim.add_argument("state", type=Path)
     claim.add_argument("node")
@@ -1133,11 +1079,6 @@ def main(argv: list[str] | None = None) -> int:
             return 0
 
         state_path = args.state.resolve()
-        if args.command == 'bind-criteria':
-            pinned = bind_criteria(state_path, graph_path, args.source, args.output, args.owner)
-            print(f"Contrat QA lié : {len(pinned['criteria'])} critères · {pinned['sha256'][:12]}")
-            print(f'Couverture à renseigner : {args.output}')
-            return 0
         if args.command == "claim":
             claim_node(state_path, graph_path, args.node, args.owner)
             node = graph["nodes"][args.node]

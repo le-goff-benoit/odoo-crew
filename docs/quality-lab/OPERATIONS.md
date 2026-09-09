@@ -207,3 +207,12 @@ des dossiers validés, N03 un pack Studio, N04 les contraintes SQL. Les oracles
 sont étalonnés avec une réalisation correcte et une mutation fautive. Ajouter
 un métier exige son contrat, ses données synthétiques, sa rubrique et son oracle ;
 ne pas réutiliser les attendus produits par l'agent comme unique correcteur.
+
+La [réception structurée](coverage-2026-09-09/README.md) sépare un garde
+déterministe et l'effet du paquet instructions + outil. Calibrer un refus
+`partial`, un vrai positif et un `covered` mensonger : le dernier témoin montre
+la limite sémantique du garde. Comparer la référence et le candidat avec le
+même budget sur le dossier complet ; un cas court seul ne permet pas l'adoption.
+Conserver les contradictions éventuelles entre le titre de QA, la couverture
+et l'issue du flow. Le [contrat de l'outil](../QA_COVERAGE.md) précise son format,
+son activation optionnelle et la compatibilité des flows existants.

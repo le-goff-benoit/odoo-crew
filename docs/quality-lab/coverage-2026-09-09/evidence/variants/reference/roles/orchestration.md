@@ -221,18 +221,6 @@ peuvent être produits en parallèle. Pour le niveau renforcé, une troisième
 voie valide la copie client. La jointure contrôle tous les fragments ;
 l'orchestrateur écrit ensuite le verdict unique dans `qa.md`.
 
-Pour une revue dont la section « Critères d'acceptation » utilise les cases
-`- [ ]`, active la réception structurée avant de consolider :
-`odoo_flow.py bind-criteria <flow> --source <revue> --output <coverage.json> --owner <orchestrateur>`.
-Le fichier produit conserve les critères originaux, initialement `missing`.
-Renseigne `covered`, `partial`, `missing` ou `failed` d'après les preuves ;
-`covered` exige toutes les conditions du critère. Chaque preuve porte `path`
-(dans le projet) et `sha256`. Présente ce JSON avec `qa.md` à `complete --evidence`.
-Le flow refuse `pass` si la couverture est absente, partielle ou modifiée ;
-`retry` et `blocked` restent accessibles. Ce garde ne juge pas le sens des
-preuves : un statut `covered` doit toujours être justifié par leur contenu.
-Les formats et limites sont dans `docs/QA_COVERAGE.md` du référentiel.
-
 ```bash
 export ODOO_ADDONS_DIR=<répertoire contenant le module>
 ~/.odoo19-agents/scripts/odoo-test.sh <module> --quick --tags /<module>:<TestClasse>   # un seul chargement

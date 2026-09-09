@@ -1,0 +1,2 @@
+# Voie copie
+Attestation primaire synthétique de cet exercice, révision fixture-p51, build p51-1, base copy_p51. Scénario complet runtime rejoué sur copie identifiée : trois lignes exactes, total=12, libellés comparés après parsing UTF-8 et identiques, zéro doublon. Installation/update OK. Code identique au build QA. État rétabli après essai. Aucun PDF ni capture : hors contrat, pas une réserve de QA.

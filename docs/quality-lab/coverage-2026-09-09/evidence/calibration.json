@@ -1,0 +1,29 @@
+{
+  "results": [
+    {
+      "variant": "reference-partial",
+      "accepted": true,
+      "error": null,
+      "state_unchanged_on_refusal": null
+    },
+    {
+      "variant": "candidate-partial",
+      "accepted": false,
+      "error": "couverture QA refusée : critères non couverts : I7",
+      "state_unchanged_on_refusal": true
+    },
+    {
+      "variant": "candidate-complete",
+      "accepted": true,
+      "error": null,
+      "state_unchanged_on_refusal": null
+    },
+    {
+      "variant": "candidate-false-claim",
+      "accepted": true,
+      "error": null,
+      "state_unchanged_on_refusal": null
+    }
+  ],
+  "interpretation": "La déclaration partial est bloquée ; un covered mensonger reste accepté et ne satisfait pas le critère métier. Ce témoin interdit toute prétention de jugement sémantique automatique."
+}

@@ -1,0 +1,1 @@
+Message ligne 3 reçu ; count avant/après=8 ; identifiants et valeurs non comparés.

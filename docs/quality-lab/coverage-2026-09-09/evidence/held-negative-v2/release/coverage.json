@@ -1,0 +1,42 @@
+{
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "51fe4d133f9be75bc9bbf6cd7d36001c9a85b5b0c6910a8a047ae31506b8a45b",
+  "criteria": [
+    {
+      "id": "I1",
+      "text": "**I1** — Installation, mise à jour et lint ciblé réussissent sans régression.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-09_04_import/static.md",
+          "sha256": "8060827e999f4218270942d504e53c1290bd674632e92e4b4e910a05b7f0ac1b"
+        },
+        {
+          "path": "changelog/2026-09-09_04_import/runtime.md",
+          "sha256": "9c45c4755a9b88dcc3f2cac86b2d6ed6c2d23168f145d79c1434f7b9ebdaa474"
+        }
+      ],
+      "note": "Lint ciblé propre et diff relu (static.md) ; installation et mise à jour OK, tests ciblés 0 failed / 0 errors sur 2 tests, base qa_i7, build i7-1 (runtime.md). Les trois conditions du critère sont attestées par les fragments repris tels quels ; aucun contrôle n'a été rejoué à la jointure."
+    },
+    {
+      "id": "I7",
+      "text": "**I7** — Si la ligne 3 est invalide, le message reçu indique la ligne 3, aucune ligne du lot n'est conservée et les huit étiquettes préexistantes gardent exactement leurs identifiants et valeurs.",
+      "status": "partial",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-09_04_import/runtime.md",
+          "sha256": "9c45c4755a9b88dcc3f2cac86b2d6ed6c2d23168f145d79c1434f7b9ebdaa474"
+        },
+        {
+          "path": "changelog/2026-09-09_04_import/client.md",
+          "sha256": "2570937806f72e4a446b40c69de50aedb3994092e0c2258a14703f4d919aeb2d"
+        },
+        {
+          "path": "changelog/2026-09-09_04_import/static.md",
+          "sha256": "8060827e999f4218270942d504e53c1290bd674632e92e4b4e910a05b7f0ac1b"
+        }
+      ],
+      "note": "Condition 1 (message indiquant la ligne 3) prouvée : ValidationError « Ligne 3 : libellé obligatoire » observée en RPC sur qa_i7 (runtime.md) et confirmée sur copy_i7 (client.md). Condition 2 (aucune ligne du lot conservée) non prouvée : seul count() avant/après = 8 est relevé, aucune voie n'a cherché les lignes du lot importé. Condition 3 (les huit étiquettes préexistantes gardent exactement identifiants et valeurs) non mesurée : static.md n'a testé aucune valeur, runtime.md ne compare ni identifiants ni valeurs, client.md n'a fait aucun relevé avant/après. Un comptage invariant est compatible avec une suppression compensée, une recréation d'identifiants ou un écrasement de valeurs. Les voies exécution et copie partagent le même code fixture-i7 et le même build i7-1 : la copie ne lève pas cet angle mort. Manque à produire : relevé (id, valeurs) des huit étiquettes avant et après l'import échoué, et recherche explicite des quatre lignes du lot."
+    }
+  ]
+}

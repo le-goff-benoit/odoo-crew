@@ -130,6 +130,11 @@ La [poursuite sur la consolidation et le RPC](docs/quality-lab/consolidation-202
 reproduit le faux succès de QA et ajoute au banc la vérification du message
 réellement retourné par Odoo. Les deux variantes de consigne restent non adoptées.
 
+La [réception structurée des critères](docs/quality-lab/coverage-2026-09-09/README.md)
+ajoute ensuite un garde optionnel au flow : une couverture absente ou partielle
+ne permet plus `pass` lorsqu'un contrat est lié. Les essais montrent le blocage
+attendu et l'acceptation d'un cas complet ; le libellé des rapports reste à améliorer.
+
 ## Pour aller plus loin
 
 | Vous souhaitez… | Documentation |

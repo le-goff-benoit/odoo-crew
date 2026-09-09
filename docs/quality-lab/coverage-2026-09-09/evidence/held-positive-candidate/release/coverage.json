@@ -1,0 +1,66 @@
+{
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "f175e8afe729fd592bdecd5d75167ca59b7ccbc787225f6e12f0e251c91ba704",
+  "criteria": [
+    {
+      "id": "P1",
+      "text": "**P1** — Le CSV comporte exactement les identifiants 701, 703, 709 sans doublon et un total de quantité 12.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-09_03_export/runtime.md",
+          "sha256": "dccddd932d1c0e225948fe5e451e8e4da2194ae5e974aef9bc9d6c18ac7fa3be"
+        },
+        {
+          "path": "changelog/2026-09-09_03_export/client.md",
+          "sha256": "5cc5b62d07c26d6c60545fceb45dfc2e08dbbcab15feb30b063c3d01609c7122"
+        },
+        {
+          "path": "changelog/2026-09-09_03_export/export.csv",
+          "sha256": "f5346c690250ce64e28887d6ac29bc9b5cb539850fd9292098a8d077d3a95821"
+        }
+      ],
+      "note": "Voie exécution : export appelé avec ids=[701,703,709], relecture csv.DictReader — ids_exact=true, rows=3, unique_ids=3, quantity_sum=12. Voie copie : scénario rejoué sur copy_p51, trois lignes exactes, total=12, zéro doublon. L'export.csv joint est cohérent avec les deux attestations (701/703/709 ; 2+4+6=12)."
+    },
+    {
+      "id": "P2",
+      "text": "**P2** — Les libellés contenant une virgule et les accents sont préservés après lecture par un vrai parseur CSV UTF-8.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-09_03_export/runtime.md",
+          "sha256": "dccddd932d1c0e225948fe5e451e8e4da2194ae5e974aef9bc9d6c18ac7fa3be"
+        },
+        {
+          "path": "changelog/2026-09-09_03_export/client.md",
+          "sha256": "5cc5b62d07c26d6c60545fceb45dfc2e08dbbcab15feb30b063c3d01609c7122"
+        },
+        {
+          "path": "changelog/2026-09-09_03_export/export.csv",
+          "sha256": "f5346c690250ce64e28887d6ac29bc9b5cb539850fd9292098a8d077d3a95821"
+        }
+      ],
+      "note": "Voie exécution : libellés [\"Pièce, gauche\", \"Équerre\", \"Vis\"] strictement égaux après lecture par csv.DictReader en UTF-8 — virgule intra-champ et accents préservés. Voie copie : libellés comparés après parsing UTF-8 et identiques. L'export.csv joint montre le champ à virgule correctement quoté et les accents en UTF-8."
+    },
+    {
+      "id": "P3",
+      "text": "**P3** — Installation, mise à jour et lint ciblé réussissent sans régression.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-09_03_export/static.md",
+          "sha256": "b87f0686ab2027edac406c8385ce87ff8b6ddf1feb6e8d8a1771ba7d12223de7"
+        },
+        {
+          "path": "changelog/2026-09-09_03_export/runtime.md",
+          "sha256": "dccddd932d1c0e225948fe5e451e8e4da2194ae5e974aef9bc9d6c18ac7fa3be"
+        },
+        {
+          "path": "changelog/2026-09-09_03_export/client.md",
+          "sha256": "5cc5b62d07c26d6c60545fceb45dfc2e08dbbcab15feb30b063c3d01609c7122"
+        }
+      ],
+      "note": "Voie statique : lint ciblé zéro erreur (révision fixture-p51, série 19.0), diff relu sans anomalie ni droit modifié. Voie exécution : installation et mise à jour réussies sur qa_p51, 4 tests, 0 failed, 0 errors. Voie copie : installation/update OK sur copy_p51, code identique au build QA, état rétabli après essai."
+    }
+  ]
+}

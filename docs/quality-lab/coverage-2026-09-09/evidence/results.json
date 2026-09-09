@@ -1,0 +1,46 @@
+[
+  {
+    "id": "known-reference",
+    "execution": "executed",
+    "seconds": 184.58,
+    "actual_model": "claude-opus-5",
+    "actual_effort": null,
+    "contract_bound": false,
+    "outcome": "pass",
+    "total_cost_usd_cli": 1.7688244999999996,
+    "raw_sha256": "28083beed7c01bb90cf9431976f0747a92d3c27ba314305a75bb5a37e7842be5"
+  },
+  {
+    "id": "known-candidate",
+    "execution": "executed",
+    "seconds": 237.93,
+    "actual_model": "claude-opus-5",
+    "actual_effort": null,
+    "contract_bound": true,
+    "outcome": "blocked",
+    "total_cost_usd_cli": 2.0921025,
+    "raw_sha256": "61c755ae65ed9f627c4945da53d1870d1c2d11ba112ec277056d8a87d7bd4b14"
+  },
+  {
+    "id": "held-positive-candidate",
+    "execution": "executed",
+    "seconds": 143.73,
+    "actual_model": "claude-opus-5",
+    "actual_effort": null,
+    "contract_bound": true,
+    "outcome": "pass",
+    "total_cost_usd_cli": 0.984599,
+    "raw_sha256": "7bd4e5aabc9637a75ca9d5b4bb489ac2491e16be072e40efcf94f11af023407a"
+  },
+  {
+    "id": "held-negative-v2",
+    "execution": "executed",
+    "seconds": 156.71,
+    "actual_model": "claude-opus-5",
+    "actual_effort": null,
+    "contract_bound": true,
+    "outcome": "blocked",
+    "total_cost_usd_cli": 0.9646294999999998,
+    "raw_sha256": "3010ff4eff76aa4c4a4dfbddf125f4072f367eff0c6878c8fafa8bf2a6d172aa"
+  }
+]

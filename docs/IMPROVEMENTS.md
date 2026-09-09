@@ -20,7 +20,7 @@ comportemental. Les rapports des 8 et 9 septembre distinguent ces preuves.
 | R09 — reprise après évolution du graphe | Snapshot, libération indépendante du graphe courant, migration sémantique contrôlée | Tests de migration ; pas de migration forcée d'un nœud dont le sens change |
 | R10 — accès distant Studio | Chemin local limité, méthodes de lecture explicites, garde d'instance distante | Tests sans production ; les droits serveur restent nécessaires |
 | R11 — pack partiel/idempotence | Prévalidation, import objet/XML-ID atomique, ordre des références, rejeu | Tests ORM et Studio ; le pack entier n'est pas une transaction globale Online |
-| R12 — défaut non bloquant par étiquette | Toute régression, critère faux ou contrôle obligatoire absent exige reprise | Faux succès reproduit à la jointure avec A8 partiel ; deux variantes inachevées sur dossier complet, non adoptées. [Défaut ouvert, transport RPC ajouté et éprouvé séparément](quality-lab/consolidation-2026-09-09/README.md). Le garde de preuves ne vérifie pas leur sens métier |
+| R12 — défaut non bloquant par étiquette | Contrat QA optionnel lié au flow : couverture exhaustive inchangée requise pour pass | [Garde adopté après comparaison native et contre-épreuves](quality-lab/coverage-2026-09-09/README.md) : D31 passe de pass erroné à blocked, positif accepté. Le libellé « VALIDÉ SOUS RÉSERVE » reste contradictoire ; ni sémantique des preuves ni qualité globale des rapports garanties |
 | R13 — couverture concentrée | Suites par outil, cas métier, mutations, campagnes natives et juge masqué | Résultats et limites dans les rapports ; un nombre de tests n'est pas une note métier |
 
 ## Vitesse, sans affaiblir les verdicts

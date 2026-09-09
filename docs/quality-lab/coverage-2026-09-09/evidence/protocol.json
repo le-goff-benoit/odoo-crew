@@ -1,0 +1,15 @@
+{
+  "reference": "7a0f6abddbbaace20c21381f30cebab03104cb7d",
+  "hypothesis": "Une réception structurée liée au texte original et activée dans l'état du flow empêche un pass avec couverture absente, partielle, reformulée ou obsolète. La véracité sémantique d'une déclaration covered reste à relire.",
+  "implementation_scope": "Garde optionnel : extrait les cases de la section Critères d'acceptation, épingle texte et source dans le flow, génère une couverture initialement missing ; contrôle les statuts et les empreintes de preuves au pass. Anciens flows inchangés. Pas de parseur libre de tableaux ou de jugement LLM embarqué.",
+  "deterministic_cases": ["D31 A8 partial refuse pass et conserve claim/verrous", "couverture absente refusée une fois contrat lié", "critère omis, réécrit ou ajouté refusé", "source et preuve modifiées refusées", "tous critères covered avec preuves acceptés", "retry/blocked autorisés avec lacune", "ancien flow non lié inchangé", "extraction non interprétable refusée sans état modifié"],
+  "native": {
+    "provider": "claude", "model": "opus", "effort": "medium",
+    "seconds_per_call": 360, "max_calls": 4,
+    "jobs": ["D31 référence, dossier complet", "D31 candidat, même dossier complet", "cas inédit P51 candidat : export CSV prouvé, absence de PDF explicitement hors contrat"],
+    "fourth_call": "Réservé à une contre-épreuve supplémentaire ou à une reprise d'incident documentée ; pas de relance cachée.",
+    "isolation": "bubblewrap, profils figés, vrais outils de flow, aucun Odoo ni base réexécuté, aucune donnée client"
+  },
+  "adoption": "Adopter séparément le garde déterministe et son usage dans le rôle si le comportement natif attendu est observé. Une absence de résultat n'est pas une mauvaise décision ; pas de promotion d'instructions sur les seuls tests unitaires. Le garde ne prouve ni l'exhaustivité métier de la spec ni le sens des preuves.",
+  "stop": "Deux revisions sans progrès au maximum ; préserver résultats originaux, aucune généralisation de vitesse ou de qualité globale."
+}
