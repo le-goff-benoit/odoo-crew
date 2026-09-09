@@ -161,6 +161,7 @@ PY
         ;;
     close)
         RELEASE="${1:-}"; [ -f "$RELEASE/README.md" ] || usage
+        python3 "$HERE/odoo_release_guard.py" check "$RELEASE"
         sed -i -E '/<!-- (release ouverte|lot ouvert) -->/d' "$RELEASE/README.md"
         echo "Release clos : $RELEASE"
         ;;

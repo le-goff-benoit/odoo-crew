@@ -251,18 +251,8 @@ else
     fi
     toc install
 
-    if [ "$STATUS" -eq 0 ] && [ "$UPDATE" -eq 1 ]; then
-        step "2. Mise à jour (-u $MODULE)"
-        tic
-        if run_odoo -c "$CONF" -d "$DB" -u "$MODULE" --stop-after-init; then
-            echo "✅ mise à jour OK"; UPDATE_OK=ok
-        else
-            echo "❌ la mise à jour casse — c'est ce qui échouera en production"
-            STATUS=1
-        fi
-        toc update
-    fi
-
+    # Le passage -u avec --test-enable ci-dessous prouve aussi la mise à jour.
+    # Ne pas charger une seconde fois le registre pour le même -u sans tests.
     if [ "$STATUS" -eq 0 ]; then
         step "3. Tests (--test-tags $TAGS)"
         tic
@@ -271,6 +261,7 @@ else
                 --log-level=test --stop-after-init \
                 --screenshots=/mnt/artifacts && python3 "$HERE/odoo_test_result.py" "$LOG" --module "$MODULE"; then
             echo "✅ tests OK"
+            if [ "$UPDATE" -eq 1 ]; then echo "✅ mise à jour OK (passage commun aux tests)"; UPDATE_OK=ok; fi
         else
             echo "❌ tests en échec"
             STATUS=1

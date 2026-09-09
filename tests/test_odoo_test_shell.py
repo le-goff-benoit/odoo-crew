@@ -26,7 +26,7 @@ elif 'run' in args:
 
 
 class ShellTests(unittest.TestCase):
-    def execute(self, **settings):
+    def execute(self, options=None, **settings):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             for name in ('scripts', 'stack', 'bin', 'addons', 'enterprise'):
@@ -40,7 +40,7 @@ class ShellTests(unittest.TestCase):
                        ODOO_SERIES='19.0', ODOO_TEST_DB='quality_stub_db', ODOO_TEST_DB_EXPLICIT='1',
                        ODOO_ADDONS_DIR=str(root / 'addons'), ODOO_ENTERPRISE_DIR=str(root / 'enterprise'),
                        CALLS=str(root / 'calls.jsonl'), XDG_CACHE_HOME=str(root / 'cache'), **settings)
-            result = subprocess.run(['bash', str(root / 'scripts/odoo-test.sh'), 'quality_stub', '--quick'],
+            result = subprocess.run(['bash', str(root / 'scripts/odoo-test.sh'), 'quality_stub', *(options or ['--quick'])],
                                     env=env, capture_output=True, text=True, timeout=15)
             calls = [json.loads(line) for line in (root / 'calls.jsonl').read_text().splitlines()]
             return result, calls
@@ -67,3 +67,13 @@ class ShellTests(unittest.TestCase):
         result, _ = self.execute(TEST_COUNT='0')
         self.assertNotEqual(result.returncode, 0)
         self.assertIn('preuve de tests absente ou invalide', result.stdout)
+
+    def test_full_update_and_tests_share_one_registry_load(self):
+        result, calls = self.execute(options=['--update'])
+        self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+        runs = [c for c in calls if 'run' in c]
+        self.assertEqual(len(runs), 2)
+        self.assertIn('-i', runs[0])
+        self.assertIn('-u', runs[1])
+        self.assertIn('--test-enable', runs[1])
+        self.assertIn('mise à jour OK', result.stdout)

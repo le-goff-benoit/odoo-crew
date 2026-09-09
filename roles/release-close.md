@@ -4,7 +4,7 @@ Une release de changelog regroupe les tâches d'une même livraison. Pendant qu'
 ouverte, chaque tâche n'a reçu qu'une QA proportionnée. **La clôture est le
 moment où tout est rejoué, une fois, sur l'état exact qui partira** : base
 neuve, suite complète, tours, désinstallation, mise à niveau sur la copie du
-client, captures, guide, communication. C'est un acte de l'humain — cette
+client et documentation métier `doc.md`. Les guides DOCX/PDF et la communication sont facultatifs, sur demande explicite. C'est un acte de l'humain — cette
 commande ne se lance pas toute seule en fin de `/odoo-new`.
 
 Réponds en français. La release à clôturer suit cette consigne ; sans précision,
@@ -54,6 +54,13 @@ livré comme tel : la configuration à faire est décrite dans le README.
 Un `__init__.py` qui importe un fichier non suivi par git est un arrêt
 immédiat : ce qui part en production est le commit, pas le répertoire.
 
+### Version avant recette
+
+Prépare les versions une seule fois avant les tests :
+`python3 ~/.odoo19-agents/scripts/odoo_release_guard.py prepare "$RELEASE" --module <chemin_relatif_module>`.
+`versions.json` conserve départ et cible ; si le projet a déjà choisi une version
+nouvelle, elle est conservée. Un code modifié ensuite invalide la preuve concernée.
+
 ## Étape 1 — Recette complète, module par module
 
 ```bash
@@ -97,19 +104,23 @@ réellement exécutés.
 Captures finales dans `$RELEASE/captures/`, numérotées dans l'ordre du parcours,
 depuis la copie locale neutralisée — jamais la production.
 
-## Étape 3 — Livrables client (skill `camptocamp-docs`)
+## Étape 3 — Documentation métier et consolidation
 
-Si la section « Ce que l'utilisateur verra » d'au moins un point n'est pas
-vide : guide illustré DOCX + PDF à la charte, `communication_client.txt`.
-Applique `~/.odoo19-agents/roles/docs.md`. Le générateur du guide reste dans le
-release.
+Écris toujours `$RELEASE/doc.md` : résultat métier, actions de l'utilisateur,
+conditions et droits utiles, effets sur les données existantes, mise en service,
+limites et références. Décris uniquement les comportements livrés ; sépare ce
+qui est validé localement de ce qui reste à déployer. Gabarit :
+`docs/templates/changelog/doc.md`. Une copie de la spec n'est pas une documentation
+utilisateur. Contrôle chaque affirmation contre les critères et les preuves.
 
-Sans écran modifié : `communication_client.txt` seul si la release est déployée chez
-le client, rien sinon.
+Écris `$RELEASE/consolidation.md` : décisions devenues actuelles, règles remplacées,
+questions encore ouvertes, connaissances mises à jour dans PROJECT/DECISIONS,
+ou justification explicite d'absence de changement. Les journaux anciens restent
+historiques, pas des instructions actuelles. Référence les sources des décisions.
 
-Les tickets nourrissent aussi les livrables : une réponse d'usage devient un
-« Bon à savoir » du guide, une correction visible une section illustrée, et la
-communication client cite chaque ticket clos par son numéro.
+Le guide Camptocamp DOCX/PDF et la communication sont produits seulement sur demande
+explicite, pour cette release identifiée, maintenant ou après clôture. Leur absence
+ne bloque pas la livraison ; aucun envoi ni déploiement n'est implicite.
 
 ## Étape 4 — README final, version, commit proposé
 
@@ -132,7 +143,22 @@ Réécris `$RELEASE/README.md` dans sa forme finale, d'après le gabarit
 `demande.md` : chaque demande d'origine y est, telle quelle ; les décisions de
 périmètre (retenu / différé / hors périmètre) sont à jour.
 
-Puis retire le marqueur :
+Avant de retirer le marqueur, relie les contrôles à l'état testé avec
+`odoo_evidence.py` (périmètres custom et dépendances concernés, `--module` pour
+les tests Odoo). Une preuve verte peut être réutilisée sans rejouer sa commande
+si code, environnement, données et périmètre restent identiques ; la relecture
+indépendante et les critères métier restent nécessaires.
+
+Écris aussi `controls.json` selon `docs/RELEASE_PLAN.md` : installation, update,
+tests, copie client, navigateur et désinstallation, résultat et preuve de chacun.
+Une non-applicabilité exige sa raison ; pas de dispense de copie à risque élevé.
+La voie doit correspondre aux tâches effectivement livrées.
+
+Scelle la clôture :
+`python3 ~/.odoo19-agents/scripts/odoo_release_guard.py seal "$RELEASE" --scope <module> --proof <preuve_relative_projet>`.
+Répète les options pour couvrir les modules/artefacts Studio livrés. Le contrôle
+bloque les preuves périmées et les documents manquants. Il ne remplace pas la
+relecture du sens métier. Puis retire le marqueur :
 
 ```bash
 ~/.odoo19-agents/scripts/odoo-release.sh close "$RELEASE"

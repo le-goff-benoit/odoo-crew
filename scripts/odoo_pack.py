@@ -381,6 +381,7 @@ def create_named(target, model, xmlid, vals, meta, allow_write):
 
 
 def apply(target: Target, pack: dict, dry_run: bool, allow_write: bool) -> int:
+    live_meta = {}
     records, planned_meta = preflight(target, pack)  # aucune écriture avant la validation globale
     cache: dict = {}
     created = updated = unchanged = 0
@@ -388,7 +389,12 @@ def apply(target: Target, pack: dict, dry_run: bool, allow_write: bool) -> int:
         model, xmlid = rec["model"], rec["xml_id"]
         cache.setdefault(xmlid, target.id_of(xmlid))
         rid = cache[xmlid]
-        meta = planned_meta[model] if dry_run else target.call(model, "fields_get", attributes=["type"])
+        if not dry_run and model not in live_meta:
+            live_meta[model] = target.call(model, "fields_get", attributes=["type"])
+        meta = planned_meta[model] if dry_run else live_meta[model]
+        # Les écritures de schéma changent les métadonnées des modèles suivants.
+        if model in ('ir.model', 'ir.model.fields', 'ir.model.fields.selection'):
+            live_meta.clear()
         vals, m2m = {}, {}
         for name, value in rec["values"].items():
             if name not in meta:

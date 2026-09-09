@@ -136,7 +136,7 @@ if psql_db -d postgres -Atc "SELECT 1 FROM pg_database WHERE datname='$DB'" | gr
         echo "Base $DB existante — suppression (--force)."
         psql_db -d postgres -c "SELECT pg_terminate_backend(pid) FROM pg_stat_activity WHERE datname='$DB' AND pid <> pg_backend_pid()" >/dev/null
         psql_db -d postgres -c "DROP DATABASE \"$DB\""
-        compose exec -T -u root odoo rm -rf "/var/lib/odoo/filestore/$DB"
+        compose run --rm --no-deps -T -u root odoo rm -rf "/var/lib/odoo/filestore/$DB"
     else
         echo "La base $DB existe déjà. Relancer avec --force pour l'écraser, ou --db <autre_nom>." >&2
         exit 1
@@ -158,11 +158,11 @@ if [ -z "$NO_FILESTORE" ] && [ "$FORMAT" = "zip-sql" ] \
     echo "Dépôt du filestore…"
     TMP="$(mktemp -d)"; trap 'rm -rf "$TMP"' EXIT
     unzip -q "$BACKUP" 'filestore/*' -d "$TMP"
-    tar -C "$TMP/filestore" -cf - . | compose exec -T -u root odoo sh -c \
+    tar -C "$TMP/filestore" -cf - . | compose run --rm --no-deps -T -u root odoo sh -c \
         "mkdir -p /var/lib/odoo/filestore/$DB && tar -xf - -C /var/lib/odoo/filestore/$DB \
          && chown -R odoo:odoo /var/lib/odoo/filestore/$DB && chmod -R u+rwX /var/lib/odoo/filestore/$DB"
 else
-    compose exec -T -u root odoo sh -c "mkdir -p /var/lib/odoo/filestore/$DB && chown odoo:odoo /var/lib/odoo/filestore/$DB"
+    compose run --rm --no-deps -T -u root odoo sh -c "mkdir -p /var/lib/odoo/filestore/$DB && chown odoo:odoo /var/lib/odoo/filestore/$DB"
     [ -n "$NO_FILESTORE" ] || echo "Pas de filestore dans la sauvegarde : les pièces jointes seront absentes."
 fi
 

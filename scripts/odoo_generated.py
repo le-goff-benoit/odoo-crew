@@ -6,6 +6,9 @@ import re
 import shlex
 import json
 import sys
+
+sys.path.insert(0, str(__import__("pathlib").Path(__file__).resolve().parent))
+from odoo_loaded_instructions import check as check_loaded
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -74,6 +77,7 @@ def check(root: Path, destination: Path) -> list[str]:
         blocks = re.findall(re.escape(start) + r".*?" + re.escape(end), text, re.S)
         if blocks != [expected]:
             errors.append(f"bloc d’aiguillage manquant ou divergent : {path}")
+    errors.extend(check_loaded(destination))
     return errors
 
 
@@ -85,4 +89,4 @@ if __name__ == "__main__":
         print(f"≠ {problem}", file=sys.stderr)
     if problems:
         sys.exit(1)
-    print(f"Génération conforme : {len(expected_outputs(ROOT, Path(sys.argv[1])))} fichiers + 2 blocs d’aiguillage.")
+    print(f"Génération conforme : {len(expected_outputs(ROOT, Path(sys.argv[1])))} fichiers + 2 blocs d’aiguillage et pointeur personnel.")

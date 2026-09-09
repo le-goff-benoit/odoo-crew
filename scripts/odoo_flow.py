@@ -524,6 +524,8 @@ def complete_node(
     if node_name not in ready_nodes(state, graph):
         raise FlowError(f"nœud non prêt : {node_name}")
     node = graph["nodes"][node_name]
+    if state.get('plan_task', {}).get('risk') == 'high' and outcome == 'module':
+        raise FlowError('risque élevé du plan : transition module_high_risk obligatoire')
     outcomes = node_outcomes(graph, node_name)
     if outcome not in outcomes:
         raise FlowError(
@@ -850,6 +852,9 @@ def format_dashboard(
             node = graph["nodes"][name]
             evidence = ", ".join(node.get("evidence", [])) or "aucune"
             outcomes = ", ".join(node_outcomes(graph, name)) or "fin"
+            availability = claimability(state, graph, name)
+            if availability['blockers']:
+                lines.append('    ATTENTE RESSOURCE : ' + ', '.join(str(b['owner']) + ' / ' + str(b['node']) for b in availability['blockers']))
             marker = "◆" if node["executor"] == "human" else "○"
             lines.extend(
                 [
@@ -870,6 +875,19 @@ def format_dashboard(
     return "\n".join(lines)
 
 
+def claimability(state, graph, node_name):
+    """Disponibilité observée ; claim reste l'opération atomique qui fait foi."""
+    node = graph['nodes'][node_name]
+    if node['executor'] == 'human':
+        return {'claimable': False, 'reason': 'attente humaine', 'blockers': []}
+    registry = load_registry(registry_path(state))
+    prune_registry(registry)
+    wanted = resolve_locks(node, state)
+    blockers = [{'node': c.get('node'), 'owner': c.get('owner'), 'state': c.get('state'), 'locks': c.get('locks', [])}
+                for c in registry['claims'] if not locks_compatible(wanted, c.get('locks', []))]
+    return {'claimable': not blockers, 'reason': 'ressource occupée' if blockers else 'revendicable', 'blockers': blockers}
+
+
 def print_ready(
     state: dict[str, Any],
     graph: dict[str, Any],
@@ -888,6 +906,7 @@ def print_ready(
                 "outcomes": node_outcomes(graph, name),
                 "evidence": graph["nodes"][name].get("evidence", []),
                 "locks": graph["nodes"][name].get("locks", []),
+                **claimability(state, graph, name),
             }
             for name in summary["ready"]
         }

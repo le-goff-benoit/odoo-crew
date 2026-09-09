@@ -44,6 +44,9 @@ class GraphDefinitionTest(unittest.TestCase):
                 FLOW.write_state(path, state)
                 states.append(path)
             FLOW.claim_node(states[0], graph_file, 'briefing', 'codex-one')
+            availability = FLOW.claimability(FLOW.load_json(states[1]), graph, 'briefing')
+            self.assertFalse(availability['claimable'])
+            self.assertEqual(availability['blockers'][0]['owner'], 'codex-one')
             with self.assertRaises(FLOW.FlowError):
                 FLOW.claim_node(states[1], graph_file, 'briefing', 'claude-two')
             FLOW.release_claim(states[0], graph_file, 'briefing', 'codex-one', 'finished isolated work')

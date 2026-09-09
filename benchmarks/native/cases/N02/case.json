@@ -1,0 +1,39 @@
+{
+  "id": "N02",
+  "title": "Entrepôt Silex — recalcul des demandes en cours",
+  "module": "lab_dispatch",
+  "model": "lab.dispatch",
+  "kind": "module",
+  "request": "Applique /odoo-new : corrige action_recalculate de lab.dispatch et reprends les brouillons existants sur la copie synthétique. Le montant stocké inclut actuellement les lignes annulées et l'action écrase les dossiers validés. Le contrat est dans decisions/2026-09-08.md. Tu es autorisé à corriger et rejouer la reprise sur cette copie locale uniquement. Produis le test rouge du défaut, la correction, une preuve de reprise idempotente, la QA sensible et le journal ; laisse la release ouverte.",
+  "decision": "D-12 actée par Marc Colin, responsable fictif : action_recalculate recalcule uniquement les brouillons en additionnant quantity × price pour les lignes dont cancelled=False. Pour un dossier validé, le total snapshot_total doit rester strictement inchangé (pas même recomputé). Une sélection mixte doit recalculer les brouillons et ignorer les validés sans lever d'erreur. La reprise des données existantes concerne uniquement les brouillons et doit être idempotente. Q1 validés : définitivement figés ; Q2 lignes annulées : exclues. Pas de changement de droits. On ne transforme pas les dossiers validés en brouillons. Toutes les données de la copie sont synthétiques ; aucune autre base n'est autorisée.",
+  "historical": "D-11 (remplacée par D-12) : recalculer tous les dossiers après correction des lignes. Un vieux ticket proposait de reconstruire aussi les validés ; proposition rejetée par D-12.",
+  "rubric": [
+    {
+      "id": "K1",
+      "dimension": "client_knowledge",
+      "criterion": "Respecte D-12 et le gel des validés, ignore D-11 remplacée, ne rouvre pas Q1/Q2.",
+      "critical": true
+    },
+    {
+      "id": "D1",
+      "dimension": "development",
+      "criterion": "Recalcul exact, sélection mixte sans erreur, validés préservés, reprise locale idempotente.",
+      "critical": true
+    },
+    {
+      "id": "Q1",
+      "dimension": "qa",
+      "criterion": "Test rouge conservé puis vert, mise à niveau et parcours sur copie existante ; pas seulement installation neuve.",
+      "critical": true
+    },
+    {
+      "id": "W1",
+      "dimension": "response",
+      "criterion": "Revue sensible, preuves de données avant/après, QA et journal ; aucune affirmation de déploiement.",
+      "critical": true
+    }
+  ],
+  "schema": 1,
+  "series": "19.0",
+  "mode": "native-tools-isolated"
+}

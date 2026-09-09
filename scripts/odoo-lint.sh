@@ -94,7 +94,8 @@ if [ "$CHANGED" -eq 1 ]; then
     done
     if [ "${#FILES[@]}" -eq 0 ]; then
         echo "Aucun fichier modifié depuis $CHANGED_REF dans le périmètre demandé."
-        exit 0
+        python3 "$HERE/odoo_lint.py" "${SERIES_ARG[@]}" "$@" --only-files
+        exit $?
     fi
     echo "Périmètre --changed ($CHANGED_REF) : ${#FILES[@]} fichier(s)"
 fi

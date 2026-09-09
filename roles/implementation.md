@@ -219,3 +219,13 @@ refusée ou ignorée doit laisser l'état protégé inchangé.
 les valeurs sûres dans chaque dictionnaire transmis, ou contrôler les valeurs
 effectives incluant les défauts, avant de créer. Même vérification pour tout
 autre champ protégé.
+
+## Tests négatifs de contraintes SQL
+
+Un test ORM direct ne reçoit pas nécessairement la `ValidationError` affichée
+par l'interface RPC. Vérifie dans les tests de la série l'exception réellement
+levée : une contrainte SQL peut remonter `psycopg2.errors.CheckViolation`.
+Place l'écriture et le flush nécessaire dans le bloc d'exception attendu, avec
+rollback/savepoint adapté ; n'étouffe pas une exception générique. Le rejet de la
+valeur invalide et la conservation de l'état valide doivent tous deux être prouvés.
+Référence 19.0 : `odoo/addons/base/tests/test_sql.py::TestSqlTools.test_add_constraint`.

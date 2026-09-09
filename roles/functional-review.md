@@ -243,3 +243,13 @@ communication client à la clôture ; « rien de visible » est une réponse val
   n'existe que dans une conversation est perdue.
 - Ton compte-rendu dans la conversation tient en dix lignes : verdict, voie
   recommandée, questions bloquantes, chemin du fichier. Le reste est dans le fichier.
+
+## Continuité du contrat client
+
+Pour une ancienne fonctionnalité ou un changement de décision, utiliser
+`docs/CLIENT_KNOWLEDGE.md` : contexte ciblé sourcé, décision actuelle distincte de
+l'historique, questions encore ouvertes. Relier les critères aux décisions du
+client (acteur, société, borne, exception, effet interdit). Les valeurs attendues
+viennent de ce contrat ; ne pas les calculer avec la méthode à tester. Un
+scénario métier significatif rejoint le catalogue facultatif SCENARIOS.json.
+Une décision nouvelle impose de relire les scénarios et les preuves affectés.

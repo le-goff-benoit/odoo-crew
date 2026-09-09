@@ -58,11 +58,14 @@ le chemin du fichier où la décision est consignée ; les protections de
 | **Fonctionnel pur** — comprendre, cadrer, challenger, chiffrer, « Odoo sait-il faire… », arbitrer une règle métier | `odoo-analyst` **seul**, aucun code |
 | **Ticket de support** — « l'utilisateur voit… », « ça ne marche plus », « pourquoi… », un numéro de ticket | `odoo-support` **seul** : diagnostic prouvé, classement, contournement, réponse client ; passe la main selon le verdict (voir ci-dessous) |
 | **Développement ou configuration** — créer, modifier, corriger, étendre (module ou Studio) | **`/odoo-new`** : fonctionnel → `odoo-developer` **ou** `odoo-studio` selon la voie choisie par l'analyste → QA de tâche → journal, dans la release ouverte (ouverte au besoin) |
-| **Clôture / livraison** — « ferme la release », « prépare la livraison », « recette complète » | **`/odoo-close`** : recette entière, captures, guide, README, commit proposé |
+| **Préparation multi-demandes** — préparer et découper une release | **`/odoo-plan`** : analyse globale, tâches et critères ; ne démarre pas le dev |
+| **Exécution / reprise du plan** — lancer les tâches préparées | **`/odoo-start`** : dépendances, flows, preuves et consolidation |
+| **Clôture / livraison** — « ferme la release », « prépare la livraison », « recette complète » | **`/odoo-close`** : recette entière, doc.md métier, consolidation, README ; guide et communication sur demande |
 | **Validation seule** — « relis », « valide », « ce module est-il propre ? » | `odoo-tester` **seul** (mode release) |
 | **Documentation** — guide utilisateur ou de décision, communication client, sur demande explicite | skill **`camptocamp-docs`** (sinon, c'est `/odoo-close` qui la produit) |
 | **Environnement** — « déclare la prod / le staging », « as-tu accès à… » | **`/odoo-env`** : dialogue du bureau, trousseau, vérification ; aucun secret dans la conversation |
 | **Remarque à retenir** — « pas comme ça », « chez ce client… » | **`/odoo-feedback "<remarque>"`** : journal du projet, leçon candidate |
+| **Banc neutre et ajustement des agents/skills** | **`/odoo-improve`** : essais → correction → contre-épreuve → adoption dans les profils |
 | **Amélioration du dispositif** — « qu'a-t-on appris », « le guide est-il à jour » | **`/odoo-feedback`** sans argument |
 
 Règles :

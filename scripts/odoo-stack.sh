@@ -67,6 +67,7 @@ case "${1:-status}" in
         docker compose exec -T db psql -U odoo -d postgres -Atc \
             "SELECT datname FROM pg_database WHERE datistemplate = false AND datname <> 'postgres' ORDER BY 1" ;;
     restore)
+        shift
         exec "$(dirname "${BASH_SOURCE[0]}")/odoo-restore.sh" "$@" ;;
     status)
         compose ps

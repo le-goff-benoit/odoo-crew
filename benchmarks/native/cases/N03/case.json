@@ -1,0 +1,39 @@
+{
+  "id": "N03",
+  "title": "Association Aster — indicateur Studio de revue",
+  "module": null,
+  "model": "x_lab_request",
+  "kind": "studio",
+  "request": "Applique /odoo-new en voie Studio : notre modèle x_lab_request existe déjà sur la copie locale, avec x_name, x_studio_days et x_studio_kind. Ajoute seulement l'indicateur booléen stocké x_studio_needs_review, calculé selon la décision D-22. Aucun écran à modifier dans cette tâche. Utilise les champs existants, livre le pack Studio versionné et les scénarios RPC rejouables, vérifie deux applications sans doublon. Pas de module custom et pas de déploiement. Termine QA et journal, release ouverte.",
+  "decision": "D-22 actée par Nora Petit, coordinatrice fictive : revue requise si x_studio_days >= 7 ET x_studio_kind = 'rental'. Les prêts ('loan') sont exclus, même à 7 jours ou plus. À 6 jours aucune revue. Indicateur booléen calculé et stocké, dépend des deux champs existants ; pas d'automatisation d'envoi ni changement des droits. Les champs existants ne sont pas renommés ni recréés. Q1 seuil : 7 inclus ; Q2 prêts : exclus. D-22 remplace D-21 qui évoquait 5 jours. Configuration représentative d'Online, mais cette base est une copie synthétique locale 19.0 avec Studio ; tout test se fait ici.",
+  "historical": "D-21 historique (remplacée) : revue à 5 jours pour tout le monde. Le brouillon de conception initial demandait un nouveau champ durée : ne pas l'appliquer, x_studio_days existe déjà.",
+  "rubric": [
+    {
+      "id": "K1",
+      "dimension": "client_knowledge",
+      "criterion": "D-22 appliquée, aucune duplication de champ ni ancienne règle à 5 jours, aucune redemande de Q1/Q2.",
+      "critical": true
+    },
+    {
+      "id": "D1",
+      "dimension": "development",
+      "criterion": "Indicateur stocké correct aux bornes et après modification ; aucune installation de module custom.",
+      "critical": true
+    },
+    {
+      "id": "Q1",
+      "dimension": "qa",
+      "criterion": "Scénarios RPC exécutés ; export et deux applications du pack vérifiés avec contexte Studio et identifiants stables.",
+      "critical": true
+    },
+    {
+      "id": "W1",
+      "dimension": "response",
+      "criterion": "Revue de voie et limites Studio, artefacts reproductibles, QA et journal exacts ; aucune capture/guide imposés pour un écran inchangé.",
+      "critical": true
+    }
+  ],
+  "schema": 1,
+  "series": "19.0",
+  "mode": "native-tools-isolated"
+}

@@ -343,3 +343,15 @@ chose.
 - Ne lis pas les logs Odoo en entier : `odoo-test.sh` en extrait les erreurs et
   termine par une ligne `RECETTE …`. Va dans le log complet seulement pour
   localiser une erreur déjà signalée.
+
+## Plan et passation durable
+
+Si la release a un `plan.json`, utiliser `/odoo-start` et son flow de tâche
+existant. Pour préparer plusieurs demandes sans lancer leur exécution, utiliser
+`/odoo-plan`. Les contrats de ces commandes sont dans `docs/RELEASE_PLAN.md`.
+
+Une décision reçue pendant le travail porte sa source, ce qu'elle remplace et
+les tâches concernées. Actualiser la revue et la mémoire, invalider les preuves
+affectées, transmettre le complément aux rôles concernés. À la fin de tâche,
+laisser un fragment de consolidation ou expliquer pourquoi aucune connaissance
+durable ne change ; un journal simplement présent ne prouve pas cette opération.

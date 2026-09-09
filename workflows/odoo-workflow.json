@@ -341,13 +341,14 @@
       "locks": [{"resource": "odoo_sources", "mode": "read"}]
     },
     "close_precheck": {
-      "description": "Vérifier que la release, son périmètre et le worktree sont clôturables.",
+      "description": "Vérifier le périmètre et préparer les versions avant la recette.",
       "executor": "orchestrator",
       "join": "any",
       "evidence": ["points, modules, copie client et statut git"],
       "locks": [
         {"resource": "project_context", "mode": "read"},
-        {"resource": "release_artifacts", "mode": "read"}
+        {"resource": "release_artifacts", "mode": "read"},
+        {"resource": "module_code", "mode": "write"}
       ]
     },
     "release_technical_qa": {
@@ -387,11 +388,10 @@
       ]
     },
     "client_docs": {
-      "description": "Produire le guide et la communication depuis l'état validé et les captures finales.",
-      "executor": "agent",
-      "role": "camptocamp-docs",
+      "description": "Produire doc.md métier et consolidation depuis les preuves validées ; guide DOCX/PDF sur demande.",
+      "executor": "orchestrator",
       "join": "any",
-      "evidence": ["guide, PDF et communication selon le besoin"],
+      "evidence": ["doc.md et consolidation.md"],
       "locks": [
         {"resource": "release_artifacts", "mode": "read"},
         {"resource": "release_docs", "mode": "write"}

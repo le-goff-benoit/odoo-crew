@@ -319,3 +319,13 @@ Pour lier un contrôle au code, `odoo_evidence.py run --project <projet> --scope
 son log. Le graphe vérifie ces preuves JSON à la complétion ; si le code a changé,
 rejouer le contrôle concerné. Une preuve textuelle historique reste possible,
 mais n'apporte pas cette garantie de fraîcheur.
+
+## Continuité du contrat client
+
+Pour une ancienne fonctionnalité ou un changement de décision, utiliser
+`docs/CLIENT_KNOWLEDGE.md` : contexte ciblé sourcé, décision actuelle distincte de
+l'historique, questions encore ouvertes. Relier les critères aux décisions du
+client (acteur, société, borne, exception, effet interdit). Les valeurs attendues
+viennent de ce contrat ; ne pas les calculer avec la méthode à tester. Un
+scénario métier significatif rejoint le catalogue facultatif SCENARIOS.json.
+Une décision nouvelle impose de relire les scénarios et les preuves affectés.

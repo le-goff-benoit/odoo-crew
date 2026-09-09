@@ -249,7 +249,20 @@ emit_skill() {
 
 emit_skill "camptocamp-docs" "docs" \
     "Guide utilisateur, changelog, communication client à la charte Camptocamp" \
-    "Livrables documentaires Camptocamp pour un client Odoo : guide utilisateur ou de décision (DOCX + PDF à la charte, captures depuis une copie locale restaurée), dossier de changelog d'une release (README, demande, recette navigateur, communication client). S'exécute UNIQUEMENT à la clôture d'une release (/odoo-close) ou sur demande explicite de l'humain — jamais pendant une tâche d'une release ouverte."
+    "Livrables documentaires Camptocamp pour un client Odoo : guide utilisateur ou de décision (DOCX + PDF à la charte, captures depuis une copie locale restaurée), dossier de changelog d'une release (README, demande, recette navigateur, communication client). Produit un guide DOCX/PDF ou une communication sur demande explicite, pour une release identifiée, y compris après clôture. Le doc.md métier appartient à /odoo-close."
+
+emit_command "odoo-plan" "release-plan" "<demandes à préparer>" 'Demandes : $ARGUMENTS' \
+    "Préparer plusieurs tâches sans démarrer le développement" \
+    "Prépare un plan de release Odoo avec demandes, critères, dépendances, risques et périmètres. Exécution ensuite par /odoo-start."
+emit_command "odoo-start" "release-start" "<release à exécuter ou reprendre>" 'Release : $ARGUMENTS' \
+    "Exécuter et reprendre les tâches prêtes d’une release" \
+    "Exécute un plan de release Odoo, reprend ses flows, contrôle les dépendances et réceptionne les preuves et la mémoire."
+
+emit_command "odoo-improve" "quality-improve" "<défaut ou proposition à améliorer>" 'Amélioration : $ARGUMENTS' \
+    "Tester, corriger et adopter les améliorations des agents Odoo" \
+    "Pilote une boucle neutre d’essais et de rétroaction sur les agents et skills Odoo : référence, reproduction, correction, contre-épreuve, adoption et livraison."
+
+python3 "$HERE/scripts/odoo_loaded_instructions.py" "$DEST_ROOT"
 
 # Tous les profils, commandes, skills et blocs de routing sont vérifiés.
 python3 "$HERE/scripts/odoo_generated.py" "$DEST_ROOT"

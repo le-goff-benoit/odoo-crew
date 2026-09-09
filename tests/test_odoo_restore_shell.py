@@ -47,3 +47,16 @@ class RestoreShellTests(unittest.TestCase):
         result = self.execute('')
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
         self.assertIn('Base synthetic_test prête', result.stdout)
+
+    def test_stack_restore_strips_dispatch_word(self):
+        import json
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); (root / 'stack').mkdir(); (root / 'scripts').mkdir(); (root / 'enterprise').mkdir()
+            for name in ('odoo-stack.sh','series-env.sh'):
+                shutil.copy2(ROOT / 'scripts' / name, root / 'scripts' / name)
+            stub = root / 'scripts/odoo-restore.sh'
+            stub.write_text('#!/usr/bin/env python3\nimport json,sys\nprint(json.dumps(sys.argv[1:]))\n'); stub.chmod(0o755)
+            env = dict(os.environ, ODOO_SERIES='19.0', ODOO_ENTERPRISE_DIR=str(root / 'enterprise'))
+            result = subprocess.run(['bash',str(root/'scripts/odoo-stack.sh'),'restore','synthetic.zip','--db','lab'], capture_output=True,text=True,env=env)
+            self.assertEqual(result.returncode,0,result.stderr)
+            self.assertEqual(json.loads(result.stdout),['synthetic.zip','--db','lab'])

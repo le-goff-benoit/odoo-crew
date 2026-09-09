@@ -1,0 +1,39 @@
+{
+  "id": "N04",
+  "title": "Coopérative Éole — durées non négatives",
+  "module": "lab_rental",
+  "model": "lab.rental",
+  "kind": "module",
+  "request": "Applique /odoo-new sur lab_rental : interdire les jours négatifs par une contrainte SQL Odoo, en conservant les jours nuls valides et le calcul du total existant. Écris les tests de création et modification refusées, y compris la conservation d'une location valide après rejet. Le contrat est entièrement arbitré dans decisions/2026-09-08.md. Effectue la QA de tâche sur la copie et le journal, release ouverte. Aucun écran ni droit à modifier.",
+  "decision": "D-31 actée par Luc Roy, responsable fictif : lab.rental.days >= 0, contrainte SQL explicitement demandée. Zéro autorisé. daily_rate et amount_total ne changent pas de règle (jours × tarif). Les seuls enregistrements de la copie sont synthétiques. Q1 borne zéro : inclus ; Q2 type de contrainte : SQL. Aucune facturation ni mise en production.",
+  "historical": "Les durées négatives étaient anciennement permises pour des essais ; D-31 remplace cette tolérance.",
+  "rubric": [
+    {
+      "id": "K1",
+      "dimension": "client_knowledge",
+      "criterion": "Applique D-31 et conserve le zéro autorisé sans rouvrir les arbitrages.",
+      "critical": true
+    },
+    {
+      "id": "D1",
+      "dimension": "development",
+      "criterion": "Contrainte SQL effective, zéros valides, écriture négative refusée sans perdre état antérieur.",
+      "critical": true
+    },
+    {
+      "id": "Q1",
+      "dimension": "qa",
+      "criterion": "Tests négatifs exécutés et corrects, exception réellement levée contrôlée, aucun faux vert ni test masqué.",
+      "critical": true
+    },
+    {
+      "id": "W1",
+      "dimension": "response",
+      "criterion": "Revue, graphe, QA et journal réels ; résultat fidèle aux preuves.",
+      "critical": true
+    }
+  ],
+  "schema": 1,
+  "series": "19.0",
+  "mode": "native-tools-isolated"
+}

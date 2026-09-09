@@ -5,13 +5,14 @@ Camptocamp, dans la forme que les clients ont déjà reçue et approuvée (Stuck
 Leadership, RubixComm, août 2026). Un guide n'est pas un compte rendu technique :
 il est lu par quelqu'un qui a un écran Odoo devant lui et une tâche à faire.
 
-**Quand ce skill s'exécute — règle absolue.** Uniquement à la **clôture d'un
-release** (`/odoo-close`) ou sur **demande explicite de l'humain** (« fais le guide »,
-« prépare la communication »). Jamais pendant une tâche d'une release ouverte, jamais
-« pendant qu'on y est » : tant que la release est ouverte, un écran qui change se
-note dans « Ce que l'utilisateur verra » de `revue_fonctionnelle.md`, et c'est
-tout. Un guide écrit avant la clôture décrit un état qui va encore bouger, coûte
-des captures à refaire, et se refait à la clôture de toute façon.
+**Déclenchement : demande explicite de guide ou de communication.** La clôture
+produit le `doc.md` métier obligatoire ; elle ne commande pas automatiquement un
+DOCX/PDF. Pour documenter une release déjà clôturée, lire ses manifests, son
+`doc.md`, ses preuves et son sceau : ne pas utiliser les écrans d'une version
+plus récente pour illustrer l'ancienne. Restaurer un état compatible dans une
+copie isolée si des captures sont nécessaires. Ne pas rouvrir le développement
+ni déployer pour produire le guide. Une demande explicite pendant une release
+ouverte reste possible, en indiquant l'état provisoire et sa révision.
 
 Réponds dans la langue du client. RubixComm : français ; Stucki : anglais ; par
 défaut le français, avec les conventions suisses (CHF, dates `28.08.2026`, tutoiement
@@ -26,11 +27,11 @@ clos par leur numéro.
 
 | Livrable | Forme | Quand |
 |---|---|---|
-| **Guide utilisateur** | DOCX + PDF à la charte, 4 à 12 pages, captures légendées | chaque release visible par l'utilisateur |
+| **Guide utilisateur** | DOCX + PDF à la charte, 4 à 12 pages, captures légendées | sur demande pour une release identifiée |
 | **Guide de décision** | même charte ; matrices *décision / effet / effort* | quand le client doit arbitrer |
 | **Dossier de changelog** | `changelog/AAAA-MM-JJ_NN_titre-court/` : `README.md`, `demande.md`, `revue_fonctionnelle.md`, `qa.md`, `recette.md`, `tests_navigateur.md`, `captures/`, guide, communication | chaque release livrée |
 | **Recette navigateur** | `tests_navigateur.md` : environnement, jeu de données, scénarios, attendu/observé, nettoyage, limites | chaque release |
-| **Communication client** | `communication_client.txt`, dix lignes, première personne | chaque déploiement |
+| **Communication client** | `communication_client.txt`, dix lignes, première personne | sur demande ; envoi séparément autorisé |
 
 Gabarits : `~/.odoo19-agents/docs/templates/` (les fichiers du changelog —
 `suivi.md` pour le README d'une release ouverte, `README.md` pour sa forme finale —
