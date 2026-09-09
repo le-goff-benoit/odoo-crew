@@ -169,6 +169,25 @@ def initialise(release, definition):
         save(release, plan)
 
 
+def append_tasks(release, definition):
+    release, project = location(release)
+    tasks = deepcopy(definition.get('tasks', []))
+    if definition.get('schema') != 1 or not tasks:
+        raise ValueError('ajout schema 1 avec tâches requis')
+    if any(set(t) & {'receipt', 'attempts', 'deferred'} for t in tasks):
+        raise ValueError('une définition ne peut importer un état validé')
+    with flow.exclusive_lock(release / 'plan.json'):
+        plan, project = read(release)
+        plan['tasks'].extend(tasks)
+        validate(plan, project)
+        plan['history'].append({'at': flow.now(), 'action': 'added', 'tasks': [t['id'] for t in tasks]})
+        save(release, plan)
+
+
+def source_snapshot(project, scopes):
+    return fingerprint(project, [s for s in scopes if (project / s).exists()], allow_empty=True)
+
+
 def mutate(release, action, identifier, *, proof=None, acceptance=None, memory=None, reason=None):
     release, project = location(release)
     with flow.exclusive_lock(release / 'plan.json'):
@@ -181,6 +200,7 @@ def mutate(release, action, identifier, *, proof=None, acceptance=None, memory=N
             ready, why = available(plan, project, identifier)
             if not ready:
                 raise ValueError(why)
+            before = source_snapshot(project, task['scopes'])
             run_id = 'plan-' + identifier.lower() + '-' + uuid.uuid4().hex[:8]
             flow.ensure_local_flow_dirs(project)
             path = project / '.odoo-agents/flows' / (run_id + '.json')
@@ -190,7 +210,7 @@ def mutate(release, action, identifier, *, proof=None, acceptance=None, memory=N
             current['plan_task'] = {'release': str(release), 'id': identifier, 'risk': task['risk']}
             flow.write_state(path, current)
             task.setdefault('attempts', []).append({'flow': str(path.relative_to(project)),
-                                                   'at': flow.now(), 'sources_before': fingerprint(project, [s for s in task['scopes'] if (project / s).exists()]) if any((project / s).exists() for s in task['scopes']) else {}})
+                                                   'at': flow.now(), 'sources_before': before})
             result = str(path)
         elif action == 'finish':
             attempts = task.get('attempts', [])
@@ -241,20 +261,20 @@ def mutate(release, action, identifier, *, proof=None, acceptance=None, memory=N
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('action', choices=['init', 'status', 'changed', 'start', 'finish', 'reopen', 'defer'])
+    parser.add_argument('action', choices=['init', 'add', 'status', 'changed', 'start', 'finish', 'reopen', 'defer'])
     parser.add_argument('release', type=Path)
     parser.add_argument('--file', type=Path)
     parser.add_argument('--task'); parser.add_argument('--proof'); parser.add_argument('--acceptance'); parser.add_argument('--memory'); parser.add_argument('--reason')
     args = parser.parse_args()
-    if args.action == 'init':
+    if args.action in ('init', 'add'):
         if not args.file:
             parser.error('--file requis')
-        initialise(args.release, json.loads(args.file.read_text()))
+        (initialise if args.action == 'init' else append_tasks)(args.release, json.loads(args.file.read_text()))
     elif args.action == 'changed':
         plan, project = read(args.release)
         task = next(t for t in plan['tasks'] if t['id'] == args.task)
         before = task['attempts'][-1]['sources_before']
-        after = fingerprint(project, task['scopes'])
+        after = source_snapshot(project, task['scopes'])
         for name in sorted(before.keys() | after.keys()):
             if before.get(name) != after.get(name):
                 print(name)

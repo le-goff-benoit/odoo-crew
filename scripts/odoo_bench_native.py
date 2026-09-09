@@ -110,6 +110,10 @@ def sandbox(home, workspace, pack, bridge=None, provider=None):
     if bridge:
         args += ['--ro-bind', str(bridge), '/bridge']
     if provider:
+        # Les profils/outils sont visibles, jamais les cas, corrigés ou rapports du banc.
+        for relative in ('benchmarks', 'tests', 'docs/quality-lab'):
+            if (pack / relative).exists():
+                args += ['--tmpfs', str(HOME_PATH / '.odoo19-agents' / relative)]
         auth_rel = '.codex/auth.json' if provider == 'codex' else '.claude/.credentials.json'
         auth = HOME_PATH / auth_rel
         if not auth.is_file():

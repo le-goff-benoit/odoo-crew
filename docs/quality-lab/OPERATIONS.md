@@ -134,3 +134,38 @@ sert au transfert vers les notes de frais. Le runner accepte `--case B13
 Le [rapport de l'expérience](experiment-2026-09-08/README.md) conserve aussi les
 échecs des variantes et les corrections de l'oracle. Un échec du modèle ne doit
 jamais être effacé en remplaçant son code par une version corrigée manuellement.
+
+
+## Parcours natifs et adoption des profils
+
+`/odoo-improve` pilote la boucle jusqu'à la décision d'adoption. Les résultats
+seuls ne constituent pas une amélioration des agents. Modifier les sources
+canoniques, reconstruire les profils, exécuter un contre-exemple puis un cas
+inédit, conserver les échecs et installer seulement les changements justifiés.
+
+```bash
+python3 scripts/odoo_bench_native.py run --output /tmp/native-campaign \
+  --cases N01 N02 N03 N04 --reference <commit-avant> --candidate <commit-apres> \
+  --providers codex claude --timeout 900 --workers 2
+python3 scripts/odoo_bench_native.py status --output /tmp/native-campaign
+```
+
+Ce runner utilise les CLI natives et les skills générés dans un home isolé par
+bubblewrap. Les sources Odoo restent en lecture seule ; seul le projet synthétique
+est modifiable. Le pont autorise QA, mise à jour de la copie et scripts ORM dans
+les conteneurs du banc. Aucun socket Docker ni dossier client n'est transmis au
+modèle. Les cas, correcteurs et rapports du dépôt sont masqués pendant ses appels.
+Studio emploie un proxy HTTP de boucle locale vers sa seule copie synthétique.
+Les rôles sont appliqués par l'orchestrateur ; la délégation n'est pas mesurée.
+
+Les états distinguent préparation, exécution, résultat et incident. Ce runner
+natif ne possède pas encore de reprise automatique : conserver le dossier d'un
+essai interrompu et relancer dans un nouveau dossier. Un timeout ou un défaut
+d'archivage n'est pas une erreur métier du modèle. Les appels sont payants et
+exigent les CLI authentifiées localement ; GitHub CI ne les lance pas.
+
+N01 teste une nouvelle décision dans un contexte neuf, N02 une reprise et le gel
+des dossiers validés, N03 un pack Studio, N04 les contraintes SQL. Les oracles
+sont étalonnés avec une réalisation correcte et une mutation fautive. Ajouter
+un métier exige son contrat, ses données synthétiques, sa rubrique et son oracle ;
+ne pas réutiliser les attendus produits par l'agent comme unique correcteur.

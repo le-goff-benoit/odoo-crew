@@ -1,15 +1,18 @@
 # Agents Odoo — Claude Code & Codex
 
 Un même dispositif pour traiter les demandes Odoo avec Claude Code ou Codex :
-des rôles spécialisés, un graphe persistant, des preuves vérifiables et une
-mémoire de projet commune. La série Odoo est toujours détectée avant le travail
+des rôles spécialisés, un plan de release, un graphe persistant, des preuves
+vérifiables et une mémoire de projet commune. La série Odoo est toujours détectée avant le travail
 (17.0, 18.0, 19.0 ou saas~19.x).
 
 Pour installer ou mettre à jour le dispositif, voir [INSTALL.md](INSTALL.md).
 
-Pour mesurer les réponses sur des dossiers synthétiques, suivre le
-[banc d’essai qualité](benchmarks/README.md). Le pilote distingue succès
-d’exécution, qualité des réponses et dimensions encore non mesurées.
+Pour améliorer le dispositif, `/odoo-improve` pilote la boucle **essai → défaut
+observé → correction → contre-épreuve → adoption dans les profils**. Le
+[banc d’essai qualité](benchmarks/README.md) distingue réponses sur dossier,
+parcours natifs avec outils et oracles Odoo. Les
+[propositions suivies](docs/IMPROVEMENTS.md) relient chaque changement à sa preuve
+et à ses limites.
 Les profils peuvent être générés à part avec `./build.sh --output-root /tmp/odoo-dist`,
 puis vérifiés sans modification avec `./build.sh --output-root /tmp/odoo-dist --check`.
 
@@ -65,7 +68,8 @@ flowchart LR
 
     C --> CQ[Recette technique complète]
     CQ --> CB[Recette navigateur]
-    CB --> CD[Guide + communication]
+    CB --> CD[doc.md + consolidation]
+    CD -.->|sur demande| G[Guide DOCX/PDF]
     CD --> CJ[Journal de release]
 
     J --> F([Tâche terminée])
@@ -159,7 +163,10 @@ Si `.odoo-agents/` manque, initialiser d'abord le projet :
 | Comprendre, cadrer, arbitrer | `odoo-analyst` | revue fonctionnelle, aucun code |
 | Ticket ou dysfonctionnement | `odoo-support` | cause prouvée, classement, contournement, suite |
 | Développer ou configurer | `/odoo-new <demande>` | analyse → module ou Studio → QA → journal |
-| Clôturer et livrer | `/odoo-close` | recette complète → captures → guide → communication |
+| Préparer plusieurs demandes | `/odoo-plan` | analyse globale → tâches, dépendances, critères ; aucun dev lancé |
+| Exécuter/reprendre le plan | `/odoo-start` | tâches prêtes → flows → QA → réception et mémoire |
+| Clôturer la release | `/odoo-close` | versions → recette → doc.md/consolidation → sceau ; sans déploiement |
+| Améliorer les agents/skills | `/odoo-improve` | essais → correction → contre-épreuve → profils validés |
 | Valider seulement | `odoo-tester` | verdict de QA de release |
 | Déclarer un environnement | `/odoo-env` | métadonnées projet + secret dans le trousseau |
 | Documenter explicitement | `camptocamp-docs` | DOCX, PDF, captures ou communication client |
@@ -213,9 +220,11 @@ release ouverte
   déclenchent immédiatement la QA renforcée sur la copie client.
 - La clôture rejoue une seule fois la recette complète : base neuve, suite
   entière, tours, désinstallation et mise à niveau sur la copie client.
-- Les captures, le guide et la communication client attendent la clôture, sauf
-  demande humaine explicite.
-- La version du manifest s'incrémente une fois par release, sur l'état testé.
+- Les captures de recette interviennent sur l’état validé à la clôture si une
+  interface change. Le `doc.md` métier est obligatoire ; guide DOCX/PDF et
+  communication sont facultatifs, sur demande, y compris après clôture.
+- La version du manifest se prépare une fois par release **avant** la recette,
+  avec `versions.json`. Une version déjà choisie par le projet est conservée.
 
 ## État et livrables d'un projet
 
@@ -224,6 +233,10 @@ release ouverte
 | `.odoo-agents/config` | série et vocabulaire du projet | scan, puis humain |
 | `.odoo-agents/PROJECT.md` | relevé et compréhension métier durable | scan et agents |
 | `.odoo-agents/JOURNAL.md` | mémoire courte, une entrée par intervention | orchestrateur |
+| `.odoo-agents/DECISIONS.json` | décisions sourcées, remplacements et réalisation (facultatif) | orchestrateur |
+| `.odoo-agents/SCENARIOS.json` | règles client et scénarios de non-régression (facultatif) | analyste / QA |
+| `changelog/<release>/plan.json` | tâches, dépendances, périmètres et réceptions | orchestrateur |
+| `changelog/<release>/closure.json` | identité de release, code, plan, documents et preuves scellés | outil de clôture |
 | `.odoo-agents/flows/` | état local reprenable des runs | moteur du graphe |
 | `.odoo-agents/flow-artifacts/` | preuves isolées des voies parallèles | agents spécialisés |
 | `changelog/<release>/` | demande, revue, QA, recette et livrables | orchestrateur |
@@ -231,6 +244,52 @@ release ouverte
 
 Les fichiers de release sont le canal de transmission entre les rôles. La
 conversation n'est ni l'état du workflow ni le stockage des décisions.
+
+## Préparer, reprendre et clôturer
+
+Pour une demande unique, `/odoo-new` garde son fonctionnement direct. Pour un
+ensemble de demandes, `/odoo-plan` prépare une release, puis `/odoo-start` lance
+ou reprend les tâches dont les dépendances et périmètres le permettent. Une
+simple ouverture de fichier ne démarre rien. Les noms courts `/new` et `/start`
+ne sont pas créés, afin d'éviter les collisions avec les outils hôtes.
+
+Chaque tâche porte demande originale, résultat métier, critères, voie module/
+Studio/standard, risque et périmètre. Le plan réserve le périmètre de toute la
+tâche ; le graphe gère ses étapes et verrous. Une réception exige un flow terminé,
+une preuve fraîche, une revue des critères et une consolidation de la mémoire.
+Un changement de contrat, de code ou de réception d'une dépendance invalide les
+réceptions concernées. Une preuve renouvelée peut réceptionner de nouveau un
+flow terminé sans rejouer ses étapes ; elle ne remet pas automatiquement ses
+tâches dépendantes au vert.
+
+À la clôture, versions d'abord, puis recette sur l'état final. `controls.json`
+distingue passé, non applicable motivé et dispense autorisée ; un contrôle absent
+ou une copie dispensée en risque élevé bloque. Le sceau lie la release, son plan,
+son code et ses documents. Un guide DOCX/PDF n'est pas requis pour fermer la
+release ; le déploiement et l'envoi au client restent des actions distinctes.
+
+[Contrat et commandes du plan](docs/RELEASE_PLAN.md) ·
+[Contexte, décisions et scénarios client](docs/CLIENT_KNOWLEDGE.md)
+
+## Boucle de qualité du dispositif
+
+Les instructions partagées restent dans `roles/`, les profils sont générés pour
+les deux outils. `/odoo-improve` reproduit un défaut dans un corpus synthétique,
+modifie ces sources, rejoue le défaut et un cas de transfert, puis adopte le
+changement seulement avec des preuves suffisantes. L'évaluation du code et celle
+du banc lui-même sont distinctes : un oracle qui se trompe est corrigé et tous
+les candidats concernés sont rejoués sans modifier leur code.
+
+Les campagnes conservent état, réponses, configuration demandée, modèle observé
+s'il est retourné, durées, consommation disponible, commandes et résultats.
+Les incidents d'environnement ne deviennent pas des échecs métier. Les variantes
+expérimentales ne remplacent pas automatiquement les profils installés.
+GitHub Actions vérifie les contrats et la génération sur Python 3.10/3.12,
+sans clé de fournisseur ni appel LLM. Les campagnes modèles/Odoo se lancent
+explicitement dans un environnement équipé.
+
+[Exploiter le laboratoire](docs/quality-lab/OPERATIONS.md) ·
+[Suivre les propositions](docs/IMPROVEMENTS.md)
 
 ## Commandes utiles
 
@@ -293,7 +352,7 @@ jamais directement. Toute évolution part de ce référentiel puis passe par
 
 - Les cycles sont bornés et tout nœud peut atteindre un terminal.
 - Un changement sensible ne peut pas retomber dans la QA module normale.
-- Une clôture rouge ne produit pas les documents de livraison.
+- Une clôture rouge reste ouverte ; les preuves et réserves sont conservées.
 - Une écriture en production reste protégée par `odoo_instance.py`, en plus de
   la porte humaine du graphe.
 - Les verrous restent coopératifs sur la machine. Un registre physique partagé
@@ -301,6 +360,17 @@ jamais directement. Toute évolution part de ce référentiel puis passe par
 - Les preuves textuelles sont vérifiées comme fichiers non vides. Les preuves
   JSON structurées vérifient aussi le contenu du code et du log ; la pertinence
   du contrôle reste évaluée par le rôle et l’orchestrateur.
+
+La migration des instructions personnelles générées sauvegarde l'ancien bloc
+et le doublon documentaire sous `~/.odoo-agents-backups/loaded-instructions/`.
+Elle ne réécrit pas les règles non générées des projets clients. Les nouveaux
+plans et catalogues sont explicites ; les anciens projets restent utilisables
+avec `/odoo-new`. Une ancienne release devra satisfaire le contrôle de clôture
+au moment où sa clôture est demandée, sans migration automatique de ses données.
+
+Un flow ouvert conserve son graphe d'origine. En cas de changement du graphe,
+utiliser sa référence figée ou une migration explicitement compatible ; ne pas
+modifier son hash à la main. Le plan ne fait pas disparaître cette contrainte.
 
 Le détail de l'installation, de la validation et de la mise à jour se trouve
 dans [INSTALL.md](INSTALL.md).

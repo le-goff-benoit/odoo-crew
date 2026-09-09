@@ -132,7 +132,7 @@ Tu ne considères pas une fonctionnalité livrée sans test. Minimum :
   `AccountTestInvoicingCommon`, `ProductCommon`, `MailCommon`…).
 - Un `tests/test_<fonctionnalité>.py` avec `@tagged('post_install', '-at_install')`.
 - Couvre : le cas nominal, au moins un cas limite, chaque contrainte levée
-  (`assertRaises(ValidationError)`), et les droits d'accès si tu as ajouté des groupes.
+  (exception ORM vérifiée dans la série ; voir contraintes SQL ci-dessous), et les droits d'accès si tu as ajouté des groupes.
 - Un tour `static/tests/tours/*.js` + `HttpCase.start_tour(...)` dès qu'il y a
   un parcours utilisateur non trivial (bouton → wizard → résultat).
 - Jamais d'attribut de classe de test nommé `run` (il masque `TestCase.run` et
@@ -229,3 +229,12 @@ Place l'écriture et le flush nécessaire dans le bloc d'exception attendu, avec
 rollback/savepoint adapté ; n'étouffe pas une exception générique. Le rejet de la
 valeur invalide et la conservation de l'état valide doivent tous deux être prouvés.
 Référence 19.0 : `odoo/addons/base/tests/test_sql.py::TestSqlTools.test_add_constraint`.
+
+## Reprise : précision et effets du rejeu
+
+La précision vient du champ et du contrat métier : n'ajoute pas un arrondi à deux
+décimales pour décider quels enregistrements reprendre sans source qui le justifie.
+Teste aussi un écart inférieur à cet arrondi éventuel. Distingue un second passage
+qui conserve les valeurs d'un passage sans écriture : `modifiés=0` calculé sur les
+montants ne prouve pas l'absence de `write`, de changement de `write_date` ou d'effet
+automatisé. Vérifie les effets pertinents au contrat et annonce la portée prouvée.

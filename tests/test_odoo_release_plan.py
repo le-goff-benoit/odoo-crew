@@ -44,6 +44,27 @@ class ReleasePlanTests(unittest.TestCase):
             (self.root / filename).write_text('preuve de réception / absence de nouvelle connaissance expliquée')
         plan.mutate(self.release, 'finish', 'A', proof=self.proof(), acceptance='acceptance.md', memory='memory.md')
 
+    def test_start_empty_module_and_deleted_snapshot(self):
+        (self.root / 'a/code.py').unlink()
+        self.init()
+        statefile = Path(plan.mutate(self.release, 'start', 'A'))
+        current, _ = plan.read(self.release)
+        self.assertTrue(statefile.is_file())
+        self.assertEqual(current['tasks'][0]['attempts'][0]['sources_before'], {})
+        self.assertEqual(plan.source_snapshot(self.root, ['a', 'future']), {})
+        with self.assertRaises(ValueError): evidence.fingerprint(self.root, ['a'])
+
+    def test_add_tasks_preserves_receipt_and_rejects_forgery(self):
+        self.init(); self.finish_a()
+        before, _ = plan.read(self.release)
+        plan.append_tasks(self.release, {'schema': 1, 'tasks': [self.task('C', 'c', ['A'])]})
+        after, _ = plan.read(self.release)
+        self.assertEqual(before['tasks'][0], after['tasks'][0])
+        self.assertTrue(plan.available(after, self.root, 'C')[0])
+        for task in [self.task('C', 'c'), dict(self.task('D', 'd'), receipt={}), self.task('D', 'd', ['missing'])]:
+            with self.assertRaises(ValueError): plan.append_tasks(self.release, {'schema': 1, 'tasks': [task]})
+        self.assertEqual(plan.read(self.release)[0], after)
+
     def test_dependency_receipt_and_stale_code(self):
         self.init(); p, _ = plan.read(self.release)
         self.assertFalse(plan.available(p, self.root, 'B')[0])

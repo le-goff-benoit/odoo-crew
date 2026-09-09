@@ -85,3 +85,19 @@ installation/update/uninstall peuvent être non applicables avec justification ;
 les scénarios RPC et la copie restent obligatoires. Un `passed` exige une preuve
 vérifiée. La relecture du log et de ses critères est nécessaire : une commande
 réussie ne prouve pas à elle seule toutes les affirmations du déclarant.
+
+
+## Nouvelle demande dans une release préparée
+
+Conserver le plan et ses réceptions ; ajouter les nouvelles tâches avec un fichier
+`{"schema": 1, "tasks": [...]}` de même format que la définition initiale :
+
+```bash
+python3 ~/.odoo19-agents/scripts/odoo_plan.py add changelog/<release> --file nouvelles-demandes.json
+```
+
+Les identifiants existants ne sont pas remplaçables. Les dépendances peuvent viser
+les tâches existantes ou les nouvelles ; cycles, références inconnues et état
+validé importé sont refusés. Une modification du contrat d'une tâche existante
+exige une réconciliation explicite et une nouvelle réception. Un module futur ou
+encore vide peut démarrer ; sa preuve de réception doit couvrir des fichiers réels.

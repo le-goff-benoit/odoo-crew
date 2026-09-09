@@ -12,7 +12,7 @@ import time
 from odoo_test_result import inspect_log
 
 
-def fingerprint(root, scopes):
+def fingerprint(root, scopes, *, allow_empty=False):
     root = Path(root).resolve()
     files = {}
     for scope in scopes:
@@ -28,7 +28,7 @@ def fingerprint(root, scopes):
                 raise ValueError('source hors projet ou non régulière : ' + str(item))
             files[str(item.relative_to(root))] = {'sha256': hashlib.sha256(item.read_bytes()).hexdigest(),
                                                  'mode': item.stat().st_mode & 0o777}
-    if not files:
+    if not files and not allow_empty:
         raise ValueError('périmètre de code vide')
     return files
 

@@ -329,3 +329,10 @@ client (acteur, société, borne, exception, effet interdit). Les valeurs attend
 viennent de ce contrat ; ne pas les calculer avec la méthode à tester. Un
 scénario métier significatif rejoint le catalogue facultatif SCENARIOS.json.
 Une décision nouvelle impose de relire les scénarios et les preuves affectés.
+
+
+Pour une reprise, confronte sa précision aux champs et à la règle client ; un
+écart sous-centime peut être significatif hors champ monétaire. Distingue valeurs
+stables, écritures et effets automatisés au deuxième passage ; un compteur des
+valeurs modifiées ne prouve pas zéro écriture. Ne déduis pas la précision ni la
+portée de l'idempotence du seul script à contrôler.

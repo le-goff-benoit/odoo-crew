@@ -17,3 +17,9 @@ Le fichier versionné `plan.json` est le plan ; les flows restent l'autorité de
 étapes exécutées. Présente les tâches prêtes et les arbitrages restants.
 Préparer ou ouvrir un document ne démarre pas l'exécution. Si l'utilisateur a
 explicitement demandé d'exécuter aussi, continue avec `/odoo-start`.
+
+Pour une nouvelle demande dans un plan existant, `odoo_plan.py add <release>
+--file <definition-ajouts.json>` conserve l'historique et les réceptions. Ne
+réinitialise pas le plan et ne remplace pas un identifiant existant. Les nouvelles
+dépendances restent explicites et les tâches déjà reçues ne sont pas rejouées
+sans changement de contrat, de preuve ou de dépendance.
