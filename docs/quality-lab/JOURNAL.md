@@ -23,3 +23,11 @@
 - Répercuté : liens, briefing, génération et profils ; index de documentation ajouté.
 - Exemple : contrôle de référence d’achat à la confirmation d’une commande, scénario fictif dépliable ; aucune exécution Odoo revendiquée.
 - Vérification : test rouge de lecture des leçons après déplacement, puis correction du chemin ; suite et build avant livraison.
+
+## 10 septembre 2026 — flux Odoo express
+
+- Demande : formaliser les corrections locales urgentes observées sur les rapports NECA.
+- Réalisé : nouvelle commande `/odoo-express`, cinq nœuds orchestrateur et bascule vers `/odoo-new` lorsque le périmètre s'élargit.
+- Limites : aucun schéma, droit, dépendance, migration, donnée existante ni calcul financier ; présentation financière admise si les montants restent inchangés.
+- Livraison : worktree propre, test ciblé, lint, mise à jour, changelog groupé, journal et push seulement lorsqu'il est demandé.
+- Vérification : 254 tests, parcours CLI complet, génération conforme de 30 profils/commandes et skill Codex validé.
