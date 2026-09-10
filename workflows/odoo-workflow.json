@@ -456,6 +456,42 @@
       "evidence": ["entrée de release dans JOURNAL.md avec réserves"],
       "locks": [{"resource": "project_memory", "mode": "write"}]
     },
+    "express_scope": {
+      "description": "Vérifier que la demande est locale, réversible et compatible avec le flux express.",
+      "executor": "orchestrator",
+      "join": "any",
+      "evidence": ["qualification express et périmètre exact"],
+      "locks": [{"resource": "project_context", "mode": "read"}, {"resource": "module_code", "mode": "read"}]
+    },
+    "express_implementation": {
+      "description": "Réaliser le correctif local et son test ciblé dans un worktree propre.",
+      "executor": "orchestrator",
+      "join": "any",
+      "evidence": ["diff localisé et test ciblé"],
+      "locks": [{"resource": "module_code", "mode": "write"}]
+    },
+    "express_qa": {
+      "description": "Exécuter le lint des fichiers touchés, la mise à jour et le test ciblé proportionné.",
+      "executor": "orchestrator",
+      "join": "any",
+      "max_outcome_uses": {"retry": 2},
+      "evidence": ["lint ciblé et test d’exécution"],
+      "locks": [{"resource": "module_code", "mode": "read"}, {"resource": "qa_db_module", "mode": "write"}]
+    },
+    "express_record": {
+      "description": "Mettre à jour le changelog express, le journal et la version livrée.",
+      "executor": "orchestrator",
+      "join": "any",
+      "evidence": ["changelog groupé et entrée JOURNAL.md"],
+      "locks": [{"resource": "release_artifacts", "mode": "write"}, {"resource": "project_memory", "mode": "write"}]
+    },
+    "express_delivery": {
+      "description": "Créer le commit et, si le déploiement est explicitement demandé, pousser puis vérifier le SHA distant.",
+      "executor": "orchestrator",
+      "join": "any",
+      "evidence": ["commit prêt ou SHA distant vérifié"],
+      "locks": [{"resource": "module_code", "mode": "write"}]
+    },
     "task_done": {
       "description": "Intervention terminée ; la release reste ouverte jusqu'à une clôture demandée par l'humain.",
       "executor": "orchestrator",
@@ -524,6 +560,7 @@
     {"id": "brief-feedback", "from": "briefing", "outcome": "feedback", "to": "feedback_action"},
     {"id": "brief-documentation", "from": "briefing", "outcome": "documentation", "to": "documentation_action"},
     {"id": "brief-technical", "from": "briefing", "outcome": "technical", "to": "technical_answer"},
+    {"id": "brief-express", "from": "briefing", "outcome": "express", "to": "express_scope"},
 
     {"id": "lane-standard-synthesis", "from": "analyst_standard_lane", "outcome": "done", "to": "functional_synthesis"},
     {"id": "lane-project-synthesis", "from": "analyst_project_lane", "outcome": "done", "to": "functional_synthesis"},
@@ -561,6 +598,16 @@
     {"id": "scope-high-review", "from": "human_high_risk_scope_gate", "outcome": "review", "to": "functional_review_high_risk"},
     {"id": "scope-high-cancel", "from": "human_high_risk_scope_gate", "outcome": "cancel", "to": "journal_cancelled"},
     {"id": "configuration-journal", "from": "configuration_record", "outcome": "done", "to": "journal_task"},
+
+    {"id": "express-scope-eligible", "from": "express_scope", "outcome": "eligible", "to": "express_implementation"},
+    {"id": "express-scope-full", "from": "express_scope", "outcome": "full", "to": "functional_review"},
+    {"id": "express-implementation-done", "from": "express_implementation", "outcome": "done", "to": "express_qa"},
+    {"id": "express-implementation-expanded", "from": "express_implementation", "outcome": "expanded", "to": "functional_review"},
+    {"id": "express-qa-pass", "from": "express_qa", "outcome": "pass", "to": "express_record"},
+    {"id": "express-qa-retry", "from": "express_qa", "outcome": "retry", "to": "express_implementation"},
+    {"id": "express-qa-blocked", "from": "express_qa", "outcome": "blocked", "to": "journal_task_blocked"},
+    {"id": "express-record-done", "from": "express_record", "outcome": "done", "to": "express_delivery"},
+    {"id": "express-delivery-done", "from": "express_delivery", "outcome": "done", "to": "task_done"},
 
     {"id": "module-static", "from": "module_implementation", "outcome": "done", "to": "module_static_qa"},
     {"id": "module-runtime", "from": "module_implementation", "outcome": "done", "to": "module_runtime_qa"},

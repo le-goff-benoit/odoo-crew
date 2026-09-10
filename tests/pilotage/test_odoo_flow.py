@@ -154,6 +154,34 @@ class FlowExecutionTest(unittest.TestCase):
         finish(state, self.graph, "task_done", "done")
         self.assertEqual(state["status"], "complete")
 
+    def test_express_path_stays_with_orchestrator(self):
+        state = self.state("express")
+        finish(state, self.graph, "briefing", "express")
+        self.assertEqual(FLOW.ready_nodes(state, self.graph), ["express_scope"])
+        finish(state, self.graph, "express_scope", "eligible")
+        finish(state, self.graph, "express_implementation", "done")
+        finish(state, self.graph, "express_qa", "pass")
+        finish(state, self.graph, "express_record", "done")
+        finish(state, self.graph, "express_delivery", "done")
+        self.assertEqual(FLOW.ready_nodes(state, self.graph), ["task_done"])
+        express_nodes = {
+            "express_scope",
+            "express_implementation",
+            "express_qa",
+            "express_record",
+            "express_delivery",
+        }
+        self.assertTrue(all(
+            self.graph["nodes"][node]["executor"] == "orchestrator"
+            for node in express_nodes
+        ))
+
+    def test_express_scope_can_escalate_to_full_review(self):
+        state = self.state("express")
+        finish(state, self.graph, "briefing", "express")
+        finish(state, self.graph, "express_scope", "full")
+        self.assertEqual(FLOW.ready_nodes(state, self.graph), ["functional_review"])
+
     def test_terminal_dashboard_shows_agents_and_graph_position(self):
         state = self.state("development")
         finish(state, self.graph, "briefing", "development")

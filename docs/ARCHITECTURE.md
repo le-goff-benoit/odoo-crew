@@ -40,7 +40,14 @@ flowchart LR
     R -->|question| A[Analyste]
     R -->|ticket| S[Support]
     R -->|développement| A
+    R -->|correctif express| EX{Périmètre local ?}
     R -->|clôture| C[Précontrôle release]
+
+    EX -->|oui| EI[Modification directe]
+    EI --> EQ[QA ciblée]
+    EQ -->|vert| J
+    EQ -->|reprise ≤ 2| EI
+    EX -->|périmètre élargi| A
 
     A -->|standard| J[Journal]
     A -->|module| D[Développeur]
@@ -80,7 +87,7 @@ flowchart LR
     classDef agent fill:#e8f1ff,stroke:#3973b9,color:#172b4d;
     classDef human fill:#fff2cc,stroke:#b8860b,color:#4b3600;
     classDef terminal fill:#e7f6e7,stroke:#398439,color:#173b17;
-    class A,S,D,ST,Q1,Q2,Q3,SQ1,SQ2,CQ,CB,CD agent;
+    class A,S,D,ST,Q1,Q2,Q3,SQ1,SQ2,CQ,CB,CD,EI,EQ agent;
     class H human;
     class F,FC terminal;
 ```
@@ -170,6 +177,7 @@ Si `.odoo-agents/` manque, initialiser d'abord le projet :
 | Comprendre, cadrer, arbitrer | `odoo-analyst` | revue fonctionnelle, aucun code |
 | Ticket ou dysfonctionnement | `odoo-support` | cause prouvée, classement, contournement, suite |
 | Développer ou configurer | `/odoo-new <demande>` | analyse → module ou Studio → QA → journal |
+| Corriger et livrer un changement local | `/odoo-express <demande>` | qualification courte → modification directe → QA ciblée → livraison demandée |
 | Préparer plusieurs demandes | `/odoo-plan` | analyse globale → tâches, dépendances, critères ; aucun dev lancé |
 | Exécuter/reprendre le plan | `/odoo-start` | tâches prêtes → flows → QA → réception et mémoire |
 | Clôturer la release | `/odoo-close` | versions → recette → doc.md/consolidation → sceau ; sans déploiement |
@@ -182,6 +190,12 @@ Si `.odoo-agents/` manque, initialiser d'abord le projet :
 Les mêmes noms sont disponibles dans Claude Code et Codex. Si les sous-agents
 ne sont pas disponibles, l'agent principal applique lui-même le rôle : les
 preuves et les transitions restent identiques.
+
+`/odoo-express` garde toutes ses étapes dans l'orchestrateur principal. Il est
+réservé aux changements précis et réversibles qui ne touchent ni au schéma, ni
+aux droits, ni aux dépendances, ni aux données, ni aux calculs financiers. Une
+présentation de facture peut suivre ce flux lorsque ses montants et règles ne
+changent pas. Toute extension de périmètre rejoint le parcours `/odoo-new`.
 
 ## Comment le graphe est piloté
 

@@ -215,6 +215,12 @@ emit_command "odoo-new" "orchestration" \
     "Une demande de dev de A à Z : cadrage → code → QA de tâche → journal" \
     "Traite une demande de développement Odoo de bout en bout, dans la série du projet et dans la release de changelog ouverte (ou en ouvre une) : revue fonctionnelle contradictoire écrite dans la release, implémentation, QA de tâche sur Odoo local (lint des fichiers touchés, install/update, tests ciblés), puis entrée de journal. La recette complète se joue à la clôture de la release (/odoo-close). Avec boucle de reprise."
 
+emit_command "odoo-express" "express" \
+    "<correction locale et résultat attendu>" \
+    'Correction express : $ARGUMENTS' \
+    "Corriger et livrer rapidement un changement Odoo local avec ses contrôles ciblés" \
+    "Réalise un correctif Odoo express lorsque le besoin est précis, local, réversible et sans changement de schéma, droits, dépendances, données ou calculs financiers : briefing, qualification courte, worktree propre, modification, test ciblé, lint, mise à jour, changelog groupé, journal et livraison si elle est explicitement demandée. Bascule vers /odoo-new dès que le périmètre dépasse ces limites."
+
 emit_command "odoo-close" "release-close" \
     "[dossier de la release]" \
     'Release à clôturer : $ARGUMENTS' \

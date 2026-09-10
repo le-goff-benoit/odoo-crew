@@ -58,6 +58,7 @@ le chemin du fichier où la décision est consignée ; les protections de
 | **Fonctionnel pur** — comprendre, cadrer, challenger, chiffrer, « Odoo sait-il faire… », arbitrer une règle métier | `odoo-analyst` **seul**, aucun code |
 | **Ticket de support** — « l'utilisateur voit… », « ça ne marche plus », « pourquoi… », un numéro de ticket | `odoo-support` **seul** : diagnostic prouvé, classement, contournement, réponse client ; passe la main selon le verdict (voir ci-dessous) |
 | **Développement ou configuration** — créer, modifier, corriger, étendre (module ou Studio) | **`/odoo-new`** : fonctionnel → `odoo-developer` **ou** `odoo-studio` selon la voie choisie par l'analyste → QA de tâche → journal, dans la release ouverte (ouverte au besoin) |
+| **Correctif express local** — résultat explicite, zone connue, sans schéma, droits, dépendance, migration, données ni calcul financier | **`/odoo-express`** : briefing → qualification courte → modification directe → QA ciblée → journal → push si demandé ; bascule vers `/odoo-new` si le périmètre s'élargit |
 | **Préparation multi-demandes** — préparer et découper une release | **`/odoo-plan`** : analyse globale, tâches et critères ; ne démarre pas le dev |
 | **Estimation et suivi du temps des agents** — chiffrer les durées, comparer prévu/réalisé | **`/odoo-estimate`** : minutes par tâche et agent, hypothèses ; bilan de clôture temps/jetons/coûts IA sourcés, sans barème client |
 | **Exécution / reprise du plan** — lancer les tâches préparées | **`/odoo-start`** : dépendances, flows, preuves et consolidation |
@@ -74,6 +75,10 @@ Règles :
 - La chaîne se déroule **sans redemander l'autorisation entre les étapes** ;
   elle ne s'arrête que si le standard couvre le besoin, sur question bloquante,
   ou QA rouge après deux reprises.
+- Le flux **`/odoo-express`** reste exécuté par l'orchestrateur, sans sous-agent.
+  Une retouche de présentation d'un document financier est admissible lorsque
+  les montants et règles restent inchangés. Les corrections liées partagent la
+  même entrée de changelog express au lieu de créer un dossier par itération.
 - **Tâche légère, release lourde** : pendant une release ouverte, chaque tâche reçoit lint
   des fichiers touchés, install/update et tests ciblés ; la recette complète
   se joue une fois, à la clôture. Une tâche qui touche aux droits, à la compta,

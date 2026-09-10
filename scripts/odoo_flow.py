@@ -42,6 +42,7 @@ KINDS = {
     "development_complex",
     "documentation",
     "environment",
+    "express",
     "feedback",
     "functional",
     "support",

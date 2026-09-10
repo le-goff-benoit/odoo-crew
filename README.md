@@ -44,6 +44,20 @@ Votre demande --> Analyste
 Chaque tâche conserve ses décisions et ses résultats dans la mémoire du projet.
 Un blocage ou un contrôle qui reste en échec vous est signalé.
 
+**Un correctif express : modifier, vérifier et livrer sans coordination superflue.**
+
+```text
+/odoo-express --> Qualification courte --> Modification locale --> Test cible
+                         |                                         |
+                         +-- perimetre elargi --> /odoo-new        +--> Livraison demandee
+```
+
+Ce parcours s'applique aux retouches précises et réversibles dans une zone déjà
+connue, par exemple la mise en page d'un rapport sans changement de ses montants.
+L'agent principal réalise toutes les étapes. Le lint, la mise à jour du module et
+le test ciblé restent obligatoires. Les ajustements liés partagent la même entrée
+de changelog express.
+
 **Une release : organiser plusieurs demandes jusqu’à la livraison.**
 
 ```text
@@ -86,6 +100,7 @@ avec les decisions a prendre et les priorites.
 | **`/odoo-estimate`** | Prévoir le travail des agents | Des minutes par agent et tâche, avec fourchette et hypothèses. |
 | **`/odoo-start`** | Lancer ou reprendre le plan | L’exécution des tâches prêtes et un suivi de l’avancement. |
 | **`/odoo-new`** | Réaliser une évolution précise | Analyse, réalisation, contrôles ciblés et mémoire du résultat. |
+| **`/odoo-express`** | Livrer une petite correction locale | Qualification courte, modification directe, test ciblé et push lorsqu'il est demandé. |
 | **`/odoo-close`** | Préparer la livraison | Recette complète, documentation métier et bilan prévu/réalisé disponible. |
 | **`/odoo-env`** | Déclarer ou vérifier un environnement | Des accès configurés et vérifiés, sans partager de secret dans la conversation. |
 | **`/odoo-feedback "remarque"`** | Retenir une règle ou une difficulté | Une remarque conservée dans le journal du projet. |

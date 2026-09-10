@@ -26,7 +26,7 @@ class GeneratedTests(unittest.TestCase):
             baseline = len(g.check(root, dest))
             common = root / 'roles/communication.md'
             common.write_text(common.read_text() + '\nUpdated shared instruction.\n')
-            self.assertEqual(len(g.check(root, dest)) - baseline, 28)
+            self.assertEqual(len(g.check(root, dest)) - baseline, 30)
             for path, content in g.expected_outputs(root, dest).items():
                 path.write_text(content)
             self.assertEqual(len(g.check(root, dest)), baseline)
@@ -35,7 +35,7 @@ class GeneratedTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as tmp:
             dest = Path(tmp)
             outputs = g.expected_outputs(ROOT, dest)
-            self.assertEqual(len(outputs), 28)
+            self.assertEqual(len(outputs), 30)
             for path, content in outputs.items():
                 path.parent.mkdir(parents=True, exist_ok=True)
                 path.write_text(content)
