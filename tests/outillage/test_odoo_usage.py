@@ -141,7 +141,10 @@ class NativeUsageTests(unittest.TestCase):
         self.assertIsNone(result["tokens"])
         sample = count()
         del sample["payload"]["thread_token_usage"]["cache_write_input_tokens"]
-        self.assertIsNone(self.read([meta(), sample])["tokens"])
+        tokens = self.read([meta(), sample])["tokens"]
+        self.assertEqual(tokens['input_tokens'], 100)
+        self.assertEqual(tokens['output_tokens'], 20)
+        self.assertIsNone(tokens['cache_write_input_tokens'])
 
     def test_partial_counters_still_reject_regression(self):
         first, second = count(), count(20, "r2", inputs=80)
@@ -203,7 +206,25 @@ class NativeUsageTests(unittest.TestCase):
     def test_claude_missing_cache_and_unknown_format_unmeasured(self):
         message = claude()
         del message["message"]["usage"]["cache_creation_input_tokens"]
-        self.assertIsNone(self.read([message], "claude")["tokens"])
+        tokens = self.read([message], "claude")["tokens"]
+        self.assertEqual(tokens['output_tokens'], 20)
+        self.assertEqual(tokens['cached_input_tokens'], 30)
+        self.assertIsNone(tokens['input_tokens'])
+        self.assertIsNone(tokens['total_tokens'])
+
+    def test_partial_tail_preserves_complete_prefix_but_not_middle_corruption(self):
+        self.read([meta(), context(), count(), done()])
+        with self.path.open('ab') as stream:
+            stream.write(b'{"unfinished')
+        result = usage.read_usage(self.path, 'codex')
+        self.assertEqual(result['tokens']['total_tokens'], 120)
+        self.assertEqual(result['active_seconds'], 9)
+        self.assertIn('partial_source_tail', result['warnings'])
+        self.assertFalse(result['complete'])
+        with self.path.open('ab') as stream:
+            stream.write(b'\n{}\n')
+        with self.assertRaises(ValueError):
+            usage.read_usage(self.path, 'codex')
         result = self.read([{"something": "private"}], "claude")
         self.assertIsNone(result["tokens"])
         self.assertIn("unrecognized_claude_format", result["warnings"])

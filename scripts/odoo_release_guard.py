@@ -108,6 +108,9 @@ def controls(release, project, evidence_by_path):
 
 def seal(release, scopes, proofs):
     release, project = location(release)
+    # Only new seals enforce this: do not invalidate historical closures.
+    from odoo_effort import check_closure
+    check_closure(release)
     if (release / 'plan.json').exists():
         plan, _ = read(release)
         bad = {key: value for key, value in statuses(plan, project).items() if value[0] not in ('validated', 'deferred')}

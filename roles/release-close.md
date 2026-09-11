@@ -136,7 +136,17 @@ prévu/réel par tâche et agent, reprises comprises, jetons et coût IA sourcé
 calculé sur un tarif technique daté. Montre la couverture et les absences ;
 un montant inconnu ne vaut pas zéro. Distingue les minutes d'agent cumulées,
 la durée calendaire et les chevauchements, ainsi que coûts déclarés et calculés.
-Régénère le bilan après les dernières mesures de clôture.
+Termine aussi le chronomètre de consolidation `RELEASE / orchestrateur`
+avant le bilan final et le sceau ; ne le laisse pas ouvert pour mesurer ton
+dernier message. Lance `odoo_effort.py check-closure "$RELEASE"` : un chronomètre
+encore actif doit être terminé. Si sa borne réelle de fin est perdue, utilise
+`interrupt --entry ID --reason "…"` ; ne lance pas `stop` après une longue
+interruption, car cela compterait l'attente comme du travail. Régénère ensuite
+le bilan. Les rôles sans mesure restent des réserves, pas des zéros ; montre
+le sous-total connu comme **partiel**, sans économie calculée sur la prévision
+complète. Le nouveau sceau refuse les chronomètres actifs, pas les anciennes
+durées inconnues. Ne modifie pas les registres des releases déjà clôturées
+pour les faire passer rétroactivement par ce contrôle.
 
 Réécris `$RELEASE/README.md` dans sa forme finale, d'après le gabarit
 `~/.odoo19-agents/docs/templates/changelog/README.md` :

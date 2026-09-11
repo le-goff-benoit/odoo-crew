@@ -23,6 +23,7 @@ Chaque rapport précise son périmètre : une réussite sur un cas n’est pas u
 
 | Sujet | Bilan à lire | Ce qu’il permet de savoir |
 |---|---|---|
+| **Email de clôture — retiré** | [Retrait et compatibilité](email-removal-2026-09-11/README.md) | Fonctionnalité abandonnée ; anciennes commandes inertes et données conservées. |
 | **Temps prévu et réalisé** | [Estimation par agent](effort-2026-09-09/README.md) | Le suivi est livré ; la précision des prévisions reste à calibrer. |
 | **Délégation et langage pour le chef de projet** | [Comparaison solo / sous-agents](delegation-comparison-2026-09-09/README.md) | La délégation reste un choix au cas par cas ; le langage attendu est intégré aux consignes. |
 | **Reprise du travail** | [Reprise ordonnée](ordered-recovery-2026-09-09/README.md) | Les passations et reprises sont éprouvées sur des cas délimités. |

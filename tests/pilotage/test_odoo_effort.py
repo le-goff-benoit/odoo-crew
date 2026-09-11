@@ -1,6 +1,7 @@
 """Prévisions conservées, attribution sans doublon et bilan honnête des coûts/absences."""
 from copy import deepcopy
 import json
+import subprocess
 from pathlib import Path
 import sys
 import tempfile
@@ -123,16 +124,96 @@ class EffortTests(unittest.TestCase):
             self.record(since='2026-09-09T10:01:00Z')
 
     def test_timer_baseline_and_unknown_tokens(self):
-        with patch.object(effort, 'now', return_value='2026-09-09T10:00:00+00:00'), patch.object(effort, 'normalized_usage', return_value=self.usage()):
+        with patch.object(effort, 'clock_snapshot', create=True, return_value={'boot': 'test', 'monotonic': 100, 'boottime': 100}), patch.object(effort, 'now', return_value='2026-09-09T10:00:00+00:00'), patch.object(effort, 'normalized_usage', return_value=self.usage()):
             entry = effort.start(self.release, 'A', 'odoo-developer', 'codex', 'fixture')
         latest = self.usage(); latest['tokens'] = {k: v * 2 for k, v in latest['tokens'].items()}
-        with patch.object(effort, 'now', return_value='2026-09-09T10:02:00+00:00'), patch.object(effort, 'normalized_usage', return_value=latest):
+        with patch.object(effort, 'clock_snapshot', create=True, return_value={'boot': 'test', 'monotonic': 220, 'boottime': 28900}), patch.object(effort, 'now', return_value='2026-09-09T18:02:00+00:00'), patch.object(effort, 'normalized_usage', return_value=latest):
             stopped = effort.stop(self.release, entry['id'], 'fixture')
         self.assertEqual(stopped['seconds'], 120)
+        self.assertEqual(stopped['suspended_seconds'], 28680)
         self.assertEqual(stopped['tokens']['total_tokens'], 1200)
         with self.assertRaises(ValueError):
             effort.stop(self.release, entry['id'], 'fixture')
         self.assertIsNone(effort.counter_delta(None, latest['tokens']))
+
+    def test_reboot_interrupts_timer_without_inventing_time(self):
+        with patch.object(effort, 'clock_snapshot', create=True, return_value={'boot': 'before', 'monotonic': 100, 'boottime': 100}), patch.object(effort, 'normalized_usage', return_value=self.usage()):
+            entry = effort.start(self.release, 'A', 'odoo-developer', 'codex', 'fixture')
+        with patch.object(effort, 'clock_snapshot', create=True, return_value={'boot': 'after', 'monotonic': 200, 'boottime': 200}), patch.object(effort, 'normalized_usage', return_value=self.usage()):
+            stopped = effort.stop(self.release, entry['id'], 'fixture')
+        self.assertEqual(stopped['status'], 'interrupted')
+        self.assertIsNone(stopped['seconds'])
+        self.assertIn('redémarrage', stopped['interruption_reason'])
+
+    def test_partial_token_delta_preserves_known_fields(self):
+        baseline = self.usage()['tokens']
+        latest = {k: v * 2 for k, v in baseline.items()}
+        latest['cache_write_input_tokens'] = None
+        delta = effort.counter_delta(baseline, latest)
+        self.assertEqual(delta['output_tokens'], baseline['output_tokens'])
+        self.assertIsNone(delta['cache_write_input_tokens'])
+
+    def test_live_clock_is_read_only_and_excludes_suspend(self):
+        with patch.object(effort, 'clock_snapshot', return_value={'boot': 'test', 'monotonic': 100, 'boottime': 100}), patch.object(effort, 'normalized_usage', return_value=self.usage()):
+            effort.start(self.release, 'A', 'odoo-developer', 'codex', 'fixture')
+        original = (self.release / 'effort.json').read_bytes()
+        data = effort.state(self.release)
+        with patch.object(effort, 'clock_snapshot', return_value={'boot': 'test', 'monotonic': 220, 'boottime': 29020}):
+            row = effort.report_data(self.release, data, live=True)['rows'][0]
+        self.assertEqual(row['known_minutes'], 2)
+        self.assertEqual(row['suspended_seconds'], 28800)
+        self.assertFalse(row['time_complete'])
+        self.assertIsNone(data['entries'][0]['seconds'])
+        self.assertEqual((self.release / 'effort.json').read_bytes(), original)
+
+    def test_legacy_timer_without_clock_does_not_guess_sleep(self):
+        with patch.object(effort, 'normalized_usage', return_value=self.usage()):
+            entry = effort.start(self.release, 'A', 'odoo-developer', 'codex', 'fixture')
+            data = effort.state(self.release)
+            del data['entries'][0]['clock_start']
+            effort.save(self.release, data)
+            stopped = effort.stop(self.release, entry['id'], 'fixture')
+        self.assertIsNone(stopped['seconds'])
+        self.assertEqual(stopped['status'], 'interrupted')
+
+    def test_partial_tokens_report_and_cost_remain_independent(self):
+        sample = self.usage()
+        sample['tokens']['cache_write_input_tokens'] = None
+        self.record(sample)
+        effort.rates(self.release, {'cards': [self.card()]})
+        report = effort.report(self.release)
+        row = report['rows'][0]
+        self.assertEqual(row['tokens']['input_tokens'], 1000)
+        self.assertEqual(row['tokens']['output_tokens'], 200)
+        self.assertFalse(row['token_complete'])
+        self.assertIsNone(row['costs'][0]['cost'])
+
+    def test_historical_report_is_validated_without_rewriting(self):
+        self.record(self.usage(tokens=False))
+        report = effort.report(self.release)
+        report.pop('measurement_version')
+        for row in report['rows']:
+            row.pop('suspended_seconds')
+            if not row['token_complete']:
+                row['tokens'] = None
+        effort.write(self.release / 'bilan-effort.json', report)
+        for name, content in effort.render(report).items():
+            (self.release / name).write_text(content)
+        before = {name: (self.release / name).read_bytes() for name in effort.REPORT_FILES}
+        self.assertEqual(effort.check_report(self.release), report)
+        self.assertEqual(before, {name: (self.release / name).read_bytes() for name in effort.REPORT_FILES})
+
+    def test_reserved_clock_is_independent_of_wall_time_and_multiple_suspends(self):
+        with patch.object(effort, 'now', side_effect=AssertionError('wall time must not be consulted')):
+            actual, suspended, error = effort.clock_duration(
+                {'boot': 'same', 'monotonic': 400, 'boottime': 500},
+                {'boot': 'same', 'monotonic': 700, 'boottime': 22400})
+        self.assertEqual(actual, 300)
+        self.assertEqual(suspended, 21600)
+        self.assertIsNone(error)
+        self.assertIsNone(effort.clock_duration(None, None)[0])
+        self.assertIsNone(effort.clock_duration({'boot': 'same', 'monotonic': 10, 'boottime': 10},
+                                               {'boot': 'same', 'monotonic': 20, 'boottime': 12})[0])
 
     def test_timer_other_session_or_counter_regression_refused(self):
         with patch.object(effort, 'normalized_usage', return_value=self.usage()):
@@ -143,6 +224,72 @@ class EffortTests(unittest.TestCase):
         with patch.object(effort, 'normalized_usage', return_value=smaller), self.assertRaises(ValueError):
             effort.stop(self.release, entry['id'], 'fixture')
         self.assertEqual(effort.state(self.release)['entries'][0]['status'], 'running')
+
+    def test_new_seal_refuses_running_timer_without_altering_it(self):
+        with patch.object(effort, 'normalized_usage', return_value=self.usage()):
+            entry = effort.start(self.release, 'A', 'odoo-developer', 'codex', 'fixture')
+        effort.report(self.release)
+        before = (self.release / 'effort.json').read_bytes()
+        # Existing report/closure readers remain compatible with historical data.
+        self.assertTrue(effort.check_report(self.release))
+        with self.assertRaisesRegex(ValueError, 'chronomètre.*' + entry['id']):
+            guard.seal(self.release, [], [])
+        self.assertEqual(before, (self.release / 'effort.json').read_bytes())
+        self.assertFalse((self.release / 'closure.json').exists())
+
+    def test_interruption_preserves_unknown_time_and_allows_future_work(self):
+        with patch.object(effort, 'now', return_value='2026-09-09T10:00:00+00:00'), patch.object(effort, 'normalized_usage', return_value=self.usage()):
+            entry = effort.start(self.release, 'A', 'odoo-developer', 'codex', 'fixture')
+        with patch.object(effort, 'now', return_value='2026-09-09T10:02:00+00:00'):
+            interrupted = effort.interrupt(self.release, entry['id'], 'Attente humaine non isolée, borne de fin inconnue')
+        self.assertIsNone(interrupted['seconds'])
+        self.assertIsNone(interrupted['tokens'])
+        self.assertIsNone(interrupted['ended_at'])
+        self.assertEqual(interrupted['baseline'], entry['baseline'])
+        self.assertEqual(interrupted['status'], 'interrupted')
+        report = effort.report(self.release)
+        self.assertIsNone(report['totals']['actual_minutes'])
+        self.assertIsNone(report['totals']['envelope_minutes'])
+        self.assertTrue(effort.check_closure(self.release))
+        with patch.object(effort, 'now', return_value='2026-09-09T10:03:00+00:00'), patch.object(effort, 'normalized_usage', return_value=self.usage()):
+            effort.start(self.release, 'A', 'odoo-developer', 'codex', 'fixture')
+        self.assertEqual(len(effort.state(self.release)['entries']), 2)
+
+    def test_interruption_requires_reason_and_an_active_timer(self):
+        with patch.object(effort, 'normalized_usage', return_value=self.usage()):
+            entry = effort.start(self.release, 'A', 'odoo-developer', 'codex', 'fixture')
+        before = (self.release / 'effort.json').read_bytes()
+        for reason in ('', '   '):
+            with self.assertRaises(ValueError):
+                effort.interrupt(self.release, entry['id'], reason)
+        self.assertEqual(before, (self.release / 'effort.json').read_bytes())
+        effort.interrupt(self.release, entry['id'], 'Trace perdue')
+        with self.assertRaises(ValueError):
+            effort.interrupt(self.release, entry['id'], 'Deuxième fois')
+
+    def test_closure_check_accepts_absent_or_partial_tracking_without_zero(self):
+        self.record()
+        effort.estimate(self.release, {'lines': [dict(self.line, agent='odoo-tester')]}, 'QA à venir')
+        result = effort.check_closure(self.release)
+        self.assertEqual(result['known_minutes'], 6)
+        self.assertEqual(result['missing_roles'], [{'task': 'A', 'agent': 'odoo-tester'}])
+        self.assertFalse(result['complete'])
+        (self.release / 'effort.json').unlink()
+        self.assertEqual(effort.check_closure(self.release), {'tracking': False})
+
+    def test_interruption_cli_and_readonly_preflight(self):
+        with patch.object(effort, 'normalized_usage', return_value=self.usage()):
+            entry = effort.start(self.release, 'A', 'odoo-developer', 'codex', 'fixture')
+        command = [sys.executable, effort.__file__]
+        result = subprocess.run(command + ['check-closure', str(self.release)], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 1)
+        self.assertIn(entry['id'], result.stderr)
+        result = subprocess.run(command + ['interrupt', str(self.release), '--entry', entry['id'], '--reason', 'Trace perdue'], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertIsNone(json.loads(result.stdout)['seconds'])
+        result = subprocess.run(command + ['check-closure', str(self.release)], capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        self.assertFalse(json.loads(result.stdout)['complete'])
 
     def test_cumulative_agent_time_is_not_elapsed_time(self):
         self.record(); self.record(self.usage('thread-2'))

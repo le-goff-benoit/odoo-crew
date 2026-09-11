@@ -13,6 +13,25 @@ pas dans la release. Le registre en conserve la provenance utile à la mesure.
 
 ## Préparer la prévision
 
+### Veille et reprise (outils du 11 septembre 2026)
+
+Les nouveaux `start` enregistrent deux horloges Linux et l’identité du démarrage.
+`stop` mesure le temps éveillé, avec `suspended_seconds` séparé ; fermer la fenêtre
+ne remet pas les horloges à zéro. Les attentes pendant que le poste est éveillé
+restent incluses. Après reboot, changement de namespace ou borne ancienne sans
+horloge, l’arrêt devient `interrupted`, durée inconnue, sans compter la nuit.
+Le cockpit peut demander `report_data(..., live=True)` : aperçu uniquement,
+aucune modification du registre. Les exports `report` restent déterministes.
+
+Les compteurs natifs sont indépendants : une valeur absente reste `null` mais
+n’efface plus les autres. Les entrées normalisées incluent le cache, à ne pas
+additionner une seconde fois. Le calcul tarifaire exige toujours tous les champs
+nécessaires. Une dernière ligne JSONL en cours est ignorée avec avertissement ;
+une corruption interne est refusée. Les anciennes durées natives ne permettent
+pas de déduire une suspension et ne sont pas corrigées arbitrairement.
+
+### Initialisation
+
 Depuis le référentiel, pour une release avec `plan.json` :
 
 ```bash
@@ -97,6 +116,14 @@ ne sont pas encore disponibles au moment où il produit son propre bilan.
 
 Une trace existante peut alimenter le bilan sans inventer de chronométrage :
 
+Si un chronomètre a été oublié pendant une interruption et que sa fin réelle
+n'est pas établie, `interrupt <release> --entry ID --reason "…"` conserve
+l'entrée et sa provenance, sans secondes ni jetons inventés. L'heure de cette
+déclaration est une borne administrative, pas une durée de travail. Ne pas
+utiliser `stop` à la reprise pour compter l'attente. Un nouveau passage peut
+ensuite démarrer ; la période perdue reste inconnue et réservée contre les
+doubles attributions. Aucune ancienne entrée n'est supprimée.
+
 Sans plan ni estimation antérieure, déclarer d'abord la tâche avec
 `add-task <release> --task T01 --title "Travail déjà exécuté"`. Cette commande
 ne crée aucune prévision et ne remplace pas le titre d'une tâche existante.
@@ -159,6 +186,11 @@ de valorisation différentes. Il ne s'agit pas de tarifs client ; la commande
 ne contacte aucun fournisseur, API ou modèle pour obtenir les prix ou les usages.
 
 À la clôture, mesurer aussi recette et consolidation, puis produire le bilan.
+Fermer le dernier chronomètre de consolidation **avant** le bilan final et le
+sceau. `check-closure <release>` est un contrôle en lecture seule : code 1 si
+des chronomètres sont actifs, sinon liste des rôles/tâches non mesurés et
+sous-total connu. Le nouveau scellement exige ce contrôle, sans invalider les
+sceaux historiques ni exiger de reconstituer les durées manquantes.
 Relire par tâche et rôle : prévision initiale, révisions motivées, réalisé,
 reprises incluses, écart comparable, jetons, coûts déclarés ou calculés et
 couverture des mesures. Distinguer les **minutes d'agent cumulées** de la

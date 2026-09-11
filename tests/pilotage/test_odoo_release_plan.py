@@ -159,6 +159,21 @@ class ReleasePlanTests(unittest.TestCase):
         registry.write_bytes(original)
         guard.check(self.release)
 
+        # Historical seal produced before the new preflight: still readable,
+        # but the same open timer may not be sealed again by the new version.
+        data = effort.state(self.release)
+        data['tasks']['A'] = 'Clôture synthétique'
+        data['entries'] = [{'id': 'legacy-open', 'task': 'A', 'agent': 'orchestrateur',
+                            'status': 'running', 'seconds': None, 'tokens': None}]
+        effort.save(self.release, data)
+        effort.report(self.release)
+        legacy = json.loads((self.release / 'closure.json').read_text())
+        legacy['artifacts'] = {name: guard.artifact_hash(self.release / name) for name in legacy['artifacts']}
+        (self.release / 'closure.json').write_text(json.dumps(legacy))
+        guard.check(self.release)
+        with self.assertRaisesRegex(ValueError, 'chronomètre'):
+            guard.seal(self.release, ['a'], [proof])
+
     def test_dependency_rereception_does_not_revalidate_child(self):
         self.init(); self.finish_a()
         path = Path(plan.mutate(self.release, 'start', 'B'))

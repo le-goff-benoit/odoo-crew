@@ -1,5 +1,26 @@
 # Journal de l’espace qualité
 
+## 11 septembre 2026 — retrait de l’intégration email
+
+- Décision utilisateur : abandon du parcours email, pas une tentative d’améliorer son adoption.
+- Retrait de la consigne canonique de clôture, des transports Gmail/SMTP et de l’interface Tricorder.
+- Ancien CLI neutralisé ; fonctions de lecture inertes pour les fenêtres 0.2.4 encore ouvertes.
+- Incident utilisateur config_for absent corrigé, ancien catalogue installé recontrôlé sur NECA en lecture seule.
+- Données privées et trousseau conservés ; import des demandes EML inchangé.
+- Tests de retrait et contre-épreuve EML ; aucun appel Gmail ou campagne modèle.
+- Sources de transport sauvegardées hors des dépôts avant retrait ; aucune publication distante.
+
+## 11 septembre 2026 — SMTP Gmail et correction de l’email
+
+- Demande : mot de passe d’application, aperçu modifiable, envoi après accord terminal.
+- Helper SMTP séparé du renderer : dialogue masqué, trousseau distinct OAuth, TLS vérifié.
+- Préparation/édition avec version attendue ; correction humaine protégée contre régénération.
+- Tous les destinataires acceptés avant DATA, Cci masqués, échec incertain sans relance.
+- 41 tests email et 300 tests Crew verts ; transport, dialogue et trousseau simulés.
+- Six parcours Tricorder, NECA en lecture seule ; preuves et limites dans le rapport SMTP.
+- Consigne canonique de clôture ajustée et génération Claude/Codex contrôlée avant adoption locale.
+- Aucun email réel, aucune campagne LLM payante ni changement de données client.
+
 ## 9 septembre 2026 — présentation et rangement
 
 - Demande : README court et orienté chef de projet, bannière fournie, tests et essais plus faciles à trouver.
@@ -8,6 +29,22 @@
 - Conservé : détail du pilote dans benchmarks/PILOTE.md ; archives et preuves historiques inchangées.
 - Vérifié : 251 tests toujours découverts et réussis ; 79 liens locaux valides ; image copiée à l’identique.
 - Suite : ajouter les nouvelles campagnes à l’index et leurs tests dans le domaine correspondant.
+
+## 11 septembre 2026 — publication demandée
+
+- Demande explicite : pousser les changements et publier Crew/Tricorder sur GitHub.
+- Livraison Crew datée v2026.09.11, synchronisée avec Tricorder v0.2.7.
+- Notes dans docs/releases/2026.09.11.md ; tests, graphe et parité contrôlés.
+- Aucun projet client, brouillon, identifiant ni paquet binaire ajouté au code source.
+
+## 11 septembre 2026 — veille et compteurs indépendants
+
+- Demande explicite : protéger les chronomètres à la veille/reprise et améliorer les jetons Claude/Codex.
+- Reproduction rouge puis correction monotone/boottime, reboot sans durée inventée, lecture vivante sans écriture.
+- Champs de jetons indépendants et dernière ligne JSONL en cours tolérée, corruption interne refusée.
+- Coûts non extrapolés, anciens bilans vérifiables sans migration ; aucun client modifié.
+- 271 tests, graphe valide, génération isolée puis active conforme ; protocole dans sleep-tokens-2026-09-11.
+- Limite : durées natives sans trace de suspension inchangées ; veille simulée, pas de mise en veille du poste.
 
 ## 9 septembre 2026 — parcours visibles et commandes
 

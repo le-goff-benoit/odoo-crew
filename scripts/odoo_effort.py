@@ -13,6 +13,7 @@ import json
 from pathlib import Path
 import re
 import sys
+import time
 import uuid
 
 TOKEN_KEYS = ('input_tokens', 'cached_input_tokens', 'cache_write_input_tokens', 'output_tokens', 'total_tokens')
@@ -21,6 +22,39 @@ REPORT_FILES = ('estimation.md', 'bilan-effort.md', 'bilan-effort.json', 'bilan-
 
 def now():
     return datetime.now(timezone.utc).isoformat()
+
+
+def clock_snapshot():
+    """Linux clocks survive process/window closure, but not a reboot.
+
+    MONOTONIC excludes suspend; BOOTTIME includes it. Namespace identity avoids
+    comparing offsets captured inside a different Linux time namespace.
+    """
+    try:
+        boot = Path('/proc/sys/kernel/random/boot_id').read_text().strip()
+        namespace = Path('/proc/self/ns/time').readlink()
+        return {'boot': boot + ':' + str(namespace),
+                'monotonic': time.clock_gettime(time.CLOCK_MONOTONIC),
+                'boottime': time.clock_gettime(time.CLOCK_BOOTTIME)}
+    except (OSError, AttributeError):
+        return None
+
+
+def clock_duration(start, end):
+    if not start or not end:
+        return None, None, 'Horloges de veille absentes : durée non reconstituée.'
+    if not start.get('boot') or start.get('boot') != end.get('boot'):
+        return None, None, 'Mesure interrompue par un redémarrage ou un changement d’horloge.'
+    try:
+        awake = float(number(end['monotonic'])) - float(number(start['monotonic']))
+        elapsed = float(number(end['boottime'])) - float(number(start['boottime']))
+        if awake < 0 or elapsed < 0 or elapsed + 0.01 < awake:
+            raise ValueError('horloges régressives')
+    except (KeyError, TypeError, ValueError):
+        return None, None, 'Horloges incohérentes : durée non reconstituée.'
+    # Calls are not simultaneous; sub-10ms differences are sampling noise.
+    suspended = elapsed - awake
+    return round(awake, 6), round(suspended, 6) if suspended > 0.01 else 0, None
 
 
 def instant(value):
@@ -200,6 +234,9 @@ def normalized_usage(path, provider, since=None, until=None):
 def interval(entry):
     start = entry.get('since') or entry.get('started_at')
     end = entry.get('until') or entry.get('ended_at')
+    if entry.get('status') == 'interrupted':
+        # Administrative observation boundary, never a measured work duration.
+        end = entry.get('interrupted_at')
     if entry.get('status') in ('running', 'incomplete') and not entry.get('until'):
         end = None
     return (instant(start) if start else float('-inf'), instant(end) if end else float('inf'))
@@ -245,7 +282,8 @@ def start(release, task, agent, provider, source):
         entry = {'id': uuid.uuid4().hex[:12], 'task': task, 'agent': agent, 'provider': provider,
                  'thread_id': usage['thread_id'], 'model': usage.get('model'), 'started_at': now(),
                  'ended_at': None, 'status': 'running', 'basis': 'timer', 'baseline': usage,
-                 'tokens': None, 'seconds': None, 'identities': [], 'warnings': []}
+                 'tokens': None, 'seconds': None, 'identities': [], 'warnings': [],
+                 'clock_start': clock_snapshot()}
         entry['estimate_revision'] = forecast_revision(data, task, agent, entry['started_at'])
         check_allocation(release, data, entry)
         data['entries'].append(entry); save(release, data)
@@ -253,10 +291,10 @@ def start(release, task, agent, provider, source):
 
 
 def counter_delta(before, after):
-    if before is None or after is None or any(before.get(k) is None or after.get(k) is None for k in TOKEN_KEYS):
+    if before is None or after is None:
         return None
-    delta = {k: after[k] - before[k] for k in TOKEN_KEYS}
-    if any(v < 0 for v in delta.values()):
+    delta = {k: after[k] - before[k] if before.get(k) is not None and after.get(k) is not None else None for k in TOKEN_KEYS}
+    if any(v is not None and v < 0 for v in delta.values()):
         raise ValueError('compteur cumulatif régressif')
     return delta
 
@@ -271,14 +309,20 @@ def stop(release, entry_id, source):
         if usage['thread_id'] != entry['thread_id']:
             raise ValueError('la session de fin diffère de celle du départ')
         entry['ended_at'] = now(); entry['status'] = 'complete'
-        entry['seconds'] = instant(entry['ended_at']) - instant(entry['started_at'])
-        number(entry['seconds'])
+        entry['clock_end'] = clock_snapshot()
+        entry['seconds'], entry['suspended_seconds'], clock_error = clock_duration(entry.get('clock_start'), entry['clock_end'])
+        entry['time_basis'] = 'linux_monotonic_excluding_suspend'
+        if clock_error:
+            entry.update(status='interrupted', interrupted_at=entry['ended_at'],
+                         interruption_reason=clock_error, ended_at=None)
         entry['tokens'] = counter_delta(entry['baseline'].get('tokens'), usage.get('tokens'))
         baseline_model = entry['baseline'].get('model')
         entry['model'] = usage.get('model') if baseline_model in (None, usage.get('model')) and 'mixed_models' not in entry['baseline'].get('warnings', []) else None
         entry['source_sha256'] = usage['source_sha256']
         entry['warnings'] = list(usage.get('warnings', [])) + ['Chronomètre de périmètre : outils et attentes internes inclus ; bornes des jetons aux réponses déjà enregistrées.']
-        if entry['tokens'] is None:
+        if clock_error:
+            entry['warnings'].append(clock_error)
+        if entry['tokens'] is None or any(entry['tokens'].get(k) is None for k in TOKEN_KEYS):
             entry['warnings'].append('Jetons non mesurés : compteur initial ou final absent/incomplet.')
         entry['provider_cost'] = None
         before_cost, after_cost = entry['baseline'].get('provider_cost'), usage.get('provider_cost')
@@ -290,6 +334,42 @@ def stop(release, entry_id, source):
         check_allocation(release, data, entry, entry['id'])
         save(release, data)
         return entry
+
+
+def interrupt(release, entry_id, reason):
+    """Resolve a lost timer without treating the time until discovery as work."""
+    if not isinstance(reason, str) or not reason.strip():
+        raise ValueError('raison de l’interruption obligatoire')
+    with locked(release) as (release, _):
+        data = state(release)
+        entry = next((e for e in data['entries'] if e['id'] == entry_id), None)
+        if not entry or entry['status'] != 'running' or entry['basis'] != 'timer':
+            raise ValueError('chronomètre actif inconnu')
+        stamp = now()
+        if instant(stamp) < instant(entry['started_at']):
+            raise ValueError('interruption antérieure au départ')
+        entry.update(status='interrupted', interrupted_at=stamp, interruption_reason=reason.strip(),
+                     ended_at=None, seconds=None, tokens=None)
+        entry.setdefault('warnings', []).append('Mesure interrompue, durée inconnue : ' + reason.strip())
+        save(release, data)
+        return entry
+
+
+def check_closure(release):
+    """New closures must resolve live timers; missing historical time is allowed."""
+    release = Path(release)
+    if not (release / 'effort.json').exists():
+        return {'tracking': False}
+    data = state(release)
+    running = [e for e in data['entries'] if e.get('status') == 'running']
+    if running:
+        labels = ', '.join(f"{e['id']} ({e['task']} / {e['agent']})" for e in running)
+        raise ValueError('chronomètre(s) à terminer avec stop, ou interrupt --reason si la borne réelle est perdue : ' + labels)
+    report = report_data(release, data)
+    return {'tracking': True, 'complete': report['totals']['actual_minutes'] is not None,
+            'known_minutes': report['totals']['known_minutes'],
+            'missing_roles': [{'task': r['task'], 'agent': r['agent']} for r in report['rows'] if not r['time_complete']],
+            'missing_tasks': report['missing_tasks']}
 
 
 def import_usage(release, task, agent, provider, source, since=None, until=None):
@@ -395,7 +475,16 @@ def union_seconds(intervals):
     return result
 
 
-def report_data(release, data):
+def report_data(release, data, live=False):
+    state_sha = digest(data)
+    # Live preview only: reporting never stops a timer or modifies its ledger.
+    data = deepcopy(data)
+    clock = clock_snapshot() if live and any(e.get('status') == 'running' and e.get('basis') == 'timer' for e in data['entries']) else None
+    for entry in data['entries']:
+        if live and entry.get('status') == 'running' and entry.get('basis') == 'timer':
+            entry['seconds'], entry['suspended_seconds'], error = clock_duration(entry.get('clock_start'), clock)
+            if error:
+                entry.setdefault('warnings', []).append(error)
     current = contracts(release)
     original = data['estimates'][0] if data['estimates'] else None
     revised = data['estimates'][-1] if data['estimates'] else None
@@ -409,8 +498,10 @@ def report_data(release, data):
         measured = bool(entries) and all(x.get('seconds') is not None and x['status'] == 'complete' for x in entries)
         actual = sum(x['seconds'] for x in entries) / 60 if measured else None
         subtotal = sum(x['seconds'] for x in entries if x.get('seconds') is not None) / 60
-        token_complete = bool(entries) and all(x.get('tokens') is not None and x['status'] == 'complete' for x in entries)
-        tokens = {k: sum(x['tokens'][k] for x in entries) for k in TOKEN_KEYS} if token_complete else None
+        tokens = {k: sum(x['tokens'][k] for x in entries)
+                  if all((x.get('tokens') or {}).get(k) is not None for x in entries) else None
+                  for k in TOKEN_KEYS} if entries else None
+        token_complete = bool(tokens) and all(v is not None for v in tokens.values()) and all(x['status'] == 'complete' for x in entries)
         known_tokens = sum((x.get('tokens') or {}).get('total_tokens', 0) or 0 for x in entries)
         warnings = [w for x in entries for w in x.get('warnings', [])]
         changed = any(line and line.get('contract_sha256') and current.get(task, {}).get('sha256') != line['contract_sha256'] for line in (old, new))
@@ -426,6 +517,7 @@ def report_data(release, data):
         rows.append({'task': task, 'title': data['tasks'][task], 'agent': agent, 'initial': old, 'revised': new,
                      'actual_minutes': actual, 'known_minutes': subtotal, 'time_complete': measured,
                      'tokens': tokens, 'known_tokens': known_tokens, 'token_complete': token_complete,
+                     'suspended_seconds': sum(e.get('suspended_seconds') or 0 for e in entries),
                      'delta_minutes': variance, 'delta_percent': 100 * variance / old['expected_minutes'] if variance is not None and old['expected_minutes'] else None,
                      'retrospective': retrospective, 'scope_changed': changed, 'entries': [e['id'] for e in entries],
                      'costs': costs, 'warnings': list(dict.fromkeys(warnings))})
@@ -441,7 +533,7 @@ def report_data(release, data):
     missing_tasks = sorted(set(data['tasks']) - {r['task'] for r in rows})
     if current:
         missing_tasks = sorted(set(missing_tasks) | (set(current) - {r['task'] for r in rows}))
-    return {'schema': 1, 'release': data['release'], 'generated_at': now(), 'state_sha256': digest(data),
+    return {'schema': 1, 'measurement_version': 2, 'release': data['release'], 'generated_at': now(), 'state_sha256': state_sha,
             'contracts_sha256': digest(current), 'initial_revision': original['revision'] if original else None,
             'latest_revision': revised['revision'] if revised else None, 'rows': rows, 'missing_tasks': missing_tasks,
             'totals': {'planned_initial_minutes': sum(x['expected_minutes'] for x in initial.values()) if initial else None,
@@ -531,6 +623,14 @@ def check_report(release):
         raise ValueError('bilan d’effort périmé : relancer report')
     expected = report_data(release, data)
     expected['generated_at'] = actual.get('generated_at')
+    if 'measurement_version' not in actual:
+        # Validate historical exports under their original all-or-nothing
+        # presentation contract; no rewrite/migration of sealed reports.
+        expected.pop('measurement_version')
+        for row in expected['rows']:
+            row.pop('suspended_seconds')
+            if not row['token_complete']:
+                row['tokens'] = None
     if expected != actual:
         raise ValueError('bilan d’effort incohérent avec les mesures')
     for name, text in render(actual).items():
@@ -542,7 +642,7 @@ def check_report(release):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='action', required=True)
-    for action in ('init', 'add-task', 'estimate', 'start', 'stop', 'import-usage', 'rates', 'report', 'check'):
+    for action in ('init', 'add-task', 'estimate', 'start', 'stop', 'interrupt', 'check-closure', 'import-usage', 'rates', 'report', 'check'):
         p = sub.add_parser(action); p.add_argument('release', type=Path)
         if action == 'add-task':
             p.add_argument('--task', required=True); p.add_argument('--title', required=True)
@@ -555,8 +655,10 @@ def main():
             p.add_argument('--provider', choices=('codex', 'claude'), required=True)
         if action in ('start', 'stop', 'import-usage'):
             p.add_argument('--source', type=Path, required=True)
-        if action == 'stop':
+        if action in ('stop', 'interrupt'):
             p.add_argument('--entry', required=True)
+        if action == 'interrupt':
+            p.add_argument('--reason', required=True)
         if action == 'import-usage':
             p.add_argument('--since'); p.add_argument('--until')
     args = parser.parse_args()
@@ -573,6 +675,10 @@ def main():
             result = start(args.release, args.task, args.agent, args.provider, args.source)
         elif args.action == 'stop':
             result = stop(args.release, args.entry, args.source)
+        elif args.action == 'interrupt':
+            result = interrupt(args.release, args.entry, args.reason)
+        elif args.action == 'check-closure':
+            result = check_closure(args.release)
         elif args.action == 'import-usage':
             result = import_usage(args.release, args.task, args.agent, args.provider, args.source, args.since, args.until)
         elif args.action == 'report':

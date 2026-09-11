@@ -1,5 +1,15 @@
 # Suivi des propositions et critères d'adoption
 
+**Email de clôture — retiré le 11 septembre 2026 à la demande de l’utilisateur** :
+interface et transports supprimés, ancien CLI neutralisé, profils de clôture sans
+préparation/envoi. Données privées conservées. Les rapports email antérieurs décrivent
+une expérimentation abandonnée. [Bilan du retrait](quality-lab/email-removal-2026-09-11/README.md).
+
+**Temps partiels et chronomètres de clôture — correctif local** : durées connues
+conservées dans Tricorder, nouveaux sceaux refusés tant qu'un chronomètre est
+actif ; interruption motivée sans durée inventée, compatibilité des sceaux
+historiques. [Défaut, contre-épreuves et limites](quality-lab/partial-time-2026-09-11/README.md).
+
 Références R/S/M : analyse privée du bureau, 7–8 septembre 2026. Elle reste la
 source de conception ; ce tableau décrit la réalisation et ses limites. Une
 modification d'instructions ne vaut amélioration mesurée qu'après un essai

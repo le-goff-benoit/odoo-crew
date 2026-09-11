@@ -149,6 +149,11 @@ pas mobilisés dans ce scénario ; ils interviennent lorsque le besoin le justif
 **Les temps prévus et mesurés**, pour affiner vos estimations et appliquer vos
 propres barèmes. Guides utilisateur et communications client sont disponibles sur demande.
 
+Un relevé incomplet conserve son sous-total connu, sans transformer les périodes
+manquantes en zéro. Avant une nouvelle clôture, les chronomètres doivent être
+terminés ou déclarés interrompus avec une raison ; aucune durée passée n'est
+reconstituée automatiquement. Voir le [suivi des temps](docs/EFFORT.md).
+
 **Vous gardez le contrôle.** Les décisions métier vous appartiennent. Toute
 écriture en production requiert votre accord explicite ; la clôture d’une
 release ne déclenche pas son déploiement.

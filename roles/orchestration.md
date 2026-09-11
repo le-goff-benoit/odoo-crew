@@ -29,6 +29,13 @@ sans leur faire écrire le registre partagé. Lis `docs/EFFORT.md` pour attribue
 les jetons et éviter les doubles comptes. L'analyse déjà passée sans mesure
 reste signalée comme telle ; l'absence de trace ancienne ne bloque pas la QA.
 
+Même dans un unique terminal, le passage développement → QA → coordination
+change le rôle mesuré : ferme le précédent, puis ouvre le suivant. Avant de
+recevoir la tâche, confronte les rôles prévus aux passages enregistrés ; signale
+ce qui manque au lieu de déclarer le temps complet. À la reprise, un ancien
+chronomètre dont la fin réelle est perdue se déclare `interrupt --entry ID
+--reason "…"` : ne compte pas toute l'interruption avec un `stop` tardif.
+
 Exception : une demande qui touche aux droits, à la comptabilité, à la
 facturation ou aux données existantes est validée **immédiatement** au niveau
 nécessaire (recette sur la copie du client comprise), release ouverte ou pas.

@@ -62,23 +62,27 @@ def _tokens(raw, provider):
     for key in keys:
         if key in raw and raw[key] is not None:
             _number(raw[key], "token counter", integer=True)
-    if any(raw.get(key) is None for key in keys):
-        return None
     if provider == "claude":
-        inputs = raw["input_tokens"] + raw["cache_read_input_tokens"] + raw["cache_creation_input_tokens"]
-        return dict(zip(TOKEN_KEYS, (inputs, raw["cache_read_input_tokens"],
-                                   raw["cache_creation_input_tokens"], raw["output_tokens"],
-                                   inputs + raw["output_tokens"])))
-    result = {key: raw[key] for key in TOKEN_KEYS}
-    if (result["cached_input_tokens"] + result["cache_write_input_tokens"] > result["input_tokens"]
-            or result["total_tokens"] != result["input_tokens"] + result["output_tokens"]):
+        parts = [raw.get(k) for k in keys[:3]]
+        inputs = sum(parts) if all(v is not None for v in parts) else None
+        output = raw.get('output_tokens')
+        result = dict(zip(TOKEN_KEYS, (inputs, raw.get("cache_read_input_tokens"),
+                                      raw.get("cache_creation_input_tokens"), output,
+                                      inputs + output if inputs is not None and output is not None else None)))
+    else:
+        result = {key: raw.get(key) for key in TOKEN_KEYS}
+    inputs, output, total = (result[k] for k in ('input_tokens', 'output_tokens', 'total_tokens'))
+    cached = sum(result[k] or 0 for k in ('cached_input_tokens', 'cache_write_input_tokens'))
+    if (inputs is not None and cached > inputs
+            or all(v is not None for v in (inputs, output, total)) and total != inputs + output):
         raise ValueError("Inconsistent token counters")
-    return result
+    return result if any(v is not None for v in result.values()) else None
 
 
 def _monotonic(previous, current):
     if previous is not None and current is not None:
-        if any(current[key] < previous[key] for key in TOKEN_KEYS):
+        if any(current[key] < previous[key] for key in TOKEN_KEYS
+               if current.get(key) is not None and previous.get(key) is not None):
             raise ValueError("Regressive token counters")
 
 
@@ -154,7 +158,8 @@ def _difference(current, baseline):
     if current is None or baseline is None:
         return None
     _monotonic(baseline, current)
-    return {key: current[key] - baseline[key] for key in TOKEN_KEYS}
+    return {key: current[key] - baseline[key]
+            if current.get(key) is not None and baseline.get(key) is not None else None for key in TOKEN_KEYS}
 
 
 def _at(samples, bound):
@@ -313,7 +318,8 @@ def _claude(records, lower, upper, warnings):
                 measured.append(sample[1])
         if not measured or missing_message_usage:
             return None
-        return {key: sum(sample[key] for sample in measured) for key in TOKEN_KEYS}
+        return {key: sum(sample[key] for sample in measured)
+                if all(sample.get(key) is not None for sample in measured) else None for key in TOKEN_KEYS}
 
     tokens = cumulative(upper)
     if lower is not None:
@@ -358,20 +364,24 @@ def read_usage(path, provider, since=None, until=None):
     if lower is not None and upper is not None and upper < lower:
         raise ValueError("Window ends before it starts")
     raw = Path(path).read_bytes()
-    records = []
-    for index, line in enumerate(raw.splitlines(), 1):
+    records, warnings = [], []
+    lines = raw.splitlines()
+    for index, line in enumerate(lines, 1):
         if not line.strip():
             continue
         try:
             row = json.loads(line)
         except (ValueError, UnicodeDecodeError):
+            if records and line.lstrip().startswith(b'{') and index == len(lines) and not raw.endswith((b'\n', b'\r')):
+                warnings.append('partial_source_tail')
+                break
             raise ValueError(f"Invalid JSON on source line {index}") from None
         if not isinstance(row, dict):
             raise ValueError(f"Expected an object on source line {index}")
         if "payload" in row and not isinstance(row["payload"], dict):
             raise ValueError(f"Invalid metadata on source line {index}")
         records.append(row)
-    warnings, start, identity = [], None, None
+    start, identity = None, None
     if provider == "codex":
         records, identity, start = _own_codex(records)
         tokens, identities, models, intervals, complete, cost = _codex(records, identity, lower, upper, warnings)
@@ -398,6 +408,10 @@ def read_usage(path, provider, since=None, until=None):
         warnings.append("completed_turn_durations_unavailable")
     if tokens is None:
         warnings.append("tokens_unmeasured")
+    elif any(tokens.get(k) is None for k in TOKEN_KEYS):
+        warnings.append('some_usage_counters_missing')
+    if 'partial_source_tail' in warnings:
+        complete = False
     if len(models) > 1:
         warnings.append("mixed_models")
     if not models:
@@ -408,6 +422,7 @@ def read_usage(path, provider, since=None, until=None):
         "started_at": _iso(start), "ended_at": _iso(end),
         "elapsed_seconds": round(end - start, 6) if start is not None and end is not None else None,
         "active_seconds": active, "complete": complete, "tokens": tokens,
+        "tokens_complete": tokens is not None and all(tokens.get(k) is not None for k in TOKEN_KEYS),
         "provider_cost": cost, "source_sha256": hashlib.sha256(raw).hexdigest(),
         "warnings": sorted(set(warnings)), "identities": sorted(identities),
     }
