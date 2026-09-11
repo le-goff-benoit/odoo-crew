@@ -68,3 +68,12 @@
 - Limites : aucun schéma, droit, dépendance, migration, donnée existante ni calcul financier ; présentation financière admise si les montants restent inchangés.
 - Livraison : worktree propre, test ciblé, lint, mise à jour, changelog groupé, journal et push seulement lorsqu'il est demandé.
 - Vérification : 254 tests, parcours CLI complet, génération conforme de 30 profils/commandes et skill Codex validé.
+
+## 11 septembre 2026 — mesurer avant le plan
+
+- Demande : inclure le cadrage `/odoo-plan`, avant toute tâche ou release.
+- Réalisé : registre de préparation projet, rattachement explicite unique, même moteur temps/jetons.
+- Les passages futurs dédiés vont à leur tâche ; ni ventilation ni prévision rétroactive.
+- Contrôles : 12 nouveaux tests, 283 tests Crew verts, lecteurs natifs Claude/Codex et concurrence.
+- Graphe et génération isolée conformes ; adoption dans les profils partagés Claude/Codex.
+- Preuves, contre-cas et limites : `docs/quality-lab/PREPARATION.md`.

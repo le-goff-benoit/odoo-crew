@@ -15,6 +15,9 @@ implémentation ou Studio, QA, orchestration et réception selon son périmètre
 La recette complète et la consolidation utilisent la tâche spéciale `RELEASE` :
 ne les répète pas dans chaque QA de tâche. Une même conversation peut assurer
 plusieurs rôles successifs ; le rôle mesuré est celui du travail exécuté.
+Le cadrage déjà mesuré par `/odoo-plan` reste séparé sous « Préparation du plan » :
+il rejoint le bilan par son rattachement, pas par une copie dans `effort.json`.
+Ne l'importe pas une seconde fois et ne crée pas de prévision pour ce temps passé.
 
 Estime une fourchette optimiste / probable / pessimiste par couple tâche–agent.
 Le point central est `(optimiste + 4 × probable + pessimiste) / 6`.

@@ -13,6 +13,51 @@ pas dans la release. Le registre en conserve la provenance utile à la mesure.
 
 ## Préparer la prévision
 
+### Cadrage avant release
+
+Le travail de `/odoo-plan` commence avant les tâches. L'orchestrateur utilise le
+même moteur de mesure pour cette phase : temps éveillé, rôles et compteurs natifs.
+Il démarre dès que le projet et la trace de la session courante sont identifiés.
+Le contenu des conversations n'est pas analysé pour deviner une tâche. Sans
+trace identifiable, la préparation continue mais la mesure reste indisponible.
+
+```bash
+python3 scripts/odoo_effort.py prepare-start /chemin/projet \
+  --agent odoo-analyst --provider codex --source /chemin/session.jsonl
+python3 scripts/odoo_effort.py prepare-status /chemin/projet
+python3 scripts/odoo_effort.py prepare-attach /chemin/projet \
+  --entry IDENTIFIANT_RETOURNE --release /chemin/projet/changelog/RELEASE
+python3 scripts/odoo_effort.py prepare-stop /chemin/projet \
+  --entry IDENTIFIANT_RETOURNE --source /chemin/session.jsonl
+```
+
+Pour Claude, seul `--provider claude` change. Pour un nouveau passage commun sur
+une release existante, ajouter `--release <chemin>` à `prepare-start`. À chaque
+changement de rôle, fin de passage ou attente humaine : arrêter puis ouvrir une
+nouvelle entrée au retour. Une borne perdue se déclare avec `prepare-interrupt
+<projet> --entry <id> --reason "..."`, sans compter l'absence comme du travail.
+
+Le registre unique `.odoo-agents/preparation/effort.json` appartient au projet.
+Le rattachement ne déplace ni ne copie l'entrée : il fixe sa release. Il est
+idempotent et refuse une autre release, un autre projet ou une release close.
+Plusieurs préparations peuvent coexister ; aucune n'est aspirée automatiquement
+par l'ouverture d'une release. **Conserver/versionner ce registre avec le projet**
+pour vérifier les bilans sur un autre poste ; ne pas copier les traces natives.
+La perte du registre invalide la vérification d'un bilan qui en dépend.
+
+Tricorder affiche les entrées non attribuées avec « Aucune release », et celles
+rattachées uniquement dans leur release. `report` les inclut sans écrire de
+doublon dans le registre des tâches ; la clôture refuse une préparation active.
+Une autre préparation du projet ne périme pas les bilans des releases précédentes.
+
+Le cadrage passé reste commun sous l'identifiant réservé `PREPARATION`, sans
+estimation initiale ni distribution après coup. Une fois une tâche déclarée,
+arrêter le cadrage et ouvrir `start --task <id>` pour le **nouveau** passage dédié.
+Les fenêtres qui se recouvrent sont refusées entre préparation et tâches.
+Les aperçus de durée sont en direct ; les jetons correspondent au dernier arrêt
+mesuré, pas à un compteur estimé pendant une réponse. Les premiers échanges
+antérieurs au démarrage restent hors mesure, explicitement, sans rattrapage inventé.
+
 ### Veille et reprise (outils du 11 septembre 2026)
 
 Les nouveaux `start` enregistrent deux horloges Linux et l’identité du démarrage.

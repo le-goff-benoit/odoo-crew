@@ -4,9 +4,22 @@ Cette commande prépare le travail sans lancer le développement. `/odoo-new`
 reste la voie directe pour une demande de bout en bout ; `/odoo-plan` puis
 `/odoo-start` conviennent à plusieurs tâches, dépendances ou reprises.
 
+**Mesure du cadrage, avant l'analyse** : dès que le projet et la session native
+sont identifiés, lis `docs/EFFORT.md` (section « Cadrage avant release ») et lance
+`odoo_effort.py prepare-start <projet> --agent odoo-analyst --provider codex|claude
+--source <trace-native>`. Conserve l'identifiant retourné. Aucune release ni tâche
+n'est nécessaire. Si la trace n'est pas identifiable, annonce la mesure absente
+et poursuis le cadrage ; n'invente pas une durée ni un compteur initial.
+À une reprise, consulte `prepare-status` : ne démarre pas deux mesures sur la
+même période. Ferme le passage avant une attente humaine ou un changement de rôle,
+puis ouvre une nouvelle entrée au retour. Une borne perdue exige `prepare-interrupt`.
+
 Lis le briefing et applique `roles/functional-review.md`. Conserve chaque demande
 originale, les décisions actées et les questions encore bloquantes. Ouvre ou
-réutilise la release avec `odoo-release.sh`. Écris la revue globale, puis un
+réutilise la release avec `odoo-release.sh`. Rattache uniquement les entrées de
+cette demande par `prepare-attach <projet> --entry <id> --release <release>`.
+Pour les passages suivants de cadrage commun, `prepare-start --release <release>`
+conserve ce rattachement dès le départ. Écris la revue globale, puis un
 `plan-definition.json` suivant `docs/RELEASE_PLAN.md` : chaque tâche a un résultat
 métier, des critères, une voie, un risque, des dépendances et des périmètres.
 Une question bloquante reste dans la revue ; ne crée pas une tâche exécutable
@@ -19,6 +32,11 @@ reçoit une prévision en minutes par rôle, avec fourchette et hypothèses ; le
 travail commun de clôture est compté une seule fois. `odoo_effort.py init`
 reprend les identifiants du plan, puis `estimate` et `report` produisent
 `estimation.md`. Présente les tâches prêtes, leur prévision et les arbitrages restants.
+Termine la préparation avec `prepare-stop <projet> --entry <id> --source <trace>`
+et actualise le bilan avec `report <release>`. Le cadrage reste « Préparation du
+plan », sans prévision rétrospective. Dès qu'une tâche est déclarée et qu'un
+nouveau passage lui est dédié, ferme la préparation puis emploie `start --task`
+du registre de release ; ne redistribue jamais le travail passé entre les tâches.
 Préparer ou ouvrir un document ne démarre pas l'exécution. Si l'utilisateur a
 explicitement demandé d'exécuter aussi, continue avec `/odoo-start`.
 

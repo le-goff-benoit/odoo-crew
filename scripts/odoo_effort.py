@@ -18,6 +18,8 @@ import uuid
 
 TOKEN_KEYS = ('input_tokens', 'cached_input_tokens', 'cache_write_input_tokens', 'output_tokens', 'total_tokens')
 REPORT_FILES = ('estimation.md', 'bilan-effort.md', 'bilan-effort.json', 'bilan-effort.csv')
+PREPARATION_TASK = 'PREPARATION'
+PREPARATION_TITLE = 'Préparation du plan'
 
 
 def now():
@@ -94,9 +96,98 @@ def write(path, value):
 
 def location(release):
     release = Path(release).resolve()
+    if is_preparation(release) and release.is_dir():
+        return release, release.parent.parent
     if release.parent.name != 'changelog' or not (release / 'README.md').is_file():
         raise ValueError('release changelog/<dossier> avec README.md requise')
     return release, release.parent.parent
+
+
+def is_preparation(folder):
+    folder = Path(folder)
+    return folder.name == 'preparation' and folder.parent.name == '.odoo-agents'
+
+
+def preparation_folder(project):
+    return Path(project).resolve() / '.odoo-agents' / 'preparation'
+
+
+def open_target(project, release):
+    release, owner = location(release)
+    if owner != Path(project).resolve() or is_preparation(release):
+        raise ValueError('release du même projet requise')
+    if not re.search(r'<!-- (?:release ouverte|lot ouvert) -->', (release / 'README.md').read_text()):
+        raise ValueError('release ouverte requise pour attribuer la préparation')
+    if PREPARATION_TASK in contracts(release):
+        raise ValueError('identifiant PREPARATION réservé au cadrage ; conflit avec un lot existant')
+    return release.name
+
+
+def prepare_start(project, agent, provider, source, release=None):
+    """Same timer engine, independent ledger available before any changelog."""
+    project = Path(project).resolve()
+    if not project.is_dir():
+        raise ValueError('dossier projet existant requis')
+    if release is not None:
+        open_target(project, release)
+    folder = preparation_folder(project)
+    folder.mkdir(parents=True, exist_ok=True)
+    init(folder)
+    add_task(folder, PREPARATION_TASK, PREPARATION_TITLE)
+    return start(folder, PREPARATION_TASK, agent, provider, source, attachment=release)
+
+
+def prepare_attach(project, entry_id, release):
+    # Validate before acquiring a lock that could create metadata elsewhere.
+    target = open_target(project, release)
+    with locked(preparation_folder(project)) as (folder, _):
+        open_target(project, release)
+        data = state(folder)
+        entry = next((e for e in data['entries'] if e['id'] == entry_id), None)
+        if not entry:
+            raise ValueError('préparation inconnue')
+        if entry.get('release') == target:
+            return entry
+        if entry.get('release') is not None:
+            raise ValueError('préparation déjà attribuée à une autre release')
+        entry['release'] = target
+        save(folder, data)
+        return entry
+
+
+def preparation_entries(project, release=None):
+    folder = preparation_folder(project)
+    if not (folder / 'effort.json').is_file():
+        return []
+    return [e for e in state(folder)['entries'] if e.get('release') == release]
+
+
+def empty_state(release):
+    return {'schema': 1, 'release': Path(release).name, 'tasks': {},
+            'estimates': [], 'entries': [], 'rate_cards': []}
+
+
+def measurement_state(release, data):
+    """Read-only projection; attached entries never enter release/effort.json."""
+    result = deepcopy(data)
+    if not is_preparation(release):
+        entries = preparation_entries(Path(release).resolve().parent.parent, Path(release).name)
+        if entries:
+            if PREPARATION_TASK in result['tasks']:
+                raise ValueError('identifiant PREPARATION réservé au cadrage ; conflit avec un lot existant')
+            result['tasks'][PREPARATION_TASK] = PREPARATION_TITLE
+            result['entries'].extend(entries)
+    return result
+
+
+def preparation_report(project, live=False):
+    entries = preparation_entries(project)
+    if not entries:
+        return None
+    folder = preparation_folder(project)
+    data = state(folder)
+    data['entries'] = entries
+    return report_data(folder, data, live=live)
 
 
 @contextmanager
@@ -245,7 +336,9 @@ def interval(entry):
 def check_allocation(release, data, candidate, replacing=None):
     """One project lock serializes overlap checks across its releases."""
     project = Path(release).parent.parent
-    for folder in (project / 'changelog').iterdir():
+    folders = list((project / 'changelog').iterdir()) if (project / 'changelog').is_dir() else []
+    folders.append(preparation_folder(project))
+    for folder in folders:
         path = folder / 'effort.json'
         if not path.exists():
             continue
@@ -275,9 +368,9 @@ def forecast_revision(data, task, agent, at):
     return eligible[-1] if eligible else None
 
 
-def start(release, task, agent, provider, source):
+def start(release, task, agent, provider, source, attachment=None):
     usage = normalized_usage(source, provider)
-    with locked(release) as (release, _):
+    with locked(release) as (release, project):
         data = state(release); ensure_task(data, task, agent)
         entry = {'id': uuid.uuid4().hex[:12], 'task': task, 'agent': agent, 'provider': provider,
                  'thread_id': usage['thread_id'], 'model': usage.get('model'), 'started_at': now(),
@@ -285,6 +378,9 @@ def start(release, task, agent, provider, source):
                  'tokens': None, 'seconds': None, 'identities': [], 'warnings': [],
                  'clock_start': clock_snapshot()}
         entry['estimate_revision'] = forecast_revision(data, task, agent, entry['started_at'])
+        if is_preparation(release):
+            entry['phase'] = 'preparation'
+            entry['release'] = open_target(project, attachment) if attachment is not None else None
         check_allocation(release, data, entry)
         data['entries'].append(entry); save(release, data)
         return entry
@@ -305,6 +401,8 @@ def stop(release, entry_id, source):
         entry = next((e for e in data['entries'] if e['id'] == entry_id), None)
         if not entry or entry['status'] != 'running' or entry['basis'] != 'timer':
             raise ValueError('chronomètre actif inconnu')
+        if is_preparation(release) and entry.get('release'):
+            open_target(release.parent.parent, release.parent.parent / 'changelog' / entry['release'])
         usage = normalized_usage(source, entry['provider'])
         if usage['thread_id'] != entry['thread_id']:
             raise ValueError('la session de fin diffère de celle du départ')
@@ -345,6 +443,8 @@ def interrupt(release, entry_id, reason):
         entry = next((e for e in data['entries'] if e['id'] == entry_id), None)
         if not entry or entry['status'] != 'running' or entry['basis'] != 'timer':
             raise ValueError('chronomètre actif inconnu')
+        if is_preparation(release) and entry.get('release'):
+            open_target(release.parent.parent, release.parent.parent / 'changelog' / entry['release'])
         stamp = now()
         if instant(stamp) < instant(entry['started_at']):
             raise ValueError('interruption antérieure au départ')
@@ -358,10 +458,10 @@ def interrupt(release, entry_id, reason):
 def check_closure(release):
     """New closures must resolve live timers; missing historical time is allowed."""
     release = Path(release)
-    if not (release / 'effort.json').exists():
+    if not (release / 'effort.json').exists() and not preparation_entries(release.resolve().parent.parent, release.name):
         return {'tracking': False}
-    data = state(release)
-    running = [e for e in data['entries'] if e.get('status') == 'running']
+    data = state(release) if (release / 'effort.json').exists() else empty_state(release)
+    running = [e for e in measurement_state(release, data)['entries'] if e.get('status') == 'running']
     if running:
         labels = ', '.join(f"{e['id']} ({e['task']} / {e['agent']})" for e in running)
         raise ValueError('chronomètre(s) à terminer avec stop, ou interrupt --reason si la borne réelle est perdue : ' + labels)
@@ -478,7 +578,8 @@ def union_seconds(intervals):
 def report_data(release, data, live=False):
     state_sha = digest(data)
     # Live preview only: reporting never stops a timer or modifies its ledger.
-    data = deepcopy(data)
+    data = measurement_state(release, data)
+    preparation = [e for e in data['entries'] if e.get('phase') == 'preparation']
     clock = clock_snapshot() if live and any(e.get('status') == 'running' and e.get('basis') == 'timer' for e in data['entries']) else None
     for entry in data['entries']:
         if live and entry.get('status') == 'running' and entry.get('basis') == 'timer':
@@ -521,6 +622,12 @@ def report_data(release, data, live=False):
                      'delta_minutes': variance, 'delta_percent': 100 * variance / old['expected_minutes'] if variance is not None and old['expected_minutes'] else None,
                      'retrospective': retrospective, 'scope_changed': changed, 'entries': [e['id'] for e in entries],
                      'costs': costs, 'warnings': list(dict.fromkeys(warnings))})
+        if preparation:
+            rows[-1]['phase'] = 'preparation' if task == PREPARATION_TASK else 'closure' if task == 'RELEASE' else 'task'
+            rows[-1]['timeState'] = ('complete' if measured else 'unrecorded' if not entries
+                                     else 'running' if any(e['status'] == 'running' for e in entries)
+                                     else 'interrupted' if any(e['status'] == 'interrupted' for e in entries)
+                                     else 'missing-duration')
     intervals = [interval(e) for e in data['entries'] if e.get('started_at') and e.get('ended_at') and e['status'] == 'complete']
     intervals = [(a, b) for a, b in intervals if b >= a]
     cost_totals = {}
@@ -533,7 +640,13 @@ def report_data(release, data, live=False):
     missing_tasks = sorted(set(data['tasks']) - {r['task'] for r in rows})
     if current:
         missing_tasks = sorted(set(missing_tasks) | (set(current) - {r['task'] for r in rows}))
-    return {'schema': 1, 'measurement_version': 2, 'release': data['release'], 'generated_at': now(), 'state_sha256': state_sha,
+    return {'schema': 1, 'measurement_version': 3 if preparation else 2,
+            **({'preparation_sha256': digest(preparation),
+                'preparationSessions': [{'provider': e['provider'], 'thread': e['thread_id'],
+                                         'since': e.get('started_at'), 'until': e.get('ended_at') or e.get('interrupted_at')}
+                                        for e in preparation],
+                'openTimers': [{'task': e['task'], 'agent': e['agent']} for e in data['entries'] if e['status'] == 'running']} if preparation else {}),
+            'release': data['release'], 'generated_at': now(), 'state_sha256': state_sha,
             'contracts_sha256': digest(current), 'initial_revision': original['revision'] if original else None,
             'latest_revision': revised['revision'] if revised else None, 'rows': rows, 'missing_tasks': missing_tasks,
             'totals': {'planned_initial_minutes': sum(x['expected_minutes'] for x in initial.values()) if initial else None,
@@ -609,7 +722,8 @@ def render(report):
 
 def report(release):
     with locked(release) as (release, _):
-        data = state(release); result = report_data(release, data)
+        data = state(release) if (release / 'effort.json').exists() else empty_state(release)
+        result = report_data(release, data)
         for name, text in render(result).items():
             (release / name).write_text(text)
         write(release / 'bilan-effort.json', result)
@@ -618,7 +732,8 @@ def report(release):
 
 def check_report(release):
     release = Path(release)
-    data = state(release); actual = read(release / 'bilan-effort.json')
+    data = state(release) if (release / 'effort.json').exists() else empty_state(release)
+    actual = read(release / 'bilan-effort.json')
     if actual.get('state_sha256') != digest(data) or actual.get('contracts_sha256') != digest(contracts(release)):
         raise ValueError('bilan d’effort périmé : relancer report')
     expected = report_data(release, data)
@@ -642,6 +757,21 @@ def check_report(release):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='action', required=True)
+    for action in ('prepare-start', 'prepare-stop', 'prepare-interrupt', 'prepare-attach', 'prepare-status'):
+        p = sub.add_parser(action)
+        p.add_argument('project', type=Path)
+        if action == 'prepare-start':
+            p.add_argument('--agent', required=True)
+            p.add_argument('--provider', choices=('codex', 'claude'), required=True)
+            p.add_argument('--release', type=Path)
+        if action in ('prepare-start', 'prepare-stop'):
+            p.add_argument('--source', type=Path, required=True)
+        if action in ('prepare-stop', 'prepare-interrupt', 'prepare-attach'):
+            p.add_argument('--entry', required=True)
+        if action == 'prepare-attach':
+            p.add_argument('--release', type=Path, required=True)
+        if action == 'prepare-interrupt':
+            p.add_argument('--reason', required=True)
     for action in ('init', 'add-task', 'estimate', 'start', 'stop', 'interrupt', 'check-closure', 'import-usage', 'rates', 'report', 'check'):
         p = sub.add_parser(action); p.add_argument('release', type=Path)
         if action == 'add-task':
@@ -663,7 +793,20 @@ def main():
             p.add_argument('--since'); p.add_argument('--until')
     args = parser.parse_args()
     try:
-        if args.action == 'init':
+        if args.action == 'prepare-start':
+            result = prepare_start(args.project, args.agent, args.provider, args.source, args.release)
+        elif args.action == 'prepare-stop':
+            result = stop(preparation_folder(args.project), args.entry, args.source)
+        elif args.action == 'prepare-interrupt':
+            result = interrupt(preparation_folder(args.project), args.entry, args.reason)
+        elif args.action == 'prepare-attach':
+            result = prepare_attach(args.project, args.entry, args.release)
+        elif args.action == 'prepare-status':
+            folder = preparation_folder(args.project)
+            result = {'entries': [{k: e.get(k) for k in ('id', 'agent', 'provider', 'release', 'status', 'started_at', 'ended_at')}
+                                  for e in state(folder)['entries']] if (folder / 'effort.json').is_file() else [],
+                      'unassigned': preparation_report(args.project, live=True)}
+        elif args.action == 'init':
             result = init(args.release)
         elif args.action == 'add-task':
             result = add_task(args.release, args.task, args.title)

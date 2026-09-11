@@ -24,10 +24,11 @@ REQUIRED = ('README.md', 'demande.md', 'doc.md', 'recette.md', 'tests_navigateur
 
 
 def required_artifacts(release):
-    if (release / 'effort.json').exists():
-        from odoo_effort import REPORT_FILES, check_report
+    from odoo_effort import REPORT_FILES, check_report, preparation_entries
+    has_effort = (release / 'effort.json').exists()
+    if has_effort or preparation_entries(release.resolve().parent.parent, release.name):
         check_report(release)
-        return REQUIRED + ('effort.json',) + REPORT_FILES
+        return REQUIRED + (('effort.json',) if has_effort else ()) + REPORT_FILES
     return REQUIRED
 
 
