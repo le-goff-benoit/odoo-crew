@@ -37,7 +37,7 @@ jamais être écrit dans ces dépôts.
 ## Première installation
 
 ```bash
-git clone git@github.com:le-goff-benoit/odoo-skills.git ~/.odoo19-agents
+git clone git@github.com:le-goff-benoit/odoo-crew.git ~/.odoo19-agents
 cd ~/.odoo19-agents
 ./build.sh
 ```
