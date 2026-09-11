@@ -29,6 +29,12 @@ sans leur faire écrire le registre partagé. Lis `docs/EFFORT.md` pour attribue
 les jetons et éviter les doubles comptes. L'analyse déjà passée sans mesure
 reste signalée comme telle ; l'absence de trace ancienne ne bloque pas la QA.
 
+Pour chaque mission déléguée, transmettre la question à trancher, le périmètre,
+les acquis et preuves utiles, le livrable, le budget indicatif du rôle et la condition
+de retour. Appliquer les points d'avancement du bloc de communication commun :
+relire l'apport du prochain contrôle, sans lancer un autre agent sur la même
+question. Recevoir les limites du rôle avant d'annoncer la fin de la tâche.
+
 Même dans un unique terminal, le passage développement → QA → coordination
 change le rôle mesuré : ferme le précédent, puis ouvre le suivant. Avant de
 recevoir la tâche, confronte les rôles prévus aux passages enregistrés ; signale

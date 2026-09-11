@@ -1,5 +1,14 @@
 # Journal de l’espace qualité
 
+## 11 septembre 2026 — rendre l'investigation longue pilotable
+
+- Demande : adopter les bilans utiles et publier Crew avec Tricorder 0.2.8.
+- Consigne commune, passation analyste/développeur et contrat de délégation précisés.
+- Référence dd53062 ; quatre cas sur dossier, dont longue recherche justifiée et veille.
+- Ambiguïté « à réceptionner » relevée sur un retour partiel ; frontière précisée.
+- Aucune promesse de gain, arrêt automatique, changement de modèle ou écriture client.
+- Essais, contre-épreuve, contrôles et limites dans `progress-2026-09-11/README.md`.
+
 ## 11 septembre 2026 — retrait de l’intégration email
 
 - Décision utilisateur : abandon du parcours email, pas une tentative d’améliorer son adoption.

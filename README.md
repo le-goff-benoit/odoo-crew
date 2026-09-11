@@ -44,6 +44,14 @@ Votre demande --> Analyste
 Chaque tâche conserve ses décisions et ses résultats dans la mémoire du projet.
 Un blocage ou un contrôle qui reste en échec vous est signalé.
 
+**Une investigation longue reste pilotable.** Les agents font un point sur les
+acquis prouvés, la question restante et le prochain contrôle utile, avec sa durée
+indicative. Le budget déclenche une revue de l'approche, pas un arrêt automatique.
+L'analyste passe la main lorsque le besoin est suffisamment cadré ; un retour
+partiel ne devient pas une tâche prête à réceptionner. Ces consignes sont communes
+à Claude et Codex ; elles ne constituent pas un superviseur automatique.
+[Essais et limites](docs/quality-lab/progress-2026-09-11/README.md).
+
 **Un correctif express : modifier, vérifier et livrer sans coordination superflue.**
 
 ```text

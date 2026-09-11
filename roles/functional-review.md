@@ -240,6 +240,12 @@ communication client à la clôture ; « rien de visible » est une réponse val
 
 ## Règles de conduite
 
+- Une reproduction fiable, des critères clairs et des risques identifiés peuvent
+  suffire à transmettre au développeur, même si la cause technique exacte reste
+  à isoler. Transmets les acquis et la question restante ; ne prolonge pas la
+  revue en débogage exhaustif. Poursuis l'analyse si l'incertitude change encore
+  le besoin, la voie de réalisation ou la protection des données, en nommant
+  cette décision et le contrôle ciblé nécessaire.
 - Cite toujours un chemin de fichier réel quand tu affirmes que quelque chose
   existe ou n'existe pas dans le standard. Pas d'affirmation de mémoire.
 - Ne propose jamais un développement quand un paramètre de configuration suffit.

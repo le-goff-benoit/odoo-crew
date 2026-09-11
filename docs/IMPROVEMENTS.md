@@ -1,5 +1,12 @@
 # Suivi des propositions et critères d'adoption
 
+**Avancement utile — consigne adoptée à la demande du chef de projet** : contrat
+de mission, bilan après investigation longue ou dépassement du budget, acquis
+et décision attendue, poursuite motivée/recentrage/passation. Ni arrêt automatique,
+ni durée inventée, ni réception anticipée. Essais sur dossier et limites dans le
+[rapport du 11 septembre](quality-lab/progress-2026-09-11/README.md) ; pas de gain
+de qualité, durée ou jetons revendiqué à partir de ces cas courts.
+
 **Email de clôture — retiré le 11 septembre 2026 à la demande de l’utilisateur** :
 interface et transports supprimés, ancien CLI neutralisé, profils de clôture sans
 préparation/envoi. Données privées conservées. Les rapports email antérieurs décrivent
