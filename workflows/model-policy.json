@@ -1,0 +1,96 @@
+{
+  "schema": 1,
+  "revision": 1,
+  "principal": {
+    "codex": "gpt-6-astra",
+    "claude": "opus"
+  },
+  "roles": {
+    "orchestrator": {
+      "default": "principal",
+      "candidate": null,
+      "status": "principal-only",
+      "allowed_risk": []
+    },
+    "odoo-analyst": {
+      "default": "principal",
+      "candidate": null,
+      "status": "principal-only",
+      "allowed_risk": []
+    },
+    "odoo-developer": {
+      "default": "principal",
+      "candidate": {
+        "codex": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        },
+        "claude": {
+          "model": "sonnet",
+          "effort": "medium"
+        }
+      },
+      "status": "experimental",
+      "allowed_risk": [
+        "normal"
+      ]
+    },
+    "odoo-studio": {
+      "default": "principal",
+      "candidate": {
+        "codex": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        },
+        "claude": {
+          "model": "sonnet",
+          "effort": "medium"
+        }
+      },
+      "status": "experimental",
+      "allowed_risk": [
+        "normal"
+      ]
+    },
+    "odoo-support": {
+      "default": "principal",
+      "candidate": {
+        "codex": {
+          "model": "gpt-5.6-terra",
+          "effort": "medium"
+        },
+        "claude": {
+          "model": "sonnet",
+          "effort": "medium"
+        }
+      },
+      "status": "experimental",
+      "allowed_risk": [
+        "normal"
+      ]
+    },
+    "odoo-tester": {
+      "default": "principal",
+      "candidate": null,
+      "status": "principal-only",
+      "allowed_risk": []
+    },
+    "runner": {
+      "default": "principal",
+      "candidate": {
+        "codex": {
+          "model": "gpt-5.6-luna",
+          "effort": "medium"
+        },
+        "claude": {
+          "model": "haiku",
+          "effort": "medium"
+        }
+      },
+      "status": "experimental",
+      "allowed_risk": [
+        "normal"
+      ]
+    }
+  }
+}

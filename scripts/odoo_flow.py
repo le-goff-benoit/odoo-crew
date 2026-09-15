@@ -305,9 +305,14 @@ def analyze_graph(graph: dict[str, Any]) -> dict[str, Any]:
 def compatible(first: dict[str, Any], second: dict[str, Any]) -> bool:
     first_locks = {lock["resource"]: lock["mode"] for lock in first.get("locks", [])}
     second_locks = {lock["resource"]: lock["mode"] for lock in second.get("locks", [])}
-    for resource in set(first_locks) & set(second_locks):
-        if "write" in {first_locks[resource], second_locks[resource]}:
-            return False
+    for a, first_mode in first_locks.items():
+        for b, second_mode in second_locks.items():
+            overlaps = a == b
+            if a.startswith('path:') and b.startswith('path:'):
+                pa, pb = Path(a[5:]).resolve(), Path(b[5:]).resolve()
+                overlaps = pa.is_relative_to(pb) or pb.is_relative_to(pa)
+            if overlaps and 'write' in {first_mode, second_mode}:
+                return False
     return True
 
 
@@ -344,6 +349,10 @@ def resolve_locks(node: dict[str, Any], state: dict[str, Any]) -> list[dict[str,
             parents = []
         for key, mode in [(resource, lock['mode']), *[(canonical_resource(p), 'read') for p in parents]]:
             resolved[key] = 'write' if 'write' in (resolved.get(key), mode) else 'read'
+    physical = state.get('candidate', {}).get('resources', state.get('execution_resources', {}))
+    if physical and node.get('role') == 'odoo-tester':
+        for resource in physical.values():
+            resolved[canonical_resource(resource)] = 'write'
     return [{'resource': key, 'mode': mode} for key, mode in resolved.items()]
 
 
@@ -635,6 +644,18 @@ def claim_node(state_path: Path, graph_path: Path, node_name: str, owner: str) -
             raise FlowError(f"une porte humaine ne se revendique pas : {node_name}")
         if node_name not in ready_nodes(state, graph):
             raise FlowError(f"nœud non prêt ou déjà revendiqué : {node_name}")
+        if state.get('plan_task') and graph['nodes'][node_name].get('role') in ('odoo-developer', 'odoo-studio'):
+            import odoo_plan
+            from odoo_candidate import active_for_task, isolated
+            definition, project = odoo_plan.read(state['plan_task']['release'])
+            task = next(t for t in definition['tasks'] if t['id'] == state['plan_task']['id'])
+            for other in definition['tasks']:
+                if other['id'] == task['id'] or not odoo_plan.overlapping(task['scopes'], other['scopes'], project):
+                    continue
+                if odoo_plan.task_status(other, project)[0] in ('running', 'awaiting_receipt', 'interrupted'):
+                    candidate = (other.get('attempts') or [{}])[-1].get('candidate')
+                    if not (candidate and active_for_task(other, project) and isolated(candidate, task)):
+                        raise FlowError('périmètre de reprise réservé par ' + other['id'])
         claim = {
             "at": now(),
             "locks": resolve_locks(graph["nodes"][node_name], state),
@@ -1043,6 +1064,10 @@ def complete_claimed_node(
         if node_name not in graph["nodes"]:
             raise FlowError(f"nœud inconnu : {node_name}")
         node = graph["nodes"][node_name]
+        if state.get('candidate') and outcome == 'pass':
+            from odoo_candidate import valid
+            if not valid(state['candidate']):
+                raise FlowError('candidat QA modifié depuis son gel')
         checked_evidence = evidence_files(evidence)
         verify_used_qa_reports(state, checked_evidence, node_name, outcome, owner)
         from odoo_coverage import FORMAT, GATES, verify as verify_coverage
@@ -1085,6 +1110,9 @@ def complete_claimed_node(
             state["claims"].pop(node_name)
         try:
             complete_node(state, graph, node_name, outcome, checked_evidence, note)
+            if state.get('candidate') and outcome in {'fail', 'failed', 'red', 'retry', 'blocked', 'exhausted'}:
+                state.setdefault('candidate_history', []).append(state.pop('candidate'))
+                state['resource_bindings'] = state.pop('candidate_original_bindings', {})
             state["events"][-1]["evidence_sha256"] = evidence_digests
             if accepted_reception:
                 if state.get("accepted_reception"):

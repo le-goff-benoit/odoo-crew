@@ -1,0 +1,54 @@
+```json
+{
+  "questions": [
+    {
+      "intentions": ["I01", "I02"],
+      "question": "Le rapport Chantier doit-il afficher le niveau intermédiaire Catégorie (I01) ou lister les articles directement sous le chantier (I02) ? Les deux demandes portent sur le même rapport et s'excluent ; aucune décision n'a tranché. Préciser aussi s'il s'agit de deux rendus distincts (option/contexte) plutôt que d'un seul. Aucune tâche de rapport n'est exécutable avant cette réponse."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "intentions": ["I03"],
+      "acceptance": [
+        "Les lignes de facture sont restituées par séquence croissante, quel que soit l'ordre de création.",
+        "Le tri est stable et ne dépend d'aucune valeur de séquence particulière : il reste vérifié avant comme après une renumérotation.",
+        "Aucune autre règle de tri (date, produit, montant) n'est introduite."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["odoo-bin", "--test-enable", "--test-tags", "/account:TestInvoiceLineOrder", "--stop-after-init", "-d", "test_19_neutralise"],
+          "environment": "copie neutralisée Odoo 19.0, base de test dédiée test_19_neutralise",
+          "cases": [
+            "Test à ajouter (fichier de test créé par le développement) : créer une facture avec trois lignes saisies dans un ordre non séquentiel, affecter des séquences croissantes arbitraires, vérifier que la lecture ordonnée retourne les lignes dans l'ordre croissant des séquences — assertion sur l'ordre relatif des lignes, sans valeur de séquence figée.",
+            "Rejouer le même contrôle après multiplication des séquences par 10 : l'ordre attendu est inchangé.",
+            "Deux lignes de séquence égale : vérifier uniquement l'absence d'erreur et le déterminisme de la lecture ; aucune règle de départage n'est affirmée (comportement standard à confirmer, pas un critère de réception)."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T02",
+      "intentions": ["I04"],
+      "acceptance": [
+        "La renumérotation transforme les séquences 10 et 20 en 100 et 200, valeurs finales explicitement demandées.",
+        "L'ordre relatif des lignes est identique avant et après renumérotation.",
+        "La renumérotation est idempotente ou, à défaut, son rejeu ne casse pas l'ordre relatif."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["odoo-bin", "--test-enable", "--test-tags", "/account:TestInvoiceLineResequence", "--stop-after-init", "-d", "test_19_neutralise"],
+          "environment": "copie neutralisée Odoo 19.0, base de test dédiée test_19_neutralise",
+          "cases": [
+            "Test à ajouter (fichier de test créé par le développement) : facture dont les lignes portent les séquences 10 et 20 ; après renumérotation, les séquences valent 100 et 200 (valeurs finales prescrites par la demande).",
+            "Jeu de séquences arbitraires : après renumérotation, vérifier l'égalité de l'ordre relatif avant/après, sans assertion sur les valeurs obtenues.",
+            "Rejeu de la renumérotation sur le résultat précédent : l'ordre relatif reste inchangé."
+          ]
+        }
+      ]
+    }
+  ]
+}
+```

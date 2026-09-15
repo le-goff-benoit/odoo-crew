@@ -47,3 +47,49 @@ Une nouvelle décision invalide les preuves concernées et celles des tâches
 dépendantes. Note sa source et son remplacement dans la mémoire avant de reprendre.
 Les tâches indépendantes déjà validées restent acquises si leurs preuves sont valides.
 Termine les tâches autorisées et disponibles ; la clôture reste `/odoo-close`.
+
+## Continuer réellement et rendre l'orchestration visible
+
+Sur le modèle principal, ouvre `odoo_orchestrate.py activate --project ... --owner
+... --provider ... --model ... --session-id ...` dès la préparation identifiable.
+`attach --release ... --task A --task B` conserve son identité et déclare les tâches
+que l'utilisateur a autorisées ; n'élargis pas une demande portant sur A à toute
+la release. Les mutations suivantes exigent le même `--owner`. `progress --phase
+...` marque les étapes ; `waiting-human`, `waiting-resource`, `pause`, `interrupt`,
+`resume` et `complete` distinguent activité, attente et fin. Une attente porte un
+`--reason`. Ne crée pas une nouvelle activité pour rafraîchir le chronomètre.
+
+Après le résultat d'un agent, réceptionne ses preuves, relis `odoo_plan.py status`,
+puis lance avec les outils la prochaine tâche autorisée et disponible dans le même
+travail. Une phrase annonçant le lancement ne constitue pas ce lancement. Le hook
+Stop fourni par `odoo_orchestrate.py hook` rappelle cette obligation uniquement à
+la session principale liée ; il ne reçoit aucune preuve, ne libère aucun verrou et
+ne lance aucun agent. Un arrêt d'enfant ne vaut jamais réception. Il respecte les
+attentes, interruptions et limites fournisseur ; le rappel est borné à une relance,
+sans boucle quand `stop_hook_active` est déjà présent.
+
+## Contrôles stables et candidats parallèles
+
+Pour les contrats à `checks`, réceptionne toutes les preuves via `finish
+--check-proofs` (objet ID → chemin), ou `--proof` pour un contrôle unique. Les
+commandes et environnements doivent correspondre exactement au contrat ; une
+commande réussie différente ne remplace pas le contrôle prescrit.
+
+Une nouvelle preuve a un nouveau chemin : les logs et preuves existants restent
+immuables. Une réception renouvelée avec le même contrat, sources et résultat ne
+fait pas rejouer les dépendants pour sa seule date. Une source, interface, entrée
+ou décision pertinente changée demande un nouveau contrôle ; une dépendance
+inconnue reste conservatrice. Les lectures réelles figurent dans `reads` et dans
+la preuve ; une sélection `check_scopes` exige un motif d'impact, reste interdite
+en risque élevé et ne remplace jamais la recette d'intégration finale.
+
+Une QA de A peut tourner pendant B indépendant : à la borne QA sans revendication,
+fige A dans un worktree de même dépôt/révision avec `odoo_candidate.py freeze` et
+ses identités physiques database/filestore/port/container/logs. Les ressources de B
+doivent aussi être déclarées et disjointes, avec le même registre physique partagé
+déclaré dans `resources.json` ; l'autorité des `claim` reste atomique.
+Le candidat doit contenir exactement les sources annoncées. Délègue la QA en
+lecture sur ce candidat et le développement de B sur son propre périmètre ; ne
+fais jamais écrire deux agents sur le candidat. Une mutation du candidat refuse
+la réception. Si B dépend du résultat A, attends la réception A. L'orchestrateur
+intègre seul les résultats et contrôle ensuite le candidat commun de release.

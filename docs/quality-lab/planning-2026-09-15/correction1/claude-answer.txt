@@ -1,0 +1,56 @@
+```json
+{
+  "questions": [
+    {
+      "intentions": ["I01", "I02"],
+      "question": "I01 et I02 décrivent deux hiérarchies incompatibles pour le même rapport (Chantier > Catégorie > Articles contre Chantier > Articles). Aucune décision ne tranche : faut-il une seule hiérarchie retenue, ou un paramètre/variante permettant les deux (et alors lequel par défaut, et sur quel critère) ? Aucune tâche d'implémentation du rapport n'est planifiée avant cette réponse."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "intentions": ["I03"],
+      "acceptance": [
+        "Les lignes de facture sont restituées par ordre croissant de leur champ séquence, quelles que soient les valeurs numériques employées",
+        "Le tri reste stable et inchangé après toute renumérotation préservant l'ordre relatif (aucune valeur de séquence particulière n'est exigée)",
+        "Aucune autre règle de tri (date, produit, montant) n'est introduite"
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["test", "à", "ajouter", "account/tests/test_invoice_line_order.py::TestInvoiceLineOrder::test_lines_sorted_by_sequence_ascending"],
+          "environment": "copie neutralisée Odoo 19.0, base de test isolée",
+          "cases": [
+            "Facture à 3 lignes créées dans un ordre de saisie différent de l'ordre de séquence : la lecture retourne les lignes par séquence croissante (assertion sur l'ordre relatif des lignes, pas sur les valeurs 10/20)",
+            "Mêmes lignes après application d'une renumérotation quelconque préservant l'ordre relatif : l'ordre restitué est identique au cas précédent",
+            "Deux lignes de séquence égale : l'ordre est déterministe et documenté ; aucun comportement métier supplémentaire n'est affirmé"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T02",
+      "intentions": ["I04"],
+      "acceptance": [
+        "La renumérotation produit des séquences strictement croissantes qui conservent l'ordre relatif initial des lignes",
+        "Aucune valeur cible n'est imposée comme critère permanent : seule la préservation de l'ordre relatif est vérifiée",
+        "L'opération est idempotente quant à l'ordre : la réappliquer ne modifie pas l'ordre relatif"
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["test", "à", "ajouter", "account/tests/test_invoice_line_resequence.py::TestResequence::test_relative_order_preserved"],
+          "environment": "copie neutralisée Odoo 19.0, base de test isolée",
+          "cases": [
+            "Lignes de séquences initiales quelconques croissantes : après renumérotation, la suite des séquences est strictement croissante et l'ordre des lignes est inchangé",
+            "Renumérotation appliquée deux fois de suite : l'ordre relatif est identique après le second passage",
+            "Facture à une seule ligne et facture sans ligne : l'opération n'échoue pas et ne modifie pas l'ordre"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+Contradiction I01/I02 laissée ouverte : aucune tâche rapport n'est créée. T01 et T02 partagent le champ séquence mais pas de dépendance de résultat ; leurs tests portent sur l'ordre relatif, donc restent valides après les deux.

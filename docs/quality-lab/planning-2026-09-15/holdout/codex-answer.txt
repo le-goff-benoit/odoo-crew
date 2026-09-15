@@ -1,0 +1,51 @@
+{
+  "questions": [
+    {
+      "intentions": ["I01", "I02"],
+      "question": "I01 et I02 imposent deux états incompatibles pour la même tâche réceptionnée dont la preuve devient périmée : rester dans Réceptionnées avec le badge « Contrôle à actualiser », ou passer automatiquement dans Bloquées. Quel résultat retenir ? Le développement concerné reste bloqué jusqu’à cette décision."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T03",
+      "intentions": ["I03"],
+      "acceptance": [
+        "À exactement 90 % du quota utilisé, une alerte est déclenchée.",
+        "Avant 90 % du quota utilisé, aucune alerte n’est déclenchée.",
+        "Le modèle et le fournisseur restent inchangés."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["python3", "-m", "unittest", "tests.test_quota_threshold"],
+          "environment": "Desktop Ubuntu, fixtures synthétiques ; module de tests tests.test_quota_threshold à créer par le développeur.",
+          "cases": [
+            "Quota utilisé à 0 %, 89 % et 89,99 % : aucune alerte.",
+            "Quota utilisé à exactement 90 % : alerte.",
+            "Passage de 89,99 % à 90 % : apparition de l’alerte au seuil exact.",
+            "Pour chaque cas, comparer le modèle et le fournisseur avant et après : tous deux inchangés."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T04",
+      "intentions": ["I04"],
+      "acceptance": [
+        "Lorsque la fenêtre de quota est absente, l’affichage indique « Indisponible ».",
+        "Une fenêtre de quota absente n’est jamais affichée comme « 0 % »."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["python3", "-m", "unittest", "tests.test_quota_window_absent"],
+          "environment": "Desktop Ubuntu, fixtures synthétiques ; module de tests tests.test_quota_window_absent à créer par le développeur.",
+          "cases": [
+            "Fenêtre de quota absente dès l’affichage initial : « Indisponible », sans « 0 % ».",
+            "Après un affichage avec fenêtre présente, rendre la fenêtre absente : « Indisponible », sans « 0 % »."
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "questions": [
+    {
+      "intentions": ["I01", "I02"],
+      "question": "Quelle hiérarchie retenir pour le rapport : Chantier > Catégorie > Articles ou Chantier > Articles ? Ces demandes sont contradictoires ; leur implémentation reste bloquée jusqu’à votre arbitrage."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T03",
+      "intentions": ["I03"],
+      "acceptance": [
+        "Les lignes de facture apparaissent par séquence croissante.",
+        "Le contrôle reste valable après renumérotation par I04, sans imposer de valeurs intermédiaires permanentes."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["python3", "-m", "pytest", "tests/test_invoice_sequence.py::test_ascending_order"],
+          "environment": "Copie neutralisée Odoo 19.0 ; test à créer.",
+          "cases": [
+            "Créer des lignes dans un ordre différent de leurs séquences distinctes ; vérifier leur affichage par séquence croissante.",
+            "Rejouer avec les séquences finales 100 et 200 ; vérifier le même ordre relatif."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T04",
+      "intentions": ["I04"],
+      "acceptance": [
+        "La ligne de séquence 10 reçoit 100 et celle de séquence 20 reçoit 200.",
+        "La renumérotation préserve l’ordre relatif des lignes."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["python3", "-m", "pytest", "tests/test_invoice_sequence.py::test_renumber_preserves_order"],
+          "environment": "Copie neutralisée Odoo 19.0 ; test à créer.",
+          "cases": [
+            "Préparer deux lignes identifiées A=10 et B=20 ; exécuter la renumérotation ; vérifier A=100 et B=200.",
+            "Comparer les identifiants ordonnés par séquence avant et après : A puis B."
+          ]
+        }
+      ]
+    }
+  ]
+}

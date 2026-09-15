@@ -81,6 +81,19 @@ de changelog express.
 L’orchestrateur suit les dépendances. Les contrôles ciblés accompagnent chaque
 tâche ; la recette complète vérifie l’ensemble à la clôture.
 
+**Intentions → Plan → Exécution.** Le principal conserve les demandes originales,
+construit le plan et prescrit critères, cas et commandes de test avant délégation.
+Une précision nouvelle révise les tâches concernées et conserve les réceptions
+indépendantes. Le suivi d’orchestration indique les tâches autorisées et les attentes.
+Le garde Stop relance un principal qui s’arrête alors qu’une action autorisée est
+prête ; une fin d’enfant reste un résultat à examiner.
+
+La QA peut lire un candidat figé pendant un développement indépendant, avec
+worktree et ressources distincts ; la recette du résultat intégré reste requise.
+Le principal conserve son modèle. Les [candidats par rôle](docs/quality-lab/models-2026-09-15/README.md)
+restent expérimentaux. Voir le [guide d’exécution](docs/RELEASE_EXECUTION.md) et
+les [essais natifs de continuation](docs/quality-lab/continuation-2026-09-15/README.md).
+
 **Un ticket : diagnostiquer, puis orienter la suite.**
 
 ```text

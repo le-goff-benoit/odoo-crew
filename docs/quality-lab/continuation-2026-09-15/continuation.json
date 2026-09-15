@@ -1,0 +1,378 @@
+[
+  {
+    "provider": "codex",
+    "model": "gpt-6-astra",
+    "activated": true,
+    "events": 16,
+    "returncode": 0,
+    "elapsed_seconds": 24.46,
+    "launches": [
+      {
+        "task": "A",
+        "event": "started",
+        "at": "2026-09-15T18:25:22+00:00"
+      },
+      {
+        "task": "A",
+        "event": "received",
+        "at": "2026-09-15T18:25:22+00:00"
+      },
+      {
+        "task": "B",
+        "event": "started",
+        "at": "2026-09-15T18:25:30+00:00"
+      },
+      {
+        "task": "B",
+        "event": "received",
+        "at": "2026-09-15T18:25:30+00:00"
+      },
+      {
+        "task": "C",
+        "event": "started",
+        "at": "2026-09-15T18:25:35+00:00"
+      },
+      {
+        "task": "C",
+        "event": "received",
+        "at": "2026-09-15T18:25:35+00:00"
+      }
+    ],
+    "hooks": [
+      {
+        "at": "2026-09-15T18:25:18.002145+00:00",
+        "kind": "SessionStart",
+        "nativeId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "parentId": null,
+        "rootId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "state": "idle",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:18.041659+00:00",
+        "kind": "UserPromptSubmit",
+        "nativeId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "parentId": null,
+        "rootId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "state": "active",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:22.653962+00:00",
+        "kind": "PreToolUse",
+        "nativeId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "parentId": null,
+        "rootId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "state": "tool",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:22.789469+00:00",
+        "kind": "PostToolUse",
+        "nativeId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "parentId": null,
+        "rootId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "state": "active",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:25.437388+00:00",
+        "kind": "Stop",
+        "nativeId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "parentId": null,
+        "rootId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "state": "idle",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:30.247592+00:00",
+        "kind": "PreToolUse",
+        "nativeId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "parentId": null,
+        "rootId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "state": "tool",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:30.409507+00:00",
+        "kind": "PostToolUse",
+        "nativeId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "parentId": null,
+        "rootId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "state": "active",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:35.614854+00:00",
+        "kind": "PreToolUse",
+        "nativeId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "parentId": null,
+        "rootId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "state": "tool",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:35.814663+00:00",
+        "kind": "PostToolUse",
+        "nativeId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "parentId": null,
+        "rootId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "state": "active",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:39.034837+00:00",
+        "kind": "Stop",
+        "nativeId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "parentId": null,
+        "rootId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "state": "idle",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:39.083884+00:00",
+        "kind": "SessionEnd",
+        "nativeId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "parentId": null,
+        "rootId": "01a0a650-ed66-7a10-82aa-8032703da86f",
+        "state": "complete",
+        "model": null,
+        "role": null
+      }
+    ],
+    "native_log_sha256": "b795888ba149df059c26e4d6ffafb4fd8ab3f6dc8293c89c1f7eecdd70d40cf1",
+    "proofs": {
+      "A-proof.json": {
+        "sha256": "b3ae42709c21f645025868807e6c6085ffa929505140a5749c3f39f2c37f0e3c",
+        "result": "passed",
+        "sources": {
+          "A/code.py": {
+            "sha256": "585c93666fcb046b7b264d3fa73202aa2a38254ae82a4b3ba19e873c2d5a9886",
+            "mode": 436
+          }
+        },
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "B-proof.json": {
+        "sha256": "c7fe3e4dd99f45b5f27a61437679798f7b39b0778b8dc100cfaa67c8ffedefd3",
+        "result": "passed",
+        "sources": {
+          "B/code.py": {
+            "sha256": "69ef4f409b530264b0da21ad4054978ada08895c93631a0da1957e2a10b592b5",
+            "mode": 436
+          }
+        },
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "C-proof.json": {
+        "sha256": "29a3c4eae851caad93a86bcb5fcac5bb995bcabebfd6c501596da7a51b8dfa32",
+        "result": "passed",
+        "sources": {
+          "C/code.py": {
+            "sha256": "5c6324d83a24ed49a86ba6a947b0ae64bd495c86d39c090e1c5f1852a7e35874",
+            "mode": 436
+          }
+        },
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  },
+  {
+    "provider": "claude",
+    "model": "opus",
+    "activated": true,
+    "events": 41,
+    "returncode": 0,
+    "elapsed_seconds": 14.631,
+    "launches": [
+      {
+        "task": "A",
+        "event": "started",
+        "at": "2026-09-15T18:25:43+00:00"
+      },
+      {
+        "task": "A",
+        "event": "received",
+        "at": "2026-09-15T18:25:43+00:00"
+      },
+      {
+        "task": "B",
+        "event": "started",
+        "at": "2026-09-15T18:25:46+00:00"
+      },
+      {
+        "task": "B",
+        "event": "received",
+        "at": "2026-09-15T18:25:47+00:00"
+      },
+      {
+        "task": "C",
+        "event": "started",
+        "at": "2026-09-15T18:25:51+00:00"
+      },
+      {
+        "task": "C",
+        "event": "received",
+        "at": "2026-09-15T18:25:51+00:00"
+      }
+    ],
+    "hooks": [
+      {
+        "at": "2026-09-15T18:25:41.055511+00:00",
+        "kind": "SessionStart",
+        "nativeId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "parentId": null,
+        "rootId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "state": "idle",
+        "model": null,
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:41.488902+00:00",
+        "kind": "UserPromptSubmit",
+        "nativeId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "parentId": null,
+        "rootId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "state": "active",
+        "model": null,
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:43.304499+00:00",
+        "kind": "PreToolUse",
+        "nativeId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "parentId": null,
+        "rootId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "state": "tool",
+        "model": null,
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:43.515145+00:00",
+        "kind": "PostToolUse",
+        "nativeId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "parentId": null,
+        "rootId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "state": "active",
+        "model": null,
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:45.142386+00:00",
+        "kind": "Stop",
+        "nativeId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "parentId": null,
+        "rootId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "state": "idle",
+        "model": null,
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:46.900803+00:00",
+        "kind": "PreToolUse",
+        "nativeId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "parentId": null,
+        "rootId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "state": "tool",
+        "model": null,
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:47.103514+00:00",
+        "kind": "PostToolUse",
+        "nativeId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "parentId": null,
+        "rootId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "state": "active",
+        "model": null,
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:51.392762+00:00",
+        "kind": "PreToolUse",
+        "nativeId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "parentId": null,
+        "rootId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "state": "tool",
+        "model": null,
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:51.524386+00:00",
+        "kind": "PostToolUse",
+        "nativeId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "parentId": null,
+        "rootId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "state": "active",
+        "model": null,
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:54.781604+00:00",
+        "kind": "Stop",
+        "nativeId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "parentId": null,
+        "rootId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "state": "idle",
+        "model": null,
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:25:54.885800+00:00",
+        "kind": "SessionEnd",
+        "nativeId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "parentId": null,
+        "rootId": "ec9a8069-33a3-4bb2-b2e4-4f1cdffd4e97",
+        "state": "complete",
+        "model": null,
+        "role": null
+      }
+    ],
+    "native_log_sha256": "9b875669af5da420367663754b6c2fe4c10f93112a499076ba7f70b2ab4ea095",
+    "proofs": {
+      "A-proof.json": {
+        "sha256": "f214732bb309d51ca468607f9706ccadddf7cf957c2ea5838d249af2c8cab878",
+        "result": "passed",
+        "sources": {
+          "A/code.py": {
+            "sha256": "585c93666fcb046b7b264d3fa73202aa2a38254ae82a4b3ba19e873c2d5a9886",
+            "mode": 436
+          }
+        },
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "B-proof.json": {
+        "sha256": "174988961e725b1f97f22e91fc01e2b67a6864822a8055b27e28c448dba81ea4",
+        "result": "passed",
+        "sources": {
+          "B/code.py": {
+            "sha256": "69ef4f409b530264b0da21ad4054978ada08895c93631a0da1957e2a10b592b5",
+            "mode": 436
+          }
+        },
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "C-proof.json": {
+        "sha256": "071cc60eb05691bbff3e610cc106ed9dca0b16ad4b3b6b2133d4095b273543ff",
+        "result": "passed",
+        "sources": {
+          "C/code.py": {
+            "sha256": "5c6324d83a24ed49a86ba6a947b0ae64bd495c86d39c090e1c5f1852a7e35874",
+            "mode": 436
+          }
+        },
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  }
+]

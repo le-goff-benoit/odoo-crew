@@ -111,3 +111,18 @@ conserve les anomalies et contre-épreuves : 251 tests, revue indépendante et
 essai d'utilisation, import d'une délégation réelle. Le build produit désormais
 28 sorties pour 14 profils. La précision des prévisions reste à calibrer sur
 les futures releases ; le mécanisme de calcul est validé, pas un gain prédictif.
+
+## Intentions et orchestration — 15 septembre 2026
+
+Référence `72702f4`. Implémentation : [contrats et exécution](RELEASE_EXECUTION.md).
+Adoptés localement : registre d’intentions, contrats testables, réceptions stables,
+candidats QA isolés et reprise protégée, garde Stop à périmètre explicite,
+profils natifs Codex/Claude héritant du principal. Les quatre défauts de la revue
+indépendante (contrôle prescrit, registre partagé, reprise QA, quota sans date)
+ont leurs régressions automatisées. Tricorder reste lecteur des workflows.
+
+Preuves : [planification](quality-lab/planning-2026-09-15/README.md),
+[continuation native](quality-lab/continuation-2026-09-15/README.md),
+[modèles](quality-lab/models-2026-09-15/README.md). Candidats légers expérimentaux ;
+aucun gain de release Odoo inféré des workloads synthétiques. Sources de quotas
+natives non disponibles sur ce poste ; aucune connexion fictive revendiquée.

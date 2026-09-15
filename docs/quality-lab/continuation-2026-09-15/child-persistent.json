@@ -1,0 +1,270 @@
+[
+  {
+    "provider": "codex",
+    "model": "gpt-6-astra",
+    "activated": true,
+    "events": 18,
+    "returncode": 0,
+    "elapsed_seconds": 39.957,
+    "launches": [
+      {
+        "task": "A",
+        "event": "started",
+        "at": "2026-09-15T18:28:18+00:00"
+      },
+      {
+        "task": "A",
+        "event": "received",
+        "at": "2026-09-15T18:28:19+00:00"
+      },
+      {
+        "task": "B",
+        "event": "started",
+        "at": "2026-09-15T18:28:26+00:00"
+      },
+      {
+        "task": "B",
+        "event": "received",
+        "at": "2026-09-15T18:28:26+00:00"
+      },
+      {
+        "task": "C",
+        "event": "started",
+        "at": "2026-09-15T18:28:30+00:00"
+      },
+      {
+        "task": "C",
+        "event": "received",
+        "at": "2026-09-15T18:28:30+00:00"
+      }
+    ],
+    "hooks": [
+      {
+        "at": "2026-09-15T18:27:57.066089+00:00",
+        "kind": "SessionStart",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "idle",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:27:57.088302+00:00",
+        "kind": "UserPromptSubmit",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "active",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:03.084435+00:00",
+        "kind": "PreToolUse",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "tool",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:03.123590+00:00",
+        "kind": "PostToolUse",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "active",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:04.402756+00:00",
+        "kind": "SubagentStart",
+        "nativeId": "01a0a653-7793-7820-ad33-cbf79d3dfa52",
+        "parentId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "active",
+        "model": "gpt-6-astra",
+        "role": "default"
+      },
+      {
+        "at": "2026-09-15T18:28:05.463388+00:00",
+        "kind": "PreToolUse",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "tool",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:08.246747+00:00",
+        "kind": "PreToolUse",
+        "nativeId": "01a0a653-7793-7820-ad33-cbf79d3dfa52",
+        "parentId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "tool",
+        "model": "gpt-6-astra",
+        "role": "default"
+      },
+      {
+        "at": "2026-09-15T18:28:10.328661+00:00",
+        "kind": "PostToolUse",
+        "nativeId": "01a0a653-7793-7820-ad33-cbf79d3dfa52",
+        "parentId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "active",
+        "model": "gpt-6-astra",
+        "role": "default"
+      },
+      {
+        "at": "2026-09-15T18:28:15.410991+00:00",
+        "kind": "SubagentStop",
+        "nativeId": "01a0a653-7793-7820-ad33-cbf79d3dfa52",
+        "parentId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "complete",
+        "model": "gpt-6-astra",
+        "role": "default"
+      },
+      {
+        "at": "2026-09-15T18:28:15.462664+00:00",
+        "kind": "PostToolUse",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "active",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:18.915021+00:00",
+        "kind": "PreToolUse",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "tool",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:19.068614+00:00",
+        "kind": "PostToolUse",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "active",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:21.900044+00:00",
+        "kind": "Stop",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "idle",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:26.326106+00:00",
+        "kind": "PreToolUse",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "tool",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:26.697539+00:00",
+        "kind": "PostToolUse",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "active",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:30.226940+00:00",
+        "kind": "PreToolUse",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "tool",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:30.650501+00:00",
+        "kind": "PostToolUse",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "active",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:33.911661+00:00",
+        "kind": "Stop",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "idle",
+        "model": "gpt-6-astra",
+        "role": null
+      },
+      {
+        "at": "2026-09-15T18:28:33.953441+00:00",
+        "kind": "SessionEnd",
+        "nativeId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "parentId": null,
+        "rootId": "01a0a653-5a9e-78c3-af5a-dc7237e841ea",
+        "state": "complete",
+        "model": null,
+        "role": null
+      }
+    ],
+    "native_log_sha256": "0b3c540b9c679dc4dfe73a0e191cce3e6e165c9ab5e37c361ed96a3781af91b5",
+    "proofs": {
+      "A-proof.json": {
+        "sha256": "c9a2693e95320058c417b92922c0d0cb924625008974b8b66bbae22d08803bee",
+        "result": "passed",
+        "sources": {
+          "A/code.py": {
+            "sha256": "585c93666fcb046b7b264d3fa73202aa2a38254ae82a4b3ba19e873c2d5a9886",
+            "mode": 436
+          }
+        },
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "B-proof.json": {
+        "sha256": "9ca49f9cb2149a550efd23dc7806b595e3794d0cee50a6df267da58b72792248",
+        "result": "passed",
+        "sources": {
+          "B/code.py": {
+            "sha256": "69ef4f409b530264b0da21ad4054978ada08895c93631a0da1957e2a10b592b5",
+            "mode": 436
+          }
+        },
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "C-proof.json": {
+        "sha256": "aeb68a1fd19515da912ea7e8f3acc9f6c977ea1019b424524b790c7e02f7256d",
+        "result": "passed",
+        "sources": {
+          "C/code.py": {
+            "sha256": "5c6324d83a24ed49a86ba6a947b0ae64bd495c86d39c090e1c5f1852a7e35874",
+            "mode": 436
+          }
+        },
+        "log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      }
+    }
+  }
+]

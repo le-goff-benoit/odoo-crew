@@ -31,12 +31,6 @@ finales si la demande les prescrit. Un cas limite ajouté au plan (égalité de
 séquence, répétition d’une opération…) ne crée pas une règle métier : vérifie le
 standard ou formule la question avant d’en faire un critère obligatoire. Une
 amélioration souhaitable hors intention reste une proposition identifiée.
-Avant de figer le plan, confronte chaque critère à sa phrase source : aucune
-sortie demandée ne doit disparaître au profit d’une propriété plus générale.
-Si la demande fixe un remplacement précis, vérifier seulement l’ordre, la somme
-ou l’absence d’erreur ne suffit pas. Les commandes de contrôle sont des tableaux
-d’arguments exécutables, jamais des phrases telles que « test à ajouter » ; le
-fait que le fichier de test sera créé par le développement s’indique séparément.
 
 Valide la définition avec `odoo_plan.py init <release> --file <définition>`.
 Le fichier versionné `plan.json` est le plan ; les flows restent l'autorité des
@@ -68,12 +62,6 @@ partir des demandes originales et décisions de la release. Il peut déléguer u
 investigation indépendante ; il conserve l'arbitrage et les critères de succès.
 Avant le découpage, constitue `intentions.json` avec `odoo_intentions.py update` :
 source conservée, résultat attendu, critères, contraintes, décisions et questions.
-Enregistre chaque nouvelle demande dès sa réception dans la release ouverte,
-sans attendre la fin de la revue globale : `clarify` si des questions restent,
-`ready` si elle peut être planifiée. Le cockpit la montre comme demande à
-planifier, sans autorisation de développement. Lors du découpage, conserve son
-identifiant et lie les tâches retenues ; motive un report dans les décisions.
-Ne supprime pas la demande originale lorsque le plan la reformule ou la remplace.
 Une question sans réponse empêche la tâche concernée de démarrer. Pour les nouveaux
 plans multi-demandes, emploie le schéma 2 décrit dans `docs/RELEASE_EXECUTION.md` ;
 les plans historiques au schéma 1 restent lisibles.

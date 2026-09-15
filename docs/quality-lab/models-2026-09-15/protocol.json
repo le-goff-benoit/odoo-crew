@@ -1,0 +1,21 @@
+{
+  "schema": 1,
+  "frozen_at": "2026-09-15",
+  "reference_revision": "72702f4",
+  "scope": "lecture de contrat, sélection de contrôles et proposition de pipeline ; pas développement Odoo natif",
+  "repetitions": 1,
+  "timeout_seconds": 90,
+  "max_calls": 8,
+  "stop_provider_after_transport_error": true,
+  "adoption": {"critical_errors": 0, "minimum_latency_gain_percent": 20, "production_adoption": false},
+  "variants": [
+    {"provider": "codex", "model": "gpt-6-astra", "effort": "medium", "kind": "reference"},
+    {"provider": "codex", "model": "gpt-5.6-terra", "effort": "medium", "kind": "candidate"},
+    {"provider": "claude", "model": "opus", "effort": "medium", "kind": "reference"},
+    {"provider": "claude", "model": "sonnet", "effort": "medium", "kind": "candidate"}
+  ],
+  "cases": [
+    {"id": "local", "prompt": "Le principal fixe le contrat. A modifie un libellé isolé. QA de A lit son candidat figé dans qa-a avec base a, filestore a, port 8101 et logs a. B modifie un fichier indépendant dans dev-b sans consommer A. C consomme le résultat accepté de A, encore absent. Le contrat de A prescrit lint et rendu ; la recette commune reste à la clôture. Le quota est à 96%. Retourne seulement JSON avec ready_tasks (identifiants qui peuvent démarrer parmi B/C), principal_model_changed (bool), tests (liste parmi lint,rendu,suite_complete), received_A (bool)."},
+    {"id": "holdout", "prompt": "Cas inédit. Le principal attend la QA de D. Une notification SubagentStop indique fin de réponse mais aucun verdict QA ni réception. E ne consomme pas D mais son environnement utilise la même base encore réservée qa-d. F consomme une interface acceptée de G. G vient d'être réceptionné à nouveau : seule date du reçu change, mêmes entrées/sorties, contrôles et contrat. F possède worktree/base/logs indépendants. Retourne seulement JSON avec ready_tasks (parmi E/F), received_D (bool), invalidate_F (bool), next_action (examine_result ou release_all_locks ou stop_without_reason)."}
+  ]
+}

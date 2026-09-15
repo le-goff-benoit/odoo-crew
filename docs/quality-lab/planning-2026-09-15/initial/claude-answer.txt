@@ -1,0 +1,76 @@
+```json
+{
+  "questions": [
+    {
+      "intentions": ["I01", "I02"],
+      "question": "I01 demande la hiérarchie Chantier > Catégorie > Articles et I02 demande Chantier > Articles sans niveau Catégorie, pour le même rapport ; aucune décision ne tranche. Quelle règle retenir : un niveau Catégorie unique imposé, une option/paramètre choisi à l'impression, ou deux rapports distincts ? Tant que la réponse n'est pas donnée, aucune tâche d'implémentation du rapport n'est démarrable."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "intentions": ["I03"],
+      "acceptance": [
+        "Les lignes de la facture sont restituées par séquence croissante, quelles que soient les valeurs absolues de séquence.",
+        "À séquences égales, l'ordre est déterministe et documenté (critère de départage explicite).",
+        "Aucun test ni aucun code ne dépend des valeurs littérales 10/20 ni 100/200."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["odoo-bin", "-d", "test_19", "--test-enable", "--test-tags", "/account_invoice_line_order:TestInvoiceLineOrder", "--stop-after-init"],
+          "environment": "Copie neutralisée Odoo 19.0, base de test jetable test_19, sans données de production, sans envoi de mail (mail catcher désactivé).",
+          "cases": [
+            "Test à ajouter : facture à 3 lignes créées dans un ordre de saisie volontairement inverse des séquences ; vérifier que la liste rendue est triée par séquence croissante en comparant l'ordre relatif des lignes, pas leurs valeurs de séquence.",
+            "Test à ajouter : même facture après multiplication de toutes les séquences par un facteur constant préservant l'ordre ; l'ordre rendu doit être identique au cas précédent.",
+            "Test à ajouter : deux lignes de séquence identique ; vérifier que l'ordre obtenu correspond au critère de départage documenté et qu'il est stable sur deux lectures."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T02",
+      "intentions": ["I04"],
+      "acceptance": [
+        "La renumérotation produit un nouveau jeu de séquences dont l'ordre relatif est identique à l'ordre relatif avant traitement.",
+        "L'opération est idempotente : une seconde exécution ne modifie plus l'ordre relatif.",
+        "Aucune ligne n'est perdue, ajoutée ou réaffectée à une autre facture."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["odoo-bin", "-d", "test_19", "--test-enable", "--test-tags", "/account_sequence_renumber:TestSequenceRenumber", "--stop-after-init"],
+          "environment": "Copie neutralisée Odoo 19.0, base de test jetable test_19, sans données de production, exécution mono-processus pour un résultat reproductible.",
+          "cases": [
+            "Test à ajouter : facture dont les lignes portent des séquences arbitraires croissantes ; capturer la liste ordonnée des identifiants avant renumérotation, exécuter la renumérotation, vérifier l'égalité de la liste ordonnée après — sans assertion sur les valeurs produites.",
+            "Test à ajouter : lignes comportant des séquences ex æquo ; vérifier que la renumérotation ne réordonne pas les lignes concernées au-delà du critère de départage documenté en T01.",
+            "Test à ajouter : double exécution de la renumérotation ; vérifier l'identité de l'ordre relatif entre la première et la seconde exécution.",
+            "Test à ajouter : comptage des lignes et de leur rattachement à la facture avant/après, pour détecter toute perte ou réaffectation."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T03",
+      "intentions": ["I01", "I02"],
+      "acceptance": [
+        "Inventaire écrit du rapport Chantier existant : source de données, niveaux de regroupement actuels, points d'extension disponibles.",
+        "Liste des usages et attentes constatés pour chacune des deux formes demandées, avec référence à la demande d'origine.",
+        "Note d'arbitrage présentant les options (niveau Catégorie imposé, option à l'impression, deux rapports) avec impacts, sans retenir d'option : la décision reste à obtenir auprès du demandeur.",
+        "Aucune modification de code ni de vue de rapport n'est produite par cette tâche."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["test", "-f", "docs/releases/rapport-chantier-arbitrage.md"],
+          "environment": "Copie neutralisée Odoo 19.0, poste de cadrage en lecture seule sur le code et les données de démonstration.",
+          "cases": [
+            "Contrôle documentaire : le fichier d'arbitrage existe et présente les deux formes demandées ainsi que les options, sans désigner de hiérarchie retenue.",
+            "Contrôle documentaire : la question bloquante I01/I02 y est reprise telle quelle et signalée comme non tranchée."
+          ]
+        }
+      ]
+    }
+  ]
+}
+```

@@ -1,0 +1,48 @@
+{
+  "questions": [
+    {
+      "intentions": ["I01", "I02"],
+      "question": "Quelle hiérarchie retenir pour le rapport : Chantier > Catégorie > Articles ou Chantier > Articles ? Ces demandes se contredisent ; leur implémentation reste bloquée jusqu’à votre arbitrage."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T03",
+      "intentions": ["I03"],
+      "acceptance": [
+        "Les lignes de facture sont ordonnées par séquence croissante.",
+        "L’ordre attendu reste correct avant et après renumérotation, sans imposer de valeurs fixes de séquence."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["python3", "-m", "pytest", "tests/test_invoice_sequence.py::test_sort_before_and_after_renumbering"],
+          "environment": "Copie neutralisée Odoo 19.0 ; test à ajouter.",
+          "cases": [
+            "Présenter les lignes B(20), A(10) dans cet ordre : vérifier la restitution A, B.",
+            "Répéter avec B(200), A(100) : vérifier la restitution A, B et la croissance des séquences."
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T04",
+      "intentions": ["I04"],
+      "acceptance": [
+        "La renumérotation transforme les séquences actuelles 10 et 20 en 100 et 200 respectivement.",
+        "L’ordre relatif des mêmes lignes, comparé par leurs identifiants avant et après renumérotation, est conservé."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["python3", "-m", "pytest", "tests/test_invoice_sequence.py::test_renumber_preserves_relative_order"],
+          "environment": "Copie neutralisée Odoo 19.0 ; test à ajouter, indépendant de T03.",
+          "cases": [
+            "Créer A(10), B(20), mémoriser leurs identifiants triés par séquence, puis exécuter la renumérotation.",
+            "Vérifier A(100), B(200) et l’égalité des listes d’identifiants triées avant et après ; les valeurs initiales servent uniquement de données d’entrée."
+          ]
+        }
+      ]
+    }
+  ]
+}

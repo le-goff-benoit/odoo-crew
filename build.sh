@@ -54,6 +54,8 @@ emit_role_body() {
     cat "$HERE/roles/$1.md"
     printf '\n'
     cat "$HERE/roles/communication.md"
+    printf '\n'
+    cat "$HERE/roles/model-policy.md"
 }
 
 emit() {
@@ -280,6 +282,9 @@ emit_command "odoo-estimate" "estimation" "<release à estimer>" 'Release : $ARG
     "Estime le temps d’exécution des agents par lot de travail d’une release, avec hypothèses et fourchettes. Préserve les prévisions, mesure temps et jetons, puis compare prévu/réalisé à la clôture ; aucun barème d’offre ni temps humain."
 
 python3 "$HERE/scripts/odoo_loaded_instructions.py" "$DEST_ROOT"
+
+# Les agents Codex natifs héritent du principal, comme leurs homologues Claude.
+python3 "$HERE/scripts/odoo_generated.py" "$DEST_ROOT" --emit-codex-agents
 
 # Tous les profils, commandes, skills et blocs de routing sont vérifiés.
 python3 "$HERE/scripts/odoo_generated.py" "$DEST_ROOT"

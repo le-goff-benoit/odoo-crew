@@ -32,7 +32,7 @@ class ReleasePlanTests(unittest.TestCase):
         plan.initialise(self.release, self.definition)
 
     def proof(self, scope='a'):
-        p = self.root / 'proofs' / (scope + '.json')
+        p = self.root / 'proofs' / (scope + str(len(list((self.root / 'proofs').glob('*.json')))) + '.json')
         evidence.execute(self.root, [scope], p, [sys.executable, '-c', 'print("contrat valide")'])
         return str(p.relative_to(self.root))
 

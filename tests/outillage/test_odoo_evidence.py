@@ -17,7 +17,7 @@ class EvidenceTests(unittest.TestCase):
         self.code.write_text('value = 1\n')
 
     def run_proof(self, code='print("checked")'):
-        return e.execute(self.root, ['module'], self.root / 'proof.json', [sys.executable, '-c', code])
+        return e.execute(self.root, ['module'], self.root / ('proof' + str(len(list(self.root.glob('proof*.json')))) + '.json'), [sys.executable, '-c', code])
 
     def test_changed_code_or_new_file_invalidates_proof(self):
         proof = self.run_proof()
@@ -50,7 +50,7 @@ class EvidenceTests(unittest.TestCase):
     def test_deleted_scope_during_control_records_failed_proof(self):
         proof = self.run_proof("import shutil; shutil.rmtree('module')")
         self.assertEqual(proof['result'], 'failed')
-        self.assertTrue((self.root / 'proof.json').is_file())
+        self.assertTrue((self.root / 'proof0.json').is_file())
 
     def test_timeout_is_not_a_success(self):
         proof = e.execute(self.root, ['module'], self.root / 'proof.json',
@@ -62,3 +62,13 @@ class EvidenceTests(unittest.TestCase):
         proof = self.run_proof('raise SystemExit(1)')
         e.verify(proof, require_success=False)
         with self.assertRaises(ValueError): e.verify(proof)
+
+    def test_environment_unknown_or_changed_is_not_compatible(self):
+        proof = self.run_proof()
+        with self.assertRaisesRegex(ValueError, 'environnement'):
+            e.verify(proof, expected_environment='odoo-image-v1:neutralized-snapshot-1')
+        proof = e.execute(self.root, ['module'], self.root / 'environment-proof.json',
+                          [sys.executable, '-c', 'print("checked")'], environment='image-v1:data-v1')
+        e.verify(proof, expected_environment='image-v1:data-v1')
+        with self.assertRaisesRegex(ValueError, 'environnement'):
+            e.verify(proof, expected_environment='image-v2:data-v1')

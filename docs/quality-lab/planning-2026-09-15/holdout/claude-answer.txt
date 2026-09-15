@@ -1,0 +1,55 @@
+```json
+{
+  "questions": [
+    {
+      "intentions": ["I01", "I02"],
+      "question": "I01 et I02 décrivent la même tâche réceptionnée dont la preuve devient périmée mais prescrivent deux sorties incompatibles : I01 exige le maintien dans « Réceptionnées » avec le badge « Contrôle à actualiser », I02 exige le passage automatique dans « Bloquées ». Aucune décision actée ne tranche. Quel comportement unique fait foi, ou selon quel critère explicite (fourni par vous) l'un s'applique-t-il plutôt que l'autre ? Aucune tâche exécutable n'est créée pour I01/I02 tant que la réponse n'est pas actée."
+    }
+  ],
+  "tasks": [
+    {
+      "id": "T01",
+      "intentions": ["I03"],
+      "acceptance": [
+        "Lorsque le quota utilisé atteint exactement 90 %, une alerte est émise.",
+        "Tant que le quota utilisé est strictement inférieur à 90 %, aucune alerte n'est émise.",
+        "L'émission de l'alerte ne modifie ni le modèle ni le fournisseur en vigueur : les valeurs observées après alerte sont identiques à celles observées avant."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["python3", "-m", "pytest", "tests/test_quota_alert.py", "-v"],
+          "environment": "desktop Ubuntu, fixtures synthétiques de quota (fichier de test à créer par le développement)",
+          "cases": [
+            "utilisé = 90 % exactement → alerte émise",
+            "utilisé = 89,9 % → aucune alerte",
+            "utilisé = 0 % → aucune alerte",
+            "utilisé = 90 % → modèle inchangé par rapport à l'état initial de la fixture",
+            "utilisé = 90 % → fournisseur inchangé par rapport à l'état initial de la fixture"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "T02",
+      "intentions": ["I04"],
+      "acceptance": [
+        "Lorsque la fenêtre de quota est absente, l'affichage indique « Indisponible ».",
+        "Lorsque la fenêtre de quota est absente, l'affichage n'indique jamais « 0 % »."
+      ],
+      "depends_on": [],
+      "checks": [
+        {
+          "command": ["python3", "-m", "pytest", "tests/test_quota_window_display.py", "-v"],
+          "environment": "desktop Ubuntu, fixtures synthétiques de fenêtre de quota (fichier de test à créer par le développement)",
+          "cases": [
+            "fenêtre de quota absente → texte affiché = « Indisponible »",
+            "fenêtre de quota absente → le texte affiché ne contient pas « 0 % »",
+            "fenêtre de quota présente avec utilisation nulle → affichage « 0 % » conservé, pas « Indisponible »"
+          ]
+        }
+      ]
+    }
+  ]
+}
+```

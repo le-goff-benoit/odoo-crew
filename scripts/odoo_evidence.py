@@ -4,6 +4,7 @@ import argparse
 import hashlib
 import json
 import os
+import platform
 import signal
 from pathlib import Path
 import subprocess
@@ -33,27 +34,50 @@ def fingerprint(root, scopes, *, allow_empty=False):
     return files
 
 
-def verify(proof, expected_project=None, require_success=True):
+def repository_identity(root):
+    """Git's common directory identifies local worktrees without trusting a name/remote."""
+    try:
+        common = subprocess.check_output(['git', '-C', str(root), 'rev-parse', '--git-common-dir'],
+                                         stderr=subprocess.DEVNULL, text=True).strip()
+        revision = subprocess.check_output(['git', '-C', str(root), 'rev-parse', 'HEAD'],
+                                           stderr=subprocess.DEVNULL, text=True).strip()
+        return {'common_dir': str((Path(root) / common).resolve()), 'revision': revision}
+    except (OSError, subprocess.CalledProcessError):
+        return None
+
+
+def verify(proof, expected_project=None, require_success=True, expected_environment=None):
     if proof.get('format') != 'odoo-evidence/1':
         raise ValueError('format de preuve inconnu')
-    root = Path(proof['project']).resolve()
-    if expected_project and root != Path(expected_project).resolve():
-        raise ValueError('preuve d’un autre projet')
+    original_root = Path(proof['project']).resolve()
+    root = Path(expected_project).resolve() if expected_project else original_root
+    if root != original_root:
+        recorded, current = proof.get('repository'), repository_identity(root)
+        if not recorded or not current or recorded != current:
+            raise ValueError('preuve d’un autre projet ou révision : nouvelle vérification requise')
+    if expected_environment is not None and proof.get('environment') != expected_environment:
+        raise ValueError('environnement de contrôle différent ou non identifié')
     if require_success and (proof.get('result') != 'passed' or proof.get('exit_code') != 0):
         raise ValueError('contrôle non réussi')
     if fingerprint(root, proof['scopes']) != proof['sources']:
         raise ValueError('code changé depuis le contrôle')
     log = Path(proof['log']['path'])
+    if root != original_root and proof['log'].get('relative_path'):
+        log = (root / proof['log']['relative_path']).resolve()
+        if not log.is_relative_to(root):
+            raise ValueError('log hors projet')
     if hashlib.sha256(log.read_bytes()).hexdigest() != proof['log']['sha256']:
         raise ValueError('log changé depuis le contrôle')
     if require_success and proof.get('module') and not inspect_log(log.read_text(errors='replace'), proof['module'])['valid']:
         raise ValueError('aucune preuve de tests du module')
 
 
-def execute(root, scopes, output, argv, timeout=600, module=None):
+def execute(root, scopes, output, argv, timeout=600, module=None, environment=None):
     root, output = Path(root).resolve(), Path(output).resolve()
     output.parent.mkdir(parents=True, exist_ok=True)
     log = output.with_suffix('.log')
+    if output.exists() or log.exists():
+        raise ValueError('preuve/log existant : choisir un nouveau chemin immuable')
     for scope in scopes:
         path = (root / scope).resolve()
         if output == path or log == path or output.is_relative_to(path) or log.is_relative_to(path):
@@ -61,7 +85,7 @@ def execute(root, scopes, output, argv, timeout=600, module=None):
     before = fingerprint(root, scopes)
     started = time.monotonic()
     error = None
-    with log.open('w') as stream:
+    with log.open('x') as stream:
         try:
             process = subprocess.Popen(argv, cwd=root, stdout=stream, stderr=subprocess.STDOUT, start_new_session=True)
             try:
@@ -84,7 +108,13 @@ def execute(root, scopes, output, argv, timeout=600, module=None):
              'result': 'passed' if passed else 'failed', 'module': module, 'error': error,
              'seconds': round(time.monotonic() - started, 3),
              'log': {'path': str(log), 'sha256': hashlib.sha256(log.read_bytes()).hexdigest()}}
-    output.write_text(json.dumps(proof, ensure_ascii=False, indent=2) + '\n')
+    proof['repository'] = repository_identity(root)
+    proof['environment'] = environment
+    proof['runner'] = {'python': platform.python_version(), 'platform': platform.system(), 'machine': platform.machine()}
+    if log.is_relative_to(root):
+        proof['log']['relative_path'] = str(log.relative_to(root))
+    with output.open('x') as stream:
+        stream.write(json.dumps(proof, ensure_ascii=False, indent=2) + '\n')
     return proof
 
 
@@ -96,6 +126,7 @@ if __name__ == '__main__':
     run.add_argument('--scope', action='append', required=True)
     run.add_argument('--output', type=Path, required=True)
     run.add_argument('--module')
+    run.add_argument('--environment', help='identité stable de l’environnement contrôlé (image/données/outils)')
     run.add_argument('--timeout', type=int, default=600)
     run.add_argument('command', nargs=argparse.REMAINDER)
     check = sub.add_parser('verify')
@@ -109,7 +140,7 @@ if __name__ == '__main__':
             argv = args.command[1:] if args.command[:1] == ['--'] else args.command
             if not argv:
                 raise ValueError('commande de contrôle requise')
-            proof = execute(args.project, args.scope, args.output, argv, args.timeout, args.module)
+            proof = execute(args.project, args.scope, args.output, argv, args.timeout, args.module, args.environment)
             print(proof['result'])
             raise SystemExit(0 if proof['result'] == 'passed' else 1)
     except (ValueError, KeyError, OSError) as exc:

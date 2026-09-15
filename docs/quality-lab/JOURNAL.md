@@ -1,5 +1,25 @@
 # Journal de l’espace qualité
 
+## 15 septembre 2026 — Livraison avec Tricorder 0.3.0
+
+- Publication demandée avec l’application : Crew v2026.09.15 et profils locaux régénérés.
+- Contrats schéma 2 et continuation requis par le cockpit, sans modification de projets clients.
+- Contrôles locaux : 305 tests dont 1 ignoré, graphe et parité de 35 fichiers conformes.
+- Essais natifs bornés conservés ; modèles légers expérimentaux et parent fermé non qualifié.
+
+## 15 septembre 2026 — Intentions, preuves, orchestration et modèles
+
+- Demande : implémenter les dix lots du plan Tricorder/Crew après audit NECA.
+- Registre source/version/coverage, contrats schéma 2, preuves immuables et ressources physiques partagées.
+- QA sur candidat isolé ; retour dev reprend les verrous source ; principal unique écrivain.
+- Garde Stop instrumenté : continuation réelle et fin d’enfant sur Codex/Claude ; interruption humaine respectée.
+- Modèle principal conservé, candidats légers expérimentaux ; cinq profils Codex natifs générés, legacy sauvegardé.
+- Essais de planification : défaut initial conservé, consigne corrigée, contre-épreuve séparée réussie.
+- Ajouts reçus enregistrés avant fin de revue, visibles à planifier dans le cockpit sans autoriser le dev.
+- Contrôles : 305 tests dont 1 ignoré, graphe valide, génération conforme de 35 fichiers, installation locale.
+- Preuves : planning-2026-09-15/, continuation-2026-09-15/, models-2026-09-15/ et docs/RELEASE_EXECUTION.md.
+- Limites : quotas réels non qualifiés, parent fermé non réveillé, aucun gain mesuré sur une nouvelle release client.
+
 ## 11 septembre 2026 — rendre l'investigation longue pilotable
 
 - Demande : adopter les bilans utiles et publier Crew avec Tricorder 0.2.8.

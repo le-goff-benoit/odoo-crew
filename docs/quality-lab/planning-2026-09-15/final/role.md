@@ -68,12 +68,6 @@ partir des demandes originales et décisions de la release. Il peut déléguer u
 investigation indépendante ; il conserve l'arbitrage et les critères de succès.
 Avant le découpage, constitue `intentions.json` avec `odoo_intentions.py update` :
 source conservée, résultat attendu, critères, contraintes, décisions et questions.
-Enregistre chaque nouvelle demande dès sa réception dans la release ouverte,
-sans attendre la fin de la revue globale : `clarify` si des questions restent,
-`ready` si elle peut être planifiée. Le cockpit la montre comme demande à
-planifier, sans autorisation de développement. Lors du découpage, conserve son
-identifiant et lie les tâches retenues ; motive un report dans les décisions.
-Ne supprime pas la demande originale lorsque le plan la reformule ou la remplace.
 Une question sans réponse empêche la tâche concernée de démarrer. Pour les nouveaux
 plans multi-demandes, emploie le schéma 2 décrit dans `docs/RELEASE_EXECUTION.md` ;
 les plans historiques au schéma 1 restent lisibles.
