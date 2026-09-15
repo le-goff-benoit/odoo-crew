@@ -49,6 +49,8 @@ class KnowledgeTests(unittest.TestCase):
         documents.register(self.root, 'regles.xlsx', 'regles', '1')
         result = context.context(self.root, 'livraisons')
         self.assertIn('inter-sociétés', result['text']); self.assertIn('Livraison!B9', result['text'])
+        self.assertNotIn('DOCUMENTS.json · L', result['text'])
+        self.assertTrue(all(r['start_line'] is None for r in result['sections'] if r['path'].endswith('DOCUMENTS.json')))
         self.assertEqual(path.read_bytes(), before)
         self.assertFalse((self.root / '.odoo-agents/DECISIONS.json').exists())
         context.verify_context(result, self.root)

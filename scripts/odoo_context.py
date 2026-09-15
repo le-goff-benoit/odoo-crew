@@ -112,6 +112,8 @@ def context(project, query='', budget=12000, release=None, task=None, role='orch
                       'start_line': None, 'end_line': None, 'section_sha256': digest(rendered)}]
         elif name == '.odoo-agents/DOCUMENTS.json':
             parts = markdown_sections(odoo_documents.render(project))
+            for part in parts:
+                part.update(start_line=None, end_line=None, location='extraction structurée ; repères dans les originaux')
         elif name == '.odoo-agents/SOURCE_INDEX.json':
             import odoo_source_index
             index = json.loads(path.read_text())
@@ -121,6 +123,8 @@ def context(project, query='', budget=12000, release=None, task=None, role='orch
             except (ValueError, OSError, KeyError) as exc:
                 content = '# Index à régénérer\n' + str(exc)
             parts = markdown_sections(content)
+            for part in parts:
+                part.update(start_line=None, end_line=None, location='index statique ; chemins et lignes des symboles')
         else:
             parts = markdown_sections(path.read_text())
         for part in parts:
@@ -147,7 +151,7 @@ def context(project, query='', budget=12000, release=None, task=None, role='orch
         for i in ranked:
             item = sections[i]
             if item['included']:
-                location = 'rendu validé' if item['mandatory'] else f"L{item['start_line']}-L{item['end_line']}"
+                location = item.get('location') or ('rendu validé' if item['mandatory'] else f"L{item['start_line']}-L{item['end_line']}")
                 out.append(f"\n## {item['path']} · {location}\n" + item['content'].strip())
         omitted = [item for item in sections if not item['included']]
         if omitted:
@@ -155,7 +159,7 @@ def context(project, query='', budget=12000, release=None, task=None, role='orch
             for name in catalog_paths:
                 entries = [i for i in omitted if i['path'] == name]
                 if entries:
-                    ranges = ', '.join(f"L{i['start_line']}-L{i['end_line']}" for i in entries)
+                    ranges = ', '.join(i['title'] + ' (repères originaux)' if i.get('location') else f"L{i['start_line']}-L{i['end_line']}" for i in entries)
                     out.append(f'- {name} : {ranges}')
         return '\n'.join(out) + '\n'
 

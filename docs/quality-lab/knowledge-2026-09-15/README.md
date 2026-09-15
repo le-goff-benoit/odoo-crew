@@ -26,8 +26,8 @@ Référence : `916ec52f04faf67fe05bb9e165eff6ad0722842a`.
 
 Le même dossier K01 n'exposait pas l'exception du tableur dans le contexte de
 référence. Elle est présente après, avec `Livraison!B9`. Le contexte passe de
-545 à 1 954 caractères : **meilleure couverture, pas réduction de volume**.
-K06 conserve sa règle et ajoute le repère documentaire (725 → 2 341 caractères).
+545 à 2 067 caractères : **meilleure couverture, pas réduction de volume**.
+K06 conserve sa règle et ajoute le repère documentaire (725 → 2 491 caractères).
 [Mesures](context-comparison.json). Une première requête « société » ratait
 « sociétés » : accents et pluriels simples sont maintenant rapprochés ; un test
 de régression couvre cette correction. Les synonymes restent une limite.
