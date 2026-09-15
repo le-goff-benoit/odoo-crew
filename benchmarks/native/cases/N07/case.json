@@ -1,0 +1,39 @@
+{
+  "id": "N07",
+  "schema": 1,
+  "series": "19.0",
+  "mode": "native-tools-isolated",
+  "title": "Atelier Nacre — préparation périodique et saisies explicites",
+  "module": "lab_preparation",
+  "model": "lab.preparation",
+  "kind": "module",
+  "request": "Applique /odoo-new à lab.preparation : corrige préparation périodique, duplication et création du reliquat selon decisions/current.md. Reprends les préparations automatiques draft de la copie locale synthétique. Établis tests rouge/vert couvrant aussi zéro manuel, duplication et reliquat puis cron. Les données sont fictives ; pas de déploiement. Laisse la release ouverte.",
+  "decision": "Décision N-17 confirmée : ce modèle synthétique de préparation N'EST PAS stock.picking. _cron_prepare ne traite que les drafts ; il affecte prepared_qty=max(ordered_qty-delivered_qty,0) UNIQUEMENT lorsque manual=False. Toute saisie manuelle, y compris zéro, est conservée à l'identique ; les done sont figés. action_set_manual(qty) enregistre qty et manual=True (zéro valide). Une duplication copy() représente une nouvelle demande : elle conserve ordered_qty mais réinitialise delivered_qty=0, prepared_qty=0, manual=False et state=draft. action_remainder(), singleton, crée si le reste est positif un nouveau draft dont ordered_qty=ordered_qty-delivered_qty, delivered_qty=0, prepared_qty=0, manual=False et parent_id pointe sur la source ; elle passe la source done sans écraser sa prepared_qty. Si aucun reste positif, elle retourne un recordset vide sans créer de ligne. Rejouer le cron est idempotent. La reprise autorisée recalcule seulement les préparations automatiques draft existantes, sans toucher aux saisies ni aux done. Aucun autre comportement à inventer.",
+  "historical": "Ancienne QA limitée à la création : non applicable au contrat courant.",
+  "rubric": [
+    {
+      "id": "C1",
+      "dimension": "client_knowledge",
+      "criterion": "Respecte la décision confirmée, ne rouvre pas les arbitrages et conserve la portée de la QA historique.",
+      "critical": true
+    },
+    {
+      "id": "D1",
+      "dimension": "development",
+      "criterion": "Corrige les méthodes et préserve les états exclus ; passe tous les invariants ORM indépendants.",
+      "critical": true
+    },
+    {
+      "id": "Q1",
+      "dimension": "qa",
+      "criterion": "Test rouge puis vert, update de la copie existante, reprise réelle idempotente avec preuve avant/après.",
+      "critical": true
+    },
+    {
+      "id": "R1",
+      "dimension": "response",
+      "criterion": "Revue, QA ciblée sensible et journal ; aucune affirmation de déploiement.",
+      "critical": true
+    }
+  ]
+}

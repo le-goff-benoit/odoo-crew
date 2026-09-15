@@ -43,7 +43,7 @@ mkdir -p "$CLAUDE_AGENTS" "$CLAUDE_COMMANDS" "$CODEX_SKILLS" "$CLAUDE_SKILLS"
 
 echo "Validation du graphe Odoo…"
 python3 "$HERE/scripts/odoo_flow.py" validate
-python3 -m unittest discover -s "$HERE/tests" -q
+(cd "$HERE" && python3 -m unittest discover -s tests -q)
 
 yaml_string() {
     python3 -c 'import json, sys; print(json.dumps(sys.argv[1], ensure_ascii=False))' "$1"

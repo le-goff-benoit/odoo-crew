@@ -1,0 +1,15 @@
+2026-09-15 22:02:10,546 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:02:10,546 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:02:10,546 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:02:10,546 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:02:10,546 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:02:10,838 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-15 22:02:10,838 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:02:10,864 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:02:10,870 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-15 22:02:10,875 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:02:10,877 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:02:11,159 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.28s, 0 queries (+0 extra) 
+2026-09-15 22:02:11,270 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-15 22:02:11,304 1 INFO lab_client odoo.registry: Registry loaded in 0.466s 
+LAB_ORACLE {"legacy_auto_repaired": true, "legacy_explicit_zero_preserved": true, "legacy_partial_preserved": true, "legacy_done_preserved": true, "explicit_zero_not_false": false, "copy_resets_operational_state": true, "copy_then_cron": true, "remainder_contract": true, "remainder_then_cron": true, "no_empty_remainder": true, "negative_remaining_clamped": true, "idempotent_cron": true}

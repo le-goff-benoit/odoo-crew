@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "question": "Améliorer la réception complète et son délai sur des correctifs Odoo avec données existantes, sans masquer les reprises.",
+  "baseline": "284379f4c1d120e2462625ee3878ba5fbb0da5f8",
+  "max_native_calls": 8,
+  "timeout_per_call_seconds": 900,
+  "max_parallel_trials": 2,
+  "config": {
+    "codex": {"model": "gpt-6-astra", "effort": "high"},
+    "claude": {"model": "opus", "effort": "medium", "delegate": false}
+  },
+  "cases": ["N06", "N07"],
+  "holdout": "N07: aucun résultat natif consulté avant gel du candidat",
+  "order": "N06 référence des deux fournisseurs ; correction après examen ; N06 candidat ; N07 référence/candidat contrebalancés par fournisseur",
+  "calibration": "Chaque oracle reçoit un témoin correct et des mutants avant appels ; corpus et runner figés par empreinte au lancement.",
+  "rework": "Aucune correction cachée des productions ; tout retour/reprise compte comme appel. Si une reprise ne rentre pas dans ce plafond, elle reste non mesurée.",
+  "metrics": ["setup_seconds", "agent_seconds", "tool_calls", "bridge_calls", "oracle_seconds", "elapsed_to_oracle_seconds", "runtime_gate", "semantic_review", "rework_count", "time_to_accepted_receipt_seconds"],
+  "acceptance": "Oracle indépendant vert, lint et QA exécutés sur code final, mise à niveau de copie existante, décisions et mémoire exactes, contrôle sémantique. Terminaison fournisseur seule insuffisante.",
+  "adoption": "Aucune promotion de modèle. Instruction candidate adoptée seulement avec défaut reproduit puis corrigé et contre-épreuve ; sinon expérimentale/rejetée. Une seule observation par paire ne prouve pas un gain général.",
+  "incidents": "Transport, quota, timeout, oracle ou préparation séparés des défauts métier ; conserver tous les artefacts.",
+  "scope": "Modèles ORM synthétiques Odoo 19 ; aucun projet client, production, vrai stock.picking ou PDF dans N06/N07. Extension PDF W03 séparée sur 18/19 sans LLM.",
+  "ci_model_calls": false
+}

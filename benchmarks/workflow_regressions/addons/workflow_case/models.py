@@ -40,3 +40,12 @@ class WorkflowForm(models.Model):
 
     def action_confirm(self):
         self.state = "confirmed"
+
+
+class InvoiceLine(models.Model):
+    _inherit = "account.move.line"
+
+    lab_technical_zero = fields.Boolean(
+        string="Synthetic technical line",
+        help="Explicit fixture classification; only a marked zero subtotal is hidden in the PDF.",
+    )

@@ -1,0 +1,82 @@
+Validation du graphe Odoo…
+Graphe valide : 59 nœuds, 129 arêtes, 4 forks, 4 jointures, 6 cycles bornés.
+ODOO BENCH 20260916-000500-de39448b · executed · 1/1 exécutés
+  B06-codex        completed    fixture / high · 0 s · qualité non évaluée
+ODOO BENCH 20260916-000500-b339e36a · running · 0/1 exécutés
+  B06-codex        running      fixture / high · 0 s · qualité non évaluée
+ODOO BENCH 20260916-000500-b339e36a · executed · 1/1 exécutés
+  B06-codex        completed    fixture / high · 0.2 s · qualité non évaluée
+ODOO BENCH 20260916-000500-90c9a2c9 · running · 0/1 exécutés
+  B06-codex        running      fixture / high · 0 s · qualité non évaluée
+ODOO BENCH 20260916-000500-90c9a2c9 · executed_with_errors · 1/1 exécutés
+  B06-codex        error        fixture / high · 0.2 s · qualité non évaluée
+ODOO BENCH 20260916-000500-66fe74fa · running · 0/1 exécutés
+  B06-codex        running      fixture / high · 0 s · qualité non évaluée
+ODOO BENCH 20260916-000500-66fe74fa · executed_with_errors · 1/1 exécutés
+  B06-codex        error        fixture / high · 0.2 s · qualité non évaluée
+ODOO BENCH 20260916-000501-3ad3cacb · interrupted · 0/1 exécutés
+  B06-codex        pending      fixture / high · 0 s · qualité non évaluée
+⚠️  ÉCRITURE EN PRODUCTION confirmée : x.synthetic.write
+  + x.synthetic studio_customization.one
+1 / 0 / 0 à créer / à modifier / inchangés sur synthetic
+  + x.synthetic studio_customization.one
+1 / 0 / 0 créés / modifiés / inchangés sur synthetic
+0 / 0 / 1 créés / modifiés / inchangés sur synthetic
+  + x.synthetic studio_customization.one
+0 / 0 / 1 créés / modifiés / inchangés sur synthetic
+{"trial": "trial", "error": "build failed"}
+mémoire modifiée depuis préparation : .odoo-agents/JOURNAL.md
+======================================================================
+ERROR: pilotage.test_odoo_knowledge (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: pilotage.test_odoo_knowledge
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.10/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_odoo_knowledge.py", line 19, in <module>
+    from tests.pilotage import test_odoo_release_plan as fixtures
+ModuleNotFoundError: No module named 'tests'
+
+
+======================================================================
+ERROR: pilotage.test_odoo_release_execution (unittest.loader._FailedTest)
+----------------------------------------------------------------------
+ImportError: Failed to import test module: pilotage.test_odoo_release_execution
+Traceback (most recent call last):
+  File "/usr/lib/python3.10/unittest/loader.py", line 436, in _find_test_path
+    module = self._get_module_from_name(name)
+  File "/usr/lib/python3.10/unittest/loader.py", line 377, in _get_module_from_name
+    __import__(name)
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_odoo_release_execution.py", line 17, in <module>
+    from tests.pilotage import test_odoo_release_plan as fixtures
+ModuleNotFoundError: No module named 'tests'
+
+
+----------------------------------------------------------------------
+Ran 344 tests in 12.835s
+
+FAILED (errors=2, skipped=1)
+ODOO FLOW · module_high_gate
+────────────────────────────────────────────────────────────────────────
+État       PRÊT
+Flux       development
+Projet     /tmp/tmpbab63h0t
+Progression 1 étape(s) franchie(s)
+Nœuds agent 0 revendiqué(s) · 0 prêt(s)
+Contrat QA 2 critères liés · couverture exigée pour pass
+Dernière   ✓ module_high_gate → blocked
+
+POSITION DANS LE GRAPHE
+  PROCHAINE ÉTAPE
+  ○ journal_task_blocked
+    ORCHESTRATEUR
+    Consigner l'échec de QA et les anomalies restantes avant l'arrêt.
+    Sorties: done · Preuve: entrée JOURNAL.md avec contrôles rouges
+Bases mémoire inchangées et dossier frais ; conserver le verrou mémoire pendant la copie des drafts.
+Dossier de réception : bundle.json · 290786462694
+Réception indépendante positive requise avant pass ; publier ensuite les drafts exacts.
+Mémoire published : .odoo-agents/PROJECT.md
+Mémoire published : .odoo-agents/JOURNAL.md
+Publication vérifiée ; journal_task reste revendiqué et doit être complété.

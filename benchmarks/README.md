@@ -10,6 +10,7 @@ obtenus sont dans [`docs/quality-lab/`](../docs/quality-lab/README.md).
 
 | Objectif | Cas et ressources |
 |---|---|
+| Boucle native avant/après sur correctifs et données existantes | [N06/N07 et protocole borné](../docs/quality-lab/agent-workflows-2026-09-15/README.md) |
 | Parcours métier, livraison et reprise de release | [Six scénarios synthétiques](workflow_regressions/README.md) |
 | Profils allégés, avec outils de lecture | [Comparaison avant/après](qualification/profiles/) |
 | Modèles sur une réalisation avec tests et reçu | [Implémentation locale](qualification/implementation/) — distincte du développement Odoo |

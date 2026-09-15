@@ -1,0 +1,36 @@
+{
+  "all_eight_pass": true,
+  "required_checks": {
+    "N06": [
+      "company_rule_still_enforced",
+      "emitted_reference_frozen",
+      "idempotent",
+      "legacy_drafts_repaired",
+      "ordinary_user_mixed_selection",
+      "other_company_untouched",
+      "scope_remains_local"
+    ],
+    "N07": [
+      "copy_resets_operational_state",
+      "copy_then_cron",
+      "explicit_zero_not_false",
+      "idempotent_cron",
+      "legacy_auto_repaired",
+      "legacy_done_preserved",
+      "legacy_explicit_zero_preserved",
+      "legacy_partial_preserved",
+      "negative_remaining_clamped",
+      "no_empty_remainder",
+      "remainder_contract",
+      "remainder_then_cron"
+    ]
+  },
+  "mutation_checks": {
+    "issued_rewritten": "emitted_reference_frozen",
+    "other_company_rewritten": "other_company_untouched",
+    "wrong_final_positions": "legacy_drafts_repaired",
+    "zero_loses_manual_marker": "explicit_zero_not_false",
+    "copy_inherits_state": "copy_resets_operational_state",
+    "remaining_ignored": "legacy_auto_repaired"
+  }
+}

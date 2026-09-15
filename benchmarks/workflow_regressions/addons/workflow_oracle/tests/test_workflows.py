@@ -1,4 +1,6 @@
 import logging
+from contextlib import ExitStack
+from unittest.mock import patch
 from pathlib import Path
 import subprocess
 
@@ -7,6 +9,8 @@ from odoo.exceptions import AccessError
 from odoo.tests import tagged, new_test_user
 from odoo.tests.common import TransactionCase, HttpCase
 from odoo.addons.account.tests.common import AccountTestInvoicingCommon
+
+from .pdf_assertions import accounting_write, assert_pdf_cohort
 
 _logger = logging.getLogger(__name__)
 
@@ -87,68 +91,95 @@ class TestStockWorkflow(TransactionCase):
 
 @tagged("post_install", "-at_install")
 class TestInvoiceWorkflow(AccountTestInvoicingCommon, HttpCase):
+    def _accounting_snapshot(self, move):
+        snapshot = {}
+        for table, condition in (("account_move", "id"), ("account_move_line", "move_id")):
+            self.env.cr.execute(
+                f"SELECT to_jsonb(row) FROM {table} row WHERE {condition} = %s ORDER BY id",
+                [move.id],
+            )
+            snapshot[table] = self.env.cr.fetchall()
+        return snapshot
+
     def test_historical_invoice_pdf(self):
         self.env["res.lang"]._activate_lang("fr_FR")
-        self.partner_a.lang = "fr_FR"
-        move = self.env["account.move"].create(
-            {
-                "move_type": "out_invoice",
-                "partner_id": self.partner_a.id,
-                "invoice_date": fields.Date.from_string("2020-02-03"),
-                "invoice_line_ids": [
-                    Command.create(
-                        {
-                            "name": label,
-                            "quantity": 1,
-                            "price_unit": price,
-                            "tax_ids": [Command.clear()],
-                            "account_id": self.company_data[
-                                "default_account_revenue"
-                            ].id,
-                        }
-                    )
-                    for label, price in [
-                        ("Prestation historique", 7),
-                        ("Forfait convenu", 42),
-                        ("Explication gratuite", 0),
-                    ]
-                ],
-            }
-        )
-        move.action_post()
-        self.assertEqual(move.state, "posted")
-        self.assertEqual(move.amount_total, 49)
         invoice_user = new_test_user(
             self.env,
             login="invoice_lab",
             groups="account.group_account_invoice",
-            company_id=move.company_id.id,
-            company_ids=[Command.set(move.company_id.ids)],
+            company_id=self.env.company.id,
+            company_ids=[Command.set(self.env.company.ids)],
             lang="en_US",
         )
-        pdf, _ = (
-            self.env["ir.actions.report"]
-            .with_user(invoice_user)
-            .with_context(lang="en_US", force_report_rendering=True)
-            ._render_qweb_pdf("account.account_invoices", [move.id])
-        )
-        self.assertTrue(pdf.startswith(b"%PDF"))
+        self.assertFalse(invoice_user.has_group("base.group_system"))
         output = Path("/tmp/workflow-evidence")
         output.mkdir(exist_ok=True)
-        (output / "historical-invoice.pdf").write_bytes(pdf)
-        rendered = subprocess.run(
-            ["pdftotext", "-", "-"], input=pdf, capture_output=True, check=True
-        ).stdout.decode()
-        for label in [
-            "Prestation historique",
-            "Forfait convenu",
-            "Explication gratuite",
-        ]:
-            self.assertIn(label, rendered, "WORKFLOW_INVOICE_LINE")
-        self.assertIn("49", rendered)
-        self.assertIn("Facture", rendered, "WORKFLOW_INVOICE_LANGUAGE")
-        (output / "historical-invoice.txt").write_text(rendered)
-        _logger.info("WORKFLOW_PASS invoice_pdf")
+        cohorts = (
+            ("current-invoice", "out_invoice", fields.Date.today(), "fr_FR", "en_US", "Facture"),
+            ("historical-invoice", "out_invoice", fields.Date.from_string("2020-02-03"), "fr_FR", "en_US", "Facture"),
+            ("credit-note", "out_refund", fields.Date.today(), "en_US", "fr_FR", "Credit Note"),
+        )
+        completed_cohorts = 0
+        for cohort, move_type, date, recipient_language, user_language, title in cohorts:
+            with self.subTest(cohort=cohort):
+                partner = self.partner_a.copy({"name": "Synthetic recipient " + cohort, "lang": recipient_language})
+                invoice_user.lang = user_language
+                lines = [
+                    ("Prestation " + cohort, 7, True),
+                    ("Forfait convenu", 42, False),
+                    ("Explication gratuite", 0, False),
+                    ("Marqueur technique masque", 0, True),
+                ]
+                move = self.env["account.move"].create({
+                    "move_type": move_type,
+                    "partner_id": partner.id,
+                    "invoice_date": date,
+                    "invoice_line_ids": [Command.create({
+                        "name": label, "quantity": 1, "price_unit": price,
+                        "tax_ids": [Command.clear()],
+                        "account_id": self.company_data["default_account_revenue"].id,
+                        "lab_technical_zero": technical,
+                    }) for label, price, technical in lines],
+                })
+                move.action_post()
+                self.assertEqual(move.state, "posted")
+                self.assertEqual(move.amount_total, 49)
+                self.assertEqual(len(move.invoice_line_ids), 4)
+                self.env.flush_all()
+                before = self._accounting_snapshot(move)
+                original_execute = type(self.env.cr).execute
+
+                def checked_execute(cursor, query, *args, **kwargs):
+                    if accounting_write(query):
+                        raise AssertionError("WORKFLOW_INVOICE_ACCOUNTING_WRITE SQL")
+                    return original_execute(cursor, query, *args, **kwargs)
+
+                with ExitStack() as guards:
+                    for model in ("account.move", "account.move.line"):
+                        for operation in ("create", "write", "unlink"):
+                            guards.enter_context(patch.object(
+                                type(self.env[model]), operation,
+                                side_effect=AssertionError("WORKFLOW_INVOICE_ACCOUNTING_WRITE " + model + "." + operation),
+                            ))
+                    guards.enter_context(patch.object(type(self.env.cr), "execute", checked_execute))
+                    pdf, _ = (
+                        self.env["ir.actions.report"].with_user(invoice_user)
+                        .with_context(lang=user_language, force_report_rendering=True)
+                        ._render_qweb_pdf("account.account_invoices", [move.id])
+                    )
+                    self.env.flush_all()
+                self.assertEqual(self._accounting_snapshot(move), before, "WORKFLOW_INVOICE_ACCOUNTING_SNAPSHOT")
+                self.assertTrue(pdf.startswith(b"%PDF"))
+                (output / (cohort + ".pdf")).write_bytes(pdf)
+                rendered = subprocess.run(
+                    ["pdftotext", "-", "-"], input=pdf, capture_output=True, check=True
+                ).stdout.decode()
+                (output / (cohort + ".txt")).write_text(rendered)
+                assert_pdf_cohort(rendered, [label for label, _, _ in lines[:3]], [lines[3][0]], title)
+                completed_cohorts += 1
+                _logger.info("WORKFLOW_PDF_COHORT %s recipient=%s user=%s ordinary_user=true accounting_unchanged=true", cohort, recipient_language, user_language)
+        if completed_cohorts == len(cohorts):
+            _logger.info("WORKFLOW_PASS invoice_pdf")
 
 
 @tagged("post_install", "-at_install")

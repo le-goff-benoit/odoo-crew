@@ -1,0 +1,198 @@
+[
+  {
+    "case": "N06",
+    "variant": "reference",
+    "expected_pass": true,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "legacy_drafts_repaired": true,
+        "emitted_reference_frozen": true,
+        "other_company_untouched": true,
+        "ordinary_user_mixed_selection": true,
+        "scope_remains_local": true,
+        "idempotent": true,
+        "company_rule_still_enforced": true
+      },
+      "passed": true,
+      "log_sha256": "8b1a46fa15eec26c1ed28e059293931a43d5f2363858cbf49560a1e96474f912",
+      "log": "oracle-000.log"
+    },
+    "expectation_met": true,
+    "seconds": 37.595
+  },
+  {
+    "case": "N06",
+    "variant": "issued_rewritten",
+    "expected_pass": false,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "legacy_drafts_repaired": false,
+        "emitted_reference_frozen": false,
+        "other_company_untouched": true,
+        "ordinary_user_mixed_selection": false,
+        "scope_remains_local": false,
+        "idempotent": true,
+        "company_rule_still_enforced": true
+      },
+      "passed": false,
+      "log_sha256": "1bc3f51da33df1d8f59825018662f38d914655b8dcf801b2275e020ee787305b",
+      "log": "oracle-000.log"
+    },
+    "expectation_met": true,
+    "seconds": 51.688
+  },
+  {
+    "case": "N06",
+    "variant": "other_company_rewritten",
+    "expected_pass": false,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "legacy_drafts_repaired": false,
+        "emitted_reference_frozen": true,
+        "other_company_untouched": false,
+        "ordinary_user_mixed_selection": false,
+        "scope_remains_local": false,
+        "idempotent": true,
+        "company_rule_still_enforced": true
+      },
+      "passed": false,
+      "log_sha256": "bb575be3184a79f0e0fd583a8bc195b1acc5630950645c3490fa996d353db92c",
+      "log": "oracle-000.log"
+    },
+    "expectation_met": true,
+    "seconds": 47.891
+  },
+  {
+    "case": "N06",
+    "variant": "wrong_final_positions",
+    "expected_pass": false,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "legacy_drafts_repaired": false,
+        "emitted_reference_frozen": true,
+        "other_company_untouched": true,
+        "ordinary_user_mixed_selection": false,
+        "scope_remains_local": true,
+        "idempotent": true,
+        "company_rule_still_enforced": true
+      },
+      "passed": false,
+      "log_sha256": "c5e0b9976fbf2220f9f5bf002aff735cf8df31feefe3e1f99206235be30fc6de",
+      "log": "oracle-000.log"
+    },
+    "expectation_met": true,
+    "seconds": 27.561
+  },
+  {
+    "case": "N07",
+    "variant": "reference",
+    "expected_pass": true,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "legacy_auto_repaired": true,
+        "legacy_explicit_zero_preserved": true,
+        "legacy_partial_preserved": true,
+        "legacy_done_preserved": true,
+        "explicit_zero_not_false": true,
+        "copy_resets_operational_state": true,
+        "copy_then_cron": true,
+        "remainder_contract": true,
+        "remainder_then_cron": true,
+        "no_empty_remainder": true,
+        "negative_remaining_clamped": true,
+        "idempotent_cron": true
+      },
+      "passed": true,
+      "log_sha256": "6161dcdcc0dfa79f666dd0543680aff302566625d77a41c20e688863e5821e94",
+      "log": "oracle-000.log"
+    },
+    "expectation_met": true,
+    "seconds": 34.937
+  },
+  {
+    "case": "N07",
+    "variant": "zero_loses_manual_marker",
+    "expected_pass": false,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "legacy_auto_repaired": true,
+        "legacy_explicit_zero_preserved": true,
+        "legacy_partial_preserved": true,
+        "legacy_done_preserved": true,
+        "explicit_zero_not_false": false,
+        "copy_resets_operational_state": true,
+        "copy_then_cron": true,
+        "remainder_contract": true,
+        "remainder_then_cron": true,
+        "no_empty_remainder": true,
+        "negative_remaining_clamped": true,
+        "idempotent_cron": true
+      },
+      "passed": false,
+      "log_sha256": "52265425535e94bb8f9ff065f45f2963e2da047a1798d8abddcd556ba8804ea8",
+      "log": "oracle-000.log"
+    },
+    "expectation_met": true,
+    "seconds": 52.824
+  },
+  {
+    "case": "N07",
+    "variant": "copy_inherits_state",
+    "expected_pass": false,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "legacy_auto_repaired": true,
+        "legacy_explicit_zero_preserved": true,
+        "legacy_partial_preserved": true,
+        "legacy_done_preserved": true,
+        "explicit_zero_not_false": true,
+        "copy_resets_operational_state": false,
+        "copy_then_cron": false,
+        "remainder_contract": false,
+        "remainder_then_cron": false,
+        "no_empty_remainder": true,
+        "negative_remaining_clamped": true,
+        "idempotent_cron": true
+      },
+      "passed": false,
+      "log_sha256": "42dc04c8b24b19a59a6210d960f725faf184cad427dd576d42585aca162a5678",
+      "log": "oracle-000.log"
+    },
+    "expectation_met": true,
+    "seconds": 55.868
+  },
+  {
+    "case": "N07",
+    "variant": "remaining_ignored",
+    "expected_pass": false,
+    "oracle": {
+      "exit_code": 0,
+      "checks": {
+        "legacy_auto_repaired": false,
+        "legacy_explicit_zero_preserved": true,
+        "legacy_partial_preserved": true,
+        "legacy_done_preserved": true,
+        "explicit_zero_not_false": true,
+        "copy_resets_operational_state": true,
+        "copy_then_cron": true,
+        "remainder_contract": true,
+        "remainder_then_cron": true,
+        "no_empty_remainder": true,
+        "negative_remaining_clamped": false,
+        "idempotent_cron": true
+      },
+      "passed": false,
+      "log_sha256": "733d0eca82db201dc806efdafb91797b547c1573da9f85192b4acaaf905f328e",
+      "log": "oracle-000.log"
+    },
+    "expectation_met": true,
+    "seconds": 40.815
+  }
+]

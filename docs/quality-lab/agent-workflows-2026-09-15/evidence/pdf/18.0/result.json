@@ -1,0 +1,60 @@
+{
+  "schema": 1,
+  "status": "completed",
+  "scope": "synthetic Odoo 18.0 rendered invoice PDF",
+  "model_calls": 0,
+  "trials": [
+    {
+      "pass": true,
+      "expected": "all_pass",
+      "returncode": 0,
+      "markers": [
+        "invoice_pdf"
+      ],
+      "summaries": [
+        [
+          0,
+          0,
+          1
+        ]
+      ],
+      "real_browser_click": false,
+      "chrome": false,
+      "skipped": false,
+      "label": "witness",
+      "seconds": 146.778
+    },
+    {
+      "pass": true,
+      "expected": "invoice_mutant_rejected",
+      "returncode": 1,
+      "markers": [],
+      "summaries": [
+        [
+          3,
+          0,
+          1
+        ]
+      ],
+      "real_browser_click": false,
+      "chrome": false,
+      "skipped": false,
+      "label": "mutants",
+      "seconds": 99.903
+    }
+  ],
+  "tools": {
+    "runner_command_calls": 15
+  },
+  "limitations": [
+    "No customer database",
+    "No model capability inferred from oracle calibration",
+    "Only the selected series and selected paths are qualified"
+  ],
+  "images": {
+    "odoo-qa:18.0": "sha256:9c0907287de571a1d7859fa71215b71c943ad4ad0cdd604d831259014734fbad",
+    "postgres:16": "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f"
+  },
+  "cleanup_verified": true,
+  "seconds": 251.725
+}

@@ -71,6 +71,26 @@ def source_hashes(folder):
             if p.is_file() and not p.is_symlink() and '.git' not in p.parts and '__pycache__' not in p.parts}
 
 
+def runtime_reception(state, events, module_hashes):
+    """A mechanical gate, never a substitute for independent semantic reception."""
+    checks = {
+        'provider_completed': state.get('status') == 'executed'
+                              and not any(turn.get('error') for turn in state.get('turns', [])),
+        'oracle_passed': state.get('oracle', {}).get('passed') is True,
+    }
+    for action in ('lint', 'qa', 'update'):
+        matching = [event for event in events if event.get('args', [None])[0] == action
+                    and event.get('module_sources_before') == module_hashes
+                    and event.get('module_sources_after') == module_hashes]
+        # A later failed check cannot be hidden by an earlier successful run.
+        latest = matching[-1] if matching else {}
+        checks[action + '_final_sources'] = bool(module_hashes) and latest.get('exit_code') == 0
+        if action == 'qa':
+            checks['qa_final_sources'] &= latest.get('test_result', {}).get('valid') is True
+    return {'passed': all(checks.values()), 'checks': checks,
+            'semantic_review': 'pending', 'time_to_accepted_receipt_seconds': None}
+
+
 def copy_project(source, target):
     excluded = {'.git', '__pycache__', '.tools', '.cache'}
     # Les environnements installés par les agents sont des dépendances locales,
@@ -354,6 +374,8 @@ class Lab:
             if not isinstance(args, list) or not args or any(not isinstance(a, str) for a in args):
                 raise ValueError('commande absente ou invalide')
             self.sync()
+            module = self.case.get('module')
+            module_before = source_hashes(self.project / module) if module else None
             if args[0] == 'qa':
                 if not self.case['module'] or len(args) < 2 or args[1] != self.case['module']:
                     raise ValueError('seul le module du cas peut être testé')
@@ -392,6 +414,8 @@ class Lab:
             (self.folder / log).write_text(r.stdout)
             event = {'args': args, 'seconds': round(time.monotonic() - started, 2), 'exit_code': r.returncode,
                      'log': log, 'sha256': digest(r.stdout.encode()), 'project_sha256': digest(json.dumps(source_hashes(self.project), sort_keys=True).encode())}
+            event['module_sources_before'] = module_before
+            event['module_sources_after'] = source_hashes(self.project / module) if module else None
             if args[0] == 'qa':
                 logs = sorted((self.backend / 'stack/artifacts').glob('*.log'), key=lambda p: p.stat().st_mtime)
                 event['test_result'] = inspect_log(logs[-1].read_text(errors='replace'), self.case['module']) if logs else {'valid': False}
@@ -466,6 +490,8 @@ def trial(folder, pack, case, provider, config, timeout):
 
 
 def _trial(folder, pack, case, provider, config, timeout):
+    trial_started = time.monotonic()
+    trial_started_at = now()
     folder.mkdir()
     project = folder / 'project'
     copy_project(ROOT / 'benchmarks/native/cases' / case['id'] / 'project', project)
@@ -477,14 +503,20 @@ def _trial(folder, pack, case, provider, config, timeout):
     execute(['git', 'init', '-q', str(project)]).check_returncode()
     execute(['git', '-C', str(project), 'add', '.']).check_returncode()
     execute(['git', '-C', str(project), '-c', 'user.name=Quality Lab', '-c', 'user.email=lab@example.invalid', 'commit', '-qm', 'Dossier synthétique initial']).check_returncode()
-    built = execute(sandbox(home, project, pack) + ['bash', str(HOME_PATH / '.odoo19-agents/build.sh')], env=provider_environment())
+    # Older revisions use unittest imports relative to the pack, not /work.
+    # Identical transport adaptation for reference and candidate; no pack edits.
+    built = execute(sandbox(home, project, pack) + [
+        '--chdir', str(HOME_PATH / '.odoo19-agents'),
+        'bash', str(HOME_PATH / '.odoo19-agents/build.sh')], env=provider_environment())
     (folder / 'build.log').write_text(built.stdout); built.check_returncode()
     lab = Lab(folder, pack, project, case)
-    state = {'case': case['id'], 'provider': provider, 'config': config, 'status': 'setting_up', 'turns': []}
+    state = {'case': case['id'], 'provider': provider, 'config': config, 'status': 'setting_up',
+             'started_at': trial_started_at, 'turns': []}
     atomic_json(folder / 'state.json', state)
     server = None
     try:
         lab.start()
+        state['setup_seconds'] = round(time.monotonic() - trial_started, 3)
         operational = ('# Environnement du laboratoire\nProjet entièrement synthétique ; série 19.0. '
                        'Tu exécutes le workflow natif avec les profils générés sous ~/.codex/skills ou ~/.claude/commands '
                        'et ~/.claude/agents. Lis /odoo-new et les rôles concernés, pilote le vrai graphe. '
@@ -550,6 +582,7 @@ def _trial(folder, pack, case, provider, config, timeout):
             (folder / f'answer-{index}.md').write_text(parsed['answer'])
             item = {'status': outcome, 'exit_code': process.returncode, 'seconds': round(time.monotonic() - started, 2),
                     'usage': parsed['usage'], 'actual_model': parsed['actual_model'], 'tool_calls': parsed['tool_calls'],
+                    'actual_effort': parsed.get('actual_effort'),
                     'provider_completed': parsed['completed_event'], 'error': parsed['provider_error'],
                     'delegation': native_delegation_summary(raw, provider),
                     'answer_sha256': digest(parsed['answer'].encode())}
@@ -558,10 +591,20 @@ def _trial(folder, pack, case, provider, config, timeout):
             atomic_json(folder / f'after-{index}-hashes.json', source_hashes(snap))
             atomic_json(folder / 'state.json', state)
             print(json.dumps({'trial': folder.name, 'turn': index, **item}), flush=True)
-            if outcome != 'completed' or not parsed['completed_event']:
+            if outcome != 'completed' or not parsed['completed_event'] or parsed['provider_error']:
                 break
-        state['status'] = 'executed' if len(state['turns']) == len(prompts) and all(t['status'] == 'completed' and t['provider_completed'] for t in state['turns']) else 'incident'
+        state['status'] = 'executed' if len(state['turns']) == len(prompts) and all(
+            t['status'] == 'completed' and t['provider_completed'] and not t.get('error')
+            for t in state['turns']) else 'incident'
+        oracle_started = time.monotonic()
         state['oracle'] = lab.oracle()
+        state['oracle_seconds'] = round(time.monotonic() - oracle_started, 3)
+        state['oracle_finished_at'] = now()
+        state['elapsed_to_oracle_seconds'] = round(time.monotonic() - trial_started, 3)
+        state['agent_seconds'] = round(sum(t['seconds'] for t in state['turns']), 3)
+        state['bridge_calls'] = len(lab.events)
+        state['reception'] = runtime_reception(
+            state, lab.events, source_hashes(project / case['module']) if case.get('module') else {})
         state['review'] = None
     except Exception as exc:
         state.update(status='incident', error=str(exc))

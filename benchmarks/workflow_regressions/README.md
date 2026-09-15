@@ -9,7 +9,7 @@ ticket, source de module privé, capture ni base client n’est distribué.
 |---|---|---|
 | W01 | Commit livrable, fichier requis non suivi, migration | [Garde de livraison](../../docs/DELIVERY_GUARD.md), `tests/pilotage/test_odoo_delivery_guard.py` ; build et observation distincts. |
 | W02 | Préparation 5 → correction 2 → reliquat 3 → cron | Odoo 19, `stock.picking` réel, cron déclenché par `method_direct_trigger`, utilisateur magasinier et refus portail. Mutant : remet 5. |
-| W03 | Facture comptabilisée datée de 2020, forfait 42, prestation 7 et explication 0 | PDF QWeb rendu par wkhtmltopdf, extraction des trois lignes, total 49 et langue destinataire française sous utilisateur facturation anglais. Odoo 18 et 19 séparés. Mutant : supprime la ligne zéro. |
+| W03 | Facture actuelle, historique 2020 et avoir : forfait 42, prestation 7, explication 0 et technique 0 | PDF QWeb rendu par wkhtmltopdf, trois lignes visibles, technique zéro masquée, total 49, langue du destinataire sous utilisateur facturation ordinaire et absence d’écriture comptable. Odoo 18 et 19 séparés. Mutant : supprime la ligne zéro. |
 | W04 | Champ explicite 7 préservé quand la suggestion devient 9 | Chrome réel, onchange, clic de confirmation puis lecture serveur. Mutant : écrase systématiquement le champ. |
 | W05 | Intention ajoutée, interruption, T01 réceptionnée préservée | Intégration réelle plan/flow/intentions/orchestration et preuves exécutées, graphe synthétique minimal ; ajout tardif, conflit de périmètre, reprise, reçu conservé et mutation rejetée. |
 | W06 | Ticket/journal 19, config et manifest 18 | Oracle de contrat distinguant série des sources et version réellement déployée ; forme `_sql_constraints` attendue pour 18. |
@@ -55,3 +55,5 @@ migration d’une ancienne version d’Odoo ni toutes les factures historiques d
 client. W04 ne qualifie que son formulaire. Les résultats 18 et 19 restent séparés.
 
 [Résultats et incidents conservés](../../docs/quality-lab/workflows-2026-09-15/README.md)
+
+[Extension PDF et nouveaux correctifs natifs N06/N07](../../docs/quality-lab/agent-workflows-2026-09-15/README.md).
