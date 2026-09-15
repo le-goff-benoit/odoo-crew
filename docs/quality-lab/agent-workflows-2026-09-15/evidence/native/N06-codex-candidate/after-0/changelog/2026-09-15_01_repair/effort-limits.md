@@ -1,0 +1,1 @@
+Estimation initiale absente pour le cadrage passé. Prévision limitée au travail restant. Aucune trace native de session disponible sous ~/.codex/sessions : temps actif, jetons et coût indisponibles ; aucun zéro artificiel. Relecture non indépendante imposée par LAB.md.

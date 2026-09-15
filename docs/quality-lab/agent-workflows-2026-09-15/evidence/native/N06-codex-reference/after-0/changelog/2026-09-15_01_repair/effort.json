@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "release": "2026-09-15_01_repair",
+  "created_at": "2026-09-15T22:10:15.364100+00:00",
+  "updated_at": "2026-09-15T22:10:15.408894+00:00",
+  "tasks": {
+    "B42": "Correction et reprise locale B-42 — travail restant"
+  },
+  "estimates": [
+    {
+      "revision": 1,
+      "at": "2026-09-15T22:10:15.408880+00:00",
+      "reason": "estimation initiale",
+      "lines": [
+        {
+          "task": "B42",
+          "title": "Correction et reprise locale B-42 — travail restant",
+          "agent": "odoo-developer",
+          "optimistic_minutes": 8.0,
+          "likely_minutes": 12.0,
+          "pessimistic_minutes": 20.0,
+          "expected_minutes": 12.666666666666666,
+          "assumptions": [
+            "Copie synthétique disponible",
+            "Pont QA opérationnel"
+          ],
+          "basis": "Jugement initial du travail restant ; analyse passée sans estimation",
+          "confidence": "low",
+          "contract_sha256": "12193e9796db999f5bb113354832fb6a897b04a98992eec407e4d05b9efa201f"
+        },
+        {
+          "task": "B42",
+          "title": "Correction et reprise locale B-42 — travail restant",
+          "agent": "odoo-tester",
+          "optimistic_minutes": 6.0,
+          "likely_minutes": 10.0,
+          "pessimistic_minutes": 18.0,
+          "expected_minutes": 10.666666666666666,
+          "assumptions": [
+            "Copie synthétique disponible",
+            "Pont QA opérationnel"
+          ],
+          "basis": "Jugement initial du travail restant ; analyse passée sans estimation",
+          "confidence": "low",
+          "contract_sha256": "12193e9796db999f5bb113354832fb6a897b04a98992eec407e4d05b9efa201f"
+        },
+        {
+          "task": "B42",
+          "title": "Correction et reprise locale B-42 — travail restant",
+          "agent": "orchestrateur",
+          "optimistic_minutes": 3.0,
+          "likely_minutes": 5.0,
+          "pessimistic_minutes": 8.0,
+          "expected_minutes": 5.166666666666667,
+          "assumptions": [
+            "Copie synthétique disponible",
+            "Pont QA opérationnel"
+          ],
+          "basis": "Jugement initial du travail restant ; analyse passée sans estimation",
+          "confidence": "low",
+          "contract_sha256": "12193e9796db999f5bb113354832fb6a897b04a98992eec407e4d05b9efa201f"
+        }
+      ]
+    }
+  ],
+  "entries": [],
+  "rate_cards": []
+}

@@ -170,3 +170,29 @@ restent distincts. [Procédure](KNOWLEDGE.md) ·
 Outils adoptés après régressions et parcours indépendant. Qualification native
 partielle : 2 acceptés, 1 avec réserves, 1 refusé ; corrections documentaires
 non rejouées en natif, aucun changement de modèle ou gain de vitesse revendiqué.
+
+
+## Boucle réelle avant/après — 16 septembre 2026
+
+[Résultats et décisions](quality-lab/agent-workflows-2026-09-15/README.md) :
+N06 (brouillons, références et sociétés), N07 inédit (préparation manuelle,
+duplication et reliquat), extension PDF W03 sur 18/19 avec trois cohortes et
+absence d’écriture comptable. Corpus synthétique tiré de mécanismes observés ;
+aucune donnée client publiée.
+
+- **Adopté** : retrait de la contradiction sur l’ordre rouge/implémentation dans
+  le rôle développeur, aide précise du collecteur de preuves, réception mécanique
+  liée aux sources finales, compteurs inconnus conservés et avancement réel du banc.
+- **Expérimental, non activé** : candidat complet `015e8a3` (capture anticipée,
+  réutilisation élargie des QA et fragments courts). Huit appels comparés, sept
+  terminés, un timeout ; huit oracles verts ne signifient pas huit travaux reçus.
+  Gain Claude N06 non transféré au cas inédit ; aucune accélération Codex démontrée.
+- **Tricorder 0.3.2 livré** : lecture JUnit cohérente, sans faux vert masquant une
+  suite agrégée en échec ; paquet installé, publication et CI vérifiés.
+- **Non mesuré** : reprises après réception, variante finale limitée à la
+  clarification éditoriale, effet natif de l’aide CLI, délégation inter-agents,
+  gain sur une release réelle et promotion de modèles légers.
+
+Le protocole interdit les réparations cachées et conserve les incidents. Les
+contre-exemples servent à choisir la prochaine correction ciblée, sans installer
+comme progrès établi une variante qui manque sa contre-épreuve.

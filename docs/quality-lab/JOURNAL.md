@@ -1,5 +1,18 @@
 # Journal de l’espace qualité
 
+## 16 septembre 2026 — Rejouer après adaptation des agents
+
+- Huit exécutions natives N06/N07 sur deux fournisseurs, modèle/effort constants par fournisseur.
+- Deux modèles ORM calibrés : témoins et six mutants ; PDF W03 élargi sur 18/19.
+- Référence → modification de trois rôles → rejeu et cas inédit ; archives immuables.
+- Sept exécutions achevées, un timeout ; huit oracles métier verts, réception sémantique distincte.
+- Gain Claude N06 non transféré ; aucun gain Codex démontré, candidat global non activé.
+- Clarification rouge avant correction adoptée, aide preuve et statut du banc corrigés.
+- Tricorder 0.3.2 installé/publié : incohérences JUnit refusées.
+- Graphe valide, 394 tests dont un ignoré ; génération/parité contrôlées à la livraison.
+- Aucun client, source Odoo, secret ou service préexistant modifié.
+- Rapport : agent-workflows-2026-09-15/README.md ; variante expérimentale conservée en Git.
+
 ## 15 septembre 2026 — Mémoire partagée pendant la release
 
 - Demande : partager les acquis pendant tout le travail et utiliser documents/code/release comme contexte.

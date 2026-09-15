@@ -1,0 +1,97 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-6cf1ccb4e0-db-1  Running
+
+══ 1. Installation de lab_register sur lab_qa ═══════════════════════════════════════════════════
+2026-09-15 22:15:54,214 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:15:54,214 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-15 22:15:54,214 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:15:54,214 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:15:54,214 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:15:54,215 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:15:54,443 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:15:54,446 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-15 22:15:54,476 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-15 22:15:54,477 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-15 22:15:55,943 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:15:55,943 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:15:56,606 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:15:56,760 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.15s, 0 queries (+0 extra) 
+2026-09-15 22:15:56,944 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-15 22:15:56,948 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-15 22:15:56,949 1 INFO lab_qa odoo.registry: Registry loaded in 2.527s 
+2026-09-15 22:15:56,949 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-15 22:15:56,949 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:15:56,949 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+✅ installation OK
+   ⏱ 4s
+
+══ 3. Tests (--test-tags /lab_register) ═══════════════════════════════════════════════════
+2026-09-15 22:15:57,843 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-15 22:15:57,843 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:15:57,843 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:15:57,843 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:15:57,843 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:15:58,070 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 25093cd0409c:8069 
+2026-09-15 22:15:58,092 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-15 22:15:58,117 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:15:58,122 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-15 22:15:58,142 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-15 22:15:58,144 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-15 22:16:00,188 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:16:00,188 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:16:00,860 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Registre Boréal — brouillons et références émises'] to user __system__ #1 via n/a 
+2026-09-15 22:16:00,860 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Registre Boréal — brouillons et références émises'] to user __system__ #1 via n/a 
+2026-09-15 22:16:02,219 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:16:02,596 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-15 22:16:02,615 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:16:02,615 1 INFO lab_qa odoo.modules.loading: Loading module lab_register (2/21) 
+2026-09-15 22:16:02,619 1 INFO lab_qa odoo.registry: module lab_register: creating or updating database tables 
+2026-09-15 22:16:02,642 1 INFO lab_qa odoo.modules.loading: loading lab_register/security/ir.model.access.csv 
+2026-09-15 22:16:02,647 1 INFO lab_qa odoo.modules.loading: loading lab_register/security/rules.xml 
+2026-09-15 22:16:02,661 1 INFO lab_qa odoo.modules.loading: Module lab_register loaded in 0.05s, 63 queries (+63 other) 
+2026-09-15 22:16:02,768 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.15s, 63 queries (+63 extra) 
+2026-09-15 22:16:02,836 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-15 22:16:02,955 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-15 22:16:02,957 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-15 22:16:02,958 1 INFO lab_qa odoo.registry: Registry loaded in 4.886s 
+2026-09-15 22:16:02,958 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-15 22:16:03,179 1 INFO lab_qa odoo.addons.lab_register.tests.test_repair: Starting TestRegisterRepair.test_issued_reference_is_preserved ... 
+2026-09-15 22:16:03,226 1 INFO lab_qa odoo.addons.lab_register.tests.test_repair: Starting TestRegisterRepair.test_ordinary_user_repairs_with_their_own_rights ... 
+2026-09-15 22:16:03,247 1 INFO lab_qa odoo.addons.lab_register.tests.test_repair: Starting TestRegisterRepair.test_other_company_is_left_untouched ... 
+2026-09-15 22:16:03,265 1 INFO lab_qa odoo.addons.lab_register.tests.test_repair: Starting TestRegisterRepair.test_records_outside_self_are_untouched ... 
+2026-09-15 22:16:03,283 1 INFO lab_qa odoo.addons.lab_register.tests.test_repair: Starting TestRegisterRepair.test_renumbers_active_company_drafts_by_date_then_id ... 
+2026-09-15 22:16:03,310 1 INFO lab_qa odoo.addons.lab_register.tests.test_repair: Starting TestRegisterRepair.test_repair_is_idempotent ... 
+2026-09-15 22:16:03,329 1 INFO lab_qa odoo.addons.lab_register.tests.test_repair: Starting TestRegisterRepair.test_snapshot_total_ignores_cancelled_lines ... 
+2026-09-15 22:16:03,349 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 5 checked, 2 removed 
+2026-09-15 22:16:03,350 1 INFO lab_qa odoo.service.server: 7 post-tests in 0.39s, 328 queries 
+2026-09-15 22:16:03,350 1 INFO lab_qa odoo.tests.stats: lab_register: 9 tests 0.39s 328 queries 
+2026-09-15 22:16:03,350 1 INFO lab_qa odoo.tests.result: 0 failed, 0 error(s) of 7 tests when loading database 'lab_qa' 
+2026-09-15 22:16:03,350 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-15 22:16:03,350 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:16:03,599 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+{"valid": true, "reasons": [], "module_tests": 9, "summaries": [{"failed": 0, "errors": 0, "tests": 7}]}
+✅ tests OK
+✅ mise à jour OK (passage commun aux tests)
+   ⏱ 7s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 0
+tests échoués  : 0
+tests ignorés  : 0
+WARNING liés à lab_register : 5
+
+── avertissements liés au module (à traiter) ──
+2026-09-15 22:15:55,943 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:15:55,943 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:16:00,188 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:16:00,188 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:16:02,219 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": true, "reasons": [], "module_tests": 9, "summaries": [{"failed": 0, "errors": 0, "tests": 7}]}
+RECETTE module=lab_register db=lab_qa install=ok update=ok uninstall=n.a. tests="0 failed, 0 error(s) of 7 tests" errors=0 failed=0 skipped=0 warnings=5 total=11s install=4s tests=7s
+
+Log complet   : /tmp/crew-agent-workflows-20260916-v2/N06-claude-reference/backend/stack/artifacts/lab_register-20260916-001553.sI3cZS.log
+Captures      : /tmp/crew-agent-workflows-20260916-v2/N06-claude-reference/backend/stack/artifacts/
+✅ lab_register : installation, tests et logs propres

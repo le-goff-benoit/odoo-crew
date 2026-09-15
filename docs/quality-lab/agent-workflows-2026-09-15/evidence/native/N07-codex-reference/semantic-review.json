@@ -1,0 +1,169 @@
+{
+  "review_id": "N07-codex-reference-independent-review",
+  "variant_reviewed": "N07-codex-reference",
+  "verdict": "accepted_with_reservations",
+  "critical_missing_criteria": [],
+  "criteria": {
+    "C1": {
+      "status": "accepted",
+      "reason": "N-17 conservée sans rouvrir les arbitrages. Le modèle est distingué de stock.picking ; ancienne QA limitée à la création conservée et explicitement séparée.",
+      "citations": [
+        "after-0/changelog/2026-09-15_01_repair/revue_fonctionnelle.md:9",
+        "after-0/changelog/2026-09-15_01_repair/revue_fonctionnelle.md:27",
+        "after-0/changelog/2026-09-15_01_repair/qa.md:1"
+      ]
+    },
+    "D1": {
+      "status": "accepted",
+      "reason": "Cron draft automatique borné à zéro ; zéro et partiel manuels préservés ; copy() remet à zéro les états opérationnels ; reliquat positif avec parent et source done sans écraser prepared_qty ; aucun reliquat vide ; singleton et idempotence. Code lu, tests à attendus indépendants et 12 invariants de l’oracle concordent.",
+      "citations": [
+        "after-0/lab_preparation/models/business.py:17",
+        "after-0/lab_preparation/models/business.py:25",
+        "after-0/lab_preparation/models/business.py:30",
+        "after-0/lab_preparation/models/business.py:44",
+        "after-0/lab_preparation/tests/test_preparation.py:10",
+        "oracle.log:15"
+      ]
+    },
+    "Q1": {
+      "status": "accepted",
+      "reason": "Rouge métier confirmé sur source initiale après correction du montage ir.cron ; mêmes tests verts après correction. Copie lab_client effectivement mise à niveau puis reprise, commit, relecture séparée, champs et métadonnées des exclusions préservés ; rejeu avec espion write.",
+      "citations": [
+        "bridge-002.log:160",
+        "bridge-004.log:51",
+        "bridge-005.log:24",
+        "bridge-007.log:15",
+        "bridge-008.log:15",
+        "after-0/changelog/2026-09-15_01_repair/preuves/repair.py:20"
+      ]
+    },
+    "R1": {
+      "status": "accepted_with_reservations",
+      "reason": "Revue, QA sensible, couverture sourcée et mémoire présentes. Limites, dette lint, non-indépendance de réception native et release ouverte sont déclarées ; aucun déploiement revendiqué. Une formulation installation/update surestime la portée du dernier vert (voir R-INSTALL).",
+      "citations": [
+        "after-0/changelog/2026-09-15_01_repair/qa.md:9",
+        "after-0/changelog/2026-09-15_01_repair/qa.md:11",
+        "after-0/changelog/2026-09-15_01_repair/qa.md:12",
+        "after-0/.odoo-agents/JOURNAL.md:7",
+        "answer-0.md:1"
+      ]
+    }
+  },
+  "reservations": [
+    {
+      "id": "R-INSTALL",
+      "severity": "minor",
+      "text": "Le vert final exécute -u sur lab_qa, pas une installation fraîche du correctif. L’installation initiale exécutée avec le code fautif a produit les tests rouges. Le résumé du pont annonce néanmoins install=ok update=ok, repris dans runtime.md et la réponse. L’update de tâche est prouvée ; une installation fraîche verte du correctif ne l’est pas et n’est pas exigée séparément par Q1 figé. Corriger la portée de la formulation, sans recette supplémentaire pour cette réception.",
+      "citations": [
+        "bridge-001.log:6",
+        "bridge-004.log:6",
+        "bridge-004.log:71",
+        "after-0/changelog/2026-09-15_01_repair/preuves/runtime.md:5",
+        "after-0/changelog/2026-09-15_01_repair/preuves/implementation.md:6",
+        "answer-0.md:4"
+      ]
+    },
+    {
+      "id": "R-LINT",
+      "severity": "known_baseline_debt",
+      "text": "Lint global rouge pour author manquant ; dette réelle du manifest initial inchangé, explicitement déclarée. Ruff et diff sont propres. Ce n’est pas une régression du correctif ni un lint global vert.",
+      "citations": [
+        "bridge-003.log:11",
+        "after-0/changelog/2026-09-15_01_repair/preuves/static.md:4",
+        "after-0/changelog/2026-09-15_01_repair/qa.md:11",
+        "after-0/lab_preparation/__manifest__.py:1"
+      ]
+    }
+  ],
+  "repetitions": [
+    {
+      "events": [
+        1,
+        2
+      ],
+      "classification": "useful_retry_after_test_preparation_error",
+      "seconds": 7.64,
+      "reason": "Premier rouge : 8 assertions échouées plus une ForeignKeyViolation ir_cron_progress due au montage de test. Ajout enter_registry_test_mode avant de modifier le métier ; second rouge : 9 échecs d’assertion, 0 erreur technique. Empreinte tests changée, métier initial inchangé. La première exécution n’est pas intégralement perdue : installation QA et huit régressions établies.",
+      "citations": [
+        "bridge-001.log:258",
+        "bridge-002.log:71",
+        "bridge-events.json:44",
+        "bridge-events.json:93",
+        "raw-0.jsonl:66"
+      ]
+    },
+    {
+      "events": [
+        2,
+        4
+      ],
+      "classification": "required_red_green",
+      "seconds": 6.64,
+      "reason": "Même empreinte finale de tests ; code métier changé du rouge au vert. Pas une reprise inutile."
+    },
+    {
+      "events": [
+        4,
+        5
+      ],
+      "classification": "distinct_environment_scope",
+      "seconds": 5.94,
+      "reason": "QA transactionnelle sur lab_qa puis mise à niveau nécessaire de la copie existante lab_client."
+    },
+    {
+      "events": [
+        5,
+        6
+      ],
+      "classification": "avoidable_runtime_repeat_to_fix_evidence_capture",
+      "seconds": 4.53,
+      "reason": "Même commande update, même base lab_client et mêmes empreintes modèle/tests ; les deux retours runtime sont 0. Premier collecteur lancé avec --module exigeait à tort un bilan de tests pour une simple update. Deuxième commande supprime seulement ce paramètre de capture et n’ajoute aucune couverture métier. Réexécution expliquée par l’attestation, évitable en choisissant le bon mode initialement ; pas un échec Odoo.",
+      "citations": [
+        "bridge-events.json:203",
+        "bridge-events.json:233",
+        "after-0/changelog/2026-09-15_01_repair/preuves/update.json:45",
+        "after-0/changelog/2026-09-15_01_repair/preuves/update-confirmed.json:45",
+        "raw-0.jsonl:89",
+        "raw-0.jsonl:97"
+      ]
+    },
+    {
+      "events": [
+        7,
+        8
+      ],
+      "classification": "useful_persistence_verification",
+      "seconds": 1.29,
+      "reason": "Réparation avec commit puis lecture dans une nouvelle session : preuve de persistance distincte de la transaction de réparation."
+    }
+  ],
+  "avoidable_bridge_seconds_lower_bound": 4.53,
+  "preparation_error_bridge_seconds": 17.17,
+  "preparation_error_measurement_note": "17.17 s est la durée de l’appel contenant le montage cron erroné, pas une durée entièrement évitable ; cet appel initialise QA et reproduit huit défauts métier.",
+  "integrity": {
+    "after_0_hashes_verified": true,
+    "after_0_files_verified": 75,
+    "all_bridge_log_hashes_verified": true,
+    "bridge_logs_verified": 9,
+    "final_red_green_log_hashes_verified": true,
+    "all_coverage_references_hashes_verified": true,
+    "green_module_sources_equal_final_archive": true,
+    "other_variants_read_during_this_review": false,
+    "archives_modified": false,
+    "odoo_reexecution": false
+  },
+  "time": {
+    "started_utc": "2026-09-15T22:47:53.471934+00:00",
+    "finished_utc": "2026-09-15T22:52:12.424889+00:00",
+    "active_review_seconds": 258.953,
+    "method": "Continuous review elapsed time; no passive waits or Odoo execution during review."
+  },
+  "small_agent_adaptation": "Pour ce flux, choisir dès le premier appel un collecteur de commande sans exigence de bilan de tests pour update ; réserver --module à la capture de tests. Lire aussi la ligne effective -i/-u avant de reprendre le résumé install=ok. Pour le test ir.cron 19.0, partir du montage transactionnel standard évite la ForeignKeyViolation. Ces adaptations sont étayées par N07, sans nouvelle règle universelle ni extension de recette.",
+  "scope": {
+    "tests": "9 méthodes ORM, sous-cas égalité/surlivraison, petit solde 0.003, mélange auto/manuels/done, zéro et partiel explicites, copie→cron, reliquat→deux crons, singleton ; canal ir.cron temporaire. 12 invariants indépendants vrais. Aucun navigateur/profil de droits, explicitement hors portée.",
+    "data": "Quatre lignes synthétiques réelles de lab_client ; automatique 999→7, manuels0/2 et done88 conservés ; comparaisons des champs et métadonnées, aucun ajout/suppression, rejeu sans write, commit puis session distincte.",
+    "qa": "Ancienne QA intacte, rouge avec erreur de montage puis rouge métier propre et vert -u ; update copie, lint diff/ dette globale déclarée ; réception native non indépendante autorisée par LAB, présente revue indépendante externe.",
+    "memory": "PROJECT et JOURNAL conservent les données initiales, décision N-17, reprise effective, limites et release ouverte. Pas de déploiement ni généralisation hors contrat ; réserve mineure sur formulation installation."
+  },
+  "artifact_root": "/tmp/crew-agent-workflows-20260916-v2/N07-codex-reference"
+}

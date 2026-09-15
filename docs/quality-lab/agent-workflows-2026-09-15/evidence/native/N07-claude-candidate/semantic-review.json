@@ -1,0 +1,246 @@
+{
+  "review_id": "N07-claude-candidate-independent-review",
+  "variant_reviewed": "N07-claude-candidate",
+  "verdict": "rejected",
+  "completion_status": "incomplete",
+  "transport_status": "timeout",
+  "critical_missing_criteria": [
+    "C1: respect strict du périmètre N-17",
+    "Q1/request: test livré du parcours reliquat puis cron",
+    "R1: journal et réception finale consolidée"
+  ],
+  "criteria": {
+    "C1": {
+      "status": "rejected",
+      "reason": "Ancienne QA et distinction stock.picking conservées, mais ajout d’une action planifiée quotidienne active sous utilisateur root sans demande de fréquence ni confirmation. L’hypothèse H3 devient un critère propre puis une décision actée, malgré aucun autre comportement à inventer. Programmer des appels automatiques modifie le comportement opérationnel, même si la méthode est idempotente.",
+      "citations": [
+        "after-0/changelog/2026-09-15_01_repair/revue_fonctionnelle.md:45",
+        "after-0/changelog/2026-09-15_01_repair/revue_fonctionnelle.md:59",
+        "after-0/changelog/2026-09-15_01_repair/revue_fonctionnelle.md:95",
+        "after-0/lab_preparation/data/ir_cron_data.xml:4",
+        "after-0/.odoo-agents/PROJECT.md:9"
+      ]
+    },
+    "D1": {
+      "status": "accepted_for_requested_methods",
+      "reason": "Méthodes demandées correctes à la lecture : zéro manuel explicite, draft automatique borné à zéro, exclusions, copy=False des quatre champs, reliquat positif lié/source done, aucun enregistrement sans solde. Les douze invariants ORM externes sont vrais. L’ajout cron hors contrat est évalué sous C1, sans effacer la réussite du noyau métier.",
+      "citations": [
+        "after-0/lab_preparation/models/business.py:9",
+        "after-0/lab_preparation/models/business.py:19",
+        "after-0/lab_preparation/models/business.py:30",
+        "after-0/lab_preparation/models/business.py:40",
+        "oracle.log:15"
+      ]
+    },
+    "Q1": {
+      "status": "incomplete",
+      "reason": "Rouge puis 13 méthodes vertes, update et migration réelles, avant/après, rejeu et nettoyage RPC sont présents. Mais les tests propres au candidat ne jouent pas le reliquat suivi du cron explicitement demandé : le test reliquat reste à sa création, un autre teste reliquat de reliquat ; les lignes RPC sont supprimées avant les deux déclenchements cron sur la cohorte historique. La couverture externe remainder_then_cron ne remplace pas ce test livré.",
+      "citations": [
+        "after-0/lab_preparation/tests/test_preparation.py:114",
+        "after-0/lab_preparation/tests/test_preparation.py:157",
+        "bridge-028.log",
+        "bridge-030.log:19",
+        "bridge-006.log:18",
+        "after-0/changelog/2026-09-15_01_repair/preuves/cohorte_apres_rejeu.txt"
+      ]
+    },
+    "R1": {
+      "status": "incomplete",
+      "reason": "Revue, fragments QA et rapport déclaratif 12/12 présents ; mais JOURNAL, README et qa.md restent identiques au corpus initial. Aucun journal actuel ni résultat consolidé ; flow actif, module_high_gate encore revendiqué ; answer-0.md vide après timeout. Aucune affirmation de déploiement, release conservée ouverte. La dernière annonce de consolidation ne correspond pas à un livrable écrit.",
+      "citations": [
+        "after-0/.odoo-agents/JOURNAL.md:3",
+        "after-0/changelog/2026-09-15_01_repair/qa.md:1",
+        "after-0/changelog/2026-09-15_01_repair/README.md:1",
+        "after-0/.odoo-agents/flows/prep-n17.json",
+        "raw-0.jsonl:448",
+        "answer-0.md",
+        "state.json"
+      ]
+    }
+  },
+  "reservations": [
+    {
+      "id": "R-MEMORY",
+      "severity": "major",
+      "text": "PROJECT conserve N-17 mais place H3 auto-définie parmi les décisions actées, sans réception humaine ; il généralise aussi la reprise en migration exclusivement (« jamais un script joué à la main »), au-delà de ce que demande N-17. La mémoire de résultat et l’entrée de journal ne sont pas terminées.",
+      "citations": [
+        "after-0/.odoo-agents/PROJECT.md:5",
+        "after-0/.odoo-agents/PROJECT.md:9",
+        "after-0/.odoo-agents/PROJECT.md:10"
+      ]
+    },
+    {
+      "id": "R-INSTALL",
+      "severity": "minor",
+      "text": "Le vert porte sur -u ; le résumé install=ok update=ok ne prouve pas une installation fraîche verte du correctif. L’installation initiale était le rouge. Q1 figé demande surtout update et preuve rouge/vert, donc ce point ne crée pas un nouveau blocage.",
+      "citations": [
+        "bridge-003.log:6",
+        "after-0/.odoo-agents/flow-artifacts/prep-n17/module_high_runtime_qa.md:11"
+      ]
+    },
+    {
+      "id": "R-RPC-TRACE",
+      "severity": "minor",
+      "text": "Le driver RPC initial traite l’enveloppe JSON comme identifiant, cause TypeError unhashable dict, puis le candidat efface les fichiers rpc_*.json et recommence. Les logs bridge immuables conservent l’incident mais le dossier de preuves propre au candidat ne conserve pas ce premier essai.",
+      "citations": [
+        "raw-0.jsonl:306",
+        "raw-0.jsonl:309",
+        "raw-0.jsonl:315",
+        "bridge-013.log"
+      ]
+    }
+  ],
+  "repetitions": [
+    {
+      "events": [
+        2,
+        3
+      ],
+      "classification": "required_red_green",
+      "reason": "Rouge sur métier initial, puis vert sur le correctif, mêmes tests. Les onze échecs sont des assertions ; l’erreur restante est External ID absent pour le cron nouvellement exigé par H3, pas une erreur de fixture transactionnelle. Deux garde-fous étaient déjà verts au rouge : idempotence et singleton.",
+      "citations": [
+        "after-0/.odoo-agents/flow-artifacts/prep-n17/module_high_runtime_qa.md:19",
+        "after-0/.odoo-agents/flow-artifacts/prep-n17/module_high_runtime_qa.md:24",
+        "after-0/.odoo-agents/flow-artifacts/prep-n17/module_high_runtime_qa.md:29"
+      ]
+    },
+    {
+      "events": [
+        3,
+        6
+      ],
+      "classification": "distinct_environment_scope",
+      "reason": "QA sur lab_qa puis mise à niveau de la copie préexistante lab_client."
+    },
+    {
+      "events": [
+        6,
+        7
+      ],
+      "classification": "avoidable_runtime_repeat_after_collector_error",
+      "seconds": 5.61,
+      "reason": "Premier update runtime réussi avec migration visible. Collecteur --module demandant à tort un bilan de tests le marque failed malgré exit 0. Rejeu brut même commande/base/sources sans migration nouvelle, pour diagnostiquer l’attestation ; aucun défaut métier à reprendre.",
+      "citations": [
+        "bridge-006.log:18",
+        "bridge-007.log",
+        "raw-0.jsonl:236",
+        "raw-0.jsonl:246"
+      ]
+    },
+    {
+      "events": [],
+      "classification": "evidence_preparation_error_no_odoo_execution",
+      "reason": "Tentative de réutiliser update_reprise.json rejetée par la protection de preuves immuables ; pas un quatrième update et pas un échec métier.",
+      "citations": [
+        "raw-0.jsonl:264",
+        "raw-0.jsonl:267"
+      ]
+    },
+    {
+      "events": [
+        9,
+        10,
+        11
+      ],
+      "classification": "controlled_replay_with_changed_data",
+      "seconds": 8.3,
+      "reason": "Réarmement explicite de version installée et quantité synthétique, puis migration et relecture. Nouvelle attestation valable et attribution du recalcul ; ne pas classer mécaniquement identique à la répétition brute 007. Le premier log prouvait déjà le lancement migration."
+    },
+    {
+      "events": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "classification": "retry_after_rpc_driver_preparation_error",
+      "reason": "Premier create réussit mais action_set_manual reçoit l’enveloppe JSON au lieu de son identifiant. Extraction corrigée, parcours redémarré avec deuxième create. Aucun correctif métier ; incident de driver (2.37 s pour l’appel fautif), pas un rouge attendu N-17.",
+      "seconds": 2.37,
+      "citations": [
+        "bridge-013.log",
+        "raw-0.jsonl:314",
+        "raw-0.jsonl:315"
+      ]
+    },
+    {
+      "events": [
+        27
+      ],
+      "classification": "expected_negative_singleton_test",
+      "reason": "Fault Expected singleton: lab.preparation(12, 13) vérifiée ; sortie 1 attendue, distincte du TypeError de préparation du driver.",
+      "citations": [
+        "bridge-027.log",
+        "raw-0.jsonl:325"
+      ]
+    },
+    {
+      "events": [
+        28,
+        29,
+        30
+      ],
+      "classification": "useful_cleanup_and_idempotence_with_scope_limit",
+      "reason": "Nettoyage puis cohorte de quatre lignes retrouvée ; deux vrais déclenchements prouvent idempotence des valeurs historiques. Ne couvre pas reliquat puis cron car le reliquat RPC a déjà été supprimé."
+    },
+    {
+      "events": [],
+      "classification": "coverage_parser_preparation_error",
+      "reason": "bind-criteria lancé tard, après QA : refus de structure puis correction des titres/identifiants et régénération. Aucune relance Odoo mais travail supplémentaire de consolidation.",
+      "citations": [
+        "raw-0.jsonl:408",
+        "raw-0.jsonl:409",
+        "raw-0.jsonl:423"
+      ]
+    }
+  ],
+  "avoidable_bridge_seconds_lower_bound": 5.61,
+  "preparation_error_bridge_seconds": 2.37,
+  "cron_scope_expansion_chain": {
+    "instruction": "Le prompt demande de corriger les méthodes selon N-17 et de tester reliquat puis cron ; aucune fréquence quotidienne demandée. N-17 interdit les comportements supplémentaires.",
+    "observed_chain": [
+      "raw-0.jsonl:130 : revue écrite par le candidat, H3 « pour que périodique soit vrai », critère C11 ajouté",
+      "raw-0.jsonl:212 : création XML ir.cron, intervalle 1 days, utilisateur base.user_root",
+      "tests/test_preparation.py:173 : test de présence explicitement étiqueté Hypothesis H3",
+      "bridge-030.log:18 : action constatée active et déclenchée",
+      "PROJECT.md:5–10 : H3 transmise parmi les décisions actées"
+    ],
+    "attribution_limit": "Initiative explicitement présentée comme hypothèse par le candidat. Les traces observées ne prouvent aucune instruction humaine d’ajout du cron et ne permettent pas d’attribuer causalement cette initiative au profil agent."
+  },
+  "observed_duration_factors": {
+    "provider_timeout_seconds": 900.01,
+    "provider_completed": false,
+    "bridge_calls": 31,
+    "bridge_seconds_sum": 90.48,
+    "native_tool_calls_reported": 98,
+    "last_bridge_business_completion": "2026-09-15T22:58:25.081Z",
+    "last_observed_consolidation_announcement": "2026-09-15T23:02:27.356Z",
+    "observation": "Après la dernière exécution métier, les traces montrent rangement des preuves, rédaction des fragments, transitions du graphe, réparation du parsing de critères, couverture et rapport déclaratif ; annonce finale de consolidation non exécutée. Environ quatre minutes séparent les horodatages, sans les assimiler intégralement à du temps de rédaction ou perdu.",
+    "limits": "La somme des appels bridge ne décompose pas les 900.01 s en raisonnement, attente fournisseur, lecture et rédaction ; aucun temps non mesuré attribué. Usage agrégé indisponible dans state.json. Le timeout est un incident de transport/exécution, le rejet sémantique porte séparément sur les artefacts incomplets et écarts."
+  },
+  "integrity": {
+    "after_0_hashes_verified": true,
+    "after_0_files_verified": 84,
+    "all_bridge_log_hashes_verified": true,
+    "bridge_logs_verified": 31,
+    "all_coverage_references_hashes_verified": true,
+    "final_red_green_log_hashes_verified": true,
+    "green_module_sources_equal_final_archive": true,
+    "other_N07_claude_variants_read_during_this_review": false,
+    "archives_modified": false,
+    "odoo_reexecution": false
+  },
+  "scope": {
+    "tests": "13 méthodes vertes, 12 invariants externes vrais ; test spécifique reliquat→cron absent de la livraison native. Pas de test droits ou navigateur revendiqué.",
+    "data": "Migration versionnée réellement exécutée sur copie, 999→7 et exclusions0/2/88 préservées ; rejeu depuis état réarmé, contrôles de valeurs. Créations RPC nettoyées, quatre lignes initiales restantes.",
+    "qa": "Fragments et couverture 12/12 présents mais bâtis sur contrat local augmenté de H3 ; flow actif, réception finale non terminée.",
+    "memory": "PROJECT modifié avant réception avec hypothèses devenues décisions ; résultat final et journal absents, README/qa.md initiaux préservés."
+  },
+  "small_agent_adaptation": "Pour ce cas borné : figer et lier les critères de N-17 avant les essais, vérifier explicitement le parcours composé reliquat→cron, et ne pas transformer l’adjectif périodique en planification active supplémentaire. Choisir dès le premier update le collecteur sans exigence de tests et un chemin immuable neuf. Consolider les preuves déjà acquises avant d’élargir les parcours ; pas de conclusion universelle ni d’attribution au profil.",
+  "artifact_root": "/tmp/crew-agent-workflows-20260916-v2/N07-claude-candidate",
+  "time": {
+    "started_utc": "2026-09-15T23:03:20.478069+00:00",
+    "finished_utc": "2026-09-15T23:07:52.107722+00:00",
+    "active_review_seconds": 271.63,
+    "method": "Continuous review elapsed time; no passive waits or Odoo execution during review."
+  }
+}

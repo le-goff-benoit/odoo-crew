@@ -1,0 +1,52 @@
+{
+  "revision": 1,
+  "at": "2026-09-15T22:42:31.496776+00:00",
+  "reason": "estimation initiale",
+  "lines": [
+    {
+      "task": "N17",
+      "title": "Préparation, duplication, reliquat et reprise synthétique",
+      "agent": "odoo-developer",
+      "optimistic_minutes": 5.0,
+      "likely_minutes": 10.0,
+      "pessimistic_minutes": 18.0,
+      "expected_minutes": 10.5,
+      "assumptions": [
+        "Suite du travail après qualification ; tests déjà en cours"
+      ],
+      "basis": "Jugement initial, aucune référence mesurée ; prévision initiale absente pour le travail déjà commencé",
+      "confidence": "low",
+      "contract_sha256": "612003ff12526aa7596760fea99130fbb505bff8334aecfabd4be2b9568c5331"
+    },
+    {
+      "task": "N17",
+      "title": "Préparation, duplication, reliquat et reprise synthétique",
+      "agent": "odoo-tester",
+      "optimistic_minutes": 5.0,
+      "likely_minutes": 9.0,
+      "pessimistic_minutes": 18.0,
+      "expected_minutes": 9.833333333333334,
+      "assumptions": [
+        "Pont opérationnel ; QA renforcée copie et réception non indépendante"
+      ],
+      "basis": "Jugement initial",
+      "confidence": "low",
+      "contract_sha256": "612003ff12526aa7596760fea99130fbb505bff8334aecfabd4be2b9568c5331"
+    },
+    {
+      "task": "N17",
+      "title": "Préparation, duplication, reliquat et reprise synthétique",
+      "agent": "orchestration",
+      "optimistic_minutes": 2.0,
+      "likely_minutes": 4.0,
+      "pessimistic_minutes": 8.0,
+      "expected_minutes": 4.333333333333333,
+      "assumptions": [
+        "Consolidation restante et journal"
+      ],
+      "basis": "Jugement initial",
+      "confidence": "low",
+      "contract_sha256": "612003ff12526aa7596760fea99130fbb505bff8334aecfabd4be2b9568c5331"
+    }
+  ]
+}

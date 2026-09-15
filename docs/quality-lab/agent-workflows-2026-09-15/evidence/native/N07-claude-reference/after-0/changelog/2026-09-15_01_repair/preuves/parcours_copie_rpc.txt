@@ -1,0 +1,25 @@
+Parcours par le vrai XML-RPC sur la copie lab_client (sorties intégrales du pont).
+
+== create — commandé 10, livré 4
+$ /bridge/labctl rpc <{"model": "lab.preparation", "method": "create", "args": [{"name": "RPC reliquat", "ordered_qty": 10, "delivered_qty": 4}], "kwargs": {}}>
+{"transport": "xmlrpc", "outcome": "result", "result": 20}
+
+== action_set_manual(20, 0) — saisie manuelle à zéro
+$ /bridge/labctl rpc <{"model": "lab.preparation", "method": "action_set_manual", "args": [[20], 0], "kwargs": {}}>
+{"transport": "xmlrpc", "outcome": "result", "result": true}
+
+== action_remainder(20)
+$ /bridge/labctl rpc <{"model": "lab.preparation", "method": "action_remainder", "args": [[20]], "kwargs": {}}>
+{"transport": "xmlrpc", "outcome": "result", "result": [21]}
+
+== relecture des enregistrements de contrôle
+$ /bridge/labctl rpc <{"model": "lab.preparation", "method": "search_read", "args": [[["id", ">", 4]], ["id", "name", "state", "ordered_qty", "delivered_qty", "prepared_qty", "manual", "parent_id"]], "kwargs": {}}>
+{"transport": "xmlrpc", "outcome": "result", "result": [{"id": 20, "name": "RPC reliquat", "state": "done", "ordered_qty": 10.0, "delivered_qty": 4.0, "prepared_qty": 0.0, "manual": true, "parent_id": false}, {"id": 21, "name": "RPC reliquat remainder", "state": "draft", "ordered_qty": 6.0, "delivered_qty": 0.0, "prepared_qty": 0.0, "manual": false, "parent_id": [20, "RPC reliquat"]}]}
+
+== unlink des enregistrements de contrôle
+$ /bridge/labctl rpc <{"model": "lab.preparation", "method": "unlink", "args": [[20, 21]], "kwargs": {}}>
+{"transport": "xmlrpc", "outcome": "result", "result": true}
+
+== état final de la copie
+$ /bridge/labctl rpc <{"model": "lab.preparation", "method": "search_read", "args": [[], ["id", "name", "state", "prepared_qty", "manual"]], "kwargs": {}}>
+{"transport": "xmlrpc", "outcome": "result", "result": [{"id": 1, "name": "LEGACY_AUTO", "state": "draft", "prepared_qty": 7.0, "manual": false}, {"id": 2, "name": "LEGACY_MANUAL_ZERO", "state": "draft", "prepared_qty": 0.0, "manual": true}, {"id": 3, "name": "LEGACY_MANUAL_PARTIAL", "state": "draft", "prepared_qty": 2.0, "manual": true}, {"id": 4, "name": "LEGACY_DONE", "state": "done", "prepared_qty": 88.0, "manual": false}]}

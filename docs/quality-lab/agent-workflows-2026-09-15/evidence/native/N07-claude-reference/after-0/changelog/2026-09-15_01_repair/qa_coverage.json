@@ -1,0 +1,282 @@
+{
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "6d9170d7258f24b9d3f6388efe922244d83344a46ffe89d82a7caad0e354ac9d",
+  "criteria": [
+    {
+      "id": "C01",
+      "text": "C1 — Étant donné un draft automatique (`manual=False`, ordered=10, delivered=3), quand le cron tourne, alors `prepared_qty = 7`.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "lab_preparation/tests/test_preparation.py",
+          "sha256": "cf4730cfd14522d4894423d6e861f84b3f0f05a56067f6347596939497ed6cff"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_rouge_avant_correction.txt",
+          "sha256": "95072a5e554b677ba7cd39aed363b577f368ca231c57c58692ab92555b2fc598"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_vert_base_neuve.txt",
+          "sha256": "def94ad35c8d2b92a07142d15f4b8db997b57a72123b394b44acfe3bb0a10b79"
+        }
+      ],
+      "note": "test_cron_computes_remaining_quantity : rouge avant correction, vert après (prepared=7, manual False, state draft)."
+    },
+    {
+      "id": "C02",
+      "text": "C2 — Étant donné un draft automatique avec `delivered_qty > ordered_qty`, quand le cron tourne, alors `prepared_qty = 0` (jamais de négatif).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "lab_preparation/tests/test_preparation.py",
+          "sha256": "cf4730cfd14522d4894423d6e861f84b3f0f05a56067f6347596939497ed6cff"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_rouge_avant_correction.txt",
+          "sha256": "95072a5e554b677ba7cd39aed363b577f368ca231c57c58692ab92555b2fc598"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_vert_base_neuve.txt",
+          "sha256": "def94ad35c8d2b92a07142d15f4b8db997b57a72123b394b44acfe3bb0a10b79"
+        }
+      ],
+      "note": "test_cron_never_goes_negative : commandé 4 / livré 9 donne 0, jamais un négatif."
+    },
+    {
+      "id": "C03",
+      "text": "C3 — Étant donné une saisie manuelle à **zéro** (`action_set_manual(0)`), alors `manual=True` et, après passage du cron, `prepared_qty` vaut toujours 0.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "lab_preparation/tests/test_preparation.py",
+          "sha256": "cf4730cfd14522d4894423d6e861f84b3f0f05a56067f6347596939497ed6cff"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_rouge_avant_correction.txt",
+          "sha256": "95072a5e554b677ba7cd39aed363b577f368ca231c57c58692ab92555b2fc598"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_vert_base_neuve.txt",
+          "sha256": "def94ad35c8d2b92a07142d15f4b8db997b57a72123b394b44acfe3bb0a10b79"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/parcours_copie_shell.txt",
+          "sha256": "36d42671e376a42e2a0ca58607d48fc94e6e51ee597e51e1c054dd98e4eaf976"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/parcours_copie_rpc.txt",
+          "sha256": "30338c9982cc41f4fa32aa62f244559521a314379dfc729872e6dbddd9178041"
+        }
+      ],
+      "note": "test_cron_keeps_manual_zero (manual=True puis prepared=0 après cron), confirmé sur la copie en shell (ZERO 0.0 True draft) et par le vrai XML-RPC (action_set_manual(20,0) puis relecture manual=true, prepared=0.0)."
+    },
+    {
+      "id": "C04",
+      "text": "C4 — Étant donné une saisie manuelle partielle (2 sur 10), quand le cron tourne, alors `prepared_qty = 2` inchangé.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "lab_preparation/tests/test_preparation.py",
+          "sha256": "cf4730cfd14522d4894423d6e861f84b3f0f05a56067f6347596939497ed6cff"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_rouge_avant_correction.txt",
+          "sha256": "95072a5e554b677ba7cd39aed363b577f368ca231c57c58692ab92555b2fc598"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_vert_base_neuve.txt",
+          "sha256": "def94ad35c8d2b92a07142d15f4b8db997b57a72123b394b44acfe3bb0a10b79"
+        }
+      ],
+      "note": "test_cron_keeps_manual_partial : saisie 2 sur 10 conservée après passage du cron."
+    },
+    {
+      "id": "C05",
+      "text": "C5 — Étant donné un enregistrement `done`, quand le cron tourne, alors aucun de ses champs ne change.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "lab_preparation/tests/test_preparation.py",
+          "sha256": "cf4730cfd14522d4894423d6e861f84b3f0f05a56067f6347596939497ed6cff"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_rouge_avant_correction.txt",
+          "sha256": "95072a5e554b677ba7cd39aed363b577f368ca231c57c58692ab92555b2fc598"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_vert_base_neuve.txt",
+          "sha256": "def94ad35c8d2b92a07142d15f4b8db997b57a72123b394b44acfe3bb0a10b79"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/cohorte_avant.json",
+          "sha256": "8aa795653c5aa9be1474ae05831db7c39df3f6bec72e7b56b3aeaf393e836a1b"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/cohorte_apres.json",
+          "sha256": "134db9d35ffeb58a8f9ce47ab90ab2194f426c97de6e9a94f99e3c30ce00d000"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/write_date_apres_reprise.json",
+          "sha256": "e917a491b32b8a2ec34fca5fe39b6579b55201149c372d9db4bacfd4a30b1798"
+        }
+      ],
+      "note": "test_cron_freezes_done ; sur la copie, LEGACY_DONE garde prepared=88, state=done et sa write_date d'origine (aucun write)."
+    },
+    {
+      "id": "C06",
+      "text": "C6 — Étant donné deux passages consécutifs du cron, alors le second ne modifie aucune valeur (idempotence).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "lab_preparation/tests/test_preparation.py",
+          "sha256": "cf4730cfd14522d4894423d6e861f84b3f0f05a56067f6347596939497ed6cff"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_vert_base_neuve.txt",
+          "sha256": "def94ad35c8d2b92a07142d15f4b8db997b57a72123b394b44acfe3bb0a10b79"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/write_date_apres_reprise.json",
+          "sha256": "e917a491b32b8a2ec34fca5fe39b6579b55201149c372d9db4bacfd4a30b1798"
+        }
+      ],
+      "note": "test_cron_is_idempotent (vert aussi sur le code fautif : garde-fou, pas révélateur) ; rejeu sur la copie identique en valeurs. Limite énoncée dans la voie copie client : la write_date des drafts automatiques est réécrite à chaque passage, l'idempotence prouvée porte sur les valeurs et sur l'absence d'écriture hors périmètre."
+    },
+    {
+      "id": "C07",
+      "text": "C7 — Étant donné une préparation avec delivered/prepared/manual renseignés, quand on la duplique, alors la copie a `ordered_qty` identique, `delivered_qty=0`, `prepared_qty=0`, `manual=False`, `state='draft'`.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "lab_preparation/tests/test_preparation.py",
+          "sha256": "cf4730cfd14522d4894423d6e861f84b3f0f05a56067f6347596939497ed6cff"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_rouge_avant_correction.txt",
+          "sha256": "95072a5e554b677ba7cd39aed363b577f368ca231c57c58692ab92555b2fc598"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_vert_base_neuve.txt",
+          "sha256": "def94ad35c8d2b92a07142d15f4b8db997b57a72123b394b44acfe3bb0a10b79"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/parcours_copie_shell.txt",
+          "sha256": "36d42671e376a42e2a0ca58607d48fc94e6e51ee597e51e1c054dd98e4eaf976"
+        }
+      ],
+      "note": "test_copy_resets_history ; sur la copie, DUP ressort ordered=10, delivered=0, prepared=0, manual=False, state=draft."
+    },
+    {
+      "id": "C08",
+      "text": "C8 — Étant donné une copie d'un enregistrement `done` avec saisie manuelle, alors la copie est `draft` et automatique, et le cron la traite normalement.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "lab_preparation/tests/test_preparation.py",
+          "sha256": "cf4730cfd14522d4894423d6e861f84b3f0f05a56067f6347596939497ed6cff"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_rouge_avant_correction.txt",
+          "sha256": "95072a5e554b677ba7cd39aed363b577f368ca231c57c58692ab92555b2fc598"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_vert_base_neuve.txt",
+          "sha256": "def94ad35c8d2b92a07142d15f4b8db997b57a72123b394b44acfe3bb0a10b79"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/parcours_copie_shell.txt",
+          "sha256": "36d42671e376a42e2a0ca58607d48fc94e6e51ee597e51e1c054dd98e4eaf976"
+        }
+      ],
+      "note": "test_copy_of_done_is_a_fresh_draft : la copie d'un done est un draft automatique, traité ensuite par le cron (prepared=10) sans toucher la source (prepared=6)."
+    },
+    {
+      "id": "C09",
+      "text": "C9 — Étant donné une préparation ordered=10 delivered=4 prepared=6, quand `action_remainder()`, alors un nouveau draft ordered=6, delivered=0, prepared=0, manual=False, parent_id=source ; la source est `done` et garde `prepared_qty=6`.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "lab_preparation/tests/test_preparation.py",
+          "sha256": "cf4730cfd14522d4894423d6e861f84b3f0f05a56067f6347596939497ed6cff"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_rouge_avant_correction.txt",
+          "sha256": "95072a5e554b677ba7cd39aed363b577f368ca231c57c58692ab92555b2fc598"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_vert_base_neuve.txt",
+          "sha256": "def94ad35c8d2b92a07142d15f4b8db997b57a72123b394b44acfe3bb0a10b79"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/parcours_copie_shell.txt",
+          "sha256": "36d42671e376a42e2a0ca58607d48fc94e6e51ee597e51e1c054dd98e4eaf976"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/parcours_copie_rpc.txt",
+          "sha256": "30338c9982cc41f4fa32aa62f244559521a314379dfc729872e6dbddd9178041"
+        }
+      ],
+      "note": "test_remainder_creates_the_rest ; confirmé par le vrai XML-RPC : reliquat ordered=6, delivered=0, prepared=0, manual=false, draft, parent_id=source ; source done avec prepared_qty non écrasée."
+    },
+    {
+      "id": "C10",
+      "text": "C10 — Étant donné une préparation intégralement livrée (delivered >= ordered), quand `action_remainder()`, alors recordset vide, aucune ligne créée, source `done`, `prepared_qty` intacte (H1).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "lab_preparation/tests/test_preparation.py",
+          "sha256": "cf4730cfd14522d4894423d6e861f84b3f0f05a56067f6347596939497ed6cff"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_rouge_avant_correction.txt",
+          "sha256": "95072a5e554b677ba7cd39aed363b577f368ca231c57c58692ab92555b2fc598"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_vert_base_neuve.txt",
+          "sha256": "def94ad35c8d2b92a07142d15f4b8db997b57a72123b394b44acfe3bb0a10b79"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/parcours_copie_shell.txt",
+          "sha256": "36d42671e376a42e2a0ca58607d48fc94e6e51ee597e51e1c054dd98e4eaf976"
+        }
+      ],
+      "note": "test_remainder_without_rest_creates_nothing : recordset vide, search_count inchangé, source done, prepared intacte. Repose sur l'hypothèse H1 de la revue (source close dans les deux cas) — à confirmer par le métier."
+    },
+    {
+      "id": "C11",
+      "text": "C11 — Étant donné plusieurs enregistrements, quand `action_remainder()` est appelée sur le recordset, alors une erreur de singleton est levée.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "lab_preparation/tests/test_preparation.py",
+          "sha256": "cf4730cfd14522d4894423d6e861f84b3f0f05a56067f6347596939497ed6cff"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/tests_vert_base_neuve.txt",
+          "sha256": "def94ad35c8d2b92a07142d15f4b8db997b57a72123b394b44acfe3bb0a10b79"
+        }
+      ],
+      "note": "test_remainder_requires_a_singleton : ValueError levée par ensure_one() (vert aussi avant correction : garde-fou)."
+    },
+    {
+      "id": "C12",
+      "text": "C12 — Étant donné la copie `lab_client` après mise à niveau, alors id 1 vaut 7 et les ids 2, 3, 4 sont strictement inchangés (valeurs du tableau §1).",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/cohorte_avant.json",
+          "sha256": "8aa795653c5aa9be1474ae05831db7c39df3f6bec72e7b56b3aeaf393e836a1b"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/cohorte_apres.json",
+          "sha256": "134db9d35ffeb58a8f9ce47ab90ab2194f426c97de6e9a94f99e3c30ce00d000"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/write_date_apres_reprise.json",
+          "sha256": "e917a491b32b8a2ec34fca5fe39b6579b55201149c372d9db4bacfd4a30b1798"
+        }
+      ],
+      "note": "Reprise sur lab_client via post-migrate 19.0.1.1.0 : id 1 passe de 999 à 7 ; ids 2, 3, 4 inchangés en valeurs ET en write_date (2026-09-15 22:49:56), donc sans aucun write ; 4 enregistrements avant comme après."
+    }
+  ]
+}

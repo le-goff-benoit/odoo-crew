@@ -1,0 +1,29 @@
+2026-09-15 22:54:59,068 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:54:59,069 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:54:59,069 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:54:59,069 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:54:59,069 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:54:59,348 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:54:59,354 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-15 22:54:59,378 1 INFO lab_client odoo.modules.loading: updating modules list 
+2026-09-15 22:54:59,379 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-15 22:55:00,796 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:55:00,796 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:55:01,384 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Atelier Nacre — préparation périodique et saisies explicites'] to user __system__ #1 via n/a 
+2026-09-15 22:55:01,385 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Atelier Nacre — préparation périodique et saisies explicites'] to user __system__ #1 via n/a 
+2026-09-15 22:55:02,251 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:55:02,634 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-15 22:55:02,655 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:55:02,655 1 INFO lab_client odoo.modules.loading: Loading module lab_preparation (2/21) 
+2026-09-15 22:55:02,659 1 INFO lab_client odoo.registry: module lab_preparation: creating or updating database tables 
+2026-09-15 22:55:02,690 1 INFO lab_client odoo.modules.loading: loading lab_preparation/security/ir.model.access.csv 
+2026-09-15 22:55:02,700 1 INFO lab_client odoo.modules.migration: module lab_preparation: Running upgrade [19.0.1.1.0>] post-migrate 
+2026-09-15 22:55:02,719 1 INFO lab_client odoo.modules.loading: Module lab_preparation loaded in 0.06s, 47 queries (+47 other) 
+2026-09-15 22:55:02,877 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.22s, 47 queries (+47 extra) 
+2026-09-15 22:55:02,983 1 INFO lab_client odoo.registry: verifying fields for every extended model 
+2026-09-15 22:55:03,087 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-15 22:55:03,091 1 INFO lab_client odoo.registry: Registry changed, signaling through the database 
+2026-09-15 22:55:03,092 1 INFO lab_client odoo.registry: Registry loaded in 3.787s 
+2026-09-15 22:55:03,092 1 INFO lab_client odoo.service.server: Initiating shutdown 
+2026-09-15 22:55:03,092 1 INFO lab_client odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:55:03,092 1 INFO lab_client odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

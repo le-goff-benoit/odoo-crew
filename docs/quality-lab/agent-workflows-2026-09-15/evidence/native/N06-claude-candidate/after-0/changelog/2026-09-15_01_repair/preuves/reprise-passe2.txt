@@ -1,0 +1,12 @@
+utilisateur : n06_operator | admin: False | sociétés: ['Synthetic other company N06', 'My Company']
+société active (env.company) : 1 My Company
+sociétés autorisées (env.companies) : [1, 2]
+sélection mixte transmise : [1, 2, 3, 4]
+
+--- résultat ---
+id=1 LEGACY_A_EARLY co=1 state=draft seq=100->100 snap=20.0->20.0 ref='DRAFT-A' | champs modifiés: ['write_date']
+id=2 LEGACY_A_LATE co=1 state=draft seq=200->200 snap=15.0->15.0 ref='DRAFT-B' | champs modifiés: ['write_date']
+id=3 LEGACY_ISSUED co=1 state=issued seq=17->17 snap=555.0->555.0 ref='ISSUED/005' | champs modifiés: AUCUN
+id=4 LEGACY_OTHER co=2 state=draft seq=80->80 snap=666.0->666.0 ref='OTHER/DRAFT' | champs modifiés: AUCUN
+
+commit effectué sur lab_client

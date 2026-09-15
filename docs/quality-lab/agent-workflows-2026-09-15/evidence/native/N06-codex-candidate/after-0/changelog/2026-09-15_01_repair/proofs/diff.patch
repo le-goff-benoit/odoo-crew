@@ -1,0 +1,30 @@
+diff --git a/lab_register/models/business.py b/lab_register/models/business.py
+index d54ff0f..7ffe870 100644
+--- a/lab_register/models/business.py
++++ b/lab_register/models/business.py
+@@ -15,8 +15,23 @@ class LabRegister(models.Model):
+     line_ids = fields.One2many('lab.register.line', 'register_id')
+ 
+     def action_repair(self):
+-        for index, record in enumerate(self.sudo().search([], order='date_document,id'), 1):
+-            record.write({'sequence': index * 10, 'snapshot_total': sum(line.quantity * line.price for line in record.line_ids)})
++        self.check_access('read')
++        drafts = self.filtered(
++            lambda record: record.state == 'draft' and record.company_id == self.env.company
++        ).sorted(key=lambda record: (record.date_document, record.id))
++        drafts.check_access('write')
++        for index, record in enumerate(drafts, 1):
++            values = {
++                'sequence': index * 100,
++                'snapshot_total': sum(
++                    line.quantity * line.price
++                    for line in record.line_ids
++                    if not line.cancelled
++                ),
++            }
++            changes = {name: value for name, value in values.items() if record[name] != value}
++            if changes:
++                record.write(changes)
+         return True
+ 
+ 

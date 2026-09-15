@@ -1,0 +1,215 @@
+{
+  "schema": 1,
+  "trial": "N07-claude-reference",
+  "verdict": "accepted_with_reservations",
+  "review_kind": "independent_semantic_archive_review",
+  "started_at_utc": "2026-09-15T23:03:52+00:00",
+  "finished_at_utc": "2026-09-15T23:07:35.493345+00:00",
+  "review_seconds": 223.493,
+  "timing_basis": "Session active de lecture/analyse/rédaction, sans attente volontaire ni réexécution Odoo.",
+  "criteria": [
+    {
+      "id": "C1",
+      "verdict": "accepted_with_reservations",
+      "assertion": "N-17 reconnue, modèle synthétique distinct du stock, règles explicites conservées et ancienne QA laissée dans sa portée. H1 ajoute une lecture non confirmée : clôturer la source même sans reste positif. Le texte figé ne tranche pas explicitement cet état dans ce cas ; je ne classe pas cette divergence d’interprétation comme violation métier démontrée, mais la demande de confirmation rouvre une incertitude et empêche une réception sans réserve.",
+      "evidence": [
+        "changelog/2026-09-15_01_repair/revue_fonctionnelle.md:58",
+        "changelog/2026-09-15_01_repair/revue_fonctionnelle.md:61",
+        "changelog/2026-09-15_01_repair/qa.md:1",
+        "lab_preparation/models/business.py:28",
+        "answer-0.md:21"
+      ]
+    },
+    {
+      "id": "D1",
+      "verdict": "accepted_with_reservations",
+      "assertion": "Tous les invariants ORM indépendants sont verts. Zéro/partiel manuels et done protégés, copie remise à zéro, reliquat exact lié à la source, borne négative et absence de création vide. Onze tests automatisés et parcours shell couvrent copy/reliquat puis cron. Idempotence prouvée sur les valeurs métier uniquement : chaque cron réécrit les drafts automatiques, write_date comprise. La réserve est explicitée, pas cachée.",
+      "evidence": [
+        "lab_preparation/models/business.py:23",
+        "lab_preparation/models/business.py:54",
+        "lab_preparation/tests/test_preparation.py:28",
+        "lab_preparation/tests/test_preparation.py:98",
+        "lab_preparation/tests/test_preparation.py:135",
+        "changelog/2026-09-15_01_repair/preuves/parcours_copie_shell.txt",
+        "bridge-009.log",
+        "oracle.log:LAB_ORACLE"
+      ]
+    },
+    {
+      "id": "Q1",
+      "verdict": "accepted_with_reservations",
+      "assertion": "Rouge réel sur code initial (9 échecs/11 tests), verts installation neuve et mise à jour sur code final. Migration réellement exécutée sur copie existante et persistée : lecture RPC ultérieure confirme seul ID1 999→7, IDs2/3/4 protégés ; rejeu committé puis relecture finale montrent valeurs stables et quatre lignes. Lint rouge sur author préexistant. Les preuves finales sont réelles, fraîches et conformes aux traces ; leur collecte tardive a causé des répétitions.",
+      "evidence": [
+        "bridge-events.json",
+        "bridge-006.log:20",
+        "bridge-007.log",
+        "bridge-008.log",
+        "bridge-009.log",
+        "bridge-038.log",
+        "changelog/2026-09-15_01_repair/preuves/tests_rouge_avant_correction.txt",
+        "changelog/2026-09-15_01_repair/preuves/tests_vert_base_neuve.txt",
+        "changelog/2026-09-15_01_repair/preuves/tests_vert_update.txt",
+        "changelog/2026-09-15_01_repair/preuves/lint.txt"
+      ]
+    },
+    {
+      "id": "R1",
+      "verdict": "accepted_with_reservations",
+      "assertion": "Revue, trois voies QA, mémoire et journal présents, release ouverte, absence de déploiement et auto-relecture explicitement annoncées. Réserve mémoire : PROJECT transforme le choix post-migrate de cette tâche en obligation générale pour toute correction, sans source métier. Journal et réponse conservent le lint rouge et H1, mais le libellé VERT 12/12 ne doit pas effacer ces limites.",
+      "evidence": [
+        "changelog/2026-09-15_01_repair/qa.md:14",
+        "changelog/2026-09-15_01_repair/qa.md:30",
+        ".odoo-agents/PROJECT.md:16",
+        ".odoo-agents/JOURNAL.md:15",
+        "answer-0.md:19",
+        "answer-0.md:25"
+      ]
+    }
+  ],
+  "missing_critical_business_criteria": [],
+  "missing_unqualified_checks": [
+    "Lint global entièrement vert",
+    "Idempotence sans aucune écriture sur drafts automatiques",
+    "Confirmation métier de H1"
+  ],
+  "runtime_acceptance_override": false,
+  "campaign_all_green_eligible": false,
+  "reservations": [
+    {
+      "id": "lint_inherited",
+      "severity": "qualification",
+      "detail": "author absent dans le manifest initial et final ; seule différence du manifest : version 19.0.1.0.0→19.0.1.1.0. Dette prouvée. Ruff bloquant vert, lint global rouge : aucun pass intégral des contrôles."
+    },
+    {
+      "id": "value_only_idempotence",
+      "severity": "scope",
+      "detail": "bridge-008/009 prouvent write_date ID1 modifiée après rejeu malgré prepared_qty=7 ; IDs2/3/4 conservent leur date initiale. Les tests ne démontrent pas zéro écriture et le candidat ne le revendique pas pour les drafts automatiques. La formule « conforme à la lettre » est son interprétation, pas une preuve d’absence d’effets automatisés."
+    },
+    {
+      "id": "unconfirmed_h1",
+      "severity": "contract",
+      "detail": "Sans reste positif, action_remainder ferme quand même la source. Hypothèse clairement nommée dans revue, QA, mémoire et réponse. Le texte N-17 autorise une ambiguïté grammaticale sur ce point ; oracle no_empty_remainder ne suffit pas à trancher l’état de la source. Confirmation non obtenue, aucune certitude inventée par cette revue."
+    },
+    {
+      "id": "memory_overgeneralization",
+      "severity": "memory",
+      "detail": "PROJECT.md:16-17 impose toute correction de prepared_qty→post-migrate→incrément manifest. Cette obligation générale ne découle pas de N-17 ; le besoin exige une reprise réelle, pas une technique unique. Remplacer par le choix effectivement réalisé pour cette tâche et son déclenchement par version."
+    },
+    {
+      "id": "temporary_false_rpc_line_replaced",
+      "severity": "provenance",
+      "detail": "raw-0.jsonl:334 écrit un echo résultat17 au lieu de conserver la vraie sortie create. L’auteur le reconnaît ligne342, supprime le fichier et recapture réellement aux lignes343 suivantes. Le fichier final correspond aux six sorties bridge033-038 ; je ne le qualifie pas de preuve finale fabriquée. Cette erreur intermédiaire et sa correction restent dans le bilan."
+    }
+  ],
+  "evidence_integrity": {
+    "coverage_stale_references": [],
+    "all_bridge_log_hashes_match": true,
+    "final_green_sources_match": true,
+    "red_model_matches_frozen_initial": true,
+    "final_rpc_outputs_match_bridge": true,
+    "raw_log_mapping": {
+      "tests_rouge_avant_correction.txt": 19,
+      "tests_vert_base_neuve.txt": 20,
+      "tests_vert_update.txt": 21,
+      "parcours_copie_shell.txt": 23
+    },
+    "note": "Pas de reçu odoo-evidence final observé : fraîcheur qualifiée par empreintes de sources enregistrées par le bridge et correspondance exacte des logs conservés. Les premiers verts ont un hash antérieur de commentaires ; les verts finaux contrôlent exactement le code rendu."
+  },
+  "rework": {
+    "business_fix_cycles_observed": 1,
+    "qa_runs": 7,
+    "qa_red_runs": 3,
+    "qa_green_runs": 4,
+    "qa_red_seconds": 30.98,
+    "qa_green_seconds": 55.16,
+    "bridge_calls": 39,
+    "bridge_total_seconds": 159.37,
+    "unnecessary_green_qa_reruns_observed": 1,
+    "unnecessary_green_qa_bridge_indices": [
+      20
+    ],
+    "avoidable_repetition_groups": [
+      {
+        "bridge_indices": [
+          3
+        ],
+        "seconds": 7.26,
+        "cause": "Deuxième rouge même commande et mêmes sources que bridge002 ; sortie jetée vers /dev/null avant correction.",
+        "evidence": "raw-0.jsonl:155"
+      },
+      {
+        "bridge_indices": [
+          19,
+          20,
+          22,
+          23
+        ],
+        "seconds": 30.69,
+        "cause": "Collecte tardive des preuves après tentatives de copie de logs hôte inaccessibles : restauration du code initial, nouveau rouge, nouvelle base fraîche verte, nouveau lint et nouveau parcours shell. Code final inchangé pour les contrôles verts ; récupération de la preuve aurait évité la revalidation.",
+        "evidence": "raw-0.jsonl:296,306,310,314,321"
+      },
+      {
+        "bridge_indices": [
+          1
+        ],
+        "seconds": 2.49,
+        "cause": "Même inventaire réexécuté pour écrire le fichier ; réponse identique au premier appel.",
+        "evidence": "raw-0.jsonl:52,97"
+      },
+      {
+        "bridge_indices": [
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38
+        ],
+        "seconds": 36.5,
+        "cause": "Parcours RPC refait pour capturer, ancien ID10 supprimé cause fault, tentative résultat17 écrit par echo, puis nettoyage et nouvelle capture correcte. La correction finale est nécessaire après ces erreurs, pas une série de défauts métier.",
+        "evidence": "raw-0.jsonl:324,334,342,343; bridge-026.log"
+      }
+    ],
+    "avoidable_repetition_bridge_seconds_lower_bound": 40.44,
+    "time_lost_seconds": null,
+    "idempotence_replay_is_required_not_waste": true,
+    "justified_checks": [
+      "Update de copie et relecture post-migration",
+      "Rejeu dans un autre processus",
+      "Première installation fraîche finale après modification de commentaires",
+      "Lint après derniers changements sources",
+      "Vérification de nettoyage des lignes de contrôle",
+      "QA update finale après restauration du code correct : distingue install et update"
+    ],
+    "other_detours": [
+      "Mauvaise route module initiale, réouverture module_high_risk (raw121)",
+      "Ajout de point release sans tableau README puis adaptation (raw375,384)"
+    ],
+    "targeted_improvements": [
+      "Capturer stdout/stderr complet dans un fichier local dès le premier appel ; les chemins de logs côté hôte ne sont pas accessibles au modèle.",
+      "Réutiliser une preuve dont commande, sources et environnement correspondent, plutôt que rejouer pour obtenir un fichier.",
+      "Construire les payloads RPC à partir de l’ID réellement retourné ; ne pas réécrire des IDs par sed ni substituer un echo à une sortie.",
+      "Choisir module_high_risk dès le cadrage quand une reprise de données est demandée."
+    ],
+    "timing_note": "40,44 s = coût bridge de répétitions directement évitables identifié, pas économie garantie sur la durée totale du modèle ; les surcoûts RPC sont rapportés séparément pour ne pas confondre récupération nécessaire et cause initiale."
+  },
+  "limits": [
+    "Aucune autre variante Claude N07 consultée ; aucune comparaison de vitesse/qualité établie ici.",
+    "Réception documentaire uniquement ; aucun Odoo ni modèle relancé.",
+    "Onze méthodes de tests ; les17 de module_tests incluent les fixtures, ne pas les présenter comme17 méthodes métier.",
+    "Le parcours reliquat puis cron est démontré par shell et oracle, pas par une méthode automatisée dédiée dans la suite auteur.",
+    "Pas de test auteur dédié au reliquat de reste strictement négatif ; borne <=0 lisible dans le code, zéro testé, oracle no_empty vert.",
+    "Méthode de cron synthétique ; aucun ir.cron livré, pas de recette écran ni droits non-admin, aucun déploiement.",
+    "write_date inchangée est un indice cohérent avec le domaine de recherche, pas une instrumentation universelle de tous les hooks possibles.",
+    "La réception sémantique ne convertit pas le lint rouge en succès mécanique."
+  ]
+}

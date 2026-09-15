@@ -1,0 +1,245 @@
+[
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-15_01_repair/preuves/inventaire.py"
+    ],
+    "seconds": 1.26,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "0af88cc84c97375ed18df755907cfd697cff25b2139803053e0345864830a2e7",
+    "project_sha256": "77e618b3e656e0695a458d0441fc144112832f59080768e6c8acddde3d3e255b",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "d7f7d4dc60e071ea3b23327d06777a9ca255979d63012899ef4dcc44dee7dfa2",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "d7f7d4dc60e071ea3b23327d06777a9ca255979d63012899ef4dcc44dee7dfa2",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4"
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_preparation",
+      "--quick",
+      "--tags",
+      "/lab_preparation:TestPreparation"
+    ],
+    "seconds": 15.84,
+    "exit_code": 1,
+    "log": "bridge-001.log",
+    "sha256": "9e9b51eddb7146041e69c5da28a0de2bd5d43b6af36cf92d68246dfeafcd64e3",
+    "project_sha256": "d31bb070fb2ff002f3cbcc01b4aca50068a57b7c6c21c22c229fba75570a34d9",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "d7f7d4dc60e071ea3b23327d06777a9ca255979d63012899ef4dcc44dee7dfa2",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "tests/test_preparation.py": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "d7f7d4dc60e071ea3b23327d06777a9ca255979d63012899ef4dcc44dee7dfa2",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "tests/test_preparation.py": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da"
+    },
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 11,
+      "summaries": [
+        {
+          "failed": 14,
+          "errors": 0,
+          "tests": 9
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_preparation",
+      "--quick",
+      "--tags",
+      "/lab_preparation:TestPreparation"
+    ],
+    "seconds": 8.22,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "8805576cacfa31a1b931e08e6f43fab63fecfb76c6664581499d03ce07370ccb",
+    "project_sha256": "326eb99da5e5ef0d9279b489f3b35a75c7399ce940d3eb7eb2ec3baaeb644385",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "6f5b626b41bf3f34199c60e296a4c742b2023878cb5cb5af00457b9255c9ef35",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "tests/test_preparation.py": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "6f5b626b41bf3f34199c60e296a4c742b2023878cb5cb5af00457b9255c9ef35",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "tests/test_preparation.py": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da"
+    },
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 11,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 9
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "lint",
+      "lab_preparation"
+    ],
+    "seconds": 1.06,
+    "exit_code": 1,
+    "log": "bridge-003.log",
+    "sha256": "3706218c70e10eac08da715ecdeb986e232e0ec67a9c4a99f8718a7610ac5522",
+    "project_sha256": "437313c5315e79306da838beff0111c94eb3d5868064de068e75efc25cd04095",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "6f5b626b41bf3f34199c60e296a4c742b2023878cb5cb5af00457b9255c9ef35",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "tests/test_preparation.py": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "6f5b626b41bf3f34199c60e296a4c742b2023878cb5cb5af00457b9255c9ef35",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "tests/test_preparation.py": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da"
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 5.73,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "3ea43d98ad65452e0b1423f22a47530ec9a78c3418f329f73d743fb68ab8542c",
+    "project_sha256": "b840ffd3ec465a36d3b5aba6747664be363357c1df483d01907180a8df5539ea",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "6f5b626b41bf3f34199c60e296a4c742b2023878cb5cb5af00457b9255c9ef35",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "tests/test_preparation.py": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "6f5b626b41bf3f34199c60e296a4c742b2023878cb5cb5af00457b9255c9ef35",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "tests/test_preparation.py": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da"
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-15_01_repair/preuves/reprise.py"
+    ],
+    "seconds": 1.2,
+    "exit_code": 0,
+    "log": "bridge-005.log",
+    "sha256": "b56adf93d5d3634142847ed9cb72a63ef78f04d1fd2e1276e808c5003f29c25f",
+    "project_sha256": "cc4c29f431c7fc8008cf96887cb362f3841011b75458a659fd71e73979da3a18",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "6f5b626b41bf3f34199c60e296a4c742b2023878cb5cb5af00457b9255c9ef35",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "tests/test_preparation.py": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "6f5b626b41bf3f34199c60e296a4c742b2023878cb5cb5af00457b9255c9ef35",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "tests/test_preparation.py": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da"
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-15_01_repair/preuves/rejeu.py"
+    ],
+    "seconds": 1.19,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "58e06b982cb2bbdbd93662b0f9e43b387dff2442f8a98abe3cb8da4a47ca7a7d",
+    "project_sha256": "bd649082ca36cab2de2c788fdb78d5322ef8fc925dee306a63bd46d035819910",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "6f5b626b41bf3f34199c60e296a4c742b2023878cb5cb5af00457b9255c9ef35",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "tests/test_preparation.py": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "6f5b626b41bf3f34199c60e296a4c742b2023878cb5cb5af00457b9255c9ef35",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "tests/test_preparation.py": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da"
+    }
+  }
+]

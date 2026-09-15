@@ -1,0 +1,250 @@
+{
+  "scope": "One observation per pair; separate provider/effort settings. No model ranking.",
+  "timing": "Work sums setup, agent, oracle and independent review. Wall time also includes review queue/coordination. Unknown is null; reserved acceptance is not unreserved reception.",
+  "rows": [
+    {
+      "trial": "N06-claude-candidate",
+      "execution": "executed",
+      "requested": {
+        "model": "opus",
+        "effort": "medium",
+        "delegate": false
+      },
+      "observed_model": [
+        "claude-opus-5"
+      ],
+      "observed_effort": [
+        null
+      ],
+      "setup_seconds": 31.89,
+      "agent_seconds": 574.37,
+      "oracle_seconds": 1.378,
+      "tool_calls": 58,
+      "bridge_calls": 20,
+      "oracle_passed": true,
+      "mechanical_gate": false,
+      "semantic_verdict": "accepted_with_reservations",
+      "review_seconds": 217.331,
+      "review_queue_seconds": 56.416,
+      "measured_work_to_verdict_seconds": 824.982,
+      "wall_to_verdict_seconds": 881.398,
+      "time_to_unreserved_receipt_seconds": null,
+      "principal_rework_seconds": null,
+      "post_reception_rework_performed": false,
+      "avoidable_bridge_seconds_lower_bound": 8.7
+    },
+    {
+      "trial": "N06-claude-reference",
+      "execution": "executed",
+      "requested": {
+        "model": "opus",
+        "effort": "medium",
+        "delegate": false
+      },
+      "observed_model": [
+        "claude-opus-5"
+      ],
+      "observed_effort": [
+        null
+      ],
+      "setup_seconds": 32.063,
+      "agent_seconds": 772.17,
+      "oracle_seconds": 1.316,
+      "tool_calls": 89,
+      "bridge_calls": 16,
+      "oracle_passed": true,
+      "mechanical_gate": false,
+      "semantic_verdict": "accepted_with_reservations",
+      "review_seconds": 211.289,
+      "review_queue_seconds": 49.04,
+      "measured_work_to_verdict_seconds": 1016.85,
+      "wall_to_verdict_seconds": 1065.89,
+      "time_to_unreserved_receipt_seconds": null,
+      "principal_rework_seconds": null,
+      "post_reception_rework_performed": false,
+      "avoidable_bridge_seconds_lower_bound": 23.45
+    },
+    {
+      "trial": "N06-codex-candidate",
+      "execution": "executed",
+      "requested": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "observed_model": [
+        null
+      ],
+      "observed_effort": [
+        null
+      ],
+      "setup_seconds": 31.829,
+      "agent_seconds": 692.7,
+      "oracle_seconds": 1.333,
+      "tool_calls": 47,
+      "bridge_calls": 10,
+      "oracle_passed": true,
+      "mechanical_gate": false,
+      "semantic_verdict": "accepted_with_reservations",
+      "review_seconds": 177.613,
+      "review_queue_seconds": 71.502,
+      "measured_work_to_verdict_seconds": 903.495,
+      "wall_to_verdict_seconds": 974.997,
+      "time_to_unreserved_receipt_seconds": null,
+      "principal_rework_seconds": null,
+      "post_reception_rework_performed": false,
+      "avoidable_bridge_seconds_lower_bound": null
+    },
+    {
+      "trial": "N06-codex-reference",
+      "execution": "executed",
+      "requested": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "observed_model": [
+        null
+      ],
+      "observed_effort": [
+        null
+      ],
+      "setup_seconds": 32.358,
+      "agent_seconds": 633.49,
+      "oracle_seconds": 1.229,
+      "tool_calls": 42,
+      "bridge_calls": 7,
+      "oracle_passed": true,
+      "mechanical_gate": false,
+      "semantic_verdict": "accepted_with_reservations",
+      "review_seconds": 198.144,
+      "review_queue_seconds": 64.089,
+      "measured_work_to_verdict_seconds": 865.241,
+      "wall_to_verdict_seconds": 929.33,
+      "time_to_unreserved_receipt_seconds": null,
+      "principal_rework_seconds": null,
+      "post_reception_rework_performed": false,
+      "avoidable_bridge_seconds_lower_bound": null
+    },
+    {
+      "trial": "N07-claude-candidate",
+      "execution": "incident",
+      "requested": {
+        "model": "opus",
+        "effort": "medium",
+        "delegate": false
+      },
+      "observed_model": [
+        "claude-opus-5"
+      ],
+      "observed_effort": [
+        null
+      ],
+      "setup_seconds": 32.27,
+      "agent_seconds": 900.01,
+      "oracle_seconds": 1.239,
+      "tool_calls": 98,
+      "bridge_calls": 31,
+      "oracle_passed": true,
+      "mechanical_gate": false,
+      "semantic_verdict": "rejected",
+      "review_seconds": 271.63,
+      "review_queue_seconds": 25.31,
+      "measured_work_to_verdict_seconds": 1205.168,
+      "wall_to_verdict_seconds": 1230.478,
+      "time_to_unreserved_receipt_seconds": null,
+      "principal_rework_seconds": null,
+      "post_reception_rework_performed": false,
+      "avoidable_bridge_seconds_lower_bound": 5.61
+    },
+    {
+      "trial": "N07-claude-reference",
+      "execution": "executed",
+      "requested": {
+        "model": "opus",
+        "effort": "medium",
+        "delegate": false
+      },
+      "observed_model": [
+        "claude-opus-5"
+      ],
+      "observed_effort": [
+        null
+      ],
+      "setup_seconds": 32.086,
+      "agent_seconds": 796.5,
+      "oracle_seconds": 1.259,
+      "tool_calls": 87,
+      "bridge_calls": 39,
+      "oracle_passed": true,
+      "mechanical_gate": false,
+      "semantic_verdict": "accepted_with_reservations",
+      "review_seconds": 223.493,
+      "review_queue_seconds": 37.384,
+      "measured_work_to_verdict_seconds": 1053.351,
+      "wall_to_verdict_seconds": 1090.735,
+      "time_to_unreserved_receipt_seconds": null,
+      "principal_rework_seconds": null,
+      "post_reception_rework_performed": false,
+      "avoidable_bridge_seconds_lower_bound": null
+    },
+    {
+      "trial": "N07-codex-candidate",
+      "execution": "executed",
+      "requested": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "observed_model": [
+        null
+      ],
+      "observed_effort": [
+        null
+      ],
+      "setup_seconds": 34.883,
+      "agent_seconds": 629.7,
+      "oracle_seconds": 1.355,
+      "tool_calls": 48,
+      "bridge_calls": 7,
+      "oracle_passed": true,
+      "mechanical_gate": false,
+      "semantic_verdict": "accepted_with_reservations",
+      "review_seconds": 281.31,
+      "review_queue_seconds": 22.644,
+      "measured_work_to_verdict_seconds": 947.275,
+      "wall_to_verdict_seconds": 969.919,
+      "time_to_unreserved_receipt_seconds": null,
+      "principal_rework_seconds": null,
+      "post_reception_rework_performed": false,
+      "avoidable_bridge_seconds_lower_bound": null
+    },
+    {
+      "trial": "N07-codex-reference",
+      "execution": "executed",
+      "requested": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "observed_model": [
+        null
+      ],
+      "observed_effort": [
+        null
+      ],
+      "setup_seconds": 32.445,
+      "agent_seconds": 627.74,
+      "oracle_seconds": 1.271,
+      "tool_calls": 57,
+      "bridge_calls": 9,
+      "oracle_passed": true,
+      "mechanical_gate": false,
+      "semantic_verdict": "accepted_with_reservations",
+      "review_seconds": 258.953,
+      "review_queue_seconds": 32.338,
+      "measured_work_to_verdict_seconds": 920.435,
+      "wall_to_verdict_seconds": 952.773,
+      "time_to_unreserved_receipt_seconds": null,
+      "principal_rework_seconds": null,
+      "post_reception_rework_performed": false,
+      "avoidable_bridge_seconds_lower_bound": 4.53
+    }
+  ]
+}

@@ -1,0 +1,138 @@
+{
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "032e90a18e79d756e85c32221bebe1005bd33fae73b5f0ba9a8efcb9c8cad1f8",
+  "criteria": [
+    {
+      "id": "A1",
+      "text": "**A1** — N-17 : le cron calcule le solde positif ou zéro seulement pour les drafts automatiques ; conserve intégralement les drafts manuels (zéro inclus) et les done ; rejeu idempotent.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/green.json",
+          "sha256": "089a81af0a180e9a7f4423c7d3cd913cd2e7dea9765c81cf5ad0a5225a45e789"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/runtime.md",
+          "sha256": "607606c9760622be33d7effe2e8cc53014579350518fb039a7418eb4aa453c52"
+        }
+      ],
+      "note": "test_cron_mixed_and_replay, test_ir_cron_execution et test_sub_cent_balance."
+    },
+    {
+      "id": "A2",
+      "text": "**A2** — N-17 : action_set_manual conserve exactement une quantité explicite, dont zéro, avec manual=True ; cron ultérieur conserve cette saisie sur une sélection mixte.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/green.json",
+          "sha256": "089a81af0a180e9a7f4423c7d3cd913cd2e7dea9765c81cf5ad0a5225a45e789"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/runtime.md",
+          "sha256": "607606c9760622be33d7effe2e8cc53014579350518fb039a7418eb4aa453c52"
+        }
+      ],
+      "note": "test_manual_zero_then_cron et test_manual_nonzero_then_cron."
+    },
+    {
+      "id": "A3",
+      "text": "**A3** — N-17 : copy() conserve ordered_qty et réinitialise delivered_qty=0, prepared_qty=0, manual=False, state=draft ; un cron ultérieur prépare toute cette nouvelle demande sans altérer la source done.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/green.json",
+          "sha256": "089a81af0a180e9a7f4423c7d3cd913cd2e7dea9765c81cf5ad0a5225a45e789"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/runtime.md",
+          "sha256": "607606c9760622be33d7effe2e8cc53014579350518fb039a7418eb4aa453c52"
+        }
+      ],
+      "note": "test_copy_then_cron : source done inchangée et nouvelle demande préparée à 10."
+    },
+    {
+      "id": "A4",
+      "text": "**A4** — N-17 : action_remainder singleton avec reste positif crée un seul draft pour ce reste, delivered_qty=prepared_qty=0, manual=False, parent_id=source ; source done conserve prepared_qty ; cron puis rejeu préparent le reliquat et préservent la source.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/green.json",
+          "sha256": "089a81af0a180e9a7f4423c7d3cd913cd2e7dea9765c81cf5ad0a5225a45e789"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/runtime.md",
+          "sha256": "607606c9760622be33d7effe2e8cc53014579350518fb039a7418eb4aa453c52"
+        }
+      ],
+      "note": "test_remainder_then_cron : reste 7, parent, source done préparée 2, deux passages cron."
+    },
+    {
+      "id": "A5",
+      "text": "**A5** — N-17 : sans reste positif (égalité ou dépassement), action_remainder retourne un recordset vide sans création ; l'appel non singleton échoue avant toute mutation.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/green.json",
+          "sha256": "089a81af0a180e9a7f4423c7d3cd913cd2e7dea9765c81cf5ad0a5225a45e789"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/runtime.md",
+          "sha256": "607606c9760622be33d7effe2e8cc53014579350518fb039a7418eb4aa453c52"
+        }
+      ],
+      "note": "test_remainder_without_positive_balance (10/10 et 10/12), test_remainder_singleton."
+    },
+    {
+      "id": "A6",
+      "text": "**A6** — Demande et N-17 : reprise des drafts automatiques existants de lab_client uniquement ; id 1 passe de 999 à 7, ids 2/3/4 restent respectivement à 0/2/88 avec tous leurs champs conservés ; rejeu stable et relecture persistée.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/repair.json",
+          "sha256": "f816aa5f4563d421439d1962c16d0a3a26d94deb1ab256b4464be8d6b4851bb6"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/persisted.json",
+          "sha256": "66ad41b30536ee6069e55ce6e1ee34006d330164904e331b7b834695f6707e7a"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/client-copy.md",
+          "sha256": "c7b71487774b6fb6eb3d4c2b1dd42e57e4f9677a733af87da71b09a0ebf9b54a"
+        }
+      ],
+      "note": "Avant/après toutes lignes et métadonnées ; commit puis nouvelle session lecture seule."
+    },
+    {
+      "id": "A7",
+      "text": "**A7** — Demande : tests rouges sur code initial puis verts sur correctif, couvrant zéro manuel, duplication, reliquat puis cron ; installation/tests ciblés, lint du diff et update sur copie existante réussis.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/red-confirmed.log",
+          "sha256": "53e70851bb86d1425a558f250d2bc8adc6464414ed8862ba01625d455cf08deb"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/green.json",
+          "sha256": "089a81af0a180e9a7f4423c7d3cd913cd2e7dea9765c81cf5ad0a5225a45e789"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/static.md",
+          "sha256": "094c6f443e5df81dfecf47b6cf5a8941ee54bd12dd63a31e9f18332486edcd63"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/lint.log",
+          "sha256": "b65e713330f4789704c4df3f4996f68fef454e07b8accb386cf88bf60edddd13"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/manifest-before.txt",
+          "sha256": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/preuves/update-confirmed.json",
+          "sha256": "45b9f3fca615d53b6795a2459e1cc4cb07563cf758e419c9a39d346bcc98f712"
+        }
+      ],
+      "note": "Rouge avant correctif, vert après, lint diff propre (author antérieur), update réel à 0. Les JSON rouges sont historiques, leur log suffit ici à attester la reproduction."
+    }
+  ]
+}

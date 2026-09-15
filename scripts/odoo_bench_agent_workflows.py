@@ -90,6 +90,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.phase == 'status':
         state = json.loads((args.output / 'campaign.json').read_text())
+        # Ordered result collection can lag behind a running or completed trial.
+        for identifier in state['trials']:
+            trial_state = args.output / identifier / 'state.json'
+            if trial_state.is_file():
+                state['trials'][identifier] = json.loads(trial_state.read_text())
         print(json.dumps({'phases': state['phases'], 'trials': {
             k: {'status': v['status'], 'runtime_gate': v.get('reception', {}).get('passed'),
                 'agent_seconds': v.get('agent_seconds')} for k, v in state['trials'].items()}}, indent=2))

@@ -1,0 +1,16 @@
+companies: [(2, 'Synthetic other company N06'), (1, 'My Company')]
+env.company: 1 My Company
+total registers: 4
+  id=4 co=2/Synthetic other company N06 state=draft date=2020-01-01 seq=80 snap=666.0 ref='OTHER/DRAFT' name='LEGACY_OTHER'
+      line id=7 qty=3.0 price=5.0 cancelled=False
+      line id=8 qty=5.0 price=99.0 cancelled=True
+  id=3 co=1/My Company state=issued date=2019-01-01 seq=17 snap=555.0 ref='ISSUED/005' name='LEGACY_ISSUED'
+      line id=5 qty=3.0 price=5.0 cancelled=False
+      line id=6 qty=5.0 price=99.0 cancelled=True
+  id=1 co=1/My Company state=draft date=2020-01-01 seq=100 snap=20.0 ref='DRAFT-A' name='LEGACY_A_EARLY'
+      line id=1 qty=2.0 price=10.0 cancelled=False
+      line id=2 qty=5.0 price=99.0 cancelled=True
+  id=2 co=1/My Company state=draft date=2020-01-02 seq=200 snap=15.0 ref='DRAFT-B' name='LEGACY_A_LATE'
+      line id=3 qty=3.0 price=5.0 cancelled=False
+      line id=4 qty=5.0 price=99.0 cancelled=True
+users: [(2, 'admin', 'My Company', ['My Company']), (5, 'n06_operator', 'My Company', ['Synthetic other company N06', 'My Company']), (6, 'n06_restricted', 'My Company', ['My Company'])]

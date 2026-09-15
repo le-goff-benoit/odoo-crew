@@ -1,0 +1,46 @@
+# Briefing — work
+
+- **Série** : **19.0** (origine : .odoo-agents/config) · sources `/home/blegoff/odoo-sources/19.0` + `19.0-enterprise`
+- **Racine** : `/work`
+- **Release** : `changelog/2026-09-15_01_repair` (base git `?`)
+- **Instances déclarées** : Aucun environnement déclaré pour work. → odoo_instance.py add /work
+
+## Formes attendues en 19.0
+
+**Différences avec le guide 19.0** : `ir.model.access.csv` + `ir.rule`
+Formes en vigueur : `invisible="expr"` (plus d'`attrs`/`states`) · `_compute_display_name` (plus de `name_get`) · `<list>` (plus de `<tree>`) · `<chatter/>` · `self.env._()` disponible · `@api.readonly` disponible · `models.Constraint` (plus de `_sql_constraints`) · objet `Domain` · `res.groups.privilege` (plus de `category_id`) · `res.users.group_ids` (et non `groups_id`) · `self.env.cr` obligatoire (plus de `self._cr`) · `hr.version` (plus de `hr.contract`)
+# Contexte ciblé
+Sélection lexicale, rappel non exhaustif : synonymes et contradictions ne sont pas résolus. Une date, même plus récente, ne vaut pas arbitrage. Vérifier les décisions courantes ; les autres sources peuvent être historiques.
+
+## .odoo-agents/PROJECT.md · L3-L4
+## Compréhension métier
+Projet entièrement synthétique. Lire decisions/current.md.
+
+## .odoo-agents/PROJECT.md · L1-L2
+# Atelier Nacre — préparation périodique et saisies explicites
+<!-- odoo-agents:relevé fin -->
+
+## decisions/current.md · L1-L3
+# Décision confirmée
+
+Décision N-17 confirmée : ce modèle synthétique de préparation N'EST PAS stock.picking. _cron_prepare ne traite que les drafts ; il affecte prepared_qty=max(ordered_qty-delivered_qty,0) UNIQUEMENT lorsque manual=False. Toute saisie manuelle, y compris zéro, est conservée à l'identique ; les done sont figés. action_set_manual(qty) enregistre qty et manual=True (zéro valide). Une duplication copy() représente une nouvelle demande : elle conserve ordered_qty mais réinitialise delivered_qty=0, prepared_qty=0, manual=False et state=draft. action_remainder(), singleton, crée si le reste est positif un nouveau draft dont ordered_qty=ordered_qty-delivered_qty, delivered_qty=0, prepared_qty=0, manual=False et parent_id pointe sur la source ; elle passe la source done sans écraser sa prepared_qty. Si aucun reste positif, elle retourne un recordset vide sans créer de ligne. Rejouer le cron est idempotent. La reprise autorisée recalcule seulement les préparations automatiques draft existantes, sans toucher aux saisies ni aux done. Aucun autre comportement à inventer.
+
+## .odoo-agents/JOURNAL.md · L3-L5
+## 2026-09-14 — Ancienne QA
+**Fait** : tests de création simples verts ; ni données historiques, ni sélection mixte.
+**Reste ouvert** : demande actuelle et reprise.
+
+Index des sections non incluses — ouvrir les lignes indiquées ; détails et empreintes dans le JSON :
+- .odoo-agents/JOURNAL.md : L1-L2
+- .odoo-agents/PROJECT.md : L5-L6
+
+Le budget porte sur la mémoire sélectionnée ; série, état et leçons sont ajoutés séparément.
+
+## Leçons du dispositif applicables en 19.0 (LESSONS.md)
+
+- **L1 — La série d'un module n'est jamais supposée, elle est lue** [universelle] — avant de lire ou d'écrire une ligne, établir la série cible du module et n'appliquer que les règles de cette série.
+- **L2 — « Odoo 19 » ne désigne pas une seule version** [hébergement Odoo Online / SaaS — voir `PLATEFORMES.md`] — pour un projet Odoo Online / SaaS, viser la dernière `saas~19.x`, pas la 19.0 ; vérifier la forme de la sécurité dans les sources de **la** série visée.
+- **L3 — Un contrôle qui se trompe de série est pire que pas de contrôle** [universelle] — tout motif ajouté à `odoo_lint.py` porte sa portée (`since` / `before`) et est vérifié par comptage dans les sources des deux séries concernées avant d'être considéré comme vrai.
+- **L4 — Une option qui n'existe pas est ignorée sans erreur** [universelle] — vérifier toute option Odoo dans les sources de la série avant de la lancer, et ne jamais détruire avant d'avoir prouvé que la réparation marche.
+- **L5 — Reproduire dans l'outil du système cible, jamais dans le sien** [universelle] — reproduire avec l'outil du système cible ; quand un test contredit une preuve prise sur ce système, suspecter le test avant de se rétracter.
+- **L6 — Un relevé qui avale les sources vendorisées fabrique de la dette imaginaire** [universelle] — un relevé ne recense que le code dont le projet est responsable ; toute copie de sources Odoo en est écartée, et le nombre d'écartés est annoncé pour que l'omission reste visible.

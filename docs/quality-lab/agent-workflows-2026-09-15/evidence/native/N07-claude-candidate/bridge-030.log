@@ -1,0 +1,22 @@
+2026-09-15 22:58:24,548 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:58:24,549 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:58:24,549 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:58:24,549 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:58:24,549 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:58:24,747 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-15 22:58:24,747 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:58:24,768 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:58:24,772 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-15 22:58:24,779 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:58:24,918 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.14s, 0 queries (+0 extra) 
+2026-09-15 22:58:24,954 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-15 22:58:24,967 1 INFO lab_client odoo.registry: Registry loaded in 0.220s 
+2026-09-15 22:58:25,003 1 INFO lab_client odoo.addons.base.models.ir_cron: Job 'Atelier Nacre : préparation périodique' (3) starting 
+2026-09-15 22:58:25,054 1 INFO lab_client odoo.addons.base.models.ir_cron: Job 'Atelier Nacre : préparation périodique' (3) fully done (#loop 1; done 0; remaining 0; duration 0.05s) 
+2026-09-15 22:58:25,061 1 INFO lab_client odoo.addons.base.models.ir_cron: Job 'Atelier Nacre : préparation périodique' (3) starting 
+2026-09-15 22:58:25,081 1 INFO lab_client odoo.addons.base.models.ir_cron: Job 'Atelier Nacre : préparation périodique' (3) fully done (#loop 1; done 0; remaining 0; duration 0.02s) 
+cron : Atelier Nacre : préparation périodique | modèle=lab.preparation | état=code | actif=True | 1 days | code=model._cron_prepare()
+avant     = {1: ('draft', 10.0, 3.0, 7.0, False), 2: ('draft', 10.0, 0.0, 0.0, True), 3: ('draft', 10.0, 3.0, 2.0, True), 4: ('done', 10.0, 4.0, 88.0, False)}
+1er essai = {1: ('draft', 10.0, 3.0, 7.0, False), 2: ('draft', 10.0, 0.0, 0.0, True), 3: ('draft', 10.0, 3.0, 2.0, True), 4: ('done', 10.0, 4.0, 88.0, False)}
+2e essai  = {1: ('draft', 10.0, 3.0, 7.0, False), 2: ('draft', 10.0, 0.0, 0.0, True), 3: ('draft', 10.0, 3.0, 2.0, True), 4: ('done', 10.0, 4.0, 88.0, False)}
+IDEMPOTENT = True

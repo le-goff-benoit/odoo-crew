@@ -1,0 +1,68 @@
+{
+  "schema": 1,
+  "release": "2026-09-15_01_repair",
+  "created_at": "2026-09-15T22:39:39.790386+00:00",
+  "updated_at": "2026-09-15T22:39:39.834674+00:00",
+  "tasks": {
+    "N17": "Correction et reprise N-17 — travail restant"
+  },
+  "estimates": [
+    {
+      "revision": 1,
+      "at": "2026-09-15T22:39:39.834661+00:00",
+      "reason": "estimation initiale",
+      "lines": [
+        {
+          "task": "N17",
+          "title": "Correction et reprise N-17 — travail restant",
+          "agent": "odoo-developer",
+          "optimistic_minutes": 4.0,
+          "likely_minutes": 8.0,
+          "pessimistic_minutes": 14.0,
+          "expected_minutes": 8.333333333333334,
+          "assumptions": [
+            "Copie synthétique disponible",
+            "Trace native indisponible ; aucune mesure inventée"
+          ],
+          "basis": "Jugement initial, sans historique comparable",
+          "confidence": "low",
+          "contract_sha256": "d7b2ecd748964e788402a6b742f72bc934e42d20970ab1ae81e8aaa8dd52a156"
+        },
+        {
+          "task": "N17",
+          "title": "Correction et reprise N-17 — travail restant",
+          "agent": "odoo-tester",
+          "optimistic_minutes": 4.0,
+          "likely_minutes": 7.0,
+          "pessimistic_minutes": 12.0,
+          "expected_minutes": 7.333333333333333,
+          "assumptions": [
+            "Copie synthétique disponible",
+            "Trace native indisponible ; aucune mesure inventée"
+          ],
+          "basis": "Jugement initial, sans historique comparable",
+          "confidence": "low",
+          "contract_sha256": "d7b2ecd748964e788402a6b742f72bc934e42d20970ab1ae81e8aaa8dd52a156"
+        },
+        {
+          "task": "N17",
+          "title": "Correction et reprise N-17 — travail restant",
+          "agent": "orchestrateur",
+          "optimistic_minutes": 2.0,
+          "likely_minutes": 4.0,
+          "pessimistic_minutes": 7.0,
+          "expected_minutes": 4.166666666666667,
+          "assumptions": [
+            "Copie synthétique disponible",
+            "Trace native indisponible ; aucune mesure inventée"
+          ],
+          "basis": "Jugement initial, sans historique comparable",
+          "confidence": "low",
+          "contract_sha256": "d7b2ecd748964e788402a6b742f72bc934e42d20970ab1ae81e8aaa8dd52a156"
+        }
+      ]
+    }
+  ],
+  "entries": [],
+  "rate_cards": []
+}

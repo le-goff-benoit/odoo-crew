@@ -1,0 +1,1093 @@
+[
+  {
+    "args": [
+      "shell",
+      "tools_inventaire.py"
+    ],
+    "seconds": 1.2,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "2cf87bae9833490f3bcd5cf0f516f1105300d8c267c3e08b36036411e4659233",
+    "project_sha256": "330ff036fe86951bcb5ef888acc9031ec67159b4118089d9053ce3dba9f933a4",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "d7f7d4dc60e071ea3b23327d06777a9ca255979d63012899ef4dcc44dee7dfa2",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "d7f7d4dc60e071ea3b23327d06777a9ca255979d63012899ef4dcc44dee7dfa2",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4"
+    }
+  },
+  {
+    "args": [
+      "lint",
+      "lab_preparation"
+    ],
+    "seconds": 1.02,
+    "exit_code": 1,
+    "log": "bridge-001.log",
+    "sha256": "dfa5ca84f9ef9d7afdcdc2700bde5346535b58798c9c9bb91f70bf644252238d",
+    "project_sha256": "330ff036fe86951bcb5ef888acc9031ec67159b4118089d9053ce3dba9f933a4",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "d7f7d4dc60e071ea3b23327d06777a9ca255979d63012899ef4dcc44dee7dfa2",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "d7f7d4dc60e071ea3b23327d06777a9ca255979d63012899ef4dcc44dee7dfa2",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4"
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_preparation",
+      "--quick",
+      "--tags",
+      "/lab_preparation"
+    ],
+    "seconds": 17.07,
+    "exit_code": 1,
+    "log": "bridge-002.log",
+    "sha256": "61c82eda1fe2520c1781868ea58c5f2fc551f619af5cde5d8d5fc4077ea7b127",
+    "project_sha256": "e0e6e3a7e39e15e1225a4bd9e2a42cc2301482dd6d84b9e823565dcb8e88d024",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "d7f7d4dc60e071ea3b23327d06777a9ca255979d63012899ef4dcc44dee7dfa2",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "d7f7d4dc60e071ea3b23327d06777a9ca255979d63012899ef4dcc44dee7dfa2",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 21,
+      "summaries": [
+        {
+          "failed": 11,
+          "errors": 1,
+          "tests": 13
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_preparation",
+      "--quick",
+      "--tags",
+      "/lab_preparation"
+    ],
+    "seconds": 6.2,
+    "exit_code": 0,
+    "log": "bridge-003.log",
+    "sha256": "f55fea85d9d6b3a537e9b3f4d51256312335a63805c5fd957af10de21e1c9907",
+    "project_sha256": "90e6c522593d8e9ec24428524b9dbd197f127205b37c87704300d5f1ada22ab5",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 21,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 13
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "lint",
+      "lab_preparation"
+    ],
+    "seconds": 1.07,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "9cf2086fd3997baa8b733e97bc549a7cfd1de4a496e066d3bd80ee0400528325",
+    "project_sha256": "8ce3b2f0c4122015ab6713d25746360691d87d17f2d73d69d5a943434c97a3f3",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "tools_inventaire.py"
+    ],
+    "seconds": 1.2,
+    "exit_code": 0,
+    "log": "bridge-005.log",
+    "sha256": "e28a4705023d8789e5cd1bfda66117c8958c5330611952f9b785ba77b280de49",
+    "project_sha256": "9e5fcbcc5d36a0f20c5dd9f6a3b30e3148ea2c923b1c4eccd089fed9fecf5414",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 4.99,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "c030af60e078872b1cc60a4dcc65f1f15a0baa01437237aad3500f22a39549bd",
+    "project_sha256": "8ba1d98fef9f9414797909b58565e534a57339abffa33ca8939e8b851eb0ca85",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 5.61,
+    "exit_code": 0,
+    "log": "bridge-007.log",
+    "sha256": "3af9cdd57bb39a451ea6aa13dfd3149b450438837adbaebb49c3985154412c76",
+    "project_sha256": "b6ed7d5ebd49d7ec2da3025cd18c0e2c17ce0c368ecfdd92bdc3682019a82105",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "tools_inventaire.py"
+    ],
+    "seconds": 1.23,
+    "exit_code": 0,
+    "log": "bridge-008.log",
+    "sha256": "07ca85c7e72e831ae15c19cf79cd73ce843aebf2ef26173fa6540fff17769ac1",
+    "project_sha256": "0b1968c495b7eb25430ca4518b02e9583eb848735a91bdf0665ac7e27049cba5",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "tools_rearme_reprise.py"
+    ],
+    "seconds": 1.58,
+    "exit_code": 0,
+    "log": "bridge-009.log",
+    "sha256": "188b2b24ed32c1dd3e46ca7b87e5d624832ce21df140fda2bccd0ef3edbd4ef3",
+    "project_sha256": "b6c37acb98d65543ddc6d90c46b0de78568b8bdde63d2257d76bcdd19081e5ed",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 5.48,
+    "exit_code": 0,
+    "log": "bridge-010.log",
+    "sha256": "2c6777926e5644c1928cc7269bf1ca36ca89bee583d877ab770c94fa6abfa06c",
+    "project_sha256": "9f3da13417a82f32d250c0c043f290700707c65034fdebbb558bd8641decd639",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "tools_inventaire.py"
+    ],
+    "seconds": 1.24,
+    "exit_code": 0,
+    "log": "bridge-011.log",
+    "sha256": "a8ec39455d11a647e3cacf9dabb75c042b3f04d5b68c64a149715ca2f95295cb",
+    "project_sha256": "638ac3a075ea05c7a05796d719d16b2bb844dbcc08dbf2e3441f61c4f161fb35",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c3_create.json"
+    ],
+    "seconds": 2.38,
+    "exit_code": 0,
+    "log": "bridge-012.log",
+    "sha256": "17cc12894661915a12fa74a7abe5202511fc25eb15c3f08a11910cd35e787b4f",
+    "project_sha256": "44a686a5a00ed0489f521c9ff75e8fc27a9824cf1384d001586927565cd85842",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c3_set_manual.json"
+    ],
+    "seconds": 2.37,
+    "exit_code": 1,
+    "log": "bridge-013.log",
+    "sha256": "963570b2588afe24a9ae60dc21e1d85e13d24f41da8b53759eeea252e3b56cfc",
+    "project_sha256": "68fbc5a7f9e656f204cc5dde2c614eff4344adcd6b2ddbc30dfd2a469c551a6d",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c3_create.json"
+    ],
+    "seconds": 2.47,
+    "exit_code": 0,
+    "log": "bridge-014.log",
+    "sha256": "0c78246860aa5a5a31fbec70601f0f273dd8b4b04821314b0f57f8438296ba27",
+    "project_sha256": "22437a1983d8317e3e766622a6922c1898ae90b85b0e8908c6ac2f5eeffb9738",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c3_set_manual.json"
+    ],
+    "seconds": 2.44,
+    "exit_code": 0,
+    "log": "bridge-015.log",
+    "sha256": "0be694460085656f05bf98a51c2e1aeacae073ef0282af69cb81ce8c1846633c",
+    "project_sha256": "83e75540e38c2ea334bfe947c7367626a3fa14898a81f319b3fa5b36696cee65",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c3_read.json"
+    ],
+    "seconds": 2.43,
+    "exit_code": 0,
+    "log": "bridge-016.log",
+    "sha256": "3200c251e6fd0c19ebaa3bccb994a0b054beac3a3d4409e886c7f78d05db2541",
+    "project_sha256": "1934372cdc6b27a979ba36202b0cc551b169d9db8d1865f56ea64aa6c05182c8",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c7_create.json"
+    ],
+    "seconds": 2.42,
+    "exit_code": 0,
+    "log": "bridge-017.log",
+    "sha256": "aa649d853b7a0e19cf45a08f73942a43b6459353cfa0307088396df892dd6b44",
+    "project_sha256": "ba4ca70a22ad084f2c25cdc773b6fd60fa636337d36d99b8fb223c4407d4228b",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c7_copy.json"
+    ],
+    "seconds": 2.4,
+    "exit_code": 0,
+    "log": "bridge-018.log",
+    "sha256": "750f25add9685145d6b357bdf1226ad8b718b2def569dc2a1cd71d7e29adc71b",
+    "project_sha256": "c8be45a47da7756e4d873ce605b02631b25eb7d445dedfc020e43a7a0e623137",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c7_read.json"
+    ],
+    "seconds": 2.4,
+    "exit_code": 0,
+    "log": "bridge-019.log",
+    "sha256": "78995dc9d44773daa24b8a64529a250e6aab808961b891234cf82825aeeff278",
+    "project_sha256": "bf583cdfa5b1ae1ef4fe176bbdf0da6e02614459f4ed8c57bac6ae1803790a0d",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c8_create.json"
+    ],
+    "seconds": 2.36,
+    "exit_code": 0,
+    "log": "bridge-020.log",
+    "sha256": "8ebfb7c3a82d83544e6081422bce3887277da9c2e91424654fd1f075eaefa97f",
+    "project_sha256": "807d7870e483e7e8d669ed7f53aa7ab4b5c93be8adea22d1f3e234d29f670b1c",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c8_remainder.json"
+    ],
+    "seconds": 2.46,
+    "exit_code": 0,
+    "log": "bridge-021.log",
+    "sha256": "866682f92fdf401f44a79ea3f57106f9f39a6200086c2930e284eda21a60b077",
+    "project_sha256": "e471e569c8fc1306fcb98ab6fa5ee2b0fadc664ccde053693df3ea5f6f6c0e05",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c8_read.json"
+    ],
+    "seconds": 2.4,
+    "exit_code": 0,
+    "log": "bridge-022.log",
+    "sha256": "2556baa73379a29ecaad2a090da449288cba5ce4224913432583cdf655fa9536",
+    "project_sha256": "2cef035076ed95920a4918cf40550c7d01a57a878111a3540bafd9f1c0433f29",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c9_create.json"
+    ],
+    "seconds": 2.4,
+    "exit_code": 0,
+    "log": "bridge-023.log",
+    "sha256": "8ee2bd784253efae33181c5b4b74b6ec427f3d40684de801f06c70171a9730c0",
+    "project_sha256": "ba7c5098de34e23bbebb19e25e93d0e7b537b401392d910aaa8b657d7aab4f19",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c9_remainder.json"
+    ],
+    "seconds": 2.41,
+    "exit_code": 0,
+    "log": "bridge-024.log",
+    "sha256": "30cf56b5d6b19d7ad615bd1fa59508de593020f3630ed75336c683d432bf062f",
+    "project_sha256": "1c3112b3b18eabd8f3df8821a3eb586448dc0a6da7ad39fff49a8ac3c4903c7a",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c9_read.json"
+    ],
+    "seconds": 2.44,
+    "exit_code": 0,
+    "log": "bridge-025.log",
+    "sha256": "1e758dafa039758229da32fcf85801ce37744cd4458fbd9db9063d51291f51ae",
+    "project_sha256": "f2f445488156a2da117e0a389a3d618f4c5e75bef0ad5972fddc198f6e851822",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c10_create.json"
+    ],
+    "seconds": 2.37,
+    "exit_code": 0,
+    "log": "bridge-026.log",
+    "sha256": "fb1e3713f4d50dcf5695e54fdbd77b54f54d8b7af17d4f9b2134b729d9907533",
+    "project_sha256": "abe41ddaf256d876ae4b56b67595099eb3a38e8c4b5a809abe65febaf642a1cd",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "rpc",
+      "rpc_cas/c10_remainder.json"
+    ],
+    "seconds": 2.46,
+    "exit_code": 1,
+    "log": "bridge-027.log",
+    "sha256": "8b3b6034f5239bd08600307db321b1e89f8fd8875d827e76d9f2ac278a90a586",
+    "project_sha256": "828f84d3a5565a0d4c471fdf5450e7ae42703234c49fb4ed6769071162cfe91d",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "tools_nettoyage.py"
+    ],
+    "seconds": 1.31,
+    "exit_code": 0,
+    "log": "bridge-028.log",
+    "sha256": "2a8794cb2df14f059a9bbd35daa4a69686c459751d4e58553ac1fae9be6ce39b",
+    "project_sha256": "fdbf054970d05163b70ce510f02026657aaf55d350418aa0d86985c0e5719ba3",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "tools_inventaire.py"
+    ],
+    "seconds": 1.27,
+    "exit_code": 0,
+    "log": "bridge-029.log",
+    "sha256": "e87de2068cc446a4c68487f8b5f275398d8d1ebec7d1eaa33812b6dc362fd883",
+    "project_sha256": "e67144b4400179ed22ed25ac99a6c794273ee85ffb1527fc68b410886e18acca",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "tools_cron_reel.py"
+    ],
+    "seconds": 1.4,
+    "exit_code": 0,
+    "log": "bridge-030.log",
+    "sha256": "34cd917957b6207a013706d5987183f2be6b04ed78422979310adcb2febd0e23",
+    "project_sha256": "43ed58b235506d36b453d2982b304f6e570ad3fb7f99c8beb268f01620e379b8",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "data/ir_cron_data.xml": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "migrations/19.0.1.1.0/post-migrate.py": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "tests/__init__.py": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "tests/common.py": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "tests/test_preparation.py": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd"
+    }
+  }
+]

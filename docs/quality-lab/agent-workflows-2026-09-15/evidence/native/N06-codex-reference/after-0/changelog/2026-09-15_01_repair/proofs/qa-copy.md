@@ -1,0 +1,7 @@
+# QA copie — B-42, lab_client uniquement
+
+Inventaire préalable complet `inventory.log` / `baseline.json`, société initiale 1, IDs 1 à 4 et 8 lignes. `update.log` : mise à jour réelle du module déjà installé, code retour 0, chargement des règles et du registre réussi.
+`repair_local.py` est une reprise locale bornée à lab_client, société 1, IDs historiques 1/2. Utilisateur 5 interne, non administrateur et non sudo, accès à deux sociétés, société active 1. Photographie des enregistrements et lignes ; AccessError exact sous utilisateur limité 6 sur ID 4, suivi d'assertion d'absence de mutation. Reprise puis commit explicite.
+`repair-first.log` : seuls 1/2 changés ; séquence/total 100/20 et 200/15, références DRAFT-A/B conservées. ID 3 conserve state issued, 17/555, ISSUED/005 et write_date. ID 4 conserve 80/666 et tous ses champs. Toutes les lignes intactes, tous les autres champs des brouillons inchangés sauf les métadonnées attendues d'écriture.
+`repair-second.log` : nouveau shell, nouvelle transaction après commit, aucun ID changé, valeurs/write_date stables. Rejeu instrumenté : zéro appel write. `replay-comparison.json` compare automatiquement première sortie/après = seconde entrée/avant = seconde sortie/après pour les quatre enregistrements.
+Deux commits locaux réussis. Aucun test/donnée temporaire créé dans cette copie ; les fixtures QA restent dans lab_qa. Aucun accès distant. Pas de restauration récente nécessaire : copie synthétique fournie au départ par LAB.md.

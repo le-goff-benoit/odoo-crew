@@ -1,0 +1,895 @@
+{
+  "created_at": "2026-09-15T22:06:07.808081+00:00",
+  "protocol": {
+    "schema": 1,
+    "question": "Améliorer la réception complète et son délai sur des correctifs Odoo avec données existantes, sans masquer les reprises.",
+    "baseline": "284379f4c1d120e2462625ee3878ba5fbb0da5f8",
+    "max_native_calls": 8,
+    "timeout_per_call_seconds": 900,
+    "max_parallel_trials": 2,
+    "config": {
+      "codex": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "claude": {
+        "model": "opus",
+        "effort": "medium",
+        "delegate": false
+      }
+    },
+    "cases": [
+      "N06",
+      "N07"
+    ],
+    "holdout": "N07: aucun résultat natif consulté avant gel du candidat",
+    "order": "N06 référence des deux fournisseurs ; correction après examen ; N06 candidat ; N07 référence/candidat contrebalancés par fournisseur",
+    "calibration": "Chaque oracle reçoit un témoin correct et des mutants avant appels ; corpus et runner figés par empreinte au lancement.",
+    "rework": "Aucune correction cachée des productions ; tout retour/reprise compte comme appel. Si une reprise ne rentre pas dans ce plafond, elle reste non mesurée.",
+    "metrics": [
+      "setup_seconds",
+      "agent_seconds",
+      "tool_calls",
+      "bridge_calls",
+      "oracle_seconds",
+      "elapsed_to_oracle_seconds",
+      "runtime_gate",
+      "semantic_review",
+      "rework_count",
+      "time_to_accepted_receipt_seconds"
+    ],
+    "acceptance": "Oracle indépendant vert, lint et QA exécutés sur code final, mise à niveau de copie existante, décisions et mémoire exactes, contrôle sémantique. Terminaison fournisseur seule insuffisante.",
+    "adoption": "Aucune promotion de modèle. Instruction candidate adoptée seulement avec défaut reproduit puis corrigé et contre-épreuve ; sinon expérimentale/rejetée. Une seule observation par paire ne prouve pas un gain général.",
+    "incidents": "Transport, quota, timeout, oracle ou préparation séparés des défauts métier ; conserver tous les artefacts.",
+    "scope": "Modèles ORM synthétiques Odoo 19 ; aucun projet client, production, vrai stock.picking ou PDF dans N06/N07. Extension PDF W03 séparée sur 18/19 sans LLM.",
+    "ci_model_calls": false
+  },
+  "reference": "284379f4c1d120e2462625ee3878ba5fbb0da5f8",
+  "phases": {
+    "baseline": "completed",
+    "candidate": "completed"
+  },
+  "trials": {
+    "N06-codex-reference": {
+      "case": "N06",
+      "provider": "codex",
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "executed",
+      "started_at": "2026-09-15T22:06:07.814370+00:00",
+      "turns": [
+        {
+          "status": "completed",
+          "exit_code": 0,
+          "seconds": 633.49,
+          "usage": {
+            "input_tokens": 1600284,
+            "cached_input_tokens": 1508864,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 18181,
+            "reasoning_output_tokens": 1682
+          },
+          "actual_model": null,
+          "tool_calls": 42,
+          "actual_effort": null,
+          "provider_completed": true,
+          "error": null,
+          "delegation": {
+            "supported": false
+          },
+          "answer_sha256": "75108a9af38ac20a8b7d1e3d2185068d1f562c6b23ce82da7b58f42aec13058f"
+        }
+      ],
+      "setup_seconds": 32.358,
+      "active_turn": 0,
+      "oracle": {
+        "exit_code": 0,
+        "checks": {
+          "legacy_drafts_repaired": true,
+          "emitted_reference_frozen": true,
+          "other_company_untouched": true,
+          "ordinary_user_mixed_selection": true,
+          "scope_remains_local": true,
+          "idempotent": true,
+          "company_rule_still_enforced": true
+        },
+        "passed": true,
+        "log_sha256": "87b9baf665d4b858021d7d5a3f3ba007e034267ad09809ca5c746d6df2cec954",
+        "log": "oracle-000.log"
+      },
+      "oracle_seconds": 1.229,
+      "oracle_finished_at": "2026-09-15T22:17:14.911158+00:00",
+      "elapsed_to_oracle_seconds": 667.097,
+      "agent_seconds": 633.49,
+      "bridge_calls": 7,
+      "reception": {
+        "passed": false,
+        "checks": {
+          "provider_completed": true,
+          "oracle_passed": true,
+          "lint_final_sources": false,
+          "qa_final_sources": true,
+          "update_final_sources": true
+        },
+        "semantic_review": "pending",
+        "time_to_accepted_receipt_seconds": null
+      },
+      "review": null
+    },
+    "N06-claude-reference": {
+      "case": "N06",
+      "provider": "claude",
+      "config": {
+        "model": "opus",
+        "effort": "medium",
+        "delegate": false
+      },
+      "status": "executed",
+      "started_at": "2026-09-15T22:06:07.814223+00:00",
+      "turns": [
+        {
+          "status": "completed",
+          "exit_code": 0,
+          "seconds": 772.17,
+          "usage": {
+            "tokens": {
+              "input_tokens": 160,
+              "cache_creation_input_tokens": 114606,
+              "cache_read_input_tokens": 5641813,
+              "output_tokens": 50584,
+              "output_tokens_details": {
+                "thinking_tokens": 7713
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 114606,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "not_available",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 1147,
+                  "cache_read_input_tokens": 121437,
+                  "cache_creation_input_tokens": 809,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 809
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard"
+            },
+            "cost_usd": 5.233513500000001
+          },
+          "actual_model": "claude-opus-5",
+          "tool_calls": 89,
+          "actual_effort": null,
+          "provider_completed": true,
+          "error": null,
+          "delegation": {
+            "supported": true,
+            "started": 0,
+            "with_progress": 0,
+            "completed": 0,
+            "tasks": {},
+            "provider_summary": {
+              "spawned": 0,
+              "requested": {
+                "background": 0,
+                "foreground": 0,
+                "unset": 0
+              },
+              "started_in_background": 0,
+              "max_depth": 0,
+              "spawned_by_subagents": 0,
+              "completed": 0,
+              "failed": 0,
+              "killed": {
+                "parent": 0,
+                "user": 0,
+                "system": 0
+              },
+              "refused": {
+                "depth_limit": 0,
+                "concurrency_limit": 0,
+                "budget": 0
+              },
+              "by_type": {}
+            }
+          },
+          "answer_sha256": "247747cb1c607fb3aeef13715c4e135753468c5fae07ae471c4bc3ff0af781ac"
+        }
+      ],
+      "setup_seconds": 32.063,
+      "active_turn": 0,
+      "oracle": {
+        "exit_code": 0,
+        "checks": {
+          "legacy_drafts_repaired": true,
+          "emitted_reference_frozen": true,
+          "other_company_untouched": true,
+          "ordinary_user_mixed_selection": true,
+          "scope_remains_local": true,
+          "idempotent": true,
+          "company_rule_still_enforced": true
+        },
+        "passed": true,
+        "log_sha256": "9d47100924d969e1de6ef63c18a53cea00009f7c5669f50de2a74137d0c9070b",
+        "log": "oracle-000.log"
+      },
+      "oracle_seconds": 1.316,
+      "oracle_finished_at": "2026-09-15T22:19:33.374948+00:00",
+      "elapsed_to_oracle_seconds": 805.561,
+      "agent_seconds": 772.17,
+      "bridge_calls": 16,
+      "reception": {
+        "passed": false,
+        "checks": {
+          "provider_completed": true,
+          "oracle_passed": true,
+          "lint_final_sources": false,
+          "qa_final_sources": true,
+          "update_final_sources": true
+        },
+        "semantic_review": "pending",
+        "time_to_accepted_receipt_seconds": null
+      },
+      "review": null
+    },
+    "N06-codex-candidate": {
+      "case": "N06",
+      "provider": "codex",
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "executed",
+      "started_at": "2026-09-15T22:26:11.616179+00:00",
+      "turns": [
+        {
+          "status": "completed",
+          "exit_code": 0,
+          "seconds": 692.7,
+          "usage": {
+            "input_tokens": 2646395,
+            "cached_input_tokens": 2543744,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 20093,
+            "reasoning_output_tokens": 1806
+          },
+          "actual_model": null,
+          "tool_calls": 47,
+          "actual_effort": null,
+          "provider_completed": true,
+          "error": null,
+          "delegation": {
+            "supported": false
+          },
+          "answer_sha256": "0d9d4c987c94ddfe36ce889867b92c81e7a961b88112df02033b2c16fbe2c3ee"
+        }
+      ],
+      "setup_seconds": 31.829,
+      "active_turn": 0,
+      "oracle": {
+        "exit_code": 0,
+        "checks": {
+          "legacy_drafts_repaired": true,
+          "emitted_reference_frozen": true,
+          "other_company_untouched": true,
+          "ordinary_user_mixed_selection": true,
+          "scope_remains_local": true,
+          "idempotent": true,
+          "company_rule_still_enforced": true
+        },
+        "passed": true,
+        "log_sha256": "34aaf2253092585a831b69d100a44a5aa479dd26234241496b88e5bb7c5effbb",
+        "log": "oracle-000.log"
+      },
+      "oracle_seconds": 1.333,
+      "oracle_finished_at": "2026-09-15T22:38:17.498324+00:00",
+      "elapsed_to_oracle_seconds": 725.882,
+      "agent_seconds": 692.7,
+      "bridge_calls": 10,
+      "reception": {
+        "passed": false,
+        "checks": {
+          "provider_completed": true,
+          "oracle_passed": true,
+          "lint_final_sources": false,
+          "qa_final_sources": true,
+          "update_final_sources": true
+        },
+        "semantic_review": "pending",
+        "time_to_accepted_receipt_seconds": null
+      },
+      "review": null
+    },
+    "N06-claude-candidate": {
+      "case": "N06",
+      "provider": "claude",
+      "config": {
+        "model": "opus",
+        "effort": "medium",
+        "delegate": false
+      },
+      "status": "executed",
+      "started_at": "2026-09-15T22:26:11.616793+00:00",
+      "turns": [
+        {
+          "status": "completed",
+          "exit_code": 0,
+          "seconds": 574.37,
+          "usage": {
+            "tokens": {
+              "input_tokens": 118,
+              "cache_creation_input_tokens": 92981,
+              "cache_read_input_tokens": 3405668,
+              "output_tokens": 36294,
+              "output_tokens_details": {
+                "thinking_tokens": 5185
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 92981,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "not_available",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 1685,
+                  "cache_read_input_tokens": 99988,
+                  "cache_creation_input_tokens": 633,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 633
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard"
+            },
+            "cost_usd": 3.5417260000000006
+          },
+          "actual_model": "claude-opus-5",
+          "tool_calls": 58,
+          "actual_effort": null,
+          "provider_completed": true,
+          "error": null,
+          "delegation": {
+            "supported": true,
+            "started": 0,
+            "with_progress": 0,
+            "completed": 0,
+            "tasks": {},
+            "provider_summary": {
+              "spawned": 0,
+              "requested": {
+                "background": 0,
+                "foreground": 0,
+                "unset": 0
+              },
+              "started_in_background": 0,
+              "max_depth": 0,
+              "spawned_by_subagents": 0,
+              "completed": 0,
+              "failed": 0,
+              "killed": {
+                "parent": 0,
+                "user": 0,
+                "system": 0
+              },
+              "refused": {
+                "depth_limit": 0,
+                "concurrency_limit": 0,
+                "budget": 0
+              },
+              "by_type": {}
+            }
+          },
+          "answer_sha256": "56aa216eb50e38fe37cac03fe5149341626fc0e1b20ab2f7b3039681e52116b2"
+        }
+      ],
+      "setup_seconds": 31.89,
+      "active_turn": 0,
+      "oracle": {
+        "exit_code": 0,
+        "checks": {
+          "legacy_drafts_repaired": true,
+          "emitted_reference_frozen": true,
+          "other_company_untouched": true,
+          "ordinary_user_mixed_selection": true,
+          "scope_remains_local": true,
+          "idempotent": true,
+          "company_rule_still_enforced": true
+        },
+        "passed": true,
+        "log_sha256": "b4e0e95dde26f176b7dc0005c8b086ed55e380699e6e2b35a5f649ca266ec507",
+        "log": "oracle-000.log"
+      },
+      "oracle_seconds": 1.378,
+      "oracle_finished_at": "2026-09-15T22:36:19.268177+00:00",
+      "elapsed_to_oracle_seconds": 607.651,
+      "agent_seconds": 574.37,
+      "bridge_calls": 20,
+      "reception": {
+        "passed": false,
+        "checks": {
+          "provider_completed": true,
+          "oracle_passed": true,
+          "lint_final_sources": false,
+          "qa_final_sources": true,
+          "update_final_sources": true
+        },
+        "semantic_review": "pending",
+        "time_to_accepted_receipt_seconds": null
+      },
+      "review": null
+    },
+    "N07-codex-reference": {
+      "case": "N07",
+      "provider": "codex",
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "executed",
+      "started_at": "2026-09-15T22:36:19.652387+00:00",
+      "turns": [
+        {
+          "status": "completed",
+          "exit_code": 0,
+          "seconds": 627.74,
+          "usage": {
+            "input_tokens": 2200262,
+            "cached_input_tokens": 2101504,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 17579,
+            "reasoning_output_tokens": 1057
+          },
+          "actual_model": null,
+          "tool_calls": 57,
+          "actual_effort": null,
+          "provider_completed": true,
+          "error": null,
+          "delegation": {
+            "supported": false
+          },
+          "answer_sha256": "5e6a713faec610e3ca5454912e2ad1db5a322ee3059fbdf1754daa2b2f5cbd51"
+        }
+      ],
+      "setup_seconds": 32.445,
+      "active_turn": 0,
+      "oracle": {
+        "exit_code": 0,
+        "checks": {
+          "legacy_auto_repaired": true,
+          "legacy_explicit_zero_preserved": true,
+          "legacy_partial_preserved": true,
+          "legacy_done_preserved": true,
+          "explicit_zero_not_false": true,
+          "copy_resets_operational_state": true,
+          "copy_then_cron": true,
+          "remainder_contract": true,
+          "remainder_then_cron": true,
+          "no_empty_remainder": true,
+          "negative_remaining_clamped": true,
+          "idempotent_cron": true
+        },
+        "passed": true,
+        "log_sha256": "7a60d258b7a3604bf6955f7e4cf115505336e98dbbcc8ad1475e7f0c64c96aca",
+        "log": "oracle-000.log"
+      },
+      "oracle_seconds": 1.271,
+      "oracle_finished_at": "2026-09-15T22:47:21.134017+00:00",
+      "elapsed_to_oracle_seconds": 661.482,
+      "agent_seconds": 627.74,
+      "bridge_calls": 9,
+      "reception": {
+        "passed": false,
+        "checks": {
+          "provider_completed": true,
+          "oracle_passed": true,
+          "lint_final_sources": false,
+          "qa_final_sources": true,
+          "update_final_sources": true
+        },
+        "semantic_review": "pending",
+        "time_to_accepted_receipt_seconds": null
+      },
+      "review": null
+    },
+    "N07-codex-candidate": {
+      "case": "N07",
+      "provider": "codex",
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "status": "executed",
+      "started_at": "2026-09-15T22:38:18.390671+00:00",
+      "turns": [
+        {
+          "status": "completed",
+          "exit_code": 0,
+          "seconds": 629.7,
+          "usage": {
+            "input_tokens": 1949258,
+            "cached_input_tokens": 1851392,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 18399,
+            "reasoning_output_tokens": 1731
+          },
+          "actual_model": null,
+          "tool_calls": 48,
+          "actual_effort": null,
+          "provider_completed": true,
+          "error": null,
+          "delegation": {
+            "supported": false
+          },
+          "answer_sha256": "b8944686df7db438178142481550913d0e858b63033c8d3ef44c50cb1496a592"
+        }
+      ],
+      "setup_seconds": 34.883,
+      "active_turn": 0,
+      "oracle": {
+        "exit_code": 0,
+        "checks": {
+          "legacy_auto_repaired": true,
+          "legacy_explicit_zero_preserved": true,
+          "legacy_partial_preserved": true,
+          "legacy_done_preserved": true,
+          "explicit_zero_not_false": true,
+          "copy_resets_operational_state": true,
+          "copy_then_cron": true,
+          "remainder_contract": true,
+          "remainder_then_cron": true,
+          "no_empty_remainder": true,
+          "negative_remaining_clamped": true,
+          "idempotent_cron": true
+        },
+        "passed": true,
+        "log_sha256": "e4e8911067bbc14bf3b140b95f7c87e2811cf649c649c98419455d48793975f3",
+        "log": "oracle-000.log"
+      },
+      "oracle_seconds": 1.355,
+      "oracle_finished_at": "2026-09-15T22:49:24.355557+00:00",
+      "elapsed_to_oracle_seconds": 665.965,
+      "agent_seconds": 629.7,
+      "bridge_calls": 7,
+      "reception": {
+        "passed": false,
+        "checks": {
+          "provider_completed": true,
+          "oracle_passed": true,
+          "lint_final_sources": false,
+          "qa_final_sources": true,
+          "update_final_sources": true
+        },
+        "semantic_review": "pending",
+        "time_to_accepted_receipt_seconds": null
+      },
+      "review": null
+    },
+    "N07-claude-candidate": {
+      "case": "N07",
+      "provider": "claude",
+      "config": {
+        "model": "opus",
+        "effort": "medium",
+        "delegate": false
+      },
+      "status": "incident",
+      "started_at": "2026-09-15T22:47:21.630202+00:00",
+      "turns": [
+        {
+          "status": "timeout",
+          "exit_code": -9,
+          "seconds": 900.01,
+          "usage": null,
+          "actual_model": "claude-opus-5",
+          "tool_calls": 98,
+          "actual_effort": null,
+          "provider_completed": false,
+          "error": null,
+          "delegation": {
+            "supported": true,
+            "started": 0,
+            "with_progress": 0,
+            "completed": 0,
+            "tasks": {},
+            "provider_summary": null
+          },
+          "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+        }
+      ],
+      "setup_seconds": 32.27,
+      "active_turn": 0,
+      "oracle": {
+        "exit_code": 0,
+        "checks": {
+          "legacy_auto_repaired": true,
+          "legacy_explicit_zero_preserved": true,
+          "legacy_partial_preserved": true,
+          "legacy_done_preserved": true,
+          "explicit_zero_not_false": true,
+          "copy_resets_operational_state": true,
+          "copy_then_cron": true,
+          "remainder_contract": true,
+          "remainder_then_cron": true,
+          "no_empty_remainder": true,
+          "negative_remaining_clamped": true,
+          "idempotent_cron": true
+        },
+        "passed": true,
+        "log_sha256": "6f7c1f191e0d76c25d37632e63ad71af4dc0e80713e7e1661207278e58d235b6",
+        "log": "oracle-000.log"
+      },
+      "oracle_seconds": 1.239,
+      "oracle_finished_at": "2026-09-15T23:02:55.168086+00:00",
+      "elapsed_to_oracle_seconds": 933.538,
+      "agent_seconds": 900.01,
+      "bridge_calls": 31,
+      "reception": {
+        "passed": false,
+        "checks": {
+          "provider_completed": false,
+          "oracle_passed": true,
+          "lint_final_sources": true,
+          "qa_final_sources": true,
+          "update_final_sources": true
+        },
+        "semantic_review": "pending",
+        "time_to_accepted_receipt_seconds": null
+      },
+      "review": null
+    },
+    "N07-claude-reference": {
+      "case": "N07",
+      "provider": "claude",
+      "config": {
+        "model": "opus",
+        "effort": "medium",
+        "delegate": false
+      },
+      "status": "executed",
+      "started_at": "2026-09-15T22:49:24.758488+00:00",
+      "turns": [
+        {
+          "status": "completed",
+          "exit_code": 0,
+          "seconds": 796.5,
+          "usage": {
+            "tokens": {
+              "input_tokens": 160,
+              "cache_creation_input_tokens": 115079,
+              "cache_read_input_tokens": 5951813,
+              "output_tokens": 49283,
+              "output_tokens_details": {
+                "thinking_tokens": 9036
+              },
+              "server_tool_use": {
+                "web_search_requests": 0,
+                "web_fetch_requests": 0
+              },
+              "service_tier": "standard",
+              "cache_creation": {
+                "ephemeral_1h_input_tokens": 115079,
+                "ephemeral_5m_input_tokens": 0
+              },
+              "inference_geo": "not_available",
+              "iterations": [
+                {
+                  "input_tokens": 2,
+                  "output_tokens": 1672,
+                  "cache_read_input_tokens": 121127,
+                  "cache_creation_input_tokens": 1592,
+                  "cache_creation": {
+                    "ephemeral_5m_input_tokens": 0,
+                    "ephemeral_1h_input_tokens": 1592
+                  },
+                  "type": "message"
+                }
+              ],
+              "speed": "standard"
+            },
+            "cost_usd": 5.3606644999999995
+          },
+          "actual_model": "claude-opus-5",
+          "tool_calls": 87,
+          "actual_effort": null,
+          "provider_completed": true,
+          "error": null,
+          "delegation": {
+            "supported": true,
+            "started": 0,
+            "with_progress": 0,
+            "completed": 0,
+            "tasks": {},
+            "provider_summary": {
+              "spawned": 0,
+              "requested": {
+                "background": 0,
+                "foreground": 0,
+                "unset": 0
+              },
+              "started_in_background": 0,
+              "max_depth": 0,
+              "spawned_by_subagents": 0,
+              "completed": 0,
+              "failed": 0,
+              "killed": {
+                "parent": 0,
+                "user": 0,
+                "system": 0
+              },
+              "refused": {
+                "depth_limit": 0,
+                "concurrency_limit": 0,
+                "budget": 0
+              },
+              "by_type": {}
+            }
+          },
+          "answer_sha256": "40d20f748c4a24d2e54d7d53501812c51a65f9524ae6af66c43f94fac9fbabb1"
+        }
+      ],
+      "setup_seconds": 32.086,
+      "active_turn": 0,
+      "oracle": {
+        "exit_code": 0,
+        "checks": {
+          "legacy_auto_repaired": true,
+          "legacy_explicit_zero_preserved": true,
+          "legacy_partial_preserved": true,
+          "legacy_done_preserved": true,
+          "explicit_zero_not_false": true,
+          "copy_resets_operational_state": true,
+          "copy_then_cron": true,
+          "remainder_contract": true,
+          "remainder_then_cron": true,
+          "no_empty_remainder": true,
+          "negative_remaining_clamped": true,
+          "idempotent_cron": true
+        },
+        "passed": true,
+        "log_sha256": "387d5d228253cfb04920c2545176f6a3269b2f16353e05666ecfb2ea1ee1911d",
+        "log": "oracle-000.log"
+      },
+      "oracle_seconds": 1.259,
+      "oracle_finished_at": "2026-09-15T23:03:14.616063+00:00",
+      "elapsed_to_oracle_seconds": 829.858,
+      "agent_seconds": 796.5,
+      "bridge_calls": 39,
+      "reception": {
+        "passed": false,
+        "checks": {
+          "provider_completed": true,
+          "oracle_passed": true,
+          "lint_final_sources": false,
+          "qa_final_sources": true,
+          "update_final_sources": true
+        },
+        "semantic_review": "pending",
+        "time_to_accepted_receipt_seconds": null
+      },
+      "review": null
+    }
+  },
+  "corpus_hashes": {
+    "cases/N01/case.json": "de4bb4de81f13d0ac84a6f471e6dc8efddae199f5e452cc4993deefa6e47fbf6",
+    "cases/N01/project/.odoo-agents/JOURNAL.md": "22fd4e7efe03b0267ce0cf6f9709f4e6ae4325ab617425ae53a3fcc770977cc2",
+    "cases/N01/project/.odoo-agents/PROJECT.md": "4e824ec0e023ee0b66d78f1b97b8ef3bcec3cd5ccc43ec43cfa4e834e6ee8e0d",
+    "cases/N01/project/.odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+    "cases/N01/project/decisions/2026-09-08.md": "bb2f63985c09f27d7c8ee0905c8b2e4f61e04ebd52ef24dd7eb67e1d5b93b54d",
+    "cases/N01/project/demande.md": "2e327e1632435465f914a10c56c0bf09197426c407fab2ed682af2ff39dcf9ac",
+    "cases/N01/project/lab_rental/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+    "cases/N01/project/lab_rental/__manifest__.py": "5e7900398e39fce48777430bdba33f779ed11406b13f1e46129535bae60dec1f",
+    "cases/N01/project/lab_rental/models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+    "cases/N01/project/lab_rental/models/business.py": "7a5269e82a4ce89491978f1363fcc49099690df7800a4a30685de240a336ace4",
+    "cases/N01/project/lab_rental/security/ir.model.access.csv": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6",
+    "cases/N02/case.json": "28eb2ff8c676a9edd7d7d4cb233824ec4368c3518e0dec6ae075f326bb77a958",
+    "cases/N02/project/.odoo-agents/JOURNAL.md": "655427224b8f43de3aa1a62eef464eb23d3508bcf6dfedb88f5539413021e3b4",
+    "cases/N02/project/.odoo-agents/PROJECT.md": "b86546ed890c9bf3882c5a7c589bb6261c862119fa601acf867c3a83d934f9e0",
+    "cases/N02/project/.odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+    "cases/N02/project/decisions/2026-09-08.md": "18ba37af061018954610d27966fe905c581d9e4d44915d85aead55364cab425c",
+    "cases/N02/project/demande.md": "9a8d8d7065d1602e22dde763afd55e378dc434dba9352727f8c32dcb8c36d970",
+    "cases/N02/project/lab_dispatch/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+    "cases/N02/project/lab_dispatch/__manifest__.py": "15d10346f456fc9f1091f1da7237f52812753e3607dac87dfe4a0a301dbbf1cd",
+    "cases/N02/project/lab_dispatch/models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+    "cases/N02/project/lab_dispatch/models/business.py": "705c54b0a448aa5cdef23f25176699b5c3d9ea3a0bdf12ce991303acf6bf8912",
+    "cases/N02/project/lab_dispatch/security/ir.model.access.csv": "7b0b268f572e338740e60a7bb5cc40ecfb1bb106cccb356ffaaf014c92d3ee90",
+    "cases/N03/case.json": "e9ac6ca8f7edba320df82d247fa9b81f78215a4a783085ce14392c8ec6c87fa0",
+    "cases/N03/project/.odoo-agents/JOURNAL.md": "7b1f07157126aed21f02ecd5a6321e3f8c0b3cdf31456846aa70431503e9625b",
+    "cases/N03/project/.odoo-agents/PROJECT.md": "75e69609c6b01a908b66efcac397370544709d28ed5a29d3a9ba9559addb9dee",
+    "cases/N03/project/.odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+    "cases/N03/project/decisions/2026-09-08.md": "a3f3586292c3e2e7c6fb6e3257f2871c3fb9c4695cb149996eb84e9bc219c2cf",
+    "cases/N03/project/demande.md": "24d789353edb5886464f4aa4867c991a3f58f56383e70fffca6e782fad95dc7f",
+    "cases/N04/case.json": "3122dc20f77f6939efff18a590fad661670fe0255fe60c2ebb42db600b19b07e",
+    "cases/N04/project/.odoo-agents/JOURNAL.md": "881feeed0c11b67ff12d77371f83cde50092fe8f3852b9294e4ef789501fb673",
+    "cases/N04/project/.odoo-agents/PROJECT.md": "f6f6efeddfe014910db47507c58b0f994382de8f712a246a259de31c1203e996",
+    "cases/N04/project/.odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+    "cases/N04/project/decisions/2026-09-08.md": "51e298ea60157466a088a8116cc7dc5404ebb87da0784293005b4bcc120b752b",
+    "cases/N04/project/demande.md": "581abfa49072bf81ec2d0a3e40892a181ba7c0e2a556ae2f6a44369939331496",
+    "cases/N04/project/lab_rental/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+    "cases/N04/project/lab_rental/__manifest__.py": "5e7900398e39fce48777430bdba33f779ed11406b13f1e46129535bae60dec1f",
+    "cases/N04/project/lab_rental/models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+    "cases/N04/project/lab_rental/models/business.py": "7a5269e82a4ce89491978f1363fcc49099690df7800a4a30685de240a336ace4",
+    "cases/N04/project/lab_rental/security/ir.model.access.csv": "96a7acc17a2e0b75e0009de18867c7e050e398dcc396387a57a86c66f8457fc6",
+    "cases/N05/case.json": "3ed95c51e5298dbf07866d96264fcaf0e60e3a2ae8fada46eecb87ce50c90403",
+    "cases/N05/project/.odoo-agents/JOURNAL.md": "655427224b8f43de3aa1a62eef464eb23d3508bcf6dfedb88f5539413021e3b4",
+    "cases/N05/project/.odoo-agents/PROJECT.md": "b86546ed890c9bf3882c5a7c589bb6261c862119fa601acf867c3a83d934f9e0",
+    "cases/N05/project/.odoo-agents/config": "7ef802b2018b2e396110c52550e814afcce3715dec83690ff16b60350b841464",
+    "cases/N05/project/decisions/2026-09-08.md": "18ba37af061018954610d27966fe905c581d9e4d44915d85aead55364cab425c",
+    "cases/N05/project/demande.md": "9a8d8d7065d1602e22dde763afd55e378dc434dba9352727f8c32dcb8c36d970",
+    "cases/N05/project/lab_dispatch/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+    "cases/N05/project/lab_dispatch/__manifest__.py": "15d10346f456fc9f1091f1da7237f52812753e3607dac87dfe4a0a301dbbf1cd",
+    "cases/N05/project/lab_dispatch/models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+    "cases/N05/project/lab_dispatch/models/business.py": "705c54b0a448aa5cdef23f25176699b5c3d9ea3a0bdf12ce991303acf6bf8912",
+    "cases/N05/project/lab_dispatch/security/ir.model.access.csv": "7b0b268f572e338740e60a7bb5cc40ecfb1bb106cccb356ffaaf014c92d3ee90",
+    "cases/N06/case.json": "fd6cfcf2a90f12ffde0d97a4ae0208ee4f9398a72da656a3f81ccc2cc5648585",
+    "cases/N06/project/.odoo-agents/JOURNAL.md": "9f65cffd18d642e5353bafd323d8483603b76935eedf2da5933bba2629d7e226",
+    "cases/N06/project/.odoo-agents/PROJECT.md": "7610fd1042672b279a30d34e42a2ff7f48fe92fd6a2925903ad1da8bf80abbac",
+    "cases/N06/project/.odoo-agents/config": "ab1de544b92aef140bf6dc7287a06320e8dcfbfb330bbe8fc94e9015c36f43e2",
+    "cases/N06/project/changelog/2026-09-15_01_repair/README.md": "ebcc003077da706ac3fa0b5243251c9ef3d816a2fb0a53c1acb38735fe14d37e",
+    "cases/N06/project/changelog/2026-09-15_01_repair/qa.md": "04d81065ea490ab020235fdebddcaa2c31193a99f6ac980d6a1672f90f98f347",
+    "cases/N06/project/decisions/current.md": "1cb5550ecd984f0a3c7493b6d65987d0f4b02cb8c82fd5d1918e4df94cdcb71d",
+    "cases/N06/project/demande.md": "3fcf51d70cf85b9b44791e4b20700f5fc17f2f3199d88d9cc97f4312d28c6d39",
+    "cases/N06/project/lab_register/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+    "cases/N06/project/lab_register/__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+    "cases/N06/project/lab_register/models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+    "cases/N06/project/lab_register/models/business.py": "b24cfe215ce52d95a64fe963125bba0b883ef185f8062c58bf918ba72193bd02",
+    "cases/N06/project/lab_register/security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+    "cases/N06/project/lab_register/security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+    "cases/N07/case.json": "c99691c57d494daa4240c0befdfddadfa7a41eb8a69625ba3cc17c03fe69813b",
+    "cases/N07/project/.odoo-agents/JOURNAL.md": "9f65cffd18d642e5353bafd323d8483603b76935eedf2da5933bba2629d7e226",
+    "cases/N07/project/.odoo-agents/PROJECT.md": "d03c614e16a7bbf65b2b30e6b389fb6780705cb3c40fae29a8d61587a3659cb1",
+    "cases/N07/project/.odoo-agents/config": "ab1de544b92aef140bf6dc7287a06320e8dcfbfb330bbe8fc94e9015c36f43e2",
+    "cases/N07/project/changelog/2026-09-15_01_repair/README.md": "ebcc003077da706ac3fa0b5243251c9ef3d816a2fb0a53c1acb38735fe14d37e",
+    "cases/N07/project/changelog/2026-09-15_01_repair/qa.md": "04d81065ea490ab020235fdebddcaa2c31193a99f6ac980d6a1672f90f98f347",
+    "cases/N07/project/decisions/current.md": "911eaca08fb2276f0bda2ed2d54662fe43349d7d9e55c4be126fda1fc17b792c",
+    "cases/N07/project/demande.md": "19dcf0c5e9891d4e209f4cb087956bfd0322a5645cb3d5bbaa49c298b87e8c87",
+    "cases/N07/project/lab_preparation/__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+    "cases/N07/project/lab_preparation/__manifest__.py": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+    "cases/N07/project/lab_preparation/models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+    "cases/N07/project/lab_preparation/models/business.py": "d7f7d4dc60e071ea3b23327d06777a9ca255979d63012899ef4dcc44dee7dfa2",
+    "cases/N07/project/lab_preparation/security/ir.model.access.csv": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+    "oracles/N01_check.py": "1a801a780805093de207b40de27768a52dc56b39abd938fd7fcca9c98c2df0ad",
+    "oracles/N01_seed.py": "9a131f2665ed879d27ade811fb46aea10df28d828eaeb21cec58895c54a2b59b",
+    "oracles/N02_check.py": "254c39fb72ea58e25f5d7812127ba18d8fb704de586b298ea9f86ff36b499d61",
+    "oracles/N02_seed.py": "aa4e87f3a5f6c31b6aed46fc2cdcdb00ba9919fdb25e8f7bb803410d1bb2e852",
+    "oracles/N03_check.py": "4580171f4667ee2dda8ee5105a92369df2bdbe89ac90efe2bf715b65e9213b0f",
+    "oracles/N03_seed.py": "d451111e9ed0ee7d5b604a6748a9dfbfd2e276f294b56b8b108333fbcb682c32",
+    "oracles/N04_check.py": "87448f4b5fe1dfc441e700508b36f5446141646c0a75355993e762c18a0c3792",
+    "oracles/N04_seed.py": "9a131f2665ed879d27ade811fb46aea10df28d828eaeb21cec58895c54a2b59b",
+    "oracles/N05_check.py": "65f8d1d2ff5273134b93db9b304a445b7119d1affecdaa0cf9400ec89aeb5597",
+    "oracles/N05_seed.py": "a0fb181c063882958119cca01df57ad3f357188862519765b56e32665697c507",
+    "oracles/N06_calibrate.py": "70a0d9e89939c405e0d3c14eef8626c41f52955076293395f69f3bafe5665319",
+    "oracles/N06_check.py": "be7c6c9eeff07e9e272cbb91cf56c9be030a73fe76c6035631ef926cc905c706",
+    "oracles/N06_reference.py": "3b3c3123ad3620718b45f4030798600f294fac6d1a9fad7f91706387403200cb",
+    "oracles/N06_seed.py": "5146ab3b59880a760887f70f0e02cda98e8b708e2ecca44ef6a590d2902232b6",
+    "oracles/N07_check.py": "a5709c94e2d8fefb720c07cf7c19be43781ed1771054533bebe9b06afba6b642",
+    "oracles/N07_reference.py": "4a0d80edb3417e9461831b03ed6e9647043230ff24ada04aabb05260205d2283",
+    "oracles/N07_seed.py": "3af600c097786cce5206566fa1e2359be10b4d188007d951780c93aba8f11e82"
+  },
+  "runner_hashes": {
+    "odoo_bench_agent_workflows.py": "8b290958b5cb77aabc2c840a455ffd73e83500aaf223e2b1a4381190db96b583",
+    "odoo_bench_native.py": "c5287ad34ae9e354c3482c48d9cb599ebbbbb764527c18d8e128de2dd3cd39ed",
+    "odoo_bench.py": "b756ca71a7c0110e06d230460585a57a31518a92b8d7f1b72b49364697b37816",
+    "odoo_test_result.py": "60e88262902b77d5c7882b45dd824a66a97aa6df04fec1845c3e7a65c25a36f1"
+  },
+  "candidate": "015e8a34861bf82b52298468b1170cbee93f445f"
+}

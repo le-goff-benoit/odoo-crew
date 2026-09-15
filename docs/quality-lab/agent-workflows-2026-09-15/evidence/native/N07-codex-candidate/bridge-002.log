@@ -1,0 +1,72 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-04e8709ee2-db-1  Running
+
+══ 1. QA de tâche : -u lab_preparation + tests (/lab_preparation:TestPreparation) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-15 22:43:12,415 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:43:12,415 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-15 22:43:12,415 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:43:12,416 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:43:12,416 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:43:12,416 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:43:12,632 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 170aa51a9fbc:8069 
+2026-09-15 22:43:12,647 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-15 22:43:12,679 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:43:12,685 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-15 22:43:12,719 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-15 22:43:12,721 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-15 22:43:14,972 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:43:14,973 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:43:15,911 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Atelier Nacre — préparation périodique et saisies explicites'] to user __system__ #1 via n/a 
+2026-09-15 22:43:15,911 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Atelier Nacre — préparation périodique et saisies explicites'] to user __system__ #1 via n/a 
+2026-09-15 22:43:17,608 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:43:17,939 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-15 22:43:17,965 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:43:17,965 1 INFO lab_qa odoo.modules.loading: Loading module lab_preparation (2/21) 
+2026-09-15 22:43:17,970 1 INFO lab_qa odoo.registry: module lab_preparation: creating or updating database tables 
+2026-09-15 22:43:17,994 1 INFO lab_qa odoo.modules.loading: loading lab_preparation/security/ir.model.access.csv 
+2026-09-15 22:43:18,006 1 INFO lab_qa odoo.modules.loading: Module lab_preparation loaded in 0.04s, 44 queries (+44 other) 
+2026-09-15 22:43:18,143 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.18s, 44 queries (+44 extra) 
+2026-09-15 22:43:18,220 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-15 22:43:18,303 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-15 22:43:18,307 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-15 22:43:18,307 1 INFO lab_qa odoo.registry: Registry loaded in 5.674s 
+2026-09-15 22:43:18,307 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-15 22:43:18,308 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparation.test_cron_mixed_cohort_and_replay ... 
+2026-09-15 22:43:18,312 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparation.test_cron_nonpositive_and_fractional_remaining ... 
+2026-09-15 22:43:18,314 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparation.test_duplicate_then_cron ... 
+2026-09-15 22:43:18,319 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparation.test_manual_nonzero_then_cron ... 
+2026-09-15 22:43:18,321 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparation.test_manual_zero_then_cron ... 
+2026-09-15 22:43:18,322 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparation.test_remainder_fractional ... 
+2026-09-15 22:43:18,325 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparation.test_remainder_nonpositive ... 
+2026-09-15 22:43:18,326 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparation.test_remainder_requires_singleton ... 
+2026-09-15 22:43:18,328 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparation.test_remainder_then_cron ... 
+2026-09-15 22:43:18,335 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-15 22:43:18,336 1 INFO lab_qa odoo.service.server: 9 post-tests in 0.03s, 119 queries 
+2026-09-15 22:43:18,336 1 INFO lab_qa odoo.tests.stats: lab_preparation: 11 tests 0.03s 119 queries 
+2026-09-15 22:43:18,336 1 INFO lab_qa odoo.tests.result: 0 failed, 0 error(s) of 9 tests when loading database 'lab_qa' 
+2026-09-15 22:43:18,336 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-15 22:43:18,336 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:43:18,669 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+{"valid": true, "reasons": [], "module_tests": 11, "summaries": [{"failed": 0, "errors": 0, "tests": 9}]}
+✅ -u + tests OK
+   ⏱ 8s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 0
+tests échoués  : 0
+tests ignorés  : 0
+WARNING liés à lab_preparation : 3
+
+── avertissements liés au module (à traiter) ──
+2026-09-15 22:43:14,972 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:43:14,973 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:43:17,608 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": true, "reasons": [], "module_tests": 11, "summaries": [{"failed": 0, "errors": 0, "tests": 9}]}
+RECETTE module=lab_preparation db=lab_qa install=ok update=ok uninstall=n.a. tests="0 failed, 0 error(s) of 9 tests" errors=0 failed=0 skipped=0 warnings=3 total=9s quick=8s
+
+Log complet   : /tmp/crew-agent-workflows-20260916-v2/N07-codex-candidate/backend/stack/artifacts/lab_preparation-20260916-004310.iop9qt.log
+Captures      : /tmp/crew-agent-workflows-20260916-v2/N07-codex-candidate/backend/stack/artifacts/
+✅ lab_preparation : installation, tests et logs propres

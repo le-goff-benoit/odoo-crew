@@ -1,0 +1,73 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/work",
+  "scopes": [
+    "lab_preparation"
+  ],
+  "sources": {
+    "lab_preparation/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 420
+    },
+    "lab_preparation/__manifest__.py": {
+      "sha256": "8f37e7413f077451a4bf96edf3b950bdbff42cb774540879306b4da765f38ec6",
+      "mode": 420
+    },
+    "lab_preparation/data/ir_cron_data.xml": {
+      "sha256": "877159a4573b6f675264018f8389a0671bc7e95014ffb98f81208e218e98f55e",
+      "mode": 436
+    },
+    "lab_preparation/migrations/19.0.1.1.0/post-migrate.py": {
+      "sha256": "27ac1d52dd9ea8e1bfa4b66f1b59b86a4ebf583cbb3c9a9eb834513ff749ae81",
+      "mode": 436
+    },
+    "lab_preparation/models/__init__.py": {
+      "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "mode": 420
+    },
+    "lab_preparation/models/business.py": {
+      "sha256": "bf953ff39c3f9ce97cd8835f2686f36168a06ed846609799c5c1eadaa15177e0",
+      "mode": 420
+    },
+    "lab_preparation/security/ir.model.access.csv": {
+      "sha256": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "mode": 420
+    },
+    "lab_preparation/tests/__init__.py": {
+      "sha256": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "mode": 436
+    },
+    "lab_preparation/tests/common.py": {
+      "sha256": "fc8b24c352629ca291cd6183eef99fc0feffc480c9538e04514e583abba66cbc",
+      "mode": 436
+    },
+    "lab_preparation/tests/test_preparation.py": {
+      "sha256": "476b3dee663db16dc6daab74c17a361a441ad6e3cd0335b5395def2c20b27cdd",
+      "mode": 436
+    }
+  },
+  "command": [
+    "/bridge/labctl",
+    "update"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 5.55,
+  "log": {
+    "path": "/work/changelog/2026-09-15_01_repair/preuves/update_reprise_rejouee.log",
+    "sha256": "2c6777926e5644c1928cc7269bf1ca36ca89bee583d877ab770c94fa6abfa06c",
+    "relative_path": "changelog/2026-09-15_01_repair/preuves/update_reprise_rejouee.log"
+  },
+  "repository": {
+    "common_dir": "/work/.git",
+    "revision": "4b5043b66dbaaa50a347d74af4500c2683c22c88"
+  },
+  "environment": "labctl-lab_client-19.0",
+  "runner": {
+    "python": "3.10.12",
+    "platform": "Linux",
+    "machine": "x86_64"
+  }
+}

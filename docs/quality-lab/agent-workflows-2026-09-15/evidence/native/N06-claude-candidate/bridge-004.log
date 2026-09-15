@@ -1,0 +1,123 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-9ecd947352-db-1  Running
+
+══ 1. QA de tâche : -u lab_register + tests (/lab_register:TestRegisterRepair) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-15 22:30:23,637 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:30:23,637 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-15 22:30:23,637 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:30:23,637 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:30:23,637 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:30:23,637 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:30:23,849 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 9d3be658d680:8069 
+2026-09-15 22:30:23,863 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-15 22:30:23,885 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:30:23,888 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-15 22:30:23,907 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-15 22:30:23,908 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-15 22:30:26,253 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:30:26,253 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:30:26,763 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Registre Boréal — brouillons et références émises'] to user __system__ #1 via n/a 
+2026-09-15 22:30:26,764 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Registre Boréal — brouillons et références émises'] to user __system__ #1 via n/a 
+2026-09-15 22:30:28,809 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:30:29,856 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-15 22:30:29,878 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:30:29,878 1 INFO lab_qa odoo.modules.loading: Loading module lab_register (2/21) 
+2026-09-15 22:30:29,884 1 INFO lab_qa odoo.registry: module lab_register: creating or updating database tables 
+2026-09-15 22:30:29,913 1 INFO lab_qa odoo.modules.loading: loading lab_register/security/ir.model.access.csv 
+2026-09-15 22:30:29,920 1 INFO lab_qa odoo.modules.loading: loading lab_register/security/rules.xml 
+2026-09-15 22:30:29,935 1 INFO lab_qa odoo.modules.loading: Module lab_register loaded in 0.06s, 63 queries (+63 other) 
+2026-09-15 22:30:30,071 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.19s, 63 queries (+63 extra) 
+2026-09-15 22:30:30,158 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-15 22:30:30,274 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-15 22:30:30,277 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-15 22:30:30,278 1 INFO lab_qa odoo.registry: Registry loaded in 6.428s 
+2026-09-15 22:30:30,278 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-15 22:30:30,380 1 INFO lab_qa odoo.addons.lab_register.tests.test_register_repair: Starting TestRegisterRepair.test_draft_sequences_and_snapshot ... 
+2026-09-15 22:30:30,418 1 INFO lab_qa odoo.addons.lab_register.tests.test_register_repair: Starting TestRegisterRepair.test_issued_record_is_preserved ... 
+2026-09-15 22:30:30,420 1 INFO lab_qa odoo.addons.lab_register.tests.test_register_repair: Starting TestRegisterRepair.test_other_company_is_preserved ... 
+2026-09-15 22:30:30,422 1 INFO lab_qa odoo.addons.lab_register.tests.test_register_repair: Starting TestRegisterRepair.test_plain_user_can_repair_without_sudo ... 
+2026-09-15 22:30:30,447 1 INFO lab_qa odoo.addons.lab_register.tests.test_register_repair: ====================================================================== 
+2026-09-15 22:30:30,447 1 ERROR lab_qa odoo.addons.lab_register.tests.test_register_repair: ERROR: TestRegisterRepair.test_plain_user_can_repair_without_sudo
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_register/tests/test_register_repair.py", line 66, in test_plain_user_can_repair_without_sudo
+    drafts.action_repair()
+  File "/mnt/extra-addons/lab_register/models/business.py", line 27, in action_repair
+    repairable = self.filtered(
+                 ^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6215, in filtered
+    return self.browse(rec_id for rec_id, rec in zip(self._ids, self) if func(rec))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 5897, in browse
+    ids = tuple(ids)
+          ^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 6215, in <genexpr>
+    return self.browse(rec_id for rec_id, rec in zip(self._ids, self) if func(rec))
+                                                                         ^^^^^^^^^
+  File "/mnt/extra-addons/lab_register/models/business.py", line 28, in <lambda>
+    lambda record: record.state == 'draft' and record.company_id == self.env.company
+                   ^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/fields.py", line 1707, in __get__
+    record._fetch_field(self)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 3772, in _fetch_field
+    self.fetch(fnames)
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 3796, in fetch
+    query = self._search([('id', 'in', self.ids)], active_test=False)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/models.py", line 5376, in _search
+    sec_domain = self.env['ir.rule']._compute_domain(self._name, 'read')
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/cache.py", line 98, in lookup
+    return self.lookup(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/cache.py", line 156, in lookup
+    value = self.method(*args, **kwargs)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_rule.py", line 157, in _compute_domain
+    eval_context = self._eval_context()
+                   ^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/addons/base/models/ir_rule.py", line 49, in _eval_context
+    'company_ids': self.env.companies.ids,
+                   ^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/functools.py", line 995, in __get__
+    val = self.func(instance)
+          ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 271, in companies
+    raise AccessError(self._("Access to unauthorized or invalid companies."))
+odoo.exceptions.AccessError: Access to unauthorized or invalid companies.
+ 
+2026-09-15 22:30:30,447 1 INFO lab_qa odoo.addons.lab_register.tests.test_register_repair: Starting TestRegisterRepair.test_records_out_of_self_are_untouched ... 
+2026-09-15 22:30:30,450 1 INFO lab_qa odoo.addons.lab_register.tests.test_register_repair: Starting TestRegisterRepair.test_repair_is_idempotent ... 
+2026-09-15 22:30:30,452 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 4 checked, 1 removed 
+2026-09-15 22:30:30,452 1 INFO lab_qa odoo.service.server: 6 post-tests in 0.17s, 185 queries 
+2026-09-15 22:30:30,452 1 INFO lab_qa odoo.tests.stats: lab_register: 8 tests 0.17s 185 queries 
+2026-09-15 22:30:30,452 1 ERROR lab_qa odoo.tests.result: 0 failed, 1 error(s) of 6 tests when loading database 'lab_qa' 
+2026-09-15 22:30:30,452 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-15 22:30:30,452 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:30:30,886 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+❌ échec (installation, mise à jour ou tests) — voir les extraits ci-dessous
+   ⏱ 9s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 2
+tests échoués  : 1
+tests ignorés  : 0
+WARNING liés à lab_register : 3
+
+── extraits ──
+36:2026-09-15 22:30:30,447 1 ERROR lab_qa odoo.addons.lab_register.tests.test_register_repair: ERROR: TestRegisterRepair.test_plain_user_can_repair_without_sudo
+89:2026-09-15 22:30:30,452 1 ERROR lab_qa odoo.tests.result: 0 failed, 1 error(s) of 6 tests when loading database 'lab_qa' 
+
+── avertissements liés au module (à traiter) ──
+2026-09-15 22:30:26,253 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:30:26,253 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:30:28,809 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": false, "reasons": ["bilan contenant des échecs ou erreurs", "erreur ou module ignoré dans le log"], "module_tests": 8, "summaries": [{"failed": 0, "errors": 1, "tests": 6}]}
+❌ preuve de tests absente ou invalide
+RECETTE module=lab_register db=lab_qa install=ko update=n.a. uninstall=n.a. tests="0 failed, 1 error(s) of 6 tests" errors=2 failed=1 skipped=0 warnings=3 total=9s quick=9s
+
+Log complet   : /tmp/crew-agent-workflows-20260916-v2/N06-claude-candidate/backend/stack/artifacts/lab_register-20260916-003022.kP8cjC.log
+Captures      : /tmp/crew-agent-workflows-20260916-v2/N06-claude-candidate/backend/stack/artifacts/
+❌ lab_register : voir ci-dessus

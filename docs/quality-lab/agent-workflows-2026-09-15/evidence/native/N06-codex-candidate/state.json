@@ -1,0 +1,68 @@
+{
+  "case": "N06",
+  "provider": "codex",
+  "config": {
+    "model": "gpt-6-astra",
+    "effort": "high"
+  },
+  "status": "executed",
+  "started_at": "2026-09-15T22:26:11.616179+00:00",
+  "turns": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 692.7,
+      "usage": {
+        "input_tokens": 2646395,
+        "cached_input_tokens": 2543744,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 20093,
+        "reasoning_output_tokens": 1806
+      },
+      "actual_model": null,
+      "tool_calls": 47,
+      "actual_effort": null,
+      "provider_completed": true,
+      "error": null,
+      "delegation": {
+        "supported": false
+      },
+      "answer_sha256": "0d9d4c987c94ddfe36ce889867b92c81e7a961b88112df02033b2c16fbe2c3ee"
+    }
+  ],
+  "setup_seconds": 31.829,
+  "active_turn": 0,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "legacy_drafts_repaired": true,
+      "emitted_reference_frozen": true,
+      "other_company_untouched": true,
+      "ordinary_user_mixed_selection": true,
+      "scope_remains_local": true,
+      "idempotent": true,
+      "company_rule_still_enforced": true
+    },
+    "passed": true,
+    "log_sha256": "34aaf2253092585a831b69d100a44a5aa479dd26234241496b88e5bb7c5effbb",
+    "log": "oracle-000.log"
+  },
+  "oracle_seconds": 1.333,
+  "oracle_finished_at": "2026-09-15T22:38:17.498324+00:00",
+  "elapsed_to_oracle_seconds": 725.882,
+  "agent_seconds": 692.7,
+  "bridge_calls": 10,
+  "reception": {
+    "passed": false,
+    "checks": {
+      "provider_completed": true,
+      "oracle_passed": true,
+      "lint_final_sources": false,
+      "qa_final_sources": true,
+      "update_final_sources": true
+    },
+    "semantic_review": "pending",
+    "time_to_accepted_receipt_seconds": null
+  },
+  "review": null
+}

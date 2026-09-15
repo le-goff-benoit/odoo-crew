@@ -29,3 +29,17 @@
 - Contradiction éditoriale « tests d’abord / tests après code » retirée du rôle développeur.
 - Aucune règle ajoutée contre les relances lint justifiées ; aucun critère métier retiré.
 - Cas N07 natif toujours non exécuté ; modèles, efforts, budgets et corpus inchangés.
+
+
+## 16 septembre — Contre-épreuve, arbitrage et installation
+
+- Huit appels réalisés, modèles/efforts constants ; sept terminés et un timeout à 900 s.
+- Huit oracles métier verts ; réceptions indépendantes : sept avec réserves, un rejet.
+- N06 Claude : 772,17 → 574,37 s ; N07 Claude : 796,50 s → timeout, ajout de cron et réception incomplète.
+- Codex : N06 633,49 → 692,70 s ; N07 627,74 → 629,70 s, aucun gain démontré.
+- Candidat complet 015e8a3 conservé expérimental et retiré des profils actifs ; aucun lien causal inventé.
+- Seule clarification éditoriale rouge avant correction retenue ; combinaison finale non rejouée en natif.
+- Aide CLI de preuve clarifiée ; statut des essais en cours corrigé ; six nouveaux tests déterministes.
+- Graphe, 394 tests (un ignoré), build isolé/actif et parité 35 fichiers + deux blocs valides.
+- Contrôles de la campagne nettoyés ; aucune ressource Docker préexistante arrêtée.
+- Résultats, revues, contre-exemples et limites publiés ensemble ; aucune reprise cachée.

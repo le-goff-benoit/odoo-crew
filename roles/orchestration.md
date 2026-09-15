@@ -86,12 +86,8 @@ de test rouge ou évolution déguisée.
 Avant de retenir une règle sur des données existantes, demande une petite cohorte
 représentative et un contre-exemple à l'hypothèse. Pas de recette complète anticipée.
 Fixe les critères observables, les états/acteurs/canaux à exercer, les contrôles
-obligatoires et la source des valeurs attendues. Fixe aussi **avant le premier
-test** la commande, sa portée et le fichier de preuve : le développeur capture
-rouge et vert avec `odoo_evidence.py run`, sous deux chemins distincts. Les voies
-QA réutilisent ces résultats frais ; elles exécutent les contrôles manquants ou
-invalidés, sans rejouer un vert pour fabriquer après coup son reçu. Une nouvelle
-intention est reliée au plan ; elle n'invalide que contrats, tâches et preuves affectés.
+obligatoires et la source des valeurs attendues. Une nouvelle intention est reliée
+au plan ; elle n'invalide que contrats, tâches et preuves affectés.
 
 Si la mémoire est volumineuse, utilise `odoo_context.py <projet> --query "<tâche>"
 --output <contexte.json>` et **`docs/CONTEXT.md`** : décisions obligatoires complètes,

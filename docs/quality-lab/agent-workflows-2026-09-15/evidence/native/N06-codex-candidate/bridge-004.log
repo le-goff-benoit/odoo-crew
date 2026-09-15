@@ -1,0 +1,29 @@
+2026-09-15 22:31:02,961 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:31:02,961 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:31:02,961 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:31:02,962 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:31:02,962 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:31:03,223 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:31:03,228 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-15 22:31:03,258 1 INFO lab_client odoo.modules.loading: updating modules list 
+2026-09-15 22:31:03,259 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-15 22:31:04,576 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:31:04,576 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:31:05,403 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Registre Boréal — brouillons et références émises'] to user __system__ #1 via n/a 
+2026-09-15 22:31:05,403 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Registre Boréal — brouillons et références émises'] to user __system__ #1 via n/a 
+2026-09-15 22:31:06,759 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:31:07,169 1 INFO lab_client odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-15 22:31:07,187 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:31:07,187 1 INFO lab_client odoo.modules.loading: Loading module lab_register (2/21) 
+2026-09-15 22:31:07,192 1 INFO lab_client odoo.registry: module lab_register: creating or updating database tables 
+2026-09-15 22:31:07,216 1 INFO lab_client odoo.modules.loading: loading lab_register/security/ir.model.access.csv 
+2026-09-15 22:31:07,222 1 INFO lab_client odoo.modules.loading: loading lab_register/security/rules.xml 
+2026-09-15 22:31:07,233 1 INFO lab_client odoo.modules.loading: Module lab_register loaded in 0.05s, 64 queries (+64 other) 
+2026-09-15 22:31:07,382 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.19s, 64 queries (+64 extra) 
+2026-09-15 22:31:07,461 1 INFO lab_client odoo.registry: verifying fields for every extended model 
+2026-09-15 22:31:07,606 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-15 22:31:07,609 1 INFO lab_client odoo.registry: Registry changed, signaling through the database 
+2026-09-15 22:31:07,610 1 INFO lab_client odoo.registry: Registry loaded in 4.419s 
+2026-09-15 22:31:07,610 1 INFO lab_client odoo.service.server: Initiating shutdown 
+2026-09-15 22:31:07,610 1 INFO lab_client odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:31:07,610 1 INFO lab_client odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

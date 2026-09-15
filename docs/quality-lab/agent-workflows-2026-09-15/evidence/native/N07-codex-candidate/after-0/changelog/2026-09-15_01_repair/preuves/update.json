@@ -1,0 +1,65 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/work",
+  "scopes": [
+    "lab_preparation"
+  ],
+  "sources": {
+    "lab_preparation/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 420
+    },
+    "lab_preparation/__manifest__.py": {
+      "sha256": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "mode": 420
+    },
+    "lab_preparation/models/__init__.py": {
+      "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "mode": 420
+    },
+    "lab_preparation/models/business.py": {
+      "sha256": "6f5b626b41bf3f34199c60e296a4c742b2023878cb5cb5af00457b9255c9ef35",
+      "mode": 420
+    },
+    "lab_preparation/security/ir.model.access.csv": {
+      "sha256": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "mode": 420
+    },
+    "lab_preparation/tests/__init__.py": {
+      "sha256": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "mode": 436
+    },
+    "lab_preparation/tests/common.py": {
+      "sha256": "bd93aa53a0ff02be5730b0109cc372dfae612052049ad9825813b9133185c163",
+      "mode": 436
+    },
+    "lab_preparation/tests/test_preparation.py": {
+      "sha256": "9f2f2780b68c4708a0aa49c9d57cf9596dc28547d215d55ae37c5c1dc2b5c7da",
+      "mode": 436
+    }
+  },
+  "command": [
+    "/bridge/labctl",
+    "update"
+  ],
+  "exit_code": 0,
+  "result": "failed",
+  "module": "lab_preparation",
+  "error": null,
+  "seconds": 5.803,
+  "log": {
+    "path": "/work/changelog/2026-09-15_01_repair/preuves/update.log",
+    "sha256": "3ea43d98ad65452e0b1423f22a47530ec9a78c3418f329f73d743fb68ab8542c",
+    "relative_path": "changelog/2026-09-15_01_repair/preuves/update.log"
+  },
+  "repository": {
+    "common_dir": "/work/.git",
+    "revision": "97051b170c939340ebd3696e5e7e5da3ce84c400"
+  },
+  "environment": "lab-client-19.0",
+  "runner": {
+    "python": "3.10.12",
+    "platform": "Linux",
+    "machine": "x86_64"
+  }
+}

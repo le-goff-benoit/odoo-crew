@@ -1,0 +1,73 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/work",
+  "scopes": [
+    "lab_register"
+  ],
+  "sources": {
+    "lab_register/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 420
+    },
+    "lab_register/__manifest__.py": {
+      "sha256": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "mode": 420
+    },
+    "lab_register/models/__init__.py": {
+      "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "mode": 420
+    },
+    "lab_register/models/business.py": {
+      "sha256": "8a1226ce345059bc0360be293087f492325e8c23dd77ffdf6f4919b7b8d962c0",
+      "mode": 420
+    },
+    "lab_register/security/ir.model.access.csv": {
+      "sha256": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "mode": 420
+    },
+    "lab_register/security/rules.xml": {
+      "sha256": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "mode": 420
+    },
+    "lab_register/tests/__init__.py": {
+      "sha256": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "mode": 436
+    },
+    "lab_register/tests/common.py": {
+      "sha256": "572af8713b6c0b712d8e35fa2a86406043a4b0fa98fc3b928b7cb40d2684f3b3",
+      "mode": 436
+    },
+    "lab_register/tests/test_repair.py": {
+      "sha256": "6e9b0a15c1c99df3ebef859f72c2bfe3c95cb548c0b68d427c0665787641a55f",
+      "mode": 436
+    }
+  },
+  "command": [
+    "/bridge/labctl",
+    "qa",
+    "lab_register",
+    "--quick",
+    "--tags",
+    "/lab_register:TestRepair"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": "lab_register",
+  "error": null,
+  "seconds": 6.813,
+  "log": {
+    "path": "/work/changelog/2026-09-15_01_repair/proofs/green.log",
+    "sha256": "8326408d3196c53082c6a67576012b052c3a39e9379b1605245a148ce564a5ce",
+    "relative_path": "changelog/2026-09-15_01_repair/proofs/green.log"
+  },
+  "repository": {
+    "common_dir": "/work/.git",
+    "revision": "8a0ff6a1ee63fa02ebefd28944c928db1b5dc22a"
+  },
+  "environment": "lab-odoo19-qa",
+  "runner": {
+    "python": "3.10.12",
+    "platform": "Linux",
+    "machine": "x86_64"
+  }
+}

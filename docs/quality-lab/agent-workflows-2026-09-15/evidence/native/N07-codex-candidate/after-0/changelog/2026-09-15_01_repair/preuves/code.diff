@@ -1,0 +1,211 @@
+diff --git a/lab_preparation/models/business.py b/lab_preparation/models/business.py
+index 430b645..31e1772 100644
+--- a/lab_preparation/models/business.py
++++ b/lab_preparation/models/business.py
+@@ -6,22 +6,43 @@ class LabPreparation(models.Model):
+     _description = 'Préparation synthétique, distincte du stock standard'
+ 
+     name = fields.Char(required=True)
+-    state = fields.Selection([('draft', 'Draft'), ('done', 'Done')], default='draft', required=True)
++    state = fields.Selection(
++        [('draft', 'Draft'), ('done', 'Done')],
++        default='draft', required=True, copy=False,
++    )
+     ordered_qty = fields.Float()
+-    delivered_qty = fields.Float()
+-    prepared_qty = fields.Float()
+-    manual = fields.Boolean()
++    delivered_qty = fields.Float(copy=False)
++    prepared_qty = fields.Float(copy=False)
++    manual = fields.Boolean(copy=False)
+     parent_id = fields.Many2one('lab.preparation')
+ 
+     def action_set_manual(self, quantity):
+-        self.write({'prepared_qty': quantity, 'manual': bool(quantity)})
++        """Conserver toute saisie explicite, y compris zéro."""
++        self.write({'prepared_qty': quantity, 'manual': True})
+         return True
+ 
+-    @api.model
+-    def _cron_prepare(self):
+-        for record in self.search([]):
+-            record.prepared_qty = record.ordered_qty
+-
+     def action_remainder(self):
++        """Créer la demande restante sans modifier la préparation de la source."""
+         self.ensure_one()
+-        return self.copy({'name': self.name + ' remainder', 'parent_id': self.id})
++        remaining_qty = self.ordered_qty - self.delivered_qty
++        if remaining_qty <= 0:
++            return self.browse()
++        remainder = self.copy({
++            'name': self.name + ' remainder',
++            'ordered_qty': remaining_qty,
++            'delivered_qty': 0,
++            'prepared_qty': 0,
++            'manual': False,
++            'state': 'draft',
++            'parent_id': self.id,
++        })
++        self.state = 'done'
++        return remainder
++
++    @api.model
++    def _cron_prepare(self):
++        """Préparer seulement les brouillons automatiques, sans arrondi ajouté."""
++        for record in self.search([('state', '=', 'draft'), ('manual', '=', False)]):
++            remaining_qty = max(record.ordered_qty - record.delivered_qty, 0)
++            if record.prepared_qty != remaining_qty:
++                record.prepared_qty = remaining_qty
+diff --git a/lab_preparation/tests/__init__.py b/lab_preparation/tests/__init__.py
+new file mode 100644
+index 0000000..b24e156
+--- /dev/null
++++ b/lab_preparation/tests/__init__.py
+@@ -0,0 +1 @@
++from . import test_preparation
+diff --git a/lab_preparation/tests/common.py b/lab_preparation/tests/common.py
+new file mode 100644
+index 0000000..0f43b25
+--- /dev/null
++++ b/lab_preparation/tests/common.py
+@@ -0,0 +1,17 @@
++from odoo.tests.common import TransactionCase
++
++
++class PreparationCommon(TransactionCase):
++    @classmethod
++    def setUpClass(cls):
++        super().setUpClass()
++        cls.Preparation = cls.env['lab.preparation']
++
++    def make_preparation(self, **values):
++        return self.Preparation.create({'name': 'N-17', 'ordered_qty': 10, **values})
++
++    def snapshot(self, records):
++        return records.read([
++            'name', 'state', 'ordered_qty', 'delivered_qty',
++            'prepared_qty', 'manual', 'parent_id', 'write_date',
++        ])
+diff --git a/lab_preparation/tests/test_preparation.py b/lab_preparation/tests/test_preparation.py
+new file mode 100644
+index 0000000..bd6e60d
+--- /dev/null
++++ b/lab_preparation/tests/test_preparation.py
+@@ -0,0 +1,116 @@
++from odoo.tests import tagged
++
++from .common import PreparationCommon
++
++
++@tagged('post_install', '-at_install')
++class TestPreparation(PreparationCommon):
++    def test_cron_mixed_cohort_and_replay(self):
++        automatic = self.make_preparation(delivered_qty=3, prepared_qty=999)
++        protected = self.make_preparation(manual=True, prepared_qty=0)
++        protected |= self.make_preparation(manual=True, prepared_qty=2, delivered_qty=3)
++        protected |= self.make_preparation(state='done', prepared_qty=88, delivered_qty=4)
++        protected |= self.make_preparation(state='done', manual=True, prepared_qty=1)
++        before = self.snapshot(protected)
++        self.Preparation._cron_prepare()
++        self.assertEqual(automatic.prepared_qty, 7)
++        self.assertEqual(self.snapshot(protected), before)
++        after = self.snapshot(automatic | protected)
++        self.Preparation._cron_prepare()
++        self.assertEqual(self.snapshot(automatic | protected), after)
++
++    def test_cron_nonpositive_and_fractional_remaining(self):
++        equal = self.make_preparation(delivered_qty=10, prepared_qty=9)
++        excess = self.make_preparation(delivered_qty=12, prepared_qty=9)
++        small = self.make_preparation(ordered_qty=0.004, delivered_qty=0.001)
++        self.Preparation._cron_prepare()
++        self.assertEqual(equal.prepared_qty, 0)
++        self.assertEqual(excess.prepared_qty, 0)
++        self.assertAlmostEqual(small.prepared_qty, 0.003)
++
++    def test_manual_zero_then_cron(self):
++        record = self.make_preparation(prepared_qty=5)
++        record.action_set_manual(0)
++        self.assertTrue(record.manual)
++        self.assertEqual(record.prepared_qty, 0)
++        self.Preparation._cron_prepare()
++        self.assertEqual(record.prepared_qty, 0)
++
++    def test_manual_nonzero_then_cron(self):
++        records = self.make_preparation() | self.make_preparation(delivered_qty=4)
++        records.action_set_manual(2)
++        self.assertEqual(records.mapped('manual'), [True, True])
++        self.Preparation._cron_prepare()
++        self.assertEqual(records.mapped('prepared_qty'), [2, 2])
++
++    def test_duplicate_then_cron(self):
++        for state in ('draft', 'done'):
++            for manual in (False, True):
++                with self.subTest(state=state, manual=manual):
++                    source = self.make_preparation(
++                        state=state, manual=manual, delivered_qty=3, prepared_qty=2,
++                    )
++                    before = self.snapshot(source)
++                    duplicate = source.copy()
++                    self.assertRecordValues(duplicate, [{
++                        'ordered_qty': 10, 'delivered_qty': 0, 'prepared_qty': 0,
++                        'manual': False, 'state': 'draft',
++                    }])
++                    self.assertEqual(self.snapshot(source), before)
++                    self.Preparation._cron_prepare()
++                    self.assertEqual(duplicate.prepared_qty, 10)
++                    if state == 'done' or manual:
++                        self.assertEqual(self.snapshot(source), before)
++
++    def test_remainder_then_cron(self):
++        for manual, prepared in ((True, 0), (True, 2), (False, 7)):
++            with self.subTest(manual=manual, prepared=prepared):
++                source = self.make_preparation(
++                    manual=manual, prepared_qty=prepared, delivered_qty=3,
++                )
++                count = self.Preparation.search_count([])
++                remainder = source.action_remainder()
++                self.assertEqual(len(remainder), 1)
++                self.assertEqual(self.Preparation.search_count([]), count + 1)
++                self.assertRecordValues(remainder, [{
++                    'ordered_qty': 7, 'delivered_qty': 0, 'prepared_qty': 0,
++                    'manual': False, 'state': 'draft', 'parent_id': source.id,
++                }])
++                self.assertRecordValues(source, [{
++                    'ordered_qty': 10, 'delivered_qty': 3, 'prepared_qty': prepared,
++                    'manual': manual, 'state': 'done',
++                }])
++                before = self.snapshot(source)
++                self.Preparation._cron_prepare()
++                self.assertEqual(remainder.prepared_qty, 7)
++                self.assertEqual(self.snapshot(source), before)
++                after = self.snapshot(remainder)
++                self.Preparation._cron_prepare()
++                self.assertEqual(self.snapshot(remainder), after)
++
++    def test_remainder_nonpositive(self):
++        for delivered in (10, 12):
++            with self.subTest(delivered=delivered):
++                source = self.make_preparation(delivered_qty=delivered, prepared_qty=2)
++                before = self.snapshot(source)
++                count = self.Preparation.search_count([])
++                remainder = source.action_remainder()
++                self.assertEqual(remainder, self.Preparation.browse())
++                self.assertEqual(self.Preparation.search_count([]), count)
++                self.assertEqual(self.snapshot(source), before)
++
++    def test_remainder_fractional(self):
++        source = self.make_preparation(ordered_qty=0.004, delivered_qty=0.001)
++        remainder = source.action_remainder()
++        self.assertAlmostEqual(remainder.ordered_qty, 0.003)
++        self.Preparation._cron_prepare()
++        self.assertAlmostEqual(remainder.prepared_qty, 0.003)
++
++    def test_remainder_requires_singleton(self):
++        records = self.make_preparation() | self.make_preparation()
++        before = self.snapshot(records)
++        count = self.Preparation.search_count([])
++        with self.assertRaisesRegex(ValueError, 'Expected singleton'):
++            records.action_remainder()
++        self.assertEqual(self.snapshot(records), before)
++        self.assertEqual(self.Preparation.search_count([]), count)

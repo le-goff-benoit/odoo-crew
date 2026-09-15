@@ -1,0 +1,16 @@
+2026-09-15 22:34:02,553 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:34:02,554 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:34:02,554 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:34:02,554 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:34:02,554 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:34:02,760 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-15 22:34:02,760 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:34:02,786 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:34:02,790 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-15 22:34:02,796 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:34:02,801 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:34:02,938 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.14s, 0 queries (+0 extra) 
+2026-09-15 22:34:02,964 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-15 22:34:02,973 1 INFO lab_client odoo.registry: Registry loaded in 0.212s 
+PERSISTED_AFTER_JSON=[{"company_id": [1, "My Company"], "create_date": "2026-09-15 22:26:42.511601", "create_uid": [1, "System"], "date_document": "2020-01-01", "display_name": "LEGACY_A_EARLY", "id": 1, "line_ids": [1, 2], "name": "LEGACY_A_EARLY", "reference": "DRAFT-A", "sequence": 100, "snapshot_total": 20.0, "state": "draft", "write_date": "2026-09-15 22:33:50.205765", "write_uid": [2, "Administrator"]}, {"company_id": [1, "My Company"], "create_date": "2026-09-15 22:26:42.511601", "create_uid": [1, "System"], "date_document": "2020-01-02", "display_name": "LEGACY_A_LATE", "id": 2, "line_ids": [3, 4], "name": "LEGACY_A_LATE", "reference": "DRAFT-B", "sequence": 200, "snapshot_total": 15.0, "state": "draft", "write_date": "2026-09-15 22:33:50.205765", "write_uid": [2, "Administrator"]}, {"company_id": [1, "My Company"], "create_date": "2026-09-15 22:26:42.511601", "create_uid": [1, "System"], "date_document": "2019-01-01", "display_name": "LEGACY_ISSUED", "id": 3, "line_ids": [5, 6], "name": "LEGACY_ISSUED", "reference": "ISSUED/005", "sequence": 17, "snapshot_total": 555.0, "state": "issued", "write_date": "2026-09-15 22:26:42.511601", "write_uid": [1, "System"]}, {"company_id": [2, "Synthetic other company N06"], "create_date": "2026-09-15 22:26:42.511601", "create_uid": [1, "System"], "date_document": "2020-01-01", "display_name": "LEGACY_OTHER", "id": 4, "line_ids": [7, 8], "name": "LEGACY_OTHER", "reference": "OTHER/DRAFT", "sequence": 80, "snapshot_total": 666.0, "state": "draft", "write_date": "2026-09-15 22:26:42.511601", "write_uid": [1, "System"]}]
+REPAIR_PASS: persisted drafts 1=100/20,2=200/15; all excluded records/lines unchanged; replay write_calls=0; write_date/write_uid unchanged

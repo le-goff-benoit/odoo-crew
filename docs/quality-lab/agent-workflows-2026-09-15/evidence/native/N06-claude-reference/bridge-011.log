@@ -1,0 +1,19 @@
+2026-09-15 22:14:18,295 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:14:18,296 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:14:18,296 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:14:18,296 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:14:18,296 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:14:18,495 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-15 22:14:18,495 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:14:18,521 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:14:18,529 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-15 22:14:18,533 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:14:18,537 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:14:18,672 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.13s, 0 queries (+0 extra) 
+2026-09-15 22:14:18,698 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-15 22:14:18,712 1 INFO lab_client odoo.registry: Registry loaded in 0.217s 
+utilisateur  : n06_restricted (societes [1], admin=False)
+visible      : [1, 2, 3] (la societe 2 est hors de sa portee)
+appel        : OK sans sudo, sans groupe systeme
+etat inchange: True
+societe 2    : refusee a l'activation -> Access to unauthorized or invalid companies.

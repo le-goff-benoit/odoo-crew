@@ -1,0 +1,151 @@
+Série 19.0 — image odoo-qa:19.0 — base lab_qa
+
+══ 0. Démarrage de PostgreSQL ═══════════════════════════════════════════════════
+ Container quality-native-10652a71bf-db-1  Running
+
+══ 1. QA de tâche : -u lab_preparation + tests (/lab_preparation) sur lab_qa ═══════════════════════════════════════════════════
+2026-09-15 22:58:38,981 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:58:38,981 1 WARNING ? odoo.tools.config: missing --http-interface/http_interface, using 0.0.0.0 by default, will change to 127.0.0.1 in 20.0 
+2026-09-15 22:58:38,982 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:58:38,982 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:58:38,982 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:58:38,982 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:58:39,191 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on 71f0d9634341:8069 
+2026-09-15 22:58:39,206 1 INFO lab_qa odoo.tests.common: Importing test framework 
+2026-09-15 22:58:39,239 1 INFO lab_qa odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:58:39,243 1 INFO lab_qa odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-15 22:58:39,277 1 INFO lab_qa odoo.modules.loading: updating modules list 
+2026-09-15 22:58:39,279 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-15 22:58:41,289 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:58:41,289 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:58:42,363 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_upgrade on ['Atelier Nacre — préparation périodique et saisies explicites'] to user __system__ #1 via n/a 
+2026-09-15 22:58:42,364 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.update_list on ['Atelier Nacre — préparation périodique et saisies explicites'] to user __system__ #1 via n/a 
+2026-09-15 22:58:43,515 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:58:44,001 1 INFO lab_qa odoo.addons.base.models.ir_module: ALLOW access to module.button_install on [] to user __system__ #1 via n/a 
+2026-09-15 22:58:44,019 1 INFO lab_qa odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:58:44,019 1 INFO lab_qa odoo.modules.loading: Loading module lab_preparation (2/21) 
+2026-09-15 22:58:44,025 1 INFO lab_qa odoo.registry: module lab_preparation: creating or updating database tables 
+2026-09-15 22:58:44,048 1 INFO lab_qa odoo.modules.loading: loading lab_preparation/security/ir.model.access.csv 
+2026-09-15 22:58:44,060 1 INFO lab_qa odoo.modules.loading: Module lab_preparation loaded in 0.04s, 43 queries (+43 other) 
+2026-09-15 22:58:44,199 1 INFO lab_qa odoo.modules.loading: 21 modules loaded in 0.18s, 43 queries (+43 extra) 
+2026-09-15 22:58:44,302 1 INFO lab_qa odoo.registry: verifying fields for every extended model 
+2026-09-15 22:58:44,397 1 INFO lab_qa odoo.modules.loading: Modules loaded. 
+2026-09-15 22:58:44,401 1 INFO lab_qa odoo.registry: Registry changed, signaling through the database 
+2026-09-15 22:58:44,402 1 INFO lab_qa odoo.registry: Registry loaded in 5.211s 
+2026-09-15 22:58:44,402 1 INFO lab_qa odoo.service.server: Starting post tests 
+2026-09-15 22:58:44,404 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparationCron.test_cron_computes_remaining_quantity ... 
+2026-09-15 22:58:44,408 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: ====================================================================== 
+2026-09-15 22:58:44,408 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCron.test_cron_computes_remaining_quantity
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_preparation/tests/test_preparation.py", line 16, in test_cron_computes_remaining_quantity
+    self.assertEqual(preparation.prepared_qty, 7)
+AssertionError: 10.0 != 7
+ 
+2026-09-15 22:58:44,409 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparationCron.test_cron_freezes_done ... 
+2026-09-15 22:58:44,412 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: ====================================================================== 
+2026-09-15 22:58:44,412 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCron.test_cron_freezes_done
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_preparation/tests/test_preparation.py", line 58, in test_cron_freezes_done
+    self.assertEqual(preparation.prepared_qty, 88)
+AssertionError: 10.0 != 88
+ 
+2026-09-15 22:58:44,413 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparationCron.test_cron_is_idempotent ... 
+2026-09-15 22:58:44,418 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparationCron.test_cron_keeps_manual_partial ... 
+2026-09-15 22:58:44,421 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: ====================================================================== 
+2026-09-15 22:58:44,422 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCron.test_cron_keeps_manual_partial
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_preparation/tests/test_preparation.py", line 48, in test_cron_keeps_manual_partial
+    self.assertEqual(preparation.prepared_qty, 2)
+AssertionError: 10.0 != 2
+ 
+2026-09-15 22:58:44,422 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparationCron.test_cron_keeps_manual_zero ... 
+2026-09-15 22:58:44,426 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: ====================================================================== 
+2026-09-15 22:58:44,426 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCron.test_cron_keeps_manual_zero
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_preparation/tests/test_preparation.py", line 33, in test_cron_keeps_manual_zero
+    self.assertTrue(preparation.manual)
+AssertionError: False is not true
+ 
+2026-09-15 22:58:44,426 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparationCron.test_cron_never_goes_negative ... 
+2026-09-15 22:58:44,431 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: ====================================================================== 
+2026-09-15 22:58:44,431 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCron.test_cron_never_goes_negative
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_preparation/tests/test_preparation.py", line 26, in test_cron_never_goes_negative
+    self.assertEqual(preparation.prepared_qty, 0)
+AssertionError: 4.0 != 0
+ 
+2026-09-15 22:58:44,434 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-15 22:58:44,436 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparationCopy.test_copy_of_done_is_a_fresh_draft ... 
+2026-09-15 22:58:44,445 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: ====================================================================== 
+2026-09-15 22:58:44,445 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCopy.test_copy_of_done_is_a_fresh_draft
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_preparation/tests/test_preparation.py", line 106, in test_copy_of_done_is_a_fresh_draft
+    self.assertFalse(duplicate.manual)
+AssertionError: True is not false
+ 
+2026-09-15 22:58:44,446 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparationCopy.test_copy_resets_history ... 
+2026-09-15 22:58:44,452 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: ====================================================================== 
+2026-09-15 22:58:44,452 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCopy.test_copy_resets_history
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_preparation/tests/test_preparation.py", line 93, in test_copy_resets_history
+    self.assertEqual(duplicate.delivered_qty, 0)
+AssertionError: 3.0 != 0
+ 
+2026-09-15 22:58:44,454 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-15 22:58:44,454 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparationRemainder.test_remainder_creates_the_rest ... 
+2026-09-15 22:58:44,460 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: ====================================================================== 
+2026-09-15 22:58:44,460 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationRemainder.test_remainder_creates_the_rest
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_preparation/tests/test_preparation.py", line 126, in test_remainder_creates_the_rest
+    self.assertEqual(remainder.ordered_qty, 6)
+AssertionError: 10.0 != 6
+ 
+2026-09-15 22:58:44,460 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparationRemainder.test_remainder_requires_a_singleton ... 
+2026-09-15 22:58:44,464 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: Starting TestPreparationRemainder.test_remainder_without_rest_creates_nothing ... 
+2026-09-15 22:58:44,468 1 INFO lab_qa odoo.addons.lab_preparation.tests.test_preparation: ====================================================================== 
+2026-09-15 22:58:44,468 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationRemainder.test_remainder_without_rest_creates_nothing
+Traceback (most recent call last):
+  File "/mnt/extra-addons/lab_preparation/tests/test_preparation.py", line 143, in test_remainder_without_rest_creates_nothing
+    self.assertFalse(remainder)
+AssertionError: lab.preparation(35,) is not false
+ 
+2026-09-15 22:58:44,469 1 INFO lab_qa odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-15 22:58:44,469 1 INFO lab_qa odoo.service.server: 11 post-tests in 0.07s, 94 queries 
+2026-09-15 22:58:44,470 1 INFO lab_qa odoo.tests.stats: lab_preparation: 17 tests 0.07s 94 queries 
+2026-09-15 22:58:44,470 1 ERROR lab_qa odoo.tests.result: 9 failed, 0 error(s) of 11 tests when loading database 'lab_qa' 
+2026-09-15 22:58:44,470 1 INFO lab_qa odoo.service.server: Initiating shutdown 
+2026-09-15 22:58:44,470 1 INFO lab_qa odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:58:44,723 1 INFO lab_qa odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  
+❌ échec (installation, mise à jour ou tests) — voir les extraits ci-dessous
+   ⏱ 8s
+
+══ 5. Analyse des logs ═══════════════════════════════════════════════════
+ERROR/CRITICAL : 10
+tests échoués  : 9
+tests ignorés  : 0
+WARNING liés à lab_preparation : 3
+
+── extraits ──
+32:2026-09-15 22:58:44,408 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCron.test_cron_computes_remaining_quantity
+40:2026-09-15 22:58:44,412 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCron.test_cron_freezes_done
+49:2026-09-15 22:58:44,422 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCron.test_cron_keeps_manual_partial
+57:2026-09-15 22:58:44,426 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCron.test_cron_keeps_manual_zero
+65:2026-09-15 22:58:44,431 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCron.test_cron_never_goes_negative
+74:2026-09-15 22:58:44,445 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCopy.test_copy_of_done_is_a_fresh_draft
+82:2026-09-15 22:58:44,452 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationCopy.test_copy_resets_history
+91:2026-09-15 22:58:44,460 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationRemainder.test_remainder_creates_the_rest
+100:2026-09-15 22:58:44,468 1 ERROR lab_qa odoo.addons.lab_preparation.tests.test_preparation: FAIL: TestPreparationRemainder.test_remainder_without_rest_creates_nothing
+109:2026-09-15 22:58:44,470 1 ERROR lab_qa odoo.tests.result: 9 failed, 0 error(s) of 11 tests when loading database 'lab_qa' 
+
+── avertissements liés au module (à traiter) ──
+2026-09-15 22:58:41,289 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:58:41,289 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+2026-09-15 22:58:43,515 1 WARNING lab_qa odoo.modules.module: Missing `author` key in manifest for 'lab_preparation', defaulting to '' 
+PostgreSQL conservé : son arrêt relève du superviseur du stack.
+{"valid": false, "reasons": ["bilan contenant des échecs ou erreurs", "erreur ou module ignoré dans le log"], "module_tests": 17, "summaries": [{"failed": 9, "errors": 0, "tests": 11}]}
+❌ preuve de tests absente ou invalide
+RECETTE module=lab_preparation db=lab_qa install=ko update=n.a. uninstall=n.a. tests="9 failed, 0 error(s) of 11 tests" errors=10 failed=9 skipped=0 warnings=3 total=8s quick=8s
+
+Log complet   : /tmp/crew-agent-workflows-20260916-v2/N07-claude-reference/backend/stack/artifacts/lab_preparation-20260916-005837.WIGRKI.log
+Captures      : /tmp/crew-agent-workflows-20260916-v2/N07-claude-reference/backend/stack/artifacts/
+❌ lab_preparation : voir ci-dessus

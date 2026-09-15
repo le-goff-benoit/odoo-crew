@@ -156,12 +156,8 @@ Tu ne considères pas une fonctionnalité livrée sans test. Minimum :
    joue à la clôture de la release :
    ```bash
    export ODOO_ADDONS_DIR=<répertoire contenant le module>
-   python3 ~/.odoo19-agents/scripts/odoo_evidence.py run --project <projet> --scope <module> \
-     --output <release>/qa-<tâche>-vert.json -- \
-     ~/.odoo19-agents/scripts/odoo-test.sh <module> --quick --tags /<module>:<TestClasse>
+   ~/.odoo19-agents/scripts/odoo-test.sh <module> --quick --tags /<module>:<TestClasse>
    ```
-   Même capture pour le rouge, dans un autre fichier. Avec un transport adapté,
-   conserve sa vraie commande et ses logs ; ne reconstruis pas une exécution.
    Le script termine par une ligne `RECETTE …` : lis-la, pas le log entier.
    Une demande qui touche aux droits, à la compta, à la facturation ou aux
    données existantes se valide tout de suite sur la copie du client :

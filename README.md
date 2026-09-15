@@ -137,8 +137,10 @@ version installée et des effets attendus. L'outil ne déploie rien lui-même.
 Le [banc de parcours](benchmarks/workflow_regressions/README.md) ajoute stock,
 PDF historique, formulaire et reprise de plan aux contrôles déterministes.
 La [boucle native N06/N07](docs/quality-lab/agent-workflows-2026-09-15/README.md)
-compare les agents avant/après correction, avec un cas inédit et des preuves liées
-au code final ; une réponse terminée ne vaut pas réception du travail.
+conserve huit essais avant/après, avec un cas inédit : un gain sur un premier
+cas ne se retrouve pas sur le suivant, et le candidat global reste expérimental.
+Les outils de preuve et la contradiction d’ordre des tests sont corrigés ; aucun
+gain général de vitesse ou de qualité n’est revendiqué.
 Les [modèles par rôle](docs/MODELS.md) restent hérités du principal ; les candidats
 plus légers sont comparés séparément et ne deviennent pas automatiquement les
 modèles du quotidien.

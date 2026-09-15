@@ -1,0 +1,1 @@
+Applique /odoo-new à lab.preparation : corrige préparation périodique, duplication et création du reliquat selon decisions/current.md. Reprends les préparations automatiques draft de la copie locale synthétique. Établis tests rouge/vert couvrant aussi zéro manuel, duplication et reliquat puis cron. Les données sont fictives ; pas de déploiement. Laisse la release ouverte.

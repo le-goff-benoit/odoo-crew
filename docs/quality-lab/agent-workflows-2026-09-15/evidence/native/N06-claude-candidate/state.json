@@ -1,0 +1,126 @@
+{
+  "case": "N06",
+  "provider": "claude",
+  "config": {
+    "model": "opus",
+    "effort": "medium",
+    "delegate": false
+  },
+  "status": "executed",
+  "started_at": "2026-09-15T22:26:11.616793+00:00",
+  "turns": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 574.37,
+      "usage": {
+        "tokens": {
+          "input_tokens": 118,
+          "cache_creation_input_tokens": 92981,
+          "cache_read_input_tokens": 3405668,
+          "output_tokens": 36294,
+          "output_tokens_details": {
+            "thinking_tokens": 5185
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 92981,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 1685,
+              "cache_read_input_tokens": 99988,
+              "cache_creation_input_tokens": 633,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 633
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 3.5417260000000006
+      },
+      "actual_model": "claude-opus-5",
+      "tool_calls": 58,
+      "actual_effort": null,
+      "provider_completed": true,
+      "error": null,
+      "delegation": {
+        "supported": true,
+        "started": 0,
+        "with_progress": 0,
+        "completed": 0,
+        "tasks": {},
+        "provider_summary": {
+          "spawned": 0,
+          "requested": {
+            "background": 0,
+            "foreground": 0,
+            "unset": 0
+          },
+          "started_in_background": 0,
+          "max_depth": 0,
+          "spawned_by_subagents": 0,
+          "completed": 0,
+          "failed": 0,
+          "killed": {
+            "parent": 0,
+            "user": 0,
+            "system": 0
+          },
+          "refused": {
+            "depth_limit": 0,
+            "concurrency_limit": 0,
+            "budget": 0
+          },
+          "by_type": {}
+        }
+      },
+      "answer_sha256": "56aa216eb50e38fe37cac03fe5149341626fc0e1b20ab2f7b3039681e52116b2"
+    }
+  ],
+  "setup_seconds": 31.89,
+  "active_turn": 0,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "legacy_drafts_repaired": true,
+      "emitted_reference_frozen": true,
+      "other_company_untouched": true,
+      "ordinary_user_mixed_selection": true,
+      "scope_remains_local": true,
+      "idempotent": true,
+      "company_rule_still_enforced": true
+    },
+    "passed": true,
+    "log_sha256": "b4e0e95dde26f176b7dc0005c8b086ed55e380699e6e2b35a5f649ca266ec507",
+    "log": "oracle-000.log"
+  },
+  "oracle_seconds": 1.378,
+  "oracle_finished_at": "2026-09-15T22:36:19.268177+00:00",
+  "elapsed_to_oracle_seconds": 607.651,
+  "agent_seconds": 574.37,
+  "bridge_calls": 20,
+  "reception": {
+    "passed": false,
+    "checks": {
+      "provider_completed": true,
+      "oracle_passed": true,
+      "lint_final_sources": false,
+      "qa_final_sources": true,
+      "update_final_sources": true
+    },
+    "semantic_review": "pending",
+    "time_to_accepted_receipt_seconds": null
+  },
+  "review": null
+}

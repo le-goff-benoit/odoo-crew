@@ -1,0 +1,7 @@
+# Implémentation B-42
+Odoo 19.0, revue B-42 appliquée. Suppression du sudo et de la recherche globale ; lecture contrôlée, filtrage self/draft/env.company, tri date/id ; vérification collective write avant modification ; seuls les champs divergents sont écrits, sans arrondi.
+Tests ajoutés/importés dans tests : six scénarios ciblés. `proofs/red.json` et red.log : 6 échecs métier, aucune erreur technique. `proofs/green.json` et green.log : 6 tests verts, aucun skip, -u réussi (6 s).
+Lint : `proofs/lint.log` Ruff bloquant entièrement vert, un conseil COM812 ; contrôle Odoo échoue uniquement sur author absent du manifest inchangé. `proofs/lint-diff.log` conserve cette même erreur car le contrôleur rend les anomalies structurelles même en mode --only-files. Aucune anomalie du diff. Dette préexistante conservée ; aucune fausse déclaration de lint complet vert.
+Update copie : `proofs/update.log`, exit_code=0, module chargé, registre reconstruit. Le reçu update.json indique failed parce que --module exige un bilan de tests absent d’une commande update : erreur de qualification du reçu, pas échec Odoo. La voie copie vérifiera état installé et valeurs historiques après update.
+Fichiers de sécurité et manifest inchangés (19.0.1.0.0, incrément à la clôture). Aucun schéma nouveau. Une write par document modifié nécessaire car les valeurs séquence/total diffèrent ; pas de recherche en boucle.
+Proposition de commit : `[FIX] lab_register: scope draft repair to the active company`.

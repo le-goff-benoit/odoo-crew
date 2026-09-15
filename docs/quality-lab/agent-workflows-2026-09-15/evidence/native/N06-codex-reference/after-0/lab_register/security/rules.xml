@@ -1,0 +1,4 @@
+<odoo>
+<record id="register_company" model="ir.rule"><field name="name">Register companies</field><field name="model_id" ref="model_lab_register"/><field name="domain_force">[('company_id', 'in', company_ids)]</field></record>
+<record id="line_company" model="ir.rule"><field name="name">Register line companies</field><field name="model_id" ref="model_lab_register_line"/><field name="domain_force">[('company_id', 'in', company_ids)]</field></record>
+</odoo>

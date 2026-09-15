@@ -1,0 +1,33 @@
+2026-09-15 22:32:47,319 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:32:47,319 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:32:47,320 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:32:47,320 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:32:47,320 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:32:47,542 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-15 22:32:47,542 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:32:47,563 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:32:47,568 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-15 22:32:47,572 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:32:47,575 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:32:47,713 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.14s, 0 queries (+0 extra) 
+2026-09-15 22:32:47,754 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-15 22:32:47,769 1 INFO lab_client odoo.registry: Registry loaded in 0.227s 
+2026-09-15 22:32:47,791 1 INFO lab_client odoo.tests.common: Importing test framework 
+2026-09-15 22:32:48,234 1 INFO lab_client odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: read on record ids: [4], uid: 7, model: lab.register 
+2026-09-15 22:32:48,257 1 INFO lab_client odoo.addons.base.models.ir_rule: Access Denied by record rules for operation: write on record ids: [2], uid: 7, model: lab.register 
+ORDINARY_SUCCESS: uid=7 su=False company=1 allowed=[1,2]; drafts=100/20,200/15; excluded unchanged
+READ_RULE_EXPECTED_ACCESSERROR: Uh-oh! Looks like you have stumbled upon some top-secret records.
+
+Sorry, b42_copy_ordinary (base.group_user) (id=7) doesn't have 'read' access to:
+- Registre synthétique (lab.register)
+
+If you really, really need access, perhaps you can win over your friendly administrator with a batch of freshly baked cookies.
+
+This seems to be a multi-company issue, you might be able to access the record by switching to the company: Synthetic other company N06.
+WRITE_RULE_EXPECTED_ACCESSERROR: Uh-oh! Looks like you have stumbled upon some top-secret records.
+
+Sorry, b42_copy_ordinary (base.group_user) (id=7) doesn't have 'write' access to:
+- Registre synthétique (lab.register)
+
+If you really, really need access, perhaps you can win over your friendly administrator with a batch of freshly baked cookies.
+COPY_RIGHTS_PASS: success, read/write denials, postconditions, rollback and cleanup verified

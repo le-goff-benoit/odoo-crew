@@ -1,0 +1,73 @@
+{
+  "case": "N07",
+  "provider": "claude",
+  "config": {
+    "model": "opus",
+    "effort": "medium",
+    "delegate": false
+  },
+  "status": "incident",
+  "started_at": "2026-09-15T22:47:21.630202+00:00",
+  "turns": [
+    {
+      "status": "timeout",
+      "exit_code": -9,
+      "seconds": 900.01,
+      "usage": null,
+      "actual_model": "claude-opus-5",
+      "tool_calls": 98,
+      "actual_effort": null,
+      "provider_completed": false,
+      "error": null,
+      "delegation": {
+        "supported": true,
+        "started": 0,
+        "with_progress": 0,
+        "completed": 0,
+        "tasks": {},
+        "provider_summary": null
+      },
+      "answer_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ],
+  "setup_seconds": 32.27,
+  "active_turn": 0,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "legacy_auto_repaired": true,
+      "legacy_explicit_zero_preserved": true,
+      "legacy_partial_preserved": true,
+      "legacy_done_preserved": true,
+      "explicit_zero_not_false": true,
+      "copy_resets_operational_state": true,
+      "copy_then_cron": true,
+      "remainder_contract": true,
+      "remainder_then_cron": true,
+      "no_empty_remainder": true,
+      "negative_remaining_clamped": true,
+      "idempotent_cron": true
+    },
+    "passed": true,
+    "log_sha256": "6f7c1f191e0d76c25d37632e63ad71af4dc0e80713e7e1661207278e58d235b6",
+    "log": "oracle-000.log"
+  },
+  "oracle_seconds": 1.239,
+  "oracle_finished_at": "2026-09-15T23:02:55.168086+00:00",
+  "elapsed_to_oracle_seconds": 933.538,
+  "agent_seconds": 900.01,
+  "bridge_calls": 31,
+  "reception": {
+    "passed": false,
+    "checks": {
+      "provider_completed": false,
+      "oracle_passed": true,
+      "lint_final_sources": true,
+      "qa_final_sources": true,
+      "update_final_sources": true
+    },
+    "semantic_review": "pending",
+    "time_to_accepted_receipt_seconds": null
+  },
+  "review": null
+}

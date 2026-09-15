@@ -1,0 +1,157 @@
+{
+  "schema": 1,
+  "trial": "N07-codex-candidate",
+  "verdict": "accepted_with_reservations",
+  "review_kind": "independent_semantic_archive_review",
+  "started_at_utc": "2026-09-15T22:49:47+00:00",
+  "finished_at_utc": "2026-09-15T22:54:28.309724+00:00",
+  "review_seconds": 281.31,
+  "timing_basis": "Temps écoulé de la session de revue, lectures/analyse/rédaction incluses ; aucune attente volontaire ni réexécution Odoo.",
+  "criteria": [
+    {
+      "id": "C1",
+      "verdict": "accepted",
+      "assertion": "N-17 respectée sans réarbitrage : modèle synthétique, exclusivité draft automatique, zéro manuel valide, réinitialisation copie et reliquat exact ; ancienne QA conservée dans sa portée limitée.",
+      "evidence": [
+        "changelog/2026-09-15_01_repair/revue_fonctionnelle.md",
+        "changelog/2026-09-15_01_repair/qa.md:1",
+        ".odoo-agents/PROJECT.md:8"
+      ]
+    },
+    {
+      "id": "D1",
+      "verdict": "accepted",
+      "assertion": "Implémentation et neuf tests couvrent manuels zéro/partiel, done, copy puis cron, reliquat puis cron, absence de création à reste nul/négatif, fractions, singleton et idempotence. Oracle ORM indépendant : 12 invariants vrais. Aucun écart métier critique observé.",
+      "evidence": [
+        "lab_preparation/models/business.py:9",
+        "lab_preparation/models/business.py:19",
+        "lab_preparation/models/business.py:24",
+        "lab_preparation/models/business.py:43",
+        "lab_preparation/tests/test_preparation.py:8",
+        "lab_preparation/tests/test_preparation.py:46",
+        "lab_preparation/tests/test_preparation.py:65",
+        "lab_preparation/tests/test_preparation.py:91",
+        "oracle.log:LAB_ORACLE"
+      ]
+    },
+    {
+      "id": "Q1",
+      "verdict": "accepted_with_reservations",
+      "assertion": "Rouge réel avant correction (14 assertions échouées, 9 méthodes), vert final (9/0/0), update réel sortie 0. Reprise committée : seul ID1 passe 999 à 7, trois lignes protégées inchangées ; nouveau processus confirme persistance et rejeu sans mutation de champ ni création. Réserves distinctes : lint rouge antérieur et reçu update mal classé failed.",
+      "evidence": [
+        "bridge-events.json",
+        "changelog/2026-09-15_01_repair/preuves/tests-rouge.json",
+        "changelog/2026-09-15_01_repair/preuves/tests-vert.json",
+        "changelog/2026-09-15_01_repair/preuves/update.json",
+        "changelog/2026-09-15_01_repair/preuves/update.log:17",
+        "changelog/2026-09-15_01_repair/preuves/reprise.py:37",
+        "changelog/2026-09-15_01_repair/preuves/reprise.log:15",
+        "changelog/2026-09-15_01_repair/preuves/rejeu.py:8",
+        "changelog/2026-09-15_01_repair/preuves/rejeu.log:16",
+        "changelog/2026-09-15_01_repair/preuves/lint.log:11"
+      ]
+    },
+    {
+      "id": "R1",
+      "verdict": "accepted_with_reservations",
+      "assertion": "Revue, QA renforcée, journal et mémoire mis à jour fidèlement ; auto-relecture explicitée, release ouverte et aucun déploiement revendiqué. Le titre QA VALIDÉ et 7/7 ne constituent pas une suite entièrement verte ; les réserves sont toutefois conservées dans les documents et mémoire.",
+      "evidence": [
+        "changelog/2026-09-15_01_repair/preuves/reception.md:3",
+        "changelog/2026-09-15_01_repair/qa.md:11",
+        "changelog/2026-09-15_01_repair/qa-n17.md:1",
+        ".odoo-agents/JOURNAL.md:7",
+        ".odoo-agents/PROJECT.md:15",
+        "answer-0.md"
+      ]
+    }
+  ],
+  "missing_critical_business_criteria": [],
+  "missing_unqualified_checks": [
+    "Lint global et contrôles Odoo ciblés entièrement verts",
+    "Reçu update classé passed"
+  ],
+  "runtime_acceptance_override": false,
+  "campaign_all_green_eligible": false,
+  "reservations": [
+    {
+      "id": "lint_inherited",
+      "severity": "qualification",
+      "detail": "author absent du manifest initial et final, identiques octet pour octet. Ruff vert ; lint complet et contrôles Odoo ciblés échouent sur ce seul défaut. Dette prouvée, pas supposée. Aucun droit de convertir ce contrôle en vert.",
+      "evidence": [
+        "changelog/2026-09-15_01_repair/preuves/lint.log:11",
+        "changelog/2026-09-15_01_repair/preuves/lint-diff.log:3",
+        "changelog/2026-09-15_01_repair/preuves/dette-manifest.txt",
+        "frozen/benchmarks/native/cases/N07/project/lab_preparation/__manifest__.py"
+      ]
+    },
+    {
+      "id": "update_receipt_failed",
+      "severity": "evidence",
+      "detail": "update.json conserve result=failed avec exit_code=0 ; utilisation de --module sur une commande update sans bilan tests. Logs chargement module et bridge attestent update réel. Aucun reçu passed fabriqué ; les documents avertissent correctement.",
+      "evidence": [
+        "changelog/2026-09-15_01_repair/preuves/update.json",
+        "changelog/2026-09-15_01_repair/preuves/update.log:17",
+        "raw-0.jsonl:75",
+        "changelog/2026-09-15_01_repair/qa.md:12"
+      ]
+    },
+    {
+      "id": "semantic_not_full_green",
+      "severity": "presentation",
+      "detail": "qa-n17.md annonce VALIDÉ et 7/7, alors que lint reste rouge. Lire ce pass comme réception métier avec réserves explicites, jamais comme validation intégrale des contrôles. Auto-relecture auteur autorisée par LAB ; cette revue indépendante est uniquement documentaire."
+    }
+  ],
+  "evidence_integrity": {
+    "coverage_stale_references": [],
+    "all_bridge_log_hashes_match": true,
+    "final_green_sources_match": true,
+    "red_model_matches_frozen_initial": true,
+    "all_receipt_logs_match": true,
+    "note": "Rouge lié au code initial, volontairement différent du final. Tous les autres reçus correspondent aux contenus finaux. Modes de fichiers non qualifiés après normalisation de l’archive."
+  },
+  "rework": {
+    "business_fix_cycles_observed": 1,
+    "qa_runs": 2,
+    "qa_red_seconds": 15.84,
+    "qa_green_seconds": 8.22,
+    "unnecessary_green_qa_reruns_observed": 0,
+    "bridge_total_seconds": 34.5,
+    "bridge_calls": 7,
+    "avoidable_cli_detours": [
+      {
+        "evidence": "raw-0.jsonl:28",
+        "cause": "complete briefing sans --owner pourtant claim explicite ; claim suivant rejeté car étape précédente incomplète. Corrigé avec propriétaire identique à la ligne33.",
+        "targeted_instruction": "Reporter le même --owner de claim à complete."
+      },
+      {
+        "evidence": "raw-0.jsonl:42",
+        "cause": "odoo-release.sh exécuté par python3 : SyntaxError.",
+        "targeted_instruction": "Invoquer ce script shell avec bash ou directement."
+      },
+      {
+        "evidence": "raw-0.jsonl:55",
+        "cause": "odoo-release.sh add sur README dépourvu du tableau attendu ; relance après adaptation à la ligne62.",
+        "targeted_instruction": "Vérifier le format README attendu avant add sur une fixture héritée."
+      }
+    ],
+    "capture_misclassifications": [
+      {
+        "evidence": "raw-0.jsonl:75",
+        "cause": "--module impose un bilan tests à update ; commande réussie, reçu failed. Pas de rerun update.",
+        "targeted_instruction": "Réserver le contrôle de bilan tests --module aux commandes de tests ; capturer update avec son périmètre source et environnement, puis lire le log."
+      }
+    ],
+    "time_lost_seconds": null,
+    "idempotence_replay_is_required_not_waste": true,
+    "lint_diff_followup_is_justified": true,
+    "comment": "Durée active perdue non isolable dans les traces ; ne pas attribuer les 34.5 s du bridge aux détours. Rouge/vert et second shell d’idempotence sont des contrôles requis, pas des relances inutiles."
+  },
+  "limits": [
+    "Aucune réexécution Odoo, accès base ou commande native modèle par le relecteur.",
+    "Aucune autre variante N07 consultée ; aucune conclusion comparative de vitesse.",
+    "Neuf méthodes de tests ; 14 assertions rouges sont des sous-cas, pas 14 méthodes. Statistique module=11 ne remplace pas le bilan 9 tests.",
+    "Oracle vert utilisé en complément de lecture du contrat, code, tests et preuves ; aucun gate ne remplace la réception sémantique.",
+    "Le cron est la méthode synthétique ; aucune planification ir.cron ni validation stock.picking revendiquée.",
+    "Pas de recette complète release, navigateur, production ou déploiement qualifié."
+  ]
+}

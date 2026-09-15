@@ -1,0 +1,4 @@
+# Résultat de tâche B-42
+Correction locale action_repair reçue par le flow repair-b42, Odoo 19.0. Reprise persistée de lab_client société initiale 1 : id 1 = séquence 100, total 20 ; id 2 = séquence 200, total 15. Références émises, autres sociétés et lignes préservées. Rejeu sans write ni changement de métadonnées.
+Six tests échouaient avant correction, les six passent après ; droits ordinaires positifs/négatifs vérifiés sur QA et copie. Update existant réussi. Revue, QA, couverture et journal publiés. Détail : qa.md, qa-reception.md, proofs/.
+Dette préexistante : author absent du manifest, lint complet rouge ; Ruff bloquant et diff conformes. Relecture non indépendante imposée par LAB.md. Recette complète non exécutée, release ouverte, version 19.0.1.0.0. Aucun commit, push ou déploiement distant.

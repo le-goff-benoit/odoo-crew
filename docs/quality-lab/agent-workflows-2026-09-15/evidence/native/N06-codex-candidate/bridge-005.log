@@ -1,0 +1,34 @@
+2026-09-15 22:32:22,920 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:32:22,920 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:32:22,920 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:32:22,920 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:32:22,920 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:32:23,125 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-15 22:32:23,125 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:32:23,151 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:32:23,159 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.01s, 0 queries (+0 extra) 
+2026-09-15 22:32:23,166 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:32:23,169 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:32:23,312 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.14s, 0 queries (+0 extra) 
+2026-09-15 22:32:23,346 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-15 22:32:23,360 1 INFO lab_client odoo.registry: Registry loaded in 0.234s 
+2026-09-15 22:32:23,387 1 INFO lab_client odoo.tests.common: Importing test framework 
+Traceback (most recent call last):
+  File "/usr/bin/odoo", line 6, in <module>
+    odoo.cli.main()
+  File "/usr/lib/python3/dist-packages/odoo/cli/command.py", line 133, in main
+    command().run(args)
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 162, in run
+    self.shell(dbnames[0])
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 148, in shell
+    self.console(local_vars)
+  File "/usr/lib/python3/dist-packages/odoo/cli/shell.py", line 82, in console
+    exec(sys.stdin.read(), local_vars)
+  File "<string>", line 8, in <module>
+  File "/usr/lib/python3.12/pathlib.py", line 1029, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/pathlib.py", line 1015, in open
+    return io.open(self, mode, buffering, encoding, errors, newline)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: '/work/changelog/2026-09-15_01_repair/proofs/before.json'

@@ -123,9 +123,12 @@ if __name__ == '__main__':
     sub = parser.add_subparsers(dest='action', required=True)
     run = sub.add_parser('run')
     run.add_argument('--project', type=Path, required=True)
-    run.add_argument('--scope', action='append', required=True)
-    run.add_argument('--output', type=Path, required=True)
-    run.add_argument('--module')
+    run.add_argument('--scope', action='append', required=True,
+                     help='chemin de sources relatif au projet, répétable')
+    run.add_argument('--output', type=Path, required=True,
+                     help='nouveau fichier JSON hors des sources ; le helper crée aussi son .log, sans redirection manuelle')
+    run.add_argument('--module',
+                     help='exiger un bilan de tests Odoo pour ce module ; uniquement si la commande joue des tests, pas pour lint ou update seul')
     run.add_argument('--environment', help='identité stable de l’environnement contrôlé (image/données/outils)')
     run.add_argument('--timeout', type=int, default=600)
     run.add_argument('command', nargs=argparse.REMAINDER)

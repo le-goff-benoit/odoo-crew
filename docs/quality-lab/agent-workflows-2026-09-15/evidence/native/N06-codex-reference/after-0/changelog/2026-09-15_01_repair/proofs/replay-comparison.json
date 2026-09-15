@@ -1,0 +1,43 @@
+{
+  "first_changed_ids": [
+    1,
+    2
+  ],
+  "second_changed_ids": [],
+  "across_transactions_identical": true,
+  "second_pass_write_calls": 0,
+  "results": [
+    {
+      "id": 1,
+      "state": "draft",
+      "sequence": 100,
+      "snapshot_total": 20.0,
+      "reference": "DRAFT-A",
+      "write_date": "2026-09-15 22:11:49.288628"
+    },
+    {
+      "id": 2,
+      "state": "draft",
+      "sequence": 200,
+      "snapshot_total": 15.0,
+      "reference": "DRAFT-B",
+      "write_date": "2026-09-15 22:11:49.288628"
+    },
+    {
+      "id": 3,
+      "state": "issued",
+      "sequence": 17,
+      "snapshot_total": 555.0,
+      "reference": "ISSUED/005",
+      "write_date": "2026-09-15 22:06:39.335034"
+    },
+    {
+      "id": 4,
+      "state": "draft",
+      "sequence": 80,
+      "snapshot_total": 666.0,
+      "reference": "OTHER/DRAFT",
+      "write_date": "2026-09-15 22:06:39.335034"
+    }
+  ]
+}

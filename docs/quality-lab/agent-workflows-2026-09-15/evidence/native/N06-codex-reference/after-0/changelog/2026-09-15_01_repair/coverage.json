@@ -1,0 +1,182 @@
+{
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "56ac90ce7e3ddf9ab2d57dbedd719a2e5655ce9bbe55c5f4aa5accd385d06822",
+  "criteria": [
+    {
+      "id": "A1",
+      "text": "**A1** — Sous utilisateur interne multi-société, une sélection mixte ne répare que les draft de self dans env.company ; un brouillon non sélectionné et les autres sociétés restent strictement inchangés, même si accessibles. Changer de société active inverse le périmètre ; sélection vide sans effet.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/green.log",
+          "sha256": "84c3a2079cf72687fd1a50a079aa68f05a40257a0b2eddab6b4f3c534d5aa378"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/qa-runtime.md",
+          "sha256": "5f33f455a2c9d58169a35eaa8f028a2c66d7e95e46b266284f37c124b5c4d7e2"
+        },
+        {
+          "path": "lab_register/tests/test_repair.py",
+          "sha256": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+        }
+      ],
+      "note": "Sélection mixte, non sélectionné, actif A/B, sélection vide sous utilisateur ordinaire : assertions des deux premiers tests."
+    },
+    {
+      "id": "A2",
+      "text": "**A2** — Tri date_document puis id, séquences 100/200 et suivantes ; snapshot_total exclut les lignes annulées, vaut zéro sans ligne active, et conserve la précision non arrondie.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/green.log",
+          "sha256": "84c3a2079cf72687fd1a50a079aa68f05a40257a0b2eddab6b4f3c534d5aa378"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/qa-runtime.md",
+          "sha256": "5f33f455a2c9d58169a35eaa8f028a2c66d7e95e46b266284f37c124b5c4d7e2"
+        },
+        {
+          "path": "lab_register/tests/test_repair.py",
+          "sha256": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+        }
+      ],
+      "note": "Oracles indépendants 100/200/300, 20, zéro et 0.001 ; égalité de date départagée par id."
+    },
+    {
+      "id": "A3",
+      "text": "**A3** — Les issued sélectionnés conservent strictement state, sequence, snapshot_total, reference ; aucune ligne ni champ hors correction ne change.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/green.log",
+          "sha256": "84c3a2079cf72687fd1a50a079aa68f05a40257a0b2eddab6b4f3c534d5aa378"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/repair-first.log",
+          "sha256": "2f3f56c68bc6dfa357c86da5a47963afcf7ad24ed3b859407222b7613f2c72f9"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/qa-copy.md",
+          "sha256": "1368f8689e6bf4ca33ed0959fd8f456a95f89b858edf51ce591bfaa77e69f16e"
+        }
+      ],
+      "note": "Snapshots complets des issued/autre société et lignes ; copie préservée champ par champ."
+    },
+    {
+      "id": "A4",
+      "text": "**A4** — ACL/règles inchangées ; utilisateur ordinaire non sudo autorisé testé, utilisateur limité refusé sur une société interdite, absence de droit d'écriture refusée sans mutation.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/green.log",
+          "sha256": "84c3a2079cf72687fd1a50a079aa68f05a40257a0b2eddab6b4f3c534d5aa378"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/repair-first.log",
+          "sha256": "2f3f56c68bc6dfa357c86da5a47963afcf7ad24ed3b859407222b7613f2c72f9"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/code.diff",
+          "sha256": "0dfd3b88ef0f370d850fa274d8b5ef1fea765d5f3b7665b539c7bbf84b354b5b"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/qa-static.md",
+          "sha256": "6f55eb397e52b8079f37397ba4a470ed6a0149a0e7cf2bbce87e97d0cba09647"
+        }
+      ],
+      "note": "Succès non sudo, AccessError société interdite et règle write ; sécurité projet sans diff."
+    },
+    {
+      "id": "A5",
+      "text": "**A5** — Test de régression rouge conservé sur le code initial puis mêmes tests verts sur code corrigé ; lint du diff, installation QA et update sur copie déjà installée exécutés.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/red.log",
+          "sha256": "f090bf1e4636364caa4c0e986d82ee4ac33b585f1eb27c3f7a6ce52b4d9c68df"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/business-before.py",
+          "sha256": "b24cfe215ce52d95a64fe963125bba0b883ef185f8062c58bf918ba72193bd02"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/green.log",
+          "sha256": "84c3a2079cf72687fd1a50a079aa68f05a40257a0b2eddab6b4f3c534d5aa378"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/lint.log",
+          "sha256": "8cb67d1ddcc9bedad0692ce7af6610fb678e8d66642bffc9fdfd111f8d7264e2"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/lint-diff.log",
+          "sha256": "67318e71032ad04cbc232dbad3b5057373d28474640dc71cdf172d65597d7689"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/manifest-before.txt",
+          "sha256": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/update.log",
+          "sha256": "9f5b3cf21d5f78be16ef61a516247e98d10c47ff649b1b46e88da127ce06bd8c"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/qa-static.md",
+          "sha256": "6f55eb397e52b8079f37397ba4a470ed6a0149a0e7cf2bbce87e97d0cba09647"
+        }
+      ],
+      "note": "Cinq tests rouges puis mêmes cinq verts. Lint exécuté : Ruff passe ; seule dette author préexistante maintient le lint structurel rouge. Aucun défaut nouveau du diff."
+    },
+    {
+      "id": "A6",
+      "text": "**A6** — Reprise persistée uniquement des brouillons historiques 1 et 2 : 100/20 et 200/15 ; émis 3 et société 2 ID 4 intacts. Deuxième passage idempotent, valeurs et write_date stables, aucune écriture ORM au rejeu dans le test instrumenté.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/repair-first.log",
+          "sha256": "2f3f56c68bc6dfa357c86da5a47963afcf7ad24ed3b859407222b7613f2c72f9"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/repair-second.log",
+          "sha256": "e4d1b441b52d828713ddf148cb5a4c57ef5002afdc1c0e659f0b2614f4f5e23d"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/replay-comparison.json",
+          "sha256": "99d1ad8757ea4965583ce4dcf3826f2c531fe797d0a00de60fb4145d1ad9a87f"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/repair_local.py",
+          "sha256": "95c83cd6306ab150477bfc0488a142ebfd5193f8eeb7257e440b6be8ac681d97"
+        }
+      ],
+      "note": "Deux commits dans deux shells, comparaison de tous les champs identique au second passage, zéro write instrumenté."
+    },
+    {
+      "id": "A7",
+      "text": "**A7** — Ancienne QA relue avec portée invalidée pour cette tâche ; revue, QA courante et journal publiés, release laissée ouverte, limites explicites.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/qa.md",
+          "sha256": "afad9695a82e13fdd57700911056f27cdc536bd6bb63cc3e3c3817c4d3f374c0"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/revue_fonctionnelle.md",
+          "sha256": "937da0c169766fe9d670e11fbe711d49bc9b25964f07f79b99e2be5d1304d6b6"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/publication.json",
+          "sha256": "17d6ef6fc88822cdb747eecf0543634b7987afc6250db4e7dc0bb875bb8c81ff"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/reception.md",
+          "sha256": "fdea49c4646436baf8822ebcfcf7a1f72dd35afa580559584b31f76f17f45578"
+        },
+        {
+          "path": ".odoo-agents/JOURNAL.md",
+          "sha256": "8ca3c1aef13846fbbd7acc3ca1daa1825d7e6a26dd669d386b6d459f78dbaa62"
+        }
+      ],
+      "note": "Documents effectivement publiés localement ; historique conservé et disqualifié pour B-42 ; release ouverte ; relecture non indépendante annoncée."
+    }
+  ]
+}

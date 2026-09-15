@@ -1,0 +1,30 @@
+2026-09-15 22:33:04,679 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:33:04,679 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:33:04,679 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:33:04,679 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:33:04,679 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:33:04,879 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-15 22:33:04,879 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:33:04,898 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:33:04,901 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-15 22:33:04,904 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:33:04,906 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:33:05,040 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.13s, 0 queries (+0 extra) 
+2026-09-15 22:33:05,066 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-15 22:33:05,082 1 INFO lab_client odoo.registry: Registry loaded in 0.203s 
+companies: [(2, 'Synthetic other company N06'), (1, 'My Company')]
+env.company: 1 My Company
+total registers: 4
+  id=4 co=2/Synthetic other company N06 state=draft date=2020-01-01 seq=80 snap=666.0 ref='OTHER/DRAFT' name='LEGACY_OTHER'
+      line id=7 qty=3.0 price=5.0 cancelled=False
+      line id=8 qty=5.0 price=99.0 cancelled=True
+  id=3 co=1/My Company state=issued date=2019-01-01 seq=17 snap=555.0 ref='ISSUED/005' name='LEGACY_ISSUED'
+      line id=5 qty=3.0 price=5.0 cancelled=False
+      line id=6 qty=5.0 price=99.0 cancelled=True
+  id=1 co=1/My Company state=draft date=2020-01-01 seq=100 snap=20.0 ref='DRAFT-A' name='LEGACY_A_EARLY'
+      line id=1 qty=2.0 price=10.0 cancelled=False
+      line id=2 qty=5.0 price=99.0 cancelled=True
+  id=2 co=1/My Company state=draft date=2020-01-02 seq=200 snap=15.0 ref='DRAFT-B' name='LEGACY_A_LATE'
+      line id=3 qty=3.0 price=5.0 cancelled=False
+      line id=4 qty=5.0 price=99.0 cancelled=True
+users: [(2, 'admin', 'My Company', ['My Company']), (5, 'n06_operator', 'My Company', ['Synthetic other company N06', 'My Company']), (6, 'n06_restricted', 'My Company', ['My Company'])]

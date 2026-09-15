@@ -1,0 +1,27 @@
+2026-09-15 22:14:33,303 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:14:33,304 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:14:33,304 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:14:33,304 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:14:33,304 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:14:33,522 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-15 22:14:33,522 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:14:33,543 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:14:33,546 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-15 22:14:33,549 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:14:33,551 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:14:33,681 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.13s, 0 queries (+0 extra) 
+2026-09-15 22:14:33,708 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-15 22:14:33,716 1 INFO lab_client odoo.registry: Registry loaded in 0.194s 
+COMPANIES:
+  id=1 name='My Company'
+  id=2 name='Synthetic other company N06'
+env.company = 1 My Company
+REGISTERS: 4
+  id=4 co=2(Synthetic other company N06) name='LEGACY_OTHER' date=2020-01-01 state=draft seq=80 total=666.0 ref='OTHER/DRAFT' lines=[(7, 3.0, 5.0, False), (8, 5.0, 99.0, True)]
+  id=3 co=1(My Company) name='LEGACY_ISSUED' date=2019-01-01 state=issued seq=17 total=555.0 ref='ISSUED/005' lines=[(5, 3.0, 5.0, False), (6, 5.0, 99.0, True)]
+  id=1 co=1(My Company) name='LEGACY_A_EARLY' date=2020-01-01 state=draft seq=100 total=20.0 ref='DRAFT-A' lines=[(1, 2.0, 10.0, False), (2, 5.0, 99.0, True)]
+  id=2 co=1(My Company) name='LEGACY_A_LATE' date=2020-01-02 state=draft seq=200 total=15.0 ref='DRAFT-B' lines=[(3, 3.0, 5.0, False), (4, 5.0, 99.0, True)]
+USERS:
+  id=2 login='admin' company=1 allowed=[1] groups_system=True
+  id=5 login='n06_operator' company=1 allowed=[2, 1] groups_system=False
+  id=6 login='n06_restricted' company=1 allowed=[1] groups_system=False

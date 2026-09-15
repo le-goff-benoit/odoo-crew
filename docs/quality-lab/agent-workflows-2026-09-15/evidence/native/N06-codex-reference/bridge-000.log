@@ -1,0 +1,372 @@
+2026-09-15 22:07:57,235 1 WARNING ? odoo.tools.config: option --without-demo: since 19.0, invalid boolean value: 'all', assume True 
+2026-09-15 22:07:57,235 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 22:07:57,235 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 22:07:57,235 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/var/lib/odoo/addons/19.0', '/mnt/enterprise-addons', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 22:07:57,235 1 INFO ? odoo: database: odoo@db:5432 
+2026-09-15 22:07:57,451 1 INFO ? odoo.service.server: Initiating shutdown 
+2026-09-15 22:07:57,451 1 INFO ? odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 22:07:57,481 1 INFO lab_client odoo.modules.loading: loading 1 modules... 
+2026-09-15 22:07:57,485 1 INFO lab_client odoo.modules.loading: 1 modules loaded in 0.00s, 0 queries (+0 extra) 
+2026-09-15 22:07:57,487 1 WARNING lab_client odoo.modules.module: Missing `author` key in manifest for 'lab_register', defaulting to '' 
+2026-09-15 22:07:57,490 1 INFO lab_client odoo.modules.loading: loading 21 modules... 
+2026-09-15 22:07:57,628 1 INFO lab_client odoo.modules.loading: 21 modules loaded in 0.14s, 0 queries (+0 extra) 
+2026-09-15 22:07:57,671 1 INFO lab_client odoo.modules.loading: Modules loaded. 
+2026-09-15 22:07:57,687 1 INFO lab_client odoo.registry: Registry loaded in 0.236s 
+{
+  "database": "lab_client",
+  "initial_company": 1,
+  "registers": [
+    {
+      "id": 1,
+      "display_name": "LEGACY_A_EARLY",
+      "name": "LEGACY_A_EARLY",
+      "company_id": [
+        1,
+        "My Company"
+      ],
+      "date_document": "2020-01-01",
+      "state": "draft",
+      "sequence": 20,
+      "reference": "DRAFT-A",
+      "snapshot_total": 999.0,
+      "line_ids": [
+        1,
+        2
+      ],
+      "create_uid": [
+        1,
+        "System"
+      ],
+      "create_date": "2026-09-15 22:06:39.335034",
+      "write_uid": [
+        1,
+        "System"
+      ],
+      "write_date": "2026-09-15 22:06:39.335034"
+    },
+    {
+      "id": 2,
+      "display_name": "LEGACY_A_LATE",
+      "name": "LEGACY_A_LATE",
+      "company_id": [
+        1,
+        "My Company"
+      ],
+      "date_document": "2020-01-02",
+      "state": "draft",
+      "sequence": 10,
+      "reference": "DRAFT-B",
+      "snapshot_total": 123.0,
+      "line_ids": [
+        3,
+        4
+      ],
+      "create_uid": [
+        1,
+        "System"
+      ],
+      "create_date": "2026-09-15 22:06:39.335034",
+      "write_uid": [
+        1,
+        "System"
+      ],
+      "write_date": "2026-09-15 22:06:39.335034"
+    },
+    {
+      "id": 3,
+      "display_name": "LEGACY_ISSUED",
+      "name": "LEGACY_ISSUED",
+      "company_id": [
+        1,
+        "My Company"
+      ],
+      "date_document": "2019-01-01",
+      "state": "issued",
+      "sequence": 17,
+      "reference": "ISSUED/005",
+      "snapshot_total": 555.0,
+      "line_ids": [
+        5,
+        6
+      ],
+      "create_uid": [
+        1,
+        "System"
+      ],
+      "create_date": "2026-09-15 22:06:39.335034",
+      "write_uid": [
+        1,
+        "System"
+      ],
+      "write_date": "2026-09-15 22:06:39.335034"
+    },
+    {
+      "id": 4,
+      "display_name": "LEGACY_OTHER",
+      "name": "LEGACY_OTHER",
+      "company_id": [
+        2,
+        "Synthetic other company N06"
+      ],
+      "date_document": "2020-01-01",
+      "state": "draft",
+      "sequence": 80,
+      "reference": "OTHER/DRAFT",
+      "snapshot_total": 666.0,
+      "line_ids": [
+        7,
+        8
+      ],
+      "create_uid": [
+        1,
+        "System"
+      ],
+      "create_date": "2026-09-15 22:06:39.335034",
+      "write_uid": [
+        1,
+        "System"
+      ],
+      "write_date": "2026-09-15 22:06:39.335034"
+    }
+  ],
+  "lines": [
+    {
+      "id": 1,
+      "display_name": "lab.register.line,1",
+      "register_id": [
+        1,
+        "LEGACY_A_EARLY"
+      ],
+      "company_id": [
+        1,
+        "My Company"
+      ],
+      "quantity": 2.0,
+      "price": 10.0,
+      "cancelled": false,
+      "create_uid": [
+        1,
+        "System"
+      ],
+      "create_date": "2026-09-15 22:06:39.335034",
+      "write_uid": [
+        1,
+        "System"
+      ],
+      "write_date": "2026-09-15 22:06:39.335034"
+    },
+    {
+      "id": 2,
+      "display_name": "lab.register.line,2",
+      "register_id": [
+        1,
+        "LEGACY_A_EARLY"
+      ],
+      "company_id": [
+        1,
+        "My Company"
+      ],
+      "quantity": 5.0,
+      "price": 99.0,
+      "cancelled": true,
+      "create_uid": [
+        1,
+        "System"
+      ],
+      "create_date": "2026-09-15 22:06:39.335034",
+      "write_uid": [
+        1,
+        "System"
+      ],
+      "write_date": "2026-09-15 22:06:39.335034"
+    },
+    {
+      "id": 3,
+      "display_name": "lab.register.line,3",
+      "register_id": [
+        2,
+        "LEGACY_A_LATE"
+      ],
+      "company_id": [
+        1,
+        "My Company"
+      ],
+      "quantity": 3.0,
+      "price": 5.0,
+      "cancelled": false,
+      "create_uid": [
+        1,
+        "System"
+      ],
+      "create_date": "2026-09-15 22:06:39.335034",
+      "write_uid": [
+        1,
+        "System"
+      ],
+      "write_date": "2026-09-15 22:06:39.335034"
+    },
+    {
+      "id": 4,
+      "display_name": "lab.register.line,4",
+      "register_id": [
+        2,
+        "LEGACY_A_LATE"
+      ],
+      "company_id": [
+        1,
+        "My Company"
+      ],
+      "quantity": 5.0,
+      "price": 99.0,
+      "cancelled": true,
+      "create_uid": [
+        1,
+        "System"
+      ],
+      "create_date": "2026-09-15 22:06:39.335034",
+      "write_uid": [
+        1,
+        "System"
+      ],
+      "write_date": "2026-09-15 22:06:39.335034"
+    },
+    {
+      "id": 5,
+      "display_name": "lab.register.line,5",
+      "register_id": [
+        3,
+        "LEGACY_ISSUED"
+      ],
+      "company_id": [
+        1,
+        "My Company"
+      ],
+      "quantity": 3.0,
+      "price": 5.0,
+      "cancelled": false,
+      "create_uid": [
+        1,
+        "System"
+      ],
+      "create_date": "2026-09-15 22:06:39.335034",
+      "write_uid": [
+        1,
+        "System"
+      ],
+      "write_date": "2026-09-15 22:06:39.335034"
+    },
+    {
+      "id": 6,
+      "display_name": "lab.register.line,6",
+      "register_id": [
+        3,
+        "LEGACY_ISSUED"
+      ],
+      "company_id": [
+        1,
+        "My Company"
+      ],
+      "quantity": 5.0,
+      "price": 99.0,
+      "cancelled": true,
+      "create_uid": [
+        1,
+        "System"
+      ],
+      "create_date": "2026-09-15 22:06:39.335034",
+      "write_uid": [
+        1,
+        "System"
+      ],
+      "write_date": "2026-09-15 22:06:39.335034"
+    },
+    {
+      "id": 7,
+      "display_name": "lab.register.line,7",
+      "register_id": [
+        4,
+        "LEGACY_OTHER"
+      ],
+      "company_id": [
+        2,
+        "Synthetic other company N06"
+      ],
+      "quantity": 3.0,
+      "price": 5.0,
+      "cancelled": false,
+      "create_uid": [
+        1,
+        "System"
+      ],
+      "create_date": "2026-09-15 22:06:39.335034",
+      "write_uid": [
+        1,
+        "System"
+      ],
+      "write_date": "2026-09-15 22:06:39.335034"
+    },
+    {
+      "id": 8,
+      "display_name": "lab.register.line,8",
+      "register_id": [
+        4,
+        "LEGACY_OTHER"
+      ],
+      "company_id": [
+        2,
+        "Synthetic other company N06"
+      ],
+      "quantity": 5.0,
+      "price": 99.0,
+      "cancelled": true,
+      "create_uid": [
+        1,
+        "System"
+      ],
+      "create_date": "2026-09-15 22:06:39.335034",
+      "write_uid": [
+        1,
+        "System"
+      ],
+      "write_date": "2026-09-15 22:06:39.335034"
+    }
+  ],
+  "users": [
+    {
+      "id": 2,
+      "name": "Administrator",
+      "company_id": [
+        1,
+        "My Company"
+      ],
+      "company_ids": [
+        1
+      ]
+    },
+    {
+      "id": 5,
+      "name": "n06_operator",
+      "company_id": [
+        1,
+        "My Company"
+      ],
+      "company_ids": [
+        2,
+        1
+      ]
+    },
+    {
+      "id": 6,
+      "name": "n06_restricted",
+      "company_id": [
+        1,
+        "My Company"
+      ],
+      "company_ids": [
+        1
+      ]
+    }
+  ],
+  "custom_fields": [],
+  "server_actions": []
+}

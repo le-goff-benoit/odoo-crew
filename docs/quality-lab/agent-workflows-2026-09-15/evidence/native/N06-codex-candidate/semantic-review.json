@@ -1,0 +1,123 @@
+{
+  "schema": 1,
+  "trial": "N06-codex-candidate",
+  "verdict": "accepted_with_reservations",
+  "review_kind": "independent_semantic_archive_review",
+  "started_at_utc": "2026-09-15T22:39:29+00:00",
+  "finished_at_utc": "2026-09-15T22:42:26.613388+00:00",
+  "review_seconds": 177.613,
+  "criteria": [
+    {
+      "id": "C1",
+      "verdict": "accepted",
+      "assertion": "B-42 et demande inchangés, règle correctement transcrite ; QA historique conservée comme ancienne portée non probante. Aucun arbitrage rouvert.",
+      "evidence": [
+        "after-0/decisions/current.md:3",
+        "after-0/changelog/2026-09-15_01_repair/revue_fonctionnelle.md",
+        "after-0/changelog/2026-09-15_01_repair/qa.md",
+        "after-0/changelog/2026-09-15_01_repair/proofs/qa-before.md"
+      ]
+    },
+    {
+      "id": "D1",
+      "verdict": "accepted",
+      "assertion": "Correction self/draft/env.company, tri date/id, pas100 et totaux hors cancelled ; aucun sudo ni changement ACL/règles ; sept invariants indépendants vrais.",
+      "evidence": [
+        "after-0/lab_register/models/business.py:17",
+        "after-0/lab_register/tests/test_repair.py",
+        "oracle.log:16"
+      ]
+    },
+    {
+      "id": "Q1",
+      "verdict": "accepted_with_reservations",
+      "assertion": "Six tests rouges puis mêmes six verts, preuves capturées au moment des commandes sous chemins distincts. Update réel, droits ordinaires et reprise persistée puis rejeu sans écriture prouvés. Réserves : lint global rouge antérieur ; reçu update failed car --module inadapté, exécution réussie établie par log/exit0 et vérification installed.",
+      "evidence": [
+        "raw-0.jsonl:46",
+        "raw-0.jsonl:52",
+        "bridge-events.json events1-9",
+        "bridge-004.log",
+        "bridge-006.log:33",
+        "bridge-008.log:1",
+        "bridge-009.log:16",
+        "after-0/changelog/2026-09-15_01_repair/proofs/update.json"
+      ]
+    },
+    {
+      "id": "R1",
+      "verdict": "accepted_with_reservations",
+      "assertion": "Revue, QA sensible, journal et PROJECT publiés avec historique, limites, incidents et absence de déploiement. Release ouverte. Relecture native non indépendante déclarée ; aucun faux vert de lint ou succès d’un Fault revendiqué.",
+      "evidence": [
+        "answer-0.md",
+        "after-0/changelog/2026-09-15_01_repair/qa.md",
+        "after-0/changelog/2026-09-15_01_repair/reception-documentaire.md",
+        "after-0/.odoo-agents/JOURNAL.md",
+        "after-0/.odoo-agents/PROJECT.md"
+      ]
+    }
+  ],
+  "missing_critical_business_criteria": [],
+  "missing_unqualified_checks": [
+    "Lint global vert absent : dette author dans le manifest initial.",
+    "Reçu update réussi absent : wrapper --module attend à tort un bilan de tests ; réussite de l’update prouvée autrement."
+  ],
+  "runtime_acceptance_override": false,
+  "campaign_all_green_eligible": false,
+  "reservations": [
+    "Lint author initial non corrigé, explicitement exposé.",
+    "Update.json reste failed avec exit0 ; les preuves brutes et la copie prouvent l’update, mais ne doivent pas être renommées reçu passed.",
+    "Deux incidents de transport conservés et résolus avant réception ; aucun élargissement de droits.",
+    "Relecture native du même auteur, indépendante seulement dans cette revue postérieure."
+  ],
+  "evidence_integrity": {
+    "coverage_stale_references": [],
+    "all_bridge_log_hashes_match": true,
+    "final_green_sources_match": true,
+    "red_old_business_hash_matches_initial": true
+  },
+  "rework": {
+    "business_fix_cycles_observed": 1,
+    "qa_runs": 2,
+    "qa_red_seconds": 16.61,
+    "qa_green_seconds": 6.75,
+    "unnecessary_green_qa_reruns_observed": 0,
+    "bridge_total_seconds": 40.58,
+    "avoidable_transport_incidents": [
+      {
+        "event": 5,
+        "source": "bridge-005.log:34",
+        "cause": "Script dans conteneur tente de lire un chemin /work non monté ; aucune mutation avant erreur.",
+        "bridge_seconds": 1.36
+      },
+      {
+        "event": 7,
+        "source": "bridge-007.log:1",
+        "cause": "RPC demande allowed_company_ids=[1,2] alors que le compte ne dispose que de1 ; Fault et absence de réparation reconnus.",
+        "bridge_seconds": 2.46
+      }
+    ],
+    "avoidable_cli_detours": [
+      {
+        "source": "raw-0.jsonl:26",
+        "cause": "complete omet --owner après claim nommé",
+        "seconds": null
+      },
+      {
+        "source": "raw-0.jsonl:61",
+        "cause": "--module utilisé pour une commande update sans tests ; reçu failed malgré sortie0, diagnostic ensuite documenté, aucune nouvelle exécution update",
+        "seconds": null
+      }
+    ],
+    "failed_transport_bridge_seconds": 3.82,
+    "time_lost_seconds": null,
+    "idempotence_replay_is_required_not_waste": true
+  },
+  "quality_comparison": "Même grille C1/D1/Q1/R1 : critères métier satisfaits, réserve lint antérieure inchangée. Capture rouge/vert et traces de réception mieux structurées, mais deux incidents transport et une qualification de reçu update incorrecte restent visibles. Aucun gain de vitesse ou couverture générale inféré du nombre6 de tests.",
+  "targeted_instruction_change": "Ne pas transmettre --module au helper evidence pour lint/update sans tests ; le conserver pour la QA. Dans le shell du pont, embarquer les données nécessaires au lieu de supposer /work monté. Lire les sociétés du compte RPC avant le scénario, sans changer ses droits. Conserver --owner à complete.",
+  "limits": [
+    "Aucune réexécution Odoo, mutation d’archive ni consultation d’autre variante pendant cette réception.",
+    "Revue des sources, logs, hashes et snapshots ; pas de preuve navigateur/déploiement ou autre série.",
+    "Archives normalisées : empreintes de contenu vérifiées ; pas de réexécution du vérificateur absolu /work ni certification des modes originaux.",
+    "Durées des détours hors bridge inconnues ; la somme3,82s ne mesure pas le temps total perdu."
+  ]
+}

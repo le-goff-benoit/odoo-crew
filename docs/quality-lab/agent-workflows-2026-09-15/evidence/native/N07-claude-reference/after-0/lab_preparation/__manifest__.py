@@ -1,0 +1,1 @@
+{'name': 'Atelier Nacre — préparation périodique et saisies explicites', 'version': '19.0.1.1.0', 'license': 'LGPL-3', 'depends': ['base'], 'data': ['security/ir.model.access.csv'], 'installable': True}

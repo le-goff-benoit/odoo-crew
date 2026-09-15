@@ -1,0 +1,69 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/work",
+  "scopes": [
+    "lab_preparation"
+  ],
+  "sources": {
+    "lab_preparation/__init__.py": {
+      "sha256": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "mode": 420
+    },
+    "lab_preparation/__manifest__.py": {
+      "sha256": "5b7f1619b99ecffd7c89381366ce0c6019d8b1c19fb98f9672c758113fa6af6a",
+      "mode": 420
+    },
+    "lab_preparation/models/__init__.py": {
+      "sha256": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "mode": 420
+    },
+    "lab_preparation/models/business.py": {
+      "sha256": "d7f7d4dc60e071ea3b23327d06777a9ca255979d63012899ef4dcc44dee7dfa2",
+      "mode": 420
+    },
+    "lab_preparation/security/ir.model.access.csv": {
+      "sha256": "c4489a57cc57e684d4c7e069830e4dd4f3983f4f943fc8a3d782394b5c778cb4",
+      "mode": 420
+    },
+    "lab_preparation/tests/__init__.py": {
+      "sha256": "dfa9fb3603c36de05ea704dbd85a6d4cb933c03f1166207856da7ecb5881c849",
+      "mode": 436
+    },
+    "lab_preparation/tests/common.py": {
+      "sha256": "e227490f0efa0914898d383de4ac6e89248d67411ffb3f2120579ae213221cf8",
+      "mode": 436
+    },
+    "lab_preparation/tests/test_preparation.py": {
+      "sha256": "c54dd59403d0dc670eb76d4703e4af9906ae3bb2f0dda479a27f12b433a56cad",
+      "mode": 436
+    }
+  },
+  "command": [
+    "/bridge/labctl",
+    "qa",
+    "lab_preparation",
+    "--quick",
+    "--tags",
+    "/lab_preparation:TestLabPreparation"
+  ],
+  "exit_code": 1,
+  "result": "failed",
+  "module": "lab_preparation",
+  "error": null,
+  "seconds": 7.669,
+  "log": {
+    "path": "/work/changelog/2026-09-15_01_repair/preuves/red-confirmed.log",
+    "sha256": "53e70851bb86d1425a558f250d2bc8adc6464414ed8862ba01625d455cf08deb",
+    "relative_path": "changelog/2026-09-15_01_repair/preuves/red-confirmed.log"
+  },
+  "repository": {
+    "common_dir": "/work/.git",
+    "revision": "8f3a54c4f8263a4d904857615d390065e99b53d6"
+  },
+  "environment": "lab QA 19.0 séparée",
+  "runner": {
+    "python": "3.10.12",
+    "platform": "Linux",
+    "machine": "x86_64"
+  }
+}

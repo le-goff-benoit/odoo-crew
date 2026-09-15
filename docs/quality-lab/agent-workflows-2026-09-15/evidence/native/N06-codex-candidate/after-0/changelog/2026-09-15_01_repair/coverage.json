@@ -1,0 +1,158 @@
+{
+  "format": "odoo-qa-coverage/1",
+  "contract_sha256": "26a129052046bf49145001a4b5e64da1bbc13fd862904f430a8f658cb6eac6fa",
+  "criteria": [
+    {
+      "id": "C01",
+      "text": "C1 — Seuls les membres de self en draft dans env.company sont réparés, même avec deux sociétés autorisées ; sélection mixte admise ; brouillon non sélectionné et sélection vide sans effet.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/green.json",
+          "sha256": "2cfdd0c6ee8706b2abdc885dc91b8e718a3331b634fa5a9580bf091c6fd07d96"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/qa-runtime.md",
+          "sha256": "bdff4791ca85c672257ebe81f831a9da86699346114912f8c594c7294f9c9ee4"
+        }
+      ],
+      "note": "Sélections vide/mixte/incomplète, témoin hors self, deux sociétés autorisées et changement de société active."
+    },
+    {
+      "id": "C02",
+      "text": "C2 — Tri date_document puis id, séquences 100,200,… ; snapshot_total somme quantity*price uniquement des lignes cancelled=False ; ligne vide/annulée, égalité de dates et petit écart non arrondi couverts.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/green.json",
+          "sha256": "2cfdd0c6ee8706b2abdc885dc91b8e718a3331b634fa5a9580bf091c6fd07d96"
+        },
+        {
+          "path": "lab_register/tests/test_repair.py",
+          "sha256": "6e9b0a15c1c99df3ebef859f72c2bfe3c95cb548c0b68d427c0665787641a55f"
+        }
+      ],
+      "note": "Tri date/id (égalité de dates), pas 100, sommes littérales hors cancelled, vide et petit écart 0.005→0.004."
+    },
+    {
+      "id": "C03",
+      "text": "C3 — Les issued conservent state, sequence, snapshot_total, reference ; autres sociétés et lignes inchangées, y compris métadonnées de modification ; changement de société active testé.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/green.json",
+          "sha256": "2cfdd0c6ee8706b2abdc885dc91b8e718a3331b634fa5a9580bf091c6fd07d96"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/repair-verified.json",
+          "sha256": "c7bd1a055fa6314af9e33b27d097a1581b4e375d0b0637d0f61035737a4b6fd1"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/before.json",
+          "sha256": "7ec347841bae7ec721d0164390cafb8c85f4c1fb262a0f8b8bb35bbe4b063195"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/after.json",
+          "sha256": "01fb543383634de34c8dab80289c021e05a0273cba1dc295df83e0504389ed36"
+        }
+      ],
+      "note": "Tests plus comparaison intégrale de la cohorte historique et des lignes/métadonnées."
+    },
+    {
+      "id": "C04",
+      "text": "C4 — Utilisateur interne ordinaire sans sudo : succès dans ses droits ; refus AccessError sur écriture et lecture interdites, postconditions inchangées ; ACL et règles existantes inchangées.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/green.json",
+          "sha256": "2cfdd0c6ee8706b2abdc885dc91b8e718a3331b634fa5a9580bf091c6fd07d96"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/copy-rights-v2.json",
+          "sha256": "12aa08e9b379133d3dd0917b7dbc3fe767bfd9341ae4637db609126bb66dc39e"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/static-comparison.txt",
+          "sha256": "7650438762db859ea8093b0fdbf260861a4bc1a233fabaa1c3011f800f93b886"
+        }
+      ],
+      "note": "Succès interne sans sudo, refus AccessError exacts lecture/write et postconditions ; sécurité source inchangée."
+    },
+    {
+      "id": "C05",
+      "text": "C5 — Reprise persistée des deux brouillons historiques de société initiale 1 : id 1 = 100/20, id 2 = 200/15 ; références, issued id 3 et société 2 id 4 préservés. Second passage : valeurs et write_date stables et zéro appel write.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/repair-authorized.json",
+          "sha256": "8a5ced6267129a91a247f425281d69e490b7fbcc350b8344116ce9a66abae54f"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/repair-verified.json",
+          "sha256": "c7bd1a055fa6314af9e33b27d097a1581b4e375d0b0637d0f61035737a4b6fd1"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/qa-client.md",
+          "sha256": "2a29d0259f96999b6e1de5eabdc9192f379416731d5e3a21c6ac963cf892d41d"
+        }
+      ],
+      "note": "RPC persisté sur ids 2/1 société 1 puis relecture en nouvelle transaction ; rejeu zéro write."
+    },
+    {
+      "id": "C06",
+      "text": "C6 — Test rouge sur ancien code puis vert sur correctif, lint du diff, install/tests ciblés et update lab_client prouvés ; ancienne QA explicitement invalidée pour cette portée ; revue, QA et journal publiés ; release ouverte.",
+      "status": "covered",
+      "evidence": [
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/red.log",
+          "sha256": "1cc7c39217012730991bbedcf03e5ca82ce3bdce53c626e9f6e69a3b88efda40"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/business-before.py",
+          "sha256": "b24cfe215ce52d95a64fe963125bba0b883ef185f8062c58bf918ba72193bd02"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/green.json",
+          "sha256": "2cfdd0c6ee8706b2abdc885dc91b8e718a3331b634fa5a9580bf091c6fd07d96"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/update.log",
+          "sha256": "c34d5e39cb36ab4911f1a5158d1b3f09c0d71b53b3e112e05760cb11ecc3b5ea"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/copy-rights-v2.json",
+          "sha256": "12aa08e9b379133d3dd0917b7dbc3fe767bfd9341ae4637db609126bb66dc39e"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/lint.log",
+          "sha256": "148811d3bcd17b86197f2010f618736a2163fdde8aca15a56ad5bf2673b535b7"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/lint-diff.log",
+          "sha256": "67318e71032ad04cbc232dbad3b5057373d28474640dc71cdf172d65597d7689"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/static-comparison.txt",
+          "sha256": "7650438762db859ea8093b0fdbf260861a4bc1a233fabaa1c3011f800f93b886"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/qa.md",
+          "sha256": "7b68221e179245384aaa766d5a175e1700d0630de81f3992f89ec70c4f2ce191"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/reception-documentaire.md",
+          "sha256": "5485de1adbe0231131a6299a142f8377382e8b2cbec98840f76011b5850a5931"
+        },
+        {
+          "path": "changelog/2026-09-15_01_repair/proofs/publication.json",
+          "sha256": "48cd9fbe36aac26521bfe8127c04144e2e79cc425023dcd606991fa6c6aa9a0a"
+        },
+        {
+          "path": ".odoo-agents/JOURNAL.md",
+          "sha256": "3f50d3917aaf0b26d049c83efb6d31e48c9625fdc4a8c105ccf8727e959cbfb2"
+        }
+      ],
+      "note": "Rouge intentionnel sur ancien code conservé en log et reçu historique ; vert courant. Update exit 0 confirmé sur copie. Lint complet rouge pour dette structurelle author préexistante, diff/Ruff conformes. Revue QA et journal publiés ; release ouverte. Auto-relecture non indépendante."
+    }
+  ]
+}

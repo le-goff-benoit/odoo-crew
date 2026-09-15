@@ -1,0 +1,73 @@
+{
+  "case": "N07",
+  "provider": "codex",
+  "config": {
+    "model": "gpt-6-astra",
+    "effort": "high"
+  },
+  "status": "executed",
+  "started_at": "2026-09-15T22:38:18.390671+00:00",
+  "turns": [
+    {
+      "status": "completed",
+      "exit_code": 0,
+      "seconds": 629.7,
+      "usage": {
+        "input_tokens": 1949258,
+        "cached_input_tokens": 1851392,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 18399,
+        "reasoning_output_tokens": 1731
+      },
+      "actual_model": null,
+      "tool_calls": 48,
+      "actual_effort": null,
+      "provider_completed": true,
+      "error": null,
+      "delegation": {
+        "supported": false
+      },
+      "answer_sha256": "b8944686df7db438178142481550913d0e858b63033c8d3ef44c50cb1496a592"
+    }
+  ],
+  "setup_seconds": 34.883,
+  "active_turn": 0,
+  "oracle": {
+    "exit_code": 0,
+    "checks": {
+      "legacy_auto_repaired": true,
+      "legacy_explicit_zero_preserved": true,
+      "legacy_partial_preserved": true,
+      "legacy_done_preserved": true,
+      "explicit_zero_not_false": true,
+      "copy_resets_operational_state": true,
+      "copy_then_cron": true,
+      "remainder_contract": true,
+      "remainder_then_cron": true,
+      "no_empty_remainder": true,
+      "negative_remaining_clamped": true,
+      "idempotent_cron": true
+    },
+    "passed": true,
+    "log_sha256": "e4e8911067bbc14bf3b140b95f7c87e2811cf649c649c98419455d48793975f3",
+    "log": "oracle-000.log"
+  },
+  "oracle_seconds": 1.355,
+  "oracle_finished_at": "2026-09-15T22:49:24.355557+00:00",
+  "elapsed_to_oracle_seconds": 665.965,
+  "agent_seconds": 629.7,
+  "bridge_calls": 7,
+  "reception": {
+    "passed": false,
+    "checks": {
+      "provider_completed": true,
+      "oracle_passed": true,
+      "lint_final_sources": false,
+      "qa_final_sources": true,
+      "update_final_sources": true
+    },
+    "semantic_review": "pending",
+    "time_to_accepted_receipt_seconds": null
+  },
+  "review": null
+}

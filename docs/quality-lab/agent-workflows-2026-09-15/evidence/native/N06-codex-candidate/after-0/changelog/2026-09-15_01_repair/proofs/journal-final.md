@@ -1,0 +1,1 @@
+Publication locale vérifiée après réception module_high_gate=pass : PROJECT et JOURNAL identiques aux versions relues, hashes de publication intacts, une seule entrée B-42 (10 lignes). Revue/QA publiées ; release ouverte. Aucun nouvel ajout ni écrasement nécessaire au passage du nœud journal.

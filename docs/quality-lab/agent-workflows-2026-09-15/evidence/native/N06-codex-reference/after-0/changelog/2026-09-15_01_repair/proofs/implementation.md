@@ -1,0 +1,7 @@
+# Implémentation B-42
+
+Odoo 19.0, module existant. Suppression du search global et du sudo ; contrôle read puis filtrage self/draft/société active et contrôle write. Tri date/id, pas 100, exclusion cancelled, write uniquement des valeurs différentes. ACL/règles et manifest inchangés. Précision conservée sans arrondi.
+Tests dans tests/common.py et tests/test_repair.py, importés par tests/__init__.py : 5 méthodes. Rouge initial : 5 échecs fonctionnels, 0 erreur technique (red.log), code original conservé (business-before.py). Vert : mêmes tests, 0 échec/erreur/skip (green.log), update QA réussi.
+Lint via pont : Ruff bloquant passe ; contrôles Odoo ne trouvent que l'absence préexistante de author dans le manifest inchangé (manifest-before.txt). Même constat avec lint local restreint aux fichiers touchés (lint-diff.log) : le linter conserve les anomalies structurelles même hors diff. Il n'est donc pas présenté comme un lint global vert. Diff relu, aucun défaut nouveau ; git diff --check réussi.
+Reprise séparée explicite sous utilisateur 5, aucune migration automatique. Le script fixe la base lab_client, la société initiale 1 et les IDs historiques 1/2, refuse un inventaire divergent, conserve émis/autre société/lignes, commit final. Update exécuté sur copie installée (update.log).
+Aucune modification des sources Odoo, du dispositif ou d'une production. Aucun changement de schéma, version inchangée jusqu'à clôture. Relecture par le même agent imposée par LAB.md.
