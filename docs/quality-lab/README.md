@@ -23,6 +23,7 @@ Chaque rapport précise son périmètre : une réussite sur un cas n’est pas u
 
 | Sujet | Bilan à lire | Ce qu’il permet de savoir |
 |---|---|---|
+| **Mémoire vivante des releases** | [Documents, passations et contre-épreuve](knowledge-2026-09-15/README.md) | Partage pendant le travail, impacts ciblés, 4 passages natifs dont un échec conservé. |
 | **Bilan de cette mise à jour** | [Tous les leviers et leur validation](improvements-2026-09-15/README.md) | Résultats adoptés, corrections de relecture et limites. |
 | **Parcours métier représentatifs** | [Stock, facture, formulaire et reprise](workflows-2026-09-15/README.md) | Témoins et mutations sur Odoo synthétique ; périmètres et séries explicités. |
 | **Profils plus courts** | [Comparaison avec références chargées](profiles-2026-09-15/README.md) | Entrée et contexte réellement lu ; fidélité de réception sur dossiers synthétiques. |

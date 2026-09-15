@@ -160,3 +160,13 @@ seule n’est pas une amélioration de qualité ou de délai démontrée.
 
 Les données d'origine restent privées. Les cas et preuves publiés sont synthétiques.
 Aucune économie globale de temps de release client n'est déduite de ces essais.
+# Mémoire partagée — 15 septembre 2026
+
+Catalogue documentaire, index AST/XML par série, contributions pendant la release,
+lecture fraîche avant réception et impact explicite des décisions sur les tâches.
+La clôture consolide des acquis déjà utilisés ; réception locale et déploiement
+restent distincts. [Procédure](KNOWLEDGE.md) ·
+[Banc, corrections et limites](quality-lab/knowledge-2026-09-15/README.md).
+Outils adoptés après régressions et parcours indépendant. Qualification native
+partielle : 2 acceptés, 1 avec réserves, 1 refusé ; corrections documentaires
+non rejouées en natif, aucun changement de modèle ou gain de vitesse revendiqué.

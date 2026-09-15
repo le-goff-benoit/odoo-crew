@@ -78,6 +78,10 @@ def render(data, root, topic=None):
     for row in visible:
         refs = ', '.join(s['path'] for s in row['sources'])
         out.append(f"- {row['id']} [{row['status']} ; réalisation={row['implementation']['status']}] {row['statement']} — sources : {refs}")
+        if row.get('scope'):
+            out.append('  Périmètre : ' + ', '.join(row['scope']))
+        if row.get('exceptions'):
+            out.append('  Exceptions : ' + '; '.join(row['exceptions']))
     for q in data.get('questions', []):
         if q['status'] == 'open':
             out.append(f"- {q['id']} [QUESTION OUVERTE] {q['question']} — source : {q['source']['path']}")
@@ -91,9 +95,20 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('project', type=Path)
     parser.add_argument('--topic')
+    parser.add_argument('--import-file', type=Path, help='Mémoire structurée relue ; aucune extraction automatique de décision')
+    parser.add_argument('--expected-sha256', help='Empreinte de la mémoire existante pour remplacement explicite')
     args = parser.parse_args()
-    data = json.loads((args.project / '.odoo-agents/DECISIONS.json').read_text())
     try:
+        from odoo_documents import atomic, locked, within
+        target = within(args.project, '.odoo-agents/DECISIONS.json')
+        if args.import_file:
+            data = json.loads(args.import_file.read_text())
+            validate(data, args.project)
+            with locked(args.project):
+                if target.exists() and hashlib.sha256(target.read_bytes()).hexdigest() != args.expected_sha256:
+                    raise MemoryError('mémoire existante : --expected-sha256 requis ; relire les changements concurrents')
+                atomic(target, data)
+        data = json.loads(target.read_text())
         print(render(data, args.project, args.topic))
     except (ValueError, KeyError, OSError) as exc:
         parser.exit(2, f'Mémoire non validée : {exc}\n')

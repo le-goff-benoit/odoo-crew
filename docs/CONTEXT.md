@@ -8,7 +8,13 @@ les anciens enregistrements restent vérifiables avec leurs contrôles de fichie
 ## Sélection
 
 Le corpus comprend `.odoo-agents/PROJECT.md`, `JOURNAL.md`, `DECISIONS.json`,
-`decisions/*.md` et `changelog/*/revue_fonctionnelle.md` lorsqu’ils existent.
+`DOCUMENTS.json`, `SOURCE_INDEX.json`, `decisions/*.md` et les demandes, intentions,
+plans, revues, consolidations et contributions structurées des releases.
+Avec `--release ID --task T01 --role developer`, le schéma 3 ajoute intégralement
+la [mémoire partagée courante](KNOWLEDGE.md), vérifiée à la passation. Les budgets
+insuffisants restent explicites. Sans release, l'API et le schéma 2 sont conservés.
+Les correspondances lexicales rapprochent accents et pluriels simples ; elles
+ne résolvent ni synonymes, ni contradictions.
 
 1. Le rendu validé de **DECISIONS.json est obligatoire et entier** : décisions
    courantes, propositions identifiées, questions ouvertes et références aux

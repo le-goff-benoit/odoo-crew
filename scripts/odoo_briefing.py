@@ -292,7 +292,11 @@ def main(argv: list[str]) -> int:
     parser.add_argument('--query', help='Sélection par sections ; remplace le chargement intégral de la mémoire')
     parser.add_argument('--budget', type=int, default=12000)
     parser.add_argument('--context-output', type=Path, help='Provenance JSON optionnelle du contexte sélectionné')
+    parser.add_argument('--release', help='Mémoire vivante de cette release, ajoutée au contexte')
+    parser.add_argument('--task'); parser.add_argument('--role', default='orchestrator')
     args = parser.parse_args(argv[1:])
+    if args.release and args.query is None:
+        args.query = ''
     explicit, n_journal = args.series, args.journal
     full_journal, offline = args.full_journal, args.offline
     if n_journal < 0 or args.budget < 1000:
@@ -356,7 +360,7 @@ def main(argv: list[str]) -> int:
     if args.query is not None:
         import odoo_context
         try:
-            selection = odoo_context.context(root, args.query, args.budget)
+            selection = odoo_context.context(root, args.query, args.budget, args.release, args.task, args.role)
         except (ValueError, KeyError, OSError) as exc:
             print('Contexte ciblé invalide : ' + str(exc), file=sys.stderr)
             return 2

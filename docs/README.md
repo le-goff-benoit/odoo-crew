@@ -19,6 +19,7 @@ rangés dans [`templates/`](templates/), les images dans [`assets/`](assets/).
 
 ## Contexte, livraison et modèles
 
+- [Mémoire vivante de release](KNOWLEDGE.md) : découvertes partagées, décisions, documents et index du code.
 - [Contexte ciblé dès le briefing](CONTEXT.md) : décisions, sections complètes et omissions sourcées.
 - [Contrat de livraison](DELIVERY_GUARD.md) : commit, build et état réellement observé.
 - [Modèles par rôle](MODELS.md) : héritage, candidats et limites des qualifications.

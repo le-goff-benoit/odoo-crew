@@ -26,10 +26,13 @@ REQUIRED = ('README.md', 'demande.md', 'doc.md', 'recette.md', 'tests_navigateur
 def required_artifacts(release):
     from odoo_effort import REPORT_FILES, check_report, preparation_entries
     has_effort = (release / 'effort.json').exists()
+    memory = ()
+    if (release / 'plan.json').exists() and read(release)[0].get('shared_memory'):
+        memory = ('knowledge-consolidation.json',)
     if has_effort or preparation_entries(release.resolve().parent.parent, release.name):
         check_report(release)
-        return REQUIRED + (('effort.json',) if has_effort else ()) + REPORT_FILES
-    return REQUIRED
+        return REQUIRED + memory + (('effort.json',) if has_effort else ()) + REPORT_FILES
+    return REQUIRED + memory
 
 
 def prepare(module):
@@ -118,6 +121,17 @@ def seal(release, scopes, proofs):
         if bad:
             raise ValueError('tâches non réceptionnées : ' + ', '.join(bad))
     artifacts = {}
+    if 'knowledge-consolidation.json' in required_artifacts(release):
+        import odoo_knowledge
+        consolidation = json.loads((release / 'knowledge-consolidation.json').read_text())
+        live = odoo_knowledge.snapshot(project, release.name)
+        if (live['warnings'] or any(r['freshness'] != 'verified' for r in live['contributions'] if r['current'])
+                or any(r['freshness'] != 'verified' for r in live['documents'])):
+            raise ValueError('connaissances non vérifiées : réconcilier avant clôture')
+        if (consolidation.get('schema') != 1 or consolidation.get('release') != release.name
+                or consolidation.get('snapshot') != live
+                or consolidation.get('knowledge_sha256') != odoo_knowledge.digest(live)):
+            raise ValueError('consolidation de mémoire périmée : réconcilier avant clôture')
     for name in required_artifacts(release):
         path = release / name
         if not path.is_file() or not path.read_text().strip():

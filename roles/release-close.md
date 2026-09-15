@@ -262,3 +262,9 @@ build/cible, versions réellement installées, migrations exécutées et effets 
 sourcés. La collecte respecte les autorisations de plateforme et les protections
 production ; le garde ne réalise aucun déploiement. Si l'étape n'est pas autorisée
 ou la preuve absente, annonce exactement l'état atteint et ce qui reste à vérifier.
+# Capitalisation de la mémoire vivante
+
+Consolide les contributions de `knowledge/` et les fragments des tâches reçues
+selon `docs/KNOWLEDGE.md` : décisions courantes/remplacées, questions, reports et
+preuves. La clôture ne crée pas rétrospectivement un acquis d'une tâche différée
+et ne transforme pas la validation locale en déploiement.

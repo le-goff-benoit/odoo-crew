@@ -6,13 +6,18 @@ import json
 from pathlib import Path
 import re
 import sys
+import unicodedata
 
 import odoo_memory
+import odoo_documents
+import odoo_knowledge
 
 
 def inventory(project):
-    paths = [project / '.odoo-agents' / name for name in ('PROJECT.md', 'JOURNAL.md', 'DECISIONS.json')]
+    paths = [project / '.odoo-agents' / name for name in ('PROJECT.md', 'JOURNAL.md', 'DECISIONS.json', 'DOCUMENTS.json', 'SOURCE_INDEX.json')]
     paths += list((project / 'decisions').glob('*.md')) + list((project / 'changelog').glob('*/revue_fonctionnelle.md'))
+    for pattern in ('*/demande.md', '*/intentions.json', '*/plan.json', '*/consolidation.md', '*/knowledge/*.json'):
+        paths += list((project / 'changelog').glob(pattern))
     found = []
     for path in paths:
         if path.exists():
@@ -28,6 +33,13 @@ def catalog_hashes(project, paths):
 
 def digest(text):
     return hashlib.sha256(text.encode()).hexdigest()
+
+
+def keywords(text):
+    normalized = ''.join(c for c in unicodedata.normalize('NFKD', text.casefold()) if not unicodedata.combining(c))
+    # Orthographic equivalence only, not semantic matching or rule arbitration.
+    return {word[:-1] if len(word) > 3 and word.endswith('s') else word
+            for word in re.findall(r'\w{3,}', normalized)}
 
 
 def markdown_sections(text):
@@ -82,14 +94,15 @@ LIMITATION = ('Sélection lexicale, rappel non exhaustif : synonymes et contradi
               'les autres sources peuvent être historiques.')
 
 
-def context(project, query='', budget=12000):
+def context(project, query='', budget=12000, release=None, task=None, role='orchestrator'):
     project = Path(project).resolve()
     if budget < 1000:
         raise ValueError('budget minimum 1000 caractères')
     catalog_paths = inventory(project)
     hashes = catalog_hashes(project, catalog_paths)
-    words = set(re.findall(r'\w{3,}', query.lower()))
+    words = keywords(query)
     sections = []
+    shared = odoo_knowledge.brief(project, release, task, role) if release else None
     for name in catalog_paths:
         path = project / name
         mandatory = name == '.odoo-agents/DECISIONS.json'
@@ -97,11 +110,22 @@ def context(project, query='', budget=12000):
             rendered = odoo_memory.render(json.loads(path.read_text()), project)
             parts = [{'title': 'Décisions courantes et questions ouvertes', 'content': rendered,
                       'start_line': None, 'end_line': None, 'section_sha256': digest(rendered)}]
+        elif name == '.odoo-agents/DOCUMENTS.json':
+            parts = markdown_sections(odoo_documents.render(project))
+        elif name == '.odoo-agents/SOURCE_INDEX.json':
+            import odoo_source_index
+            index = json.loads(path.read_text())
+            try:
+                odoo_source_index.verify(index)
+                content = '# Sources Odoo indexées\n' + json.dumps(index, ensure_ascii=False, indent=2)
+            except (ValueError, OSError, KeyError) as exc:
+                content = '# Index à régénérer\n' + str(exc)
+            parts = markdown_sections(content)
         else:
             parts = markdown_sections(path.read_text())
         for part in parts:
-            title_words = set(re.findall(r'\w{3,}', (name + ' ' + part['title']).lower()))
-            text_words = set(re.findall(r'\w{3,}', part['content'].lower()))
+            title_words = keywords(name + ' ' + part['title'])
+            text_words = keywords(part['content'])
             relevance = 3 * len(words & title_words) + len(words & text_words)
             business = name == '.odoo-agents/PROJECT.md' and bool(re.search(
                 r'(?i)métier|metier|compréhension|decisions?|décisions?|règles?|contraintes?|actées?', part['title']))
@@ -116,6 +140,8 @@ def context(project, query='', budget=12000):
 
     def render(insufficient=False):
         out = ['# Contexte ciblé', LIMITATION]
+        if shared:
+            out.append(shared['text'])
         if insufficient:
             out.append('BUDGET INSUFFISANT : décisions obligatoires et index conservés intégralement ; augmenter le budget avant de poursuivre.')
         for i in ranked:
@@ -163,6 +189,8 @@ def context(project, query='', budget=12000):
               'minimum_characters': len(render(True)) if insufficient else len(baseline),
               'limitation': LIMITATION}
     result['context_sha256'] = digest(text)
+    if release:
+        result.update(schema=3, release=release, task=task, role=role, shared_memory=shared)
     return result
 
 
@@ -180,8 +208,11 @@ def verify_context(record, project):
         path = (project / item['path']).resolve()
         if not path.is_relative_to(project) or hashlib.sha256(path.read_bytes()).hexdigest() != item['sha256']:
             raise ValueError('contexte périmé : ' + item['path'])
-    if record.get('schema') == 2:
-        current = context(project, record['query'], record['budget_characters'])
+    if record.get('schema') in (2, 3):
+        if record.get('schema') == 3:
+            odoo_knowledge.verify_brief(project, record['shared_memory'])
+        current = context(project, record['query'], record['budget_characters'],
+                          record.get('release'), record.get('task'), record.get('role', 'orchestrator'))
         for key in ('sections', 'sources', 'text', 'budget_status', 'emitted_characters', 'actual_characters', 'minimum_characters'):
             if record.get(key) != current[key]:
                 raise ValueError('sélection ou provenance des sections changée : ' + key)
@@ -190,12 +221,14 @@ def verify_context(record, project):
 if __name__ == '__main__':
     p = argparse.ArgumentParser(description=__doc__); p.add_argument('project', type=Path)
     p.add_argument('--query', default=''); p.add_argument('--budget', type=int, default=12000)
-    p.add_argument('--output', type=Path); p.add_argument('--verify', type=Path); a = p.parse_args()
+    p.add_argument('--output', type=Path); p.add_argument('--verify', type=Path)
+    p.add_argument('--release'); p.add_argument('--task'); p.add_argument('--role', default='orchestrator')
+    a = p.parse_args()
     try:
         if a.verify:
             verify_context(json.loads(a.verify.read_text()), a.project); print('Contexte sourcé inchangé.')
         else:
-            result = context(a.project, a.query, a.budget)
+            result = context(a.project, a.query, a.budget, a.release, a.task, a.role)
             if a.output:
                 a.output.parent.mkdir(parents=True, exist_ok=True)
                 a.output.write_text(json.dumps(result, ensure_ascii=False, indent=2)+'\n')

@@ -133,6 +133,14 @@ def task_status(task, project):
                 path = reference(project, item['path'])
                 if flow.graph_hash(path) != item['sha256']:
                     raise ValueError('passation modifiée après validation')
+            if receipt.get('knowledge'):
+                item = receipt['knowledge']
+                if flow.graph_hash(reference(project, item['path'])) != item['sha256']:
+                    raise ValueError('lecture mémoire de réception modifiée')
+                import odoo_knowledge
+                reading = json.loads(reference(project, item['path']).read_text())
+                if odoo_knowledge.impact_sources(project, reading['release'], task['id']) != receipt.get('knowledge_effects', {}):
+                    raise ValueError('décision partagée affectant cette tâche changée : nouvelle réception requise')
             proof_path = reference(project, receipt['proof']['path'])
             if flow.graph_hash(proof_path) != receipt['proof']['sha256']:
                 raise ValueError('preuve remplacée')
@@ -300,9 +308,10 @@ def source_snapshot(project, scopes):
     return fingerprint(project, [s for s in scopes if (project / s).exists()], allow_empty=True)
 
 
-def mutate(release, action, identifier, *, proof=None, acceptance=None, memory=None, reason=None, check_proofs=None):
+def mutate(release, action, identifier, *, proof=None, acceptance=None, memory=None, reason=None, check_proofs=None, knowledge=None):
     release, project = location(release)
-    with flow.exclusive_lock(release / 'plan.json'):
+    from odoo_documents import locked
+    with flow.exclusive_lock(release / 'plan.json'), locked(project):
         plan, project = read(release)
         task = next((t for t in plan['tasks'] if t['id'] == identifier), None)
         if task is None:
@@ -312,6 +321,10 @@ def mutate(release, action, identifier, *, proof=None, acceptance=None, memory=N
             ready, why = available(plan, project, identifier)
             if not ready:
                 raise ValueError(why)
+            shared = None
+            if plan.get('shared_memory'):
+                import odoo_knowledge
+                shared = odoo_knowledge.brief(project, release.name, identifier)
             before = source_snapshot(project, task['scopes'])
             run_id = 'plan-' + identifier.lower() + '-' + uuid.uuid4().hex[:8]
             flow.ensure_local_flow_dirs(project)
@@ -332,7 +345,21 @@ def mutate(release, action, identifier, *, proof=None, acceptance=None, memory=N
             task.setdefault('attempts', []).append({'flow': str(path.relative_to(project)),
                                                    'at': flow.now(), 'sources_before': before})
             result = str(path)
+            if shared:
+                from odoo_documents import atomic
+                reading = release / 'knowledge-readings' / (run_id + '.json')
+                atomic(reading, shared)
+                task['attempts'][-1]['knowledge'] = str(reading.relative_to(project))
+                result += '\n' + shared['text'] + '\nLecture à transmettre aux agents : ' + str(reading)
         elif action == 'finish':
+            if plan.get('shared_memory'):
+                import odoo_knowledge
+                if not knowledge:
+                    raise ValueError('--knowledge : mémoire partagée relue avant réception requise')
+                reading = json.loads(reference(project, knowledge).read_text())
+                if reading.get('release') != release.name or reading.get('task') != identifier:
+                    raise ValueError('lecture mémoire d’une autre tâche/release')
+                odoo_knowledge.verify_brief(project, reading)
             attempts = task.get('attempts', [])
             if not attempts or json.loads(reference(project, attempts[-1]['flow']).read_text())['status'] != 'complete':
                 raise ValueError('le graphe doit être terminé avant la réception')
@@ -380,6 +407,9 @@ def mutate(release, action, identifier, *, proof=None, acceptance=None, memory=N
                     raise ValueError('preuve vide : ' + key)
                 receipt[key] = {'path': str(path.relative_to(project)), 'sha256': flow.graph_hash(path)}
             receipt['at'] = flow.now(); receipt['contract_sha256'] = contract_hash(task, project)
+            if plan.get('shared_memory'):
+                receipt['knowledge'] = {'path': knowledge, 'sha256': flow.graph_hash(reference(project, knowledge))}
+                receipt['knowledge_effects'] = odoo_knowledge.impact_sources(project, release.name, identifier)
             by_id = {t['id']: t for t in plan['tasks']}
             if recorded_checks:
                 receipt['checks'] = recorded_checks
@@ -420,6 +450,7 @@ def main():
     parser.add_argument('--file', type=Path)
     parser.add_argument('--check-proofs', type=Path, help='JSON identifiant de contrôle → chemin de preuve relatif')
     parser.add_argument('--task'); parser.add_argument('--proof'); parser.add_argument('--acceptance'); parser.add_argument('--memory'); parser.add_argument('--reason')
+    parser.add_argument('--knowledge', help='Snapshot de mémoire relu avant réception (plans shared_memory)')
     args = parser.parse_args()
     if args.action in ('init', 'add', 'revise'):
         if not args.file:
@@ -442,7 +473,7 @@ def main():
             ready, why = available(plan, project, task['id'])
             print(f"{task['id']} · {states[task['id']][0]} · {'PRÊT' if ready else why} · {task['title']}")
     else:
-        print(mutate(args.release, args.action, args.task, proof=args.proof, acceptance=args.acceptance, memory=args.memory, reason=args.reason, check_proofs=json.loads(args.check_proofs.read_text()) if args.check_proofs else None))
+        print(mutate(args.release, args.action, args.task, proof=args.proof, acceptance=args.acceptance, memory=args.memory, reason=args.reason, check_proofs=json.loads(args.check_proofs.read_text()) if args.check_proofs else None, knowledge=args.knowledge))
 
 
 if __name__ == '__main__':

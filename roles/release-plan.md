@@ -107,3 +107,8 @@ mesure pas la qualité du plan.
 Si la livraison est demandée, fixe aussi commit de base, build cible et effets
 à relire suivant `docs/DELIVERY_GUARD.md`. Le statut « reçu localement » ne devient
 pas « déployé » par un push. Ces contrôles restent distincts de la recette métier.
+# Mémoire partagée
+
+Pour les nouveaux plans, active `shared_memory: true`. Lis `docs/KNOWLEDGE.md` :
+la mémoire se nourrit dès les intentions puis à chaque découverte/réception,
+et se transmet aux agents de chaque tâche, sans attendre la clôture.

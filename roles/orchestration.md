@@ -49,6 +49,9 @@ constat d'arrêt. Une porte humaine attend une décision consignée ;
 
 Chaque mandat donne question, briefing déjà calculé, release, critères, périmètre,
 mode, verrous, budget et preuve isolée `.odoo-agents/flow-artifacts/<run>/<nœud>.md`.
+Ajoute la mémoire vivante de release (`docs/KNOWLEDGE.md`) : l'agent cite les acquis
+appliqués et rend découvertes/questions pendant la tâche. Publie ces fragments
+avant de lancer les consommateurs ; vérifie la fraîcheur à chaque passation.
 Un événement de fin d'agent déclenche l'examen de sa preuve, pas son acceptation.
 Sans sous-agent disponible, applique le rôle toi-même et signale les relectures
 non indépendantes. Le nombre d'agents n'est pas un objectif.

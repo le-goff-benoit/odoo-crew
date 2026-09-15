@@ -1,0 +1,324 @@
+[
+  {
+    "case": "K01",
+    "provider": "codex",
+    "config": {
+      "model": "gpt-6-astra",
+      "effort": "medium"
+    },
+    "transport_ok": true,
+    "seconds": 59.215,
+    "usage": {
+      "input_tokens": 144158,
+      "cached_input_tokens": 119552,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 1331,
+      "reasoning_output_tokens": 0
+    },
+    "actual_model": null,
+    "tool_calls": 9,
+    "errors": [],
+    "response": {
+      "current_rule": "exclude_cross_company",
+      "proposal_confirmed": false,
+      "deployment_verified": false,
+      "task_deferred": false,
+      "references": [
+        {
+          "path": "arbitrage.md",
+          "location": "L1",
+          "quote": "Accord métier 2025 validé. L’exception décrite dans la pièce est retenue."
+        },
+        {
+          "path": "pieces/livraisons.xlsx",
+          "location": "Livraison!B9",
+          "quote": "Les livraisons inter-sociétés ne doivent jamais être regroupées."
+        },
+        {
+          "path": "proposition.md",
+          "location": "L1",
+          "quote": "Proposition du 15 septembre 2026, non arbitrée : supprimer toutes les exceptions pour uniformiser le traitement."
+        },
+        {
+          "path": "notes.md",
+          "location": "L1",
+          "quote": "T01 : le regroupement est possible par partenaire ; le contrôle de société reste à définir. Aucun test ni déploiement attesté."
+        },
+        {
+          "path": "changelog/R1/demande.md",
+          "location": "L1",
+          "quote": "Préparer la prochaine tâche en réutilisant la mémoire et les pièces originales. Ne pas déployer."
+        }
+      ],
+      "explanation": "Pour la passation R1/T02, la règle courante exclut les livraisons inter-sociétés du regroupement : arbitrage.md valide explicitement l’exception de la pièce, dont la cellule Livraison!B9 a été relue dans le fichier XLSX original. Le statut documentaire reference ne constitue pas à lui seul cet arbitrage. La proposition de suppression, pourtant plus récente, est explicitement non arbitrée et D2 reste proposed ; elle ne remplace donc pas la règle validée. K1 est une découverte proposed, pas une décision : son contrôle de société reste à préciser conformément à l’exception retenue. Aucun élément ne justifie freeze_posted_company_b. Aucun contrat, build ou observation de livraison vérifiés ne sont fournis ; les notes indiquent expressément l’absence de test et de déploiement attestés. Aucun report de T02 n’est attesté : task_deferred=false signifie absence de report sourcé, sans affirmer que la tâche est prête, reçue ou exécutée. La mémoire vivante a été lue avec odoo_knowledge brief, sa fraîcheur vérifiée avec verify et les pièces cataloguées consultées via odoo_context puis dans l’original. Les empreintes attestent l’identité des sources, pas leur vérité métier. Cette passation seule ne réalise aucun développement, test ou déploiement."
+    },
+    "semantic_review": {
+      "verdict": "accepted",
+      "reason": "Règle et statut documentaire fidèles ; absence de report distinguée de disponibilité/exécution."
+    }
+  },
+  {
+    "case": "K01",
+    "provider": "claude",
+    "config": {
+      "model": "opus",
+      "effort": "medium"
+    },
+    "transport_ok": true,
+    "seconds": 100.251,
+    "usage": {
+      "tokens": {
+        "input_tokens": 24,
+        "cache_creation_input_tokens": 25456,
+        "cache_read_input_tokens": 283379,
+        "output_tokens": 7888,
+        "output_tokens_details": {
+          "thinking_tokens": 1681
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 25456,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 896,
+            "cache_read_input_tokens": 32350,
+            "cache_creation_input_tokens": 746,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 746
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "cost_usd": 0.5948275000000001
+    },
+    "actual_model": "claude-opus-5",
+    "tool_calls": 16,
+    "errors": [
+      "task_deferred"
+    ],
+    "response": {
+      "current_rule": "exclude_cross_company",
+      "proposal_confirmed": false,
+      "deployment_verified": false,
+      "task_deferred": true,
+      "references": [
+        {
+          "path": "pieces/livraisons.xlsx",
+          "location": "Livraison!B9",
+          "quote": "Les livraisons inter-sociétés ne doivent jamais être regroupées."
+        },
+        {
+          "path": "arbitrage.md",
+          "location": "ligne 1",
+          "quote": "Accord métier 2025 validé. L’exception décrite dans la pièce est retenue."
+        },
+        {
+          "path": "proposition.md",
+          "location": "ligne 1",
+          "quote": "Proposition du 15 septembre 2026, non arbitrée : supprimer toutes les exceptions pour uniformiser le traitement."
+        },
+        {
+          "path": "notes.md",
+          "location": "ligne 1",
+          "quote": "T01 : le regroupement est possible par partenaire ; le contrôle de société reste à définir. Aucun test ni déploiement attesté."
+        },
+        {
+          "path": ".odoo-agents/DECISIONS.json",
+          "location": "decisions[0] (D2) : status / implementation.status",
+          "quote": "\"status\": \"proposed\""
+        },
+        {
+          "path": "changelog/R1/knowledge/K1.json",
+          "location": "state / statement",
+          "quote": "Regroupement par partenaire à préciser avec les exceptions du dossier."
+        }
+      ],
+      "explanation": "Règle en vigueur : exclude_cross_company. L'unique pièce de référence cataloguée (accord 2025, statut « reference ») dit en Livraison!B9 que les livraisons inter-sociétés ne doivent jamais être regroupées, et arbitrage.md est le seul écrit d'arbitrage du dossier : il valide l'accord 2025 et retient l'exception décrite dans la pièce. J'ai ouvert l'original livraisons.xlsx et non le seul extrait, parce que le catalogue signale que formats, cellules masquées et objets restent à vérifier dans l'original : le classeur ne contient qu'une feuille « Livraison » et qu'une seule cellule B9, identique au texte catalogué, sans cellule masquée ni objet. Cette limitation d'extraction est donc levée pour cette pièce, et l'empreinte sha256 de l'original correspond à celle du catalogue. proposal_confirmed = false : proposition.md se qualifie lui-même de « non arbitrée » et la mémoire structurée porte D2 « Supprimer toutes les exceptions » au statut proposed, réalisation not_started ; une proposition n'est pas un arbitrage, donc no_exception n'est pas la règle en vigueur. K1 est de même une contribution d'analyste à l'état proposed, qui pose une question ouverte (le contrôle de société « reste à définir ») sans la trancher ; une contribution ne vaut pas décision. freeze_posted_company_b n'apparaît dans aucune source du projet : aucune base pour la retenir. deployment_verified = false : notes.md atteste « Aucun test ni déploiement attesté », aucune preuve odoo_evidence ni réception n'existe dans la release, et de toute façon aucune réception locale ne prouverait un déploiement. task_deferred = true : la demande porte sur la seule passation de mémoire, sans développement ni déploiement ; T02 reste en outre suspendue à la question ouverte de K1 et à l'arbitrage de D2, qui relèvent d'une décision humaine. Limites : la règle en vigueur repose sur arbitrage.md, un fichier de projet qui n'est référencé comme source d'aucune décision de DECISIONS.json — la mémoire structurée ne contient donc aucune décision confirmée, et l'écart entre l'arbitrage écrit et la mémoire outillée devrait être régularisé avant T02. La portée exacte de « inter-sociétés » (notamment le contrôle de société évoqué par K1) n'est définie par aucune source. odoo_knowledge.py verify échoue sur ce projet (TypeError faute de --file), la vérification s'appuie donc sur show, brief et le recalcul direct des empreintes. Enfin, la fidélité métier des extraits reste à confirmer par le client : je n'ai vérifié que leur intégrité et leur statut."
+    },
+    "semantic_review": {
+      "verdict": "rejected",
+      "reason": "Report T02 inventé ; aucune source de statut ni plan. Vérification mémoire mal appelée puis abandonnée."
+    }
+  },
+  {
+    "case": "K06",
+    "provider": "codex",
+    "config": {
+      "model": "gpt-6-astra",
+      "effort": "medium"
+    },
+    "transport_ok": true,
+    "seconds": 56.458,
+    "usage": {
+      "input_tokens": 139406,
+      "cached_input_tokens": 115072,
+      "cache_write_input_tokens": 0,
+      "output_tokens": 1366,
+      "reasoning_output_tokens": 0
+    },
+    "actual_model": null,
+    "tool_calls": 12,
+    "errors": [],
+    "response": {
+      "current_rule": "freeze_posted_company_b",
+      "proposal_confirmed": false,
+      "deployment_verified": false,
+      "task_deferred": true,
+      "references": [
+        {
+          "path": "pieces/accord.docx",
+          "location": "paragraphe 1",
+          "quote": "Les factures comptabilisées de la société B restent figées, même après changement de tarif."
+        },
+        {
+          "path": "arbitrage.md",
+          "location": "L1",
+          "quote": "Accord métier 2025 validé. L’exception décrite dans la pièce est retenue."
+        },
+        {
+          "path": "proposition.md",
+          "location": "L1",
+          "quote": "Proposition du 15 septembre 2026, non arbitrée : supprimer toutes les exceptions pour uniformiser le traitement."
+        },
+        {
+          "path": "notes.md",
+          "location": "L1",
+          "quote": "T01 : le regroupement est possible par partenaire ; le contrôle de société reste à définir. Aucun test ni déploiement attesté."
+        },
+        {
+          "path": "changelog/R1/knowledge/K1.json",
+          "location": "statement (L6)",
+          "quote": "Regroupement par partenaire à préciser avec les exceptions du dossier."
+        },
+        {
+          "path": "changelog/R1/plan.json",
+          "location": "tasks[0].deferred.reason (L18)",
+          "quote": "Arbitrage non reçu"
+        }
+      ],
+      "explanation": "La règle courante est le gel des factures comptabilisées de la société B, même après changement de tarif : D1 est confirmée et l’arbitrage métier retient explicitement l’exception du DOCX original, dont le paragraphe a été relu. La proposition plus récente de suppression des exceptions est explicitement non arbitrée (D2 proposed) et ne remplace donc pas D1. K1 reste une découverte proposée ; les notes laissent le contrôle de société à définir et ne fondent aucune exclusion inter-sociétés confirmée. T03 reste reportée dans le plan pour « Arbitrage non reçu » ; l’accord existant ne lève pas automatiquement ce report. Aucun déploiement n’est vérifié : les notes n’en attestent aucun, la mémoire ne contient aucune réception ni preuve de livraison, et les réalisations D1/D2 sont not_started. Cela établit une absence de preuve, pas une vérification de l’état d’un environnement distant. Le contexte et les empreintes sont vérifiés inchangés ; cette fraîcheur ne vaut pas arbitrage métier. Lecture seule de la mémoire et des pièces, sans développement, déploiement ni modification des statuts."
+    },
+    "semantic_review": {
+      "verdict": "accepted",
+      "reason": "D1 confirmée, D2 proposée, T03 reportée et absence de preuve de déploiement fidèlement restituées."
+    }
+  },
+  {
+    "case": "K06",
+    "provider": "claude",
+    "config": {
+      "model": "opus",
+      "effort": "medium"
+    },
+    "transport_ok": true,
+    "seconds": 68.411,
+    "usage": {
+      "tokens": {
+        "input_tokens": 18,
+        "cache_creation_input_tokens": 27608,
+        "cache_read_input_tokens": 215537,
+        "output_tokens": 5446,
+        "output_tokens_details": {
+          "thinking_tokens": 951
+        },
+        "server_tool_use": {
+          "web_search_requests": 0,
+          "web_fetch_requests": 0
+        },
+        "service_tier": "standard",
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 27608,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "inference_geo": "not_available",
+        "iterations": [
+          {
+            "input_tokens": 2,
+            "output_tokens": 813,
+            "cache_read_input_tokens": 32899,
+            "cache_creation_input_tokens": 2349,
+            "cache_creation": {
+              "ephemeral_5m_input_tokens": 0,
+              "ephemeral_1h_input_tokens": 2349
+            },
+            "type": "message"
+          }
+        ],
+        "speed": "standard"
+      },
+      "cost_usd": 0.5213165
+    },
+    "actual_model": "claude-opus-5",
+    "tool_calls": 11,
+    "errors": [],
+    "response": {
+      "current_rule": "freeze_posted_company_b",
+      "proposal_confirmed": false,
+      "deployment_verified": false,
+      "task_deferred": true,
+      "references": [
+        {
+          "path": "pieces/accord.docx",
+          "location": "paragraphe 1",
+          "quote": "Les factures comptabilisées de la société B restent figées, même après changement de tarif."
+        },
+        {
+          "path": "arbitrage.md",
+          "location": "ligne 1",
+          "quote": "Accord métier 2025 validé. L’exception décrite dans la pièce est retenue."
+        },
+        {
+          "path": ".odoo-agents/DECISIONS.json",
+          "location": "decisions[0] (D1, status=confirmed, implementation.status=not_started)",
+          "quote": "Les factures comptabilisées de la société B restent figées, même après changement de tarif."
+        },
+        {
+          "path": "proposition.md",
+          "location": "ligne 1",
+          "quote": "Proposition du 15 septembre 2026, non arbitrée : supprimer toutes les exceptions pour uniformiser le traitement."
+        },
+        {
+          "path": ".odoo-agents/DECISIONS.json",
+          "location": "decisions[1] (D2, status=proposed)",
+          "quote": "Supprimer toutes les exceptions."
+        },
+        {
+          "path": "changelog/R1/knowledge/K1.json",
+          "location": "statement (kind=discovery, state=proposed)",
+          "quote": "Regroupement par partenaire à préciser avec les exceptions du dossier."
+        },
+        {
+          "path": "notes.md",
+          "location": "ligne 1",
+          "quote": "T01 : le regroupement est possible par partenaire ; le contrôle de société reste à définir. Aucun test ni déploiement attesté."
+        },
+        {
+          "path": "changelog/R1/plan.json",
+          "location": "tasks[0].deferred.reason (T03 « Uniformisation »)",
+          "quote": "Arbitrage non reçu"
+        },
+        {
+          "path": "changelog/R1/demande.md",
+          "location": "ligne 1",
+          "quote": "Préparer la prochaine tâche en réutilisant la mémoire et les pièces originales. Ne pas déployer."
+        }
+      ],
+      "explanation": "Règle en vigueur pour T03 : freeze_posted_company_b. La seule décision confirmée du projet est D1 (.odoo-agents/DECISIONS.json, status=confirmed), sourcée par deux pièces dont les empreintes ont été recalculées et correspondent au catalogue : pieces/accord.docx (49411bfe…) et arbitrage.md (cb5dd459…). L'original DOCX a été relu directement : son unique paragraphe de corps énonce mot pour mot le figement des factures comptabilisées de la société B, et arbitrage.md atteste l'arbitrage humain retenant cette exception. La mémoire vivante lue avec odoo_knowledge.py brief (knowledge_sha256 99f9e8c9…, verify : « Mémoire partagée inchangée ») et le contexte odoo_context.py (context.json, verify : « Contexte sourcé inchangé ») présentent la même règle. proposal_confirmed=false : proposition.md (15 septembre 2026) demande de supprimer toutes les exceptions, mais se déclare elle-même « non arbitrée » et n'est portée que par D2 en état proposed, sans confirmed_by ni arbitrage sourcé ; sa date plus récente que l'accord 2025 ne vaut pas arbitrage et ne remplace donc pas D1. exclude_cross_company n'est soutenu par aucune source : K1 est une découverte proposed qui laisse justement « le contrôle de société reste à définir ». deployment_verified=false : aucun fragment deployment/accepted, aucun contrat/build/observation revalidable par odoo_delivery_guard, D1 est implementation.status=not_started, notes.md atteste « Aucun test ni déploiement attesté » et la demande interdit tout déploiement. task_deferred=true : plan.json marque T03 deferred avec la raison « Arbitrage non reçu » — l'uniformisation demandée dépend de D2, non arbitrée — et la consigne de cette session limite le travail à la passation de mémoire. Limites : lecture documentaire seulement, sur un projet déclaré en série 19.0 ; aucun code, test, base ni environnement n'a été touché. L'extraction DOCX ne couvre que les paragraphes du corps et les tableaux — pagination, en-têtes, commentaires et révisions restent à vérifier dans l'original, et une révision masquée pourrait nuancer l'exception. Les empreintes prouvent l'identité des sources, pas leur vérité ni leur interprétation métier ; la sélection lexicale du contexte n'est pas un rappel exhaustif. Lever le report exige un arbitrage humain sourcé sur D2 (acceptation avec reviewed_by et review), qui remplacerait explicitement D1 ; sans lui, T03 doit préserver le figement des factures comptabilisées de la société B."
+    },
+    "semantic_review": {
+      "verdict": "accepted_with_reservations",
+      "reason": "État présent et citations corrects ; conseil final impose à tort le remplacement de D1 pour lever le report et mélange les schémas mémoire."
+    }
+  }
+]

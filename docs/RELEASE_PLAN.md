@@ -135,3 +135,9 @@ jamais éditer le hash à la main. Une migration vers le nouveau graphe dont les
 étapes ont changé peut être refusée : ce refus protège les preuves existantes.
 Les commandes de release courantes peuvent imposer de nouveaux contrôles à la
 clôture ; reprendre leurs preuves explicitement, sans convertir un ancien vert.
+## Mémoire pendant l'exécution
+
+Les nouveaux plans portent `"shared_memory": true`. Le démarrage transmet les
+acquis de release et la réception exige `--knowledge` avec une lecture fraîche.
+Les réceptions et décisions alimentent les tâches suivantes pendant le travail.
+[Procédure, impacts et consolidation](KNOWLEDGE.md).

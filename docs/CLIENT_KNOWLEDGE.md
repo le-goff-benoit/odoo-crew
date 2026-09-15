@@ -15,12 +15,16 @@ python3 scripts/odoo_context.py PROJET --query 'locations frais' \
 python3 scripts/odoo_context.py PROJET --verify PROJET/changelog/RELEASE/contexte-T01.json
 ```
 
-Le budget borne les blocs inclus ; l'index des sources omises peut le dépasser.
+Le budget porte sur le texte entier, index des omissions compris ; un socle
+obligatoire trop long produit explicitement `budget_status: insufficient`.
 Un bloc trop long est omis entier avec un lien : ses exceptions ne sont jamais
 coupées. La recherche lexicale ne garantit pas le rappel complet ; l'agent lit les
 sources signalées dès qu'une règle ou un ancien arbitrage devient pertinent.
 La vérification compare les empreintes, pas le sens métier. Une modification de
 source déclenche une nouvelle lecture, pas le simple renouvellement d'un hash.
+
+Pour la mémoire partagée pendant toute la release, les pièces complémentaires
+et l'index des sources Odoo/custom : [KNOWLEDGE.md](KNOWLEDGE.md).
 
 Un catalogue facultatif `.odoo-agents/SCENARIOS.json` relie les règles aux tests :
 

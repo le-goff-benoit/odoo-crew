@@ -1,0 +1,39 @@
+{
+  "baseline": "916ec52f04faf67fe05bb9e165eff6ad0722842a",
+  "candidate": {
+    "docs/KNOWLEDGE.md": "f51e4c55888b831e562ef80597f2c93a06a5a02881285c741ea0933860174c01",
+    "roles/release-start.md": "84650f505145ae7b569f6df4d91552ae757fc9e7f0275d3c4f7301be25ec478a",
+    "scripts/odoo_context.py": "c7339b30c040d6be0b32998fd6949c0c0b9cf52b3d172f962a466297ecb29151",
+    "scripts/odoo_documents.py": "107b1d69ba2e57a4af5607cc125f3d493f4e62c062a08c7ae8d88097c58d079a",
+    "scripts/odoo_knowledge.py": "72df11f1b9f594cf7e6265663023f19c8accabee8ea70b8295a30f230a829acf"
+  },
+  "cases": {
+    "K01": {
+      "file": "pieces/livraisons.xlsx",
+      "location": "Livraison!B9",
+      "exception": "Les livraisons inter-sociétés ne doivent jamais être regroupées.",
+      "current_rule": "exclude_cross_company",
+      "next_task": "T02"
+    },
+    "K06": {
+      "file": "pieces/accord.docx",
+      "location": "paragraphe 1",
+      "exception": "Les factures comptabilisées de la société B restent figées, même après changement de tarif.",
+      "current_rule": "freeze_posted_company_b",
+      "next_task": "T03"
+    }
+  },
+  "config": {
+    "codex": {
+      "model": "gpt-6-astra",
+      "effort": "medium"
+    },
+    "claude": {
+      "model": "opus",
+      "effort": "medium"
+    }
+  },
+  "max_calls": 4,
+  "timeout": 300,
+  "runner_sha256": "713df16a43ed3ee52e4e7b38f7e6480f56381dd846ab8509fbfc4784dd774b12"
+}

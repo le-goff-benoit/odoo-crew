@@ -44,6 +44,15 @@ Votre demande --> Analyste
 Chaque tâche conserve ses décisions et ses résultats dans la mémoire du projet.
 Un blocage ou un contrôle qui reste en échec vous est signalé.
 
+**La mémoire de release est partagée pendant le travail.** Une découverte ou une
+question est publiée dès qu'elle peut aider une autre tâche. Les passations reçues
+alimentent immédiatement les suivantes ; une nouvelle décision désigne les tâches
+affectées, et leurs anciennes réceptions deviennent périmées. Documents DOCX,
+XLSX et PDF gardent leurs originaux et repères ; les sources Odoo sont indexées
+par série/révision, avec le custom séparé. La clôture consolide ces acquis.
+[Fonctionnement et commandes](docs/KNOWLEDGE.md) ·
+[Banc et limites](docs/quality-lab/knowledge-2026-09-15/README.md).
+
 **Une investigation longue reste pilotable.** Les agents font un point sur les
 acquis prouvés, la question restante et le prochain contrôle utile, avec sa durée
 indicative. Le budget déclenche une revue de l'approche, pas un arrêt automatique.

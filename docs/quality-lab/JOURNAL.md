@@ -1,5 +1,15 @@
 # Journal de l’espace qualité
 
+## 15 septembre 2026 — Mémoire partagée pendant la release
+
+- Demande : partager les acquis pendant tout le travail et utiliser documents/code/release comme contexte.
+- Ajout des catalogues documentaires, index statique de série et contributions immuables.
+- Réception liée à une lecture fraîche ; décisions avec impacts ciblés ; consolidation de clôture.
+- Banc natif borné à 4 appels : 2 acceptés, 1 avec réserves, 1 refusé ; corrections et limites conservées.
+- Contre-épreuve indépendante : 72 commandes, tâches affectées périmées puis reprises, autres acquis conservés.
+- Publication et profils locaux demandés ; aucun projet client ni source Odoo modifié.
+- Détails, preuves et comptages : knowledge-2026-09-15/README.md.
+
 ## 15 septembre 2026 — Revue du contexte et du banc
 
 - Analyse des derniers parcours projet ; rapport client détaillé conservé localement.

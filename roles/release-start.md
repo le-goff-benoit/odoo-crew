@@ -2,6 +2,10 @@
 
 Lis `docs/RELEASE_PLAN.md`, le briefing, `plan.json` et la revue de la release.
 `odoo_plan.py status <release>` distingue dépendances et périmètres occupés.
+Lis `docs/KNOWLEDGE.md` pour la mémoire partagée : transmets le briefing de
+release à chaque agent, publie les découvertes pendant le travail et relis les
+nouveaux acquis avant réception (`finish --knowledge`). Le fragment mémoire de
+chaque tâche reçue devient immédiatement disponible aux suivantes.
 
 Avant de lancer les tâches, lis `effort.json` et `estimation.md`. S'ils manquent,
 applique `roles/estimation.md` au travail encore à venir ; ne fabrique pas de

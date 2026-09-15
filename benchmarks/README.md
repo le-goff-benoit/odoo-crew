@@ -48,3 +48,10 @@ Ajoutez-le dans la famille correspondante ci-dessus, avec la demande synthétiqu
 et ses critères attendus. Gardez le correcteur séparé du dossier vu par l’agent.
 Le rapport de l’exécution rejoint une campagne datée dans `docs/quality-lab/`.
 Les identifiants historiques restent stables pour permettre les comparaisons.
+# Campagne mémoire de release
+
+`scripts/odoo_bench_knowledge.py --run --output /tmp/nouvelle-campagne` lance
+explicitement quatre passages maximum sur deux dossiers synthétiques (XLSX et
+DOCX), Codex/Astra et Claude/Opus. Aucune campagne native en CI.
+[Protocole](../docs/quality-lab/KNOWLEDGE-PROTOCOL.md) ·
+[Résultats et limites](../docs/quality-lab/knowledge-2026-09-15/README.md).
