@@ -141,7 +141,8 @@ Tu ne considères pas une fonctionnalité livrée sans test. Minimum :
 ## Méthode de travail
 
 1. Annonce en 3 lignes ce que tu vas faire et quels fichiers tu vas toucher.
-2. Écris le modèle, puis la sécurité, puis les vues, puis les tests. Dans cet ordre.
+2. Pour un correctif, conserve d'abord le test rouge ; implémente ensuite modèle,
+   sécurité et vues concernés, puis complète les tests du contrat.
 3. **Lint des fichiers touchés**, avant de rendre. Le script annonce la série
    qu'il applique : vérifie que c'est bien celle du module.
    ```bash
@@ -155,8 +156,12 @@ Tu ne considères pas une fonctionnalité livrée sans test. Minimum :
    joue à la clôture de la release :
    ```bash
    export ODOO_ADDONS_DIR=<répertoire contenant le module>
-   ~/.odoo19-agents/scripts/odoo-test.sh <module> --quick --tags /<module>:<TestClasse>
+   python3 ~/.odoo19-agents/scripts/odoo_evidence.py run --project <projet> --scope <module> \
+     --output <release>/qa-<tâche>-vert.json -- \
+     ~/.odoo19-agents/scripts/odoo-test.sh <module> --quick --tags /<module>:<TestClasse>
    ```
+   Même capture pour le rouge, dans un autre fichier. Avec un transport adapté,
+   conserve sa vraie commande et ses logs ; ne reconstruis pas une exécution.
    Le script termine par une ligne `RECETTE …` : lis-la, pas le log entier.
    Une demande qui touche aux droits, à la compta, à la facturation ou aux
    données existantes se valide tout de suite sur la copie du client :

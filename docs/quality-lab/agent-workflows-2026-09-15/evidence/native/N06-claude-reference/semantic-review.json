@@ -1,0 +1,168 @@
+{
+  "review_id": "N06-B",
+  "variant_reviewed": "N06-claude-reference",
+  "verdict": "accepted_with_reservations",
+  "critical_missing_criteria": [],
+  "criteria": {
+    "C1": {
+      "status": "met",
+      "reason": "B-42 applied without reopening arbitration; old QA explicitly retained as non-receiving history.",
+      "citations": [
+        "after-0/changelog/2026-09-15_01_repair/revue_fonctionnelle.md §5, §7",
+        "after-0/changelog/2026-09-15_01_repair/qa.md:9-32"
+      ]
+    },
+    "D1": {
+      "status": "met",
+      "reason": "Only self/draft/active company written, sorted date/id, increment100, cancelled lines excluded, no sudo; original ACL/rules/manifest unchanged. Independent ORM oracle reports all seven invariants true and source inspection agrees.",
+      "citations": [
+        "after-0/lab_register/models/business.py:19-39",
+        "after-0/lab_register/tests/test_repair.py:10-77",
+        "oracle.log LAB_ORACLE"
+      ]
+    },
+    "Q1": {
+      "status": "met",
+      "reason": "Actual red6/7 before code fix, final green7/7, local existing-copy update, committed scoped repair twice in distinct processes; before/after only initial-company draft ids1,2 change, issued/other company preserved. Ordinary multi-company user and restricted-user denial observed.",
+      "citations": [
+        "bridge-002.log",
+        "bridge-007.log",
+        "bridge-008.log",
+        "bridge-009.log",
+        "bridge-010.log",
+        "bridge-011.log",
+        "after-0/.odoo-agents/flow-artifacts/repair-b42/scripts/reprise.py",
+        "after-0/.odoo-agents/flow-artifacts/repair-b42/inventaire-avant.txt",
+        "after-0/.odoo-agents/flow-artifacts/repair-b42/inventaire-apres.txt"
+      ]
+    },
+    "R1": {
+      "status": "met_with_reservations",
+      "reason": "Functional review, sensitive task QA, project memory and journal are present; release remains open, no deployment claim. Static result summary is too positive relative to acknowledged legacy lint failure; two memory rationales overstate their evidence.",
+      "citations": [
+        "after-0/changelog/2026-09-15_01_repair/qa.md:40-50,127-155",
+        "after-0/.odoo-agents/JOURNAL.md",
+        "after-0/.odoo-agents/PROJECT.md:7",
+        "answer-0.md"
+      ]
+    }
+  },
+  "reservations": [
+    {
+      "id": "S1",
+      "severity": "minor",
+      "text": "QA verdict/table says static conforme while full lint exit1 remains. Debt is explicitly demonstrated as pre-existing and out of diff, so not a critical failure, but headline should carry the exception.",
+      "citations": [
+        "after-0/changelog/2026-09-15_01_repair/qa.md:49,127-138",
+        "bridge-006.log"
+      ]
+    },
+    {
+      "id": "S2",
+      "severity": "minor",
+      "text": "Memory claims a post-migrate necessarily affects all companies. The scoped-repair choice is appropriate here, but a migration script can also have a bounded domain. Keep a local authorization rationale rather than a categorical technical rule.",
+      "citations": [
+        "after-0/.odoo-agents/PROJECT.md:7",
+        "after-0/changelog/2026-09-15_01_repair/revue_fonctionnelle.md §6 H3"
+      ]
+    },
+    {
+      "id": "S3",
+      "severity": "minor",
+      "text": "README justifies tie-break with ids1,4 from different companies, although id4 is filtered out. Correct code and test use SAME1/SAME2 in the same company. Correct the memory example; no functional defect shown.",
+      "citations": [
+        "after-0/changelog/2026-09-15_01_repair/README.md:21",
+        "after-0/lab_register/tests/common.py:35-37",
+        "after-0/lab_register/tests/test_repair.py:10-17"
+      ]
+    },
+    {
+      "id": "S4",
+      "severity": "minor",
+      "text": "Restricted-user probe prints an anomaly instead of failing if denial disappears; currently log does show real AccessError, and independent oracle confirms enforcement. Make future probe assertions fail closed.",
+      "citations": [
+        "after-0/.odoo-agents/flow-artifacts/repair-b42/scripts/droits_restreint.py:29-33",
+        "bridge-011.log",
+        "oracle.log"
+      ]
+    }
+  ],
+  "repetitions": [
+    {
+      "events": [
+        7,
+        15
+      ],
+      "classification": "avoidable_duplicate",
+      "seconds": 22.14,
+      "reason": "Same final module hashes, same seven test names and fresh install path; only tag filter omitted. Source contains only this tagged class. Runtime fragment itself admits no other tests; no additional coverage or source change shown.",
+      "citations": [
+        "bridge-events.json entries7,15",
+        "bridge-007.log",
+        "bridge-015.log",
+        "after-0/.odoo-agents/flow-artifacts/repair-b42/module_high_runtime_qa.md:16-17"
+      ]
+    },
+    {
+      "events": [
+        0,
+        1
+      ],
+      "classification": "avoidable_recapture",
+      "seconds": 1.31,
+      "reason": "Identical inventory script rerun, no intervening database mutation in bridge events; second invocation persists the previously only displayed result. Useful durable artifact, avoidable execution by saving first result.",
+      "citations": [
+        "raw-0.jsonl tool at2026-09-15T22:07:30.148Z",
+        "raw-0.jsonl tool at2026-09-15T22:10:01.159Z",
+        "bridge-events.json entries0,1"
+      ]
+    },
+    {
+      "events": [
+        3,
+        7
+      ],
+      "classification": "justified_after_changes",
+      "reason": "Module/tests changed after first green: tuple x2many -> Command, action section/comment and trailing comma. Event7 establishes final-source evidence; not an unchanged-code duplicate."
+    },
+    {
+      "events": [
+        4,
+        5,
+        6
+      ],
+      "classification": "justified_checks_of_changed_files",
+      "reason": "Each lint follows changed source hashes. First flags tuple command and trailing comma; second tuple warning removed; third trailing comma removed. All retain existing unchanged-manifest author error. Could batch style changes, but no strictly identical redundant lint is proved."
+    },
+    {
+      "events": [
+        8,
+        14
+      ],
+      "classification": "different_scope",
+      "reason": "Event8 upgrades existing lab_client data copy; event14 tests module upgrade path on separate QA DB. Different environment/path, not duplicate coverage."
+    }
+  ],
+  "avoidable_bridge_seconds_lower_bound": 23.45,
+  "integrity": {
+    "after_0_hashes_verified": true,
+    "all_bridge_log_hashes_verified": true,
+    "other_variants_read": false,
+    "archives_modified": false,
+    "odoo_reexecution": false
+  },
+  "time": {
+    "started_utc": "2026-09-15T22:20:22.415017+00:00",
+    "finished_utc": "2026-09-15T22:23:53.704205+00:00",
+    "active_review_seconds": 211.289,
+    "method": "Continuous review elapsed time; no passive waits or Odoo execution during review."
+  },
+  "small_agent_adaptation": "For this workflow, reuse the final fresh green proof across receipt lanes when source/environment/test names match; save initial observation output immediately. Retain update-path QA and reruns after actual source changes. Put known lint exception in the verdict, and phrase memory as bounded decisions supported by the demonstrated example.",
+  "scope": {
+    "tests": "7 methods; six genuinely red then green, idempotence already green on faulty implementation explicitly acknowledged.",
+    "data": "Existing synthetic records1..4; draft1=>100/20 and draft2=>200/15; issued3 and other-company4 preserved; second committed repair identical.",
+    "qa": "Sensitive task QA with ordinary-user paths, local update and real XML-RPC; no full release uninstall/upgrade campaign or visual UI claimed.",
+    "memory": "Useful historical-QA and idempotence lessons; limited inaccuracies S2/S3."
+  },
+  "artifact_root": "/tmp/crew-agent-workflows-20260916-v2/N06-claude-reference"
+}

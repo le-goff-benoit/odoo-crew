@@ -1,0 +1,120 @@
+{
+  "schema": 1,
+  "trial": "N06-codex-reference",
+  "verdict": "accepted_with_reservations",
+  "review_kind": "independent_semantic_archive_review",
+  "started_at_utc": "2026-09-15T22:18:19+00:00",
+  "finished_at_utc": "2026-09-15T22:21:37.144405+00:00",
+  "review_seconds": 198.144,
+  "criteria": [
+    {
+      "id": "C1",
+      "verdict": "accepted",
+      "assertion": "Décision B-42 inchangée et correctement transcrite : self/draft/env.company, pas100, exclusion cancelled, issued/autres sociétés préservés ; ancienne QA maintenue comme historique, aucun arbitrage rouvert.",
+      "evidence": [
+        "after-0/decisions/current.md:3",
+        "after-0/changelog/2026-09-15_01_repair/revue_fonctionnelle.md",
+        "after-0/changelog/2026-09-15_01_repair/qa.md#Ancienne QA",
+        "after-0/changelog/2026-09-15_01_repair/proofs/qa-historical.md"
+      ]
+    },
+    {
+      "id": "D1",
+      "verdict": "accepted",
+      "assertion": "Recherche globale sudo remplacée par filtrage self et société active, tri date/id, somme sans cancelled ; contrôles read/write et aucun changement des ACL/règles. Oracle indépendant : sept invariants vrais.",
+      "evidence": [
+        "after-0/lab_register/models/business.py:17",
+        "after-0/lab_register/tests/test_repair.py",
+        "oracle.log:16"
+      ]
+    },
+    {
+      "id": "Q1",
+      "verdict": "accepted_with_reservations",
+      "assertion": "Cinq tests initialement rouges puis mêmes cinq verts sur sources finales ; update réel ; reprise commitée sous UID5 non sudo des seuls IDs1/2 ; deuxième transaction identique, write_date préservées et zéro write instrumenté. Lint global effectivement rouge, dette author antérieure : aucune preuve de lint global vert.",
+      "evidence": [
+        "bridge-001.log:303",
+        "bridge-002.log",
+        "bridge-events.json events1-6",
+        "bridge-004.log",
+        "bridge-005.log:24",
+        "bridge-006.log:24",
+        "after-0/changelog/2026-09-15_01_repair/proofs/lint.log",
+        "after-0/changelog/2026-09-15_01_repair/proofs/manifest-before.txt"
+      ]
+    },
+    {
+      "id": "R1",
+      "verdict": "accepted_with_reservations",
+      "assertion": "Revue, QA renforcée, journal et PROJECT publiés ; mémoire historique conservée ; release ouverte et aucune livraison affirmée. Lint rouge et auto-relecture sont exposés. Le titre QA VALIDÉ ne doit pas servir à faire disparaître cette réserve.",
+      "evidence": [
+        "answer-0.md",
+        "after-0/changelog/2026-09-15_01_repair/README.md",
+        "after-0/changelog/2026-09-15_01_repair/qa-b42.md",
+        "after-0/.odoo-agents/JOURNAL.md",
+        "after-0/.odoo-agents/PROJECT.md",
+        "raw-0.jsonl:96"
+      ]
+    }
+  ],
+  "missing_critical_business_criteria": [],
+  "missing_unqualified_checks": [
+    "Lint global vert absent : author déjà manquant dans le manifest initial."
+  ],
+  "runtime_acceptance_override": false,
+  "campaign_all_green_eligible": false,
+  "reservations": [
+    "Lint rouge connu et hérité, distinct de la conformité métier prouvée.",
+    "Relecture native effectuée par le même auteur : autorisée par LAB sans délégation ; présente revue documentaire indépendante postérieure."
+  ],
+  "changed_initial_files": [
+    ".odoo-agents/JOURNAL.md",
+    ".odoo-agents/PROJECT.md",
+    "changelog/2026-09-15_01_repair/README.md",
+    "changelog/2026-09-15_01_repair/qa.md",
+    "lab_register/models/business.py"
+  ],
+  "evidence_integrity": {
+    "coverage_stale_references": [],
+    "all_bridge_log_hashes_match": true
+  },
+  "rework": {
+    "business_fix_cycles_observed": 1,
+    "qa_runs": 2,
+    "qa_red_seconds": 17.08,
+    "qa_green_seconds": 6.12,
+    "bridge_total_seconds": 32.47,
+    "unnecessary_green_qa_reruns_observed": 0,
+    "avoidable_cli_detours": [
+      {
+        "source": "raw-0.jsonl:28",
+        "cause": "complete omet --owner après claim nommé ; transition et claim suivant refusés",
+        "correction_observed": "raw-0.jsonl:32 ajoute --owner codex-orchestrateur",
+        "seconds": null
+      },
+      {
+        "source": "raw-0.jsonl:40",
+        "cause": "script odoo-release.sh invoqué avec python3 : SyntaxError",
+        "correction_observed": "invocations suivantes via bash",
+        "seconds": null
+      }
+    ],
+    "time_lost_seconds": null,
+    "idempotence_replay_is_required_not_waste": true
+  },
+  "measured_trial_time": {
+    "agent_seconds": 633.49,
+    "setup_seconds": 32.358,
+    "oracle_seconds": 1.229,
+    "elapsed_to_oracle_seconds": 667.097,
+    "source": "state.json; relevés bruts, pas délai de réception pleinement acceptée"
+  },
+  "targeted_instruction_change": "Pour ce parcours, conserver le même --owner explicite de claim à complete ; exécuter odoo-release.sh avec bash. Ne pas relancer les tests verts après ces corrections de pilotage. Aucun changement métier de consigne justifié par ce cas.",
+  "limits": [
+    "Aucune réexécution Odoo ; analyse du code, des logs, hashes et snapshots fournis.",
+    "Aucune autre variante consultée.",
+    "Portée : registre ORM synthétique Odoo19, pas stock réel, navigateur, production ou déploiement.",
+    "Pas de durée par commande shell dans raw0 : coût des détours non isolable.",
+    "Oracle.log atteste sept checks, ne remplace pas la confrontation métier ci-dessus."
+  ]
+}

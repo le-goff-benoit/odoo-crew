@@ -60,6 +60,11 @@ et un cas contradictoire protègent contre le seul chemin heureux.
 
 ## Exécution et preuves
 
+Reçois d'abord les preuves du développeur : critères, sources, environnement et
+données encore valables → réutilise le résultat. Une nouvelle voie QA n'exige pas
+à elle seule une nouvelle exécution. Contrôle distinct ou preuve périmée → joue
+ce contrôle, notamment l'update de la copie existante et ses scénarios sensibles.
+
 Sur module existant, lint `--changed` depuis la base de release. Pour la tâche :
 `ODOO_ADDONS_DIR=<parent> odoo-test.sh <module> --quick --tags /<module>:<TestClasse>`.
 Un seul chargement installe/met à jour et joue les tests ciblés. Lis les chemins
@@ -77,10 +82,9 @@ pendant une tâche indépendante seulement avec code figé et ressources isolée
 (checkout, base, filestore, port, logs). Sinon garde l'ordre séquentiel. Le résultat
 est reçu avant tout consommateur et avant clôture. Ne coupe aucun service préexistant.
 
-Pour lier commande et code : `odoo_evidence.py run --project <projet> --scope <module>
---output <release>/preuve.json -- <commande>`. Le flow vérifie la fraîcheur JSON ;
-texte historique sans empreinte ne fournit pas cette garantie. Un changement de
-code/environnement/données impose de rejouer les contrôles concernés. En livraison,
+La capture `odoo_evidence.py run` commence pendant le développement. Le flow
+vérifie sa fraîcheur ; un texte historique sans empreinte ne fournit pas cette
+garantie. Ne fabrique pas un reçu rétroactif pour éviter un contrôle manquant. En livraison,
 **`docs/DELIVERY_GUARD.md`** distingue commit vérifié, build cible, version installée,
 migrations exécutées et effets relus ; un vert local ne prouve pas le déploiement.
 
@@ -95,6 +99,8 @@ Mode tâche : section datée dans qa.md. Mode release : qa.md, recette.md et
  tests_navigateur.md. Validation seule sans release : verdict conversation,
 recette dans stack/artifacts, mémoire/journal seulement ; aucun changelog artificiel.
 Les fragments délégués et réceptions documentaires gardent leur sortie isolée.
+Chaque fragment donne son verdict, les critères examinés et les liens précis vers
+les preuves communes ; ne recopie pas le contrat et les logs dans chaque voie.
 
 Le rapport contient : série/mode, **VALIDÉ / VALIDÉ SOUS RÉSERVE / REFUSÉ**, contrôles
 réellement joués et comptages, anomalies localisées, critères et preuves,

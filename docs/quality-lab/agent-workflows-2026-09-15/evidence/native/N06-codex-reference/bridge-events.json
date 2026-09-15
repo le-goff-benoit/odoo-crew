@@ -1,0 +1,259 @@
+[
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-15_01_repair/proofs/inventory.py"
+    ],
+    "seconds": 1.37,
+    "exit_code": 0,
+    "log": "bridge-000.log",
+    "sha256": "c11bd3c20a151f2302f57dd252057d4015d22264d0c8d9da3c34f832edbe1c92",
+    "project_sha256": "bfa9711984e95c5dd815e94ee491def3c51d208f16f0343d1376d0af18f63f78",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "b24cfe215ce52d95a64fe963125bba0b883ef185f8062c58bf918ba72193bd02",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "b24cfe215ce52d95a64fe963125bba0b883ef185f8062c58bf918ba72193bd02",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781"
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_register",
+      "--quick",
+      "--tags",
+      "/lab_register:TestRepair"
+    ],
+    "seconds": 17.08,
+    "exit_code": 1,
+    "log": "bridge-001.log",
+    "sha256": "f090bf1e4636364caa4c0e986d82ee4ac33b585f1eb27c3f7a6ce52b4d9c68df",
+    "project_sha256": "0cbdceb7edd233d03f297987b4d579d129feb89810a503cc954a1bc59617b41d",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "b24cfe215ce52d95a64fe963125bba0b883ef185f8062c58bf918ba72193bd02",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "tests/__init__.py": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "tests/common.py": "8220e9fb96a26a445e07ba5820b36be87df4678f122519f15d7416fa5c35218c",
+      "tests/test_repair.py": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "b24cfe215ce52d95a64fe963125bba0b883ef185f8062c58bf918ba72193bd02",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "tests/__init__.py": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "tests/common.py": "8220e9fb96a26a445e07ba5820b36be87df4678f122519f15d7416fa5c35218c",
+      "tests/test_repair.py": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+    },
+    "test_result": {
+      "valid": false,
+      "reasons": [
+        "bilan contenant des échecs ou erreurs",
+        "erreur ou module ignoré dans le log"
+      ],
+      "module_tests": 7,
+      "summaries": [
+        {
+          "failed": 5,
+          "errors": 0,
+          "tests": 5
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "qa",
+      "lab_register",
+      "--quick",
+      "--tags",
+      "/lab_register:TestRepair"
+    ],
+    "seconds": 6.12,
+    "exit_code": 0,
+    "log": "bridge-002.log",
+    "sha256": "84c3a2079cf72687fd1a50a079aa68f05a40257a0b2eddab6b4f3c534d5aa378",
+    "project_sha256": "23b35f8280a0c42bdd5f0aa2c0539585ed5d54214c40ef6edf9575e59acf6d0b",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "1ea49a9a84f232b7e2b1a2e79a76dd8b41600d1880b08ea6c307a6c7894de47e",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "tests/__init__.py": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "tests/common.py": "8220e9fb96a26a445e07ba5820b36be87df4678f122519f15d7416fa5c35218c",
+      "tests/test_repair.py": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "1ea49a9a84f232b7e2b1a2e79a76dd8b41600d1880b08ea6c307a6c7894de47e",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "tests/__init__.py": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "tests/common.py": "8220e9fb96a26a445e07ba5820b36be87df4678f122519f15d7416fa5c35218c",
+      "tests/test_repair.py": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+    },
+    "test_result": {
+      "valid": true,
+      "reasons": [],
+      "module_tests": 7,
+      "summaries": [
+        {
+          "failed": 0,
+          "errors": 0,
+          "tests": 5
+        }
+      ]
+    }
+  },
+  {
+    "args": [
+      "lint",
+      "lab_register"
+    ],
+    "seconds": 1.06,
+    "exit_code": 1,
+    "log": "bridge-003.log",
+    "sha256": "8cb67d1ddcc9bedad0692ce7af6610fb678e8d66642bffc9fdfd111f8d7264e2",
+    "project_sha256": "4220ef250db46163337b9ad67e7fea7c83d8ae8e6f4fe42892596a12ee85c3ef",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "1ea49a9a84f232b7e2b1a2e79a76dd8b41600d1880b08ea6c307a6c7894de47e",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "tests/__init__.py": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "tests/common.py": "8220e9fb96a26a445e07ba5820b36be87df4678f122519f15d7416fa5c35218c",
+      "tests/test_repair.py": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "1ea49a9a84f232b7e2b1a2e79a76dd8b41600d1880b08ea6c307a6c7894de47e",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "tests/__init__.py": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "tests/common.py": "8220e9fb96a26a445e07ba5820b36be87df4678f122519f15d7416fa5c35218c",
+      "tests/test_repair.py": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+    }
+  },
+  {
+    "args": [
+      "update"
+    ],
+    "seconds": 4.27,
+    "exit_code": 0,
+    "log": "bridge-004.log",
+    "sha256": "9f5b3cf21d5f78be16ef61a516247e98d10c47ff649b1b46e88da127ce06bd8c",
+    "project_sha256": "487da0dea5928e5127648ff7c59201a0fa54d14e1cf72feca9ccc1adf884fa3e",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "1ea49a9a84f232b7e2b1a2e79a76dd8b41600d1880b08ea6c307a6c7894de47e",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "tests/__init__.py": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "tests/common.py": "8220e9fb96a26a445e07ba5820b36be87df4678f122519f15d7416fa5c35218c",
+      "tests/test_repair.py": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "1ea49a9a84f232b7e2b1a2e79a76dd8b41600d1880b08ea6c307a6c7894de47e",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "tests/__init__.py": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "tests/common.py": "8220e9fb96a26a445e07ba5820b36be87df4678f122519f15d7416fa5c35218c",
+      "tests/test_repair.py": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-15_01_repair/proofs/repair_local.py"
+    ],
+    "seconds": 1.31,
+    "exit_code": 0,
+    "log": "bridge-005.log",
+    "sha256": "2f3f56c68bc6dfa357c86da5a47963afcf7ad24ed3b859407222b7613f2c72f9",
+    "project_sha256": "6ae246060aac32c84f2eb02149036117b0ab9e2e896abd45f803328ec152626e",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "1ea49a9a84f232b7e2b1a2e79a76dd8b41600d1880b08ea6c307a6c7894de47e",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "tests/__init__.py": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "tests/common.py": "8220e9fb96a26a445e07ba5820b36be87df4678f122519f15d7416fa5c35218c",
+      "tests/test_repair.py": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "1ea49a9a84f232b7e2b1a2e79a76dd8b41600d1880b08ea6c307a6c7894de47e",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "tests/__init__.py": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "tests/common.py": "8220e9fb96a26a445e07ba5820b36be87df4678f122519f15d7416fa5c35218c",
+      "tests/test_repair.py": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+    }
+  },
+  {
+    "args": [
+      "shell",
+      "/work/changelog/2026-09-15_01_repair/proofs/repair_local.py"
+    ],
+    "seconds": 1.26,
+    "exit_code": 0,
+    "log": "bridge-006.log",
+    "sha256": "e4d1b441b52d828713ddf148cb5a4c57ef5002afdc1c0e659f0b2614f4f5e23d",
+    "project_sha256": "3f13bd1fb82483a974869030a8f12841aadbcd23fda312c96ca6cd5113959c3c",
+    "module_sources_before": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "1ea49a9a84f232b7e2b1a2e79a76dd8b41600d1880b08ea6c307a6c7894de47e",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "tests/__init__.py": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "tests/common.py": "8220e9fb96a26a445e07ba5820b36be87df4678f122519f15d7416fa5c35218c",
+      "tests/test_repair.py": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+    },
+    "module_sources_after": {
+      "__init__.py": "5fd10918e1361ad65b4b41bcd8fb525e659267f47c8c4334ae52530e58908e9e",
+      "__manifest__.py": "bb42b811dc5a4ec413ac69ac76db21ffc1305b264fabf3d9c7de9acaf7a0a2af",
+      "models/__init__.py": "56c0f1359ba72e2f1714fc79ffe9cf65146e3e15fdb9d2c22861ab0161a6c1e1",
+      "models/business.py": "1ea49a9a84f232b7e2b1a2e79a76dd8b41600d1880b08ea6c307a6c7894de47e",
+      "security/ir.model.access.csv": "3ec7b16415dda6914e6f0c6bc5fbc3a0e4395a75290fa5e181fd71964298bf78",
+      "security/rules.xml": "e31f09a9f6d1dedae118b6a6f8205fa904c3c80f15b66b1d665e7ebc47254781",
+      "tests/__init__.py": "b915ca2d9be6c5b70a96a372552470da56a077ae1dee06f36a4592bd33e66ece",
+      "tests/common.py": "8220e9fb96a26a445e07ba5820b36be87df4678f122519f15d7416fa5c35218c",
+      "tests/test_repair.py": "0cb156820a97bbcb34cf42059efd3627bdfbc627fd8884c2822541892cd003bb"
+    }
+  }
+]
