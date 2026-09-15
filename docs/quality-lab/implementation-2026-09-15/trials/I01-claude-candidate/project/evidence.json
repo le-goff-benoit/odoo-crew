@@ -1,0 +1,51 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/work",
+  "scopes": [
+    "scheduler.py",
+    "test_public.py",
+    "test_scheduler.py"
+  ],
+  "sources": {
+    "scheduler.py": {
+      "sha256": "019c0e133402ae3141fdd3b98d6d3212f3be9b48b90220d5b34281f0d75ff18d",
+      "mode": 420
+    },
+    "test_public.py": {
+      "sha256": "aab8fa3e67ca0ba74133be007e419159bba8528064816c10674e42c86d90db60",
+      "mode": 420
+    },
+    "test_scheduler.py": {
+      "sha256": "7bcf6bbdf49a3f1d0d16151041ed71bf4264788a9e6c8beae824e58673833f9d",
+      "mode": 436
+    }
+  },
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    ".",
+    "-p",
+    "test_*.py",
+    "-v"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 0.065,
+  "log": {
+    "path": "/work/evidence.log",
+    "sha256": "141ecb13a550b281cdc81d838e7fcb8ec31e1b6c09a3524825b59bed92507d44",
+    "relative_path": "evidence.log"
+  },
+  "repository": null,
+  "environment": "implementation-bench-v1",
+  "runner": {
+    "python": "3.10.12",
+    "platform": "Linux",
+    "machine": "x86_64"
+  }
+}

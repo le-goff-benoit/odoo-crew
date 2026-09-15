@@ -10,11 +10,15 @@ obtenus sont dans [`docs/quality-lab/`](../docs/quality-lab/README.md).
 
 | Objectif | Cas et ressources |
 |---|---|
+| Parcours métier, livraison et reprise de release | [Six scénarios synthétiques](workflow_regressions/README.md) |
+| Profils allégés, avec outils de lecture | [Comparaison avant/après](qualification/profiles/) |
+| Modèles sur une réalisation avec tests et reçu | [Implémentation locale](qualification/implementation/) — distincte du développement Odoo |
 | Qualité d’une analyse et respect des décisions | [Dossiers initiaux](cases/), [dossiers approfondis](cases-v2/) |
 | Développement et règles métier | [Contrats de développement](cases-dev/), [location/livraison](odoo/), [notes de frais](odoo-expense/) |
 | Parcours complet avec les vrais outils des agents | [Cas natifs et correcteurs](native/) |
 | Fidélité de la demande jusqu’à la mémoire du projet | [Fidélité](fidelity/README.md) |
 | Reprise après interruption ou conflit | [Reprise](recovery/README.md), [reprise ordonnée](ordered_recovery/) |
+| Modèles par rôle | [Protocole et runner bornés](qualification/models/), [limites mesurées](../docs/quality-lab/models-2026-09-15/README.md) |
 | Intérêt réel de la délégation | [Comparaison solo / sous-agents](delegation_comparison/) |
 | Droits, restauration, versions et navigateur Odoo | [Qualification technique](qualification/) |
 

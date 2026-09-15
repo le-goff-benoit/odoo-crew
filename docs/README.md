@@ -16,3 +16,10 @@
 Les détails de contrôle sont dans [Couverture QA](QA_COVERAGE.md) et
 [Réception des tâches](TASK_RECEPTION.md). Les modèles de livrables sont
 rangés dans [`templates/`](templates/), les images dans [`assets/`](assets/).
+
+## Contexte, livraison et modèles
+
+- [Contexte ciblé dès le briefing](CONTEXT.md) : décisions, sections complètes et omissions sourcées.
+- [Contrat de livraison](DELIVERY_GUARD.md) : commit, build et état réellement observé.
+- [Modèles par rôle](MODELS.md) : héritage, candidats et limites des qualifications.
+- [Procédures chargées selon le mode](roles/) : graphe, réception, QA statique et runtime.

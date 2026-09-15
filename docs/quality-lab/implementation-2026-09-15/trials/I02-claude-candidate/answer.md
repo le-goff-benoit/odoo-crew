@@ -1,0 +1,3 @@
+Evidence obtained: exit_code 0, result "passed".
+
+**Bilan des tests** : 23/23 tests réussis (`python3 -m unittest discover -s . -p 'test_*.py' -v`) — 1 test public conservé + 22 tests ajoutés dans `test_quotas.py` couvrant sélection de l'observation la plus récente, égalité d'horodatage, événements invalides (types booléens, NaN/infini, hors bornes, futurs, négatifs, `reset_at` antérieur), non-mutation des entrées, indépendance des 4 slots provider/fenêtre, et le flag `stale`. `evidence.json` généré via `odoo_evidence.py run` avec `--environment implementation-bench-v1` sur les 3 fichiers concernés.

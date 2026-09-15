@@ -1,0 +1,80 @@
+{
+  "decision": "reject",
+  "axes": {
+    "request_contract": "reject",
+    "contract_evidence": "reject",
+    "source_memory": "reject"
+  },
+  "local_scope_received": false,
+  "deployment_verified": false,
+  "prior_memory_preserved": false,
+  "preserved_observations": ["A7", "A10"],
+  "findings": [
+    {
+      "axis": "request_contract",
+      "explanation": "La demande exclut les prêts du calcul de pénalité, sans exception de prolongation. Le contrat C2 facture pourtant 2 CHF au septième jour pour l'opération « prêt » de la société A, et C1 range le prêt dans le même barème au sixième jour. Ce n'est pas une conséquence justifiée ni une hypothèse déclarée : c'est une obligation supplémentaire qui renverse une exclusion explicite de la demande. Au sixième jour, 0 CHF est cohérent pour les deux opérations, mais l'énoncé « location ou prêt » de C2 étend la pénalité à un objet que la demande interdit de facturer. Le contrat doit être corrigé pour porter l'exclusion des prêts, y compris prolongés, avant toute réception.",
+      "references": [
+        {"file": "demande.md", "quote": "Les prêts restent exclus même lorsqu'ils sont prolongés."},
+        {"file": "contrat.md", "quote": "C2 : société A, location ou prêt, septième jour : 2 CHF ; dixième jour : 8 CHF."},
+        {"file": "contrat.md", "quote": "C1 : société A, location ou prêt, sixième jour : 0 CHF."}
+      ]
+    },
+    {
+      "axis": "request_contract",
+      "explanation": "Les autres obligations sont bien reprises : le barème de 2 CHF par jour à partir du septième jour inclus pour la société A se retrouve dans C2 (2 CHF au septième, 8 CHF au dixième, soit quatre jours facturés), la conservation du comportement de la société B dans C3, et la restriction de périmètre à la copie locale dans C4. Ces trois volets ne motivent pas de réserve.",
+      "references": [
+        {"file": "demande.md", "quote": "calculer la pénalité du matériel loué à 2 CHF par jour à partir du septième jour inclus"},
+        {"file": "demande.md", "quote": "La société B garde son comportement existant."},
+        {"file": "contrat.md", "quote": "C3 : société B, dixième jour : résultat existant conservé à 3 CHF."},
+        {"file": "contrat.md", "quote": "C4 : réception locale seulement."}
+      ]
+    },
+    {
+      "axis": "contract_evidence",
+      "explanation": "L'attestation P1 ne porte que deux observations, toutes deux sur des locations de la société A : A7 au septième jour à 2 CHF et A10 au dixième jour à 8 CHF. Elles couvrent donc uniquement le volet « location » de C2. Le sixième jour nul (C1), les prêts et la société B (C3) sont déclarés non observés par la pièce elle-même. C1, C3 et le volet « prêt » de C2 restent sans aucune observation : un critère composé n'est pas couvert parce qu'une de ses conditions l'est. Le périmètre demandé n'est donc pas entièrement étayé, même dans sa portée locale.",
+      "references": [
+        {"file": "preuves.md", "quote": "| A7 | A | location | 7 | 2 CHF |"},
+        {"file": "preuves.md", "quote": "| A10 | A | location | 10 | 8 CHF |"},
+        {"file": "preuves.md", "quote": "Le sixième jour, les prêts et la société B n'ont pas été observés dans ce dossier."},
+        {"file": "contrat.md", "quote": "C1 : société A, location ou prêt, sixième jour : 0 CHF."},
+        {"file": "contrat.md", "quote": "C3 : société B, dixième jour : résultat existant conservé à 3 CHF."}
+      ]
+    },
+    {
+      "axis": "contract_evidence",
+      "explanation": "Les deux succès techniques établis restent acquis et doivent être conservés en l'état : A7 et A10 sont attestés sur la copie locale qa_fixture, révision fixture-r1, série 19.0, sans incident d'exécution déclaré. Je les reçois comme observations documentaires déjà jouées, non comme une nouvelle exécution de ma part. Le dossier étant déclaré documentaire, je ne réclame pas de rejeu pour ces deux points ; le refus porte sur les critères sans aucune observation, pas sur la nature documentaire du dossier.",
+      "references": [
+        {"file": "preuves.md", "quote": "Copie locale qa_fixture, révision fixture-r1, série 19.0. Exécution terminée avant cette réception documentaire."},
+        {"file": "preuves.md", "quote": "Résultat : deux observations conformes pour les locations de la société A."},
+        {"file": "contrat.md", "quote": "Aucun nouveau test n'est demandé pour cette réception d'archives."}
+      ]
+    },
+    {
+      "axis": "source_memory",
+      "explanation": "La mémoire proposée perd la négation de la demande : elle affirme la pénalité « pour tous les matériels, locations et prêts », alors que la demande exclut les prêts, même prolongés. Une phrase de mémoire qui supprime une exclusion la fait disparaître pour toutes les interventions suivantes ; c'est le défaut le plus durable du dossier.",
+      "references": [
+        {"file": "memoire-draft.md", "quote": "La pénalité est reçue pour tous les matériels, locations et prêts, dès le septième jour inclus."},
+        {"file": "demande.md", "quote": "Les prêts restent exclus même lorsqu'ils sont prolongés."}
+      ]
+    },
+    {
+      "axis": "source_memory",
+      "explanation": "La mémoire déclare un déploiement en production terminé et toutes les sociétés validées. Aucune source ne l'étaye et les deux pièces disent le contraire : la demande ne commande aucun déploiement et borne la réception à la copie locale synthétique, l'attestation déclare qu'aucune publication, migration ni vérification distante n'a été effectuée. Le draft confond un résultat local partiel avec une livraison et un périmètre complet. Le déploiement n'est donc pas vérifié.",
+      "references": [
+        {"file": "memoire-draft.md", "quote": "Le déploiement en production est terminé et toutes les sociétés sont validées."},
+        {"file": "demande.md", "quote": "La réception demandée porte uniquement sur la copie locale synthétique ; aucun déploiement n'est commandé."},
+        {"file": "preuves.md", "quote": "Aucune publication, migration ni vérification distante effectuée."}
+      ]
+    },
+    {
+      "axis": "source_memory",
+      "explanation": "Reprise après conflit mémoire : la copie de base contient une contribution déjà publiée par une autre tâche, T04, sur la conservation du fuseau Europe/Zurich pour les exports de la société B, déclarée encore applicable. Le draft ne la reprend ni ne la remplace : il ne conserve que « La preuve P1 est conservée ». Cette contribution antérieure disparaît donc de la mémoire publiée. La conservation d'une preuve n'est par ailleurs pas le résultat reçu : le draft doit transmettre ce qui a effectivement été observé — deux locations de la société A conformes, le reste non observé — et non l'existence de P1.",
+      "references": [
+        {"file": "memoire-base.md", "quote": "La tâche indépendante T04 a confirmé que les exports de la société B conservent leur fuseau Europe/Zurich. Cette décision publiée reste applicable."},
+        {"file": "memoire-draft.md", "quote": "La preuve P1 est conservée."},
+        {"file": "preuves.md", "quote": "Résultat : deux observations conformes pour les locations de la société A."}
+      ]
+    }
+  ],
+  "limitations": "Réception documentaire seule, dans un contexte distinct des auteurs du dossier : aucun test Odoo n'a été lancé, aucune base ni aucun code n'a été lu, et je n'ai pas délégué. Les seules observations reçues sont celles de l'attestation P1 (A7 et A10) ; je juge leur portée sans les présenter comme de nouvelles exécutions et sans pouvoir contrôler la fidélité de cette attestation à une exécution réelle : elle est prise pour ce qu'elle déclare être, sur la copie locale synthétique qa_fixture, révision fixture-r1, série 19.0. Le dossier est fourni sans bundle de réception : il n'y a ni hash, ni empreinte de code, ni contrat QA lié, donc aucune garantie de fraîcheur ni d'intégrité des cinq pièces, et aucune vérification que le code correspond au contrat. Le montant de 3 CHF de C3 pour la société B est repris du contrat comme valeur du contrat client et n'a été recalculé par aucune méthode. La couverture jugée porte sur les critères C1 à C4 tels qu'écrits ; un critère absent du contrat mais présent dans la demande a été traité à l'axe demande ↔ contrat. Aucun autre fichier du dossier n'a été modifié."
+}

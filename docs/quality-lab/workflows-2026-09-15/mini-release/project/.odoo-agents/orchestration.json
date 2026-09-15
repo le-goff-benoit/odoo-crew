@@ -1,0 +1,58 @@
+{
+  "authorized_at": "2026-09-15T20:20:15.386966+00:00",
+  "authorized_tasks": [
+    "T01",
+    "T02",
+    "T03"
+  ],
+  "ended_at": "2026-09-15T20:20:15+00:00",
+  "history": [
+    {
+      "action": "activate",
+      "at": "2026-09-15T20:20:15+00:00",
+      "phase": "preparation",
+      "reason": null,
+      "revision": 1,
+      "status": "active"
+    },
+    {
+      "action": "interrupt",
+      "at": "2026-09-15T20:20:15+00:00",
+      "phase": "preparation",
+      "reason": "Synthetic user interruption",
+      "revision": 2,
+      "status": "interrupted"
+    },
+    {
+      "action": "resume",
+      "at": "2026-09-15T20:20:15+00:00",
+      "phase": "preparation",
+      "reason": null,
+      "revision": 3,
+      "status": "active"
+    },
+    {
+      "action": "complete",
+      "at": "2026-09-15T20:20:15+00:00",
+      "phase": "preparation",
+      "reason": null,
+      "revision": 4,
+      "status": "complete"
+    }
+  ],
+  "id": "orchestration-fd59554d129c",
+  "model": "principal",
+  "owner": "codex-orchestrator-probe",
+  "phase": "preparation",
+  "phase_started_at": "2026-09-15T20:20:15+00:00",
+  "project": "/tmp/workflows-20260915-mini-qualified/project",
+  "provider": "codex",
+  "reason": null,
+  "release": "/tmp/workflows-20260915-mini-qualified/project/changelog/release",
+  "revision": 4,
+  "schema": 1,
+  "session_id": "after",
+  "started_at": "2026-09-15T20:20:15+00:00",
+  "status": "complete",
+  "updated_at": "2026-09-15T20:20:15+00:00"
+}

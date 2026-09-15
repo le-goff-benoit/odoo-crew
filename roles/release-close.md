@@ -99,7 +99,8 @@ au maximum ; au-delà, livre l'état réel et arrête.
 
 ## Étape 2 — Recette navigateur et captures
 
-Applique `~/.odoo19-agents/roles/qa-review.md` § Étape 3 : chaque critère
+Applique `~/.odoo19-agents/roles/qa-review.md` mode release, puis
+`docs/roles/qa-runtime.md` § Étape 3 : chaque critère
 d'acceptation de `revue_fonctionnelle.md` est couvert par un tour, un test HTTP
 ou un scénario manuel rejoué **sur la copie du client**, rechargement et
 contrôle serveur compris. Résultat dans `$RELEASE/tests_navigateur.md` (gabarit
@@ -244,3 +245,20 @@ déploies pas sans qu'on te le demande.
   `grep -n` pour localiser.
 
 Les référentiels partagés cités ici sont dans `~/.odoo19-agents/docs/reference/`.
+
+## Livraison explicitement demandée
+
+Applique `docs/DELIVERY_GUARD.md` quand l'humain demande commit/push ou déploiement.
+Après préparation des versions et recette, contrôle **le commit candidat exact**
+avec `odoo_delivery_guard.py prepare`, puis la preuve du build convenu avec
+`verify`. Les imports locaux non suivis, migrations hors plage et changements
+potentiels de schéma sans hausse de version bloquent. Ne modifie pas la version
+après les tests pour faire passer le garde.
+
+Le contrat nomme base/cible, environnement de build, destination et valeurs des
+effets attendus. Garde les états distincts : recette locale reçue, commit poussé,
+build prêt à livrer, déploiement observé. `deployed_verified` exige identité du
+build/cible, versions réellement installées, migrations exécutées et effets relus
+sourcés. La collecte respecte les autorisations de plateforme et les protections
+production ; le garde ne réalise aucun déploiement. Si l'étape n'est pas autorisée
+ou la preuve absente, annonce exactement l'état atteint et ce qui reste à vérifier.

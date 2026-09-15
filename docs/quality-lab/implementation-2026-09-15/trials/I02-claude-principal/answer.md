@@ -1,0 +1,9 @@
+Travail terminé dans `/work`.
+
+**Implémentation** — `quotas.py:44` `snapshot(events, now, ttl=300)` : lecture pure, aucune mutation des entrées, dicts de sortie reconstruits. Les quatre emplacements (`openai`/`anthropic` × `5h`/`week`) sont toujours présents, à `None` sans observation valide. Sélection par `observed_at` le plus récent avec égalité gagnée par le dernier événement de la liste (comparaison `<` stricte pour ignorer), aucune agrégation entre fournisseurs ou fenêtres. `stale = (now - observed_at) > ttl`, l'égalité reste fraîche.
+
+Validation par événement (un rejet n'écrase jamais une observation antérieure valide) : non-dict, provider/window inconnu ou absent, `observed_at` manquant/`None`/non numérique/booléen/NaN/infini/négatif/futur, `used_percent` non numérique/booléen/NaN/infini/hors 0..100 inclus, `reset_at` autre que `None` ou nombre fini non négatif (booléen exclu) et `reset_at < observed_at`. Les booléens sont écartés avant le test `numbers.Real`, d'où leur rejet malgré `isinstance(True, Real)`.
+
+**Bilan des tests** — `python3 -m unittest discover -s . -p 'test_*.py' -v` : **48 tests, OK, 0 échec** (1 hérité de `test_public.py` conservé tel quel, 47 ajoutés dans `test_quotas.py`). Couverture : forme du retour et non-mutation/non-aliasing, isolation des quatre emplacements et absence de somme, récence y compris reset divergent et égalité `observed_at`, frontières de `stale` (`ttl` exact, `ttl=0`, défaut 300, gagnant périmé), chaque règle de rejet, les bornes acceptées (0, 100, `reset_at == observed_at`, `observed_at == now`, timestamps zéro), le non-masquage, et un flux mixte réaliste.
+
+`evidence.json` produit par `odoo_evidence.py run` sur les trois périmètres, environnement `implementation-bench-v1`, avec cette commande unittest : `result: passed`, `exit_code: 0`. La revérification (`odoo_evidence.py verify`) confirme « Preuve valide et périmètre inchangé ».

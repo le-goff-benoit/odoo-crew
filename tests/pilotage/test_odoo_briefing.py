@@ -1,3 +1,6 @@
+import contextlib
+import io
+import json
 import importlib.util
 from pathlib import Path
 import tempfile
@@ -11,6 +14,37 @@ spec.loader.exec_module(b)
 
 
 class BriefingTests(unittest.TestCase):
+    def test_recent_entries_use_dates_when_newer_work_is_prepended(self):
+        entries = ['## 2026-09-12 — Incident de livraison\nVérifier le build.',
+                   '## 2026-09-11 — Ancien plan\nPréparer le travail.']
+        text = b.journal_summary(entries, 1, False)
+        self.assertIn(entries[0], text)
+        self.assertNotIn(entries[1], text)
+
+    def test_mixed_journal_keeps_recent_facts_and_older_lessons(self):
+        entries = ['## 2026-08-30 — Correction\nCorrection récente.',
+                   '## 2026-08-20 — Archive\n**Appris** : préserver les données.',
+                   '## 2026-08-31 — Déploiement\nRésultat observé.',
+                   '## 2026-08-21 — Plan\nPlan ancien.']
+        text = b.journal_summary(entries, 2, False)
+        self.assertIn(entries[0], text)
+        self.assertIn(entries[2], text)
+        self.assertNotIn(entries[3], text)
+        self.assertIn('préserver les données.', text)
+
+    def test_full_journal_and_same_day_preserve_source_order(self):
+        entries = ['## 2026-09-12 — Premier\nA', '## 2026-09-11 — Archive\nB',
+                   '## 2026-09-12 — Second\nC']
+        full = b.journal_summary(entries, 1, True)
+        self.assertLess(full.index(entries[0]), full.index(entries[1]))
+        self.assertLess(full.index(entries[1]), full.index(entries[2]))
+        recent = b.journal_summary(entries, 2, False)
+        self.assertLess(recent.index(entries[0]), recent.index(entries[2]))
+        one = b.journal_summary(entries, 1, False)
+        self.assertIn('2026-09-12 — Premier', one)
+        self.assertNotIn(entries[0], one)
+        self.assertIn('ordre intrajournalier inconnu', one)
+
     def test_shared_lessons_loaded_from_reference_directory(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -56,3 +90,33 @@ class BriefingTests(unittest.TestCase):
             path = Path(tmp) / 'PROJECT.md'
             path.write_text('## Décisions actées\nLe contact de livraison fait foi.')
             self.assertIn('Le contact de livraison fait foi.', b.hand_written(path))
+
+
+class TargetedBriefingTests(unittest.TestCase):
+    def test_targeted_memory_keeps_exception_and_provenance_without_full_archive(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            metadata = root / '.odoo-agents'
+            metadata.mkdir()
+            (metadata / 'config').write_text('series = 18.0\n')
+            (metadata / 'PROJECT.md').write_text(
+                '# Projet synthétique\n## Documentation archivée\n' + 'Ancien catalogue. ' * 700
+                + '\n## Livraison\nLivrer au contact retenu.\n### Exception\nSauf refus du destinataire.\n')
+            output = root / 'context.json'
+            stdout, stderr = io.StringIO(), io.StringIO()
+            with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr), patch.object(b, 'run', return_value=''):
+                result = b.main(['briefing', str(root), '--offline', '--query', 'livraison',
+                                 '--budget', '1800', '--context-output', str(output)])
+            self.assertEqual(result, 0)
+            self.assertIn('Sauf refus du destinataire.', stdout.getvalue())
+            self.assertNotIn('Ancien catalogue.', stdout.getvalue())
+            self.assertIn('18.0', stdout.getvalue())
+            record = json.loads(output.read_text())
+            self.assertIn('.odoo-agents/PROJECT.md', record['catalog_paths'])
+            self.assertTrue(any(not section['included'] for section in record['sections']))
+            self.assertLessEqual(record['actual_characters'], 1800)
+
+    def test_full_archive_and_targeted_mode_are_not_silently_combined(self):
+        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit) as error:
+            b.main(['briefing', '/tmp', '--query', 'livraison', '--full-journal'])
+        self.assertEqual(error.exception.code, 2)

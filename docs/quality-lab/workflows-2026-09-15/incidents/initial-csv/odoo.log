@@ -1,0 +1,777 @@
+2026-09-15 20:06:07,950 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 20:06:07,950 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 20:06:07,950 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo-data/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 20:06:07,950 1 INFO ? odoo: database: odoo@workflow-lab-61c11684cf-pg:default 
+2026-09-15 20:06:08,163 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8069 
+2026-09-15 20:06:08,184 1 INFO workflow_witness odoo.tests.common: Importing test framework 
+2026-09-15 20:06:08,194 1 INFO workflow_witness odoo.modules.loading: Initializing database workflow_witness 
+2026-09-15 20:06:08,850 1 WARNING workflow_witness odoo.modules.module: Missing `author` key in manifest for 'workflow_case', defaulting to '' 
+2026-09-15 20:06:08,851 1 WARNING workflow_witness odoo.modules.module: Missing `author` key in manifest for 'workflow_case', defaulting to '' 
+2026-09-15 20:06:08,851 1 WARNING workflow_witness odoo.modules.module: Missing `author` key in manifest for 'workflow_oracle', defaulting to '' 
+2026-09-15 20:06:08,851 1 WARNING workflow_witness odoo.modules.module: Missing `author` key in manifest for 'workflow_oracle', defaulting to '' 
+2026-09-15 20:06:08,861 1 INFO workflow_witness odoo.modules.loading: loading 1 modules... 
+2026-09-15 20:06:08,861 1 INFO workflow_witness odoo.modules.loading: Loading module base (1/1) 
+2026-09-15 20:06:08,876 1 INFO workflow_witness odoo.registry: module base: creating or updating database tables 
+2026-09-15 20:06:08,988 1 INFO workflow_witness odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-15 20:06:08,988 1 INFO workflow_witness odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-15 20:06:08,988 1 INFO workflow_witness odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-15 20:06:09,037 1 INFO workflow_witness odoo.models: Prepare computation of res.partner.user_id 
+2026-09-15 20:06:09,037 1 INFO workflow_witness odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-15 20:06:09,037 1 INFO workflow_witness odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-15 20:06:09,037 1 INFO workflow_witness odoo.models: Prepare computation of res.partner.lang 
+2026-09-15 20:06:09,037 1 INFO workflow_witness odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-15 20:06:09,037 1 INFO workflow_witness odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-15 20:06:09,037 1 INFO workflow_witness odoo.models: Prepare computation of res.partner.properties 
+2026-09-15 20:06:09,037 1 INFO workflow_witness odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-15 20:06:09,051 1 INFO workflow_witness odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-15 20:06:09,060 1 INFO workflow_witness odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-15 20:06:09,060 1 INFO workflow_witness odoo.models: Prepare computation of res.company.logo_web 
+2026-09-15 20:06:09,061 1 INFO workflow_witness odoo.models: Computing parent_path for table res_company... 
+2026-09-15 20:06:09,077 1 INFO workflow_witness odoo.models: Prepare computation of res.users.signature 
+2026-09-15 20:06:09,077 1 INFO workflow_witness odoo.models: Prepare computation of res.users.share 
+2026-09-15 20:06:09,753 1 INFO workflow_witness odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-15 20:06:09,756 1 INFO workflow_witness odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-15 20:06:09,777 1 INFO workflow_witness odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-15 20:06:09,805 1 INFO workflow_witness odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-09-15 20:06:09,836 1 INFO workflow_witness odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-09-15 20:06:10,038 1 INFO workflow_witness odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-09-15 20:06:10,048 1 INFO workflow_witness odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-09-15 20:06:10,625 1 INFO workflow_witness odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-09-15 20:06:10,632 1 INFO workflow_witness odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-09-15 20:06:10,978 1 INFO workflow_witness odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-09-15 20:06:10,989 1 INFO workflow_witness odoo.modules.loading: loading base/security/base_groups.xml 
+2026-09-15 20:06:11,113 1 INFO workflow_witness odoo.modules.loading: loading base/security/base_security.xml 
+2026-09-15 20:06:11,203 1 INFO workflow_witness odoo.modules.loading: loading base/wizard/wizard_ir_model_menu_create_views.xml 
+2026-09-15 20:06:11,211 1 INFO workflow_witness odoo.modules.loading: loading base/views/base_menus.xml 
+2026-09-15 20:06:11,242 1 INFO workflow_witness odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-09-15 20:06:11,257 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-09-15 20:06:11,260 1 INFO workflow_witness odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-09-15 20:06:11,426 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-09-15 20:06:11,534 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-09-15 20:06:11,547 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-09-15 20:06:11,559 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-09-15 20:06:11,575 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-09-15 20:06:11,584 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-09-15 20:06:11,599 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-09-15 20:06:11,611 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-09-15 20:06:11,687 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-09-15 20:06:11,701 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-09-15 20:06:11,713 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-09-15 20:06:11,726 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-09-15 20:06:11,739 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-09-15 20:06:11,773 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-09-15 20:06:11,785 1 INFO workflow_witness odoo.modules.loading: loading base/data/ir_config_parameter_data.xml 
+2026-09-15 20:06:11,788 1 INFO workflow_witness odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-09-15 20:06:11,794 1 INFO workflow_witness odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-09-15 20:06:11,797 1 INFO workflow_witness odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-09-15 20:06:11,801 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-09-15 20:06:11,814 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-09-15 20:06:11,822 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-09-15 20:06:11,851 1 INFO workflow_witness odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-09-15 20:06:11,872 1 INFO workflow_witness odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-09-15 20:06:11,911 1 INFO workflow_witness odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-09-15 20:06:11,914 1 INFO workflow_witness odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-09-15 20:06:11,918 1 INFO workflow_witness odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-09-15 20:06:11,926 1 INFO workflow_witness odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-09-15 20:06:11,935 1 INFO workflow_witness odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-09-15 20:06:11,941 1 INFO workflow_witness odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-09-15 20:06:11,950 1 INFO workflow_witness odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-09-15 20:06:11,956 1 INFO workflow_witness odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-09-15 20:06:11,963 1 INFO workflow_witness odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-09-15 20:06:11,973 1 INFO workflow_witness odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-09-15 20:06:11,982 1 INFO workflow_witness odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-09-15 20:06:11,994 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-09-15 20:06:12,006 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-09-15 20:06:12,017 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-09-15 20:06:12,068 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-09-15 20:06:12,094 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-09-15 20:06:12,123 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-09-15 20:06:12,151 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_groups_views.xml 
+2026-09-15 20:06:12,191 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-09-15 20:06:12,266 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_users_apikeys_views.xml 
+2026-09-15 20:06:12,273 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_device_views.xml 
+2026-09-15 20:06:12,289 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-09-15 20:06:12,293 1 INFO workflow_witness odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-09-15 20:06:12,298 1 INFO workflow_witness odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-09-15 20:06:12,311 1 INFO workflow_witness odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-09-15 20:06:12,532 1 INFO workflow_witness odoo.modules.loading: Module base loaded in 3.67s, 8454 queries (+8454 other) 
+2026-09-15 20:06:12,532 1 INFO workflow_witness odoo.modules.loading: 1 modules loaded in 3.67s, 8454 queries (+8454 extra) 
+2026-09-15 20:06:12,534 1 INFO workflow_witness odoo.modules.loading: updating modules list 
+2026-09-15 20:06:12,535 1 INFO workflow_witness odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-15 20:06:13,028 1 WARNING workflow_witness odoo.modules.module: Missing `author` key in manifest for 'workflow_case', defaulting to '' 
+2026-09-15 20:06:13,029 1 WARNING workflow_witness odoo.modules.module: Missing `author` key in manifest for 'workflow_oracle', defaulting to '' 
+2026-09-15 20:06:13,033 1 INFO workflow_witness odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Independent synthetic workflow oracle'] to user __system__ #1 via n/a 
+2026-09-15 20:06:13,122 1 INFO workflow_witness odoo.modules.loading: loading 56 modules... 
+2026-09-15 20:06:13,122 1 INFO workflow_witness odoo.modules.loading: Loading module rpc (2/56) 
+2026-09-15 20:06:13,143 1 INFO workflow_witness odoo.modules.loading: Module rpc loaded in 0.02s, 9 queries (+9 other) 
+2026-09-15 20:06:13,143 1 INFO workflow_witness odoo.modules.loading: Loading module uom (3/56) 
+2026-09-15 20:06:13,148 1 INFO workflow_witness odoo.registry: module uom: creating or updating database tables 
+2026-09-15 20:06:13,174 1 INFO workflow_witness odoo.modules.loading: loading uom/data/uom_data.xml 
+2026-09-15 20:06:13,220 1 INFO workflow_witness odoo.modules.loading: loading uom/security/uom_security.xml 
+2026-09-15 20:06:13,223 1 INFO workflow_witness odoo.modules.loading: loading uom/security/ir.model.access.csv 
+2026-09-15 20:06:13,234 1 INFO workflow_witness odoo.modules.loading: loading uom/views/uom_uom_views.xml 
+2026-09-15 20:06:13,263 1 INFO workflow_witness odoo.modules.loading: Module uom loaded in 0.12s, 230 queries (+230 other) 
+2026-09-15 20:06:13,263 1 INFO workflow_witness odoo.modules.loading: Loading module web (4/56) 
+2026-09-15 20:06:13,285 1 INFO workflow_witness odoo.registry: module web: creating or updating database tables 
+2026-09-15 20:06:13,584 1 INFO workflow_witness odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-09-15 20:06:13,596 1 INFO workflow_witness odoo.modules.loading: loading web/security/web_security.xml 
+2026-09-15 20:06:13,605 1 INFO workflow_witness odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-09-15 20:06:13,643 1 INFO workflow_witness odoo.modules.loading: loading web/views/report_templates.xml 
+2026-09-15 20:06:13,737 1 INFO workflow_witness odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-09-15 20:06:13,755 1 INFO workflow_witness odoo.modules.loading: loading web/views/partner_view.xml 
+2026-09-15 20:06:13,765 1 INFO workflow_witness odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-09-15 20:06:13,770 1 INFO workflow_witness odoo.modules.loading: loading web/views/memory_template.xml 
+2026-09-15 20:06:13,777 1 INFO workflow_witness odoo.modules.loading: loading web/views/speedscope_config_wizard.xml 
+2026-09-15 20:06:13,785 1 INFO workflow_witness odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-09-15 20:06:13,793 1 INFO workflow_witness odoo.modules.loading: loading web/views/ir_ui_view_views.xml 
+2026-09-15 20:06:13,804 1 INFO workflow_witness odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-09-15 20:06:13,810 1 INFO workflow_witness odoo.modules.loading: loading web/data/report_layout.xml 
+2026-09-15 20:06:13,870 1 INFO workflow_witness odoo.modules.loading: Module web loaded in 0.61s, 1242 queries (+1242 other) 
+2026-09-15 20:06:13,870 1 INFO workflow_witness odoo.modules.loading: Loading module api_doc (5/56) 
+2026-09-15 20:06:13,877 1 INFO workflow_witness odoo.registry: module api_doc: creating or updating database tables 
+2026-09-15 20:06:13,891 1 INFO workflow_witness odoo.modules.loading: loading api_doc/security/res_groups.xml 
+2026-09-15 20:06:13,914 1 INFO workflow_witness odoo.modules.loading: loading api_doc/views/docclient.xml 
+2026-09-15 20:06:13,934 1 INFO workflow_witness odoo.modules.loading: Module api_doc loaded in 0.06s, 63 queries (+63 other) 
+2026-09-15 20:06:13,934 1 INFO workflow_witness odoo.modules.loading: Loading module auth_totp (6/56) 
+2026-09-15 20:06:13,948 1 INFO workflow_witness odoo.registry: module auth_totp: creating or updating database tables 
+2026-09-15 20:06:14,014 1 INFO workflow_witness odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-09-15 20:06:14,031 1 INFO workflow_witness odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-09-15 20:06:14,034 1 INFO workflow_witness odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-09-15 20:06:14,038 1 INFO workflow_witness odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-09-15 20:06:14,054 1 INFO workflow_witness odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-09-15 20:06:14,058 1 INFO workflow_witness odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-09-15 20:06:14,071 1 INFO workflow_witness odoo.modules.loading: Module auth_totp loaded in 0.14s, 218 queries (+218 other) 
+2026-09-15 20:06:14,071 1 INFO workflow_witness odoo.modules.loading: Loading module barcodes (7/56) 
+2026-09-15 20:06:14,076 1 INFO workflow_witness odoo.registry: module barcodes: creating or updating database tables 
+2026-09-15 20:06:14,105 1 INFO workflow_witness odoo.modules.loading: loading barcodes/data/barcodes_data.xml 
+2026-09-15 20:06:14,110 1 INFO workflow_witness odoo.modules.loading: loading barcodes/views/barcodes_view.xml 
+2026-09-15 20:06:14,120 1 INFO workflow_witness odoo.modules.loading: loading barcodes/security/ir.model.access.csv 
+2026-09-15 20:06:14,129 1 INFO workflow_witness odoo.modules.loading: Module barcodes loaded in 0.06s, 150 queries (+150 other) 
+2026-09-15 20:06:14,129 1 INFO workflow_witness odoo.modules.loading: Loading module base_import (8/56) 
+2026-09-15 20:06:14,149 1 INFO workflow_witness odoo.registry: module base_import: creating or updating database tables 
+2026-09-15 20:06:14,380 1 INFO workflow_witness odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-09-15 20:06:14,389 1 INFO workflow_witness odoo.modules.loading: Module base_import loaded in 0.26s, 979 queries (+979 other) 
+2026-09-15 20:06:14,389 1 INFO workflow_witness odoo.modules.loading: Loading module base_import_module (9/56) 
+2026-09-15 20:06:14,393 1 INFO workflow_witness odoo.registry: module base_import_module: creating or updating database tables 
+2026-09-15 20:06:14,421 1 INFO workflow_witness odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-09-15 20:06:14,425 1 INFO workflow_witness odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-09-15 20:06:14,434 1 INFO workflow_witness odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-09-15 20:06:14,460 1 INFO workflow_witness odoo.modules.loading: Module base_import_module loaded in 0.07s, 172 queries (+172 other) 
+2026-09-15 20:06:14,460 1 INFO workflow_witness odoo.modules.loading: Loading module base_setup (10/56) 
+2026-09-15 20:06:14,465 1 INFO workflow_witness odoo.registry: module base_setup: creating or updating database tables 
+2026-09-15 20:06:14,488 1 INFO workflow_witness odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-09-15 20:06:14,491 1 INFO workflow_witness odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-09-15 20:06:14,508 1 INFO workflow_witness odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-09-15 20:06:14,519 1 INFO workflow_witness odoo.modules.loading: Module base_setup loaded in 0.06s, 152 queries (+152 other) 
+2026-09-15 20:06:14,519 1 INFO workflow_witness odoo.modules.loading: Loading module bus (11/56) 
+2026-09-15 20:06:14,528 1 INFO workflow_witness odoo.registry: module bus: creating or updating database tables 
+2026-09-15 20:06:14,569 1 INFO workflow_witness odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-09-15 20:06:14,582 1 INFO workflow_witness odoo.modules.loading: Module bus loaded in 0.06s, 159 queries (+159 other) 
+2026-09-15 20:06:14,582 1 INFO workflow_witness odoo.modules.loading: Loading module http_routing (12/56) 
+2026-09-15 20:06:14,584 1 INFO workflow_witness odoo.registry: module http_routing: creating or updating database tables 
+2026-09-15 20:06:14,594 1 INFO workflow_witness odoo.modules.loading: loading http_routing/views/http_routing_template.xml 
+2026-09-15 20:06:14,619 1 INFO workflow_witness odoo.modules.loading: loading http_routing/views/res_lang_views.xml 
+2026-09-15 20:06:14,642 1 INFO workflow_witness odoo.modules.loading: Module http_routing loaded in 0.06s, 114 queries (+114 other) 
+2026-09-15 20:06:14,642 1 INFO workflow_witness odoo.modules.loading: Loading module onboarding (13/56) 
+2026-09-15 20:06:14,646 1 INFO workflow_witness odoo.registry: module onboarding: creating or updating database tables 
+2026-09-15 20:06:14,695 1 INFO workflow_witness odoo.modules.loading: loading onboarding/views/onboarding_templates.xml 
+2026-09-15 20:06:14,703 1 INFO workflow_witness odoo.modules.loading: loading onboarding/views/onboarding_views.xml 
+2026-09-15 20:06:14,717 1 INFO workflow_witness odoo.modules.loading: loading onboarding/views/onboarding_menus.xml 
+2026-09-15 20:06:14,721 1 INFO workflow_witness odoo.modules.loading: loading onboarding/security/ir.model.access.csv 
+2026-09-15 20:06:14,792 1 INFO workflow_witness odoo.modules.loading: Module onboarding loaded in 0.15s, 246 queries (+246 other) 
+2026-09-15 20:06:14,792 1 INFO workflow_witness odoo.modules.loading: Loading module resource (14/56) 
+2026-09-15 20:06:14,801 1 INFO workflow_witness odoo.registry: module resource: creating or updating database tables 
+2026-09-15 20:06:14,862 1 INFO workflow_witness odoo.modules.loading: loading resource/data/resource_data.xml 
+2026-09-15 20:06:14,871 1 INFO workflow_witness odoo.modules.loading: loading resource/security/ir.model.access.csv 
+2026-09-15 20:06:14,877 1 INFO workflow_witness odoo.modules.loading: loading resource/security/resource_security.xml 
+2026-09-15 20:06:14,889 1 INFO workflow_witness odoo.modules.loading: loading resource/views/resource_resource_views.xml 
+2026-09-15 20:06:14,901 1 INFO workflow_witness odoo.modules.loading: loading resource/views/resource_calendar_leaves_views.xml 
+2026-09-15 20:06:14,915 1 INFO workflow_witness odoo.modules.loading: loading resource/views/resource_calendar_attendance_views.xml 
+2026-09-15 20:06:14,920 1 INFO workflow_witness odoo.modules.loading: loading resource/views/resource_calendar_views.xml 
+2026-09-15 20:06:14,933 1 INFO workflow_witness odoo.modules.loading: loading resource/views/menuitems.xml 
+2026-09-15 20:06:14,946 1 INFO workflow_witness odoo.modules.loading: Module resource loaded in 0.15s, 414 queries (+414 other) 
+2026-09-15 20:06:14,946 1 INFO workflow_witness odoo.modules.loading: Loading module web_tour (15/56) 
+2026-09-15 20:06:14,952 1 INFO workflow_witness odoo.registry: module web_tour: creating or updating database tables 
+2026-09-15 20:06:14,954 1 INFO workflow_witness odoo.models: Prepare computation of res.users.tour_enabled 
+2026-09-15 20:06:14,991 1 INFO workflow_witness odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-09-15 20:06:14,997 1 INFO workflow_witness odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-09-15 20:06:15,017 1 INFO workflow_witness odoo.modules.loading: Module web_tour loaded in 0.07s, 180 queries (+180 other) 
+2026-09-15 20:06:15,018 1 INFO workflow_witness odoo.modules.loading: Loading module auth_passkey (16/56) 
+2026-09-15 20:06:15,036 1 INFO workflow_witness odoo.registry: module auth_passkey: creating or updating database tables 
+2026-09-15 20:06:15,068 1 INFO workflow_witness odoo.modules.loading: loading auth_passkey/views/auth_passkey_key_views.xml 
+2026-09-15 20:06:15,082 1 INFO workflow_witness odoo.modules.loading: loading auth_passkey/views/auth_passkey_login_templates.xml 
+2026-09-15 20:06:15,089 1 INFO workflow_witness odoo.modules.loading: loading auth_passkey/views/res_users_identitycheck_views.xml 
+2026-09-15 20:06:15,095 1 INFO workflow_witness odoo.modules.loading: loading auth_passkey/views/res_users_views.xml 
+2026-09-15 20:06:15,105 1 INFO workflow_witness odoo.modules.loading: loading auth_passkey/security/ir.model.access.csv 
+2026-09-15 20:06:15,109 1 INFO workflow_witness odoo.modules.loading: loading auth_passkey/security/security.xml 
+2026-09-15 20:06:15,122 1 INFO workflow_witness odoo.modules.loading: Module auth_passkey loaded in 0.10s, 218 queries (+218 other) 
+2026-09-15 20:06:15,122 1 INFO workflow_witness odoo.modules.loading: Loading module barcodes_gs1_nomenclature (17/56) 
+2026-09-15 20:06:15,126 1 INFO workflow_witness odoo.registry: module barcodes_gs1_nomenclature: creating or updating database tables 
+2026-09-15 20:06:15,141 1 INFO workflow_witness odoo.modules.loading: loading barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml 
+2026-09-15 20:06:15,186 1 INFO workflow_witness odoo.modules.loading: loading barcodes_gs1_nomenclature/views/barcodes_view.xml 
+2026-09-15 20:06:15,211 1 INFO workflow_witness odoo.modules.loading: Module barcodes_gs1_nomenclature loaded in 0.09s, 197 queries (+197 other) 
+2026-09-15 20:06:15,211 1 INFO workflow_witness odoo.modules.loading: Loading module html_editor (18/56) 
+2026-09-15 20:06:15,282 1 INFO workflow_witness odoo.registry: module html_editor: creating or updating database tables 
+2026-09-15 20:06:15,548 1 INFO workflow_witness odoo.modules.loading: loading html_editor/security/ir.model.access.csv 
+2026-09-15 20:06:15,561 1 INFO workflow_witness odoo.modules.loading: Module html_editor loaded in 0.35s, 1124 queries (+1124 other) 
+2026-09-15 20:06:15,561 1 INFO workflow_witness odoo.modules.loading: Loading module iap (19/56) 
+2026-09-15 20:06:15,563 1 INFO workflow_witness odoo.registry: module iap: creating or updating database tables 
+2026-09-15 20:06:15,591 1 INFO workflow_witness odoo.modules.loading: loading iap/data/services.xml 
+2026-09-15 20:06:15,595 1 INFO workflow_witness odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-09-15 20:06:15,601 1 INFO workflow_witness odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-09-15 20:06:15,605 1 INFO workflow_witness odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-09-15 20:06:15,618 1 INFO workflow_witness odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-09-15 20:06:15,631 1 INFO workflow_witness odoo.modules.loading: Module iap loaded in 0.07s, 182 queries (+182 other) 
+2026-09-15 20:06:15,631 1 INFO workflow_witness odoo.modules.loading: Loading module mail (20/56) 
+2026-09-15 20:06:15,665 1 INFO workflow_witness odoo.registry: module mail: creating or updating database tables 
+2026-09-15 20:06:15,749 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.partner_ids 
+2026-09-15 20:06:15,749 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.activity_user_id 
+2026-09-15 20:06:15,749 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.activity_type_id 
+2026-09-15 20:06:15,749 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.template_id 
+2026-09-15 20:06:15,749 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.activity_date_deadline_range 
+2026-09-15 20:06:15,749 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.activity_summary 
+2026-09-15 20:06:15,750 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.followers_type 
+2026-09-15 20:06:15,750 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.followers_partner_field_name 
+2026-09-15 20:06:15,750 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.mail_post_method 
+2026-09-15 20:06:15,750 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.activity_date_deadline_range_type 
+2026-09-15 20:06:15,750 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.activity_user_type 
+2026-09-15 20:06:15,750 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.activity_user_field_name 
+2026-09-15 20:06:15,750 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.activity_note 
+2026-09-15 20:06:15,750 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.mail_post_autofollow 
+2026-09-15 20:06:15,777 1 INFO workflow_witness odoo.models: Prepare computation of res.users.notification_type 
+2026-09-15 20:06:15,802 1 INFO workflow_witness odoo.models: Prepare computation of res.partner.email_normalized 
+<string>:38: (ERROR/3) Unexpected indentation.
+<string>:43: (WARNING/2) Block quote ends without a blank line; unexpected unindent.
+2026-09-15 20:06:16,491 1 INFO workflow_witness odoo.modules.loading: loading mail/data/mail_groups.xml 
+2026-09-15 20:06:16,507 1 INFO workflow_witness odoo.modules.loading: loading mail/wizard/mail_activity_schedule_views.xml 
+2026-09-15 20:06:16,519 1 INFO workflow_witness odoo.modules.loading: loading mail/wizard/mail_blacklist_remove_views.xml 
+2026-09-15 20:06:16,526 1 INFO workflow_witness odoo.modules.loading: loading mail/wizard/mail_compose_message_views.xml 
+2026-09-15 20:06:16,542 1 INFO workflow_witness odoo.modules.loading: loading mail/wizard/mail_template_preview_views.xml 
+2026-09-15 20:06:16,549 1 INFO workflow_witness odoo.modules.loading: loading mail/wizard/mail_followers_edit_views.xml 
+2026-09-15 20:06:16,558 1 INFO workflow_witness odoo.modules.loading: loading mail/wizard/mail_template_reset_views.xml 
+2026-09-15 20:06:16,565 1 INFO workflow_witness odoo.modules.loading: loading mail/views/fetchmail_views.xml 
+2026-09-15 20:06:16,581 1 INFO workflow_witness odoo.modules.loading: loading mail/views/ir_cron_views.xml 
+2026-09-15 20:06:16,591 1 INFO workflow_witness odoo.modules.loading: loading mail/views/ir_filters_views.xml 
+2026-09-15 20:06:16,602 1 INFO workflow_witness odoo.modules.loading: loading mail/views/ir_mail_server_views.xml 
+2026-09-15 20:06:16,609 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_message_subtype_views.xml 
+2026-09-15 20:06:16,623 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_tracking_value_views.xml 
+2026-09-15 20:06:16,633 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_notification_views.xml 
+2026-09-15 20:06:16,639 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_message_views.xml 
+2026-09-15 20:06:16,665 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_message_schedule_views.xml 
+2026-09-15 20:06:16,678 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_mail_views.xml 
+2026-09-15 20:06:16,700 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_followers_views.xml 
+2026-09-15 20:06:16,711 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_ice_server_views.xml 
+2026-09-15 20:06:16,729 1 INFO workflow_witness odoo.modules.loading: loading mail/views/discuss_channel_member_views.xml 
+2026-09-15 20:06:16,739 1 INFO workflow_witness odoo.modules.loading: loading mail/views/discuss_channel_rtc_session_views.xml 
+2026-09-15 20:06:16,751 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_link_preview_views.xml 
+2026-09-15 20:06:16,762 1 INFO workflow_witness odoo.modules.loading: loading mail/views/discuss/discuss_gif_favorite_views.xml 
+2026-09-15 20:06:16,768 1 INFO workflow_witness odoo.modules.loading: loading mail/views/discuss_channel_views.xml 
+2026-09-15 20:06:16,784 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_canned_response_views.xml 
+2026-09-15 20:06:16,797 1 INFO workflow_witness odoo.modules.loading: loading mail/views/res_role_views.xml 
+2026-09-15 20:06:16,806 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_activity_views.xml 
+2026-09-15 20:06:16,890 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_activity_plan_views.xml 
+2026-09-15 20:06:16,923 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_activity_plan_template_views.xml 
+2026-09-15 20:06:16,930 1 INFO workflow_witness odoo.modules.loading: loading mail/views/res_config_settings_views.xml 
+2026-09-15 20:06:16,943 1 INFO workflow_witness odoo.modules.loading: loading mail/data/ir_config_parameter_data.xml 
+2026-09-15 20:06:16,948 1 INFO workflow_witness odoo.modules.loading: loading mail/data/res_partner_data.xml 
+2026-09-15 20:06:17,001 1 INFO workflow_witness odoo.modules.loading: loading mail/data/mail_message_subtype_data.xml 
+2026-09-15 20:06:17,007 1 INFO workflow_witness odoo.modules.loading: loading mail/data/mail_templates_chatter.xml 
+2026-09-15 20:06:17,021 1 INFO workflow_witness odoo.modules.loading: loading mail/data/mail_templates_email_layouts.xml 
+2026-09-15 20:06:17,039 1 INFO workflow_witness odoo.modules.loading: loading mail/data/mail_templates_mailgateway.xml 
+2026-09-15 20:06:17,053 1 INFO workflow_witness odoo.modules.loading: loading mail/data/discuss_channel_data.xml 
+2026-09-15 20:06:17,078 1 INFO workflow_witness odoo.modules.loading: loading mail/data/mail_activity_type_data.xml 
+2026-09-15 20:06:17,088 1 INFO workflow_witness odoo.modules.loading: loading mail/data/security_notifications_templates.xml 
+2026-09-15 20:06:17,092 1 INFO workflow_witness odoo.modules.loading: loading mail/data/ir_cron_data.xml 
+2026-09-15 20:06:17,173 1 INFO workflow_witness odoo.modules.loading: loading mail/data/ir_actions_client.xml 
+2026-09-15 20:06:17,176 1 INFO workflow_witness odoo.modules.loading: loading mail/security/mail_security.xml 
+2026-09-15 20:06:17,270 1 INFO workflow_witness odoo.modules.loading: loading mail/security/ir.model.access.csv 
+2026-09-15 20:06:17,302 1 INFO workflow_witness odoo.modules.loading: loading mail/views/discuss_public_templates.xml 
+2026-09-15 20:06:17,306 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_alias_domain_views.xml 
+2026-09-15 20:06:17,320 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_alias_views.xml 
+2026-09-15 20:06:17,337 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_gateway_allowed_views.xml 
+2026-09-15 20:06:17,347 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_guest_views.xml 
+2026-09-15 20:06:17,356 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_message_reaction_views.xml 
+2026-09-15 20:06:17,363 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_templates_public.xml 
+2026-09-15 20:06:17,368 1 INFO workflow_witness odoo.modules.loading: loading mail/views/res_users_views.xml 
+2026-09-15 20:06:17,387 1 INFO workflow_witness odoo.modules.loading: loading mail/views/res_users_settings_views.xml 
+2026-09-15 20:06:17,395 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_template_views.xml 
+2026-09-15 20:06:17,407 1 INFO workflow_witness odoo.modules.loading: loading mail/views/ir_actions_server_views.xml 
+2026-09-15 20:06:17,417 1 INFO workflow_witness odoo.modules.loading: loading mail/views/ir_model_views.xml 
+2026-09-15 20:06:17,434 1 INFO workflow_witness odoo.modules.loading: loading mail/views/res_partner_views.xml 
+2026-09-15 20:06:17,457 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_blacklist_views.xml 
+2026-09-15 20:06:17,472 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_menus.xml 
+2026-09-15 20:06:17,537 1 INFO workflow_witness odoo.modules.loading: loading mail/views/discuss/discuss_menus.xml 
+2026-09-15 20:06:17,540 1 INFO workflow_witness odoo.modules.loading: loading mail/views/discuss/discuss_call_history_views.xml 
+2026-09-15 20:06:17,548 1 INFO workflow_witness odoo.modules.loading: loading mail/views/res_company_views.xml 
+2026-09-15 20:06:17,554 1 INFO workflow_witness odoo.modules.loading: loading mail/views/mail_scheduled_message_views.xml 
+2026-09-15 20:06:17,558 1 INFO workflow_witness odoo.modules.loading: loading mail/data/mail_canned_response_data.xml 
+2026-09-15 20:06:17,565 1 INFO workflow_witness odoo.modules.loading: loading mail/data/mail_templates_invite.xml 
+2026-09-15 20:06:17,573 1 INFO workflow_witness odoo.modules.loading: loading mail/data/web_tour_tour.xml 
+2026-09-15 20:06:17,605 1 INFO workflow_witness odoo.modules.loading: Module mail loaded in 1.97s, 5075 queries (+5076 other) 
+2026-09-15 20:06:17,605 1 INFO workflow_witness odoo.modules.loading: Loading module web_unsplash (21/56) 
+2026-09-15 20:06:17,614 1 INFO workflow_witness odoo.registry: module web_unsplash: creating or updating database tables 
+2026-09-15 20:06:17,640 1 INFO workflow_witness odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-09-15 20:06:17,657 1 INFO workflow_witness odoo.modules.loading: Module web_unsplash loaded in 0.05s, 103 queries (+103 other) 
+2026-09-15 20:06:17,657 1 INFO workflow_witness odoo.modules.loading: Loading module analytic (22/56) 
+2026-09-15 20:06:17,663 1 INFO workflow_witness odoo.registry: module analytic: creating or updating database tables 
+2026-09-15 20:06:17,739 1 INFO workflow_witness odoo.modules.loading: loading analytic/security/analytic_security.xml 
+2026-09-15 20:06:17,753 1 INFO workflow_witness odoo.modules.loading: loading analytic/security/ir.model.access.csv 
+2026-09-15 20:06:17,763 1 INFO workflow_witness odoo.modules.loading: loading analytic/views/analytic_line_views.xml 
+2026-09-15 20:06:17,789 1 INFO workflow_witness odoo.modules.loading: loading analytic/views/analytic_account_views.xml 
+2026-09-15 20:06:17,807 1 INFO workflow_witness odoo.modules.loading: loading analytic/views/analytic_plan_views.xml 
+2026-09-15 20:06:17,819 1 INFO workflow_witness odoo.modules.loading: loading analytic/views/analytic_distribution_model_views.xml 
+2026-09-15 20:06:17,828 1 INFO workflow_witness odoo.modules.loading: loading analytic/data/analytic_data.xml 
+2026-09-15 20:06:17,885 1 INFO workflow_witness odoo.modules.loading: Module analytic loaded in 0.23s, 429 queries (+429 other) 
+2026-09-15 20:06:17,885 1 INFO workflow_witness odoo.modules.loading: Loading module auth_signup (23/56) 
+2026-09-15 20:06:17,897 1 INFO workflow_witness odoo.registry: module auth_signup: creating or updating database tables 
+2026-09-15 20:06:17,940 1 INFO workflow_witness odoo.modules.loading: loading auth_signup/data/ir_config_parameter_data.xml 
+2026-09-15 20:06:17,946 1 INFO workflow_witness odoo.modules.loading: loading auth_signup/data/ir_cron_data.xml 
+2026-09-15 20:06:17,964 1 INFO workflow_witness odoo.modules.loading: loading auth_signup/data/mail_template_data.xml 
+2026-09-15 20:06:18,070 1 INFO workflow_witness odoo.modules.loading: loading auth_signup/views/res_config_settings_views.xml 
+2026-09-15 20:06:18,091 1 INFO workflow_witness odoo.modules.loading: loading auth_signup/views/res_users_views.xml 
+2026-09-15 20:06:18,121 1 INFO workflow_witness odoo.modules.loading: loading auth_signup/views/auth_signup_login_templates.xml 
+2026-09-15 20:06:18,148 1 INFO workflow_witness odoo.modules.loading: loading auth_signup/views/auth_signup_templates_email.xml 
+2026-09-15 20:06:18,155 1 INFO workflow_witness odoo.modules.loading: loading auth_signup/views/webclient_templates.xml 
+2026-09-15 20:06:18,186 1 INFO workflow_witness odoo.modules.loading: Module auth_signup loaded in 0.30s, 255 queries (+255 other) 
+2026-09-15 20:06:18,186 1 INFO workflow_witness odoo.modules.loading: Loading module auth_totp_mail (24/56) 
+2026-09-15 20:06:18,201 1 INFO workflow_witness odoo.registry: module auth_totp_mail: creating or updating database tables 
+2026-09-15 20:06:18,243 1 INFO workflow_witness odoo.modules.loading: loading auth_totp_mail/data/ir_action_data.xml 
+2026-09-15 20:06:18,274 1 INFO workflow_witness odoo.modules.loading: loading auth_totp_mail/data/mail_template_data.xml 
+2026-09-15 20:06:18,303 1 INFO workflow_witness odoo.modules.loading: loading auth_totp_mail/data/security_notifications_template.xml 
+2026-09-15 20:06:18,311 1 INFO workflow_witness odoo.modules.loading: loading auth_totp_mail/views/res_config_settings_views.xml 
+2026-09-15 20:06:18,330 1 INFO workflow_witness odoo.modules.loading: loading auth_totp_mail/views/res_users_views.xml 
+2026-09-15 20:06:18,351 1 INFO workflow_witness odoo.modules.loading: loading auth_totp_mail/views/templates.xml 
+2026-09-15 20:06:18,384 1 INFO workflow_witness odoo.modules.loading: Module auth_totp_mail loaded in 0.20s, 189 queries (+189 other) 
+2026-09-15 20:06:18,384 1 INFO workflow_witness odoo.modules.loading: Loading module base_install_request (25/56) 
+2026-09-15 20:06:18,395 1 INFO workflow_witness odoo.registry: module base_install_request: creating or updating database tables 
+2026-09-15 20:06:18,441 1 INFO workflow_witness odoo.modules.loading: loading base_install_request/security/ir.model.access.csv 
+2026-09-15 20:06:18,453 1 INFO workflow_witness odoo.modules.loading: loading base_install_request/wizard/base_module_install_request_views.xml 
+2026-09-15 20:06:18,468 1 INFO workflow_witness odoo.modules.loading: loading base_install_request/data/mail_template_data.xml 
+2026-09-15 20:06:18,473 1 INFO workflow_witness odoo.modules.loading: loading base_install_request/data/mail_templates_module_install.xml 
+2026-09-15 20:06:18,479 1 INFO workflow_witness odoo.modules.loading: loading base_install_request/views/ir_module_module_views.xml 
+2026-09-15 20:06:18,501 1 INFO workflow_witness odoo.modules.loading: Module base_install_request loaded in 0.12s, 154 queries (+154 other) 
+2026-09-15 20:06:18,501 1 INFO workflow_witness odoo.modules.loading: Loading module google_gmail (26/56) 
+2026-09-15 20:06:18,529 1 INFO workflow_witness odoo.registry: module google_gmail: creating or updating database tables 
+2026-09-15 20:06:18,598 1 INFO workflow_witness odoo.modules.loading: loading google_gmail/views/fetchmail_server_views.xml 
+2026-09-15 20:06:18,611 1 INFO workflow_witness odoo.modules.loading: loading google_gmail/views/ir_mail_server_views.xml 
+2026-09-15 20:06:18,620 1 INFO workflow_witness odoo.modules.loading: loading google_gmail/views/res_config_settings_views.xml 
+2026-09-15 20:06:18,636 1 INFO workflow_witness odoo.modules.loading: loading google_gmail/views/templates.xml 
+2026-09-15 20:06:18,664 1 INFO workflow_witness odoo.modules.loading: Module google_gmail loaded in 0.16s, 155 queries (+155 other) 
+2026-09-15 20:06:18,664 1 INFO workflow_witness odoo.modules.loading: Loading module iap_mail (27/56) 
+2026-09-15 20:06:18,669 1 INFO workflow_witness odoo.registry: module iap_mail: creating or updating database tables 
+2026-09-15 20:06:18,687 1 INFO workflow_witness odoo.modules.loading: loading iap_mail/data/mail_templates.xml 
+2026-09-15 20:06:18,710 1 INFO workflow_witness odoo.modules.loading: loading iap_mail/views/iap_views.xml 
+2026-09-15 20:06:18,732 1 INFO workflow_witness odoo.modules.loading: Module iap_mail loaded in 0.07s, 70 queries (+70 other) 
+2026-09-15 20:06:18,732 1 INFO workflow_witness odoo.modules.loading: Loading module mail_bot (28/56) 
+2026-09-15 20:06:18,745 1 INFO workflow_witness odoo.registry: module mail_bot: creating or updating database tables 
+2026-09-15 20:06:18,782 1 INFO workflow_witness odoo.modules.loading: loading mail_bot/views/res_users_views.xml 
+2026-09-15 20:06:18,798 1 INFO workflow_witness odoo.modules.loading: loading mail_bot/data/mailbot_data.xml 
+2026-09-15 20:06:18,828 1 INFO workflow_witness odoo.modules.loading: Module mail_bot loaded in 0.10s, 109 queries (+109 other) 
+2026-09-15 20:06:18,829 1 INFO workflow_witness odoo.modules.loading: Loading module microsoft_outlook (29/56) 
+2026-09-15 20:06:18,840 1 INFO workflow_witness odoo.registry: module microsoft_outlook: creating or updating database tables 
+2026-09-15 20:06:18,904 1 INFO workflow_witness odoo.modules.loading: loading microsoft_outlook/views/fetchmail_server_views.xml 
+2026-09-15 20:06:18,925 1 INFO workflow_witness odoo.modules.loading: loading microsoft_outlook/views/ir_mail_server_views.xml 
+2026-09-15 20:06:18,937 1 INFO workflow_witness odoo.modules.loading: loading microsoft_outlook/views/res_config_settings_views.xml 
+2026-09-15 20:06:18,962 1 INFO workflow_witness odoo.modules.loading: loading microsoft_outlook/views/templates.xml 
+2026-09-15 20:06:18,976 1 INFO workflow_witness odoo.modules.loading: Module microsoft_outlook loaded in 0.15s, 158 queries (+158 other) 
+2026-09-15 20:06:18,977 1 INFO workflow_witness odoo.modules.loading: Loading module phone_validation (30/56) 
+2026-09-15 20:06:19,049 1 INFO workflow_witness odoo.registry: module phone_validation: creating or updating database tables 
+2026-09-15 20:06:19,061 1 INFO workflow_witness odoo.models: Prepare computation of res.partner.phone_sanitized 
+2026-09-15 20:06:19,574 1 INFO workflow_witness odoo.modules.loading: loading phone_validation/security/ir.model.access.csv 
+2026-09-15 20:06:19,584 1 INFO workflow_witness odoo.modules.loading: loading phone_validation/views/phone_blacklist_views.xml 
+2026-09-15 20:06:19,603 1 INFO workflow_witness odoo.modules.loading: loading phone_validation/views/res_partner_views.xml 
+2026-09-15 20:06:19,613 1 INFO workflow_witness odoo.modules.loading: loading phone_validation/wizard/phone_blacklist_remove_view.xml 
+2026-09-15 20:06:19,632 1 INFO workflow_witness odoo.modules.loading: Module phone_validation loaded in 0.66s, 1761 queries (+1761 other) 
+2026-09-15 20:06:19,632 1 INFO workflow_witness odoo.modules.loading: Loading module privacy_lookup (31/56) 
+2026-09-15 20:06:19,642 1 INFO workflow_witness odoo.registry: module privacy_lookup: creating or updating database tables 
+2026-09-15 20:06:19,721 1 INFO workflow_witness odoo.modules.loading: loading privacy_lookup/wizard/privacy_lookup_wizard_views.xml 
+2026-09-15 20:06:19,758 1 INFO workflow_witness odoo.modules.loading: loading privacy_lookup/views/privacy_log_views.xml 
+2026-09-15 20:06:19,768 1 INFO workflow_witness odoo.modules.loading: loading privacy_lookup/security/ir.model.access.csv 
+2026-09-15 20:06:19,777 1 INFO workflow_witness odoo.modules.loading: loading privacy_lookup/data/ir_actions_server_data.xml 
+2026-09-15 20:06:19,804 1 INFO workflow_witness odoo.modules.loading: Module privacy_lookup loaded in 0.17s, 296 queries (+296 other) 
+2026-09-15 20:06:19,804 1 INFO workflow_witness odoo.modules.loading: Loading module product (32/56) 
+2026-09-15 20:06:19,831 1 INFO workflow_witness odoo.registry: module product: creating or updating database tables 
+2026-09-15 20:06:20,120 1 INFO workflow_witness odoo.modules.loading: loading product/data/product_data.xml 
+2026-09-15 20:06:20,135 1 INFO workflow_witness odoo.modules.loading: loading product/security/product_security.xml 
+2026-09-15 20:06:20,167 1 INFO workflow_witness odoo.modules.loading: loading product/security/ir.model.access.csv 
+2026-09-15 20:06:20,176 1 INFO workflow_witness odoo.modules.loading: loading product/wizard/product_label_layout_views.xml 
+2026-09-15 20:06:20,183 1 INFO workflow_witness odoo.modules.loading: loading product/wizard/update_product_attribute_value_views.xml 
+2026-09-15 20:06:20,187 1 INFO workflow_witness odoo.modules.loading: loading product/views/product_tag_views.xml 
+2026-09-15 20:06:20,199 1 INFO workflow_witness odoo.modules.loading: loading product/views/product_views.xml 
+2026-09-15 20:06:20,264 1 INFO workflow_witness odoo.modules.loading: loading product/views/res_config_settings_views.xml 
+2026-09-15 20:06:20,273 1 INFO workflow_witness odoo.modules.loading: loading product/views/product_attribute_views.xml 
+2026-09-15 20:06:20,295 1 INFO workflow_witness odoo.modules.loading: loading product/views/product_attribute_value_views.xml 
+2026-09-15 20:06:20,298 1 INFO workflow_witness odoo.modules.loading: loading product/views/product_category_views.xml 
+2026-09-15 20:06:20,306 1 INFO workflow_witness odoo.modules.loading: loading product/views/product_combo_views.xml 
+2026-09-15 20:06:20,314 1 INFO workflow_witness odoo.modules.loading: loading product/views/product_document_views.xml 
+2026-09-15 20:06:20,324 1 INFO workflow_witness odoo.modules.loading: loading product/views/product_pricelist_item_views.xml 
+2026-09-15 20:06:20,342 1 INFO workflow_witness odoo.modules.loading: loading product/views/product_pricelist_views.xml 
+2026-09-15 20:06:20,354 1 INFO workflow_witness odoo.modules.loading: loading product/views/product_supplierinfo_views.xml 
+2026-09-15 20:06:20,366 1 INFO workflow_witness odoo.modules.loading: loading product/views/product_template_attribute_line_views.xml 
+2026-09-15 20:06:20,369 1 INFO workflow_witness odoo.modules.loading: loading product/views/product_template_views.xml 
+2026-09-15 20:06:20,399 1 INFO workflow_witness odoo.modules.loading: loading product/views/res_country_group_views.xml 
+2026-09-15 20:06:20,404 1 INFO workflow_witness odoo.modules.loading: loading product/views/res_partner_views.xml 
+2026-09-15 20:06:20,411 1 INFO workflow_witness odoo.modules.loading: loading product/views/uom_views.xml 
+2026-09-15 20:06:20,419 1 INFO workflow_witness odoo.modules.loading: loading product/report/product_reports.xml 
+2026-09-15 20:06:20,428 1 INFO workflow_witness odoo.modules.loading: loading product/report/product_product_templates.xml 
+2026-09-15 20:06:20,443 1 INFO workflow_witness odoo.modules.loading: loading product/report/product_template_templates.xml 
+2026-09-15 20:06:20,452 1 INFO workflow_witness odoo.modules.loading: loading product/report/product_packaging.xml 
+2026-09-15 20:06:20,455 1 INFO workflow_witness odoo.modules.loading: loading product/report/product_pricelist_report_templates.xml 
+2026-09-15 20:06:20,485 1 INFO workflow_witness odoo.modules.loading: Module product loaded in 0.68s, 1645 queries (+1645 other) 
+2026-09-15 20:06:20,485 1 INFO workflow_witness odoo.modules.loading: Loading module resource_mail (33/56) 
+2026-09-15 20:06:20,491 1 INFO workflow_witness odoo.registry: module resource_mail: creating or updating database tables 
+2026-09-15 20:06:20,518 1 INFO workflow_witness odoo.modules.loading: Module resource_mail loaded in 0.03s, 36 queries (+36 other) 
+2026-09-15 20:06:20,518 1 INFO workflow_witness odoo.modules.loading: Loading module partner_autocomplete (34/56) 
+2026-09-15 20:06:20,533 1 INFO workflow_witness odoo.registry: module partner_autocomplete: creating or updating database tables 
+2026-09-15 20:06:20,578 1 INFO workflow_witness odoo.modules.loading: loading partner_autocomplete/views/res_company_views.xml 
+2026-09-15 20:06:20,587 1 INFO workflow_witness odoo.modules.loading: loading partner_autocomplete/views/res_config_settings_views.xml 
+2026-09-15 20:06:20,595 1 INFO workflow_witness odoo.modules.loading: loading partner_autocomplete/data/iap_service_data.xml 
+2026-09-15 20:06:20,601 1 INFO workflow_witness odoo.modules.loading: Module partner_autocomplete loaded in 0.08s, 144 queries (+144 other) 
+2026-09-15 20:06:20,602 1 INFO workflow_witness odoo.modules.loading: Loading module portal (35/56) 
+2026-09-15 20:06:20,621 1 INFO workflow_witness odoo.registry: module portal: creating or updating database tables 
+2026-09-15 20:06:20,724 1 INFO workflow_witness odoo.modules.loading: loading portal/security/ir.model.access.csv 
+2026-09-15 20:06:20,730 1 INFO workflow_witness odoo.modules.loading: loading portal/data/mail_templates.xml 
+2026-09-15 20:06:20,733 1 INFO workflow_witness odoo.modules.loading: loading portal/views/address_templates.xml 
+2026-09-15 20:06:20,751 1 INFO workflow_witness odoo.modules.loading: loading portal/views/mail_templates_public.xml 
+2026-09-15 20:06:20,755 1 INFO workflow_witness odoo.modules.loading: loading portal/views/portal_templates.xml 
+2026-09-15 20:06:20,813 1 INFO workflow_witness odoo.modules.loading: loading portal/views/res_config_settings_views.xml 
+2026-09-15 20:06:20,826 1 INFO workflow_witness odoo.modules.loading: loading portal/wizard/portal_share_views.xml 
+2026-09-15 20:06:20,833 1 INFO workflow_witness odoo.modules.loading: loading portal/wizard/portal_wizard_views.xml 
+2026-09-15 20:06:20,877 1 INFO workflow_witness odoo.modules.loading: Module portal loaded in 0.28s, 602 queries (+602 other) 
+2026-09-15 20:06:20,878 1 INFO workflow_witness odoo.modules.loading: Loading module sms (36/56) 
+2026-09-15 20:06:20,935 1 INFO workflow_witness odoo.registry: module sms: creating or updating database tables 
+2026-09-15 20:06:20,941 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.sms_template_id 
+2026-09-15 20:06:20,941 1 INFO workflow_witness odoo.models: Prepare computation of ir.actions.server.sms_method 
+2026-09-15 20:06:21,403 1 INFO workflow_witness odoo.modules.loading: loading sms/data/iap_service_data.xml 
+2026-09-15 20:06:21,407 1 INFO workflow_witness odoo.modules.loading: loading sms/data/ir_cron_data.xml 
+2026-09-15 20:06:21,420 1 INFO workflow_witness odoo.modules.loading: loading sms/wizard/sms_account_code_views.xml 
+2026-09-15 20:06:21,427 1 INFO workflow_witness odoo.modules.loading: loading sms/wizard/sms_account_phone_views.xml 
+2026-09-15 20:06:21,431 1 INFO workflow_witness odoo.modules.loading: loading sms/wizard/sms_account_sender_views.xml 
+2026-09-15 20:06:21,435 1 INFO workflow_witness odoo.modules.loading: loading sms/wizard/sms_composer_views.xml 
+2026-09-15 20:06:21,442 1 INFO workflow_witness odoo.modules.loading: loading sms/wizard/sms_template_preview_views.xml 
+2026-09-15 20:06:21,447 1 INFO workflow_witness odoo.modules.loading: loading sms/wizard/sms_template_reset_views.xml 
+2026-09-15 20:06:21,453 1 INFO workflow_witness odoo.modules.loading: loading sms/views/ir_actions_server_views.xml 
+2026-09-15 20:06:21,462 1 INFO workflow_witness odoo.modules.loading: loading sms/views/mail_notification_views.xml 
+2026-09-15 20:06:21,471 1 INFO workflow_witness odoo.modules.loading: loading sms/views/res_config_settings_views.xml 
+2026-09-15 20:06:21,479 1 INFO workflow_witness odoo.modules.loading: loading sms/views/res_partner_views.xml 
+2026-09-15 20:06:21,489 1 INFO workflow_witness odoo.modules.loading: loading sms/views/iap_account_views.xml 
+2026-09-15 20:06:21,497 1 INFO workflow_witness odoo.modules.loading: loading sms/views/sms_sms_views.xml 
+2026-09-15 20:06:21,513 1 INFO workflow_witness odoo.modules.loading: loading sms/views/sms_template_views.xml 
+2026-09-15 20:06:21,525 1 INFO workflow_witness odoo.modules.loading: loading sms/security/ir.model.access.csv 
+2026-09-15 20:06:21,537 1 INFO workflow_witness odoo.modules.loading: loading sms/security/sms_security.xml 
+2026-09-15 20:06:21,551 1 INFO workflow_witness odoo.modules.loading: Module sms loaded in 0.67s, 2370 queries (+2370 other) 
+2026-09-15 20:06:21,551 1 INFO workflow_witness odoo.modules.loading: Loading module snailmail (37/56) 
+2026-09-15 20:06:21,626 1 INFO workflow_witness odoo.registry: module snailmail: creating or updating database tables 
+2026-09-15 20:06:21,739 1 INFO workflow_witness odoo.modules.loading: loading snailmail/data/iap_service_data.xml 
+2026-09-15 20:06:21,742 1 INFO workflow_witness odoo.modules.loading: loading snailmail/data/snailmail_data.xml 
+2026-09-15 20:06:21,755 1 INFO workflow_witness odoo.modules.loading: loading snailmail/views/report_assets.xml 
+2026-09-15 20:06:21,763 1 INFO workflow_witness odoo.modules.loading: loading snailmail/views/snailmail_views.xml 
+2026-09-15 20:06:21,773 1 INFO workflow_witness odoo.modules.loading: loading snailmail/security/ir.model.access.csv 
+2026-09-15 20:06:21,786 1 INFO workflow_witness odoo.modules.loading: Module snailmail loaded in 0.23s, 468 queries (+468 other) 
+2026-09-15 20:06:21,786 1 INFO workflow_witness odoo.modules.loading: Loading module auth_passkey_portal (38/56) 
+2026-09-15 20:06:21,792 1 INFO workflow_witness odoo.modules.loading: loading auth_passkey_portal/views/templates.xml 
+2026-09-15 20:06:21,808 1 INFO workflow_witness odoo.modules.loading: Module auth_passkey_portal loaded in 0.02s, 22 queries (+22 other) 
+2026-09-15 20:06:21,808 1 INFO workflow_witness odoo.modules.loading: Loading module auth_totp_portal (39/56) 
+2026-09-15 20:06:21,815 1 INFO workflow_witness odoo.registry: module auth_totp_portal: creating or updating database tables 
+2026-09-15 20:06:21,828 1 INFO workflow_witness odoo.modules.loading: loading auth_totp_portal/security/security.xml 
+2026-09-15 20:06:21,836 1 INFO workflow_witness odoo.modules.loading: loading auth_totp_portal/views/templates.xml 
+2026-09-15 20:06:21,846 1 INFO workflow_witness odoo.modules.loading: Module auth_totp_portal loaded in 0.04s, 70 queries (+70 other) 
+2026-09-15 20:06:21,846 1 INFO workflow_witness odoo.modules.loading: Loading module digest (40/56) 
+2026-09-15 20:06:21,854 1 INFO workflow_witness odoo.registry: module digest: creating or updating database tables 
+2026-09-15 20:06:21,899 1 INFO workflow_witness odoo.modules.loading: loading digest/security/ir.model.access.csv 
+2026-09-15 20:06:21,906 1 INFO workflow_witness odoo.modules.loading: loading digest/data/digest_data.xml 
+2026-09-15 20:06:21,920 1 INFO workflow_witness odoo.modules.loading: loading digest/data/digest_tips_data.xml 
+2026-09-15 20:06:21,929 1 INFO workflow_witness odoo.modules.loading: loading digest/data/ir_cron_data.xml 
+2026-09-15 20:06:21,940 1 INFO workflow_witness odoo.modules.loading: loading digest/data/res_config_settings_data.xml 
+2026-09-15 20:06:21,943 1 INFO workflow_witness odoo.modules.loading: loading digest/views/digest_views.xml 
+2026-09-15 20:06:21,966 1 INFO workflow_witness odoo.modules.loading: loading digest/views/digest_templates.xml 
+2026-09-15 20:06:21,969 1 INFO workflow_witness odoo.modules.loading: loading digest/views/res_config_settings_views.xml 
+2026-09-15 20:06:21,990 1 INFO workflow_witness odoo.modules.loading: Module digest loaded in 0.14s, 326 queries (+326 other) 
+2026-09-15 20:06:21,991 1 INFO workflow_witness odoo.modules.loading: Loading module payment (41/56) 
+2026-09-15 20:06:22,021 1 INFO workflow_witness odoo.registry: module payment: creating or updating database tables 
+2026-09-15 20:06:22,157 1 INFO workflow_witness odoo.modules.loading: loading payment/data/ir_actions_server_data.xml 
+2026-09-15 20:06:22,167 1 INFO workflow_witness odoo.modules.loading: loading payment/data/payment_method_data.xml 
+2026-09-15 20:06:23,063 1 INFO workflow_witness odoo.modules.loading: loading payment/data/payment_provider_data.xml 
+2026-09-15 20:06:23,188 1 INFO workflow_witness odoo.modules.loading: loading payment/data/payment_cron.xml 
+2026-09-15 20:06:23,197 1 INFO workflow_witness odoo.modules.loading: loading payment/views/express_checkout_templates.xml 
+2026-09-15 20:06:23,202 1 INFO workflow_witness odoo.modules.loading: loading payment/views/payment_form_templates.xml 
+2026-09-15 20:06:23,237 1 INFO workflow_witness odoo.modules.loading: loading payment/views/portal_templates.xml 
+2026-09-15 20:06:23,272 1 INFO workflow_witness odoo.modules.loading: loading payment/views/payment_provider_views.xml 
+2026-09-15 20:06:23,293 1 INFO workflow_witness odoo.modules.loading: loading payment/views/payment_method_views.xml 
+2026-09-15 20:06:23,313 1 INFO workflow_witness odoo.modules.loading: loading payment/views/payment_transaction_views.xml 
+2026-09-15 20:06:23,345 1 INFO workflow_witness odoo.modules.loading: loading payment/views/payment_token_views.xml 
+2026-09-15 20:06:23,361 1 INFO workflow_witness odoo.modules.loading: loading payment/views/res_partner_views.xml 
+2026-09-15 20:06:23,373 1 INFO workflow_witness odoo.modules.loading: loading payment/security/ir.model.access.csv 
+2026-09-15 20:06:23,833 1 INFO workflow_witness odoo.modules.loading: loading payment/security/payment_security.xml 
+2026-09-15 20:06:23,846 1 INFO workflow_witness odoo.modules.loading: loading payment/wizards/payment_capture_wizard_views.xml 
+2026-09-15 20:06:23,851 1 INFO workflow_witness odoo.modules.loading: loading payment/wizards/payment_link_wizard_views.xml 
+2026-09-15 20:06:23,871 1 INFO workflow_witness odoo.modules.loading: Module payment loaded in 1.88s, 2517 queries (+2517 other) 
+2026-09-15 20:06:23,871 1 INFO workflow_witness odoo.modules.loading: Loading module spreadsheet (42/56) 
+2026-09-15 20:06:23,877 1 INFO workflow_witness odoo.registry: module spreadsheet: creating or updating database tables 
+2026-09-15 20:06:23,903 1 INFO workflow_witness odoo.modules.loading: loading spreadsheet/views/public_readonly_spreadsheet_templates.xml 
+2026-09-15 20:06:23,914 1 INFO workflow_witness odoo.modules.loading: Module spreadsheet loaded in 0.04s, 93 queries (+93 other) 
+2026-09-15 20:06:23,914 1 INFO workflow_witness odoo.modules.loading: Loading module account (43/56) 
+2026-09-15 20:06:23,985 1 INFO workflow_witness odoo.registry: module account: creating or updating database tables 
+2026-09-15 20:06:24,042 1 INFO workflow_witness odoo.models: Prepare computation of res.company.domestic_fiscal_position_id 
+2026-09-15 20:06:24,042 1 INFO workflow_witness odoo.models: Prepare computation of res.company.account_fiscal_country_id 
+2026-09-15 20:06:24,042 1 INFO workflow_witness odoo.models: Prepare computation of res.company.invoice_terms_html 
+2026-09-15 20:06:24,042 1 INFO workflow_witness odoo.models: Prepare computation of res.company.account_storno 
+2026-09-15 20:06:24,900 1 INFO workflow_witness odoo.modules.loading: loading account/security/account_security.xml 
+2026-09-15 20:06:25,009 1 INFO workflow_witness odoo.modules.loading: loading account/security/ir.model.access.csv 
+2026-09-15 20:06:25,031 1 INFO workflow_witness odoo.modules.loading: loading account/data/account_data.xml 
+2026-09-15 20:06:25,067 1 INFO workflow_witness odoo.modules.loading: loading account/data/digest_data.xml 
+2026-09-15 20:06:25,072 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_report.xml 
+2026-09-15 20:06:25,083 1 INFO workflow_witness odoo.modules.loading: loading account/data/mail_template_data.xml 
+2026-09-15 20:06:25,104 1 INFO workflow_witness odoo.modules.loading: loading account/data/onboarding_data.xml 
+2026-09-15 20:06:25,118 1 INFO workflow_witness odoo.modules.loading: loading account/data/account_tour.xml 
+2026-09-15 20:06:25,121 1 INFO workflow_witness odoo.modules.loading: loading account/data/ir_sequence.xml 
+2026-09-15 20:06:25,124 1 INFO workflow_witness odoo.modules.loading: loading account/data/res_country_group.xml 
+2026-09-15 20:06:25,130 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_payment_view.xml 
+2026-09-15 20:06:25,166 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/account_automatic_entry_wizard_views.xml 
+2026-09-15 20:06:25,173 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/account_autopost_bills_wizard.xml 
+2026-09-15 20:06:25,179 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/account_unreconcile_view.xml 
+2026-09-15 20:06:25,186 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/account_move_reversal_view.xml 
+2026-09-15 20:06:25,192 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/account_resequence_views.xml 
+2026-09-15 20:06:25,198 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/account_payment_register_views.xml 
+2026-09-15 20:06:25,205 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_move_views.xml 
+2026-09-15 20:06:25,533 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/setup_wizards_view.xml 
+2026-09-15 20:06:25,548 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_account_views.xml 
+2026-09-15 20:06:25,567 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_group_views.xml 
+2026-09-15 20:06:25,577 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_journal_views.xml 
+2026-09-15 20:06:25,606 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_account_tag_views.xml 
+2026-09-15 20:06:25,617 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_bank_statement_views.xml 
+2026-09-15 20:06:25,633 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_reconcile_model_views.xml 
+2026-09-15 20:06:25,646 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_tax_views.xml 
+2026-09-15 20:06:25,686 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_full_reconcile_views.xml 
+2026-09-15 20:06:25,693 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_payment_term_views.xml 
+2026-09-15 20:06:25,710 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_payment_method.xml 
+2026-09-15 20:06:25,716 1 INFO workflow_witness odoo.modules.loading: loading account/views/res_partner_bank_views.xml 
+2026-09-15 20:06:25,728 1 INFO workflow_witness odoo.modules.loading: loading account/views/report_statement.xml 
+2026-09-15 20:06:25,735 1 INFO workflow_witness odoo.modules.loading: loading account/views/terms_template.xml 
+2026-09-15 20:06:25,742 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/account_validate_move_view.xml 
+2026-09-15 20:06:25,751 1 INFO workflow_witness odoo.modules.loading: loading account/views/res_company_views.xml 
+2026-09-15 20:06:25,765 1 INFO workflow_witness odoo.modules.loading: loading account/views/product_view.xml 
+2026-09-15 20:06:25,796 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_analytic_plan_views.xml 
+2026-09-15 20:06:25,803 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_analytic_account_views.xml 
+2026-09-15 20:06:25,813 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_analytic_distribution_model_views.xml 
+2026-09-15 20:06:25,823 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_analytic_line_views.xml 
+2026-09-15 20:06:25,841 1 INFO workflow_witness odoo.modules.loading: loading account/views/report_invoice.xml 
+2026-09-15 20:06:25,863 1 INFO workflow_witness odoo.modules.loading: loading account/report/account_invoice_report_view.xml 
+2026-09-15 20:06:25,887 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_cash_rounding_view.xml 
+2026-09-15 20:06:25,897 1 INFO workflow_witness odoo.modules.loading: loading account/views/ir_actions_views.xml 
+2026-09-15 20:06:25,905 1 INFO workflow_witness odoo.modules.loading: loading account/views/ir_module_views.xml 
+2026-09-15 20:06:25,911 1 INFO workflow_witness odoo.modules.loading: loading account/views/base_document_layout_views.xml 
+2026-09-15 20:06:25,916 1 INFO workflow_witness odoo.modules.loading: loading account/views/res_config_settings_views.xml 
+2026-09-15 20:06:25,940 1 INFO workflow_witness odoo.modules.loading: loading account/views/partner_view.xml 
+2026-09-15 20:06:25,978 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_journal_dashboard_view.xml 
+2026-09-15 20:06:25,991 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_portal_templates.xml 
+2026-09-15 20:06:26,017 1 INFO workflow_witness odoo.modules.loading: loading account/views/report_payment_receipt_templates.xml 
+2026-09-15 20:06:26,024 1 INFO workflow_witness odoo.modules.loading: loading account/data/service_cron.xml 
+2026-09-15 20:06:26,039 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_incoterms_view.xml 
+2026-09-15 20:06:26,048 1 INFO workflow_witness odoo.modules.loading: loading account/data/account_incoterms_data.xml 
+2026-09-15 20:06:26,055 1 INFO workflow_witness odoo.modules.loading: loading account/views/digest_views.xml 
+2026-09-15 20:06:26,061 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/account_move_send_wizard.xml 
+2026-09-15 20:06:26,067 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/account_move_send_batch_wizard.xml 
+2026-09-15 20:06:26,071 1 INFO workflow_witness odoo.modules.loading: loading account/report/account_hash_integrity_templates.xml 
+2026-09-15 20:06:26,075 1 INFO workflow_witness odoo.modules.loading: loading account/views/res_currency.xml 
+2026-09-15 20:06:26,082 1 INFO workflow_witness odoo.modules.loading: loading account/views/res_country_group_view.xml 
+2026-09-15 20:06:26,088 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_menuitem.xml 
+2026-09-15 20:06:26,148 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/account_secure_entries_wizard.xml 
+2026-09-15 20:06:26,156 1 INFO workflow_witness odoo.modules.loading: loading account/views/mail_message_views.xml 
+2026-09-15 20:06:26,166 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/accrued_orders.xml 
+2026-09-15 20:06:26,171 1 INFO workflow_witness odoo.modules.loading: loading account/views/bill_preview_template.xml 
+2026-09-15 20:06:26,176 1 INFO workflow_witness odoo.modules.loading: loading account/data/account_reports_data.xml 
+2026-09-15 20:06:26,194 1 INFO workflow_witness odoo.modules.loading: loading account/views/uom_uom_views.xml 
+2026-09-15 20:06:26,201 1 INFO workflow_witness odoo.modules.loading: loading account/views/product_views.xml 
+2026-09-15 20:06:26,209 1 INFO workflow_witness odoo.modules.loading: loading account/views/tests_shared_js_python.xml 
+2026-09-15 20:06:26,212 1 INFO workflow_witness odoo.modules.loading: loading account/views/account_lock_exception_views.xml 
+2026-09-15 20:06:26,217 1 INFO workflow_witness odoo.modules.loading: loading account/views/report_templates.xml 
+2026-09-15 20:06:26,230 1 INFO workflow_witness odoo.modules.loading: loading account/wizard/account_merge_wizard_views.xml 
+2026-09-15 20:06:26,237 1 INFO workflow_witness odoo.modules.loading: loading account/data/ir_config_parameter_data.xml 
+2026-09-15 20:06:26,341 1 INFO workflow_witness odoo.modules.loading: Module account loaded in 2.43s, 5803 queries (+5803 other) 
+2026-09-15 20:06:26,341 1 INFO workflow_witness odoo.modules.loading: Loading module spreadsheet_dashboard (44/56) 
+2026-09-15 20:06:26,349 1 INFO workflow_witness odoo.registry: module spreadsheet_dashboard: creating or updating database tables 
+2026-09-15 20:06:26,409 1 INFO workflow_witness odoo.modules.loading: loading spreadsheet_dashboard/security/security.xml 
+2026-09-15 20:06:26,431 1 INFO workflow_witness odoo.modules.loading: loading spreadsheet_dashboard/security/ir.model.access.csv 
+2026-09-15 20:06:26,435 1 INFO workflow_witness odoo.modules.loading: loading spreadsheet_dashboard/views/spreadsheet_dashboard_views.xml 
+2026-09-15 20:06:26,448 1 INFO workflow_witness odoo.modules.loading: loading spreadsheet_dashboard/views/menu_views.xml 
+2026-09-15 20:06:26,465 1 INFO workflow_witness odoo.modules.loading: loading spreadsheet_dashboard/data/dashboard.xml 
+2026-09-15 20:06:26,487 1 INFO workflow_witness odoo.modules.loading: Module spreadsheet_dashboard loaded in 0.15s, 313 queries (+313 other) 
+2026-09-15 20:06:26,487 1 INFO workflow_witness odoo.modules.loading: Loading module stock (45/56) 
+2026-09-15 20:06:26,567 1 INFO workflow_witness odoo.registry: module stock: creating or updating database tables 
+2026-09-15 20:06:27,355 1 INFO workflow_witness odoo.modules.loading: loading stock/security/stock_security.xml 
+2026-09-15 20:06:27,448 1 INFO workflow_witness odoo.modules.loading: loading stock/security/ir.model.access.csv 
+2026-09-15 20:06:27,470 1 INFO workflow_witness odoo.modules.loading: loading stock/data/digest_data.xml 
+2026-09-15 20:06:27,474 1 INFO workflow_witness odoo.modules.loading: loading stock/data/mail_templates.xml 
+2026-09-15 20:06:27,480 1 INFO workflow_witness odoo.modules.loading: loading stock/data/default_barcode_patterns.xml 
+2026-09-15 20:06:27,485 1 INFO workflow_witness odoo.modules.loading: loading stock/data/stock_data.xml 
+2026-09-15 20:06:27,581 1 INFO workflow_witness odoo.modules.loading: loading stock/data/stock_sequence_data.xml 
+2026-09-15 20:06:27,598 1 INFO workflow_witness odoo.modules.loading: loading stock/data/stock_traceability_report_data.xml 
+2026-09-15 20:06:27,600 1 INFO workflow_witness odoo.modules.loading: loading stock/report/report_stock_quantity.xml 
+2026-09-15 20:06:27,605 1 INFO workflow_witness odoo.modules.loading: loading stock/report/report_stock_reception.xml 
+2026-09-15 20:06:27,618 1 INFO workflow_witness odoo.modules.loading: loading stock/report/stock_report_views.xml 
+2026-09-15 20:06:27,639 1 INFO workflow_witness odoo.modules.loading: loading stock/report/report_package_barcode.xml 
+2026-09-15 20:06:27,653 1 INFO workflow_witness odoo.modules.loading: loading stock/report/report_lot_barcode.xml 
+2026-09-15 20:06:27,657 1 INFO workflow_witness odoo.modules.loading: loading stock/report/report_location_barcode.xml 
+2026-09-15 20:06:27,663 1 INFO workflow_witness odoo.modules.loading: loading stock/report/report_stockpicking_operations.xml 
+2026-09-15 20:06:27,672 1 INFO workflow_witness odoo.modules.loading: loading stock/report/report_deliveryslip.xml 
+2026-09-15 20:06:27,688 1 INFO workflow_witness odoo.modules.loading: loading stock/report/report_stockinventory.xml 
+2026-09-15 20:06:27,691 1 INFO workflow_witness odoo.modules.loading: loading stock/report/report_stock_rule.xml 
+2026-09-15 20:06:27,707 1 INFO workflow_witness odoo.modules.loading: loading stock/report/package_templates.xml 
+2026-09-15 20:06:27,714 1 INFO workflow_witness odoo.modules.loading: loading stock/report/packaging_barcode.xml 
+2026-09-15 20:06:27,718 1 INFO workflow_witness odoo.modules.loading: loading stock/report/picking_templates.xml 
+2026-09-15 20:06:27,728 1 INFO workflow_witness odoo.modules.loading: loading stock/report/product_templates.xml 
+2026-09-15 20:06:27,742 1 INFO workflow_witness odoo.modules.loading: loading stock/report/report_return_slip.xml 
+2026-09-15 20:06:27,750 1 INFO workflow_witness odoo.modules.loading: loading stock/data/mail_template_data.xml 
+2026-09-15 20:06:27,754 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_menu_views.xml 
+2026-09-15 20:06:27,778 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_picking_return_views.xml 
+2026-09-15 20:06:27,785 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_inventory_conflict.xml 
+2026-09-15 20:06:27,792 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_backorder_confirmation_views.xml 
+2026-09-15 20:06:27,798 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_quantity_history.xml 
+2026-09-15 20:06:27,802 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_request_count.xml 
+2026-09-15 20:06:27,808 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_replenishment_info.xml 
+2026-09-15 20:06:27,823 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_rules_report_views.xml 
+2026-09-15 20:06:27,829 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_warn_insufficient_qty_views.xml 
+2026-09-15 20:06:27,838 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/product_replenish_views.xml 
+2026-09-15 20:06:27,844 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/product_label_layout_views.xml 
+2026-09-15 20:06:27,854 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_orderpoint_snooze_views.xml 
+2026-09-15 20:06:27,860 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_package_destination_views.xml 
+2026-09-15 20:06:27,868 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_inventory_adjustment_name.xml 
+2026-09-15 20:06:27,873 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_inventory_warning.xml 
+2026-09-15 20:06:27,879 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_label_type.xml 
+2026-09-15 20:06:27,883 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_lot_label_layout.xml 
+2026-09-15 20:06:27,887 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_quant_relocate.xml 
+2026-09-15 20:06:27,892 1 INFO workflow_witness odoo.modules.loading: loading stock/wizard/stock_put_in_pack_views.xml 
+2026-09-15 20:06:27,897 1 INFO workflow_witness odoo.modules.loading: loading stock/views/res_partner_views.xml 
+2026-09-15 20:06:27,912 1 INFO workflow_witness odoo.modules.loading: loading stock/views/product_strategy_views.xml 
+2026-09-15 20:06:27,929 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_lot_views.xml 
+2026-09-15 20:06:27,948 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_scrap_views.xml 
+2026-09-15 20:06:27,968 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_quant_views.xml 
+2026-09-15 20:06:28,157 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_warehouse_views.xml 
+2026-09-15 20:06:28,174 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_move_line_views.xml 
+2026-09-15 20:06:28,206 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_move_views.xml 
+2026-09-15 20:06:28,254 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_picking_views.xml 
+2026-09-15 20:06:28,354 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_picking_type_views.xml 
+2026-09-15 20:06:28,377 1 INFO workflow_witness odoo.modules.loading: loading stock/views/product_views.xml 
+2026-09-15 20:06:28,485 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_location_views.xml 
+2026-09-15 20:06:28,523 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_orderpoint_views.xml 
+2026-09-15 20:06:28,566 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_storage_category_views.xml 
+2026-09-15 20:06:28,583 1 INFO workflow_witness odoo.modules.loading: loading stock/views/res_config_settings_views.xml 
+2026-09-15 20:06:28,602 1 INFO workflow_witness odoo.modules.loading: loading stock/views/report_stock_traceability.xml 
+2026-09-15 20:06:28,609 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_template.xml 
+2026-09-15 20:06:28,615 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_rule_views.xml 
+2026-09-15 20:06:28,631 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_package_history_views.xml 
+2026-09-15 20:06:28,638 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_package_type_view.xml 
+2026-09-15 20:06:28,650 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_package_views.xml 
+2026-09-15 20:06:28,680 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_forecasted.xml 
+2026-09-15 20:06:28,684 1 INFO workflow_witness odoo.modules.loading: loading stock/views/stock_reference_views.xml 
+2026-09-15 20:06:28,701 1 INFO workflow_witness odoo.modules.loading: loading stock/views/uom_uom_views.xml 
+2026-09-15 20:06:28,777 1 INFO workflow_witness odoo.modules.loading: Module stock loaded in 2.29s, 5084 queries (+5084 other) 
+2026-09-15 20:06:28,777 1 INFO workflow_witness odoo.modules.loading: Loading module account_add_gln (46/56) 
+2026-09-15 20:06:28,790 1 INFO workflow_witness odoo.registry: module account_add_gln: creating or updating database tables 
+2026-09-15 20:06:28,842 1 INFO workflow_witness odoo.modules.loading: loading account_add_gln/views/res_partner_views.xml 
+2026-09-15 20:06:28,866 1 INFO workflow_witness odoo.modules.loading: Module account_add_gln loaded in 0.09s, 105 queries (+105 other) 
+2026-09-15 20:06:28,866 1 INFO workflow_witness odoo.modules.loading: Loading module account_edi_ubl_cii (47/56) 
+2026-09-15 20:06:28,892 1 INFO workflow_witness odoo.registry: module account_edi_ubl_cii: creating or updating database tables 
+2026-09-15 20:06:28,905 1 INFO workflow_witness odoo.models: Prepare computation of res.partner.peppol_endpoint 
+2026-09-15 20:06:28,905 1 INFO workflow_witness odoo.models: Prepare computation of res.partner.peppol_eas 
+2026-09-15 20:06:28,983 1 INFO workflow_witness odoo.modules.loading: loading account_edi_ubl_cii/data/cii_22_templates.xml 
+2026-09-15 20:06:29,000 1 INFO workflow_witness odoo.modules.loading: loading account_edi_ubl_cii/data/ir_config_parameter_data.xml 
+2026-09-15 20:06:29,002 1 INFO workflow_witness odoo.modules.loading: loading account_edi_ubl_cii/views/account_tax_views.xml 
+2026-09-15 20:06:29,017 1 INFO workflow_witness odoo.modules.loading: loading account_edi_ubl_cii/views/account_move_views.xml 
+2026-09-15 20:06:29,035 1 INFO workflow_witness odoo.modules.loading: loading account_edi_ubl_cii/views/res_partner_views.xml 
+2026-09-15 20:06:29,048 1 INFO workflow_witness odoo.modules.loading: loading account_edi_ubl_cii/report/account_edi_ubl_cii_report_templates.xml 
+2026-09-15 20:06:29,092 1 INFO workflow_witness odoo.modules.loading: Module account_edi_ubl_cii loaded in 0.23s, 369 queries (+369 other) 
+2026-09-15 20:06:29,092 1 INFO workflow_witness odoo.modules.loading: Loading module account_payment (48/56) 
+2026-09-15 20:06:29,111 1 INFO workflow_witness odoo.registry: module account_payment: creating or updating database tables 
+2026-09-15 20:06:29,201 1 INFO workflow_witness odoo.modules.loading: loading account_payment/data/ir_config_parameter.xml 
+2026-09-15 20:06:29,206 1 INFO workflow_witness odoo.modules.loading: loading account_payment/security/ir.model.access.csv 
+2026-09-15 20:06:29,210 1 INFO workflow_witness odoo.modules.loading: loading account_payment/security/ir_rules.xml 
+2026-09-15 20:06:29,213 1 INFO workflow_witness odoo.modules.loading: loading account_payment/views/account_payment_menus.xml 
+2026-09-15 20:06:29,228 1 INFO workflow_witness odoo.modules.loading: loading account_payment/views/account_portal_templates.xml 
+2026-09-15 20:06:29,267 1 INFO workflow_witness odoo.modules.loading: loading account_payment/views/account_move_views.xml 
+2026-09-15 20:06:29,292 1 INFO workflow_witness odoo.modules.loading: loading account_payment/views/account_journal_views.xml 
+2026-09-15 20:06:29,304 1 INFO workflow_witness odoo.modules.loading: loading account_payment/views/account_payment_views.xml 
+2026-09-15 20:06:29,312 1 INFO workflow_witness odoo.modules.loading: loading account_payment/views/payment_form_templates.xml 
+2026-09-15 20:06:29,316 1 INFO workflow_witness odoo.modules.loading: loading account_payment/views/payment_provider_views.xml 
+2026-09-15 20:06:29,325 1 INFO workflow_witness odoo.modules.loading: loading account_payment/views/payment_transaction_views.xml 
+2026-09-15 20:06:29,335 1 INFO workflow_witness odoo.modules.loading: loading account_payment/wizards/account_payment_register_views.xml 
+2026-09-15 20:06:29,342 1 INFO workflow_witness odoo.modules.loading: loading account_payment/wizards/payment_link_wizard_views.xml 
+2026-09-15 20:06:29,349 1 INFO workflow_witness odoo.modules.loading: loading account_payment/wizards/payment_refund_wizard_views.xml 
+2026-09-15 20:06:29,354 1 INFO workflow_witness odoo.modules.loading: loading account_payment/wizards/res_config_settings_views.xml 
+2026-09-15 20:06:29,379 1 INFO workflow_witness odoo.modules.loading: Module account_payment loaded in 0.29s, 563 queries (+563 other) 
+2026-09-15 20:06:29,379 1 INFO workflow_witness odoo.modules.loading: Loading module snailmail_account (49/56) 
+2026-09-15 20:06:29,398 1 INFO workflow_witness odoo.registry: module snailmail_account: creating or updating database tables 
+2026-09-15 20:06:29,460 1 INFO workflow_witness odoo.modules.loading: loading snailmail_account/views/res_config_settings_views.xml 
+2026-09-15 20:06:29,483 1 INFO workflow_witness odoo.modules.loading: Module snailmail_account loaded in 0.10s, 190 queries (+190 other) 
+2026-09-15 20:06:29,483 1 INFO workflow_witness odoo.modules.loading: Loading module spreadsheet_account (50/56) 
+2026-09-15 20:06:29,493 1 INFO workflow_witness odoo.registry: module spreadsheet_account: creating or updating database tables 
+2026-09-15 20:06:29,533 1 INFO workflow_witness odoo.modules.loading: Module spreadsheet_account loaded in 0.05s, 58 queries (+58 other) 
+2026-09-15 20:06:29,533 1 INFO workflow_witness odoo.modules.loading: Loading module spreadsheet_dashboard_account (51/56) 
+2026-09-15 20:06:29,541 1 INFO workflow_witness odoo.modules.loading: loading spreadsheet_dashboard_account/data/dashboards.xml 
+2026-09-15 20:06:29,572 1 INFO workflow_witness odoo.modules.loading: Module spreadsheet_dashboard_account loaded in 0.04s, 38 queries (+38 other) 
+2026-09-15 20:06:29,572 1 INFO workflow_witness odoo.modules.loading: Loading module stock_account (52/56) 
+2026-09-15 20:06:29,607 1 INFO workflow_witness odoo.registry: module stock_account: creating or updating database tables 
+2026-09-15 20:06:29,789 1 INFO workflow_witness odoo.modules.loading: loading stock_account/security/stock_account_security.xml 
+2026-09-15 20:06:29,801 1 INFO workflow_witness odoo.modules.loading: loading stock_account/security/ir.model.access.csv 
+2026-09-15 20:06:29,810 1 INFO workflow_witness odoo.modules.loading: loading stock_account/data/stock_account_data.xml 
+2026-09-15 20:06:29,826 1 INFO workflow_witness odoo.modules.loading: loading stock_account/views/account_account_views.xml 
+2026-09-15 20:06:29,837 1 INFO workflow_witness odoo.modules.loading: loading stock_account/views/stock_account_views.xml 
+2026-09-15 20:06:29,843 1 INFO workflow_witness odoo.modules.loading: loading stock_account/views/res_config_settings_views.xml 
+2026-09-15 20:06:29,855 1 INFO workflow_witness odoo.modules.loading: loading stock_account/views/report_invoice.xml 
+2026-09-15 20:06:29,864 1 INFO workflow_witness odoo.modules.loading: loading stock_account/views/stock_quant_views.xml 
+2026-09-15 20:06:29,993 1 INFO workflow_witness odoo.modules.loading: loading stock_account/views/product_views.xml 
+2026-09-15 20:06:30,034 1 INFO workflow_witness odoo.modules.loading: loading stock_account/views/product_value_views.xml 
+2026-09-15 20:06:30,040 1 INFO workflow_witness odoo.modules.loading: loading stock_account/views/stock_location_views.xml 
+2026-09-15 20:06:30,047 1 INFO workflow_witness odoo.modules.loading: loading stock_account/views/stock_lot_views.xml 
+2026-09-15 20:06:30,054 1 INFO workflow_witness odoo.modules.loading: loading stock_account/views/stock_picking_views.xml 
+2026-09-15 20:06:30,061 1 INFO workflow_witness odoo.modules.loading: loading stock_account/views/stock_move_views.xml 
+2026-09-15 20:06:30,077 1 INFO workflow_witness odoo.modules.loading: loading stock_account/wizard/stock_inventory_adjustment_name_views.xml 
+2026-09-15 20:06:30,083 1 INFO workflow_witness odoo.modules.loading: loading stock_account/report/account_invoice_report_view.xml 
+2026-09-15 20:06:30,087 1 INFO workflow_witness odoo.modules.loading: loading stock_account/report/stock_avco_audit_report_views.xml 
+2026-09-15 20:06:30,096 1 INFO workflow_witness odoo.modules.loading: loading stock_account/report/stock_valuation_report.xml 
+2026-09-15 20:06:30,128 1 INFO workflow_witness odoo.modules.loading: Module stock_account loaded in 0.56s, 912 queries (+912 other) 
+2026-09-15 20:06:30,128 1 INFO workflow_witness odoo.modules.loading: Loading module stock_sms (53/56) 
+2026-09-15 20:06:30,146 1 INFO workflow_witness odoo.registry: module stock_sms: creating or updating database tables 
+2026-09-15 20:06:30,200 1 INFO workflow_witness odoo.modules.loading: loading stock_sms/data/sms_data.xml 
+2026-09-15 20:06:30,204 1 INFO workflow_witness odoo.modules.loading: loading stock_sms/views/res_config_settings_views.xml 
+2026-09-15 20:06:30,219 1 INFO workflow_witness odoo.modules.loading: loading stock_sms/wizard/confirm_stock_sms_views.xml 
+2026-09-15 20:06:30,223 1 INFO workflow_witness odoo.modules.loading: loading stock_sms/security/ir.model.access.csv 
+2026-09-15 20:06:30,226 1 INFO workflow_witness odoo.modules.loading: loading stock_sms/security/sms_security.xml 
+2026-09-15 20:06:30,249 1 INFO workflow_witness odoo.modules.loading: Module stock_sms loaded in 0.12s, 201 queries (+201 other) 
+2026-09-15 20:06:30,249 1 INFO workflow_witness odoo.modules.loading: Loading module workflow_case (54/56) 
+2026-09-15 20:06:30,257 1 INFO workflow_witness odoo.registry: module workflow_case: creating or updating database tables 
+2026-09-15 20:06:30,294 1 INFO workflow_witness odoo.modules.loading: loading workflow_case/access.csv 
+2026-09-15 20:06:30,295 1 WARNING workflow_witness odoo.modules.loading: Transient module states were reset 
+2026-09-15 20:06:30,295 1 ERROR workflow_witness odoo.registry: Failed to load registry 
+2026-09-15 20:06:30,295 1 CRITICAL workflow_witness odoo.service.server: Failed to initialize database `workflow_witness`. 
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/odoo/service/server.py", line 1585, in preload_registries
+    registry = Registry.new(dbname, update_module=update_module, install_modules=config['init'], upgrade_modules=config['update'], reinit_modules=config['reinit'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/tools/func.py", line 88, in locked
+    return func(inst, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 189, in new
+    load_modules(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 464, in load_modules
+    load_module_graph(
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 217, in load_module_graph
+    load_data(env, idref, 'init', kind='data', package=package)
+  File "/usr/lib/python3/dist-packages/odoo/modules/loading.py", line 59, in load_data
+    convert_file(env, package.name, filename, idref, mode, noupdate=kind == 'demo')
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 692, in convert_file
+    convert_csv_import(env, module, pathname, fp.read(), idref, mode, noupdate)
+  File "/usr/lib/python3/dist-packages/odoo/tools/convert.py", line 753, in convert_csv_import
+    result = env[model].with_context(**context).load(fields, datas)
+             ~~~^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/environments.py", line 107, in __getitem__
+    return self.registry[model_name](self, (), ())
+           ~~~~~~~~~~~~~^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/odoo/orm/registry.py", line 344, in __getitem__
+    return self.models[model_name]
+           ~~~~~~~~~~~^^^^^^^^^^^^
+KeyError: 'access'
+2026-09-15 20:06:30,299 1 INFO workflow_witness odoo.service.server: Initiating shutdown 
+2026-09-15 20:06:30,299 1 INFO workflow_witness odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 20:06:30,766 1 INFO workflow_witness odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 1 connections  

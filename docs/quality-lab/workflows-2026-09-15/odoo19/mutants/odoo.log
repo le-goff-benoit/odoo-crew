@@ -1,0 +1,1025 @@
+2026-09-15 20:14:33,303 1 INFO ? odoo: Odoo version 19.0-20260817 
+2026-09-15 20:14:33,303 1 INFO ? odoo: Using configuration file at /etc/odoo/odoo.conf 
+2026-09-15 20:14:33,303 1 INFO ? odoo: addons paths: _NamespacePath(['/usr/lib/python3/dist-packages/odoo/addons', '/tmp/odoo-data/addons/19.0', '/mnt/extra-addons', '/usr/lib/python3/dist-packages/addons']) 
+2026-09-15 20:14:33,304 1 INFO ? odoo: database: odoo@workflow-lab-b1a92252ce-pg:default 
+2026-09-15 20:14:33,903 1 INFO ? odoo.service.server: HTTP service (werkzeug) running on localhost:8069 
+2026-09-15 20:14:33,952 1 INFO workflow_mutants odoo.tests.common: Importing test framework 
+2026-09-15 20:14:33,977 1 INFO workflow_mutants odoo.modules.loading: Initializing database workflow_mutants 
+2026-09-15 20:14:36,430 1 WARNING workflow_mutants odoo.modules.module: Missing `author` key in manifest for 'workflow_case', defaulting to '' 
+2026-09-15 20:14:36,431 1 WARNING workflow_mutants odoo.modules.module: Missing `author` key in manifest for 'workflow_case', defaulting to '' 
+2026-09-15 20:14:36,432 1 WARNING workflow_mutants odoo.modules.module: Missing `author` key in manifest for 'workflow_oracle', defaulting to '' 
+2026-09-15 20:14:36,433 1 WARNING workflow_mutants odoo.modules.module: Missing `author` key in manifest for 'workflow_oracle', defaulting to '' 
+2026-09-15 20:14:36,448 1 INFO workflow_mutants odoo.modules.loading: loading 1 modules... 
+2026-09-15 20:14:36,449 1 INFO workflow_mutants odoo.modules.loading: Loading module base (1/1) 
+2026-09-15 20:14:36,471 1 INFO workflow_mutants odoo.registry: module base: creating or updating database tables 
+2026-09-15 20:14:36,667 1 INFO workflow_mutants odoo.models: Prepare computation of ir.module.module.menus_by_module 
+2026-09-15 20:14:36,667 1 INFO workflow_mutants odoo.models: Prepare computation of ir.module.module.reports_by_module 
+2026-09-15 20:14:36,667 1 INFO workflow_mutants odoo.models: Prepare computation of ir.module.module.views_by_module 
+2026-09-15 20:14:36,730 1 INFO workflow_mutants odoo.models: Prepare computation of res.partner.user_id 
+2026-09-15 20:14:36,730 1 INFO workflow_mutants odoo.models: Prepare computation of res.partner.commercial_partner_id 
+2026-09-15 20:14:36,730 1 INFO workflow_mutants odoo.models: Prepare computation of res.partner.complete_name 
+2026-09-15 20:14:36,730 1 INFO workflow_mutants odoo.models: Prepare computation of res.partner.lang 
+2026-09-15 20:14:36,730 1 INFO workflow_mutants odoo.models: Prepare computation of res.partner.company_registry 
+2026-09-15 20:14:36,730 1 INFO workflow_mutants odoo.models: Prepare computation of res.partner.commercial_company_name 
+2026-09-15 20:14:36,730 1 INFO workflow_mutants odoo.models: Prepare computation of res.partner.properties 
+2026-09-15 20:14:36,730 1 INFO workflow_mutants odoo.models: Prepare computation of res.partner.partner_share 
+2026-09-15 20:14:36,751 1 INFO workflow_mutants odoo.models: Prepare computation of res.currency.decimal_places 
+2026-09-15 20:14:36,765 1 INFO workflow_mutants odoo.models: Prepare computation of res.company.uses_default_logo 
+2026-09-15 20:14:36,765 1 INFO workflow_mutants odoo.models: Prepare computation of res.company.logo_web 
+2026-09-15 20:14:36,766 1 INFO workflow_mutants odoo.models: Computing parent_path for table res_company... 
+2026-09-15 20:14:36,783 1 INFO workflow_mutants odoo.models: Prepare computation of res.users.signature 
+2026-09-15 20:14:36,783 1 INFO workflow_mutants odoo.models: Prepare computation of res.users.share 
+2026-09-15 20:14:38,044 1 INFO workflow_mutants odoo.modules.loading: loading base/data/res_bank.xml 
+2026-09-15 20:14:38,051 1 INFO workflow_mutants odoo.modules.loading: loading base/data/res.lang.csv 
+2026-09-15 20:14:38,136 1 INFO workflow_mutants odoo.modules.loading: loading base/data/res_lang_data.xml 
+2026-09-15 20:14:38,227 1 INFO workflow_mutants odoo.modules.loading: loading base/data/res_partner_data.xml 
+2026-09-15 20:14:38,359 1 INFO workflow_mutants odoo.modules.loading: loading base/data/res_currency_data.xml 
+2026-09-15 20:14:39,154 1 INFO workflow_mutants odoo.modules.loading: loading base/data/res_company_data.xml 
+2026-09-15 20:14:39,165 1 INFO workflow_mutants odoo.modules.loading: loading base/data/res_users_data.xml 
+2026-09-15 20:14:39,883 1 INFO workflow_mutants odoo.modules.loading: loading base/data/report_paperformat_data.xml 
+2026-09-15 20:14:39,891 1 INFO workflow_mutants odoo.modules.loading: loading base/data/res_country_data.xml 
+2026-09-15 20:14:40,422 1 INFO workflow_mutants odoo.modules.loading: loading base/data/ir_demo_data.xml 
+2026-09-15 20:14:40,451 1 INFO workflow_mutants odoo.modules.loading: loading base/security/base_groups.xml 
+2026-09-15 20:14:40,845 1 INFO workflow_mutants odoo.modules.loading: loading base/security/base_security.xml 
+2026-09-15 20:14:41,231 1 INFO workflow_mutants odoo.modules.loading: loading base/wizard/wizard_ir_model_menu_create_views.xml 
+2026-09-15 20:14:41,267 1 INFO workflow_mutants odoo.modules.loading: loading base/views/base_menus.xml 
+2026-09-15 20:14:41,508 1 INFO workflow_mutants odoo.modules.loading: loading base/views/decimal_precision_views.xml 
+2026-09-15 20:14:41,570 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_config_views.xml 
+2026-09-15 20:14:41,587 1 INFO workflow_mutants odoo.modules.loading: loading base/data/res.country.state.csv 
+2026-09-15 20:14:42,370 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_actions_views.xml 
+2026-09-15 20:14:42,619 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_asset_views.xml 
+2026-09-15 20:14:42,651 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_config_parameter_views.xml 
+2026-09-15 20:14:42,686 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_cron_views.xml 
+2026-09-15 20:14:42,744 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_cron_trigger_views.xml 
+2026-09-15 20:14:42,776 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_filters_views.xml 
+2026-09-15 20:14:42,832 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_mail_server_views.xml 
+2026-09-15 20:14:42,880 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_model_views.xml 
+2026-09-15 20:14:43,191 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_attachment_views.xml 
+2026-09-15 20:14:43,238 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_rule_views.xml 
+2026-09-15 20:14:43,276 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_sequence_views.xml 
+2026-09-15 20:14:43,321 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_ui_menu_views.xml 
+2026-09-15 20:14:43,368 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_ui_view_views.xml 
+2026-09-15 20:14:43,472 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_default_views.xml 
+2026-09-15 20:14:43,517 1 INFO workflow_mutants odoo.modules.loading: loading base/data/ir_config_parameter_data.xml 
+2026-09-15 20:14:43,525 1 INFO workflow_mutants odoo.modules.loading: loading base/data/ir_cron_data.xml 
+2026-09-15 20:14:43,564 1 INFO workflow_mutants odoo.modules.loading: loading base/report/ir_model_report.xml 
+2026-09-15 20:14:43,571 1 INFO workflow_mutants odoo.modules.loading: loading base/report/ir_model_templates.xml 
+2026-09-15 20:14:43,588 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_logging_views.xml 
+2026-09-15 20:14:43,619 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_qweb_widget_templates.xml 
+2026-09-15 20:14:43,641 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_module_views.xml 
+2026-09-15 20:14:43,727 1 INFO workflow_mutants odoo.modules.loading: loading base/data/ir_module_category_data.xml 
+2026-09-15 20:14:43,820 1 INFO workflow_mutants odoo.modules.loading: loading base/data/ir_module_module.xml 
+2026-09-15 20:14:44,022 1 INFO workflow_mutants odoo.modules.loading: loading base/report/ir_module_reports.xml 
+2026-09-15 20:14:44,035 1 INFO workflow_mutants odoo.modules.loading: loading base/report/ir_module_report_templates.xml 
+2026-09-15 20:14:44,057 1 INFO workflow_mutants odoo.modules.loading: loading base/wizard/base_module_update_views.xml 
+2026-09-15 20:14:44,104 1 INFO workflow_mutants odoo.modules.loading: loading base/wizard/base_language_install_views.xml 
+2026-09-15 20:14:44,154 1 INFO workflow_mutants odoo.modules.loading: loading base/wizard/base_import_language_views.xml 
+2026-09-15 20:14:44,174 1 INFO workflow_mutants odoo.modules.loading: loading base/wizard/base_module_upgrade_views.xml 
+2026-09-15 20:14:44,192 1 INFO workflow_mutants odoo.modules.loading: loading base/wizard/base_module_uninstall_views.xml 
+2026-09-15 20:14:44,205 1 INFO workflow_mutants odoo.modules.loading: loading base/wizard/base_export_language_views.xml 
+2026-09-15 20:14:44,218 1 INFO workflow_mutants odoo.modules.loading: loading base/wizard/base_partner_merge_views.xml 
+2026-09-15 20:14:44,233 1 INFO workflow_mutants odoo.modules.loading: loading base/data/ir_demo_failure_data.xml 
+2026-09-15 20:14:44,249 1 INFO workflow_mutants odoo.modules.loading: loading base/views/ir_profile_views.xml 
+2026-09-15 20:14:44,272 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_company_views.xml 
+2026-09-15 20:14:44,294 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_lang_views.xml 
+2026-09-15 20:14:44,318 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_partner_views.xml 
+2026-09-15 20:14:44,406 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_bank_views.xml 
+2026-09-15 20:14:44,449 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_country_views.xml 
+2026-09-15 20:14:44,604 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_currency_views.xml 
+2026-09-15 20:14:44,692 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_groups_views.xml 
+2026-09-15 20:14:44,822 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_users_views.xml 
+2026-09-15 20:14:45,048 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_users_apikeys_views.xml 
+2026-09-15 20:14:45,068 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_device_views.xml 
+2026-09-15 20:14:45,110 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_users_identitycheck_views.xml 
+2026-09-15 20:14:45,122 1 INFO workflow_mutants odoo.modules.loading: loading base/views/res_config_settings_views.xml 
+2026-09-15 20:14:45,145 1 INFO workflow_mutants odoo.modules.loading: loading base/views/report_paperformat_views.xml 
+2026-09-15 20:14:45,229 1 INFO workflow_mutants odoo.modules.loading: loading base/security/ir.model.access.csv 
+2026-09-15 20:14:45,383 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module base: loading translation file /usr/lib/python3/dist-packages/odoo/addons/base/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:46,284 1 INFO workflow_mutants odoo.modules.loading: Module base loaded in 9.84s, 8489 queries (+8489 other) 
+2026-09-15 20:14:46,284 1 INFO workflow_mutants odoo.modules.loading: 1 modules loaded in 9.84s, 8489 queries (+8489 extra) 
+2026-09-15 20:14:46,319 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module base: loading translation file /usr/lib/python3/dist-packages/odoo/addons/base/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:47,283 1 INFO workflow_mutants odoo.modules.loading: updating modules list 
+2026-09-15 20:14:47,284 1 INFO workflow_mutants odoo.addons.base.models.ir_module: ALLOW access to module.update_list on [] to user __system__ #1 via n/a 
+2026-09-15 20:14:48,230 1 WARNING workflow_mutants odoo.modules.module: Missing `author` key in manifest for 'workflow_case', defaulting to '' 
+2026-09-15 20:14:48,231 1 WARNING workflow_mutants odoo.modules.module: Missing `author` key in manifest for 'workflow_oracle', defaulting to '' 
+2026-09-15 20:14:48,236 1 INFO workflow_mutants odoo.addons.base.models.ir_module: ALLOW access to module.button_install on ['Independent synthetic workflow oracle'] to user __system__ #1 via n/a 
+2026-09-15 20:14:48,320 1 INFO workflow_mutants odoo.modules.loading: loading 56 modules... 
+2026-09-15 20:14:48,320 1 INFO workflow_mutants odoo.modules.loading: Loading module rpc (2/56) 
+2026-09-15 20:14:48,331 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module rpc: no translation for language fr_FR 
+2026-09-15 20:14:48,339 1 INFO workflow_mutants odoo.modules.loading: Module rpc loaded in 0.02s, 9 queries (+9 other) 
+2026-09-15 20:14:48,339 1 INFO workflow_mutants odoo.modules.loading: Loading module uom (3/56) 
+2026-09-15 20:14:48,343 1 INFO workflow_mutants odoo.registry: module uom: creating or updating database tables 
+2026-09-15 20:14:48,379 1 INFO workflow_mutants odoo.modules.loading: loading uom/data/uom_data.xml 
+2026-09-15 20:14:48,431 1 INFO workflow_mutants odoo.modules.loading: loading uom/security/uom_security.xml 
+2026-09-15 20:14:48,435 1 INFO workflow_mutants odoo.modules.loading: loading uom/security/ir.model.access.csv 
+2026-09-15 20:14:48,442 1 INFO workflow_mutants odoo.modules.loading: loading uom/views/uom_uom_views.xml 
+2026-09-15 20:14:48,463 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module uom: loading translation file /usr/lib/python3/dist-packages/odoo/addons/uom/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:48,483 1 INFO workflow_mutants odoo.modules.loading: Module uom loaded in 0.14s, 243 queries (+243 other) 
+2026-09-15 20:14:48,483 1 INFO workflow_mutants odoo.modules.loading: Loading module web (4/56) 
+2026-09-15 20:14:48,501 1 INFO workflow_mutants odoo.registry: module web: creating or updating database tables 
+2026-09-15 20:14:49,058 1 INFO workflow_mutants odoo.modules.loading: loading web/security/ir.model.access.csv 
+2026-09-15 20:14:49,068 1 INFO workflow_mutants odoo.modules.loading: loading web/security/web_security.xml 
+2026-09-15 20:14:49,080 1 INFO workflow_mutants odoo.modules.loading: loading web/views/webclient_templates.xml 
+2026-09-15 20:14:49,121 1 INFO workflow_mutants odoo.modules.loading: loading web/views/report_templates.xml 
+2026-09-15 20:14:49,267 1 INFO workflow_mutants odoo.modules.loading: loading web/views/base_document_layout_views.xml 
+2026-09-15 20:14:49,302 1 INFO workflow_mutants odoo.modules.loading: loading web/views/partner_view.xml 
+2026-09-15 20:14:49,318 1 INFO workflow_mutants odoo.modules.loading: loading web/views/speedscope_template.xml 
+2026-09-15 20:14:49,328 1 INFO workflow_mutants odoo.modules.loading: loading web/views/memory_template.xml 
+2026-09-15 20:14:49,351 1 INFO workflow_mutants odoo.modules.loading: loading web/views/speedscope_config_wizard.xml 
+2026-09-15 20:14:49,369 1 INFO workflow_mutants odoo.modules.loading: loading web/views/neutralize_views.xml 
+2026-09-15 20:14:49,388 1 INFO workflow_mutants odoo.modules.loading: loading web/views/ir_ui_view_views.xml 
+2026-09-15 20:14:49,404 1 INFO workflow_mutants odoo.modules.loading: loading web/data/ir_attachment.xml 
+2026-09-15 20:14:49,412 1 INFO workflow_mutants odoo.modules.loading: loading web/data/report_layout.xml 
+2026-09-15 20:14:49,462 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module web: loading translation file /usr/lib/python3/dist-packages/odoo/addons/web/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:49,654 1 INFO workflow_mutants odoo.modules.loading: Module web loaded in 1.17s, 1254 queries (+1254 other) 
+2026-09-15 20:14:49,654 1 INFO workflow_mutants odoo.modules.loading: Loading module api_doc (5/56) 
+2026-09-15 20:14:49,661 1 INFO workflow_mutants odoo.registry: module api_doc: creating or updating database tables 
+2026-09-15 20:14:49,679 1 INFO workflow_mutants odoo.modules.loading: loading api_doc/security/res_groups.xml 
+2026-09-15 20:14:49,699 1 INFO workflow_mutants odoo.modules.loading: loading api_doc/views/docclient.xml 
+2026-09-15 20:14:49,714 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module api_doc: no translation for language fr_FR 
+2026-09-15 20:14:49,737 1 INFO workflow_mutants odoo.modules.loading: Module api_doc loaded in 0.08s, 63 queries (+63 other) 
+2026-09-15 20:14:49,737 1 INFO workflow_mutants odoo.modules.loading: Loading module auth_totp (6/56) 
+2026-09-15 20:14:49,757 1 INFO workflow_mutants odoo.registry: module auth_totp: creating or updating database tables 
+2026-09-15 20:14:49,826 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp/security/security.xml 
+2026-09-15 20:14:49,859 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp/security/ir.model.access.csv 
+2026-09-15 20:14:49,866 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp/data/ir_action_data.xml 
+2026-09-15 20:14:49,873 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp/views/res_users_views.xml 
+2026-09-15 20:14:49,904 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp/views/templates.xml 
+2026-09-15 20:14:49,910 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp/wizard/auth_totp_wizard_views.xml 
+2026-09-15 20:14:49,926 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module auth_totp: loading translation file /usr/lib/python3/dist-packages/odoo/addons/auth_totp/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:49,964 1 INFO workflow_mutants odoo.modules.loading: Module auth_totp loaded in 0.23s, 226 queries (+226 other) 
+2026-09-15 20:14:49,964 1 INFO workflow_mutants odoo.modules.loading: Loading module barcodes (7/56) 
+2026-09-15 20:14:49,968 1 INFO workflow_mutants odoo.registry: module barcodes: creating or updating database tables 
+2026-09-15 20:14:50,023 1 INFO workflow_mutants odoo.modules.loading: loading barcodes/data/barcodes_data.xml 
+2026-09-15 20:14:50,029 1 INFO workflow_mutants odoo.modules.loading: loading barcodes/views/barcodes_view.xml 
+2026-09-15 20:14:50,046 1 INFO workflow_mutants odoo.modules.loading: loading barcodes/security/ir.model.access.csv 
+2026-09-15 20:14:50,060 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module barcodes: loading translation file /usr/lib/python3/dist-packages/odoo/addons/barcodes/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:50,083 1 INFO workflow_mutants odoo.modules.loading: Module barcodes loaded in 0.12s, 160 queries (+160 other) 
+2026-09-15 20:14:50,083 1 INFO workflow_mutants odoo.modules.loading: Loading module base_import (8/56) 
+2026-09-15 20:14:50,104 1 INFO workflow_mutants odoo.registry: module base_import: creating or updating database tables 
+2026-09-15 20:14:50,424 1 INFO workflow_mutants odoo.modules.loading: loading base_import/security/ir.model.access.csv 
+2026-09-15 20:14:50,434 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module base_import: loading translation file /usr/lib/python3/dist-packages/odoo/addons/base_import/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:50,444 1 INFO workflow_mutants odoo.modules.loading: Module base_import loaded in 0.36s, 983 queries (+983 other) 
+2026-09-15 20:14:50,444 1 INFO workflow_mutants odoo.modules.loading: Loading module base_import_module (9/56) 
+2026-09-15 20:14:50,449 1 INFO workflow_mutants odoo.registry: module base_import_module: creating or updating database tables 
+2026-09-15 20:14:50,491 1 INFO workflow_mutants odoo.modules.loading: loading base_import_module/security/ir.model.access.csv 
+2026-09-15 20:14:50,496 1 INFO workflow_mutants odoo.modules.loading: loading base_import_module/views/base_import_module_view.xml 
+2026-09-15 20:14:50,511 1 INFO workflow_mutants odoo.modules.loading: loading base_import_module/views/ir_module_views.xml 
+2026-09-15 20:14:50,549 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module base_import_module: loading translation file /usr/lib/python3/dist-packages/odoo/addons/base_import_module/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:50,566 1 INFO workflow_mutants odoo.modules.loading: Module base_import_module loaded in 0.12s, 183 queries (+183 other) 
+2026-09-15 20:14:50,566 1 INFO workflow_mutants odoo.modules.loading: Loading module base_setup (10/56) 
+2026-09-15 20:14:50,571 1 INFO workflow_mutants odoo.registry: module base_setup: creating or updating database tables 
+2026-09-15 20:14:50,613 1 INFO workflow_mutants odoo.modules.loading: loading base_setup/data/base_setup_data.xml 
+2026-09-15 20:14:50,622 1 INFO workflow_mutants odoo.modules.loading: loading base_setup/views/res_config_settings_views.xml 
+2026-09-15 20:14:50,673 1 INFO workflow_mutants odoo.modules.loading: loading base_setup/views/res_partner_views.xml 
+2026-09-15 20:14:50,684 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module base_setup: loading translation file /usr/lib/python3/dist-packages/odoo/addons/base_setup/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:50,713 1 INFO workflow_mutants odoo.modules.loading: Module base_setup loaded in 0.15s, 162 queries (+162 other) 
+2026-09-15 20:14:50,713 1 INFO workflow_mutants odoo.modules.loading: Loading module bus (11/56) 
+2026-09-15 20:14:50,735 1 INFO workflow_mutants odoo.registry: module bus: creating or updating database tables 
+2026-09-15 20:14:50,807 1 INFO workflow_mutants odoo.modules.loading: loading bus/security/ir.model.access.csv 
+2026-09-15 20:14:50,826 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module bus: loading translation file /usr/lib/python3/dist-packages/odoo/addons/bus/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:50,847 1 INFO workflow_mutants odoo.modules.loading: Module bus loaded in 0.13s, 162 queries (+162 other) 
+2026-09-15 20:14:50,847 1 INFO workflow_mutants odoo.modules.loading: Loading module http_routing (12/56) 
+2026-09-15 20:14:50,854 1 INFO workflow_mutants odoo.registry: module http_routing: creating or updating database tables 
+2026-09-15 20:14:50,891 1 INFO workflow_mutants odoo.modules.loading: loading http_routing/views/http_routing_template.xml 
+2026-09-15 20:14:50,944 1 INFO workflow_mutants odoo.modules.loading: loading http_routing/views/res_lang_views.xml 
+2026-09-15 20:14:50,981 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module http_routing: loading translation file /usr/lib/python3/dist-packages/odoo/addons/http_routing/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:51,009 1 INFO workflow_mutants odoo.modules.loading: Module http_routing loaded in 0.16s, 120 queries (+120 other) 
+2026-09-15 20:14:51,009 1 INFO workflow_mutants odoo.modules.loading: Loading module onboarding (13/56) 
+2026-09-15 20:14:51,017 1 INFO workflow_mutants odoo.registry: module onboarding: creating or updating database tables 
+2026-09-15 20:14:51,080 1 INFO workflow_mutants odoo.modules.loading: loading onboarding/views/onboarding_templates.xml 
+2026-09-15 20:14:51,098 1 INFO workflow_mutants odoo.modules.loading: loading onboarding/views/onboarding_views.xml 
+2026-09-15 20:14:51,116 1 INFO workflow_mutants odoo.modules.loading: loading onboarding/views/onboarding_menus.xml 
+2026-09-15 20:14:51,122 1 INFO workflow_mutants odoo.modules.loading: loading onboarding/security/ir.model.access.csv 
+2026-09-15 20:14:51,131 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module onboarding: loading translation file /usr/lib/python3/dist-packages/odoo/addons/onboarding/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:51,235 1 INFO workflow_mutants odoo.modules.loading: Module onboarding loaded in 0.23s, 256 queries (+256 other) 
+2026-09-15 20:14:51,235 1 INFO workflow_mutants odoo.modules.loading: Loading module resource (14/56) 
+2026-09-15 20:14:51,243 1 INFO workflow_mutants odoo.registry: module resource: creating or updating database tables 
+2026-09-15 20:14:51,374 1 INFO workflow_mutants odoo.modules.loading: loading resource/data/resource_data.xml 
+2026-09-15 20:14:51,405 1 INFO workflow_mutants odoo.modules.loading: loading resource/security/ir.model.access.csv 
+2026-09-15 20:14:51,421 1 INFO workflow_mutants odoo.modules.loading: loading resource/security/resource_security.xml 
+2026-09-15 20:14:51,446 1 INFO workflow_mutants odoo.modules.loading: loading resource/views/resource_resource_views.xml 
+2026-09-15 20:14:51,463 1 INFO workflow_mutants odoo.modules.loading: loading resource/views/resource_calendar_leaves_views.xml 
+2026-09-15 20:14:51,482 1 INFO workflow_mutants odoo.modules.loading: loading resource/views/resource_calendar_attendance_views.xml 
+2026-09-15 20:14:51,489 1 INFO workflow_mutants odoo.modules.loading: loading resource/views/resource_calendar_views.xml 
+2026-09-15 20:14:51,506 1 INFO workflow_mutants odoo.modules.loading: loading resource/views/menuitems.xml 
+2026-09-15 20:14:51,517 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module resource: loading translation file /usr/lib/python3/dist-packages/odoo/addons/resource/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:51,546 1 INFO workflow_mutants odoo.modules.loading: Module resource loaded in 0.31s, 428 queries (+428 other) 
+2026-09-15 20:14:51,546 1 INFO workflow_mutants odoo.modules.loading: Loading module web_tour (15/56) 
+2026-09-15 20:14:51,550 1 INFO workflow_mutants odoo.registry: module web_tour: creating or updating database tables 
+2026-09-15 20:14:51,553 1 INFO workflow_mutants odoo.models: Prepare computation of res.users.tour_enabled 
+2026-09-15 20:14:51,598 1 INFO workflow_mutants odoo.modules.loading: loading web_tour/security/ir.model.access.csv 
+2026-09-15 20:14:51,603 1 INFO workflow_mutants odoo.modules.loading: loading web_tour/views/tour_views.xml 
+2026-09-15 20:14:51,621 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module web_tour: loading translation file /usr/lib/python3/dist-packages/odoo/addons/web_tour/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:51,641 1 INFO workflow_mutants odoo.modules.loading: Module web_tour loaded in 0.10s, 192 queries (+192 other) 
+2026-09-15 20:14:51,641 1 INFO workflow_mutants odoo.modules.loading: Loading module auth_passkey (16/56) 
+2026-09-15 20:14:51,665 1 INFO workflow_mutants odoo.registry: module auth_passkey: creating or updating database tables 
+2026-09-15 20:14:51,721 1 INFO workflow_mutants odoo.modules.loading: loading auth_passkey/views/auth_passkey_key_views.xml 
+2026-09-15 20:14:51,737 1 INFO workflow_mutants odoo.modules.loading: loading auth_passkey/views/auth_passkey_login_templates.xml 
+2026-09-15 20:14:51,747 1 INFO workflow_mutants odoo.modules.loading: loading auth_passkey/views/res_users_identitycheck_views.xml 
+2026-09-15 20:14:51,754 1 INFO workflow_mutants odoo.modules.loading: loading auth_passkey/views/res_users_views.xml 
+2026-09-15 20:14:51,767 1 INFO workflow_mutants odoo.modules.loading: loading auth_passkey/security/ir.model.access.csv 
+2026-09-15 20:14:51,772 1 INFO workflow_mutants odoo.modules.loading: loading auth_passkey/security/security.xml 
+2026-09-15 20:14:51,786 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module auth_passkey: loading translation file /usr/lib/python3/dist-packages/odoo/addons/auth_passkey/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:51,798 1 INFO workflow_mutants odoo.modules.loading: Module auth_passkey loaded in 0.16s, 226 queries (+226 other) 
+2026-09-15 20:14:51,798 1 INFO workflow_mutants odoo.modules.loading: Loading module barcodes_gs1_nomenclature (17/56) 
+2026-09-15 20:14:51,802 1 INFO workflow_mutants odoo.registry: module barcodes_gs1_nomenclature: creating or updating database tables 
+2026-09-15 20:14:51,825 1 INFO workflow_mutants odoo.modules.loading: loading barcodes_gs1_nomenclature/data/barcodes_gs1_rules.xml 
+2026-09-15 20:14:51,853 1 INFO workflow_mutants odoo.modules.loading: loading barcodes_gs1_nomenclature/views/barcodes_view.xml 
+2026-09-15 20:14:51,881 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module barcodes_gs1_nomenclature: loading translation file /usr/lib/python3/dist-packages/odoo/addons/barcodes_gs1_nomenclature/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:51,904 1 INFO workflow_mutants odoo.modules.loading: Module barcodes_gs1_nomenclature loaded in 0.11s, 203 queries (+203 other) 
+2026-09-15 20:14:51,904 1 INFO workflow_mutants odoo.modules.loading: Loading module html_editor (18/56) 
+2026-09-15 20:14:51,976 1 INFO workflow_mutants odoo.registry: module html_editor: creating or updating database tables 
+2026-09-15 20:14:52,517 1 INFO workflow_mutants odoo.modules.loading: loading html_editor/security/ir.model.access.csv 
+2026-09-15 20:14:52,545 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module html_editor: loading translation file /usr/lib/python3/dist-packages/odoo/addons/html_editor/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:52,587 1 INFO workflow_mutants odoo.modules.loading: Module html_editor loaded in 0.68s, 1128 queries (+1128 other) 
+2026-09-15 20:14:52,587 1 INFO workflow_mutants odoo.modules.loading: Loading module iap (19/56) 
+2026-09-15 20:14:52,590 1 INFO workflow_mutants odoo.registry: module iap: creating or updating database tables 
+2026-09-15 20:14:52,639 1 INFO workflow_mutants odoo.modules.loading: loading iap/data/services.xml 
+2026-09-15 20:14:52,644 1 INFO workflow_mutants odoo.modules.loading: loading iap/security/ir.model.access.csv 
+2026-09-15 20:14:52,649 1 INFO workflow_mutants odoo.modules.loading: loading iap/security/ir_rule.xml 
+2026-09-15 20:14:52,654 1 INFO workflow_mutants odoo.modules.loading: loading iap/views/iap_views.xml 
+2026-09-15 20:14:52,673 1 INFO workflow_mutants odoo.modules.loading: loading iap/views/res_config_settings.xml 
+2026-09-15 20:14:52,684 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module iap: loading translation file /usr/lib/python3/dist-packages/odoo/addons/iap/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:52,702 1 INFO workflow_mutants odoo.modules.loading: Module iap loaded in 0.11s, 196 queries (+196 other) 
+2026-09-15 20:14:52,702 1 INFO workflow_mutants odoo.modules.loading: Loading module mail (20/56) 
+2026-09-15 20:14:52,735 1 INFO workflow_mutants odoo.registry: module mail: creating or updating database tables 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.partner_ids 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.activity_user_id 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.activity_type_id 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.template_id 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.activity_date_deadline_range 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.activity_summary 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.followers_type 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.followers_partner_field_name 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.mail_post_method 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.activity_date_deadline_range_type 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.activity_user_type 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.activity_user_field_name 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.activity_note 
+2026-09-15 20:14:52,844 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.mail_post_autofollow 
+2026-09-15 20:14:52,885 1 INFO workflow_mutants odoo.models: Prepare computation of res.users.notification_type 
+2026-09-15 20:14:52,921 1 INFO workflow_mutants odoo.models: Prepare computation of res.partner.email_normalized 
+<string>:38: (ERROR/3) Unexpected indentation.
+<string>:43: (WARNING/2) Block quote ends without a blank line; unexpected unindent.
+2026-09-15 20:14:53,955 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/mail_groups.xml 
+2026-09-15 20:14:53,971 1 INFO workflow_mutants odoo.modules.loading: loading mail/wizard/mail_activity_schedule_views.xml 
+2026-09-15 20:14:53,991 1 INFO workflow_mutants odoo.modules.loading: loading mail/wizard/mail_blacklist_remove_views.xml 
+2026-09-15 20:14:54,000 1 INFO workflow_mutants odoo.modules.loading: loading mail/wizard/mail_compose_message_views.xml 
+2026-09-15 20:14:54,029 1 INFO workflow_mutants odoo.modules.loading: loading mail/wizard/mail_template_preview_views.xml 
+2026-09-15 20:14:54,048 1 INFO workflow_mutants odoo.modules.loading: loading mail/wizard/mail_followers_edit_views.xml 
+2026-09-15 20:14:54,069 1 INFO workflow_mutants odoo.modules.loading: loading mail/wizard/mail_template_reset_views.xml 
+2026-09-15 20:14:54,090 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/fetchmail_views.xml 
+2026-09-15 20:14:54,122 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/ir_cron_views.xml 
+2026-09-15 20:14:54,145 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/ir_filters_views.xml 
+2026-09-15 20:14:54,168 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/ir_mail_server_views.xml 
+2026-09-15 20:14:54,181 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_message_subtype_views.xml 
+2026-09-15 20:14:54,205 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_tracking_value_views.xml 
+2026-09-15 20:14:54,230 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_notification_views.xml 
+2026-09-15 20:14:54,249 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_message_views.xml 
+2026-09-15 20:14:54,306 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_message_schedule_views.xml 
+2026-09-15 20:14:54,321 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_mail_views.xml 
+2026-09-15 20:14:54,345 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_followers_views.xml 
+2026-09-15 20:14:54,368 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_ice_server_views.xml 
+2026-09-15 20:14:54,407 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/discuss_channel_member_views.xml 
+2026-09-15 20:14:54,425 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/discuss_channel_rtc_session_views.xml 
+2026-09-15 20:14:54,452 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_link_preview_views.xml 
+2026-09-15 20:14:54,477 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/discuss/discuss_gif_favorite_views.xml 
+2026-09-15 20:14:54,490 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/discuss_channel_views.xml 
+2026-09-15 20:14:54,519 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_canned_response_views.xml 
+2026-09-15 20:14:54,536 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/res_role_views.xml 
+2026-09-15 20:14:54,550 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_activity_views.xml 
+2026-09-15 20:14:54,633 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_activity_plan_views.xml 
+2026-09-15 20:14:54,705 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_activity_plan_template_views.xml 
+2026-09-15 20:14:54,727 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/res_config_settings_views.xml 
+2026-09-15 20:14:54,778 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/ir_config_parameter_data.xml 
+2026-09-15 20:14:54,788 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/res_partner_data.xml 
+2026-09-15 20:14:54,879 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/mail_message_subtype_data.xml 
+2026-09-15 20:14:54,891 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/mail_templates_chatter.xml 
+2026-09-15 20:14:54,927 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/mail_templates_email_layouts.xml 
+2026-09-15 20:14:54,966 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/mail_templates_mailgateway.xml 
+2026-09-15 20:14:54,992 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/discuss_channel_data.xml 
+2026-09-15 20:14:55,024 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/mail_activity_type_data.xml 
+2026-09-15 20:14:55,040 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/security_notifications_templates.xml 
+2026-09-15 20:14:55,051 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/ir_cron_data.xml 
+2026-09-15 20:14:55,328 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/ir_actions_client.xml 
+2026-09-15 20:14:55,346 1 INFO workflow_mutants odoo.modules.loading: loading mail/security/mail_security.xml 
+2026-09-15 20:14:55,577 1 INFO workflow_mutants odoo.modules.loading: loading mail/security/ir.model.access.csv 
+2026-09-15 20:14:55,669 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/discuss_public_templates.xml 
+2026-09-15 20:14:55,679 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_alias_domain_views.xml 
+2026-09-15 20:14:55,714 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_alias_views.xml 
+2026-09-15 20:14:55,748 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_gateway_allowed_views.xml 
+2026-09-15 20:14:55,776 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_guest_views.xml 
+2026-09-15 20:14:55,801 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_message_reaction_views.xml 
+2026-09-15 20:14:55,833 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_templates_public.xml 
+2026-09-15 20:14:55,852 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/res_users_views.xml 
+2026-09-15 20:14:55,905 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/res_users_settings_views.xml 
+2026-09-15 20:14:55,941 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_template_views.xml 
+2026-09-15 20:14:55,982 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/ir_actions_server_views.xml 
+2026-09-15 20:14:56,000 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/ir_model_views.xml 
+2026-09-15 20:14:56,027 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/res_partner_views.xml 
+2026-09-15 20:14:56,058 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_blacklist_views.xml 
+2026-09-15 20:14:56,070 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_menus.xml 
+2026-09-15 20:14:56,135 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/discuss/discuss_menus.xml 
+2026-09-15 20:14:56,138 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/discuss/discuss_call_history_views.xml 
+2026-09-15 20:14:56,148 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/res_company_views.xml 
+2026-09-15 20:14:56,154 1 INFO workflow_mutants odoo.modules.loading: loading mail/views/mail_scheduled_message_views.xml 
+2026-09-15 20:14:56,160 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/mail_canned_response_data.xml 
+2026-09-15 20:14:56,168 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/mail_templates_invite.xml 
+2026-09-15 20:14:56,192 1 INFO workflow_mutants odoo.modules.loading: loading mail/data/web_tour_tour.xml 
+2026-09-15 20:14:56,205 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module mail: loading translation file /usr/lib/python3/dist-packages/odoo/addons/mail/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:56,465 1 INFO workflow_mutants odoo.modules.loading: Module mail loaded in 3.76s, 5098 queries (+5099 other) 
+2026-09-15 20:14:56,466 1 INFO workflow_mutants odoo.modules.loading: Loading module web_unsplash (21/56) 
+2026-09-15 20:14:56,483 1 INFO workflow_mutants odoo.registry: module web_unsplash: creating or updating database tables 
+2026-09-15 20:14:56,538 1 INFO workflow_mutants odoo.modules.loading: loading web_unsplash/views/res_config_settings_view.xml 
+2026-09-15 20:14:56,590 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module web_unsplash: loading translation file /usr/lib/python3/dist-packages/odoo/addons/web_unsplash/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:56,620 1 INFO workflow_mutants odoo.modules.loading: Module web_unsplash loaded in 0.15s, 109 queries (+109 other) 
+2026-09-15 20:14:56,620 1 INFO workflow_mutants odoo.modules.loading: Loading module analytic (22/56) 
+2026-09-15 20:14:56,640 1 INFO workflow_mutants odoo.registry: module analytic: creating or updating database tables 
+2026-09-15 20:14:56,781 1 INFO workflow_mutants odoo.modules.loading: loading analytic/security/analytic_security.xml 
+2026-09-15 20:14:56,796 1 INFO workflow_mutants odoo.modules.loading: loading analytic/security/ir.model.access.csv 
+2026-09-15 20:14:56,806 1 INFO workflow_mutants odoo.modules.loading: loading analytic/views/analytic_line_views.xml 
+2026-09-15 20:14:56,860 1 INFO workflow_mutants odoo.modules.loading: loading analytic/views/analytic_account_views.xml 
+2026-09-15 20:14:56,921 1 INFO workflow_mutants odoo.modules.loading: loading analytic/views/analytic_plan_views.xml 
+2026-09-15 20:14:56,951 1 INFO workflow_mutants odoo.modules.loading: loading analytic/views/analytic_distribution_model_views.xml 
+2026-09-15 20:14:56,974 1 INFO workflow_mutants odoo.modules.loading: loading analytic/data/analytic_data.xml 
+2026-09-15 20:14:57,019 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module analytic: loading translation file /usr/lib/python3/dist-packages/odoo/addons/analytic/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:57,087 1 INFO workflow_mutants odoo.modules.loading: Module analytic loaded in 0.47s, 442 queries (+442 other) 
+2026-09-15 20:14:57,087 1 INFO workflow_mutants odoo.modules.loading: Loading module auth_signup (23/56) 
+2026-09-15 20:14:57,103 1 INFO workflow_mutants odoo.registry: module auth_signup: creating or updating database tables 
+2026-09-15 20:14:57,194 1 INFO workflow_mutants odoo.modules.loading: loading auth_signup/data/ir_config_parameter_data.xml 
+2026-09-15 20:14:57,201 1 INFO workflow_mutants odoo.modules.loading: loading auth_signup/data/ir_cron_data.xml 
+2026-09-15 20:14:57,229 1 INFO workflow_mutants odoo.modules.loading: loading auth_signup/data/mail_template_data.xml 
+2026-09-15 20:14:57,330 1 INFO workflow_mutants odoo.modules.loading: loading auth_signup/views/res_config_settings_views.xml 
+2026-09-15 20:14:57,347 1 INFO workflow_mutants odoo.modules.loading: loading auth_signup/views/res_users_views.xml 
+2026-09-15 20:14:57,401 1 INFO workflow_mutants odoo.modules.loading: loading auth_signup/views/auth_signup_login_templates.xml 
+2026-09-15 20:14:57,440 1 INFO workflow_mutants odoo.modules.loading: loading auth_signup/views/auth_signup_templates_email.xml 
+2026-09-15 20:14:57,451 1 INFO workflow_mutants odoo.modules.loading: loading auth_signup/views/webclient_templates.xml 
+2026-09-15 20:14:57,467 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module auth_signup: loading translation file /usr/lib/python3/dist-packages/odoo/addons/auth_signup/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:57,546 1 INFO workflow_mutants odoo.modules.loading: Module auth_signup loaded in 0.46s, 269 queries (+269 other) 
+2026-09-15 20:14:57,546 1 INFO workflow_mutants odoo.modules.loading: Loading module auth_totp_mail (24/56) 
+2026-09-15 20:14:57,553 1 INFO workflow_mutants odoo.registry: module auth_totp_mail: creating or updating database tables 
+2026-09-15 20:14:57,620 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp_mail/data/ir_action_data.xml 
+2026-09-15 20:14:57,645 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp_mail/data/mail_template_data.xml 
+2026-09-15 20:14:57,671 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp_mail/data/security_notifications_template.xml 
+2026-09-15 20:14:57,676 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp_mail/views/res_config_settings_views.xml 
+2026-09-15 20:14:57,686 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp_mail/views/res_users_views.xml 
+2026-09-15 20:14:57,698 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp_mail/views/templates.xml 
+2026-09-15 20:14:57,702 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module auth_totp_mail: loading translation file /usr/lib/python3/dist-packages/odoo/addons/auth_totp_mail/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:57,734 1 INFO workflow_mutants odoo.modules.loading: Module auth_totp_mail loaded in 0.19s, 202 queries (+202 other) 
+2026-09-15 20:14:57,734 1 INFO workflow_mutants odoo.modules.loading: Loading module base_install_request (25/56) 
+2026-09-15 20:14:57,741 1 INFO workflow_mutants odoo.registry: module base_install_request: creating or updating database tables 
+2026-09-15 20:14:57,823 1 INFO workflow_mutants odoo.modules.loading: loading base_install_request/security/ir.model.access.csv 
+2026-09-15 20:14:57,837 1 INFO workflow_mutants odoo.modules.loading: loading base_install_request/wizard/base_module_install_request_views.xml 
+2026-09-15 20:14:57,855 1 INFO workflow_mutants odoo.modules.loading: loading base_install_request/data/mail_template_data.xml 
+2026-09-15 20:14:57,859 1 INFO workflow_mutants odoo.modules.loading: loading base_install_request/data/mail_templates_module_install.xml 
+2026-09-15 20:14:57,862 1 INFO workflow_mutants odoo.modules.loading: loading base_install_request/views/ir_module_module_views.xml 
+2026-09-15 20:14:57,872 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module base_install_request: loading translation file /usr/lib/python3/dist-packages/odoo/addons/base_install_request/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:57,885 1 INFO workflow_mutants odoo.modules.loading: Module base_install_request loaded in 0.15s, 164 queries (+164 other) 
+2026-09-15 20:14:57,885 1 INFO workflow_mutants odoo.modules.loading: Loading module google_gmail (26/56) 
+2026-09-15 20:14:57,894 1 INFO workflow_mutants odoo.registry: module google_gmail: creating or updating database tables 
+2026-09-15 20:14:57,991 1 INFO workflow_mutants odoo.modules.loading: loading google_gmail/views/fetchmail_server_views.xml 
+2026-09-15 20:14:58,027 1 INFO workflow_mutants odoo.modules.loading: loading google_gmail/views/ir_mail_server_views.xml 
+2026-09-15 20:14:58,052 1 INFO workflow_mutants odoo.modules.loading: loading google_gmail/views/res_config_settings_views.xml 
+2026-09-15 20:14:58,088 1 INFO workflow_mutants odoo.modules.loading: loading google_gmail/views/templates.xml 
+2026-09-15 20:14:58,101 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module google_gmail: loading translation file /usr/lib/python3/dist-packages/odoo/addons/google_gmail/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:58,129 1 INFO workflow_mutants odoo.modules.loading: Module google_gmail loaded in 0.24s, 163 queries (+163 other) 
+2026-09-15 20:14:58,129 1 INFO workflow_mutants odoo.modules.loading: Loading module iap_mail (27/56) 
+2026-09-15 20:14:58,138 1 INFO workflow_mutants odoo.registry: module iap_mail: creating or updating database tables 
+2026-09-15 20:14:58,184 1 INFO workflow_mutants odoo.modules.loading: loading iap_mail/data/mail_templates.xml 
+2026-09-15 20:14:58,214 1 INFO workflow_mutants odoo.modules.loading: loading iap_mail/views/iap_views.xml 
+2026-09-15 20:14:58,247 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module iap_mail: loading translation file /usr/lib/python3/dist-packages/odoo/addons/iap_mail/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:58,279 1 INFO workflow_mutants odoo.modules.loading: Module iap_mail loaded in 0.15s, 77 queries (+77 other) 
+2026-09-15 20:14:58,280 1 INFO workflow_mutants odoo.modules.loading: Loading module mail_bot (28/56) 
+2026-09-15 20:14:58,298 1 INFO workflow_mutants odoo.registry: module mail_bot: creating or updating database tables 
+2026-09-15 20:14:58,340 1 INFO workflow_mutants odoo.modules.loading: loading mail_bot/views/res_users_views.xml 
+2026-09-15 20:14:58,356 1 INFO workflow_mutants odoo.modules.loading: loading mail_bot/data/mailbot_data.xml 
+2026-09-15 20:14:58,365 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module mail_bot: loading translation file /usr/lib/python3/dist-packages/odoo/addons/mail_bot/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:58,389 1 INFO workflow_mutants odoo.modules.loading: Module mail_bot loaded in 0.11s, 114 queries (+114 other) 
+2026-09-15 20:14:58,389 1 INFO workflow_mutants odoo.modules.loading: Loading module microsoft_outlook (29/56) 
+2026-09-15 20:14:58,407 1 INFO workflow_mutants odoo.registry: module microsoft_outlook: creating or updating database tables 
+2026-09-15 20:14:58,495 1 INFO workflow_mutants odoo.modules.loading: loading microsoft_outlook/views/fetchmail_server_views.xml 
+2026-09-15 20:14:58,538 1 INFO workflow_mutants odoo.modules.loading: loading microsoft_outlook/views/ir_mail_server_views.xml 
+2026-09-15 20:14:58,562 1 INFO workflow_mutants odoo.modules.loading: loading microsoft_outlook/views/res_config_settings_views.xml 
+2026-09-15 20:14:58,587 1 INFO workflow_mutants odoo.modules.loading: loading microsoft_outlook/views/templates.xml 
+2026-09-15 20:14:58,592 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module microsoft_outlook: loading translation file /usr/lib/python3/dist-packages/odoo/addons/microsoft_outlook/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:58,605 1 INFO workflow_mutants odoo.modules.loading: Module microsoft_outlook loaded in 0.22s, 166 queries (+166 other) 
+2026-09-15 20:14:58,605 1 INFO workflow_mutants odoo.modules.loading: Loading module phone_validation (30/56) 
+2026-09-15 20:14:58,678 1 INFO workflow_mutants odoo.registry: module phone_validation: creating or updating database tables 
+2026-09-15 20:14:58,687 1 INFO workflow_mutants odoo.models: Prepare computation of res.partner.phone_sanitized 
+2026-09-15 20:14:59,376 1 INFO workflow_mutants odoo.modules.loading: loading phone_validation/security/ir.model.access.csv 
+2026-09-15 20:14:59,387 1 INFO workflow_mutants odoo.modules.loading: loading phone_validation/views/phone_blacklist_views.xml 
+2026-09-15 20:14:59,445 1 INFO workflow_mutants odoo.modules.loading: loading phone_validation/views/res_partner_views.xml 
+2026-09-15 20:14:59,466 1 INFO workflow_mutants odoo.modules.loading: loading phone_validation/wizard/phone_blacklist_remove_view.xml 
+2026-09-15 20:14:59,481 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module phone_validation: loading translation file /usr/lib/python3/dist-packages/odoo/addons/phone_validation/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:59,515 1 INFO workflow_mutants odoo.modules.loading: Module phone_validation loaded in 0.91s, 1774 queries (+1774 other) 
+2026-09-15 20:14:59,515 1 INFO workflow_mutants odoo.modules.loading: Loading module privacy_lookup (31/56) 
+2026-09-15 20:14:59,524 1 INFO workflow_mutants odoo.registry: module privacy_lookup: creating or updating database tables 
+2026-09-15 20:14:59,635 1 INFO workflow_mutants odoo.modules.loading: loading privacy_lookup/wizard/privacy_lookup_wizard_views.xml 
+2026-09-15 20:14:59,682 1 INFO workflow_mutants odoo.modules.loading: loading privacy_lookup/views/privacy_log_views.xml 
+2026-09-15 20:14:59,697 1 INFO workflow_mutants odoo.modules.loading: loading privacy_lookup/security/ir.model.access.csv 
+2026-09-15 20:14:59,711 1 INFO workflow_mutants odoo.modules.loading: loading privacy_lookup/data/ir_actions_server_data.xml 
+2026-09-15 20:14:59,728 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module privacy_lookup: loading translation file /usr/lib/python3/dist-packages/odoo/addons/privacy_lookup/i18n/fr.po for language fr_FR 
+2026-09-15 20:14:59,751 1 INFO workflow_mutants odoo.modules.loading: Module privacy_lookup loaded in 0.24s, 306 queries (+306 other) 
+2026-09-15 20:14:59,751 1 INFO workflow_mutants odoo.modules.loading: Loading module product (32/56) 
+2026-09-15 20:14:59,776 1 INFO workflow_mutants odoo.registry: module product: creating or updating database tables 
+2026-09-15 20:15:00,198 1 INFO workflow_mutants odoo.modules.loading: loading product/data/product_data.xml 
+2026-09-15 20:15:00,218 1 INFO workflow_mutants odoo.modules.loading: loading product/security/product_security.xml 
+2026-09-15 20:15:00,264 1 INFO workflow_mutants odoo.modules.loading: loading product/security/ir.model.access.csv 
+2026-09-15 20:15:00,277 1 INFO workflow_mutants odoo.modules.loading: loading product/wizard/product_label_layout_views.xml 
+2026-09-15 20:15:00,285 1 INFO workflow_mutants odoo.modules.loading: loading product/wizard/update_product_attribute_value_views.xml 
+2026-09-15 20:15:00,290 1 INFO workflow_mutants odoo.modules.loading: loading product/views/product_tag_views.xml 
+2026-09-15 20:15:00,300 1 INFO workflow_mutants odoo.modules.loading: loading product/views/product_views.xml 
+2026-09-15 20:15:00,378 1 INFO workflow_mutants odoo.modules.loading: loading product/views/res_config_settings_views.xml 
+2026-09-15 20:15:00,388 1 INFO workflow_mutants odoo.modules.loading: loading product/views/product_attribute_views.xml 
+2026-09-15 20:15:00,416 1 INFO workflow_mutants odoo.modules.loading: loading product/views/product_attribute_value_views.xml 
+2026-09-15 20:15:00,420 1 INFO workflow_mutants odoo.modules.loading: loading product/views/product_category_views.xml 
+2026-09-15 20:15:00,432 1 INFO workflow_mutants odoo.modules.loading: loading product/views/product_combo_views.xml 
+2026-09-15 20:15:00,443 1 INFO workflow_mutants odoo.modules.loading: loading product/views/product_document_views.xml 
+2026-09-15 20:15:00,457 1 INFO workflow_mutants odoo.modules.loading: loading product/views/product_pricelist_item_views.xml 
+2026-09-15 20:15:00,480 1 INFO workflow_mutants odoo.modules.loading: loading product/views/product_pricelist_views.xml 
+2026-09-15 20:15:00,497 1 INFO workflow_mutants odoo.modules.loading: loading product/views/product_supplierinfo_views.xml 
+2026-09-15 20:15:00,515 1 INFO workflow_mutants odoo.modules.loading: loading product/views/product_template_attribute_line_views.xml 
+2026-09-15 20:15:00,519 1 INFO workflow_mutants odoo.modules.loading: loading product/views/product_template_views.xml 
+2026-09-15 20:15:00,562 1 INFO workflow_mutants odoo.modules.loading: loading product/views/res_country_group_views.xml 
+2026-09-15 20:15:00,568 1 INFO workflow_mutants odoo.modules.loading: loading product/views/res_partner_views.xml 
+2026-09-15 20:15:00,576 1 INFO workflow_mutants odoo.modules.loading: loading product/views/uom_views.xml 
+2026-09-15 20:15:00,585 1 INFO workflow_mutants odoo.modules.loading: loading product/report/product_reports.xml 
+2026-09-15 20:15:00,601 1 INFO workflow_mutants odoo.modules.loading: loading product/report/product_product_templates.xml 
+2026-09-15 20:15:00,619 1 INFO workflow_mutants odoo.modules.loading: loading product/report/product_template_templates.xml 
+2026-09-15 20:15:00,631 1 INFO workflow_mutants odoo.modules.loading: loading product/report/product_packaging.xml 
+2026-09-15 20:15:00,635 1 INFO workflow_mutants odoo.modules.loading: loading product/report/product_pricelist_report_templates.xml 
+2026-09-15 20:15:00,642 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module product: loading translation file /usr/lib/python3/dist-packages/odoo/addons/product/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:00,742 1 INFO workflow_mutants odoo.modules.loading: Module product loaded in 0.99s, 1670 queries (+1670 other) 
+2026-09-15 20:15:00,742 1 INFO workflow_mutants odoo.modules.loading: Loading module resource_mail (33/56) 
+2026-09-15 20:15:00,748 1 INFO workflow_mutants odoo.registry: module resource_mail: creating or updating database tables 
+2026-09-15 20:15:00,775 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module resource_mail: loading translation file /usr/lib/python3/dist-packages/odoo/addons/resource_mail/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:00,781 1 INFO workflow_mutants odoo.modules.loading: Module resource_mail loaded in 0.04s, 39 queries (+39 other) 
+2026-09-15 20:15:00,781 1 INFO workflow_mutants odoo.modules.loading: Loading module partner_autocomplete (34/56) 
+2026-09-15 20:15:00,796 1 INFO workflow_mutants odoo.registry: module partner_autocomplete: creating or updating database tables 
+2026-09-15 20:15:00,847 1 INFO workflow_mutants odoo.modules.loading: loading partner_autocomplete/views/res_company_views.xml 
+2026-09-15 20:15:00,861 1 INFO workflow_mutants odoo.modules.loading: loading partner_autocomplete/views/res_config_settings_views.xml 
+2026-09-15 20:15:00,872 1 INFO workflow_mutants odoo.modules.loading: loading partner_autocomplete/data/iap_service_data.xml 
+2026-09-15 20:15:00,877 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module partner_autocomplete: loading translation file /usr/lib/python3/dist-packages/odoo/addons/partner_autocomplete/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:00,885 1 INFO workflow_mutants odoo.modules.loading: Module partner_autocomplete loaded in 0.10s, 150 queries (+150 other) 
+2026-09-15 20:15:00,885 1 INFO workflow_mutants odoo.modules.loading: Loading module portal (35/56) 
+2026-09-15 20:15:00,911 1 INFO workflow_mutants odoo.registry: module portal: creating or updating database tables 
+2026-09-15 20:15:01,052 1 INFO workflow_mutants odoo.modules.loading: loading portal/security/ir.model.access.csv 
+2026-09-15 20:15:01,058 1 INFO workflow_mutants odoo.modules.loading: loading portal/data/mail_templates.xml 
+2026-09-15 20:15:01,062 1 INFO workflow_mutants odoo.modules.loading: loading portal/views/address_templates.xml 
+2026-09-15 20:15:01,082 1 INFO workflow_mutants odoo.modules.loading: loading portal/views/mail_templates_public.xml 
+2026-09-15 20:15:01,087 1 INFO workflow_mutants odoo.modules.loading: loading portal/views/portal_templates.xml 
+2026-09-15 20:15:01,160 1 INFO workflow_mutants odoo.modules.loading: loading portal/views/res_config_settings_views.xml 
+2026-09-15 20:15:01,178 1 INFO workflow_mutants odoo.modules.loading: loading portal/wizard/portal_share_views.xml 
+2026-09-15 20:15:01,185 1 INFO workflow_mutants odoo.modules.loading: loading portal/wizard/portal_wizard_views.xml 
+2026-09-15 20:15:01,206 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module portal: loading translation file /usr/lib/python3/dist-packages/odoo/addons/portal/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:01,250 1 INFO workflow_mutants odoo.modules.loading: Module portal loaded in 0.37s, 614 queries (+614 other) 
+2026-09-15 20:15:01,250 1 INFO workflow_mutants odoo.modules.loading: Loading module sms (36/56) 
+2026-09-15 20:15:01,318 1 INFO workflow_mutants odoo.registry: module sms: creating or updating database tables 
+2026-09-15 20:15:01,325 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.sms_template_id 
+2026-09-15 20:15:01,325 1 INFO workflow_mutants odoo.models: Prepare computation of ir.actions.server.sms_method 
+2026-09-15 20:15:01,998 1 INFO workflow_mutants odoo.modules.loading: loading sms/data/iap_service_data.xml 
+2026-09-15 20:15:02,001 1 INFO workflow_mutants odoo.modules.loading: loading sms/data/ir_cron_data.xml 
+2026-09-15 20:15:02,019 1 INFO workflow_mutants odoo.modules.loading: loading sms/wizard/sms_account_code_views.xml 
+2026-09-15 20:15:02,028 1 INFO workflow_mutants odoo.modules.loading: loading sms/wizard/sms_account_phone_views.xml 
+2026-09-15 20:15:02,032 1 INFO workflow_mutants odoo.modules.loading: loading sms/wizard/sms_account_sender_views.xml 
+2026-09-15 20:15:02,036 1 INFO workflow_mutants odoo.modules.loading: loading sms/wizard/sms_composer_views.xml 
+2026-09-15 20:15:02,044 1 INFO workflow_mutants odoo.modules.loading: loading sms/wizard/sms_template_preview_views.xml 
+2026-09-15 20:15:02,051 1 INFO workflow_mutants odoo.modules.loading: loading sms/wizard/sms_template_reset_views.xml 
+2026-09-15 20:15:02,058 1 INFO workflow_mutants odoo.modules.loading: loading sms/views/ir_actions_server_views.xml 
+2026-09-15 20:15:02,069 1 INFO workflow_mutants odoo.modules.loading: loading sms/views/mail_notification_views.xml 
+2026-09-15 20:15:02,079 1 INFO workflow_mutants odoo.modules.loading: loading sms/views/res_config_settings_views.xml 
+2026-09-15 20:15:02,089 1 INFO workflow_mutants odoo.modules.loading: loading sms/views/res_partner_views.xml 
+2026-09-15 20:15:02,102 1 INFO workflow_mutants odoo.modules.loading: loading sms/views/iap_account_views.xml 
+2026-09-15 20:15:02,112 1 INFO workflow_mutants odoo.modules.loading: loading sms/views/sms_sms_views.xml 
+2026-09-15 20:15:02,132 1 INFO workflow_mutants odoo.modules.loading: loading sms/views/sms_template_views.xml 
+2026-09-15 20:15:02,148 1 INFO workflow_mutants odoo.modules.loading: loading sms/security/ir.model.access.csv 
+2026-09-15 20:15:02,165 1 INFO workflow_mutants odoo.modules.loading: loading sms/security/sms_security.xml 
+2026-09-15 20:15:02,174 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module sms: loading translation file /usr/lib/python3/dist-packages/odoo/addons/sms/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:02,213 1 INFO workflow_mutants odoo.modules.loading: Module sms loaded in 0.96s, 2385 queries (+2385 other) 
+2026-09-15 20:15:02,213 1 INFO workflow_mutants odoo.modules.loading: Loading module snailmail (37/56) 
+2026-09-15 20:15:02,314 1 INFO workflow_mutants odoo.registry: module snailmail: creating or updating database tables 
+2026-09-15 20:15:02,459 1 INFO workflow_mutants odoo.modules.loading: loading snailmail/data/iap_service_data.xml 
+2026-09-15 20:15:02,462 1 INFO workflow_mutants odoo.modules.loading: loading snailmail/data/snailmail_data.xml 
+2026-09-15 20:15:02,479 1 INFO workflow_mutants odoo.modules.loading: loading snailmail/views/report_assets.xml 
+2026-09-15 20:15:02,489 1 INFO workflow_mutants odoo.modules.loading: loading snailmail/views/snailmail_views.xml 
+2026-09-15 20:15:02,503 1 INFO workflow_mutants odoo.modules.loading: loading snailmail/security/ir.model.access.csv 
+2026-09-15 20:15:02,516 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module snailmail: loading translation file /usr/lib/python3/dist-packages/odoo/addons/snailmail/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:02,537 1 INFO workflow_mutants odoo.modules.loading: Module snailmail loaded in 0.32s, 480 queries (+480 other) 
+2026-09-15 20:15:02,537 1 INFO workflow_mutants odoo.modules.loading: Loading module auth_passkey_portal (38/56) 
+2026-09-15 20:15:02,545 1 INFO workflow_mutants odoo.modules.loading: loading auth_passkey_portal/views/templates.xml 
+2026-09-15 20:15:02,561 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module auth_passkey_portal: loading translation file /usr/lib/python3/dist-packages/odoo/addons/auth_passkey_portal/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:02,566 1 INFO workflow_mutants odoo.modules.loading: Module auth_passkey_portal loaded in 0.03s, 26 queries (+26 other) 
+2026-09-15 20:15:02,567 1 INFO workflow_mutants odoo.modules.loading: Loading module auth_totp_portal (39/56) 
+2026-09-15 20:15:02,574 1 INFO workflow_mutants odoo.registry: module auth_totp_portal: creating or updating database tables 
+2026-09-15 20:15:02,592 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp_portal/security/security.xml 
+2026-09-15 20:15:02,602 1 INFO workflow_mutants odoo.modules.loading: loading auth_totp_portal/views/templates.xml 
+2026-09-15 20:15:02,621 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module auth_totp_portal: loading translation file /usr/lib/python3/dist-packages/odoo/addons/auth_totp_portal/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:02,644 1 INFO workflow_mutants odoo.modules.loading: Module auth_totp_portal loaded in 0.08s, 76 queries (+76 other) 
+2026-09-15 20:15:02,644 1 INFO workflow_mutants odoo.modules.loading: Loading module digest (40/56) 
+2026-09-15 20:15:02,661 1 INFO workflow_mutants odoo.registry: module digest: creating or updating database tables 
+2026-09-15 20:15:02,799 1 INFO workflow_mutants odoo.modules.loading: loading digest/security/ir.model.access.csv 
+2026-09-15 20:15:02,813 1 INFO workflow_mutants odoo.modules.loading: loading digest/data/digest_data.xml 
+2026-09-15 20:15:02,855 1 INFO workflow_mutants odoo.modules.loading: loading digest/data/digest_tips_data.xml 
+2026-09-15 20:15:02,896 1 INFO workflow_mutants odoo.modules.loading: loading digest/data/ir_cron_data.xml 
+2026-09-15 20:15:02,954 1 INFO workflow_mutants odoo.modules.loading: loading digest/data/res_config_settings_data.xml 
+2026-09-15 20:15:02,960 1 INFO workflow_mutants odoo.modules.loading: loading digest/views/digest_views.xml 
+2026-09-15 20:15:02,996 1 INFO workflow_mutants odoo.modules.loading: loading digest/views/digest_templates.xml 
+2026-09-15 20:15:03,000 1 INFO workflow_mutants odoo.modules.loading: loading digest/views/res_config_settings_views.xml 
+2026-09-15 20:15:03,016 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module digest: loading translation file /usr/lib/python3/dist-packages/odoo/addons/digest/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:03,049 1 INFO workflow_mutants odoo.modules.loading: Module digest loaded in 0.40s, 344 queries (+344 other) 
+2026-09-15 20:15:03,049 1 INFO workflow_mutants odoo.modules.loading: Loading module payment (41/56) 
+2026-09-15 20:15:03,075 1 INFO workflow_mutants odoo.registry: module payment: creating or updating database tables 
+2026-09-15 20:15:03,252 1 INFO workflow_mutants odoo.modules.loading: loading payment/data/ir_actions_server_data.xml 
+2026-09-15 20:15:03,264 1 INFO workflow_mutants odoo.modules.loading: loading payment/data/payment_method_data.xml 
+2026-09-15 20:15:04,632 1 INFO workflow_mutants odoo.modules.loading: loading payment/data/payment_provider_data.xml 
+2026-09-15 20:15:04,777 1 INFO workflow_mutants odoo.modules.loading: loading payment/data/payment_cron.xml 
+2026-09-15 20:15:04,790 1 INFO workflow_mutants odoo.modules.loading: loading payment/views/express_checkout_templates.xml 
+2026-09-15 20:15:04,794 1 INFO workflow_mutants odoo.modules.loading: loading payment/views/payment_form_templates.xml 
+2026-09-15 20:15:04,823 1 INFO workflow_mutants odoo.modules.loading: loading payment/views/portal_templates.xml 
+2026-09-15 20:15:04,850 1 INFO workflow_mutants odoo.modules.loading: loading payment/views/payment_provider_views.xml 
+2026-09-15 20:15:04,872 1 INFO workflow_mutants odoo.modules.loading: loading payment/views/payment_method_views.xml 
+2026-09-15 20:15:04,888 1 INFO workflow_mutants odoo.modules.loading: loading payment/views/payment_transaction_views.xml 
+2026-09-15 20:15:04,912 1 INFO workflow_mutants odoo.modules.loading: loading payment/views/payment_token_views.xml 
+2026-09-15 20:15:04,924 1 INFO workflow_mutants odoo.modules.loading: loading payment/views/res_partner_views.xml 
+2026-09-15 20:15:04,935 1 INFO workflow_mutants odoo.modules.loading: loading payment/security/ir.model.access.csv 
+2026-09-15 20:15:05,381 1 INFO workflow_mutants odoo.modules.loading: loading payment/security/payment_security.xml 
+2026-09-15 20:15:05,409 1 INFO workflow_mutants odoo.modules.loading: loading payment/wizards/payment_capture_wizard_views.xml 
+2026-09-15 20:15:05,416 1 INFO workflow_mutants odoo.modules.loading: loading payment/wizards/payment_link_wizard_views.xml 
+2026-09-15 20:15:05,425 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module payment: loading translation file /usr/lib/python3/dist-packages/odoo/addons/payment/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:05,507 1 INFO workflow_mutants odoo.modules.loading: Module payment loaded in 2.46s, 2539 queries (+2539 other) 
+2026-09-15 20:15:05,507 1 INFO workflow_mutants odoo.modules.loading: Loading module spreadsheet (42/56) 
+2026-09-15 20:15:05,522 1 INFO workflow_mutants odoo.registry: module spreadsheet: creating or updating database tables 
+2026-09-15 20:15:05,591 1 INFO workflow_mutants odoo.modules.loading: loading spreadsheet/views/public_readonly_spreadsheet_templates.xml 
+2026-09-15 20:15:05,603 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module spreadsheet: loading translation file /usr/lib/python3/dist-packages/odoo/addons/spreadsheet/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:05,663 1 INFO workflow_mutants odoo.modules.loading: Module spreadsheet loaded in 0.16s, 99 queries (+99 other) 
+2026-09-15 20:15:05,663 1 INFO workflow_mutants odoo.modules.loading: Loading module account (43/56) 
+2026-09-15 20:15:05,747 1 INFO workflow_mutants odoo.registry: module account: creating or updating database tables 
+2026-09-15 20:15:05,822 1 INFO workflow_mutants odoo.models: Prepare computation of res.company.domestic_fiscal_position_id 
+2026-09-15 20:15:05,822 1 INFO workflow_mutants odoo.models: Prepare computation of res.company.account_fiscal_country_id 
+2026-09-15 20:15:05,822 1 INFO workflow_mutants odoo.models: Prepare computation of res.company.invoice_terms_html 
+2026-09-15 20:15:05,822 1 INFO workflow_mutants odoo.models: Prepare computation of res.company.account_storno 
+2026-09-15 20:15:06,986 1 INFO workflow_mutants odoo.modules.loading: loading account/security/account_security.xml 
+2026-09-15 20:15:07,128 1 INFO workflow_mutants odoo.modules.loading: loading account/security/ir.model.access.csv 
+2026-09-15 20:15:07,160 1 INFO workflow_mutants odoo.modules.loading: loading account/data/account_data.xml 
+2026-09-15 20:15:07,216 1 INFO workflow_mutants odoo.modules.loading: loading account/data/digest_data.xml 
+2026-09-15 20:15:07,221 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_report.xml 
+2026-09-15 20:15:07,234 1 INFO workflow_mutants odoo.modules.loading: loading account/data/mail_template_data.xml 
+2026-09-15 20:15:07,275 1 INFO workflow_mutants odoo.modules.loading: loading account/data/onboarding_data.xml 
+2026-09-15 20:15:07,309 1 INFO workflow_mutants odoo.modules.loading: loading account/data/account_tour.xml 
+2026-09-15 20:15:07,312 1 INFO workflow_mutants odoo.modules.loading: loading account/data/ir_sequence.xml 
+2026-09-15 20:15:07,315 1 INFO workflow_mutants odoo.modules.loading: loading account/data/res_country_group.xml 
+2026-09-15 20:15:07,325 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_payment_view.xml 
+2026-09-15 20:15:07,378 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/account_automatic_entry_wizard_views.xml 
+2026-09-15 20:15:07,386 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/account_autopost_bills_wizard.xml 
+2026-09-15 20:15:07,392 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/account_unreconcile_view.xml 
+2026-09-15 20:15:07,400 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/account_move_reversal_view.xml 
+2026-09-15 20:15:07,408 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/account_resequence_views.xml 
+2026-09-15 20:15:07,419 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/account_payment_register_views.xml 
+2026-09-15 20:15:07,428 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_move_views.xml 
+2026-09-15 20:15:07,988 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/setup_wizards_view.xml 
+2026-09-15 20:15:08,005 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_account_views.xml 
+2026-09-15 20:15:08,063 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_group_views.xml 
+2026-09-15 20:15:08,087 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_journal_views.xml 
+2026-09-15 20:15:08,183 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_account_tag_views.xml 
+2026-09-15 20:15:08,201 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_bank_statement_views.xml 
+2026-09-15 20:15:08,250 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_reconcile_model_views.xml 
+2026-09-15 20:15:08,295 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_tax_views.xml 
+2026-09-15 20:15:08,350 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_full_reconcile_views.xml 
+2026-09-15 20:15:08,356 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_payment_term_views.xml 
+2026-09-15 20:15:08,375 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_payment_method.xml 
+2026-09-15 20:15:08,382 1 INFO workflow_mutants odoo.modules.loading: loading account/views/res_partner_bank_views.xml 
+2026-09-15 20:15:08,397 1 INFO workflow_mutants odoo.modules.loading: loading account/views/report_statement.xml 
+2026-09-15 20:15:08,406 1 INFO workflow_mutants odoo.modules.loading: loading account/views/terms_template.xml 
+2026-09-15 20:15:08,417 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/account_validate_move_view.xml 
+2026-09-15 20:15:08,429 1 INFO workflow_mutants odoo.modules.loading: loading account/views/res_company_views.xml 
+2026-09-15 20:15:08,448 1 INFO workflow_mutants odoo.modules.loading: loading account/views/product_view.xml 
+2026-09-15 20:15:08,486 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_analytic_plan_views.xml 
+2026-09-15 20:15:08,494 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_analytic_account_views.xml 
+2026-09-15 20:15:08,509 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_analytic_distribution_model_views.xml 
+2026-09-15 20:15:08,521 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_analytic_line_views.xml 
+2026-09-15 20:15:08,552 1 INFO workflow_mutants odoo.modules.loading: loading account/views/report_invoice.xml 
+2026-09-15 20:15:08,586 1 INFO workflow_mutants odoo.modules.loading: loading account/report/account_invoice_report_view.xml 
+2026-09-15 20:15:08,648 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_cash_rounding_view.xml 
+2026-09-15 20:15:08,681 1 INFO workflow_mutants odoo.modules.loading: loading account/views/ir_actions_views.xml 
+2026-09-15 20:15:08,695 1 INFO workflow_mutants odoo.modules.loading: loading account/views/ir_module_views.xml 
+2026-09-15 20:15:08,706 1 INFO workflow_mutants odoo.modules.loading: loading account/views/base_document_layout_views.xml 
+2026-09-15 20:15:08,718 1 INFO workflow_mutants odoo.modules.loading: loading account/views/res_config_settings_views.xml 
+2026-09-15 20:15:08,758 1 INFO workflow_mutants odoo.modules.loading: loading account/views/partner_view.xml 
+2026-09-15 20:15:08,838 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_journal_dashboard_view.xml 
+2026-09-15 20:15:08,860 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_portal_templates.xml 
+2026-09-15 20:15:08,945 1 INFO workflow_mutants odoo.modules.loading: loading account/views/report_payment_receipt_templates.xml 
+2026-09-15 20:15:08,959 1 INFO workflow_mutants odoo.modules.loading: loading account/data/service_cron.xml 
+2026-09-15 20:15:08,997 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_incoterms_view.xml 
+2026-09-15 20:15:09,027 1 INFO workflow_mutants odoo.modules.loading: loading account/data/account_incoterms_data.xml 
+2026-09-15 20:15:09,054 1 INFO workflow_mutants odoo.modules.loading: loading account/views/digest_views.xml 
+2026-09-15 20:15:09,075 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/account_move_send_wizard.xml 
+2026-09-15 20:15:09,093 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/account_move_send_batch_wizard.xml 
+2026-09-15 20:15:09,107 1 INFO workflow_mutants odoo.modules.loading: loading account/report/account_hash_integrity_templates.xml 
+2026-09-15 20:15:09,116 1 INFO workflow_mutants odoo.modules.loading: loading account/views/res_currency.xml 
+2026-09-15 20:15:09,128 1 INFO workflow_mutants odoo.modules.loading: loading account/views/res_country_group_view.xml 
+2026-09-15 20:15:09,138 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_menuitem.xml 
+2026-09-15 20:15:09,390 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/account_secure_entries_wizard.xml 
+2026-09-15 20:15:09,400 1 INFO workflow_mutants odoo.modules.loading: loading account/views/mail_message_views.xml 
+2026-09-15 20:15:09,414 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/accrued_orders.xml 
+2026-09-15 20:15:09,420 1 INFO workflow_mutants odoo.modules.loading: loading account/views/bill_preview_template.xml 
+2026-09-15 20:15:09,426 1 INFO workflow_mutants odoo.modules.loading: loading account/data/account_reports_data.xml 
+2026-09-15 20:15:09,454 1 INFO workflow_mutants odoo.modules.loading: loading account/views/uom_uom_views.xml 
+2026-09-15 20:15:09,462 1 INFO workflow_mutants odoo.modules.loading: loading account/views/product_views.xml 
+2026-09-15 20:15:09,474 1 INFO workflow_mutants odoo.modules.loading: loading account/views/tests_shared_js_python.xml 
+2026-09-15 20:15:09,477 1 INFO workflow_mutants odoo.modules.loading: loading account/views/account_lock_exception_views.xml 
+2026-09-15 20:15:09,483 1 INFO workflow_mutants odoo.modules.loading: loading account/views/report_templates.xml 
+2026-09-15 20:15:09,498 1 INFO workflow_mutants odoo.modules.loading: loading account/wizard/account_merge_wizard_views.xml 
+2026-09-15 20:15:09,509 1 INFO workflow_mutants odoo.modules.loading: loading account/data/ir_config_parameter_data.xml 
+2026-09-15 20:15:09,513 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module account: loading translation file /usr/lib/python3/dist-packages/odoo/addons/account/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:10,053 1 INFO workflow_mutants odoo.modules.loading: Module account loaded in 4.39s, 5857 queries (+5857 other) 
+2026-09-15 20:15:10,053 1 INFO workflow_mutants odoo.modules.loading: Loading module spreadsheet_dashboard (44/56) 
+2026-09-15 20:15:10,062 1 INFO workflow_mutants odoo.registry: module spreadsheet_dashboard: creating or updating database tables 
+2026-09-15 20:15:10,170 1 INFO workflow_mutants odoo.modules.loading: loading spreadsheet_dashboard/security/security.xml 
+2026-09-15 20:15:10,201 1 INFO workflow_mutants odoo.modules.loading: loading spreadsheet_dashboard/security/ir.model.access.csv 
+2026-09-15 20:15:10,206 1 INFO workflow_mutants odoo.modules.loading: loading spreadsheet_dashboard/views/spreadsheet_dashboard_views.xml 
+2026-09-15 20:15:10,221 1 INFO workflow_mutants odoo.modules.loading: loading spreadsheet_dashboard/views/menu_views.xml 
+2026-09-15 20:15:10,236 1 INFO workflow_mutants odoo.modules.loading: loading spreadsheet_dashboard/data/dashboard.xml 
+2026-09-15 20:15:10,257 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module spreadsheet_dashboard: loading translation file /usr/lib/python3/dist-packages/odoo/addons/spreadsheet_dashboard/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:10,287 1 INFO workflow_mutants odoo.modules.loading: Module spreadsheet_dashboard loaded in 0.23s, 327 queries (+327 other) 
+2026-09-15 20:15:10,287 1 INFO workflow_mutants odoo.modules.loading: Loading module stock (45/56) 
+2026-09-15 20:15:10,352 1 INFO workflow_mutants odoo.registry: module stock: creating or updating database tables 
+2026-09-15 20:15:11,295 1 INFO workflow_mutants odoo.modules.loading: loading stock/security/stock_security.xml 
+2026-09-15 20:15:11,375 1 INFO workflow_mutants odoo.modules.loading: loading stock/security/ir.model.access.csv 
+2026-09-15 20:15:11,400 1 INFO workflow_mutants odoo.modules.loading: loading stock/data/digest_data.xml 
+2026-09-15 20:15:11,404 1 INFO workflow_mutants odoo.modules.loading: loading stock/data/mail_templates.xml 
+2026-09-15 20:15:11,411 1 INFO workflow_mutants odoo.modules.loading: loading stock/data/default_barcode_patterns.xml 
+2026-09-15 20:15:11,421 1 INFO workflow_mutants odoo.modules.loading: loading stock/data/stock_data.xml 
+2026-09-15 20:15:11,745 1 INFO workflow_mutants odoo.modules.loading: loading stock/data/stock_sequence_data.xml 
+2026-09-15 20:15:11,781 1 INFO workflow_mutants odoo.modules.loading: loading stock/data/stock_traceability_report_data.xml 
+2026-09-15 20:15:11,786 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/report_stock_quantity.xml 
+2026-09-15 20:15:11,799 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/report_stock_reception.xml 
+2026-09-15 20:15:11,830 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/stock_report_views.xml 
+2026-09-15 20:15:11,873 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/report_package_barcode.xml 
+2026-09-15 20:15:11,891 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/report_lot_barcode.xml 
+2026-09-15 20:15:11,895 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/report_location_barcode.xml 
+2026-09-15 20:15:11,900 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/report_stockpicking_operations.xml 
+2026-09-15 20:15:11,909 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/report_deliveryslip.xml 
+2026-09-15 20:15:11,930 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/report_stockinventory.xml 
+2026-09-15 20:15:11,934 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/report_stock_rule.xml 
+2026-09-15 20:15:11,952 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/package_templates.xml 
+2026-09-15 20:15:11,958 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/packaging_barcode.xml 
+2026-09-15 20:15:11,961 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/picking_templates.xml 
+2026-09-15 20:15:11,970 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/product_templates.xml 
+2026-09-15 20:15:11,987 1 INFO workflow_mutants odoo.modules.loading: loading stock/report/report_return_slip.xml 
+2026-09-15 20:15:11,995 1 INFO workflow_mutants odoo.modules.loading: loading stock/data/mail_template_data.xml 
+2026-09-15 20:15:12,000 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_menu_views.xml 
+2026-09-15 20:15:12,026 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_picking_return_views.xml 
+2026-09-15 20:15:12,034 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_inventory_conflict.xml 
+2026-09-15 20:15:12,041 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_backorder_confirmation_views.xml 
+2026-09-15 20:15:12,048 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_quantity_history.xml 
+2026-09-15 20:15:12,053 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_request_count.xml 
+2026-09-15 20:15:12,059 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_replenishment_info.xml 
+2026-09-15 20:15:12,072 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_rules_report_views.xml 
+2026-09-15 20:15:12,081 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_warn_insufficient_qty_views.xml 
+2026-09-15 20:15:12,091 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/product_replenish_views.xml 
+2026-09-15 20:15:12,098 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/product_label_layout_views.xml 
+2026-09-15 20:15:12,123 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_orderpoint_snooze_views.xml 
+2026-09-15 20:15:12,139 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_package_destination_views.xml 
+2026-09-15 20:15:12,153 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_inventory_adjustment_name.xml 
+2026-09-15 20:15:12,165 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_inventory_warning.xml 
+2026-09-15 20:15:12,185 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_label_type.xml 
+2026-09-15 20:15:12,197 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_lot_label_layout.xml 
+2026-09-15 20:15:12,213 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_quant_relocate.xml 
+2026-09-15 20:15:12,225 1 INFO workflow_mutants odoo.modules.loading: loading stock/wizard/stock_put_in_pack_views.xml 
+2026-09-15 20:15:12,244 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/res_partner_views.xml 
+2026-09-15 20:15:12,306 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/product_strategy_views.xml 
+2026-09-15 20:15:12,359 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_lot_views.xml 
+2026-09-15 20:15:12,444 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_scrap_views.xml 
+2026-09-15 20:15:12,500 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_quant_views.xml 
+2026-09-15 20:15:12,801 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_warehouse_views.xml 
+2026-09-15 20:15:12,817 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_move_line_views.xml 
+2026-09-15 20:15:12,892 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_move_views.xml 
+2026-09-15 20:15:12,974 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_picking_views.xml 
+2026-09-15 20:15:13,105 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_picking_type_views.xml 
+2026-09-15 20:15:13,132 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/product_views.xml 
+2026-09-15 20:15:13,273 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_location_views.xml 
+2026-09-15 20:15:13,317 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_orderpoint_views.xml 
+2026-09-15 20:15:13,371 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_storage_category_views.xml 
+2026-09-15 20:15:13,391 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/res_config_settings_views.xml 
+2026-09-15 20:15:13,417 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/report_stock_traceability.xml 
+2026-09-15 20:15:13,424 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_template.xml 
+2026-09-15 20:15:13,430 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_rule_views.xml 
+2026-09-15 20:15:13,450 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_package_history_views.xml 
+2026-09-15 20:15:13,458 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_package_type_view.xml 
+2026-09-15 20:15:13,472 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_package_views.xml 
+2026-09-15 20:15:13,499 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_forecasted.xml 
+2026-09-15 20:15:13,503 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/stock_reference_views.xml 
+2026-09-15 20:15:13,519 1 INFO workflow_mutants odoo.modules.loading: loading stock/views/uom_uom_views.xml 
+2026-09-15 20:15:13,533 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module stock: loading translation file /usr/lib/python3/dist-packages/odoo/addons/stock/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:13,802 1 INFO workflow_mutants odoo.modules.loading: Module stock loaded in 3.51s, 5122 queries (+5122 other) 
+2026-09-15 20:15:13,802 1 INFO workflow_mutants odoo.modules.loading: Loading module account_add_gln (46/56) 
+2026-09-15 20:15:13,817 1 INFO workflow_mutants odoo.registry: module account_add_gln: creating or updating database tables 
+2026-09-15 20:15:13,879 1 INFO workflow_mutants odoo.modules.loading: loading account_add_gln/views/res_partner_views.xml 
+2026-09-15 20:15:13,900 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module account_add_gln: loading translation file /usr/lib/python3/dist-packages/odoo/addons/account_add_gln/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:13,911 1 INFO workflow_mutants odoo.modules.loading: Module account_add_gln loaded in 0.11s, 110 queries (+110 other) 
+2026-09-15 20:15:13,911 1 INFO workflow_mutants odoo.modules.loading: Loading module account_edi_ubl_cii (47/56) 
+2026-09-15 20:15:13,943 1 INFO workflow_mutants odoo.registry: module account_edi_ubl_cii: creating or updating database tables 
+2026-09-15 20:15:13,962 1 INFO workflow_mutants odoo.models: Prepare computation of res.partner.peppol_endpoint 
+2026-09-15 20:15:13,962 1 INFO workflow_mutants odoo.models: Prepare computation of res.partner.peppol_eas 
+2026-09-15 20:15:14,073 1 INFO workflow_mutants odoo.modules.loading: loading account_edi_ubl_cii/data/cii_22_templates.xml 
+2026-09-15 20:15:14,092 1 INFO workflow_mutants odoo.modules.loading: loading account_edi_ubl_cii/data/ir_config_parameter_data.xml 
+2026-09-15 20:15:14,094 1 INFO workflow_mutants odoo.modules.loading: loading account_edi_ubl_cii/views/account_tax_views.xml 
+2026-09-15 20:15:14,107 1 INFO workflow_mutants odoo.modules.loading: loading account_edi_ubl_cii/views/account_move_views.xml 
+2026-09-15 20:15:14,123 1 INFO workflow_mutants odoo.modules.loading: loading account_edi_ubl_cii/views/res_partner_views.xml 
+2026-09-15 20:15:14,137 1 INFO workflow_mutants odoo.modules.loading: loading account_edi_ubl_cii/report/account_edi_ubl_cii_report_templates.xml 
+2026-09-15 20:15:14,161 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module account_edi_ubl_cii: loading translation file /usr/lib/python3/dist-packages/odoo/addons/account_edi_ubl_cii/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:14,215 1 INFO workflow_mutants odoo.modules.loading: Module account_edi_ubl_cii loaded in 0.30s, 383 queries (+383 other) 
+2026-09-15 20:15:14,215 1 INFO workflow_mutants odoo.modules.loading: Loading module account_payment (48/56) 
+2026-09-15 20:15:14,238 1 INFO workflow_mutants odoo.registry: module account_payment: creating or updating database tables 
+2026-09-15 20:15:14,361 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/data/ir_config_parameter.xml 
+2026-09-15 20:15:14,364 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/security/ir.model.access.csv 
+2026-09-15 20:15:14,369 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/security/ir_rules.xml 
+2026-09-15 20:15:14,374 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/views/account_payment_menus.xml 
+2026-09-15 20:15:14,387 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/views/account_portal_templates.xml 
+2026-09-15 20:15:14,432 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/views/account_move_views.xml 
+2026-09-15 20:15:14,451 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/views/account_journal_views.xml 
+2026-09-15 20:15:14,460 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/views/account_payment_views.xml 
+2026-09-15 20:15:14,468 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/views/payment_form_templates.xml 
+2026-09-15 20:15:14,473 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/views/payment_provider_views.xml 
+2026-09-15 20:15:14,479 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/views/payment_transaction_views.xml 
+2026-09-15 20:15:14,486 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/wizards/account_payment_register_views.xml 
+2026-09-15 20:15:14,494 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/wizards/payment_link_wizard_views.xml 
+2026-09-15 20:15:14,504 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/wizards/payment_refund_wizard_views.xml 
+2026-09-15 20:15:14,509 1 INFO workflow_mutants odoo.modules.loading: loading account_payment/wizards/res_config_settings_views.xml 
+2026-09-15 20:15:14,535 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module account_payment: loading translation file /usr/lib/python3/dist-packages/odoo/addons/account_payment/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:14,582 1 INFO workflow_mutants odoo.modules.loading: Module account_payment loaded in 0.37s, 574 queries (+574 other) 
+2026-09-15 20:15:14,582 1 INFO workflow_mutants odoo.modules.loading: Loading module snailmail_account (49/56) 
+2026-09-15 20:15:14,628 1 INFO workflow_mutants odoo.registry: module snailmail_account: creating or updating database tables 
+2026-09-15 20:15:14,735 1 INFO workflow_mutants odoo.modules.loading: loading snailmail_account/views/res_config_settings_views.xml 
+2026-09-15 20:15:14,758 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module snailmail_account: loading translation file /usr/lib/python3/dist-packages/odoo/addons/snailmail_account/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:14,769 1 INFO workflow_mutants odoo.modules.loading: Module snailmail_account loaded in 0.19s, 197 queries (+197 other) 
+2026-09-15 20:15:14,769 1 INFO workflow_mutants odoo.modules.loading: Loading module spreadsheet_account (50/56) 
+2026-09-15 20:15:14,782 1 INFO workflow_mutants odoo.registry: module spreadsheet_account: creating or updating database tables 
+2026-09-15 20:15:14,813 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module spreadsheet_account: loading translation file /usr/lib/python3/dist-packages/odoo/addons/spreadsheet_account/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:14,835 1 INFO workflow_mutants odoo.modules.loading: Module spreadsheet_account loaded in 0.07s, 61 queries (+61 other) 
+2026-09-15 20:15:14,835 1 INFO workflow_mutants odoo.modules.loading: Loading module spreadsheet_dashboard_account (51/56) 
+2026-09-15 20:15:14,848 1 INFO workflow_mutants odoo.modules.loading: loading spreadsheet_dashboard_account/data/dashboards.xml 
+2026-09-15 20:15:14,879 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module spreadsheet_dashboard_account: loading translation file /usr/lib/python3/dist-packages/odoo/addons/spreadsheet_dashboard_account/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:14,885 1 INFO workflow_mutants odoo.modules.loading: Module spreadsheet_dashboard_account loaded in 0.05s, 40 queries (+40 other) 
+2026-09-15 20:15:14,885 1 INFO workflow_mutants odoo.modules.loading: Loading module stock_account (52/56) 
+2026-09-15 20:15:14,926 1 INFO workflow_mutants odoo.registry: module stock_account: creating or updating database tables 
+2026-09-15 20:15:15,210 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/security/stock_account_security.xml 
+2026-09-15 20:15:15,228 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/security/ir.model.access.csv 
+2026-09-15 20:15:15,237 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/data/stock_account_data.xml 
+2026-09-15 20:15:15,258 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/views/account_account_views.xml 
+2026-09-15 20:15:15,270 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/views/stock_account_views.xml 
+2026-09-15 20:15:15,277 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/views/res_config_settings_views.xml 
+2026-09-15 20:15:15,291 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/views/report_invoice.xml 
+2026-09-15 20:15:15,302 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/views/stock_quant_views.xml 
+2026-09-15 20:15:15,513 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/views/product_views.xml 
+2026-09-15 20:15:15,627 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/views/product_value_views.xml 
+2026-09-15 20:15:15,645 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/views/stock_location_views.xml 
+2026-09-15 20:15:15,668 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/views/stock_lot_views.xml 
+2026-09-15 20:15:15,688 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/views/stock_picking_views.xml 
+2026-09-15 20:15:15,722 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/views/stock_move_views.xml 
+2026-09-15 20:15:15,778 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/wizard/stock_inventory_adjustment_name_views.xml 
+2026-09-15 20:15:15,798 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/report/account_invoice_report_view.xml 
+2026-09-15 20:15:15,804 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/report/stock_avco_audit_report_views.xml 
+2026-09-15 20:15:15,825 1 INFO workflow_mutants odoo.modules.loading: loading stock_account/report/stock_valuation_report.xml 
+2026-09-15 20:15:15,836 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module stock_account: loading translation file /usr/lib/python3/dist-packages/odoo/addons/stock_account/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:15,920 1 INFO workflow_mutants odoo.modules.loading: Module stock_account loaded in 1.04s, 927 queries (+927 other) 
+2026-09-15 20:15:15,920 1 INFO workflow_mutants odoo.modules.loading: Loading module stock_sms (53/56) 
+2026-09-15 20:15:15,938 1 INFO workflow_mutants odoo.registry: module stock_sms: creating or updating database tables 
+2026-09-15 20:15:16,027 1 INFO workflow_mutants odoo.modules.loading: loading stock_sms/data/sms_data.xml 
+2026-09-15 20:15:16,032 1 INFO workflow_mutants odoo.modules.loading: loading stock_sms/views/res_config_settings_views.xml 
+2026-09-15 20:15:16,051 1 INFO workflow_mutants odoo.modules.loading: loading stock_sms/wizard/confirm_stock_sms_views.xml 
+2026-09-15 20:15:16,055 1 INFO workflow_mutants odoo.modules.loading: loading stock_sms/security/ir.model.access.csv 
+2026-09-15 20:15:16,061 1 INFO workflow_mutants odoo.modules.loading: loading stock_sms/security/sms_security.xml 
+2026-09-15 20:15:16,069 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module stock_sms: loading translation file /usr/lib/python3/dist-packages/odoo/addons/stock_sms/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:16,101 1 INFO workflow_mutants odoo.modules.loading: Module stock_sms loaded in 0.18s, 208 queries (+208 other) 
+2026-09-15 20:15:16,101 1 INFO workflow_mutants odoo.modules.loading: Loading module workflow_case (54/56) 
+2026-09-15 20:15:16,109 1 INFO workflow_mutants odoo.registry: module workflow_case: creating or updating database tables 
+2026-09-15 20:15:16,154 1 INFO workflow_mutants odoo.modules.loading: loading workflow_case/ir.model.access.csv 
+2026-09-15 20:15:16,159 1 INFO workflow_mutants odoo.modules.loading: loading workflow_case/views.xml 
+2026-09-15 20:15:16,184 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module workflow_case: no translation for language fr_FR 
+2026-09-15 20:15:16,188 1 INFO workflow_mutants odoo.modules.loading: Module workflow_case loaded in 0.09s, 110 queries (+110 other) 
+2026-09-15 20:15:16,188 1 INFO workflow_mutants odoo.modules.loading: Loading module spreadsheet_dashboard_stock_account (55/56) 
+2026-09-15 20:15:16,199 1 INFO workflow_mutants odoo.modules.loading: loading spreadsheet_dashboard_stock_account/data/dashboards.xml 
+2026-09-15 20:15:16,228 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module spreadsheet_dashboard_stock_account: loading translation file /usr/lib/python3/dist-packages/odoo/addons/spreadsheet_dashboard_stock_account/i18n/fr.po for language fr_FR 
+2026-09-15 20:15:16,234 1 INFO workflow_mutants odoo.modules.loading: Module spreadsheet_dashboard_stock_account loaded in 0.05s, 33 queries (+33 other) 
+2026-09-15 20:15:16,234 1 INFO workflow_mutants odoo.modules.loading: Loading module workflow_oracle (56/56) 
+2026-09-15 20:15:16,250 1 INFO workflow_mutants odoo.addons.base.models.ir_module: module workflow_oracle: no translation for language fr_FR 
+2026-09-15 20:15:16,266 1 INFO workflow_mutants odoo.modules.loading: Module workflow_oracle loaded in 0.03s, 14 queries (+14 other) 
+2026-09-15 20:15:16,266 1 INFO workflow_mutants odoo.modules.loading: 56 modules loaded in 27.95s, 37463 queries (+37464 extra) 
+2026-09-15 20:15:16,791 1 INFO workflow_mutants odoo.modules.loading: Modules loaded. 
+2026-09-15 20:15:17,849 1 INFO workflow_mutants odoo.registry: Registry changed, signaling through the database 
+2026-09-15 20:15:17,850 1 INFO workflow_mutants odoo.registry: Registry loaded in 43.944s 
+2026-09-15 20:15:17,850 1 INFO workflow_mutants odoo.service.server: Starting post tests 
+2026-09-15 20:15:17,885 1 INFO workflow_mutants odoo.addons.base.models.ir_qweb: Pregenerating assets bundles 
+2026-09-15 20:15:18,075 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1b64f44/api_doc.assets.min.js (id:512) 
+2026-09-15 20:15:18,086 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/5f9240e/bus.websocket_worker_assets.min.js (id:513) 
+2026-09-15 20:15:18,090 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/63ee1ff/html_editor.assets_history_diff.min.js (id:514) 
+2026-09-15 20:15:18,093 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/9f73438/html_editor.assets_image_cropper.min.js (id:515) 
+2026-09-15 20:15:18,146 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/0df50fa/mail.assets_discuss_public_test_tours.min.js (id:516) 
+2026-09-15 20:15:18,151 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c138aa5/mail.assets_lamejs.min.js (id:517) 
+2026-09-15 20:15:18,217 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/571aab4/mail.assets_odoo_sfu.min.js (id:518) 
+2026-09-15 20:15:18,862 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/d4403c3/mail.assets_public.min.js (id:519) 
+2026-09-15 20:15:19,357 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/7696b32/portal.assets_chatter.min.js (id:520) 
+2026-09-15 20:15:19,370 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/snailmail.report_assets_snailmail.min.js (id:521) 
+2026-09-15 20:15:19,372 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/spreadsheet.assets_print.min.js (id:522) 
+2026-09-15 20:15:19,508 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/99f59b1/spreadsheet.o_spreadsheet.min.js (id:523) 
+2026-09-15 20:15:19,747 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/12e3467/spreadsheet.public_spreadsheet.min.js (id:524) 
+2026-09-15 20:15:19,816 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/19c3e69/web.__assets_tests_call__.min.js (id:525) 
+2026-09-15 20:15:19,820 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/bd39c8f/web._assets_jquery.min.js (id:526) 
+2026-09-15 20:15:19,828 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/4bcc693/web.ace_lib.min.js (id:527) 
+2026-09-15 20:15:19,833 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/e672eaf/web.assets_clickbot.min.js (id:528) 
+2026-09-15 20:15:19,905 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c97da82/web.assets_emoji.min.js (id:529) 
+2026-09-15 20:15:20,228 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/0122c94/web.assets_frontend_lazy.min.js (id:530) 
+2026-09-15 20:15:20,234 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/10d8e96/web.assets_frontend_minimal.min.js (id:531) 
+2026-09-15 20:15:20,299 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/5222b63/web.assets_tests.min.js (id:532) 
+2026-09-15 20:15:22,192 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cdb1888/web.assets_unit_tests.min.js (id:533) 
+2026-09-15 20:15:23,552 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/fa6a4da/web.assets_unit_tests_setup.min.js (id:534) 
+2026-09-15 20:15:24,712 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ba6d3dc/web.assets_web.min.js (id:535) 
+2026-09-15 20:15:24,728 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c734373/web.chartjs_lib.min.js (id:536) 
+2026-09-15 20:15:24,740 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ea18231/web.fullcalendar_lib.min.js (id:537) 
+2026-09-15 20:15:24,763 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/0fefbae/web.qunit_suite_tests.min.js (id:538) 
+2026-09-15 20:15:24,827 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/8b0af72/web.report_assets_common.min.js (id:539) 
+2026-09-15 20:15:24,834 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.report_assets_pdf.min.js (id:540) 
+2026-09-15 20:15:26,093 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/eede308/web.tests_assets.min.js (id:541) 
+2026-09-15 20:15:26,125 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/c9c387d/web_tour.interactive.min.js (id:542) 
+2026-09-15 20:15:26,126 1 INFO workflow_mutants odoo.addons.base.models.ir_qweb: JS Assets bundles generated in 8.089067697525024 seconds 
+2026-09-15 20:15:26,410 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/1145037/api_doc.assets.min.css (id:543) 
+2026-09-15 20:15:26,413 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/bus.websocket_worker_assets.min.css (id:544) 
+2026-09-15 20:15:26,419 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/f483e76/html_editor.assets_history_diff.min.css (id:545) 
+2026-09-15 20:15:26,424 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/491d521/html_editor.assets_image_cropper.min.css (id:546) 
+2026-09-15 20:15:26,427 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/mail.assets_discuss_public_test_tours.min.css (id:547) 
+2026-09-15 20:15:26,431 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/mail.assets_lamejs.min.css (id:548) 
+2026-09-15 20:15:26,434 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/mail.assets_odoo_sfu.min.css (id:549) 
+2026-09-15 20:15:26,865 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/abf8dff/mail.assets_public.min.css (id:550) 
+2026-09-15 20:15:26,915 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/fa9ac1a/portal.assets_chatter.min.css (id:551) 
+2026-09-15 20:15:26,947 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/2185194/snailmail.report_assets_snailmail.min.css (id:552) 
+2026-09-15 20:15:26,949 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/eba1830/spreadsheet.assets_print.min.css (id:553) 
+2026-09-15 20:15:26,951 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/spreadsheet.o_spreadsheet.min.css (id:554) 
+2026-09-15 20:15:27,238 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/866bee6/spreadsheet.public_spreadsheet.min.css (id:555) 
+2026-09-15 20:15:27,240 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/stock.assets_stock_print_report.min.css (id:556) 
+2026-09-15 20:15:27,242 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.__assets_tests_call__.min.css (id:557) 
+2026-09-15 20:15:27,243 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web._assets_jquery.min.css (id:558) 
+2026-09-15 20:15:27,244 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.ace_lib.min.css (id:559) 
+2026-09-15 20:15:27,245 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_clickbot.min.css (id:560) 
+2026-09-15 20:15:27,247 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_emoji.min.css (id:561) 
+2026-09-15 20:15:27,770 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/b1ac628/web.assets_frontend.min.css (id:562) 
+2026-09-15 20:15:28,265 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/b1ac628/web.assets_frontend_lazy.min.css (id:563) 
+2026-09-15 20:15:28,268 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_frontend_minimal.min.css (id:564) 
+2026-09-15 20:15:28,271 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.assets_tests.min.css (id:565) 
+2026-09-15 20:15:28,276 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ba06368/web.assets_unit_tests.min.css (id:566) 
+2026-09-15 20:15:29,102 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/ae527b3/web.assets_unit_tests_setup.min.css (id:567) 
+2026-09-15 20:15:29,880 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf86c83/web.assets_web.min.css (id:568) 
+2026-09-15 20:15:30,756 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/f0c1ed9/web.assets_web_dark.min.css (id:569) 
+2026-09-15 20:15:31,603 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/27dcf42/web.assets_web_print.min.css (id:570) 
+2026-09-15 20:15:31,606 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.chartjs_lib.min.css (id:571) 
+2026-09-15 20:15:31,607 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.fullcalendar_lib.min.css (id:572) 
+2026-09-15 20:15:31,609 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web.qunit_suite_tests.min.css (id:573) 
+2026-09-15 20:15:32,017 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/e25b13f/web.report_assets_common.min.css (id:574) 
+2026-09-15 20:15:32,019 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/da03401/web.report_assets_pdf.min.css (id:575) 
+2026-09-15 20:15:32,799 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/e462256/web.tests_assets.min.css (id:576) 
+2026-09-15 20:15:32,801 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/cf83e13/web_tour.interactive.min.css (id:577) 
+2026-09-15 20:15:32,801 1 INFO workflow_mutants odoo.addons.base.models.ir_qweb: CSS Assets bundles generated in 6.675340414047241 seconds 
+2026-09-15 20:15:32,815 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows: Starting TestStockWorkflow.test_partial_then_cron_real_rights ... 
+2026-09-15 20:15:32,932 1 INFO workflow_mutants odoo.addons.auth_signup.models.res_users: Signup email sent for user <warehouse_lab> to <w.w@example.com> 
+2026-09-15 20:15:33,015 1 INFO workflow_mutants odoo.addons.auth_signup.models.res_users: Signup email sent for user <portal_lab> to <p.p@example.com> 
+2026-09-15 20:15:33,247 1 INFO workflow_mutants odoo.addons.base.models.ir_cron: Job 'Synthetic preparation' (20) starting 
+2026-09-15 20:15:33,357 1 INFO workflow_mutants odoo.tests.common: Simulating signal changes during tests 
+2026-09-15 20:15:33,360 1 INFO workflow_mutants odoo.addons.base.models.ir_cron: Job 'Synthetic preparation' (20) fully done (#loop 1; done 0; remaining 0; duration 0.11s) 
+2026-09-15 20:15:33,369 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows: ====================================================================== 
+2026-09-15 20:15:33,369 1 ERROR workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows: FAIL: TestStockWorkflow.test_partial_then_cron_real_rights
+Traceback (most recent call last):
+  File "/mnt/extra-addons/workflow_oracle/tests/test_workflows.py", line 80, in test_partial_then_cron_real_rights
+    self.assertEqual(backorder.move_ids.quantity, 3, "WORKFLOW_STOCK_REMAINDER")
+AssertionError: 5.0 != 3 : WORKFLOW_STOCK_REMAINDER
+ 
+2026-09-15 20:15:33,393 1 INFO workflow_mutants odoo.addons.base.models.ir_attachment: filestore gc 480 checked, 1 removed 
+2026-09-15 20:15:35,182 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows: Starting TestInvoiceWorkflow.test_historical_invoice_pdf ... 
+2026-09-15 20:15:35,777 1 INFO workflow_mutants odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltopdf binary at /usr/local/bin/wkhtmltopdf 
+2026-09-15 20:15:35,789 1 INFO workflow_mutants odoo.addons.base.models.ir_actions_report: Will use the Wkhtmltoimage binary at /usr/local/bin/wkhtmltoimage 
+2026-09-15 20:15:36,127 1 INFO workflow_mutants odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-09-15 20:15:36,156 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/a5f4496/web.report_assets_pdf.autoprefixed.min.css (id:599) 
+2026-09-15 20:15:36,161 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:36] "GET /web/assets/a5f4496/web.report_assets_pdf.autoprefixed.min.css HTTP/1.1" 200 - 14 0.006 0.028
+2026-09-15 20:15:36,629 1 INFO workflow_mutants odoo.addons.base.models.assetsbundle: Generating a new asset bundle attachment /web/assets/3cd1fed/web.report_assets_common.autoprefixed.min.css (id:600) 
+2026-09-15 20:15:36,631 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:36] "GET /web/assets/3cd1fed/web.report_assets_common.autoprefixed.min.css HTTP/1.1" 200 - 12 0.018 0.472
+2026-09-15 20:15:36,656 1 INFO ? werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:36] "GET /web/static/fonts/lato/Lato-Reg-webfont.woff HTTP/1.1" 200 - 0 0.000 0.001
+2026-09-15 20:15:36,660 1 INFO ? werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:36] "GET /web/static/fonts/lato/Lato-Lig-webfont.woff HTTP/1.1" 200 - 0 0.000 0.003
+2026-09-15 20:15:36,662 1 INFO ? werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:36] "GET /web/static/fonts/lato/Lato-Hai-webfont.woff HTTP/1.1" 200 - 0 0.000 0.004
+2026-09-15 20:15:36,663 1 INFO ? werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:36] "GET /web/static/fonts/lato/Lato-Bol-webfont.woff HTTP/1.1" 200 - 0 0.000 0.005
+2026-09-15 20:15:36,663 1 INFO ? werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:36] "GET /web/static/fonts/lato/Lato-Bla-webfont.woff HTTP/1.1" 200 - 0 0.000 0.003
+2026-09-15 20:15:38,749 1 INFO workflow_mutants odoo.addons.base.models.ir_actions_report: The PDF report has been generated for model: account.move, records [1]. 
+2026-09-15 20:15:38,761 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows: ====================================================================== 
+2026-09-15 20:15:38,761 1 ERROR workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows: FAIL: TestInvoiceWorkflow.test_historical_invoice_pdf
+Traceback (most recent call last):
+  File "/mnt/extra-addons/workflow_oracle/tests/test_workflows.py", line 147, in test_historical_invoice_pdf
+    self.assertIn(label, rendered, "WORKFLOW_INVOICE_LINE")
+AssertionError: 'Explication gratuite' not found in 'company_1_data\nÉtats-Unis\n\npartner_a\n\nFacture FAC/2020/00001\nDate de facturation\n03/02/2020\nDescription\n\nÉchéance\n03/02/2020\nQuantité\n\nPrix unitaire\n\nMontant\n\nPrestation historique\n\n1,00\n\n7,00\n\n$ 7,00\n\nForfait convenu\n\n1,00\n\n42,00\n\n$ 42,00\n\nConditions de règlement : Règlement immédiat\nTotal\nCommunication de paiement : FAC/2020/00001\n\nPage 1 / 1\n\n$ 49,00\n\n\x0c' : WORKFLOW_INVOICE_LINE
+ 
+2026-09-15 20:15:38,782 1 INFO workflow_mutants odoo.addons.base.models.ir_attachment: filestore gc 4 checked, 4 removed 
+2026-09-15 20:15:38,788 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows: Starting TestFormWorkflow.test_explicit_value_survives_browser ... 
+2026-09-15 20:15:39,221 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Chrome pid: 25 
+2026-09-15 20:15:39,221 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Chrome headless temporary user profile dir: /tmp/tmpvba_mr8w_chrome_odoo 
+2026-09-15 20:15:39,222 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Issuing json command http://127.0.0.1:39883/json/version 
+2026-09-15 20:15:39,224 1 INFO workflow_mutants odoo.tests.common.requests: request SplitResult(scheme='http', netloc='127.0.0.1:39883', path='/json/version', query='', fragment='') with timeout 3 increased to 10s during tests 
+2026-09-15 20:15:39,229 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Browser version: Chrome/152.0.7977.75 
+2026-09-15 20:15:39,229 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Issuing json command http://127.0.0.1:39883/json 
+2026-09-15 20:15:39,229 1 INFO workflow_mutants odoo.tests.common.requests: request SplitResult(scheme='http', netloc='127.0.0.1:39883', path='/json', query='', fragment='') with timeout 3 increased to 10s during tests 
+2026-09-15 20:15:39,235 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Websocket url found: ws://127.0.0.1:39883/devtools/page/21946DEFE843E3A6E2BB09353DA6165A 
+2026-09-15 20:15:39,238 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Enable chrome headless console log notification 
+2026-09-15 20:15:39,240 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Chrome headless enable page notifications 
+2026-09-15 20:15:39,316 1 INFO workflow_mutants odoo.addons.base.models.res_users: Login successful for login:admin from n/a 
+2026-09-15 20:15:39,324 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Setting session cookie in browser 
+2026-09-15 20:15:39,325 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Open "http://127.0.0.1:8069/odoo/action-407/1" in browser 
+2026-09-15 20:15:39,325 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Navigating to: "http://127.0.0.1:8069/odoo/action-407/1" 
+2026-09-15 20:15:39,331 1 INFO workflow_mutants odoo.addons.base.models.ir_http: Generating routing map for key None 
+2026-09-15 20:15:39,900 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:39] "GET /odoo/action-407/1 HTTP/1.1" 200 - 133 0.090 0.480
+2026-09-15 20:15:39,902 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Navigation result: {'frameId': '21946DEFE843E3A6E2BB09353DA6165A', 'loaderId': '4D952D9D5D7E6EBE50E63E3CBC145A40', 'isDownload': False} 
+2026-09-15 20:15:39,902 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Evaluate ready code "odoo.isReady === true" 
+2026-09-15 20:15:39,923 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:39] "GET /web/assets/ba6d3dc/web.assets_web.min.js HTTP/1.1" 200 - 2 0.001 0.005
+2026-09-15 20:15:39,936 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:39] "GET /web/manifest.webmanifest HTTP/1.1" 200 - 15 0.006 0.013
+2026-09-15 20:15:39,954 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:39] "GET /web/webclient/load_menus HTTP/1.1" 200 - 8 0.005 0.031
+2026-09-15 20:15:39,958 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:39] "GET /web/assets/cf86c83/web.assets_web.min.css HTTP/1.1" 200 - 2 0.001 0.038
+2026-09-15 20:15:39,968 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:39] "GET /web/assets/5222b63/web.assets_tests.min.js HTTP/1.1" 200 - 2 0.001 0.002
+2026-09-15 20:15:39,981 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:39] "GET /web/assets/27dcf42/web.assets_web_print.min.css HTTP/1.1" 200 - 2 0.001 0.003
+2026-09-15 20:15:40,217 1 INFO ? werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:40] "GET /web/static/img/favicon.ico HTTP/1.1" 200 - 0 0.000 0.002
+2026-09-15 20:15:40,218 1 INFO ? werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:40] "GET /web/static/img/odoo-icon-192x192.png HTTP/1.1" 200 - 0 0.000 0.003
+2026-09-15 20:15:41,111 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /web/webclient/translations?hash=&lang=fr_FR HTTP/1.1" 200 - 1 0.001 0.851
+2026-09-15 20:15:41,139 1 INFO workflow_mutants odoo.addons.partner_autocomplete.models.res_company: Starting enrich of company My Company (1) 
+2026-09-15 20:15:41,161 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "POST /web/dataset/call_kw/res.company/iap_enrich_auto#res.company.iap_enrich_auto HTTP/1.1" 200 - 28 0.012 0.018
+2026-09-15 20:15:41,167 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /web/bundle/web_tour.interactive?lang=fr_FR HTTP/1.1" 200 - 2 0.000 0.026
+2026-09-15 20:15:41,172 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /bus/websocket_worker_bundle?v=19.0-2 HTTP/1.1" 200 - 3 0.001 0.026
+2026-09-15 20:15:41,175 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser.browser: Owl is running in 'dev' mode. 
+2026-09-15 20:15:41,183 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /web/service-worker.js HTTP/1.1" 200 - 0 0.000 0.001
+2026-09-15 20:15:41,193 1 INFO ? werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /mail/static/lib/idb-keyval/idb-keyval.js HTTP/1.1" 200 - 0 0.000 0.001
+2026-09-15 20:15:41,222 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /odoo HTTP/1.1" 200 - 23 0.008 0.019
+2026-09-15 20:15:41,234 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /odoo/offline HTTP/1.1" 200 - 5 0.002 0.034
+2026-09-15 20:15:41,262 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Evaluate test code "
+        (async () => {
+          const wait = async f => {for (let i=0;i<200;i++) {if(f()) return f(); await new Promise(r=>setTimeout(r,100));} throw Error('Expected form state missing');};
+          const input = await wait(()=>document.querySelector('.o_field_widget[name="suggestion"] input'));
+          input.value='9'; input.dispatchEvent(new Event('input',{bubbles:true})); input.dispatchEvent(new Event('change',{bubbles:true})); input.blur();
+          await new Promise(r=>setTimeout(r,700));
+          const quantity = document.querySelector('.o_field_widget[name="quantity"] input');
+          if (quantity.value !== '7') throw Error('WORKFLOW_FORM_EXPLICIT_VALUE '+quantity.value);
+          document.querySelector('button[name="action_confirm"]').click();
+          await wait(()=>document.querySelector('.o_statusbar_status button[data-value="confirmed"].o_arrow_button_current'));
+          console.log('WORKFLOW_BROWSER_REAL_CLICK'); console.log('test successful');
+        })().catch(e=>console.error(e));
+        " 
+2026-09-15 20:15:41,263 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /web/image/res.partner/3/avatar_128?unique=1789503310000 HTTP/1.1" 200 - 13 0.006 0.015
+2026-09-15 20:15:41,275 1 INFO ? werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /web/static/lib/odoo_ui_icons/fonts/odoo_ui_icons.woff2 HTTP/1.1" 200 - 0 0.000 0.010
+2026-09-15 20:15:41,278 1 INFO ? werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /web/static/src/libs/fontawesome/fonts/fontawesome-webfont.woff2?v=4.7.0 HTTP/1.1" 200 - 0 0.000 0.008
+2026-09-15 20:15:41,282 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "POST /web/action/load HTTP/1.1" 200 - 8 0.010 0.029
+2026-09-15 20:15:41,294 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /web/image?model=res.users&field=avatar_128&id=2 HTTP/1.1" 200 - 7 0.003 0.048
+2026-09-15 20:15:41,313 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "POST /mail/data HTTP/1.1" 200 - 26 0.007 0.034
+2026-09-15 20:15:41,316 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /web/assets/c9c387d/web_tour.interactive.min.js HTTP/1.1" 200 - 2 0.000 0.042
+2026-09-15 20:15:41,318 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "GET /websocket?version=19.0-2 HTTP/1.1" 101 - 0 0.000 0.037
+2026-09-15 20:15:41,323 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser.browser: click .o_app[data-menu-xmlid="account.menu_finance"] 
+2026-09-15 20:15:41,331 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "POST /web/dataset/call_kw/lab.workflow.form/get_views#lab.workflow.form.get_views HTTP/1.1" 200 - 20 0.005 0.035
+2026-09-15 20:15:41,345 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "POST /web/dataset/call_kw/lab.workflow.form/web_read#lab.workflow.form.web_read HTTP/1.1" 200 - 2 0.001 0.002
+2026-09-15 20:15:41,490 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "POST /web/dataset/call_kw/lab.workflow.form/onchange#lab.workflow.form.onchange HTTP/1.1" 200 - 2 0.001 0.003
+2026-09-15 20:15:41,649 1 INFO ? odoo.addons.bus.models.bus: Bus.loop listen imbus on db postgres 
+2026-09-15 20:15:41,727 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "POST /mail/data HTTP/1.1" 200 - 37 0.020 0.033
+2026-09-15 20:15:41,768 1 INFO workflow_mutants werkzeug: 127.0.0.1 - - [15/Sep/2026 20:15:41] "POST /web/dataset/call_kw/discuss.channel/channel_fetched#discuss.channel.channel_fetched HTTP/1.1" 200 - 9 0.006 0.023
+2026-09-15 20:15:42,181 1 ERROR workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser.browser: Error: WORKFLOW_FORM_EXPLICIT_VALUE 9
+    at <anonymous>:8:45 
+2026-09-15 20:15:42,181 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Asking for screenshot 
+2026-09-15 20:15:42,225 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Closing chrome headless with pid 25 
+2026-09-15 20:15:42,225 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Screenshot in: /tmp/odoo_tests/workflow_mutants/screenshots/sc_20260915_201542_224999_test_explicit_value_survives_browser.png 
+2026-09-15 20:15:42,225 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Closing websocket connection 
+2026-09-15 20:15:42,226 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Terminating chrome headless with pid 25 
+2026-09-15 20:15:42,323 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Chrome Log in: /tmp/odoo_tests/workflow_mutants/chrome_logs/chrome_log_20260915_201542_322653_test_explicit_value_survives_browser.txt 
+2026-09-15 20:15:42,323 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows.TestFormWorkflow.test_explicit_value_survives_browser: Removing chrome user profile "/tmp/tmpvba_mr8w_chrome_odoo" 
+2026-09-15 20:15:42,341 1 INFO workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows: ====================================================================== 
+2026-09-15 20:15:42,341 1 ERROR workflow_mutants odoo.addons.workflow_oracle.tests.test_workflows: FAIL: TestFormWorkflow.test_explicit_value_survives_browser
+Traceback (most recent call last):
+  File "/mnt/extra-addons/workflow_oracle/tests/test_workflows.py", line 161, in test_explicit_value_survives_browser
+    self.browser_js(
+  File "/usr/lib/python3/dist-packages/odoo/tests/common.py", line 2553, in browser_js
+    self.fail('%s\n\n%s' % (message, error))
+AssertionError: The test code "
+        (async () => {
+          const wait = async f => {for (let i=0;i<200;i++) {if(f()) return f(); await new Promise(r=>setTimeout(r,100));} throw Error('Expected form state missing');};
+          const input = await wait(()=>document.querySelector('.o_field_widget[name="suggestion"] input'));
+          input.value='9'; input.dispatchEvent(new Event('input',{bubbles:true})); input.dispatchEvent(new Event('change',{bubbles:true})); input.blur();
+          await new Promise(r=>setTimeout(r,700));
+          const quantity = document.querySelector('.o_field_widget[name="quantity"] input');
+          if (quantity.value !== '7') throw Error('WORKFLOW_FORM_EXPLICIT_VALUE '+quantity.value);
+          document.querySelector('button[name="action_confirm"]').click();
+          await wait(()=>document.querySelector('.o_statusbar_status button[data-value="confirmed"].o_arrow_button_current'));
+          console.log('WORKFLOW_BROWSER_REAL_CLICK'); console.log('test successful');
+        })().catch(e=>console.error(e));
+        " failed
+
+Error: WORKFLOW_FORM_EXPLICIT_VALUE 9
+    at <anonymous>:8:45
+ 
+2026-09-15 20:15:42,355 1 INFO workflow_mutants odoo.addons.base.models.ir_attachment: filestore gc 0 checked, 0 removed 
+2026-09-15 20:15:42,356 1 WARNING workflow_mutants odoo.tests.common: A child process was found, terminating it: psutil.Process(pid=33, name='chrome_crashpad', status='zombie', started='20:15:38') 
+2026-09-15 20:15:42,357 1 WARNING workflow_mutants odoo.tests.common: A child process was found, terminating it: psutil.Process(pid=35, name='chrome_crashpad', status='zombie', started='20:15:38') 
+2026-09-15 20:15:42,358 1 INFO workflow_mutants odoo.service.server: 3 post-tests in 24.51s, 4554 queries 
+2026-09-15 20:15:42,358 1 INFO workflow_mutants odoo.tests.stats: workflow_oracle: 9 tests 9.54s 4100 queries 
+2026-09-15 20:15:42,358 1 ERROR workflow_mutants odoo.tests.result: 3 failed, 0 error(s) of 3 tests when loading database 'workflow_mutants' 
+2026-09-15 20:15:42,358 1 INFO workflow_mutants odoo.service.server: Initiating shutdown 
+2026-09-15 20:15:42,358 1 INFO workflow_mutants odoo.service.server: Hit CTRL-C again or send a second signal to force the shutdown. 
+2026-09-15 20:15:42,743 1 INFO workflow_mutants odoo.sql_db: ConnectionPool(read/write;used=0/count=0/max=64): Closed 2 connections  

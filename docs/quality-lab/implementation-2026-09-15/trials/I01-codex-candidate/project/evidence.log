@@ -1,0 +1,14 @@
+test_independent_pending (test_public.PublicTest) ... ok
+test_dependencies_must_be_current_transitively (test_scheduler.ReadyTests) ... ok
+test_does_not_mutate_inputs (test_scheduler.ReadyTests) ... ok
+test_locks_and_candidate_tasks_do_not_conflict_each_other (test_scheduler.ReadyTests) ... ok
+test_only_received_dependencies_release_a_task (test_scheduler.ReadyTests) ... ok
+test_rejects_cycles_even_without_pending_tasks (test_scheduler.ReadyTests) ... ok
+test_rejects_duplicate_missing_and_invalid_status (test_scheduler.ReadyTests) ... ok
+test_rejects_invalid_lock_mode (test_scheduler.ReadyTests) ... ok
+test_results_are_lexically_sorted (test_scheduler.ReadyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.000s
+
+OK

@@ -1,0 +1,52 @@
+test_independent_pending (test_public.PublicTest) ... ok
+test_deep_received_chain_releases (test_scheduler.EligibilityTest) ... ok
+test_dependency_must_be_received (test_scheduler.EligibilityTest) ... ok
+test_diamond_shares_memoized_verdict (test_scheduler.EligibilityTest) ... ok
+test_empty_task_list (test_scheduler.EligibilityTest) ... ok
+test_one_stale_branch_among_many_blocks (test_scheduler.EligibilityTest) ... ok
+test_only_pending_tasks_are_proposed (test_scheduler.EligibilityTest) ... ok
+test_own_proof_current_is_irrelevant (test_scheduler.EligibilityTest) ... ok
+test_pending_dependency_blocks_even_when_itself_ready (test_scheduler.EligibilityTest)
+B est un candidat, mais rester pending ne libère pas A. ... ok
+test_received_dependency_with_current_proof_releases (test_scheduler.EligibilityTest) ... ok
+test_received_dependency_with_stale_proof_blocks (test_scheduler.EligibilityTest) ... ok
+test_result_is_sorted_lexicographically (test_scheduler.EligibilityTest) ... ok
+test_running_transitive_dependency_blocks_descendant (test_scheduler.EligibilityTest) ... ok
+test_stale_transitive_dependency_blocks_descendant (test_scheduler.EligibilityTest)
+Une dépendance reçue mais fondée sur une dépendance périmée ne libère pas. ... ok
+test_wide_chain_does_not_hit_recursion_limit (test_scheduler.EligibilityTest) ... ok
+test_blocked_resource_among_several_blocks_task (test_scheduler.LockTest) ... ok
+test_lock_blocks_even_when_dependencies_are_satisfied (test_scheduler.LockTest) ... ok
+test_lock_on_untouched_resource_is_ignored (test_scheduler.LockTest) ... ok
+test_non_pending_tasks_do_not_create_locks (test_scheduler.LockTest) ... ok
+test_pending_candidates_do_not_lock_each_other (test_scheduler.LockTest)
+La fonction expose les candidats, pas une vague déjà revendiquée. ... ok
+test_read_allowed_under_read_lock (test_scheduler.LockTest) ... ok
+test_read_blocked_by_write_lock (test_scheduler.LockTest) ... ok
+test_task_reading_and_writing_same_locked_resource (test_scheduler.LockTest) ... ok
+test_write_blocked_by_read_lock (test_scheduler.LockTest) ... ok
+test_write_blocked_by_write_lock (test_scheduler.LockTest) ... ok
+test_inputs_are_left_untouched (test_scheduler.PurityTest) ... ok
+test_repeated_calls_agree (test_scheduler.PurityTest) ... ok
+test_result_is_a_plain_sorted_list_of_ids (test_scheduler.PurityTest) ... ok
+test_cycle_between_pending_tasks (test_scheduler.RejectionTest) ... ok
+test_cycle_in_a_component_that_is_not_pending (test_scheduler.RejectionTest)
+Même hors du chemin des candidats, un cycle est rejeté. ... ok
+test_cycle_unreachable_from_any_pending_task (test_scheduler.RejectionTest) ... ok
+test_diamond_is_not_a_cycle (test_scheduler.RejectionTest) ... ok
+test_duplicate_identifier (test_scheduler.RejectionTest) ... ok
+test_duplicate_identifier_among_non_pending (test_scheduler.RejectionTest) ... ok
+test_long_chain_cycle_detection_is_iterative (test_scheduler.RejectionTest) ... ok
+test_longer_cycle (test_scheduler.RejectionTest) ... ok
+test_missing_dependency (test_scheduler.RejectionTest) ... ok
+test_missing_dependency_of_non_pending_task (test_scheduler.RejectionTest) ... ok
+test_repeated_dependency_is_not_a_cycle (test_scheduler.RejectionTest) ... ok
+test_self_dependency_is_a_cycle (test_scheduler.RejectionTest) ... ok
+test_unknown_lock_mode (test_scheduler.RejectionTest) ... ok
+test_unknown_lock_mode_on_untouched_resource (test_scheduler.RejectionTest) ... ok
+test_unknown_status (test_scheduler.RejectionTest) ... ok
+
+----------------------------------------------------------------------
+Ran 43 tests in 0.017s
+
+OK

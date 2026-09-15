@@ -1,0 +1,300 @@
+{
+  "author": {
+    "model": "principal",
+    "provider": "codex",
+    "role": "orchestrator"
+  },
+  "decisions": [],
+  "history": [
+    {
+      "action": "prepared",
+      "at": "2026-09-15T20:20:15+00:00"
+    },
+    {
+      "action": "start",
+      "at": "2026-09-15T20:20:15+00:00",
+      "reason": null,
+      "task_id": "T01"
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-15T20:20:15+00:00",
+      "reason": null,
+      "task_id": "T01"
+    },
+    {
+      "action": "start",
+      "at": "2026-09-15T20:20:15+00:00",
+      "reason": null,
+      "task_id": "T02"
+    },
+    {
+      "action": "added",
+      "at": "2026-09-15T20:20:15+00:00",
+      "tasks": [
+        "T03"
+      ]
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-15T20:20:15+00:00",
+      "reason": null,
+      "task_id": "T02"
+    },
+    {
+      "action": "start",
+      "at": "2026-09-15T20:20:15+00:00",
+      "reason": null,
+      "task_id": "T03"
+    },
+    {
+      "action": "finish",
+      "at": "2026-09-15T20:20:15+00:00",
+      "reason": null,
+      "task_id": "T03"
+    }
+  ],
+  "intentions_file": "changelog/release/intentions.json",
+  "schema": 2,
+  "tasks": [
+    {
+      "acceptance": [
+        "synthetic assertion passes"
+      ],
+      "attempts": [
+        {
+          "at": "2026-09-15T20:20:15+00:00",
+          "flow": ".odoo-agents/flows/plan-t01-178eb07c.json",
+          "sources_before": {
+            "totals/check.py": {
+              "mode": 436,
+              "sha256": "0b9d97a360ca7f0c9f5dafd623bc90354ec50afb1f199fd242f82259cc35a5dc"
+            }
+          }
+        }
+      ],
+      "checks": [
+        {
+          "cases": [
+            "explicit value"
+          ],
+          "command": [
+            "/usr/bin/python3",
+            "totals/check.py"
+          ],
+          "environment": "synthetic-local-v1",
+          "id": "assertion"
+        }
+      ],
+      "depends_on": [],
+      "execution": {
+        "effort": "high",
+        "model": "principal",
+        "provider": "codex"
+      },
+      "id": "T01",
+      "intentions_file": "changelog/release/intentions.json",
+      "reads": [],
+      "receipt": {
+        "acceptance": {
+          "path": "T01-acceptance.md",
+          "sha256": "4b436a7f25b730b1baa85b5d9ec7577f8fb559a8bfebf0bab2ffbf036c049622"
+        },
+        "at": "2026-09-15T20:20:15+00:00",
+        "checks": {
+          "assertion": {
+            "path": "proofs/T01.json",
+            "sha256": "04f96fd8c5f1e604916c05ef9b493f3830e10fdd099b5022a8e656e171ce8a24"
+          }
+        },
+        "contract_sha256": "3bc76a6e6138da04ef5303f5587a651058ebf753121514592673cc32f098092b",
+        "dependencies": {},
+        "dependency_version": 2,
+        "memory": {
+          "path": "T01-memory.md",
+          "sha256": "87ff8f20217538f595b7fd3f4806b481df156db378fe3bc2e92ed22ec521fc86"
+        },
+        "proof": {
+          "path": "proofs/T01.json",
+          "sha256": "04f96fd8c5f1e604916c05ef9b493f3830e10fdd099b5022a8e656e171ce8a24"
+        },
+        "result_sha256": "e73ef366dd27281520fd347a3f3ad9099b6fa46ae562ab9b2df0f00ebdaec59d"
+      },
+      "request": "request.md",
+      "request_excerpt": "Initial requirement: preserve explicit totals.",
+      "risk": "normal",
+      "route": "module",
+      "scopes": [
+        "totals"
+      ],
+      "technical_reason": "Isolated workflow engine calibration",
+      "title": "T01",
+      "writes": [
+        "totals"
+      ]
+    },
+    {
+      "acceptance": [
+        "synthetic assertion passes"
+      ],
+      "attempts": [
+        {
+          "at": "2026-09-15T20:20:15+00:00",
+          "flow": ".odoo-agents/flows/plan-t02-bc6e4b98.json",
+          "sources_before": {
+            "pdf/check.py": {
+              "mode": 436,
+              "sha256": "0b9d97a360ca7f0c9f5dafd623bc90354ec50afb1f199fd242f82259cc35a5dc"
+            }
+          }
+        }
+      ],
+      "checks": [
+        {
+          "cases": [
+            "explicit value"
+          ],
+          "command": [
+            "/usr/bin/python3",
+            "pdf/check.py"
+          ],
+          "environment": "synthetic-local-v1",
+          "id": "assertion"
+        }
+      ],
+      "depends_on": [
+        "T01"
+      ],
+      "execution": {
+        "effort": "high",
+        "model": "principal",
+        "provider": "codex"
+      },
+      "id": "T02",
+      "intentions_file": "changelog/release/intentions.json",
+      "reads": [],
+      "receipt": {
+        "acceptance": {
+          "path": "T02-acceptance.md",
+          "sha256": "4b436a7f25b730b1baa85b5d9ec7577f8fb559a8bfebf0bab2ffbf036c049622"
+        },
+        "at": "2026-09-15T20:20:15+00:00",
+        "checks": {
+          "assertion": {
+            "path": "proofs/T02.json",
+            "sha256": "4011eb56952f80bc5aaf7d8b48d0ed5f419cf769619d7ef4b98c13979ddc216d"
+          }
+        },
+        "contract_sha256": "45935b6eedd7bed28ef3bb3499807ad932914de7a7985ae8f9ddcdc01934b46d",
+        "dependencies": {
+          "T01": "e73ef366dd27281520fd347a3f3ad9099b6fa46ae562ab9b2df0f00ebdaec59d"
+        },
+        "dependency_version": 2,
+        "memory": {
+          "path": "T02-memory.md",
+          "sha256": "87ff8f20217538f595b7fd3f4806b481df156db378fe3bc2e92ed22ec521fc86"
+        },
+        "proof": {
+          "path": "proofs/T02.json",
+          "sha256": "4011eb56952f80bc5aaf7d8b48d0ed5f419cf769619d7ef4b98c13979ddc216d"
+        },
+        "result_sha256": "26ef6e992c23e5c1cd868d21896e96da94832927c5ae771b96bd2ee28f32d916"
+      },
+      "request": "request.md",
+      "request_excerpt": "Initial requirement: preserve explicit totals.",
+      "risk": "normal",
+      "route": "module",
+      "scopes": [
+        "pdf"
+      ],
+      "technical_reason": "Isolated workflow engine calibration",
+      "title": "T02",
+      "writes": [
+        "pdf"
+      ]
+    },
+    {
+      "acceptance": [
+        "synthetic assertion passes"
+      ],
+      "attempts": [
+        {
+          "at": "2026-09-15T20:20:15+00:00",
+          "flow": ".odoo-agents/flows/plan-t03-981c84ac.json",
+          "sources_before": {
+            "pdf/check.py": {
+              "mode": 436,
+              "sha256": "0b9d97a360ca7f0c9f5dafd623bc90354ec50afb1f199fd242f82259cc35a5dc"
+            }
+          }
+        }
+      ],
+      "checks": [
+        {
+          "cases": [
+            "explicit value"
+          ],
+          "command": [
+            "/usr/bin/python3",
+            "pdf/check.py"
+          ],
+          "environment": "synthetic-local-v1",
+          "id": "assertion"
+        }
+      ],
+      "depends_on": [
+        "T01"
+      ],
+      "execution": {
+        "effort": "high",
+        "model": "principal",
+        "provider": "codex"
+      },
+      "id": "T03",
+      "intentions": [
+        "I03"
+      ],
+      "intentions_file": "changelog/release/intentions.json",
+      "reads": [],
+      "receipt": {
+        "acceptance": {
+          "path": "T03-acceptance.md",
+          "sha256": "4b436a7f25b730b1baa85b5d9ec7577f8fb559a8bfebf0bab2ffbf036c049622"
+        },
+        "at": "2026-09-15T20:20:15+00:00",
+        "checks": {
+          "assertion": {
+            "path": "proofs/T03.json",
+            "sha256": "9fd9301f5f22e32402347511ec462c824eb9f846ed94d578447a21ff0200a349"
+          }
+        },
+        "contract_sha256": "5b4f65eadde733baa1a34f53697f2543865fa33a4b5fce005f3bc071cfd53d07",
+        "dependencies": {
+          "T01": "e73ef366dd27281520fd347a3f3ad9099b6fa46ae562ab9b2df0f00ebdaec59d"
+        },
+        "dependency_version": 2,
+        "memory": {
+          "path": "T03-memory.md",
+          "sha256": "87ff8f20217538f595b7fd3f4806b481df156db378fe3bc2e92ed22ec521fc86"
+        },
+        "proof": {
+          "path": "proofs/T03.json",
+          "sha256": "9fd9301f5f22e32402347511ec462c824eb9f846ed94d578447a21ff0200a349"
+        },
+        "result_sha256": "1a4498504279dde0b8315f92430da04ca59c8e4b98cd85a972ad115dc2e27a83"
+      },
+      "request": "request.md",
+      "request_excerpt": "Initial requirement: preserve explicit totals.",
+      "risk": "normal",
+      "route": "module",
+      "scopes": [
+        "pdf"
+      ],
+      "title": "T03",
+      "writes": [
+        "pdf"
+      ]
+    }
+  ],
+  "updated_at": "2026-09-15T20:20:15+00:00"
+}

@@ -32,7 +32,9 @@ Sources Odoo en local, en lecture seule : `~/odoo-sources/{14.0,17.0,18.0,19.0,1
 python3 ~/.odoo19-agents/scripts/odoo_briefing.py <chemin_du_module>
 ```
 
-Si ta consigne contient déjà ce briefing, ne le recalcule pas. Il te donne la
+Si ta consigne contient déjà ce briefing, ne le recalcule pas. Pour une tâche
+identifiée dans un gros projet, ajoute `--query "<tâche et objet métier>"` au
+premier briefing et lis les omissions pertinentes (`docs/CONTEXT.md`). Il te donne la
 **série** (le parc est mélangé : 17.0, 18.0, 19.x — un besoin couvert par le
 standard en 19.0 ne l'est pas forcément en 18.0), le **release** en cours, ce que
 le projet sait déjà (métier, décisions actées, pièges), les dernières
@@ -55,6 +57,21 @@ Elle donne aussi les **volumes réels** : combien d'enregistrements la demande
 touche-t-elle ? Le champ « inutilisé » l'est-il vraiment ? Sans sauvegarde,
 demande-la ; à défaut, lecture seule sur l'instance déclarée (`odoo_instance.py`,
 règles d'accès du référentiel) — jamais d'écriture.
+
+### Cohorte avant règle structurante
+
+Avant de choisir une règle sur des données existantes, examine une **petite
+cohorte représentative** sur la copie : cas courant, ancien/atypique et
+contre-exemple à ton hypothèse. Note identifiants locaux, état, acteur et
+observation dans la revue ; ne verse pas les données client dans le référentiel.
+Selon la demande : mouvement préparé et son reliquat, facture historique avec
+ligne explicative à zéro et forfait, langue du rapport distincte de la session,
+formulaire monté avec valeur non vide. Ne rejoue pas toute la recette avant code.
+L'échantillon sert à choisir et réfuter la règle, pas à déclarer la QA réussie.
+Sans copie, indique l'hypothèse non vérifiée et ne promets pas la compatibilité
+historique. Fixe avec l'orchestrateur les parcours, droits et résultats attendus
+avant implémentation ; une configuration ou version incohérente se vérifie avant
+de supposer un défaut de droits ou d'ajouter du code.
 
 ### 1. Reformuler, puis remonter au problème
 

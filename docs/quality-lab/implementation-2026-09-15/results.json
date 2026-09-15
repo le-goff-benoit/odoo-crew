@@ -1,0 +1,506 @@
+{
+  "scope": "Synthetic Python workflow implementation; not Odoo development qualification",
+  "protocol": {
+    "format": "implementation-native/1",
+    "scope": "Synthetic Python workflow implementation; not Odoo development qualification",
+    "timeout_seconds": 600,
+    "max_calls": 8,
+    "cases": [
+      "I01",
+      "I02"
+    ],
+    "holdout": "I02",
+    "variants": [
+      {
+        "provider": "codex",
+        "model": "gpt-6-astra",
+        "kind": "principal",
+        "effort": "medium"
+      },
+      {
+        "provider": "codex",
+        "model": "gpt-5.6-terra",
+        "kind": "candidate",
+        "effort": "medium"
+      },
+      {
+        "provider": "claude",
+        "model": "sonnet",
+        "kind": "candidate",
+        "effort": "medium"
+      },
+      {
+        "provider": "claude",
+        "model": "opus",
+        "kind": "principal",
+        "effort": "medium"
+      }
+    ],
+    "order": "I01 variants as listed; I02 reverse order",
+    "acceptance": "Completed native response, tools used, source-bound successful unittest receipt, independent oracle passed. Any failure blocks model adoption.",
+    "rework": "No hidden retry or correction; rejected output stays rejected. Principal correction time unknown when not performed.",
+    "adoption": "Two cases are insufficient for Odoo or automatic model routing. Retain experimental status."
+  },
+  "frozen_hashes": {
+    "I01/project/CONTRACT.md": "dac4e346d9e101df323f92dbb091071b9e6f26e1c6bc15674f5b650caa70a2f4",
+    "I01/project/scheduler.py": "74933ed762bed6c71aaf7d0a94945baba548745136414d8eea3f31d214b465a1",
+    "I01/project/test_public.py": "aab8fa3e67ca0ba74133be007e419159bba8528064816c10674e42c86d90db60",
+    "I02/project/CONTRACT.md": "b3505098f5cdebf7a1586bf6a8445da118eb3260f358b4ee645c90b1e99a72c3",
+    "I02/project/quotas.py": "7358645e72fbdb2428b8d44f0b60b92dbded398ef62e2d5196b820a039802a3b",
+    "I02/project/test_public.py": "fcaf1c2dd2e48f99189012079fd377acaa85a2f39855caea930e4b5a21823315",
+    "developer.md": "523e40f541b7ea89bb7471a57773b36a93cd6f09ffd6c3c4673db5d7cdacb50e",
+    "oracle.py": "a645fbbdcd322ba32ed5a9f3b1154390f22db78354d9474aa12f3ae44b3e82b7",
+    "protocol.json": "1e07a43863e2cf23db10d1b7956f486831f37cd6e49d72406948d43ffa1de275",
+    "reference.py": "a5f72a809819809d66e5b5fbd8f380cddc8c366f822c59a63b1804fcff52fb91"
+  },
+  "pack_hashes": {
+    "scripts/odoo_evidence.py": "5b712f70a60e60eba88456bc114c7e37b51439be740e9cf9c7ee2fa32b588492",
+    "scripts/odoo_test_result.py": "60e88262902b77d5c7882b45dd824a66a97aa6df04fec1845c3e7a65c25a36f1"
+  },
+  "trials": [
+    {
+      "provider": "codex",
+      "model": "gpt-6-astra",
+      "kind": "principal",
+      "effort": "medium",
+      "case": "I01",
+      "transport": "completed",
+      "actual_model": null,
+      "actual_effort": null,
+      "tool_calls": 8,
+      "usage": {
+        "input_tokens": 83327,
+        "cached_input_tokens": 76032,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2574,
+        "reasoning_output_tokens": 48
+      },
+      "provider_error": null,
+      "return_seconds": 99.913,
+      "principal_rework_seconds": 0.0,
+      "rework_performed": false,
+      "raw_sha256": "e3c23bf9848e723d3e654fed70a1d960a02a0a52aca1428d14cb81c5b22a20f4",
+      "source_hashes": {
+        "CONTRACT.md": "dac4e346d9e101df323f92dbb091071b9e6f26e1c6bc15674f5b650caa70a2f4",
+        "evidence.json": "28c97a8e30e96985899e35f866bab85b7266f567a9737ca57c66bf86ed2fb54c",
+        "evidence.log": "ca43e336fb900f2526b85635a1300b1b2af7eea9772cc7514a13166a9ff2e614",
+        "scheduler.py": "f3d54e8c31078d37be231f0ce832e7a4877a470eba60cfc4bb52b6e8bf3e63e6",
+        "test_public.py": "aab8fa3e67ca0ba74133be007e419159bba8528064816c10674e42c86d90db60",
+        "test_scheduler.py": "bbd8645688fe8e956409ec7313a892347527b2ca8ee4619edb6672f20269bd50"
+      },
+      "oracle_passed": true,
+      "receipt_passed": true,
+      "status": "accepted",
+      "reception_seconds": 0.104,
+      "total_to_reception_seconds": 100.017,
+      "immutable_inputs_passed": true,
+      "late_immutable_check_seconds": 6e-05,
+      "native_receipt_command_observed": true,
+      "agent_test_count": 11
+    },
+    {
+      "provider": "codex",
+      "model": "gpt-5.6-terra",
+      "kind": "candidate",
+      "effort": "medium",
+      "case": "I01",
+      "transport": "completed",
+      "actual_model": null,
+      "actual_effort": null,
+      "tool_calls": 7,
+      "usage": {
+        "input_tokens": 117705,
+        "cached_input_tokens": 100864,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 3343,
+        "reasoning_output_tokens": 504
+      },
+      "provider_error": null,
+      "return_seconds": 76.324,
+      "principal_rework_seconds": 0.0,
+      "rework_performed": false,
+      "raw_sha256": "2ef5d1d8e84bc8d098449f5d1aa0d9589a5557dbb5013dcfb6348f2670844904",
+      "source_hashes": {
+        "CONTRACT.md": "dac4e346d9e101df323f92dbb091071b9e6f26e1c6bc15674f5b650caa70a2f4",
+        "evidence.json": "4192ead6ad9c0fdb0a59613a063e78122ae3c859f11371b9f66faee0946e177f",
+        "evidence.log": "7b6583515158cd18cc1f41f1c813f5cfd8cf8d93649884a323cfa64c2b9d2fe9",
+        "scheduler.py": "1e31c83aa2c7ccafd7ac4e412c9908f65e19c4fa60fbf2d885bf153a2fd87ebe",
+        "test_public.py": "aab8fa3e67ca0ba74133be007e419159bba8528064816c10674e42c86d90db60",
+        "test_scheduler.py": "af4eae8800e4d58ac9010d3f2ae9e6f9623441d739260d7327057b3095d68538"
+      },
+      "oracle_passed": true,
+      "receipt_passed": true,
+      "status": "accepted",
+      "reception_seconds": 0.075,
+      "total_to_reception_seconds": 76.399,
+      "immutable_inputs_passed": true,
+      "late_immutable_check_seconds": 4.9e-05,
+      "native_receipt_command_observed": true,
+      "agent_test_count": 9
+    },
+    {
+      "provider": "claude",
+      "model": "sonnet",
+      "kind": "candidate",
+      "effort": "medium",
+      "case": "I01",
+      "transport": "completed",
+      "actual_model": "claude-sonnet-5",
+      "actual_effort": null,
+      "tool_calls": 13,
+      "usage": {
+        "tokens": {
+          "input_tokens": 26,
+          "cache_creation_input_tokens": 30624,
+          "cache_read_input_tokens": 312950,
+          "output_tokens": 5597,
+          "output_tokens_details": {
+            "thinking_tokens": 1252
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 30624,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 243,
+              "cache_read_input_tokens": 29951,
+              "cache_creation_input_tokens": 673,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 673
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.242361
+      },
+      "provider_error": null,
+      "return_seconds": 50.005,
+      "principal_rework_seconds": 0.0,
+      "rework_performed": false,
+      "raw_sha256": "561d96b52fd60bfb7d5254bc4fbbfc9e175036c4a86817f6f7b0a13df843df5e",
+      "source_hashes": {
+        "CONTRACT.md": "dac4e346d9e101df323f92dbb091071b9e6f26e1c6bc15674f5b650caa70a2f4",
+        "evidence.json": "f45a2363f67bac4eac98e489571c55d756fa6c9e79b1ee7fc936de762e9cb626",
+        "evidence.log": "141ecb13a550b281cdc81d838e7fcb8ec31e1b6c09a3524825b59bed92507d44",
+        "scheduler.py": "019c0e133402ae3141fdd3b98d6d3212f3be9b48b90220d5b34281f0d75ff18d",
+        "test_public.py": "aab8fa3e67ca0ba74133be007e419159bba8528064816c10674e42c86d90db60",
+        "test_scheduler.py": "7bcf6bbdf49a3f1d0d16151041ed71bf4264788a9e6c8beae824e58673833f9d"
+      },
+      "oracle_passed": true,
+      "receipt_passed": true,
+      "status": "accepted",
+      "reception_seconds": 0.113,
+      "total_to_reception_seconds": 50.118,
+      "immutable_inputs_passed": true,
+      "late_immutable_check_seconds": 4.7e-05,
+      "native_receipt_command_observed": true,
+      "agent_test_count": 22
+    },
+    {
+      "provider": "claude",
+      "model": "opus",
+      "kind": "principal",
+      "effort": "medium",
+      "case": "I01",
+      "transport": "completed",
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "tool_calls": 9,
+      "usage": {
+        "tokens": {
+          "input_tokens": 20,
+          "cache_creation_input_tokens": 25382,
+          "cache_read_input_tokens": 160510,
+          "output_tokens": 10210,
+          "output_tokens_details": {
+            "thinking_tokens": 1933
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 25382,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 1116,
+              "cache_read_input_tokens": 24622,
+              "cache_creation_input_tokens": 760,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 760
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.590683
+      },
+      "provider_error": null,
+      "return_seconds": 110.264,
+      "principal_rework_seconds": 0.0,
+      "rework_performed": false,
+      "raw_sha256": "0decc7bc26916cf786fc83fe8753482b82ad6c080d4ba8581cdff6500c7f3e5c",
+      "source_hashes": {
+        "CONTRACT.md": "dac4e346d9e101df323f92dbb091071b9e6f26e1c6bc15674f5b650caa70a2f4",
+        "evidence.json": "916e5ef4cff433c6084c78e1484e32f692fac7cbe81fdbfe7f9493954c50a75c",
+        "evidence.log": "427cbcd646ff59311f95c6885941cb2d05b0dcbde12bdb30bf6cf92e2097bcd0",
+        "scheduler.py": "ce0bb5a9cd194985ed4d9fee15d9b439b929c2422e72c68f685f3800785185cf",
+        "test_public.py": "aab8fa3e67ca0ba74133be007e419159bba8528064816c10674e42c86d90db60",
+        "test_scheduler.py": "bb270e23585732704cfbf23f40b5ae5bd76282acdcef5e525e2fd2c0770e7cc0"
+      },
+      "oracle_passed": true,
+      "receipt_passed": true,
+      "status": "accepted",
+      "reception_seconds": 0.118,
+      "total_to_reception_seconds": 110.382,
+      "immutable_inputs_passed": true,
+      "late_immutable_check_seconds": 4.8e-05,
+      "native_receipt_command_observed": true,
+      "agent_test_count": 43
+    },
+    {
+      "provider": "claude",
+      "model": "opus",
+      "kind": "principal",
+      "effort": "medium",
+      "case": "I02",
+      "transport": "completed",
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "tool_calls": 7,
+      "usage": {
+        "tokens": {
+          "input_tokens": 16,
+          "cache_creation_input_tokens": 13522,
+          "cache_read_input_tokens": 127542,
+          "output_tokens": 9394,
+          "output_tokens_details": {
+            "thinking_tokens": 2243
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 13522,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 833,
+              "cache_read_input_tokens": 24039,
+              "cache_creation_input_tokens": 377,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 377
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.43517399999999995
+      },
+      "provider_error": null,
+      "return_seconds": 105.713,
+      "principal_rework_seconds": 0.0,
+      "rework_performed": false,
+      "raw_sha256": "9618068af4c9cf31483901845b6463fa282b2bc232278e227660713e64237cfb",
+      "source_hashes": {
+        "CONTRACT.md": "b3505098f5cdebf7a1586bf6a8445da118eb3260f358b4ee645c90b1e99a72c3",
+        "evidence.json": "3b82f0766182177940fc54c41b55a4aa3106ed52a2c7969f9097e313df32b89c",
+        "evidence.log": "9423cfca5afa627698c20f1c237bf3e3382dae2088b11aca907a4da6020e0c07",
+        "quotas.py": "01b9ae7a64ec634a420d658b125af7924effbc9f6ab0ffbe17fcc8e2dc1bd7f8",
+        "test_public.py": "fcaf1c2dd2e48f99189012079fd377acaa85a2f39855caea930e4b5a21823315",
+        "test_quotas.py": "ff54f929e9e0ecf57ab305159f907a150e3b02adec66e9c4ceb40c2a33ef684e"
+      },
+      "oracle_passed": true,
+      "receipt_passed": true,
+      "status": "accepted",
+      "reception_seconds": 0.079,
+      "total_to_reception_seconds": 105.793,
+      "immutable_inputs_passed": true,
+      "late_immutable_check_seconds": 0.000136,
+      "native_receipt_command_observed": true,
+      "agent_test_count": 48
+    },
+    {
+      "provider": "claude",
+      "model": "sonnet",
+      "kind": "candidate",
+      "effort": "medium",
+      "case": "I02",
+      "transport": "completed",
+      "actual_model": "claude-sonnet-5",
+      "actual_effort": null,
+      "tool_calls": 9,
+      "usage": {
+        "tokens": {
+          "input_tokens": 20,
+          "cache_creation_input_tokens": 9807,
+          "cache_read_input_tokens": 247360,
+          "output_tokens": 6450,
+          "output_tokens_details": {
+            "thinking_tokens": 827
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 9807,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 265,
+              "cache_read_input_tokens": 28934,
+              "cache_creation_input_tokens": 1024,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 1024
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.154493
+      },
+      "provider_error": null,
+      "return_seconds": 62.943,
+      "principal_rework_seconds": 0.0,
+      "rework_performed": false,
+      "raw_sha256": "6dc6fa4e2c32f0a031ff891e55d340ee8392fe08bd34b80aae7430ddb47bed71",
+      "source_hashes": {
+        "CONTRACT.md": "b3505098f5cdebf7a1586bf6a8445da118eb3260f358b4ee645c90b1e99a72c3",
+        "evidence.json": "83fbdf7d20df29bf487ed14410a64f0485625b2c4f6b8d6b5571c4ab83976a06",
+        "evidence.log": "233a011c01c22bf451ed852722997b7751a4552945399835aa10e87b399d18c7",
+        "quotas.py": "9495402e72154b863e38966fc582564c674e8a41de85afa30a69e2f72076c3c6",
+        "test_public.py": "fcaf1c2dd2e48f99189012079fd377acaa85a2f39855caea930e4b5a21823315",
+        "test_quotas.py": "fe0df30b073e07f8c830ed5242bb9578c3e397964bbcc93cff08efacbcf5d762"
+      },
+      "oracle_passed": true,
+      "receipt_passed": true,
+      "status": "accepted",
+      "reception_seconds": 0.096,
+      "total_to_reception_seconds": 63.039,
+      "immutable_inputs_passed": true,
+      "late_immutable_check_seconds": 8.9e-05,
+      "native_receipt_command_observed": true,
+      "agent_test_count": 23
+    },
+    {
+      "provider": "codex",
+      "model": "gpt-5.6-terra",
+      "kind": "candidate",
+      "effort": "medium",
+      "case": "I02",
+      "transport": "completed",
+      "actual_model": null,
+      "actual_effort": null,
+      "tool_calls": 6,
+      "usage": {
+        "input_tokens": 86663,
+        "cached_input_tokens": 68608,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2976,
+        "reasoning_output_tokens": 393
+      },
+      "provider_error": null,
+      "return_seconds": 66.672,
+      "principal_rework_seconds": 0.0,
+      "rework_performed": false,
+      "raw_sha256": "ac04c0c7d5e1572907defb5cc2c2f7b889f2edd6abfa0c2eb8ac3284f0ac44a6",
+      "source_hashes": {
+        "CONTRACT.md": "b3505098f5cdebf7a1586bf6a8445da118eb3260f358b4ee645c90b1e99a72c3",
+        "evidence.json": "260784e153f021c3e0169f046cdf876eacf38fe1e79a1c8f505ea5c2c9ec9c43",
+        "evidence.log": "4e97c2309d1a6e685d7f2e10c5f4dbf070ac140c58887498bd8f78595a097d0c",
+        "quotas.py": "c255864ae86b43ad2705bbc846d5afb34530def8b13664ec0c171be00cec4dda",
+        "test_public.py": "fcaf1c2dd2e48f99189012079fd377acaa85a2f39855caea930e4b5a21823315",
+        "test_quotas.py": "9c24ba14a242ca87073cff499569672bf5ab93cbbaef26bbf39c3f44308e1b49"
+      },
+      "oracle_passed": true,
+      "receipt_passed": true,
+      "status": "accepted",
+      "reception_seconds": 0.086,
+      "total_to_reception_seconds": 66.757,
+      "immutable_inputs_passed": true,
+      "late_immutable_check_seconds": 0.000161,
+      "native_receipt_command_observed": true,
+      "agent_test_count": 4
+    },
+    {
+      "provider": "codex",
+      "model": "gpt-6-astra",
+      "kind": "principal",
+      "effort": "medium",
+      "case": "I02",
+      "transport": "completed",
+      "actual_model": null,
+      "actual_effort": null,
+      "tool_calls": 8,
+      "usage": {
+        "input_tokens": 105435,
+        "cached_input_tokens": 76032,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2762,
+        "reasoning_output_tokens": 181
+      },
+      "provider_error": null,
+      "return_seconds": 108.128,
+      "principal_rework_seconds": 0.0,
+      "rework_performed": false,
+      "raw_sha256": "a69a298bba567ebe213aaaa36e15eeb8e7666ebfeaead00197d6c2610e1735b0",
+      "source_hashes": {
+        "CONTRACT.md": "b3505098f5cdebf7a1586bf6a8445da118eb3260f358b4ee645c90b1e99a72c3",
+        "evidence.json": "bdce0cd9a226f55ae290b11adedb35c8686df438f1f726f7b414c87581d79f2f",
+        "evidence.log": "bb2bbfcb23bcacc3b25a97de7f9d14c821fb90eaa1947c6697758b66beae431a",
+        "quotas.py": "f3175609632860bab7a4b464ff0105ccc5931c3b7c251de595d0f5531a405fb8",
+        "test_public.py": "fcaf1c2dd2e48f99189012079fd377acaa85a2f39855caea930e4b5a21823315",
+        "test_quotas.py": "64659c00ff2bb250711fc833e4fa790dbc75b5d90ab9b1f96f7b2441d7e509ca"
+      },
+      "oracle_passed": true,
+      "receipt_passed": true,
+      "status": "accepted",
+      "reception_seconds": 0.183,
+      "total_to_reception_seconds": 108.311,
+      "immutable_inputs_passed": true,
+      "late_immutable_check_seconds": 0.000141,
+      "native_receipt_command_observed": true,
+      "agent_test_count": 9
+    }
+  ],
+  "status": "completed",
+  "receipt_revision": 2,
+  "receipt_revision_note": "Existing requirement to preserve CONTRACT.md/test_public.py checked on all eight archives after an integration review; no new generation or business oracle changes.",
+  "cli_versions": {
+    "codex": "0.154.0",
+    "claude": "2.1.269",
+    "python": "3.10.12"
+  }
+}

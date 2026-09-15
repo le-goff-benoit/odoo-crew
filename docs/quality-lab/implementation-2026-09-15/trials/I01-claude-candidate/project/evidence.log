@@ -1,0 +1,27 @@
+test_independent_pending (test_public.PublicTest) ... ok
+test_cycle_between_two_tasks_raises (test_scheduler.ReadyTest) ... ok
+test_cycle_in_non_pending_component_raises (test_scheduler.ReadyTest) ... ok
+test_dep_not_received_blocks (test_scheduler.ReadyTest) ... ok
+test_dep_received_and_proof_current_unlocks (test_scheduler.ReadyTest) ... ok
+test_dep_received_but_not_proof_current_blocks (test_scheduler.ReadyTest) ... ok
+test_duplicate_id_raises (test_scheduler.ReadyTest) ... ok
+test_ignores_non_pending (test_scheduler.ReadyTest) ... ok
+test_inputs_not_mutated (test_scheduler.ReadyTest) ... ok
+test_missing_dependency_raises (test_scheduler.ReadyTest) ... ok
+test_no_deps_ready_regardless_of_own_proof_current (test_scheduler.ReadyTest) ... ok
+test_pending_tasks_do_not_lock_each_other (test_scheduler.ReadyTest) ... ok
+test_read_blocked_only_by_write_lock (test_scheduler.ReadyTest) ... ok
+test_read_not_blocked_by_read_lock (test_scheduler.ReadyTest) ... ok
+test_self_cycle_raises (test_scheduler.ReadyTest) ... ok
+test_sorted_lexically (test_scheduler.ReadyTest) ... ok
+test_transitive_dep_all_current_unlocks (test_scheduler.ReadyTest) ... ok
+test_transitive_dep_stale_blocks_descendant (test_scheduler.ReadyTest) ... ok
+test_unknown_lock_mode_raises (test_scheduler.ReadyTest) ... ok
+test_unknown_status_raises (test_scheduler.ReadyTest) ... ok
+test_write_blocked_by_existing_read_lock (test_scheduler.ReadyTest) ... ok
+test_write_blocked_by_existing_write_lock (test_scheduler.ReadyTest) ... ok
+
+----------------------------------------------------------------------
+Ran 22 tests in 0.001s
+
+OK

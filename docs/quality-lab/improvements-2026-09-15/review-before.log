@@ -1,0 +1,43 @@
+test_actual_previous_version_required_not_just_git_base (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_build_must_cover_entire_target_module_and_no_untracked_files (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_deployment_mutations_old_version_wrong_target_unsourced_effect_failed_build (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_failed_build_and_changed_log_rejected (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_manifest_missing_file_blocks_delivery (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_migration_file_presence_does_not_prove_execution (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_migration_must_be_in_target_range_and_have_entrypoint (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_proof_command_and_environment_cannot_be_substituted (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_ready_is_not_deployed_and_sourced_read_closes_contract (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_schema_change_without_version_bump (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_schema_summary_cannot_be_edited_to_hide_error (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_submodule_inside_module_is_not_silently_excluded (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_unchanged_migration_in_version_range_still_requires_execution (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_unsourced_attestation_and_tampered_capture_rejected (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_untracked_import_is_missing_from_exact_commit (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_valid_migration_and_old_unchanged_history (delivery_review_fixture.DeliveryGuardTests) ... ok
+test_numbered_exception_cannot_be_selected_apart_from_rule (__main__.IndependentReview) ... test_preexisting_migration_in_executed_range_requires_proof (__main__.IndependentReview) ... ok
+test_shell_completed_relative_module_paths_are_equivalent (__main__.IndependentReview) ... ERROR
+
+======================================================================
+ERROR: test_shell_completed_relative_module_paths_are_equivalent (__main__.IndependentReview)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/crew-review-workflow-20260915.py", line 43, in test_shell_completed_relative_module_paths_are_equivalent
+    result=prepare(fixture.repo,fixture.base,fixture.target,[path],fixture.command,'synthetic-build-v1','synthetic-target-v1',{'column_present':True})
+  File "/home/blegoff/.odoo19-agents/scripts/odoo_delivery_guard.py", line 125, in prepare
+    manifest = check_module(new, prefix, errors)
+  File "/home/blegoff/.odoo19-agents/scripts/odoo_delivery_guard.py", line 96, in check_module
+    raise ValueError('manifest absent du commit : ' + manifest_path)
+ValueError: manifest absent du commit : sample//__manifest__.py
+
+======================================================================
+FAIL: test_numbered_exception_cannot_be_selected_apart_from_rule (__main__.IndependentReview) (heading='2.1 Exceptions')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/tmp/crew-review-workflow-20260915.py", line 37, in test_numbered_exception_cannot_be_selected_apart_from_rule
+    self.assertIn('clients bloqués', result['text'])
+AssertionError: 'clients bloqués' not found in '# Contexte ciblé\nSélection lexicale, rappel non exhaustif : synonymes et contradictions ne sont pas résolus. Une date, même plus récente, ne vaut pas arbitrage. Vérifier les décisions courantes ; les autres sources peuvent être historiques.\n\n## .odoo-agents/PROJECT.md · L3-L5\n## Facturation\nEnvoyer toutes les factures automatiquement.\n\nIndex des sections non incluses — ouvrir les lignes indiquées ; détails et empreintes dans le JSON :\n- .odoo-agents/PROJECT.md : L1-L2, L6-L8, L9-L10\n'
+
+----------------------------------------------------------------------
+Ran 19 tests in 3.222s
+
+FAILED (failures=1, errors=1)

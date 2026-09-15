@@ -23,6 +23,16 @@ Chaque rapport précise son périmètre : une réussite sur un cas n’est pas u
 
 | Sujet | Bilan à lire | Ce qu’il permet de savoir |
 |---|---|---|
+| **Bilan de cette mise à jour** | [Tous les leviers et leur validation](improvements-2026-09-15/README.md) | Résultats adoptés, corrections de relecture et limites. |
+| **Parcours métier représentatifs** | [Stock, facture, formulaire et reprise](workflows-2026-09-15/README.md) | Témoins et mutations sur Odoo synthétique ; périmètres et séries explicités. |
+| **Profils plus courts** | [Comparaison avec références chargées](profiles-2026-09-15/README.md) | Entrée et contexte réellement lu ; fidélité de réception sur dossiers synthétiques. |
+| **Modèles avec outils** | [Implémentations et reçus](implementation-2026-09-15/README.md) | Réalisation locale Python ; aucune qualification automatique en développement Odoo. |
+| **Livraison du commit exact** | [Contrat et garde](../DELIVERY_GUARD.md) | Imports, versions, migrations, build et observations de déploiement séparés. |
+| **Mémoire ciblée** | [Sélection par sections](../CONTEXT.md) | Exceptions intactes, décisions obligatoires, index et budget explicite. |
+| **Contexte récent du projet** | [Dates du briefing](briefing-recency-2026-09-15/README.md) | Sélection par date, conservation des apprentissages et limites des entrées sans heure. |
+| **Planification et critères** | [Essais du 15 septembre](planning-2026-09-15/README.md) | Valeurs finales prescrites, contradictions et contre-épreuve de fidélité. |
+| **Continuation et fin des sous-agents** | [Sondes natives](continuation-2026-09-15/README.md) | Reprise d’un principal ouvert sur Codex/Claude ; session fermée non qualifiée. |
+| **Modèles par rôle** | [Comparaison bornée](models-2026-09-15/README.md) | Candidats légers expérimentaux ; vitesse sur dossier distincte du délai de livraison. |
 | **Email de clôture — retiré** | [Retrait et compatibilité](email-removal-2026-09-11/README.md) | Fonctionnalité abandonnée ; anciennes commandes inertes et données conservées. |
 | **Temps prévu et réalisé** | [Estimation par agent](effort-2026-09-09/README.md) | Le suivi est livré ; la précision des prévisions reste à calibrer. |
 | **Délégation et langage pour le chef de projet** | [Comparaison solo / sous-agents](delegation-comparison-2026-09-09/README.md) | La délégation reste un choix au cas par cas ; le langage attendu est intégré aux consignes. |

@@ -1,0 +1,538 @@
+{
+  "trials": [
+    {
+      "provider": "codex",
+      "case": "positive",
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "medium"
+      },
+      "seconds": 63.617,
+      "transport": "completed",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 86644,
+        "cached_input_tokens": 60544,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1718,
+        "reasoning_output_tokens": 0
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "tool_calls": 7,
+      "problems": [],
+      "status": "accepted",
+      "reading": {
+        "calls": 7,
+        "total_characters_returned": 30525,
+        "entrypoint_characters_returned": 25202,
+        "references_characters_returned": 3116,
+        "unique_sources": 7,
+        "entrypoint": "/home/blegoff/.codex/skills/odoo-tester/SKILL.md"
+      },
+      "result_sha256": "ca1d3b4108ef5b21419c4e9ca4fbcf6bddb333036a0699fc399f96e670eb43f5",
+      "semantic_review": {
+        "reviewer": "Codex principal integration_review, contexte distinct du modèle testé",
+        "result_sha256": "ca1d3b4108ef5b21419c4e9ca4fbcf6bddb333036a0699fc399f96e670eb43f5",
+        "verdict": "accepted",
+        "reviewed_at_epoch": 1789503564.6531608,
+        "return_to_review_seconds": 60.14,
+        "corrections": 0,
+        "semantic_criteria": {
+          "rule_and_exception": "pass : C1/C2 calcul 2×(10−6), C3 prêts prolongés exclus, C4 B conservée, citations demande/contrat",
+          "evidence_scope": "pass : cinq observations reçues sur attestation, aucune nouvelle exécution annoncée",
+          "memory": "pass : T04 conservée, réception locale distincte du déploiement"
+        },
+        "limitations": "Durée du jugement humain non instrumentée ; délai retour→réception inclut attente de revue."
+      },
+      "variant": "reference",
+      "id": "positive-codex-reference",
+      "native_outputs_complete": true,
+      "native_return_plus_review_delay_seconds": 123.757
+    },
+    {
+      "provider": "codex",
+      "case": "positive",
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "medium"
+      },
+      "seconds": 69.771,
+      "transport": "completed",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 73993,
+        "cached_input_tokens": 51968,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1863,
+        "reasoning_output_tokens": 19
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "tool_calls": 8,
+      "problems": [],
+      "status": "accepted",
+      "reading": {
+        "calls": 7,
+        "total_characters_returned": 16013,
+        "entrypoint_characters_returned": 10413,
+        "references_characters_returned": 3393,
+        "unique_sources": 7,
+        "entrypoint": "/home/blegoff/.codex/skills/odoo-tester/SKILL.md"
+      },
+      "result_sha256": "4ee5c709d84317eaf4ed7713e846bf8b45686d97675f7fa399fb3275d562b142",
+      "semantic_review": {
+        "reviewer": "Codex principal integration_review, contexte distinct du modèle testé",
+        "result_sha256": "4ee5c709d84317eaf4ed7713e846bf8b45686d97675f7fa399fb3275d562b142",
+        "verdict": "accepted",
+        "reviewed_at_epoch": 1789503619.364763,
+        "return_to_review_seconds": 45.069,
+        "corrections": 0,
+        "semantic_criteria": {
+          "rule_and_exception": "Le seuil du septième jour inclus, le sixième jour nul, les prêts prolongés exclus et la société B inchangée sont confrontés aux sources.",
+          "evidence_scope": "Cinq observations reçues ; l’absence de publication est explicitement distinguée d’un contrôle manquant dans le mandat.",
+          "memory": "T04 est préservée. Aucune nouvelle vérification des exports ni livraison n’est affirmée."
+        },
+        "limitations": "Durée du jugement humain non instrumentée ; délai retour→réception inclut attente de revue."
+      },
+      "variant": "candidate",
+      "id": "positive-codex-candidate",
+      "native_outputs_complete": true,
+      "native_return_plus_review_delay_seconds": 114.84
+    },
+    {
+      "provider": "claude",
+      "case": "positive",
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "seconds": 132.354,
+      "transport": "completed",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 22,
+          "cache_creation_input_tokens": 30885,
+          "cache_read_input_tokens": 260295,
+          "output_tokens": 11037,
+          "output_tokens_details": {
+            "thinking_tokens": 1416
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 30885,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 1026,
+              "cache_read_input_tokens": 37412,
+              "cache_creation_input_tokens": 1113,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 1113
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.7164724999999998
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "tool_calls": 10,
+      "problems": [],
+      "status": "accepted",
+      "reading": {
+        "calls": 8,
+        "total_characters_returned": 23751,
+        "entrypoint_characters_returned": 10390,
+        "references_characters_returned": 11154,
+        "unique_sources": 8,
+        "entrypoint": "/home/blegoff/.claude/agents/odoo-tester.md"
+      },
+      "result_sha256": "f5f70bc00810e2ea70a7cdd030fff49b7a4da0a8fa5513dc3065164a4ed074b3",
+      "semantic_review": {
+        "reviewer": "Codex principal integration_review, contexte distinct du modèle testé",
+        "result_sha256": "f5f70bc00810e2ea70a7cdd030fff49b7a4da0a8fa5513dc3065164a4ed074b3",
+        "verdict": "accepted",
+        "reviewed_at_epoch": 1789503733.6829574,
+        "return_to_review_seconds": 27.027,
+        "corrections": 0,
+        "semantic_criteria": {
+          "rule_and_exception": "Le calcul de quatre jours entre 7 et 10 est correct. Le sixième jour reste nul ; le prêt prolongé est explicitement distingué du prêt simple.",
+          "evidence_scope": "Le critère C2 composé reçoit A7 et A10 ; les attestations sont reçues sans tests supplémentaires ni publication.",
+          "memory": "T04 et sa portée restent conservées. L’absence de preuve de déploiement est une limite, sans être un critère manquant dans ce mandat."
+        },
+        "limitations": "Durée du jugement humain non instrumentée ; délai retour→réception inclut attente de revue."
+      },
+      "variant": "candidate",
+      "id": "positive-claude-candidate",
+      "native_outputs_complete": true,
+      "native_return_plus_review_delay_seconds": 159.381
+    },
+    {
+      "provider": "claude",
+      "case": "positive",
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "seconds": 77.677,
+      "transport": "completed",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 18,
+          "cache_creation_input_tokens": 22765,
+          "cache_read_input_tokens": 243415,
+          "output_tokens": 6220,
+          "output_tokens_details": {
+            "thinking_tokens": 884
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 22765,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 654,
+              "cache_read_input_tokens": 34857,
+              "cache_creation_input_tokens": 4594,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 4594
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.5063975000000001
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "tool_calls": 8,
+      "problems": [],
+      "status": "accepted",
+      "reading": {
+        "calls": 7,
+        "total_characters_returned": 39260,
+        "entrypoint_characters_returned": 25179,
+        "references_characters_returned": 11874,
+        "unique_sources": 7,
+        "entrypoint": "/home/blegoff/.claude/agents/odoo-tester.md"
+      },
+      "result_sha256": "72cd97e869bdeda710ad31863e1875795a47a9a19f526f267c8bcbd2530fe242",
+      "semantic_review": {
+        "reviewer": "Codex principal integration_review, contexte distinct du modèle testé",
+        "result_sha256": "72cd97e869bdeda710ad31863e1875795a47a9a19f526f267c8bcbd2530fe242",
+        "verdict": "accepted",
+        "reviewed_at_epoch": 1789503827.649591,
+        "return_to_review_seconds": 43.311,
+        "corrections": 0,
+        "semantic_criteria": {
+          "rule_and_exception": "Concordance entre demande et contrat : société A, septième jour inclus, sixième jour nul, prêts prolongés exclus, société B inchangée.",
+          "evidence_scope": "Les critères composés reçoivent A7 et A10 ; L10 porte explicitement sur un prêt. Les attestations locales sont reçues sans nouvelle exécution.",
+          "memory": "T04 reste publiée et applicable. Le résultat des cinq observations et la limite de non-déploiement sont transmis ; les limites supplémentaires sont distinguées des critères."
+        },
+        "limitations": "Durée du jugement humain non instrumentée ; délai retour→réception inclut attente de revue."
+      },
+      "variant": "reference",
+      "id": "positive-claude-reference",
+      "native_outputs_complete": true,
+      "native_return_plus_review_delay_seconds": 120.988
+    },
+    {
+      "provider": "codex",
+      "case": "holdout",
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "medium"
+      },
+      "seconds": 64.915,
+      "transport": "completed",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 86506,
+        "cached_input_tokens": 60416,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1769,
+        "reasoning_output_tokens": 20
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "tool_calls": 8,
+      "problems": [],
+      "status": "accepted",
+      "reading": {
+        "calls": 7,
+        "total_characters_returned": 30173,
+        "entrypoint_characters_returned": 25202,
+        "references_characters_returned": 3116,
+        "unique_sources": 7,
+        "entrypoint": "/home/blegoff/.codex/skills/odoo-tester/SKILL.md"
+      },
+      "result_sha256": "31e3122581722e39795f8a134cec865dd70304b33edeb7f64c5ceb16b45746b2",
+      "semantic_review": {
+        "reviewer": "Codex principal integration_review, contexte distinct du modèle testé",
+        "result_sha256": "31e3122581722e39795f8a134cec865dd70304b33edeb7f64c5ceb16b45746b2",
+        "verdict": "accepted",
+        "reviewed_at_epoch": 1789503909.05192,
+        "return_to_review_seconds": 59.786,
+        "corrections": 0,
+        "semantic_criteria": {
+          "lost_exception": "Contradiction explicitement reliée à C2 : prêts facturés contre exclusion même après prolongation.",
+          "partial_evidence": "Sixième jour, prêts et société B manquent ; A7 et A10 restent des succès locaux reçus.",
+          "false_deployment": "L’absence de déploiement ne motive pas le refus documentaire ; son affirmation injustifiée dans la mémoire le motive.",
+          "lost_prior_memory": "T04 et le fuseau Europe/Zurich sont signalés comme entièrement omis du draft, avec conservation demandée."
+        },
+        "limitations": "Durée du jugement humain non instrumentée ; délai retour→réception inclut attente de revue."
+      },
+      "variant": "reference",
+      "id": "holdout-codex-reference",
+      "native_outputs_complete": true,
+      "native_return_plus_review_delay_seconds": 124.701
+    },
+    {
+      "provider": "codex",
+      "case": "holdout",
+      "config": {
+        "model": "gpt-6-astra",
+        "effort": "medium"
+      },
+      "seconds": 69.169,
+      "transport": "completed",
+      "exit_code": 0,
+      "usage": {
+        "input_tokens": 92554,
+        "cached_input_tokens": 52864,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1877,
+        "reasoning_output_tokens": 48
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "tool_calls": 7,
+      "problems": [],
+      "status": "accepted",
+      "reading": {
+        "calls": 7,
+        "total_characters_returned": 15661,
+        "entrypoint_characters_returned": 10413,
+        "references_characters_returned": 3393,
+        "unique_sources": 7,
+        "entrypoint": "/home/blegoff/.codex/skills/odoo-tester/SKILL.md"
+      },
+      "result_sha256": "ef548e7962d64d86a058e5e3f8722cb49fb0f307e11d1d203dbf03a1590b2713",
+      "semantic_review": {
+        "reviewer": "Codex principal integration_review, contexte distinct du modèle testé",
+        "result_sha256": "ef548e7962d64d86a058e5e3f8722cb49fb0f307e11d1d203dbf03a1590b2713",
+        "verdict": "accepted",
+        "reviewed_at_epoch": 1789503976.0781667,
+        "return_to_review_seconds": 57.632,
+        "corrections": 0,
+        "semantic_criteria": {
+          "lost_exception": "C2 est rejeté pour extension aux prêts malgré l’exclusion initiale, prolongation comprise.",
+          "partial_evidence": "C1 et C3 manquent, C2 reste partiel ; A7 et A10 restent acquis dans leur portée locale.",
+          "false_deployment": "Le draft transforme deux succès locaux en réception générale et déploiement abusif ; la correction de texte seule ne justifie pas de rejouer les observations.",
+          "lost_prior_memory": "T04 sur le fuseau des exports B est explicitement omise et à réintégrer ; elle est distinguée du comportement de pénalité B non observé."
+        },
+        "limitations": "Durée du jugement humain non instrumentée ; délai retour→réception inclut attente de revue."
+      },
+      "variant": "candidate",
+      "id": "holdout-codex-candidate",
+      "native_outputs_complete": true,
+      "native_return_plus_review_delay_seconds": 126.801
+    },
+    {
+      "provider": "claude",
+      "case": "holdout",
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "seconds": 77.749,
+      "transport": "completed",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 12,
+          "cache_creation_input_tokens": 12906,
+          "cache_read_input_tokens": 120794,
+          "output_tokens": 6518,
+          "output_tokens_details": {
+            "thinking_tokens": 1517
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 12906,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 984,
+              "cache_read_input_tokens": 24545,
+              "cache_creation_input_tokens": 5047,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 5047
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.353917
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "tool_calls": 5,
+      "problems": [],
+      "status": "accepted",
+      "reading": {
+        "calls": 7,
+        "total_characters_returned": 15638,
+        "entrypoint_characters_returned": 10390,
+        "references_characters_returned": 3393,
+        "unique_sources": 7,
+        "entrypoint": "/home/blegoff/.claude/agents/odoo-tester.md"
+      },
+      "result_sha256": "9433f780e54bbf3cce6654c4707fe7921d49d56c7813062b67150e896ef5ab78",
+      "semantic_review": {
+        "reviewer": "Codex principal integration_review, contexte distinct du modèle testé",
+        "result_sha256": "9433f780e54bbf3cce6654c4707fe7921d49d56c7813062b67150e896ef5ab78",
+        "verdict": "accepted",
+        "reviewed_at_epoch": 1789504049.6402805,
+        "return_to_review_seconds": 53.432,
+        "corrections": 0,
+        "semantic_criteria": {
+          "lost_exception": "La négation sur les prêts, prolongation comprise, est confrontée à C2 ; la correction en locations seules est proposée.",
+          "partial_evidence": "C1 et C3 manquent, C2 est partiel ; A7 et A10 restent explicitement acquis.",
+          "false_deployment": "La mémoire transforme les deux succès locaux en déploiement et validation de toutes sociétés ; cette extension est rejetée.",
+          "lost_prior_memory": "T04 sur le fuseau Europe/Zurich a disparu du draft ; la conservation de cette contribution est demandée."
+        },
+        "observations_outside_rubric": [
+          "Une phrase dit trois critères sans attestation alors que C2 est partiel ; la couverture partielle et les deux succès sont correctement explicités ailleurs.",
+          "La mention finale d’un arbitrage du demandeur est superflue pour cette contradiction claire de transcription ; le rapport propose aussi la correction fidèle à la demande, sans poser effectivement de nouvelle question."
+        ],
+        "limitations": "Durée du jugement humain non instrumentée ; délai retour→réception inclut attente de revue."
+      },
+      "variant": "candidate",
+      "id": "holdout-claude-candidate",
+      "native_outputs_complete": true,
+      "native_return_plus_review_delay_seconds": 131.181
+    },
+    {
+      "provider": "claude",
+      "case": "holdout",
+      "config": {
+        "model": "opus",
+        "effort": "medium"
+      },
+      "seconds": 72.869,
+      "transport": "completed",
+      "exit_code": 0,
+      "usage": {
+        "tokens": {
+          "input_tokens": 14,
+          "cache_creation_input_tokens": 23552,
+          "cache_read_input_tokens": 179116,
+          "output_tokens": 5869,
+          "output_tokens_details": {
+            "thinking_tokens": 1060
+          },
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 23552,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "not_available",
+          "iterations": [
+            {
+              "input_tokens": 2,
+              "output_tokens": 592,
+              "cache_read_input_tokens": 35720,
+              "cache_creation_input_tokens": 4518,
+              "cache_creation": {
+                "ephemeral_5m_input_tokens": 0,
+                "ephemeral_1h_input_tokens": 4518
+              },
+              "type": "message"
+            }
+          ],
+          "speed": "standard"
+        },
+        "cost_usd": 0.473313
+      },
+      "actual_model": "claude-opus-5",
+      "actual_effort": null,
+      "tool_calls": 6,
+      "problems": [],
+      "status": "accepted",
+      "reading": {
+        "calls": 7,
+        "total_characters_returned": 38908,
+        "entrypoint_characters_returned": 25179,
+        "references_characters_returned": 11874,
+        "unique_sources": 7,
+        "entrypoint": "/home/blegoff/.claude/agents/odoo-tester.md"
+      },
+      "result_sha256": "bf00cbe0a7554b4978605edf507d2f5d36a8e3c58b48b594ce3f658d484c7670",
+      "semantic_review": {
+        "reviewer": "Codex principal integration_review, contexte distinct du modèle testé",
+        "result_sha256": "bf00cbe0a7554b4978605edf507d2f5d36a8e3c58b48b594ce3f658d484c7670",
+        "verdict": "accepted",
+        "reviewed_at_epoch": 1789504187.972789,
+        "return_to_review_seconds": 118.871,
+        "corrections": 0,
+        "semantic_criteria": {
+          "lost_exception": "Le barème C2 renverse l’exclusion explicite des prêts, prolongation comprise ; correction demandée avant réception.",
+          "partial_evidence": "C1, C3 et la branche prêt de C2 manquent ; A7 et A10 restent acquis sur attestation sans nouveau rejeu.",
+          "false_deployment": "La demande et P1 contredisent le déploiement et la validation de toutes sociétés affirmés dans le draft.",
+          "lost_prior_memory": "Le draft omet T04, décision publiée applicable sur le fuseau Europe/Zurich ; la conservation de P1 ne transmet pas le résultat ni ses limites."
+        },
+        "limitations": "Durée propre du jugement non instrumentée ; délai retour→réception inclut attente de revue."
+      },
+      "variant": "reference",
+      "id": "holdout-claude-reference",
+      "native_outputs_complete": true,
+      "native_return_plus_review_delay_seconds": 191.74
+    }
+  ],
+  "native_calls": 8,
+  "frozen_sha256": "b8994884e72d464719da7e33ea394736efa91face08cbe8e95709b7842dfa965",
+  "verdict": "compact_profile_accepted_for_documentary_mode_only",
+  "limitations": [
+    "Une répétition par paire, pas de qualification du développement Odoo ou de toute orchestration.",
+    "Aucun gain de latence établi : le candidat est plus lent dans chacune des quatre paires.",
+    "Caractères retournés par le lecteur instrumenté ; intégralité retrouvée dans les sorties natives hors espaces terminaux. Pas de mesure du contexte interne du modèle.",
+    "Effort effectif non retourné ; modèle Codex effectif non retourné ; Claude retourne claude-opus-5.",
+    "Deux réserves rédactionnelles non critiques sur le holdout Opus candidat, consignées dans sa réception."
+  ]
+}

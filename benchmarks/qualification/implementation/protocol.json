@@ -1,0 +1,18 @@
+{
+  "format": "implementation-native/1",
+  "scope": "Synthetic Python workflow implementation; not Odoo development qualification",
+  "timeout_seconds": 600,
+  "max_calls": 8,
+  "cases": ["I01", "I02"],
+  "holdout": "I02",
+  "variants": [
+    {"provider": "codex", "model": "gpt-6-astra", "kind": "principal", "effort": "medium"},
+    {"provider": "codex", "model": "gpt-5.6-terra", "kind": "candidate", "effort": "medium"},
+    {"provider": "claude", "model": "sonnet", "kind": "candidate", "effort": "medium"},
+    {"provider": "claude", "model": "opus", "kind": "principal", "effort": "medium"}
+  ],
+  "order": "I01 variants as listed; I02 reverse order",
+  "acceptance": "Completed native response, tools used, source-bound successful unittest receipt, independent oracle passed. Any failure blocks model adoption.",
+  "rework": "No hidden retry or correction; rejected output stays rejected. Principal correction time unknown when not performed.",
+  "adoption": "Two cases are insufficient for Odoo or automatic model routing. Retain experimental status."
+}

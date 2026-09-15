@@ -1,0 +1,87 @@
+{
+  "decision": "reject",
+  "axes": {
+    "request_contract": "reject",
+    "contract_evidence": "reject",
+    "source_memory": "reject"
+  },
+  "local_scope_received": false,
+  "deployment_verified": false,
+  "prior_memory_preserved": false,
+  "preserved_observations": ["A7", "A10"],
+  "findings": [
+    {
+      "axis": "request_contract",
+      "explanation": "La demande exclut explicitement les prêts de la pénalité, y compris prolongés. Le contrat C2 étend pourtant la pénalité du septième jour (2 CHF) et du dixième jour (8 CHF) à « location ou prêt » pour la société A : une négation de la demande est transformée en obligation contraire. Ce n'est ni une conséquence justifiée ni un choix technique, mais une obligation supplémentaire qui contredit l'effet interdit d'origine ; elle doit être corrigée en restreignant C2 aux locations, ou clarifiée par une décision écrite du demandeur.",
+      "references": [
+        {"file": "demande.md", "quote": "Les prêts restent exclus même lorsqu'ils sont prolongés."},
+        {"file": "contrat.md", "quote": "C2 : société A, location ou prêt, septième jour : 2 CHF ; dixième jour : 8 CHF."}
+      ]
+    },
+    {
+      "axis": "request_contract",
+      "explanation": "C1 reste compatible avec la demande : au sixième jour le résultat est nul pour la société A, et l'extension « location ou prêt » y est sans effet puisque les prêts restent de toute façon à 0 CHF. C3 et C4 reprennent fidèlement le maintien du comportement de la société B et la restriction au périmètre local sans déploiement. Le défaut de l'axe est donc localisé sur le seul C2, il n'entache pas les autres obligations.",
+      "references": [
+        {"file": "demande.md", "quote": "Au sixième jour, elle reste nulle."},
+        {"file": "contrat.md", "quote": "C1 : société A, location ou prêt, sixième jour : 0 CHF."},
+        {"file": "demande.md", "quote": "La société B garde son comportement existant."},
+        {"file": "contrat.md", "quote": "C3 : société B, dixième jour : résultat existant conservé à 3 CHF."}
+      ]
+    },
+    {
+      "axis": "contract_evidence",
+      "explanation": "Les deux observations A7 et A10 sont réellement attestées et conformes au volet « location » de C2 : septième jour à 2 CHF et dixième jour à 8 CHF sur la copie locale qa_fixture, révision fixture-r1, série 19.0. Ces succès techniques sont acquis et conservés ; ils ne sont pas remis en cause par le refus global, et aucune nouvelle exécution n'est réclamée pour les tenir, le dossier étant déclaré documentaire.",
+      "references": [
+        {"file": "preuves.md", "quote": "| A7 | A | location | 7 | 2 CHF |"},
+        {"file": "preuves.md", "quote": "| A10 | A | location | 10 | 8 CHF |"},
+        {"file": "contrat.md", "quote": "Aucun nouveau test n'est demandé pour cette réception d'archives."}
+      ]
+    },
+    {
+      "axis": "contract_evidence",
+      "explanation": "La couverture s'arrête là. C2 est un critère composé (location et prêt) dont seule la branche location est attestée ; C1 (sixième jour à 0 CHF) et C3 (société B à 3 CHF au dixième jour) ne sont couverts par aucune observation, l'attestation le déclarant elle-même. Une preuve partielle ne couvre pas un critère composé et un artefact voisin ne vaut pas l'action demandée : trois des quatre critères restent sans attestation, donc le périmètre local demandé n'est pas entièrement étayé.",
+      "references": [
+        {"file": "preuves.md", "quote": "Le sixième jour, les prêts et la société B n'ont pas été observés dans ce dossier."},
+        {"file": "preuves.md", "quote": "Résultat : deux observations conformes pour les locations de la société A."},
+        {"file": "contrat.md", "quote": "C1 : société A, location ou prêt, sixième jour : 0 CHF."}
+      ]
+    },
+    {
+      "axis": "contract_evidence",
+      "explanation": "C4 est en revanche respecté : l'attestation confirme l'absence de publication, de migration et de vérification distante, conformément à la demande qui ne commande aucun déploiement. Le déploiement n'est donc pas vérifié — et n'avait pas à l'être ; un résultat local vert ne prouverait de toute façon pas une livraison.",
+      "references": [
+        {"file": "contrat.md", "quote": "C4 : réception locale seulement."},
+        {"file": "preuves.md", "quote": "Aucune publication, migration ni vérification distante effectuée."},
+        {"file": "demande.md", "quote": "La réception demandée porte uniquement sur la copie locale synthétique ; aucun déploiement n'est commandé."}
+      ]
+    },
+    {
+      "axis": "source_memory",
+      "explanation": "Le draft élargit la portée au-delà de la demande et des preuves : il affirme la pénalité « pour tous les matériels, locations et prêts », effaçant l'exclusion des prêts posée par la demande, alors même qu'aucune observation de prêt n'existe. La formule perd la négation d'origine et transmet comme acquis ce qui n'a été ni décidé ni observé.",
+      "references": [
+        {"file": "memoire-draft.md", "quote": "La pénalité est reçue pour tous les matériels, locations et prêts, dès le septième jour inclus."},
+        {"file": "demande.md", "quote": "Les prêts restent exclus même lorsqu'ils sont prolongés."},
+        {"file": "preuves.md", "quote": "Le sixième jour, les prêts et la société B n'ont pas été observés dans ce dossier."}
+      ]
+    },
+    {
+      "axis": "source_memory",
+      "explanation": "Le draft confond de plus résultat local, livraison et couverture : il déclare le déploiement en production terminé et toutes les sociétés validées, alors que l'attestation exclut toute publication ou vérification distante, que la demande ne commande aucun déploiement et que la société B n'a jamais été observée. La mention « La preuve P1 est conservée » ne transmet ni le résultat réellement reçu ni ses limites : elle atteste l'existence d'une preuve, pas sa portée restreinte aux deux locations de la société A.",
+      "references": [
+        {"file": "memoire-draft.md", "quote": "Le déploiement en production est terminé et toutes les sociétés sont validées."},
+        {"file": "memoire-draft.md", "quote": "La preuve P1 est conservée."},
+        {"file": "preuves.md", "quote": "Aucune publication, migration ni vérification distante effectuée."},
+        {"file": "demande.md", "quote": "La réception demandée porte uniquement sur la copie locale synthétique ; aucun déploiement n'est commandé."}
+      ]
+    },
+    {
+      "axis": "source_memory",
+      "explanation": "Enfin, le draft ne reprend pas la contribution déjà publiée par la tâche indépendante T04 sur le fuseau Europe/Zurich des exports de la société B. Ce remplacement fait disparaître une décision publiée toujours applicable, étrangère au périmètre de la pénalité : la mémoire nouvelle devait la préserver en plus d'ajouter son propre résultat. Le draft doit reprendre la phrase T04 à l'identique, restreindre la pénalité aux locations de la société A, supprimer l'affirmation de déploiement et de validation de toutes les sociétés, et énoncer les limites (sixième jour, prêts et société B non observés).",
+      "references": [
+        {"file": "memoire-base.md", "quote": "La tâche indépendante T04 a confirmé que les exports de la société B conservent leur fuseau Europe/Zurich. Cette décision publiée reste applicable."},
+        {"file": "memoire-draft.md", "quote": "La pénalité est reçue pour tous les matériels, locations et prêts, dès le septième jour inclus."}
+      ]
+    }
+  ],
+  "limitations": "Réception documentaire seule, en mode fragment isolé : aucun test Odoo, lint, install/update ni contrôle navigateur n'a été lancé, et aucune délégation n'a eu lieu. Les seules observations reçues sont celles de l'attestation P1 (copie locale qa_fixture, révision fixture-r1, série 19.0, exécution antérieure à cette réception) ; elles sont jugées sur leur portée déclarée et ne constituent pas de nouvelles exécutions de ma part. Je n'ai ni accès au code, ni à une base, ni au flow historique, et je n'ai modifié aucune autre pièce du dossier : l'absence d'attestation pour C1, C3 et la branche « prêt » de C2 est donc un défaut de couverture du dossier, non un échec constaté, et le contrat lui-même exclut toute nouvelle exécution pour cette réception d'archives. Le conflit demande/contrat sur les prêts relève d'une décision du demandeur que je ne peux pas trancher ici. Les deux observations A7 et A10 restent acquises."
+}

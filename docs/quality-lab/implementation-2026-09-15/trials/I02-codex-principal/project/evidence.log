@@ -1,0 +1,14 @@
+test_missing_is_unknown (test_public.PublicTest) ... ok
+test_inputs_and_calls_are_independent (test_quotas.SnapshotTest) ... ok
+test_invalid_events_never_create_or_replace_observations (test_quotas.SnapshotTest) ... ok
+test_last_valid_event_wins_tie (test_quotas.SnapshotTest) ... ok
+test_latest_observation_wins_regardless_of_order_or_reset (test_quotas.SnapshotTest) ... ok
+test_missing_required_values (test_quotas.SnapshotTest) ... ok
+test_providers_and_windows_are_independent (test_quotas.SnapshotTest) ... ok
+test_staleness_boundaries (test_quotas.SnapshotTest) ... ok
+test_valid_numeric_boundaries (test_quotas.SnapshotTest) ... ok
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.001s
+
+OK

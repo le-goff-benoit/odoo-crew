@@ -105,6 +105,32 @@ Votre ticket --> Support --> Diagnostic
                                 +--> Donnees a reparer ------> Essai sur copie
 ```
 
+## Réduire les reprises et vérifier ce qui part
+
+**Avant de coder**, l'analyste confronte les hypothèses sensibles à quelques cas
+représentatifs : courant, historique et contre-exemple. Le principal fixe les
+parcours et les contrôles. La QA reproduit les défauts avec le bon état, les droits
+et le canal réel ; un appel interne impossible n'est pas une preuve de panne utilisateur.
+
+**Pendant le travail**, les profils chargent les procédures selon leur mode
+(tâche, release ou réception documentaire). Le [contexte ciblé](docs/CONTEXT.md)
+garde les décisions et les exceptions, et indique les sections laissées de côté.
+Le briefing peut le produire directement avec `--query`, sans charger d'abord
+toute l'archive. Une intention tardive conserve les preuves indépendantes.
+Les essais de réception montrent moins de texte chargé, avec des verdicts corrects,
+mais **pas de gain de vitesse** sur les cas comparés : [mesures et limites](docs/quality-lab/profiles-2026-09-15/README.md).
+
+**À la livraison**, le [garde du commit](docs/DELIVERY_GUARD.md) vérifie fichiers,
+imports, versions, migrations et preuve du build convenu. Les états restent
+explicites : prêt localement, poussé, puis déploiement vérifié après lecture de la
+version installée et des effets attendus. L'outil ne déploie rien lui-même.
+
+Le [banc de parcours](benchmarks/workflow_regressions/README.md) ajoute stock,
+PDF historique, formulaire et reprise de plan aux contrôles déterministes.
+Les [modèles par rôle](docs/MODELS.md) restent hérités du principal ; les candidats
+plus légers sont comparés séparément et ne deviennent pas automatiquement les
+modèles du quotidien.
+
 ## Les commandes, selon votre besoin
 
 Après l’[installation](docs/INSTALL.md), ouvrez votre projet dans Claude Code ou Codex.

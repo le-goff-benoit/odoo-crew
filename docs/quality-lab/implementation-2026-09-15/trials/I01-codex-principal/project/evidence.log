@@ -1,0 +1,16 @@
+test_independent_pending (test_public.PublicTest) ... ok
+test_all_branches_must_be_current (test_scheduler.ReadyTests) ... ok
+test_candidates_do_not_claim_locks (test_scheduler.ReadyTests) ... ok
+test_empty_and_lexical_order (test_scheduler.ReadyTests) ... ok
+test_inputs_are_unchanged_on_success (test_scheduler.ReadyTests) ... ok
+test_invalid_inputs_raise_without_mutation (test_scheduler.ReadyTests) ... ok
+test_lock_modes_and_resource_overlap (test_scheduler.ReadyTests) ... ok
+test_long_dependency_chain (test_scheduler.ReadyTests) ... ok
+test_only_pending_is_proposed_regardless_of_own_proof (test_scheduler.ReadyTests) ... ok
+test_repeated_dependency (test_scheduler.ReadyTests) ... ok
+test_transitive_dependency_status_and_proof (test_scheduler.ReadyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 11 tests in 0.004s
+
+OK

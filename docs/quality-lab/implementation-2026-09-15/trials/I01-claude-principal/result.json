@@ -1,0 +1,69 @@
+{
+  "provider": "claude",
+  "model": "opus",
+  "kind": "principal",
+  "effort": "medium",
+  "case": "I01",
+  "transport": "completed",
+  "actual_model": "claude-opus-5",
+  "actual_effort": null,
+  "tool_calls": 9,
+  "usage": {
+    "tokens": {
+      "input_tokens": 20,
+      "cache_creation_input_tokens": 25382,
+      "cache_read_input_tokens": 160510,
+      "output_tokens": 10210,
+      "output_tokens_details": {
+        "thinking_tokens": 1933
+      },
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 25382,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "not_available",
+      "iterations": [
+        {
+          "input_tokens": 2,
+          "output_tokens": 1116,
+          "cache_read_input_tokens": 24622,
+          "cache_creation_input_tokens": 760,
+          "cache_creation": {
+            "ephemeral_5m_input_tokens": 0,
+            "ephemeral_1h_input_tokens": 760
+          },
+          "type": "message"
+        }
+      ],
+      "speed": "standard"
+    },
+    "cost_usd": 0.590683
+  },
+  "provider_error": null,
+  "return_seconds": 110.264,
+  "principal_rework_seconds": 0.0,
+  "rework_performed": false,
+  "raw_sha256": "0decc7bc26916cf786fc83fe8753482b82ad6c080d4ba8581cdff6500c7f3e5c",
+  "source_hashes": {
+    "CONTRACT.md": "dac4e346d9e101df323f92dbb091071b9e6f26e1c6bc15674f5b650caa70a2f4",
+    "evidence.json": "916e5ef4cff433c6084c78e1484e32f692fac7cbe81fdbfe7f9493954c50a75c",
+    "evidence.log": "427cbcd646ff59311f95c6885941cb2d05b0dcbde12bdb30bf6cf92e2097bcd0",
+    "scheduler.py": "ce0bb5a9cd194985ed4d9fee15d9b439b929c2422e72c68f685f3800785185cf",
+    "test_public.py": "aab8fa3e67ca0ba74133be007e419159bba8528064816c10674e42c86d90db60",
+    "test_scheduler.py": "bb270e23585732704cfbf23f40b5ae5bd76282acdcef5e525e2fd2c0770e7cc0"
+  },
+  "oracle_passed": true,
+  "receipt_passed": true,
+  "status": "accepted",
+  "reception_seconds": 0.118,
+  "total_to_reception_seconds": 110.382,
+  "immutable_inputs_passed": true,
+  "late_immutable_check_seconds": 4.8e-05,
+  "native_receipt_command_observed": true,
+  "agent_test_count": 43
+}

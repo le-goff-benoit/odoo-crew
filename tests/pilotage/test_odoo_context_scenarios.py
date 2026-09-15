@@ -2,6 +2,7 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import subprocess
 import tempfile
 import threading
 from types import SimpleNamespace
@@ -37,6 +38,22 @@ class ContextScenarioTests(unittest.TestCase):
         self.source.write_text('Nouvelle règle')
         with self.assertRaises(ValueError): context.verify_context(result, self.root)
 
+    def test_numbered_exception_stays_with_parent_rule(self):
+        for heading in ['2. Exceptions', '2.1) Exceptions', '2.1 Exceptions', 'IV. Limites', 'B) Conditions', '**Exceptions**', '**2. Exceptions**', '2 — Exceptions', '2 Exceptions']:
+            with self.subTest(heading=heading):
+                (self.root / '.odoo-agents/PROJECT.md').write_text(
+                    '## Facturation\nLa règle générale est retenue.\n## ' + heading
+                    + '\nLes prêts sont exclus.\n## Archive\nAutre domaine.\n')
+                result = context.context(self.root, 'facturation', 12000)
+                self.assertIn('Les prêts sont exclus.', result['text'])
+                self.assertNotIn('Autre domaine.', result['text'])
+
+    def test_reported_context_size_cannot_be_falsified(self):
+        result = context.context(self.root)
+        result['actual_characters'] = 0
+        with self.assertRaisesRegex(ValueError, 'actual_characters'):
+            context.verify_context(result, self.root)
+
     def test_new_decision_invalidates_context_even_if_old_sources_unchanged(self):
         record = context.context(self.root)
         (self.root / 'decisions/D2.md').write_text('Remplace D1')
@@ -65,6 +82,96 @@ class ContextScenarioTests(unittest.TestCase):
         self.source.write_text('La livraison suit une nouvelle règle.')
         with self.assertRaisesRegex(ValueError, 'catalogue'):
             context.verify_context(record, self.root)
+
+    def test_large_project_selects_business_sections_and_indexes_irrelevant_sections(self):
+        text = ('# Projet\n\n## Compréhension métier\nLes prêts restent exclus de la facturation.\n\n'
+                '## Historique des serveurs\n' + 'Configuration ancienne sans rapport. ' * 300 +
+                '\n\n## Livraison T08\nContrôler le regroupement par établissement.\n')
+        (self.root / '.odoo-agents/PROJECT.md').write_text(text)
+        result = context.context(self.root, 'livraison T08', 1800)
+        self.assertIn('Les prêts restent exclus', result['text'])
+        self.assertIn('Contrôler le regroupement', result['text'])
+        self.assertNotIn('Configuration ancienne', result['text'])
+        omitted = next(s for s in result['sections'] if s['title'] == 'Historique des serveurs')
+        self.assertFalse(omitted['included'])
+        self.assertIn(f"L{omitted['start_line']}-L{omitted['end_line']}", result['text'])
+        self.assertEqual(result['emitted_characters'], len(result['text']))
+        self.assertLessEqual(result['emitted_characters'], 1800)
+        self.assertEqual(result['budget_status'], 'within_budget')
+        context.verify_context(result, self.root)
+
+    def test_exception_heading_stays_with_its_rule_and_is_never_truncated(self):
+        text = ('## Facturation\n' + 'Les locations sont facturées selon le contrat. ' * 35 +
+                '\n\n## Exceptions\nLes prêts sont EXCLUS même après prolongation.\n')
+        (self.root / '.odoo-agents/PROJECT.md').write_text(text)
+        small = context.context(self.root, 'facturation', 1000)
+        self.assertNotIn('Les locations sont facturées', small['text'])
+        self.assertFalse(any(s['included'] for s in small['sections'] if s['path'].endswith('PROJECT.md')))
+        large = context.context(self.root, 'facturation', 3500)
+        self.assertIn('Les locations sont facturées', large['text'])
+        self.assertIn('Les prêts sont EXCLUS même après prolongation.', large['text'])
+        self.assertEqual(len([s for s in large['sections'] if s['path'].endswith('PROJECT.md')]), 1)
+
+    def test_decisions_cannot_be_silently_omitted_when_budget_is_insufficient(self):
+        statement = 'Une règle indivisible et sa portée. ' * 45 + ' EXCEPTION FINALE.'
+        data = {'schema': 1, 'decisions': [
+            {'id': 'D1', 'status': 'confirmed', 'statement': statement, 'sources': [self.rule],
+             'confirmed_by': 'Alice', 'implementation': {'status': 'unknown'}}], 'questions': []}
+        (self.root / '.odoo-agents/DECISIONS.json').write_text(json.dumps(data))
+        result = context.context(self.root, 'sans correspondance', 1000)
+        self.assertEqual(result['budget_status'], 'insufficient')
+        self.assertIn(statement, result['text'])
+        self.assertIn('BUDGET INSUFFISANT', result['text'])
+        self.assertGreater(result['emitted_characters'], 1000)
+        self.assertTrue(next(s for s in result['sections'] if s['mandatory'])['included'])
+        context.verify_context(result, self.root)
+
+    def test_same_day_contradictions_are_displayed_without_invented_precedence(self):
+        self.source.write_text('## 2026-09-15 — livraison\nLa livraison est autorisée.')
+        (self.root / 'decisions/D2.md').write_text('## 2026-09-15 — livraison\nLa livraison est interdite.')
+        result = context.context(self.root, 'livraison', 1800)
+        self.assertIn('La livraison est autorisée', result['text'])
+        self.assertIn('La livraison est interdite', result['text'])
+        self.assertIn('ne vaut pas arbitrage', result['text'])
+        priorities = {s['priority'] for s in result['sections']}
+        self.assertEqual(len(priorities), 1)
+        self.assertIn('synonymes et contradictions ne sont pas résolus', result['limitation'])
+
+    def test_code_fence_and_subheadings_do_not_split_a_rule(self):
+        text = '## Règle\nTexte\n```markdown\n## Ceci est un exemple\n```\n### Cas limite\nException finale\n'
+        parts = context.markdown_sections(text)
+        self.assertEqual(len(parts), 1)
+        self.assertEqual(parts[0]['content'], text)
+
+    def test_omitted_section_change_and_tampered_section_index_invalidate(self):
+        (self.root / '.odoo-agents/PROJECT.md').write_text('## Métier\nLocation\n## Archives\n' + 'long ' * 500)
+        result = context.context(self.root, 'location', 1000)
+        result['sections'][0]['end_line'] += 1
+        with self.assertRaisesRegex(ValueError, 'sections'):
+            context.verify_context(result, self.root)
+        result = context.context(self.root, 'location', 1000)
+        with (self.root / '.odoo-agents/PROJECT.md').open('a') as output:
+            output.write('Contradiction dans une section omise.')
+        with self.assertRaisesRegex(ValueError, 'catalogue'):
+            context.verify_context(result, self.root)
+
+    def test_cli_counts_every_emitted_character_including_index(self):
+        output = self.root / 'context.json'
+        result = subprocess.run([sys.executable, context.__file__, str(self.root), '--query', 'livraison',
+                                 '--budget', '1000', '--output', str(output)],
+                                text=True, capture_output=True, check=True)
+        record = json.loads(output.read_text())
+        self.assertEqual(record['actual_characters'], len(result.stdout))
+        self.assertEqual(record['text'], result.stdout)
+        self.assertIn('Index des sections', result.stdout)
+
+    def test_large_omission_index_is_reported_as_insufficient(self):
+        (self.root / '.odoo-agents/PROJECT.md').write_text(''.join(
+            f'## Archive {i}\nSans correspondance.\n' for i in range(150)))
+        result = context.context(self.root, 'livraison', 1000)
+        self.assertEqual(result['budget_status'], 'insufficient')
+        self.assertEqual(len([s for s in result['sections'] if s['path'].endswith('PROJECT.md')]), 150)
+        self.assertEqual(result['emitted_characters'], len(result['text']))
 
     def test_unknown_change_expands_selection_and_stale_source_blocks(self):
         second = dict(self.catalog['scenarios'][0], id='S2', triggers=['other/*'], group='browser')

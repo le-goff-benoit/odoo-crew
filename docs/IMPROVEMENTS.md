@@ -126,3 +126,37 @@ Preuves : [planification](quality-lab/planning-2026-09-15/README.md),
 [modèles](quality-lab/models-2026-09-15/README.md). Candidats légers expérimentaux ;
 aucun gain de release Odoo inféré des workloads synthétiques. Sources de quotas
 natives non disponibles sur ce poste ; aucune connexion fictive revendiquée.
+
+
+## Contexte récent — 15 septembre 2026
+
+Correction locale adoptée du briefing : [preuve des dates](quality-lab/briefing-recency-2026-09-15/README.md).
+Les journaux mélangés ne font plus passer les dernières positions du fichier pour
+les dernières dates. À date égale, aucune priorité de décision n’est inventée.
+La sélection par sections est intégrée au briefing avec `--query` : décisions
+obligatoires complètes, exceptions intactes, index des omissions et provenance
+vérifiable. Le budget insuffisant est explicite. Une diminution du nombre de mots
+seule n’est pas une amélioration de qualité ou de délai démontrée.
+
+
+## Parcours et livraison — 15 septembre 2026
+
+- **Contrat de livraison adopté** : `odoo_delivery_guard.py` lit le commit exact,
+  signale fichiers/imports manquants, changements de schéma sans version et
+  migrations hors plage. Build prescrit et captures avant/après, migrations
+  exécutées et effets relus restent distincts. [Portée et limites](DELIVERY_GUARD.md).
+- **Cadrage et QA** : petite cohorte contradictoire avant règle structurante ;
+  défaut comportemental lié à acteur/état/canal atteignable. Les motifs de reprise
+  distinguent critère oublié, intention tardive, hypothèse réfutée, régression,
+  incident et conflit mémoire. Aucun seuil mécanique de nombre de reviews.
+- **Banc représentatif livré** : [W01–W06](../benchmarks/workflow_regressions/README.md),
+  contrôles sans modèle, parcours Odoo synthétiques stock/PDF/formulaire, mini-plan
+  avec ajout tardif et reprise. [Résultats](quality-lab/workflows-2026-09-15/README.md).
+- **Profils allégés** : procédures longues dans `docs/roles/`, chargées selon le
+  mode ; mêmes sources pour Claude/Codex. [Comparaison et limites](quality-lab/profiles-2026-09-15/README.md).
+- **Modèles toujours expérimentaux** : [réalisations avec outils](quality-lab/implementation-2026-09-15/README.md)
+  distinctes des anciennes réponses sur dossier. Une réussite Python ne qualifie
+  pas Odoo ; aucun changement automatique du modèle principal.
+
+Les données d'origine restent privées. Les cas et preuves publiés sont synthétiques.
+Aucune économie globale de temps de release client n'est déduite de ces essais.

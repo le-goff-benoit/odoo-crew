@@ -1,0 +1,40 @@
+{
+  "provider": "codex",
+  "model": "gpt-5.6-terra",
+  "kind": "candidate",
+  "effort": "medium",
+  "case": "I02",
+  "transport": "completed",
+  "actual_model": null,
+  "actual_effort": null,
+  "tool_calls": 6,
+  "usage": {
+    "input_tokens": 86663,
+    "cached_input_tokens": 68608,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2976,
+    "reasoning_output_tokens": 393
+  },
+  "provider_error": null,
+  "return_seconds": 66.672,
+  "principal_rework_seconds": 0.0,
+  "rework_performed": false,
+  "raw_sha256": "ac04c0c7d5e1572907defb5cc2c2f7b889f2edd6abfa0c2eb8ac3284f0ac44a6",
+  "source_hashes": {
+    "CONTRACT.md": "b3505098f5cdebf7a1586bf6a8445da118eb3260f358b4ee645c90b1e99a72c3",
+    "evidence.json": "260784e153f021c3e0169f046cdf876eacf38fe1e79a1c8f505ea5c2c9ec9c43",
+    "evidence.log": "4e97c2309d1a6e685d7f2e10c5f4dbf070ac140c58887498bd8f78595a097d0c",
+    "quotas.py": "c255864ae86b43ad2705bbc846d5afb34530def8b13664ec0c171be00cec4dda",
+    "test_public.py": "fcaf1c2dd2e48f99189012079fd377acaa85a2f39855caea930e4b5a21823315",
+    "test_quotas.py": "9c24ba14a242ca87073cff499569672bf5ab93cbbaef26bbf39c3f44308e1b49"
+  },
+  "oracle_passed": true,
+  "receipt_passed": true,
+  "status": "accepted",
+  "reception_seconds": 0.086,
+  "total_to_reception_seconds": 66.757,
+  "immutable_inputs_passed": true,
+  "late_immutable_check_seconds": 0.000161,
+  "native_receipt_command_observed": true,
+  "agent_test_count": 4
+}

@@ -1,0 +1,9 @@
+`/work/reception.json` écrit et validé (JSON parsable, 8 clés attendues, les 18 citations vérifiées caractère par caractère contre les pièces sources : 0 écart).
+
+**Décision : reject**, les trois axes en refus.
+
+- **Demande ↔ contrat — reject** : la demande exclut les prêts (« même lorsqu'ils sont prolongés »), C2 les réintègre à 2 CHF au septième jour et 8 CHF au dixième. Une négation explicite devient son contraire. C1, C3 et C4 sont fidèles, et je le dis dans le rapport : le défaut est localisé sur C2 seul, c'est une décision du demandeur, pas une correction que je peux trancher.
+- **Contrat → preuves — reject** : A7 et A10 sont réellement attestés et conservés comme succès acquis. Mais C2 est composé (location *et* prêt) et seule la branche location est couverte ; C1 (sixième jour) et C3 (société B) n'ont aucune observation — l'attestation le déclare elle-même. Trois critères sur quatre sans preuve, donc `local_scope_received: false`. C4 est respecté ; `deployment_verified: false` parce qu'aucun déploiement n'a eu lieu ni n'était commandé.
+- **Sources → mémoire — reject** : le draft étend la pénalité « à tous les matériels, locations et prêts », affirme un déploiement en production terminé et toutes les sociétés validées — trois affirmations contredites par la demande et par P1 — et fait disparaître la contribution publiée T04 (fuseau Europe/Zurich des exports société B), d'où `prior_memory_preserved: false`. « La preuve P1 est conservée » atteste l'existence d'une preuve, pas le résultat reçu ni ses limites.
+
+Mode documentaire strict respecté : aucun test, lint ou install lancé, aucune délégation, aucun autre fichier touché. Toutes les lectures (profil, référence `qa-reception.md` désignée par le profil, cinq pièces) sont passées par `/bridge/read-source`. Je n'ai réclamé aucune nouvelle exécution : l'absence de preuve pour C1, C3 et la branche prêt est traitée comme un défaut de couverture du dossier, pas comme un échec constaté.

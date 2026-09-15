@@ -1,0 +1,6 @@
+{
+  "schema": 1,
+  "frozen_before_native_calls": true,
+  "positive": {"decision":"accept","axes":{"request_contract":"accept","contract_evidence":"accept","source_memory":"accept"},"local_scope_received":true,"deployment_verified":false,"prior_memory_preserved":true,"preserved_observations":["A6","A7","A10","L10","B10"],"semantic_requirements":["La règle de seuil inclusive et l'exception des prêts restent exactes.","Le verdict local positif ne réclame aucun contrôle hors du mandat documentaire.","La mémoire conserve T04 et distingue réception locale et déploiement."]},
+  "holdout": {"decision":"reject","axes":{"request_contract":"reject","contract_evidence":"reject","source_memory":"reject"},"local_scope_received":false,"deployment_verified":false,"prior_memory_preserved":false,"preserved_observations":["A7","A10"],"semantic_requirements":["Identifie la contradiction prêts exclus de la demande contre prêts inclus du contrat, malgré leur prolongation.","Identifie l'absence de borne sixième jour et société B dans P1, en préservant les observations A7/A10 réussies.","Refuse l'affirmation de déploiement et de toutes sociétés validées car P1 est local et partiel.","Détecte la disparition de la contribution indépendante T04/fuseau Europe-Zurich dans le draft."]}
+}

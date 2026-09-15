@@ -1,0 +1,62 @@
+{
+  "schema": 1,
+  "status": "completed",
+  "scope": "synthetic Odoo 19.0 ORM, ordinary-user stock rights, real Chromium and rendered PDF",
+  "model_calls": 0,
+  "trials": [
+    {
+      "pass": true,
+      "expected": "all_pass",
+      "returncode": 0,
+      "markers": [
+        "browser_form",
+        "invoice_pdf",
+        "stock"
+      ],
+      "summaries": [
+        [
+          0,
+          0,
+          3
+        ]
+      ],
+      "real_browser_click": true,
+      "chrome": true,
+      "skipped": false,
+      "label": "witness",
+      "seconds": 104.018
+    },
+    {
+      "pass": true,
+      "expected": "three_business_mutants_rejected",
+      "returncode": 1,
+      "markers": [],
+      "summaries": [
+        [
+          3,
+          0,
+          3
+        ]
+      ],
+      "real_browser_click": false,
+      "chrome": true,
+      "skipped": false,
+      "label": "mutants",
+      "seconds": 71.352
+    }
+  ],
+  "tools": {
+    "subprocess_calls": 14
+  },
+  "limitations": [
+    "No customer database",
+    "No model capability inferred from oracle calibration",
+    "Only the selected series and selected paths are qualified"
+  ],
+  "images": {
+    "odoo-qa:19.0": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d",
+    "postgres:16": "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f"
+  },
+  "cleanup_verified": true,
+  "seconds": 177.672
+}

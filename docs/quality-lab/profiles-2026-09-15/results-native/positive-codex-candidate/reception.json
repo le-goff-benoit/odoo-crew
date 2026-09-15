@@ -1,0 +1,91 @@
+{
+  "decision": "accept",
+  "axes": {
+    "request_contract": "accept",
+    "contract_evidence": "accept",
+    "source_memory": "accept"
+  },
+  "local_scope_received": true,
+  "deployment_verified": false,
+  "prior_memory_preserved": true,
+  "preserved_observations": [
+    "A6",
+    "A7",
+    "A10",
+    "L10",
+    "B10"
+  ],
+  "findings": [
+    {
+      "axis": "request_contract",
+      "explanation": "Le contrat reprend la société A, la location, le seuil inclusif et le tarif demandé : 2 CHF au jour 7 et 8 CHF au jour 10, avec zéro au jour 6. Il conserve l’exclusion des prêts prolongés et le comportement de B. Les 3 CHF de B constituent la référence de contrôle, corroborée par l’attestation. C5 respecte la réception exclusivement locale. Aucun élargissement ni réduction injustifiés du périmètre.",
+      "references": [
+        {
+          "file": "demande.md",
+          "quote": "Pour la société A, calculer la pénalité du matériel loué à 2 CHF par jour à partir du septième jour inclus. Au sixième jour, elle reste nulle. Les prêts restent exclus même lorsqu'ils sont prolongés."
+        },
+        {
+          "file": "demande.md",
+          "quote": "La société B garde son comportement existant. La réception demandée porte uniquement sur la copie locale synthétique ; aucun déploiement n'est commandé."
+        },
+        {
+          "file": "contrat.md",
+          "quote": "C1 : société A, location, sixième jour : 0 CHF.\nC2 : société A, location, septième jour : 2 CHF ; dixième jour : 8 CHF.\nC3 : société A, prêt prolongé, dixième jour : 0 CHF.\nC4 : société B, dixième jour : résultat existant conservé à 3 CHF.\nC5 : réception locale seulement, aucune affirmation de déploiement."
+        },
+        {
+          "file": "preuves.md",
+          "quote": "| B10 | B | location | 10 | 3 CHF, identique à la référence |"
+        }
+      ]
+    },
+    {
+      "axis": "contract_evidence",
+      "explanation": "Les cinq observations reçues satisfont C1 à C4, y compris les deux bornes chiffrées de C2 et le prêt prolongé de C3. Leur contexte est explicitement local, synthétique, en série 19.0. L’absence de publication et de vérification distante respecte C5 ; elle ne constitue pas un manque dans ce mandat. Ces succès sont ceux de l’attestation antérieure, sans nouvelle exécution par le réceptionnaire.",
+      "references": [
+        {
+          "file": "contrat.md",
+          "quote": "C1 : société A, location, sixième jour : 0 CHF.\nC2 : société A, location, septième jour : 2 CHF ; dixième jour : 8 CHF.\nC3 : société A, prêt prolongé, dixième jour : 0 CHF.\nC4 : société B, dixième jour : résultat existant conservé à 3 CHF.\nC5 : réception locale seulement, aucune affirmation de déploiement."
+        },
+        {
+          "file": "preuves.md",
+          "quote": "Copie locale qa_fixture, révision fixture-r1, série 19.0. Exécution terminée avant cette réception documentaire."
+        },
+        {
+          "file": "preuves.md",
+          "quote": "| A6 | A | location | 6 | 0 CHF |\n| A7 | A | location | 7 | 2 CHF |\n| A10 | A | location | 10 | 8 CHF |\n| L10 | A | prêt prolongé | 10 | 0 CHF |\n| B10 | B | location | 10 | 3 CHF, identique à la référence |"
+        },
+        {
+          "file": "preuves.md",
+          "quote": "Résultat : cinq observations conformes. Aucune publication, migration ni vérification distante effectuée. Aucun incident d'exécution déclaré."
+        }
+      ]
+    },
+    {
+      "axis": "source_memory",
+      "explanation": "Le draft préserve intégralement la contribution publiée T04. La nouvelle entrée transmet le résultat local reçu, le tarif et son seuil, les exclusions et le maintien de B. Elle reprend les cinq succès sans les transformer en déploiement ou migration vérifiés. La mémoire est fidèle aux sources et conserve leurs limites.",
+      "references": [
+        {
+          "file": "memoire-base.md",
+          "quote": "La tâche indépendante T04 a confirmé que les exports de la société B conservent leur fuseau Europe/Zurich. Cette décision publiée reste applicable."
+        },
+        {
+          "file": "memoire-draft.md",
+          "quote": "La tâche indépendante T04 a confirmé que les exports de la société B conservent leur fuseau Europe/Zurich. Cette décision publiée reste applicable."
+        },
+        {
+          "file": "demande.md",
+          "quote": "Pour la société A, calculer la pénalité du matériel loué à 2 CHF par jour à partir du septième jour inclus. Au sixième jour, elle reste nulle. Les prêts restent exclus même lorsqu'ils sont prolongés. La société B garde son comportement existant."
+        },
+        {
+          "file": "memoire-draft.md",
+          "quote": "La pénalité de location de la société A est reçue sur copie locale à 2 CHF par jour dès le septième jour inclus ; le sixième jour vaut zéro. Les prêts, y compris prolongés, restent exclus. Le comportement de la société B est conservé. Les cinq observations sont conformes ; aucun déploiement ni migration distante n'a été réalisé ou vérifié."
+        },
+        {
+          "file": "preuves.md",
+          "quote": "Résultat : cinq observations conformes. Aucune publication, migration ni vérification distante effectuée."
+        }
+      ]
+    }
+  ],
+  "limitations": "Réception documentaire indépendante, sans bundle, du dossier synthétique série 19.0. Les attestations fournies sont les seules observations reçues ; aucun test Odoo ni contrôle client ou distant n’a été exécuté pour cette réception. L’acceptation couvre le périmètre local convenu et les cinq observations attestées, sans établir une validation exhaustive au-delà de ces cas ni une livraison. La contribution T04 est préservée comme mémoire publiée, sans nouvelle vérification des exports."
+}

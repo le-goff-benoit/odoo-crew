@@ -1,0 +1,100 @@
+{
+  "decision": "reject",
+  "axes": {
+    "request_contract": "reject",
+    "contract_evidence": "reject",
+    "source_memory": "reject"
+  },
+  "local_scope_received": false,
+  "deployment_verified": false,
+  "prior_memory_preserved": false,
+  "preserved_observations": [
+    "A7",
+    "A10"
+  ],
+  "findings": [
+    {
+      "axis": "request_contract",
+      "explanation": "Refus : C2 étend la pénalité aux prêts, contrairement à leur exclusion explicite, y compris après prolongation. Le contrat doit rétablir cette exclusion. Les bornes et montants des locations A sont cohérents : 0 CHF au sixième jour, 2 CHF au septième et 8 CHF au dixième. C3 conserve le principe du comportement existant de B, mais sa valeur de 3 CHF est une précision sans source dans la demande, à étayer.",
+      "references": [
+        {
+          "file": "demande.md",
+          "quote": "Pour la société A, calculer la pénalité du matériel loué à 2 CHF par jour à partir du septième jour inclus. Au sixième jour, elle reste nulle. Les prêts restent exclus même lorsqu'ils sont prolongés. La société B garde son comportement existant."
+        },
+        {
+          "file": "contrat.md",
+          "quote": "C1 : société A, location ou prêt, sixième jour : 0 CHF.\nC2 : société A, location ou prêt, septième jour : 2 CHF ; dixième jour : 8 CHF.\nC3 : société B, dixième jour : résultat existant conservé à 3 CHF."
+        }
+      ]
+    },
+    {
+      "axis": "request_contract",
+      "explanation": "Verdict positif sur la frontière de réception : C4 reprend correctement le périmètre local seul. Aucun déploiement ne constitue une obligation de cette réception.",
+      "references": [
+        {
+          "file": "demande.md",
+          "quote": "La réception demandée porte uniquement sur la copie locale synthétique ; aucun déploiement n'est commandé."
+        },
+        {
+          "file": "contrat.md",
+          "quote": "C4 : réception locale seulement."
+        }
+      ]
+    },
+    {
+      "axis": "contract_evidence",
+      "explanation": "Refus de la couverture globale : C1 manque entièrement, C2 est seulement étayé pour les locations A, et C3 manque. L’exclusion des prêts prolongés demandée initialement reste également sans observation. Verdict positif partiel : A7 et A10 attestent les montants attendus des locations A aux jours 7 et 10 et restent acquis dans leur contexte synthétique local. L’absence d’incident ne complète pas cette couverture.",
+      "references": [
+        {
+          "file": "contrat.md",
+          "quote": "C1 : société A, location ou prêt, sixième jour : 0 CHF.\nC2 : société A, location ou prêt, septième jour : 2 CHF ; dixième jour : 8 CHF.\nC3 : société B, dixième jour : résultat existant conservé à 3 CHF."
+        },
+        {
+          "file": "preuves.md",
+          "quote": "| A7 | A | location | 7 | 2 CHF |\n| A10 | A | location | 10 | 8 CHF |"
+        },
+        {
+          "file": "preuves.md",
+          "quote": "Résultat : deux observations conformes pour les locations de la société A. Le sixième jour, les prêts et la société B n'ont pas été observés dans ce dossier."
+        },
+        {
+          "file": "demande.md",
+          "quote": "Les prêts restent exclus même lorsqu'ils sont prolongés."
+        }
+      ]
+    },
+    {
+      "axis": "source_memory",
+      "explanation": "Refus : la mémoire transforme deux succès locaux en réception générale, inclut les prêts exclus et affirme un déploiement et une validation de toutes les sociétés sans preuve, contrairement aux limites explicites de P1. Remplacer ces affirmations par les résultats A7/A10 et les observations manquantes ; la seule mention de conservation de P1 ne transmet pas son résultat ni ses limites.",
+      "references": [
+        {
+          "file": "memoire-draft.md",
+          "quote": "La pénalité est reçue pour tous les matériels, locations et prêts, dès le septième jour inclus. Le déploiement en production est terminé et toutes les sociétés sont validées. La preuve P1 est conservée."
+        },
+        {
+          "file": "demande.md",
+          "quote": "Les prêts restent exclus même lorsqu'ils sont prolongés."
+        },
+        {
+          "file": "preuves.md",
+          "quote": "Résultat : deux observations conformes pour les locations de la société A. Le sixième jour, les prêts et la société B n'ont pas été observés dans ce dossier. Aucune publication, migration ni vérification distante effectuée."
+        }
+      ]
+    },
+    {
+      "axis": "source_memory",
+      "explanation": "Refus de la préservation de la mémoire antérieure : le draft omet entièrement le résultat indépendant T04 sur le fuseau des exports B. Il doit conserver cette contribution et son caractère applicable ; une validation générale des sociétés ne restitue pas ce résultat précis.",
+      "references": [
+        {
+          "file": "memoire-base.md",
+          "quote": "La tâche indépendante T04 a confirmé que les exports de la société B conservent leur fuseau Europe/Zurich. Cette décision publiée reste applicable."
+        },
+        {
+          "file": "memoire-draft.md",
+          "quote": "La pénalité est reçue pour tous les matériels, locations et prêts, dès le septième jour inclus. Le déploiement en production est terminé et toutes les sociétés sont validées. La preuve P1 est conservée."
+        }
+      ]
+    }
+  ],
+  "limitations": "Réception documentaire indépendante sans bundle, projet synthétique de série 19.0 selon le mandat et P1. Seules les attestations fournies sont évaluées ; aucun test Odoo, accès client ou contrôle distant effectué lors de cette réception. A7 et A10 sont des succès reçus, pas de nouvelles exécutions. Le périmètre local demandé reste partiellement étayé. Le déploiement est hors mandat et non vérifié ; son absence ne motive pas le refus, son affirmation injustifiée dans la mémoire le motive."
+}

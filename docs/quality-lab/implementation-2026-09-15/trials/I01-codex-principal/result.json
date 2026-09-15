@@ -1,0 +1,40 @@
+{
+  "provider": "codex",
+  "model": "gpt-6-astra",
+  "kind": "principal",
+  "effort": "medium",
+  "case": "I01",
+  "transport": "completed",
+  "actual_model": null,
+  "actual_effort": null,
+  "tool_calls": 8,
+  "usage": {
+    "input_tokens": 83327,
+    "cached_input_tokens": 76032,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2574,
+    "reasoning_output_tokens": 48
+  },
+  "provider_error": null,
+  "return_seconds": 99.913,
+  "principal_rework_seconds": 0.0,
+  "rework_performed": false,
+  "raw_sha256": "e3c23bf9848e723d3e654fed70a1d960a02a0a52aca1428d14cb81c5b22a20f4",
+  "source_hashes": {
+    "CONTRACT.md": "dac4e346d9e101df323f92dbb091071b9e6f26e1c6bc15674f5b650caa70a2f4",
+    "evidence.json": "28c97a8e30e96985899e35f866bab85b7266f567a9737ca57c66bf86ed2fb54c",
+    "evidence.log": "ca43e336fb900f2526b85635a1300b1b2af7eea9772cc7514a13166a9ff2e614",
+    "scheduler.py": "f3d54e8c31078d37be231f0ce832e7a4877a470eba60cfc4bb52b6e8bf3e63e6",
+    "test_public.py": "aab8fa3e67ca0ba74133be007e419159bba8528064816c10674e42c86d90db60",
+    "test_scheduler.py": "bbd8645688fe8e956409ec7313a892347527b2ca8ee4619edb6672f20269bd50"
+  },
+  "oracle_passed": true,
+  "receipt_passed": true,
+  "status": "accepted",
+  "reception_seconds": 0.104,
+  "total_to_reception_seconds": 100.017,
+  "immutable_inputs_passed": true,
+  "late_immutable_check_seconds": 6e-05,
+  "native_receipt_command_observed": true,
+  "agent_test_count": 11
+}

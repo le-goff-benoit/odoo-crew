@@ -1,5 +1,16 @@
 # Journal de l’espace qualité
 
+## 15 septembre 2026 — Revue du contexte et du banc
+
+- Analyse des derniers parcours projet ; rapport client détaillé conservé localement.
+- Défaut déterministe : les dernières positions du journal n’étaient pas les dernières dates.
+- Sélection corrigée par date, ordre source stable à égalité, titres omis du même jour visibles.
+- Aucun journal client modifié ; apprentissages historiques et vue complète conservés.
+- Trois régressions synthétiques : rouge avant, vert après ; preuve dans briefing-recency-2026-09-15/.
+- Index qualité actualisé pour retrouver les essais récents de planification, hooks et modèles.
+- Réduction des profils proposée avec lecture des détails à la demande ; aucun profil raccourci sans essai comportemental.
+- Aucune campagne payante ni publication distante dans cette passe.
+
 ## 15 septembre 2026 — Livraison avec Tricorder 0.3.0
 
 - Publication demandée avec l’application : Crew v2026.09.15 et profils locaux régénérés.
@@ -106,3 +117,18 @@
 - Contrôles : 12 nouveaux tests, 283 tests Crew verts, lecteurs natifs Claude/Codex et concurrence.
 - Graphe et génération isolée conformes ; adoption dans les profils partagés Claude/Codex.
 - Preuves, contre-cas et limites : `docs/quality-lab/PREPARATION.md`.
+
+
+## 15 septembre 2026 — parcours, contexte et livraison vérifiable
+
+- Demande : appliquer les leviers de réduction des reprises, mettre à jour les agents locaux et publier.
+- Fait : garde commit/build/versions avant-après/effets, cohortes au cadrage et diagnostics QA atteignables.
+- Contexte : dates de journal corrigées, sélection de sections avec décisions et exceptions, briefing `--query`.
+- Profils : procédures conditionnelles dans docs/roles ; sources communes Claude/Codex conservées.
+- Banc : six cas synthétiques ; Odoo18 PDF, Odoo19 stock/PDF/Chrome, mini-release avec reprise réelle.
+- Contre-épreuves : défauts injectés détectés, incidents du banc séparés des défauts métier.
+- Comparaisons natives : profils avant/après et modèles sur implémentation Python, protocoles bornés et archivés.
+- Appris : contexte plus court ne signifie pas automatiquement délai réduit ; réception et références comptent.
+- Modèles : candidats expérimentaux, principal inchangé ; aucun gain global de release client annoncé.
+- Détail : workflows-, profiles- et implementation-2026-09-15 ; aucun contenu client publié.
+- Validation : 355 tests (1 ignoré Python3.10), graphe et 35 profils actifs conformes ; 16 appels natifs reçus.

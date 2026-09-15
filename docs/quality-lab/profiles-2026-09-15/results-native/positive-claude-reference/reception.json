@@ -1,0 +1,86 @@
+{
+  "decision": "accept",
+  "axes": {
+    "request_contract": "accept",
+    "contract_evidence": "accept",
+    "source_memory": "accept"
+  },
+  "local_scope_received": true,
+  "deployment_verified": false,
+  "prior_memory_preserved": true,
+  "preserved_observations": ["A6", "A7", "A10", "L10", "B10"],
+  "findings": [
+    {
+      "axis": "request_contract",
+      "explanation": "Chaque obligation de la demande se retrouve dans le contrat avec son objet, son acteur, sa borne et ses exceptions : le seuil du septième jour inclus à 2 CHF par jour et la nullité au sixième jour deviennent C1 et C2 (au dixième jour, 8 CHF correspond bien aux jours 7 à 10 à 2 CHF) ; l'exclusion des prêts, prolongation comprise, devient C3 ; la conservation du comportement de la société B devient C4 ; la restriction de portée à la copie locale sans déploiement devient C5. Aucune obligation de la demande n'est absente ni réduite.",
+      "references": [
+        {"file": "demande.md", "quote": "calculer la pénalité du matériel loué à 2 CHF par jour à partir du septième jour inclus. Au sixième jour, elle reste nulle."},
+        {"file": "contrat.md", "quote": "C1 : société A, location, sixième jour : 0 CHF."},
+        {"file": "contrat.md", "quote": "C2 : société A, location, septième jour : 2 CHF ; dixième jour : 8 CHF."},
+        {"file": "demande.md", "quote": "Les prêts restent exclus même lorsqu'ils sont prolongés."},
+        {"file": "contrat.md", "quote": "C3 : société A, prêt prolongé, dixième jour : 0 CHF."},
+        {"file": "demande.md", "quote": "La réception demandée porte uniquement sur la copie locale synthétique ; aucun déploiement n'est commandé."},
+        {"file": "contrat.md", "quote": "C5 : réception locale seulement, aucune affirmation de déploiement."}
+      ]
+    },
+    {
+      "axis": "request_contract",
+      "explanation": "Le seul ajout du contrat par rapport à la demande est la valeur chiffrée 3 CHF attachée au comportement existant de la société B : la demande ne parle que de conservation. Il s'agit d'une concrétisation vérifiable de l'obligation d'origine (une valeur de référence à ne pas modifier), pas d'une obligation supplémentaire ; elle est attestée comme identique à la référence, donc elle ne durcit ni n'élargit la demande. Aucune obligation n'est ajoutée ailleurs, et aucun critère écrit n'a disparu au vu des résultats.",
+      "references": [
+        {"file": "demande.md", "quote": "La société B garde son comportement existant."},
+        {"file": "contrat.md", "quote": "C4 : société B, dixième jour : résultat existant conservé à 3 CHF."},
+        {"file": "preuves.md", "quote": "| B10 | B | location | 10 | 3 CHF, identique à la référence |"}
+      ]
+    },
+    {
+      "axis": "contract_evidence",
+      "explanation": "Les cinq critères sont couverts par une observation nommée de l'attestation P1, avec l'opération, la société et le jour effectivement portés par le critère : C1 par A6 (location, société A, jour 6, 0 CHF), C2 par A7 et A10 pour ses deux conditions composées, C3 par L10 qui atteste bien un prêt prolongé et non une location voisine, C4 par B10. Aucune condition d'un critère composé ne reste sans observation correspondante, et aucun titre générique ne sert de substitut à l'action demandée.",
+      "references": [
+        {"file": "contrat.md", "quote": "C2 : société A, location, septième jour : 2 CHF ; dixième jour : 8 CHF."},
+        {"file": "preuves.md", "quote": "| A7 | A | location | 7 | 2 CHF |"},
+        {"file": "preuves.md", "quote": "| A10 | A | location | 10 | 8 CHF |"},
+        {"file": "contrat.md", "quote": "C3 : société A, prêt prolongé, dixième jour : 0 CHF."},
+        {"file": "preuves.md", "quote": "| L10 | A | prêt prolongé | 10 | 0 CHF |"},
+        {"file": "preuves.md", "quote": "| A6 | A | location | 6 | 0 CHF |"}
+      ]
+    },
+    {
+      "axis": "contract_evidence",
+      "explanation": "Le contrat déclare le dossier documentaire et les attestations comme résultats reçus ; l'attestation confirme que l'exécution est antérieure à cette réception et qu'aucune publication ni vérification distante n'a eu lieu. C5 est donc satisfait par la portée même de l'attestation : la réception reste locale et n'affirme aucun déploiement. Je juge ces attestations comme des observations reçues, sans les requalifier en nouvelles exécutions ; dans la portée documentaire annoncée, je ne réclame pas de test supplémentaire pour accepter un dossier cohérent et étayé.",
+      "references": [
+        {"file": "contrat.md", "quote": "Le dossier transmis est documentaire. Les attestations synthétiques ci-jointes sont les résultats reçus ; leur contenu est à comparer au contrat."},
+        {"file": "contrat.md", "quote": "C5 : réception locale seulement, aucune affirmation de déploiement."},
+        {"file": "preuves.md", "quote": "Copie locale qa_fixture, révision fixture-r1, série 19.0. Exécution terminée avant cette réception documentaire."},
+        {"file": "preuves.md", "quote": "Aucune publication, migration ni vérification distante effectuée."}
+      ]
+    },
+    {
+      "axis": "source_memory",
+      "explanation": "La contribution déjà publiée par la tâche indépendante T04 (fuseau Europe/Zurich des exports de la société B) est reprise mot pour mot dans le draft, avec sa qualification de décision publiée applicable : rien de l'acquis antérieur n'est perdu ni affaibli.",
+      "references": [
+        {"file": "memoire-base.md", "quote": "La tâche indépendante T04 a confirmé que les exports de la société B conservent leur fuseau Europe/Zurich. Cette décision publiée reste applicable."},
+        {"file": "memoire-draft.md", "quote": "La tâche indépendante T04 a confirmé que les exports de la société B conservent leur fuseau Europe/Zurich. Cette décision publiée reste applicable."}
+      ]
+    },
+    {
+      "axis": "source_memory",
+      "explanation": "La phrase nouvelle du draft reste fidèle aux sources et aux preuves sur les trois points sensibles : la borne (« dès le septième jour inclus », sixième jour à zéro) reprend la règle de la demande sans décalage ; la négation et l'exclusion sont conservées (« Les prêts, y compris prolongés, restent exclus ») ; le comportement de la société B est déclaré conservé. Le résultat effectivement reçu est transmis, et non la seule existence d'une preuve : « Les cinq observations sont conformes » correspond au bilan de P1.",
+      "references": [
+        {"file": "demande.md", "quote": "Les prêts restent exclus même lorsqu'ils sont prolongés."},
+        {"file": "memoire-draft.md", "quote": "La pénalité de location de la société A est reçue sur copie locale à 2 CHF par jour dès le septième jour inclus ; le sixième jour vaut zéro. Les prêts, y compris prolongés, restent exclus."},
+        {"file": "preuves.md", "quote": "Résultat : cinq observations conformes."},
+        {"file": "memoire-draft.md", "quote": "Les cinq observations sont conformes"}
+      ]
+    },
+    {
+      "axis": "source_memory",
+      "explanation": "Le draft distingue correctement le résultat local de la livraison : il qualifie le constat de « reçue sur copie locale » et nie explicitement tout déploiement ou vérification distante, ce qui reprend la portée de la demande et le constat de l'attestation sans les élargir en historique de mise en production. Aucune phrase du draft n'affirme un déploiement, d'où deployment_verified faux.",
+      "references": [
+        {"file": "demande.md", "quote": "aucun déploiement n'est commandé"},
+        {"file": "preuves.md", "quote": "Aucune publication, migration ni vérification distante effectuée."},
+        {"file": "memoire-draft.md", "quote": "aucun déploiement ni migration distante n'a été réalisé ou vérifié"}
+      ]
+    }
+  ],
+  "limitations": "Réception documentaire seule : aucun test Odoo, lint, installation, mise à jour ou tour navigateur n'a été rejoué, et aucune délégation n'a eu lieu. Les seules observations dont je dispose sont les attestations de preuves.md (P1, révision fixture-r1, copie locale qa_fixture synthétique) ; je les juge comme des résultats reçus, sans pouvoir les requalifier en exécutions de ma part. Leur portée est bornée à la copie locale synthétique : rien n'est établi sur un déploiement, une migration ou une base client réelle, et l'attestation ne fournit ni empreinte de code, ni log horodaté, ni hash permettant de garantir sa fraîcheur par rapport à la révision contrôlée — un dossier structuré (odoo_evidence.py) apporterait cette garantie, absente ici. Le dossier étant fourni hors bundle, l'intégrité des pièces (hashes sources/spec/preuves/drafts) n'a pas pu être vérifiée mécaniquement, et l'indépendance de l'auteur des attestations n'est pas démontrable depuis ces pièces. La mémoire de base disponible se limite à une seule contribution antérieure (T04) : je ne peux attester la conservation que de celle-ci. Enfin, l'exactitude numérique n'est contrôlée qu'aux points attestés (jours 6, 7 et 10) ; les autres jours et les cas limites (jour 1 à 5, arrondis, changement de société en cours de période) ne sont couverts par aucune observation."
+}

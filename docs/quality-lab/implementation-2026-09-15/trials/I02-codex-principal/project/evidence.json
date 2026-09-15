@@ -1,0 +1,51 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/work",
+  "scopes": [
+    "quotas.py",
+    "test_public.py",
+    "test_quotas.py"
+  ],
+  "sources": {
+    "quotas.py": {
+      "sha256": "f3175609632860bab7a4b464ff0105ccc5931c3b7c251de595d0f5531a405fb8",
+      "mode": 420
+    },
+    "test_public.py": {
+      "sha256": "fcaf1c2dd2e48f99189012079fd377acaa85a2f39855caea930e4b5a21823315",
+      "mode": 420
+    },
+    "test_quotas.py": {
+      "sha256": "64659c00ff2bb250711fc833e4fa790dbc75b5d90ab9b1f96f7b2441d7e509ca",
+      "mode": 436
+    }
+  },
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    ".",
+    "-p",
+    "test_*.py",
+    "-v"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 0.033,
+  "log": {
+    "path": "/work/evidence.log",
+    "sha256": "bb2bbfcb23bcacc3b25a97de7f9d14c821fb90eaa1947c6697758b66beae431a",
+    "relative_path": "evidence.log"
+  },
+  "repository": null,
+  "environment": "implementation-bench-v1",
+  "runner": {
+    "python": "3.10.12",
+    "platform": "Linux",
+    "machine": "x86_64"
+  }
+}

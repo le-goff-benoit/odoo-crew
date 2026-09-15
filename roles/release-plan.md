@@ -92,3 +92,18 @@ Une nouvelle intention conserve les précédentes. `odoo_plan.py revise --file .
 version. La satisfaction d'une intention exige la correspondance explicite de
 chacun de ses critères vers un critère réceptionné de tâche (`coverage`), ou une
 preuve de solution standard vérifiée ; les seuls liens de tâches ne suffisent pas.
+
+## Prévenir les reprises coûteuses
+
+Avant de figer une règle sur des données existantes, consigne dans la revue une
+petite cohorte contradictoire (courant, historique, contre-exemple) avec acteurs,
+états et valeurs attendues. Distingue dépendance de résultat et ressource partagée.
+Prévois le point de contrôle commun une fois au niveau utile, puis valide les
+anomalies dans un canal atteignable (UI/RPC/cron/import). Classe chaque reprise :
+critère initial manquant, intention tardive, hypothèse réfutée, régression,
+incident d'outillage ou simple conflit mémoire ; un nombre de reviews seul ne
+mesure pas la qualité du plan.
+
+Si la livraison est demandée, fixe aussi commit de base, build cible et effets
+à relire suivant `docs/DELIVERY_GUARD.md`. Le statut « reçu localement » ne devient
+pas « déployé » par un push. Ces contrôles restent distincts de la recette métier.

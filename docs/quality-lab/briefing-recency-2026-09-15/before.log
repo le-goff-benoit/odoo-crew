@@ -1,0 +1,38 @@
+test_full_journal_and_same_day_preserve_source_order (test_odoo_briefing.BriefingTests) ... ERROR
+test_mixed_journal_keeps_recent_facts_and_older_lessons (test_odoo_briefing.BriefingTests) ... FAIL
+test_multiple_learnings_keep_exceptions (test_odoo_briefing.BriefingTests) ... ok
+test_negative_count_refused (test_odoo_briefing.BriefingTests) ... ok
+test_project_without_generated_marker_is_not_empty (test_odoo_briefing.BriefingTests) ... ok
+test_recent_entries_use_dates_when_newer_work_is_prepended (test_odoo_briefing.BriefingTests) ... FAIL
+test_recent_truncated_entry_does_not_drop_learning (test_odoo_briefing.BriefingTests) ... ok
+test_shared_lessons_loaded_from_reference_directory (test_odoo_briefing.BriefingTests) ... ok
+test_zero_journal_still_preserves_all_learnings (test_odoo_briefing.BriefingTests) ... ok
+
+======================================================================
+ERROR: test_full_journal_and_same_day_preserve_source_order (test_odoo_briefing.BriefingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_odoo_briefing.py", line 39, in test_full_journal_and_same_day_preserve_source_order
+    self.assertLess(recent.index(entries[0]), recent.index(entries[2]))
+ValueError: substring not found
+
+======================================================================
+FAIL: test_mixed_journal_keeps_recent_facts_and_older_lessons (test_odoo_briefing.BriefingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_odoo_briefing.py", line 27, in test_mixed_journal_keeps_recent_facts_and_older_lessons
+    self.assertIn(entries[0], text)
+AssertionError: '## 2026-08-30 — Correction\nCorrection récente.' not found in '\n## Journal — 4 entrée(s), les 2 dernières\n\n## 2026-08-31 — Déploiement\nRésultat observé.\n\n## 2026-08-21 — Plan\nPlan ancien.\n\n\n## Appris sur ce projet (historique sourcé, à confronter aux décisions actuelles)\n\n- (2026-08-20 — Archive) préserver les données.'
+
+======================================================================
+FAIL: test_recent_entries_use_dates_when_newer_work_is_prepended (test_odoo_briefing.BriefingTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_odoo_briefing.py", line 18, in test_recent_entries_use_dates_when_newer_work_is_prepended
+    self.assertIn(entries[0], text)
+AssertionError: '## 2026-09-12 — Incident de livraison\nVérifier le build.' not found in '\n## Journal — 2 entrée(s), les 1 dernières\n\n## 2026-09-11 — Ancien plan\nPréparer le travail.\n'
+
+----------------------------------------------------------------------
+Ran 9 tests in 0.002s
+
+FAILED (failures=2, errors=1)

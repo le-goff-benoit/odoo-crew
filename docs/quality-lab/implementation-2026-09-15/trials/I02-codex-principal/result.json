@@ -1,0 +1,40 @@
+{
+  "provider": "codex",
+  "model": "gpt-6-astra",
+  "kind": "principal",
+  "effort": "medium",
+  "case": "I02",
+  "transport": "completed",
+  "actual_model": null,
+  "actual_effort": null,
+  "tool_calls": 8,
+  "usage": {
+    "input_tokens": 105435,
+    "cached_input_tokens": 76032,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 2762,
+    "reasoning_output_tokens": 181
+  },
+  "provider_error": null,
+  "return_seconds": 108.128,
+  "principal_rework_seconds": 0.0,
+  "rework_performed": false,
+  "raw_sha256": "a69a298bba567ebe213aaaa36e15eeb8e7666ebfeaead00197d6c2610e1735b0",
+  "source_hashes": {
+    "CONTRACT.md": "b3505098f5cdebf7a1586bf6a8445da118eb3260f358b4ee645c90b1e99a72c3",
+    "evidence.json": "bdce0cd9a226f55ae290b11adedb35c8686df438f1f726f7b414c87581d79f2f",
+    "evidence.log": "bb2bbfcb23bcacc3b25a97de7f9d14c821fb90eaa1947c6697758b66beae431a",
+    "quotas.py": "f3175609632860bab7a4b464ff0105ccc5931c3b7c251de595d0f5531a405fb8",
+    "test_public.py": "fcaf1c2dd2e48f99189012079fd377acaa85a2f39855caea930e4b5a21823315",
+    "test_quotas.py": "64659c00ff2bb250711fc833e4fa790dbc75b5d90ab9b1f96f7b2441d7e509ca"
+  },
+  "oracle_passed": true,
+  "receipt_passed": true,
+  "status": "accepted",
+  "reception_seconds": 0.183,
+  "total_to_reception_seconds": 108.311,
+  "immutable_inputs_passed": true,
+  "late_immutable_check_seconds": 0.000141,
+  "native_receipt_command_observed": true,
+  "agent_test_count": 9
+}

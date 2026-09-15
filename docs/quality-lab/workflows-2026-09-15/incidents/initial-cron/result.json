@@ -1,0 +1,44 @@
+{
+  "schema": 1,
+  "status": "error",
+  "scope": "synthetic Odoo 19.0 ORM, ordinary-user stock rights, real Chromium and rendered PDF",
+  "model_calls": 0,
+  "trials": [
+    {
+      "pass": false,
+      "expected": "all_pass",
+      "returncode": 1,
+      "markers": [
+        "browser_form",
+        "invoice_pdf"
+      ],
+      "summaries": [
+        [
+          0,
+          1,
+          3
+        ]
+      ],
+      "real_browser_click": true,
+      "chrome": true,
+      "skipped": false,
+      "label": "witness",
+      "seconds": 57.637
+    }
+  ],
+  "tools": {
+    "subprocess_calls": 12
+  },
+  "limitations": [
+    "No customer database",
+    "No model capability inferred from oracle calibration",
+    "Only the selected series and selected paths are qualified"
+  ],
+  "images": {
+    "odoo-qa:19.0": "sha256:e1150f156f781cec4a5f2e19e7685964d5ff764c74c577bdace06b3ef8b8e11d",
+    "postgres:16": "sha256:f40a5645a21f34c966c46a283e6b7fd5f4a7d4fc1768a5842f34b38423e90c8f"
+  },
+  "error": "Witness failed; do not infer mutation sensitivity",
+  "cleanup_verified": true,
+  "seconds": 59.535
+}

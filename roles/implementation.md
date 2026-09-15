@@ -238,3 +238,16 @@ Teste aussi un écart inférieur à cet arrondi éventuel. Distingue un second p
 qui conserve les valeurs d'un passage sans écriture : `modifiés=0` calculé sur les
 montants ne prouve pas l'absence de `write`, de changement de `write_date` ou d'effet
 automatisé. Vérifie les effets pertinents au contrat et annonce la portée prouvée.
+
+## Parcours et livraison
+
+Reprends les cohortes, états, acteurs et canaux fixés au cadrage. Écris les attentes
+indépendamment de la méthode corrigée ; teste la transition réelle plutôt que
+seulement son helper (reliquat/cron, historique PDF, formulaire monté selon le cas).
+Une valeur calculée avec le code testé n'est pas un oracle indépendant.
+
+Toute modification de champ stocké appelle un contrôle sur base déjà installée ;
+base neuve verte ne prouve pas l'update. Prépare version, migration et effet à
+relire avec l'orchestrateur ; garde `docs/DELIVERY_GUARD.md` pour la livraison du
+commit exact. Vérifie que les nouveaux fichiers/tests/migrations sont suivis et
+importés. Le garde statique ne remplace pas l'exécution sur la copie.

@@ -1,0 +1,28 @@
+test_missing_is_unknown (test_public.PublicTest) ... ok
+test_all_four_slots_independent_no_summing (test_quotas.SnapshotTest) ... ok
+test_boolean_observed_at_rejected (test_quotas.SnapshotTest) ... ok
+test_boolean_reset_at_rejected (test_quotas.SnapshotTest) ... ok
+test_boolean_used_percent_rejected (test_quotas.SnapshotTest) ... ok
+test_events_not_mutated (test_quotas.SnapshotTest) ... ok
+test_future_observed_at_rejected (test_quotas.SnapshotTest) ... ok
+test_invalid_event_does_not_mask_previous_valid_observation (test_quotas.SnapshotTest) ... ok
+test_latest_observed_at_wins_even_with_different_reset (test_quotas.SnapshotTest) ... ok
+test_missing_or_none_observed_at_invalid (test_quotas.SnapshotTest) ... ok
+test_nan_and_infinite_rejected (test_quotas.SnapshotTest) ... ok
+test_negative_observed_at_rejected (test_quotas.SnapshotTest) ... ok
+test_negative_reset_at_rejected (test_quotas.SnapshotTest) ... ok
+test_non_numeric_reset_at_rejected (test_quotas.SnapshotTest) ... ok
+test_reset_at_before_observed_at_rejected (test_quotas.SnapshotTest) ... ok
+test_reset_at_equal_observed_at_allowed (test_quotas.SnapshotTest) ... ok
+test_reset_at_none_is_allowed (test_quotas.SnapshotTest) ... ok
+test_single_valid_observation (test_quotas.SnapshotTest) ... ok
+test_stale_flag_false_when_exactly_at_ttl (test_quotas.SnapshotTest) ... ok
+test_stale_flag_true_when_over_ttl (test_quotas.SnapshotTest) ... ok
+test_tie_on_observed_at_last_in_list_wins (test_quotas.SnapshotTest) ... ok
+test_unknown_provider_or_window_ignored (test_quotas.SnapshotTest) ... ok
+test_used_percent_out_of_range_or_non_numeric_rejected (test_quotas.SnapshotTest) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.001s
+
+OK

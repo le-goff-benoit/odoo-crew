@@ -1,0 +1,3 @@
+`scheduler.ready(tasks, active_locks)` is implemented (no `implementation.py` needed) and covered by `test_scheduler.py` (22 new cases: no-dep readiness, direct/transitive dep gating including stale-proof propagation, read/write lock rules, pending tasks not locking each other, and ValueError for duplicate ids, missing deps, cycles (including in non-pending components), unknown status/lock mode, plus a no-mutation check).
+
+Bilan : `python3 -m unittest discover -s . -p 'test_*.py' -v` → 22 tests, tous OK. `odoo_evidence.py run` a confirmé `"result": "passed"`, écrit dans `/work/evidence.json`.

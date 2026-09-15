@@ -1,0 +1,53 @@
+test_missing_is_unknown (test_public.PublicTest) ... ok
+test_observed_at_equal_now_is_valid (test_quotas.AcceptanceTest) ... ok
+test_percent_bounds_are_inclusive (test_quotas.AcceptanceTest) ... ok
+test_reset_at_equal_to_observed_at_is_valid (test_quotas.AcceptanceTest) ... ok
+test_reset_at_none_is_valid (test_quotas.AcceptanceTest) ... ok
+test_zero_timestamps_are_valid (test_quotas.AcceptanceTest) ... ok
+test_absent_window_is_none_not_zero (test_quotas.IsolationTest) ... ok
+test_never_sums_repeated_observations (test_quotas.IsolationTest) ... ok
+test_providers_and_windows_stay_separate (test_quotas.IsolationTest) ... ok
+test_bad_reset_does_not_hide_valid_one (test_quotas.MaskingTest) ... ok
+test_future_event_does_not_hide_valid_one (test_quotas.MaskingTest) ... ok
+test_invalid_event_does_not_leak_into_other_slot (test_quotas.MaskingTest) ... ok
+test_invalid_events_alone_leave_everything_unknown (test_quotas.MaskingTest) ... ok
+test_invalid_later_event_does_not_hide_valid_one (test_quotas.MaskingTest) ... ok
+test_realistic_stream (test_quotas.MixedStreamTest) ... ok
+test_most_recent_wins_even_with_different_reset (test_quotas.RecencyTest) ... ok
+test_most_recent_wins_regardless_of_order (test_quotas.RecencyTest) ... ok
+test_older_event_after_newer_does_not_win (test_quotas.RecencyTest) ... ok
+test_tie_goes_to_last_event_in_list (test_quotas.RecencyTest) ... ok
+test_boolean_observed_at (test_quotas.RejectionTest) ... ok
+test_boolean_percent (test_quotas.RejectionTest) ... ok
+test_boolean_reset_at (test_quotas.RejectionTest) ... ok
+test_case_sensitive_names (test_quotas.RejectionTest) ... ok
+test_future_observed_at (test_quotas.RejectionTest) ... ok
+test_missing_or_none_observed_at (test_quotas.RejectionTest) ... ok
+test_missing_provider_or_window_key (test_quotas.RejectionTest) ... ok
+test_nan_and_infinite_observed_at (test_quotas.RejectionTest) ... ok
+test_negative_observed_at (test_quotas.RejectionTest) ... ok
+test_negative_reset_at (test_quotas.RejectionTest) ... ok
+test_non_dict_event (test_quotas.RejectionTest) ... ok
+test_non_numeric_observed_at (test_quotas.RejectionTest) ... ok
+test_percent_nan_or_infinite (test_quotas.RejectionTest) ... ok
+test_percent_non_numeric_or_missing (test_quotas.RejectionTest) ... ok
+test_percent_out_of_range (test_quotas.RejectionTest) ... ok
+test_reset_at_before_observed_at (test_quotas.RejectionTest) ... ok
+test_reset_at_nan_or_infinite (test_quotas.RejectionTest) ... ok
+test_reset_at_non_numeric (test_quotas.RejectionTest) ... ok
+test_unknown_provider (test_quotas.RejectionTest) ... ok
+test_unknown_window (test_quotas.RejectionTest) ... ok
+test_all_slots_always_present (test_quotas.ShapeTest) ... ok
+test_inputs_are_not_modified (test_quotas.ShapeTest) ... ok
+test_observation_fields (test_quotas.ShapeTest) ... ok
+test_result_does_not_alias_input_events (test_quotas.ShapeTest) ... ok
+test_default_ttl_is_300 (test_quotas.StaleTest) ... ok
+test_equality_is_fresh (test_quotas.StaleTest) ... ok
+test_just_beyond_ttl_is_stale (test_quotas.StaleTest) ... ok
+test_stale_winner_still_beats_fresh_older_event (test_quotas.StaleTest) ... ok
+test_zero_ttl_same_instant_is_fresh (test_quotas.StaleTest) ... ok
+
+----------------------------------------------------------------------
+Ran 48 tests in 0.001s
+
+OK

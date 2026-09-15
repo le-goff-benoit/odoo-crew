@@ -1,0 +1,34 @@
+{
+  "format": "odoo-evidence/1",
+  "project": "/tmp/workflows-20260915-mini-qualified/project",
+  "scopes": [
+    "pdf"
+  ],
+  "sources": {
+    "pdf/check.py": {
+      "sha256": "0b9d97a360ca7f0c9f5dafd623bc90354ec50afb1f199fd242f82259cc35a5dc",
+      "mode": 436
+    }
+  },
+  "command": [
+    "/usr/bin/python3",
+    "pdf/check.py"
+  ],
+  "exit_code": 0,
+  "result": "passed",
+  "module": null,
+  "error": null,
+  "seconds": 0.016,
+  "log": {
+    "path": "/tmp/workflows-20260915-mini-qualified/project/proofs/T03.log",
+    "sha256": "8eed397db9cc1d96e347439e39f3db7562b9fed6363c0f4dc5ec07a739646497",
+    "relative_path": "proofs/T03.log"
+  },
+  "repository": null,
+  "environment": "synthetic-local-v1",
+  "runner": {
+    "python": "3.10.12",
+    "platform": "Linux",
+    "machine": "x86_64"
+  }
+}

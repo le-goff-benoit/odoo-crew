@@ -2,19 +2,20 @@
 """Briefing compact d'un projet Odoo, à lire en premier par chaque agent.
 
 Remplace quatre lectures de fichiers (PROJECT.md, JOURNAL.md, LESSONS.md,
-SERIES_MATRIX.md — 60 Ko et plus sur un projet vivant) par un seul relevé de
-quelques Ko qui contient tout ce qu'un agent doit savoir avant d'agir :
+SERIES_MATRIX.md) par un relevé structuré. Sa taille dépend de l'historique du
+projet ; les sources restent nécessaires pour les détails et arbitrages :
 
   - la série cible et son origine, les sources de référence ;
   - la release de changelog ouverte (s'il y en a un) et ses points ;
   - les sections écrites à la main de PROJECT.md (métier, décisions, pièges) ;
   - le relevé (une ligne par module) ;
-  - les N dernières entrées du journal (défaut 3) et toutes les lignes « Appris » ;
+  - les N entrées aux dates les plus récentes (défaut 3), et toutes les lignes « Appris » ;
   - les leçons de LESSONS.md qui s'appliquent à la série (Portée + Règle) ;
   - les formes attendues dans cette série (ce qui diffère du guide 19.0).
 
 Usage : odoo_briefing.py <chemin_du_projet_ou_du_module> [--series X] [--journal N]
                           [--full-journal] [--offline]
+                          [--query TEXTE --budget N --context-output CHEMIN]
 """
 
 from __future__ import annotations
@@ -131,14 +132,31 @@ def learned_lines(entries: list[str]) -> list[str]:
 def journal_summary(entries: list[str], count: int, full: bool) -> str:
     if count < 0:
         raise ValueError("--journal doit être positif ou nul")
-    shown = entries if full else entries[-count:] if count else []
+    # Clients append, prepend or mix entries. Physical position does not prove
+    # recency. Stable sorting preserves source order when dates are identical;
+    # it does not invent a chronology or resolve same-day conflicting decisions.
+    def entry_date(entry):
+        match = re.match(r"## (\d{4}-\d{2}-\d{2})", entry)
+        return match[1] if match else ""
+    ordered = sorted(entries, key=entry_date)
+    shown = entries if full else ordered[-count:] if count else []
     out = [section(f"Journal — {len(entries)} entrée(s), "
                    f"{'toutes' if full else f'les {len(shown)} dernières'}")]
+    if shown and not full:
+        out.append("Sélection par date ; à date égale, ordre du fichier conservé, "
+                   "sans déduire quelle décision remplace l'autre.\n")
     for entry in shown:
         body = entry.strip()
         if not full and len(body) > 1800:
             body = body[:1800] + "\n…(entrée tronquée, lire JOURNAL.md pour le détail)"
         out.append(body + "\n")
+    if shown and not full:
+        same_day = [entry.splitlines()[0][3:] for entry in ordered[:-count]
+                    if entry_date(entry) == entry_date(shown[0])]
+        if same_day:
+            out.append("Autres entrées à cette même date, à consulter dans JOURNAL.md "
+                       "si pertinentes (ordre intrajournalier inconnu) :")
+            out.extend("- " + title for title in same_day)
     # Même les entrées récentes peuvent être tronquées avant leur section Appris.
     learned = learned_lines(entries)
     if learned:
@@ -264,27 +282,27 @@ def restored_dbs(series: str) -> str:
 
 
 def main(argv: list[str]) -> int:
-    args = argv[1:]
-    explicit = None
-    n_journal = 3
-    full_journal = False
-    offline = "--offline" in args
-    if offline:
-        args.remove("--offline")
-    if "--series" in args:
-        i = args.index("--series"); explicit = args[i + 1]; del args[i:i + 2]
-    if "--journal" in args:
-        i = args.index("--journal"); n_journal = int(args[i + 1]); del args[i:i + 2]
-    if "--full-journal" in args:
-        full_journal = True; args.remove("--full-journal")
-    if n_journal < 0:
-        print("--journal doit être positif ou nul", file=sys.stderr)
-        return 2
-    if not args:
-        print(__doc__)
-        return 2
+    import argparse
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('project')
+    parser.add_argument('--series')
+    parser.add_argument('--journal', type=int, default=3)
+    parser.add_argument('--full-journal', action='store_true')
+    parser.add_argument('--offline', action='store_true')
+    parser.add_argument('--query', help='Sélection par sections ; remplace le chargement intégral de la mémoire')
+    parser.add_argument('--budget', type=int, default=12000)
+    parser.add_argument('--context-output', type=Path, help='Provenance JSON optionnelle du contexte sélectionné')
+    args = parser.parse_args(argv[1:])
+    explicit, n_journal = args.series, args.journal
+    full_journal, offline = args.full_journal, args.offline
+    if n_journal < 0 or args.budget < 1000:
+        parser.error('--journal doit être positif ou nul ; --budget au moins 1000')
+    if args.context_output and args.query is None:
+        parser.error('--context-output exige --query')
+    if args.full_journal and args.query is not None:
+        parser.error('--full-journal et --query sont des modes distincts')
 
-    path = Path(args[0]).resolve()
+    path = Path(args.project).resolve()
     info = odoo_series.resolve(path, explicit)
     series = info["series"]
     root = odoo_series.project_root(path) or path
@@ -335,26 +353,39 @@ def main(argv: list[str]) -> int:
         out.append("**Différences avec le guide 19.0** : " + " · ".join(against))
     out.append("Formes en vigueur : " + " · ".join(forms))
 
-    project_md = agents / "PROJECT.md"
-    if project_md.is_file():
-        out.append(section("Modules (relevé)"))
-        out += survey_lines(project_md) or ["*(relevé vide — relancer le scan)*"]
-        out.append(section("Ce que le projet sait déjà (PROJECT.md, écrit à la main)"))
-        out.append(hand_written(project_md) or "*(rien encore)*")
-
-    memory = agents / "DECISIONS.json"
-    if memory.is_file():
-        import odoo_memory
+    if args.query is not None:
+        import odoo_context
         try:
-            out.append(odoo_memory.render(json.loads(memory.read_text()), root))
+            selection = odoo_context.context(root, args.query, args.budget)
         except (ValueError, KeyError, OSError) as exc:
-            out.append(section("Mémoire structurée NON VALIDÉE"))
-            out.append(str(exc) + " — vérifier les sources avant toute décision.")
+            print('Contexte ciblé invalide : ' + str(exc), file=sys.stderr)
+            return 2
+        out.append(selection['text'])
+        if args.context_output:
+            args.context_output.parent.mkdir(parents=True, exist_ok=True)
+            args.context_output.write_text(json.dumps(selection, ensure_ascii=False, indent=2) + '\n')
+        out.append('Le budget porte sur la mémoire sélectionnée ; série, état et leçons sont ajoutés séparément.')
+    else:
+        project_md = agents / "PROJECT.md"
+        if project_md.is_file():
+            out.append(section("Modules (relevé)"))
+            out += survey_lines(project_md) or ["*(relevé vide — relancer le scan)*"]
+            out.append(section("Ce que le projet sait déjà (PROJECT.md, écrit à la main)"))
+            out.append(hand_written(project_md) or "*(rien encore)*")
 
-    journal = agents / "JOURNAL.md"
-    if journal.is_file():
-        entries = journal_entries(journal)
-        out.append(journal_summary(entries, n_journal, full_journal))
+        memory = agents / "DECISIONS.json"
+        if memory.is_file():
+            import odoo_memory
+            try:
+                out.append(odoo_memory.render(json.loads(memory.read_text()), root))
+            except (ValueError, KeyError, OSError) as exc:
+                out.append(section("Mémoire structurée NON VALIDÉE"))
+                out.append(str(exc) + " — vérifier les sources avant toute décision.")
+
+        journal = agents / "JOURNAL.md"
+        if journal.is_file():
+            entries = journal_entries(journal)
+            out.append(journal_summary(entries, n_journal, full_journal))
 
     out.append(section(f"Leçons du dispositif applicables en {series} (LESSONS.md)"))
     out += lessons(series) or ["*(aucune)*"]

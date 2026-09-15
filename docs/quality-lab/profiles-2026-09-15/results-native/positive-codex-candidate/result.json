@@ -1,0 +1,33 @@
+{
+  "provider": "codex",
+  "case": "positive",
+  "config": {
+    "model": "gpt-6-astra",
+    "effort": "medium"
+  },
+  "seconds": 69.771,
+  "transport": "completed",
+  "exit_code": 0,
+  "usage": {
+    "input_tokens": 73993,
+    "cached_input_tokens": 51968,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1863,
+    "reasoning_output_tokens": 19
+  },
+  "actual_model": null,
+  "actual_effort": null,
+  "tool_calls": 8,
+  "problems": [],
+  "status": "needs_semantic_review",
+  "reading": {
+    "calls": 7,
+    "total_characters_returned": 16013,
+    "entrypoint_characters_returned": 10413,
+    "references_characters_returned": 3393,
+    "unique_sources": 7,
+    "entrypoint": "/home/blegoff/.codex/skills/odoo-tester/SKILL.md"
+  },
+  "result_sha256": "4ee5c709d84317eaf4ed7713e846bf8b45686d97675f7fa399fb3275d562b142",
+  "semantic_review": null
+}

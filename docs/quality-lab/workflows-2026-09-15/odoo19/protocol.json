@@ -1,0 +1,46 @@
+{
+  "schema": 1,
+  "series": [
+    "19.0"
+  ],
+  "cases": [
+    {
+      "id": "W01",
+      "directory": "W01_delivery",
+      "title": "Livraison depuis un commit propre"
+    },
+    {
+      "id": "W02",
+      "directory": "W02_stock",
+      "title": "Préparation, correction, reliquat et cron"
+    },
+    {
+      "id": "W03",
+      "directory": "W03_invoice",
+      "title": "Facture historique et PDF"
+    },
+    {
+      "id": "W04",
+      "directory": "W04_form",
+      "title": "Formulaire réactif"
+    },
+    {
+      "id": "W05",
+      "directory": "W05_release",
+      "title": "Mini-release et demande ajoutée"
+    },
+    {
+      "id": "W06",
+      "directory": "W06_diagnostic",
+      "title": "Version et configuration trompeuses"
+    }
+  ],
+  "metrics": [
+    "time_to_correct_receipt_seconds",
+    "tool_calls",
+    "rework_count",
+    "omitted_requirements",
+    "transport_incidents"
+  ],
+  "model_calls_in_ci": false
+}
