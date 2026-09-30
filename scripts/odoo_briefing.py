@@ -118,7 +118,11 @@ def learned_lines(entries: list[str]) -> list[str]:
     out = []
     for entry in entries:
         title = entry.splitlines()[0][3:]
-        matches = re.finditer(r"\*\*Appris\*\*\s*:?(.*?)(?=\n\*\*[A-ZÀ-Ü][^*]*\*\*|\Z)", entry, re.S)
+        # Plain/bold labels, including list items, are used by real journals.
+        # Stop at the next field, but keep multiline exceptions with the lesson.
+        matches = re.finditer(
+            r"(?m)^\s*(?:[-*]\s+)?(?:\*\*)?Appris(?:\*\*)?\s*:(?:\*\*)?[ \t]*(.*?)"
+            r"(?=\n[ \t]*(?:[-*]\s+)?(?:\*\*)?(?!(?:Exception|Sauf|Limite|Condition|Attention)\b)[A-ZÀ-Ü][^\n:*]{0,60}(?:\*\*)?\s*:|\Z)", entry, re.S)
         for found in matches:
             body = found[1].strip()
             bullets = [b.strip() for b in re.split(r"\n\s*-\s+", "\n" + body) if b.strip()]
@@ -288,6 +292,7 @@ def main(argv: list[str]) -> int:
     parser.add_argument('--series')
     parser.add_argument('--journal', type=int, default=3)
     parser.add_argument('--full-journal', action='store_true')
+    parser.add_argument('--full-memory', action='store_true', help='Lecture intégrale explicite de PROJECT et du journal')
     parser.add_argument('--offline', action='store_true')
     parser.add_argument('--query', help='Sélection par sections ; remplace le chargement intégral de la mémoire')
     parser.add_argument('--budget', type=int, default=12000)
@@ -295,7 +300,9 @@ def main(argv: list[str]) -> int:
     parser.add_argument('--release', help='Mémoire vivante de cette release, ajoutée au contexte')
     parser.add_argument('--task'); parser.add_argument('--role', default='orchestrator')
     args = parser.parse_args(argv[1:])
-    if args.release and args.query is None:
+    if args.full_memory and args.query is not None:
+        parser.error('--full-memory et --query sont des modes distincts')
+    if args.query is None and not args.full_memory and not args.full_journal:
         args.query = ''
     explicit, n_journal = args.series, args.journal
     full_journal, offline = args.full_journal, args.offline

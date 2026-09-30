@@ -137,6 +137,8 @@ if not pattern.search(text):
 text = pattern.sub(lambda m: f"{m.group(1)} {result} |", text, count=1)
 open(path, "w", encoding="utf-8").write(text)
 PY
+        python3 "$HERE/odoo_feedback.py" collect "$(lot_root "$RELEASE")" --release "$(basename "$RELEASE")" >/dev/null \
+            || echo "Feedback à reprendre : odoo_feedback.py collect après correction de la source signalée." >&2
         ;;
     changed)
         RELEASE="${1:-}"; [ -d "$RELEASE" ] || usage
@@ -164,6 +166,8 @@ PY
         python3 "$HERE/odoo_release_guard.py" check "$RELEASE"
         sed -i -E '/<!-- (release ouverte|lot ouvert) -->/d' "$RELEASE/README.md"
         echo "Release clos : $RELEASE"
+        python3 "$HERE/odoo_feedback.py" collect "$(lot_root "$RELEASE")" --release "$(basename "$RELEASE")" >/dev/null \
+            || echo "Feedback à reprendre : odoo_feedback.py collect après correction de la source signalée." >&2
         ;;
     *) usage ;;
 esac

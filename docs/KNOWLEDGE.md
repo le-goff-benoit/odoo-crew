@@ -139,3 +139,10 @@ La sélection par rôle étiquette la passation ; elle ne filtre pas les règles
 partagées. La fraîcheur reste conservatrice tant que les liens métier d'impact
 ne sont pas explicitement établis. Les empreintes prouvent l'identité des sources,
 jamais leur vérité ou leur interprétation.
+
+## Continuité entre releases
+
+Les décisions acceptées publiées à partir du 30 septembre alimentent aussi le
+registre projet. `supersedes_project` désigne une décision d’une ancienne release.
+Les propositions ne sont jamais promues automatiquement ; les décisions
+historiques exigent une reprise sourcée. [Procédure](HARNESS.md#décisions-entre-releases).

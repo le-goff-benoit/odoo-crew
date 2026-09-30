@@ -268,3 +268,8 @@ Consolide les contributions de `knowledge/` et les fragments des tâches reçues
 selon `docs/KNOWLEDGE.md` : décisions courantes/remplacées, questions, reports et
 preuves. La clôture ne crée pas rétrospectivement un acquis d'une tâche différée
 et ne transforme pas la validation locale en déploiement.
+
+Après la dernière entrée du journal, `odoo_feedback.py collect <projet> --release
+<id>` actualise les retours. Le sceau et la commande de clôture font déjà cette
+collecte automatiquement ; la répétition est idempotente. Examiner les candidats
+via `/odoo-feedback`, sans relancer la recette pour leur seul tri.

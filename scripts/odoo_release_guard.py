@@ -163,6 +163,8 @@ def seal(release, scopes, proofs):
               'sources': sources, 'artifacts': artifacts, 'proofs': receipts,
               'limitation': 'La structure et la fraîcheur sont contrôlées ; la pertinence métier est relue par le responsable de clôture.'}
     write_state(release / 'closure.json', result)
+    from odoo_feedback import automatic
+    automatic(project, release.name)
     return result
 
 

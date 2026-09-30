@@ -13,7 +13,7 @@ indisponibilité est un incident distinct d'une erreur métier, jamais un repli 
 | Domaine | Politique |
 |---|---|
 | Orchestration, ambiguïté, QA décisionnelle, finance, droits, données existantes | Principal |
-| Développement, Studio, support bornés | Héritage ; Terra/Sonnet candidats expérimentaux |
+| Développement, Studio, support bornés | Héritage ; Sol 6/Sonnet candidats expérimentaux |
 | Exécution prescrite | Commande déterministe si suffisante ; Luna/Haiku expérimentaux |
 
 La qualification compare dans un même fournisseur : mêmes cas/contrats/outils,
@@ -34,3 +34,14 @@ plus rapides sur les deux tâches locales, avec tests exécutés et oracle sépa
 Deux cas et une répétition ne qualifient pas les autres rôles ou Odoo ; l'héritage
 reste la règle. Le [profil QA compact](quality-lab/profiles-2026-09-15/README.md)
 réduit le texte lu mais ne montre pas de gain de latence sur ces quatre paires.
+
+## Révision du 30 septembre 2026
+
+Les rôles continuent d’hériter du principal (Astra ou modèle de la session Claude).
+Le candidat Codex des tâches normales devient `gpt-6-sol`, **expérimental** ; aucun
+repli automatique, aucune qualification Odoo déduite d’une fiche fournisseur.
+L’alias Claude `opus` ne prouve pas une version 5.5 observée. Conserver les identifiants
+réellement retournés, effort, révision du harness et inconnues dans les résultats.
+Les instructions initiales et descriptions ont été raccourcies ; les procédures
+restent conditionnelles. Aucune accélération comportementale n’est revendiquée
+sans campagne native comparative avec cas inédit.

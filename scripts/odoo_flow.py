@@ -729,6 +729,36 @@ def release_claim(
             write_registry(lock_registry, registry)
 
 
+def cancel_run(state_path: Path, owner: str, reason: str, evidence: str) -> None:
+    """Interrompre explicitement un run, sans valider ni consommer son graphe."""
+    if not owner.strip() or not reason.strip():
+        raise FlowError("propriétaire et motif d'annulation non vides requis")
+    state_path = state_path.resolve()
+    with exclusive_lock(state_path):
+        state = load_json(state_path)
+        if state.get('schema_version') != 1 or state.get('status') != 'active':
+            raise FlowError('annulation réservée à un flow actif')
+        if state.get('claims'):
+            raise FlowError('libérez les revendications en cours avant d’annuler ce run')
+        checked = evidence_files([evidence])
+        evidence_digests = {value: graph_hash(Path(value)) for value in checked}
+        lock_registry = registry_path(state)
+        with exclusive_lock(lock_registry):
+            registry = load_registry(lock_registry)
+            # Ne pas élaguer le registre : une revendication désynchronisée de
+            # ce run exige une résolution explicite ; les autres restent intactes.
+            if any(Path(item.get('state', '')).resolve() == state_path
+                   for item in registry['claims']):
+                raise FlowError('revendication du run encore présente dans le registre : annulation refusée')
+            state.setdefault('cancellation_events', []).append({
+                'at': now(), 'action': 'cancel', 'owner': owner, 'reason': reason,
+                'from_status': state['status'], 'evidence': checked,
+                'evidence_sha256': evidence_digests,
+            })
+            state['status'] = 'cancelled'
+            write_state(state_path, state)
+
+
 def bind_criteria(state_path, graph_path, source, output, owner):
     from odoo_coverage import contract, draft, GATES
     with exclusive_lock(state_path):
@@ -913,7 +943,7 @@ def prepare_reception(state_path, graph_path, sources, spec, evidence, memories,
                 raise ValueError('dossier hors périmètre de code requis')
             bases = []
             for row in bundle['memory']:
-                if row['before_sha256'] is not None:
+                if row['before_sha256'] is not None and row.get('mode') != 'append':
                     base = target.with_name(target.name + '.' + Path(row['target']).name + '.base')
                     if base.exists() or base.is_symlink():
                         raise ValueError('nouveau fichier de base mémoire requis : ' + str(base))
@@ -1049,7 +1079,16 @@ def verify_used_qa_reports(state, checked_evidence, node_name, outcome, owner):
             raise FlowError(f'rapport QA refusé : {exc}') from exc
 
 
-def complete_claimed_node(
+def complete_claimed_node(*args, **kwargs):
+    state = _complete_claimed_node(*args, **kwargs)
+    if state['events'][-1].get('outcome') in ('retry', 'blocked', 'exhausted'):
+        from odoo_feedback import automatic
+        release = Path(state.get('plan_task', {}).get('release', '')).name or None
+        automatic(Path(state['project']), release)
+    return state
+
+
+def _complete_claimed_node(
     state_path: Path,
     graph_path: Path,
     node_name: str,
@@ -1373,6 +1412,12 @@ def build_parser() -> argparse.ArgumentParser:
     release.add_argument("--owner", default="orchestrator")
     release.add_argument("--reason", required=True)
 
+    cancel = subparsers.add_parser('cancel', help='annuler un run actif sans le valider')
+    cancel.add_argument('state', type=Path)
+    cancel.add_argument('--owner', required=True)
+    cancel.add_argument('--reason', required=True)
+    cancel.add_argument('--evidence', required=True)
+
     migrate = subparsers.add_parser(
         "migrate", help="rattacher explicitement un run à une nouvelle version compatible du graphe"
     )
@@ -1385,6 +1430,10 @@ def main(argv: list[str] | None = None) -> int:
     args = build_parser().parse_args(argv)
     graph_path = args.graph.resolve()
     try:
+        if args.command == 'cancel':
+            cancel_run(args.state.resolve(), args.owner, args.reason, args.evidence)
+            print(f"■ Run ANNULÉ par {args.owner} · aucune validation · historique conservé")
+            return 0
         if args.command == "release":
             release_claim(args.state.resolve(), graph_path, args.node, args.owner, args.reason)
             print(f"■ {args.node} · verrou libéré par {args.owner}")

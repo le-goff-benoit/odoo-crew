@@ -44,8 +44,12 @@ def prepare(project, sources, spec, evidence, memories, scopes, owner):
         if not separator:
             raise ValueError('mémoire attendue sous forme TARGET=DRAFT')
         path = memory_path(root, target)
-        rows.append({'target': target, 'before_sha256': digest(path.read_bytes()) if path.exists() else None,
-                     'draft': ref(root, proposed)})
+        append = proposed.startswith('+')
+        row = {'target': target, 'before_sha256': digest(path.read_bytes()) if path.exists() else None,
+               'draft': ref(root, proposed[1:] if append else proposed)}
+        if append:
+            row.update(mode='append', before_size=path.stat().st_size if path.exists() else 0)
+        rows.append(row)
     if len(rows) != 2 or {row['target'] for row in rows} != TARGETS:
         raise ValueError('PROJECT.md et JOURNAL.md requis une fois chacun')
     inputs = {item['path'] for group in groups.values() for item in group}
@@ -124,6 +128,18 @@ def verify_bundle(project, pinned, published=False, memory_policy=None):
     for row in ([] if policy == 'ignore' else bundle['memory']):
         proposed = check_ref(root, row['draft'])
         target = memory_path(root, row['target'])
+        if row.get('mode') == 'append':
+            content = target.read_bytes() if target.exists() else b''
+            size = row['before_size']
+            if size and digest(content[:size]) != row['before_sha256']:
+                raise ValueError('base mémoire modifiée depuis préparation : ' + row['target'])
+            block, marker = append_block(row, proposed.read_bytes())
+            found = content.count(block)
+            if content.count(marker) != found or found > 1:
+                raise ValueError('ajout mémoire approuvé altéré ou dupliqué : ' + row['target'])
+            if policy == 'published' and found != 1:
+                raise ValueError('ajout mémoire approuvé absent : ' + row['target'])
+            continue
         current = digest(target.read_bytes()) if target.exists() else None
         expected = row['draft']['sha256'] if policy == 'published' else row['before_sha256']
         valid = current in {row['before_sha256'], row['draft']['sha256']} if policy == 'publishable' else current == expected
@@ -200,7 +216,19 @@ def atomic_publish(path, content):
             temporary.unlink(missing_ok=True)
 
 
+def append_block(row, content):
+    identifier = digest((row['target'] + ':' + row['draft']['sha256']).encode())
+    marker = ('<!-- crew-memory:' + identifier + ' -->').encode()
+    return b'\n' + marker + b'\n' + content + b'\n<!-- /crew-memory -->\n', marker
+
+
 def publish(project, pinned, review):
+    from odoo_documents import locked
+    with locked(Path(project).resolve()):
+        return publish_locked(project, pinned, review)
+
+
+def publish_locked(project, pinned, review):
     root = Path(project).resolve()
     bundle = verify(review, pinned, root, memory_policy='publishable')
     result = []
@@ -209,6 +237,15 @@ def publish(project, pinned, review):
         # néanmoins ignorer le protocole entre cette lecture et replace().
         verify(review, pinned, root, memory_policy='publishable')
         target = memory_path(root, row['target'])
+        if row.get('mode') == 'append':
+            content = target.read_bytes() if target.exists() else b''
+            block, _ = append_block(row, check_ref(root, row['draft']).read_bytes())
+            if block in content:
+                result.append({'target': row['target'], 'action': 'already_published'})
+            else:
+                atomic_publish(target, content + block)
+                result.append({'target': row['target'], 'action': 'published'})
+            continue
         current = digest(target.read_bytes()) if target.exists() else None
         if current == row['draft']['sha256']:
             result.append({'target': row['target'], 'action': 'already_published'})

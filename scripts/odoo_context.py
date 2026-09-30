@@ -133,11 +133,15 @@ def context(project, query='', budget=12000, release=None, task=None, role='orch
             relevance = 3 * len(words & title_words) + len(words & text_words)
             business = name == '.odoo-agents/PROJECT.md' and bool(re.search(
                 r'(?i)métier|metier|compréhension|decisions?|décisions?|règles?|contraintes?|actées?', part['title']))
-            eligible = mandatory or business or relevance > 0 or not words
-            priority = 1000 if mandatory else 900 if business else 500 + min(relevance, 399) if relevance else 100
-            sections.append(dict(part, path=name, sha256=hashes[name], mandatory=mandatory,
-                                 priority=priority, eligible=eligible, included=mandatory,
-                                 reason=None if mandatory else 'sans correspondance lexicale' if not eligible else 'budget atteint'))
+            # A structured register can be partial: handwritten rules remain
+            # mandatory until explicitly moved or retired in PROJECT.md.
+            required = mandatory or (name == '.odoo-agents/PROJECT.md' and bool(re.search(
+                r'(?i)decisions?|décisions?|règles?|contraintes?|actées?', part['title'])))
+            eligible = required or business or relevance > 0 or not words
+            priority = 1000 if required else 900 if business else 500 + min(relevance, 399) if relevance else 100
+            sections.append(dict(part, path=name, sha256=hashes[name], mandatory=required,
+                                 priority=priority, eligible=eligible, included=required,
+                                 reason=None if required else 'sans correspondance lexicale' if not eligible else 'budget atteint'))
     # Stable order is a display tie-break only; neither filename nor date asserts
     # that one conflicting statement supersedes another.
     ranked = sorted(range(len(sections)), key=lambda i: (-sections[i]['priority'], sections[i]['path'], sections[i]['start_line'] or 0))

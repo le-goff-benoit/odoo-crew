@@ -134,7 +134,11 @@ python3 ~/.odoo19-agents/scripts/odoo_briefing.py /chemin/projet \
 Ce mode remplace les blocs PROJECT/journal/décisions du briefing par la sélection.
 La série, l'état, les formes attendues et les leçons communes restent ajoutés ;
 ils sont hors du budget de mémoire. Le mode complet historique demeure disponible
-sans `--query`. Le JSON ne doit pas être injecté intégralement au modèle : son
+avec `--full-memory`. Le JSON ne doit pas être injecté intégralement au modèle : son
 texte et son index suffisent, la provenance sert à vérifier et ouvrir les omissions.
 `--full-journal` et `--query` sont incompatibles afin de ne pas annoncer une archive
 complète qui aurait été filtrée. Le contrat original reste à lire.
+
+Depuis le 30 septembre 2026, `odoo_briefing.py` choisit le contexte ciblé par défaut.
+Les rubriques de décisions/règles/contraintes de PROJECT sont obligatoires même
+avec un registre partiel. Détails et limites : [HARNESS.md](HARNESS.md).

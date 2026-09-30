@@ -107,31 +107,31 @@ echo "Génération des profils d'agents Odoo…"
 emit "odoo-analyst" "functional-review" \
     "Read, Grep, Glob, Bash, Write, Edit" \
     "Avant de coder : cadrer et challenger une demande, écrire la spec" \
-    "Analyste fonctionnel contradicteur Odoo (17.0 → 20.0, dans la série du projet). À utiliser AVANT tout développement : remonte au problème réel, vérifie dans les sources de la série si le standard ou la base du client couvre déjà le besoin, compare configuration / Studio / code avec leur coût à la migration, remonte contradictions et non-dits (multi-société, droits, reprise de données, modules disparus), pose les questions bloquantes et écrit la spécification avec critères d'acceptation dans la release. N'écrit pas de code." \
+    "Cadrer et challenger une demande Odoo avant développement : standard, Studio ou module, décisions et critères. Série du projet, sans code." \
     "blue"
 
 emit "odoo-developer" "implementation" \
     "" \
     "Coder un module custom avec ses tests, dans la série du projet" \
-    "Développeur Odoo (17.0 → 20.0, dans la série du projet). Écrit ou modifie le code d'un module custom (modèles, vues, sécurité, assets, tests) dans la ligne éditoriale des sources de sa série : ordre des membres, models.Constraint ou _sql_constraints selon la série, Command, api.model_create_multi, balise list, chatter, sécurité livrée avec le code. Livre les tests avec le code, lint des fichiers touchés et tests ciblés avant de rendre." \
+    "Implémenter un module custom Odoo dans la série du projet, avec sécurité, tests ciblés et lint. Après cadrage fonctionnel." \
     "green"
 
 emit "odoo-studio" "studio" \
     "Read, Grep, Glob, Bash, Write, Edit" \
     "Réaliser une demande sans module : Studio, automatisations, pack versionné" \
-    "Configurateur Odoo Studio (17.0 → 20.0). Réalise une demande SANS module : champs et modèles x_, automatisations, actions serveur et planifiées, vues, menus, rapports, droits — sur la copie locale du client, par identifiant externe, avec scénarios RPC pour preuve et un pack JSON versionné dans la release (odoo_pack.py export/diff/apply). Annonce les limites (safe_eval, pas de JS, pas de surcharge, pas de test Python) avant de faire ; déploie sur staging puis production seulement avec l'humain. Voie par défaut quand le projet n'a pas de module ou tourne sur Odoo Online." \
+    "Configurer Odoo sans module : Studio, automatisations, pack versionné et preuves sur copie locale. Voie Odoo Online ou projet Studio." \
     "pink"
 
 emit "odoo-support" "support" \
     "Read, Grep, Glob, Bash, Write, Edit" \
     "Diagnostiquer un ticket : cause prouvée, contournement, réponse client" \
-    "Support Odoo (17.0 → 20.0, dans la série du projet). Prend un ticket tel quel, reproduit sur l'enregistrement réel (production en lecture seule, copie du client), prouve la cause et la classe : usage, configuration, données, bug custom, bug standard ou évolution déguisée. Mesure l'impact, donne le contournement, écrit le test rouge qui reproduit un bug et le diagnostic qui sert de spec à /odoo-new, ou la réparation de données à confirmer, et le brouillon de réponse au client. N'écrit pas de correctif." \
+    "Diagnostiquer un ticket Odoo : reproduction, cause, impact, contournement et réponse client. Test rouge pour un bug ; sans correctif." \
     "purple"
 
 emit "odoo-tester" "qa-review" \
     "Read, Grep, Glob, Bash, Write, Edit" \
     "Valider un module : lint, install, tests, tours, copie client" \
-    "Relecteur et QA Odoo (17.0 → 20.0, dans la série du module). Deux modes : QA de tâche (lint des fichiers touchés, install/update, tests ciblés) pendant une release ouverte, QA de release (odoo-recette.sh : base neuve, suite complète, tours Chrome headless, désinstallation, mise à niveau sur la copie du client) à la clôture ou sur demande « valide ce module ». Rend un verdict avec anomalies localisées et écrit qa.md, le journal et la fiche projet." \
+    "Valider un travail Odoo : QA ciblée de tâche, recette complète à la clôture, ou réception indépendante des critères et preuves." \
     "orange"
 
 
@@ -215,25 +215,25 @@ emit_command "odoo-new" "orchestration" \
     "<la demande de développement>" \
     'Demande à traiter : $ARGUMENTS' \
     "Une demande de dev de A à Z : cadrage → code → QA de tâche → journal" \
-    "Traite une demande de développement Odoo de bout en bout, dans la série du projet et dans la release de changelog ouverte (ou en ouvre une) : revue fonctionnelle contradictoire écrite dans la release, implémentation, QA de tâche sur Odoo local (lint des fichiers touchés, install/update, tests ciblés), puis entrée de journal. La recette complète se joue à la clôture de la release (/odoo-close). Avec boucle de reprise."
+    "Réaliser une demande Odoo de bout en bout : cadrage, module ou Studio, QA ciblée et mémoire dans la release ouverte."
 
 emit_command "odoo-express" "express" \
     "<correction locale et résultat attendu>" \
     'Correction express : $ARGUMENTS' \
     "Corriger et livrer rapidement un changement Odoo local avec ses contrôles ciblés" \
-    "Réalise un correctif Odoo express lorsque le besoin est précis, local, réversible et sans changement de schéma, droits, dépendances, données ou calculs financiers : briefing, qualification courte, worktree propre, modification, test ciblé, lint, mise à jour, changelog groupé, journal et livraison si elle est explicitement demandée. Bascule vers /odoo-new dès que le périmètre dépasse ces limites."
+    "Corriger un défaut Odoo précis, local et réversible, sans schéma, droits, dépendances, données ni calcul financier. QA ciblée et livraison si demandée."
 
 emit_command "odoo-close" "release-close" \
     "[dossier de la release]" \
     'Release à clôturer : $ARGUMENTS' \
     "Clôturer la release : recette complète, captures, guide, README, commit" \
-    "Clôture une release de changelog Odoo : recette complète outillée (base neuve, suite de tests entière, tours, désinstallation, mise à niveau sur la copie du client), recette navigateur et captures, livrables client (guide, communication), README final avec versions lues dans les manifests, message de commit proposé, capitalisation dans le journal. Ne clôture pas si un contrôle est rouge."
+    "Recetter et clôturer une release Odoo : contrôles complets, documentation métier, bilan et mémoire. Refuse une clôture avec contrôle rouge."
 
 emit_command "odoo-env" "env" \
     "[projet] [add|list|check <nom>|secret <nom>]" \
     'Projet et action : $ARGUMENTS' \
     "Déclarer ou vérifier un environnement (prod, staging, test) sans exposer de secret" \
-    "Déclare ou vérifie les environnements Odoo d'un projet (production, staging, test, local) : ouvre une boîte de dialogue du bureau où l'humain saisit URL, base, identifiant et clé API — la clé va directement dans son trousseau GNOME, les métadonnées sans secret dans le fichier .odoo-agents/instances.json du projet (à commiter). Vérifie l'accès, la version et la cohérence de série. Ne demande, n'affiche et n'écrit jamais un secret."
+    "Déclarer ou vérifier les environnements Odoo. Saisie des accès par dialogue sécurisé, secrets au trousseau, métadonnées versionnées."
 
 emit_command "odoo-feedback" "retex" \
     "[période | projet | \"remarque à retenir\"]" \

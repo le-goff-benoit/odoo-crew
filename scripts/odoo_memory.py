@@ -31,8 +31,11 @@ def validate(data, root):
             raise MemoryError('statut ou règle invalide : ' + row['id'])
         if not row.get('sources'):
             raise MemoryError('décision sans source : ' + row['id'])
-        for item in row['sources']:
-            source(root, item)
+        # Historical sources may have changed precisely because an explicit
+        # replacement was accepted. They must not invalidate the current rule.
+        if row['status'] != 'superseded':
+            for item in row['sources']:
+                source(root, item)
         if row['status'] != 'proposed' and not row.get('confirmed_by'):
             raise MemoryError('auteur de confirmation absent : ' + row['id'])
         realization = row.get('implementation', {})
@@ -43,7 +46,8 @@ def validate(data, root):
         if realization['status'] in ('local_validated', 'deployed'):
             if not realization.get('evidence'):
                 raise MemoryError('réalisation sans preuve : ' + row['id'])
-            source(root, realization['evidence'])
+            if row['status'] != 'superseded':
+                source(root, realization['evidence'])
         if realization['status'] == 'deployed' and not realization.get('instance'):
             raise MemoryError('déploiement sans instance identifiée : ' + row['id'])
         seen, current = set(), row
@@ -74,7 +78,7 @@ def render(data, root, topic=None):
     out = ['## Décisions courantes et questions ouvertes (DECISIONS.json)',
            'Validation structurelle et empreintes vérifiées ; fidélité métier à relire dans les sources.']
     visible = [r for r in data['decisions'] if r['status'] != 'superseded' and
-               (not topic or topic in r.get('scope', []))]
+               (not topic or not r.get('scope') or topic in r.get('scope', []))]
     for row in visible:
         refs = ', '.join(s['path'] for s in row['sources'])
         out.append(f"- {row['id']} [{row['status']} ; réalisation={row['implementation']['status']}] {row['statement']} — sources : {refs}")
@@ -87,7 +91,7 @@ def render(data, root, topic=None):
             out.append(f"- {q['id']} [QUESTION OUVERTE] {q['question']} — source : {q['source']['path']}")
     replaced = [r['id'] + ' → ' + r['superseded_by'] for r in data['decisions'] if r['status'] == 'superseded']
     if replaced:
-        out.append('Historique remplacé, non applicable : ' + ', '.join(replaced))
+        out.append('Historique remplacé, non applicable (empreintes historiques non revérifiées) : ' + ', '.join(replaced))
     return '\n'.join(out)
 
 

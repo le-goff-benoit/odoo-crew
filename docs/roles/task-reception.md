@@ -23,16 +23,15 @@ preuves : un statut `covered` doit toujours être justifié par leur contenu.
 Les formats et limites sont dans `docs/QA_COVERAGE.md` du référentiel.
 
 **Réception de la demande et de la mémoire avant `pass`.** Prépare deux fichiers
-neufs contenant les versions complètes proposées de `PROJECT.md` et `JOURNAL.md`
-(contenu existant conservé, corrections nécessaires et entrée de quinze lignes
-au plus). Ne les publie pas encore. Lorsque les sous-agents sont disponibles,
+neufs contenant seulement les ajouts proposés de `PROJECT.md` et `JOURNAL.md`
+(décision, portée, exceptions, preuve et entrée de quinze lignes au plus). Ne les publie pas encore. Sur risque élevé ou ambiguïté métier, lorsque les sous-agents sont disponibles,
 sur une tâche directe ou un flow du plan équipé de la reprise de réception, active le garde
 avec `odoo_flow.py prepare-reception <flow>` :
 `--source` pour la demande originale et chaque décision applicable, `--spec`
 pour la revue, `--evidence` pour la couverture et les fragments/logs QA,
 `--scope` pour les répertoires de code concernés, puis
-`--memory .odoo-agents/PROJECT.md=<proposition-project>` et
-`--memory .odoo-agents/JOURNAL.md=<proposition-journal>`, `--output <nouveau-bundle>`
+`--memory .odoo-agents/PROJECT.md=+<proposition-project>` et
+`--memory .odoo-agents/JOURNAL.md=+<proposition-journal>`, `--output <nouveau-bundle>`
 et `--owner <orchestrateur>`. Les chemins sont relatifs au projet ; le format
 et un exemple complet sont dans `docs/TASK_RECEPTION.md` du référentiel.
 
@@ -92,3 +91,10 @@ termine `memory_task_blocked`. Le plan peut alors être rouvert avec une raison,
 sans perdre l'ancienne tentative. Aucun test Odoo n'est à rejouer pour un simple
 conflit de texte si ses preuves sont restées valables. Les points ci-dessous
 décrivent le contenu préparé à l'étape 3 ; sans réception liée, écris-le ici.
+
+Le mode `=+draft` conserve les ajouts concurrents, contrôle le préfixe existant et
+publie chaque fragment une seule fois sous verrou. Un remplacement complet reste
+possible avec `=draft`, soumis à la fraîcheur intégrale de sa base. Pour remplacer
+une règle, publier une décision structurée avec `supersedes_project` ; ne pas
+empiler deux règles contradictoires. Un garde déjà lié conserve son exigence de
+réception indépendante, quel que soit le risque réévalué ensuite.

@@ -22,13 +22,20 @@ Si l'argument n'est ni vide, ni une période, ni un nom de projet, mais une
    **Appris** : <la règle qu'elle implique, en une phrase impérative>
    **Candidate LESSONS** : oui / non — <pourquoi>
    ```
-3. Si la règle est durable pour ce projet, ajoute-la à « Pièges connus » ou
+3. Lance `odoo_feedback.py collect <projet>` après l’entrée : observation figée,
+   idempotente, à qualifier. Si la règle est durable pour ce projet, ajoute-la à « Pièges connus » ou
    « Décisions actées » de `PROJECT.md`.
 4. Si elle dépasse le projet, dis-le : elle sera évaluée au prochain retex complet, sans promotion automatique.
 
 Trois lignes de compte-rendu : où c'est écrit, la règle retenue, candidate ou non.
 Les corrections de l'humain sont la matière première la plus fiable du
 dispositif ; une remarque qui reste dans la conversation est perdue.
+
+La collecte automatique intervient à `finish`, `reopen`, `defer`, au scellement
+et à la clôture ; elle ne lance aucun modèle et n’adopte aucune règle.
+`odoo_feedback.py show <projet>` présente les observations ; `triage --id …
+--status reviewed|dismissed --reviewer … --reason …` consigne le tri. Une collecte
+à reprendre ne demande pas de rejouer la QA. Procédure : `docs/HARNESS.md`.
 
 ## 1. Relire ce qui s'est passé
 

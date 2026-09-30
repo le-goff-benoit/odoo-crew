@@ -223,3 +223,13 @@ release ne déclenche pas son déploiement.
 
 [Documentation](docs/README.md) · [Installation](docs/INSTALL.md) · [Estimation et suivi](docs/EFFORT.md) ·
 [Qualité et amélioration](docs/quality-lab/README.md) · [Guide technique](docs/ARCHITECTURE.md)
+
+Correctif local du 17.09 : [réception après remplacement explicite des décisions](docs/quality-lab/knowledge-supersession-2026-09-17/README.md), historique conservé et sources courantes contrôlées.
+
+## Travail, mémoire et retours
+
+[Guide du harness](docs/HARNESS.md) : `odoo_work.py prepare/start/receive`, briefing
+ciblé par défaut (`--full-memory` pour le détail), décisions acceptées disponibles
+entre releases, publication de petits ajouts mémoire et collecte automatique des
+retours. Le tri ne modifie aucune règle générale sans évaluation. Tricorder propose
+le parcours demande → travail → réception et garde les instruments dans Détails.

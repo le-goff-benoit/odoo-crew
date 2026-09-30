@@ -107,6 +107,139 @@ class GraphDefinitionTest(unittest.TestCase):
         self.assertTrue(any("champs manquants" in error for error in errors))
 
 
+class FlowCancellationTest(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.root = Path(self.tmp.name)
+        self.path = self.root / 'state.json'
+        self.proof = self.root / 'reason.md'
+        self.proof.write_text('Hypothèse réfutée ; nouvelle analyse requise.')
+        FLOW.write_state(self.path, FLOW.new_state(self.root, 'development', 'cancel-test', GRAPH_PATH))
+
+    def cancel(self, **kwargs):
+        args = dict(owner='codex-orchestrator', reason='Hypothèse réfutée', evidence=str(self.proof))
+        args.update(kwargs)
+        return FLOW.cancel_run(self.path, **args)
+
+    def advance(self, node, outcome):
+        FLOW.claim_node(self.path, GRAPH_PATH, node, 'codex-orchestrator')
+        FLOW.complete_claimed_node(self.path, GRAPH_PATH, node, outcome,
+                                   [str(self.proof)], None, 'codex-orchestrator', False)
+
+    def test_standard_contract_can_be_revised_only_after_audited_cancel(self):
+        import odoo_plan as plan
+        release = self.root / 'changelog/test'
+        release.mkdir(parents=True)
+        (release / 'README.md').write_text('<!-- release ouverte -->')
+        task = {'id': 'A', 'title': 'Standard', 'request': 'reason.md', 'route': 'standard',
+                'risk': 'normal', 'acceptance': ['attendu initial'], 'scopes': ['scope']}
+        plan.initialise(release, {'schema': 1, 'tasks': [task]})
+        self.path = Path(plan.mutate(release, 'start', 'A'))
+        self.advance('briefing', 'development')
+        spec = self.root / 'spec.md'
+        spec.write_text("## Critères d'acceptation\n- [ ] Attendu initial\n")
+        FLOW.bind_criteria(self.path, GRAPH_PATH, spec, self.root / 'coverage.json', 'codex-orchestrator')
+        self.advance('functional_review', 'exists')
+        self.advance('configuration_record', 'done')
+        revised = {'tasks': [dict(task, acceptance=['attendu corrigé'])]}
+        with self.assertRaisesRegex(ValueError, 'flow'):
+            plan.revise_tasks(release, revised, 'hypothèse réfutée')
+        with self.assertRaises(ValueError):
+            plan.mutate(release, 'reopen', 'A', reason='hypothèse réfutée')
+        with self.assertRaises(FLOW.FlowError):
+            self.advance('journal_task', 'blocked')
+        FLOW.release_claim(self.path, GRAPH_PATH, 'journal_task', 'codex-orchestrator', 'annulation requise')
+        before = FLOW.load_json(self.path)
+        self.cancel()
+        after = FLOW.load_json(self.path)
+        for key, value in before.items():
+            if key not in ('status', 'updated_at'):
+                self.assertEqual(after[key], value, key)
+        self.assertEqual(after['status'], 'cancelled')
+        self.assertEqual(after['cancellation_events'][0]['evidence_sha256'],
+                         {str(self.proof): FLOW.graph_hash(self.proof)})
+        self.assertEqual(FLOW.ready_nodes(after, after['graph_snapshot']), [])
+        self.assertEqual(plan.task_status(plan.read(release)[0]['tasks'][0], self.root)[0], 'blocked')
+        with self.assertRaises(ValueError):
+            plan.mutate(release, 'finish', 'A')
+        plan.revise_tasks(release, revised, 'hypothèse réfutée')
+        plan.mutate(release, 'reopen', 'A', reason='hypothèse réfutée')
+        self.assertEqual(plan.task_status(plan.read(release)[0]['tasks'][0], self.root)[0], 'pending')
+        self.assertEqual(FLOW.load_json(self.path), after)
+
+    def test_rejects_claims_and_registry_disagreement_without_touching_other_run(self):
+        FLOW.claim_node(self.path, GRAPH_PATH, 'briefing', 'other-owner')
+        before = self.path.read_bytes()
+        with self.assertRaises(FLOW.FlowError):
+            self.cancel()
+        self.assertEqual(self.path.read_bytes(), before)
+        FLOW.release_claim(self.path, GRAPH_PATH, 'briefing', 'other-owner', 'interruption')
+        registry_path = FLOW.registry_path(FLOW.load_json(self.path))
+        registry = FLOW.load_registry(registry_path)
+        registry['claims'] = [{'state': str(self.path), 'node': 'briefing', 'owner': 'other-owner'}]
+        FLOW.write_registry(registry_path, registry)
+        before = registry_path.read_bytes()
+        with self.assertRaises(FLOW.FlowError):
+            self.cancel()
+        self.assertEqual(registry_path.read_bytes(), before)
+        registry['claims'][0]['state'] = str(self.root / 'other-run.json')
+        FLOW.write_registry(registry_path, registry)
+        before = registry_path.read_bytes()
+        self.cancel()
+        self.assertEqual(registry_path.read_bytes(), before)
+
+    def test_rejects_empty_reason_owner_evidence_and_terminal_runs(self):
+        empty = self.root / 'empty.md'
+        empty.touch()
+        for args in ({'reason': '  '}, {'owner': ' '}, {'evidence': ''},
+                     {'evidence': str(empty)}, {'evidence': str(self.root / 'missing')},
+                     {'evidence': str(self.root)}):
+            before = self.path.read_bytes()
+            with self.subTest(args=args), self.assertRaises(FLOW.FlowError):
+                self.cancel(**args)
+            self.assertEqual(self.path.read_bytes(), before)
+        for status in ('complete', 'blocked', 'cancelled'):
+            state = FLOW.load_json(self.path)
+            state['status'] = status
+            FLOW.write_state(self.path, state)
+            before = self.path.read_bytes()
+            with self.subTest(status=status), self.assertRaises(FLOW.FlowError):
+                self.cancel()
+            self.assertEqual(self.path.read_bytes(), before)
+
+    def test_cancel_at_high_risk_human_gate_never_validates_or_consumes_tokens(self):
+        import odoo_plan as plan
+        release = self.root / 'changelog/high-risk'
+        release.mkdir(parents=True)
+        (release / 'README.md').write_text('<!-- release ouverte -->')
+        task = {'id': 'Sensitive', 'title': 'Sensitive', 'request': 'reason.md', 'route': 'module',
+                'risk': 'high', 'acceptance': ['Décision humaine requise'], 'scopes': ['sensitive']}
+        plan.initialise(release, {'schema': 1, 'tasks': [task]})
+        self.path = Path(plan.mutate(release, 'start', 'Sensitive'))
+        self.advance('briefing', 'development')
+        self.advance('functional_review', 'module_high_risk')
+        self.advance('module_implementation_high_risk', 'blocked')
+        before = FLOW.load_json(self.path)
+        self.assertEqual(FLOW.ready_nodes(before, before['graph_snapshot']), ['human_high_risk_scope_gate'])
+        result = subprocess.run([sys.executable, str(ROOT / 'scripts/odoo_flow.py'),
+                                 'cancel', str(self.path), '--owner', 'codex-orchestrator',
+                                 '--reason', 'Attente arbitrage', '--evidence', str(self.proof)],
+                                capture_output=True, text=True)
+        self.assertEqual(result.returncode, 0, result.stderr)
+        after = FLOW.load_json(self.path)
+        self.assertEqual(after['status'], 'cancelled')
+        self.assertEqual(after['events'], before['events'])
+        self.assertEqual(after['tokens'], before['tokens'])
+        self.assertNotIn('accepted_reception', after)
+        self.assertEqual(plan.task_status(plan.read(release)[0]['tasks'][0], self.root)[0], 'blocked')
+        with self.assertRaises(ValueError):
+            plan.mutate(release, 'finish', 'Sensitive')
+        with self.assertRaises(FLOW.FlowError):
+            FLOW.complete_claimed_node(self.path, GRAPH_PATH, 'human_high_risk_scope_gate',
+                                       'module', [str(self.proof)], None, 'codex-orchestrator', False)
+
+
 class FlowExecutionTest(unittest.TestCase):
     def setUp(self):
         self.graph = json.loads(GRAPH_PATH.read_text(encoding="utf-8"))

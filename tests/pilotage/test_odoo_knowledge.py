@@ -110,6 +110,36 @@ class KnowledgeTests(unittest.TestCase):
         self.assertFalse(rows[0]['current']); self.assertEqual(rows[1]['freshness'], 'stale')
         self.assertNotIn('inter-sociétés', knowledge.brief(self.root, 'test')['text'])
 
+    def test_impact_uses_current_decision_after_source_revision(self):
+        self.init()
+        first = self.row('D1', kind='decision', state='accepted', reviewed_by='QA',
+                         review=documents.reference(self.root, 'request.md'),
+                         affects_tasks=['A'], impact_reason='Règle de A')
+        knowledge.publish(self.root, 'test', first)
+        (self.root / 'request.md').write_text('Décision révisée explicitement.')
+        second = self.row('D2', kind='decision', state='accepted', reviewed_by='QA',
+                          review=documents.reference(self.root, 'request.md'),
+                          affects_tasks=['A'], impact_reason='Remplace la règle de A',
+                          supersedes='D1')
+        target = knowledge.publish(self.root, 'test', second)
+        self.assertEqual(knowledge.impact_sources(self.root, 'test', 'A'), {
+            'D2': documents.reference(self.root, str(target.relative_to(self.root)))['sha256'],
+        })
+        self.assertEqual(len(list(target.parent.glob('*.json'))), 2)
+        (self.root / 'request.md').write_text('Changement non encore arbitré.')
+        with self.assertRaisesRegex(ValueError, 'source modifiée'):
+            knowledge.impact_sources(self.root, 'test', 'A')
+
+    def test_impact_without_successor_rejects_changed_source(self):
+        self.init()
+        decision = self.row('D1', kind='decision', state='accepted', reviewed_by='QA',
+                            review=documents.reference(self.root, 'request.md'),
+                            affects_tasks=['A'], impact_reason='Règle de A')
+        knowledge.publish(self.root, 'test', decision)
+        (self.root / 'request.md').write_text('Changement sans décision de remplacement.')
+        with self.assertRaisesRegex(ValueError, 'source modifiée'):
+            knowledge.impact_sources(self.root, 'test', 'A')
+
     def test_receipt_shared_then_deferred_not_an_acquired_feature(self):
         self.init(); self.finish_a()
         acquired = knowledge.snapshot(self.root, 'test')['receipts'][0]

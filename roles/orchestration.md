@@ -54,7 +54,7 @@ appliqués et rend découvertes/questions pendant la tâche. Publie ces fragment
 avant de lancer les consommateurs ; vérifie la fraîcheur à chaque passation.
 Un événement de fin d'agent déclenche l'examen de sa preuve, pas son acceptation.
 Sans sous-agent disponible, applique le rôle toi-même et signale les relectures
-non indépendantes. Le nombre d'agents n'est pas un objectif.
+non indépendantes. Une tâche claire reste chez le principal à travers les rôles. Le nombre d'agents n'est pas un objectif.
 
 Une QA peut tourner pendant le développement d'une tâche indépendante si son code
 est figé dans un checkout propre avec base, filestore, port et logs distincts.
@@ -120,8 +120,9 @@ pas lancé systématiquement après chaque retouche. Résultats attendus indépe
 du code testé ; anomalies reproduites dans un contexte atteignable.
 
 **Avant le premier pass, lis `docs/roles/task-reception.md`** : lie les critères
-(`bind-criteria`, `qa-report`), prépare les versions complètes proposées de mémoire,
-et, si le mécanisme existe, `prepare-reception` puis une nouvelle conversation
+(`bind-criteria`, `qa-report`), prépare les ajouts de mémoire sourcés,
+et, pour un risque élevé ou une ambiguïté métier, si le mécanisme existe,
+`prepare-reception` puis une nouvelle conversation
 `odoo-tester` en réception documentaire. Le relecteur n'est pas auteur du dossier ;
 il confronte demande, contrat, preuves et mémoire sans verdict suggéré. Le principal
 vérifie couverture et empreintes, puis soumet les pièces à `complete`. Les hashes

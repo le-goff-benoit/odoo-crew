@@ -220,3 +220,12 @@ générique. Conserver l'archive historique ; ne pas reconstruire un état à la
 Les flows sans `task_reception` gardent leur publication habituelle. Le garde
 contrôle des hashes et citations ; la fidélité métier et la réalité de la
 délégation exigent toujours une relecture et une trace indépendante.
+
+## Ajouts ciblés (30 septembre 2026)
+
+Le mode préféré pour un enrichissement est `TARGET=+DRAFT`. Il publie seulement
+le fragment sourcé avec un marqueur stable, conserve les ajouts concurrents et
+refuse une base réécrite ou un fragment altéré. La publication est sérialisée
+par le verrou de connaissance. Les descriptions du remplacement intégral
+ci-dessus restent applicables au mode historique `TARGET=DRAFT`.
+Voir [le guide du harness](HARNESS.md#ajouts-de-mémoire).

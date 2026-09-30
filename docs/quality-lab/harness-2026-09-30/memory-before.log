@@ -1,0 +1,70 @@
+test_accepted_decision_is_shared_across_releases_without_invented_delivery (tests.pilotage.test_harness_memory.MemoryAuditTests) ... ERROR
+test_cross_release_replacement_and_competing_replacement (tests.pilotage.test_harness_memory.MemoryAuditTests) ... FAIL
+test_plain_bold_and_bulleted_lessons_keep_exceptions_not_following_fields (tests.pilotage.test_harness_memory.MemoryAuditTests) ... test_proposal_never_becomes_confirmed (tests.pilotage.test_harness_memory.MemoryAuditTests) ... ok
+test_stale_current_decision_refuses_promotion (tests.pilotage.test_harness_memory.MemoryAuditTests) ... ok
+test_unstructured_current_decisions_cannot_disappear_behind_budget (tests.pilotage.test_harness_memory.MemoryAuditTests) ... FAIL
+
+======================================================================
+ERROR: test_accepted_decision_is_shared_across_releases_without_invented_delivery (tests.pilotage.test_harness_memory.MemoryAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_harness_memory.py", line 54, in test_accepted_decision_is_shared_across_releases_without_invented_delivery
+    data = json.loads((self.root / '.odoo-agents/DECISIONS.json').read_text())
+  File "/usr/lib/python3.10/pathlib.py", line 1134, in read_text
+    with self.open(mode='r', encoding=encoding, errors=errors) as f:
+  File "/usr/lib/python3.10/pathlib.py", line 1119, in open
+    return self._accessor.open(self, mode, buffering, encoding, errors,
+FileNotFoundError: [Errno 2] No such file or directory: '/tmp/tmp2xeel2fc/.odoo-agents/DECISIONS.json'
+
+======================================================================
+FAIL: test_cross_release_replacement_and_competing_replacement (tests.pilotage.test_harness_memory.MemoryAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_harness_memory.py", line 70, in test_cross_release_replacement_and_competing_replacement
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_plain_bold_and_bulleted_lessons_keep_exceptions_not_following_fields (tests.pilotage.test_harness_memory.MemoryAuditTests) (label='**Appris** :')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_harness_memory.py", line 39, in test_plain_bold_and_bulleted_lessons_keep_exceptions_not_following_fields
+    self.assertEqual(len(result), 1)
+AssertionError: 2 != 1
+
+======================================================================
+FAIL: test_plain_bold_and_bulleted_lessons_keep_exceptions_not_following_fields (tests.pilotage.test_harness_memory.MemoryAuditTests) (label='- Appris :')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_harness_memory.py", line 39, in test_plain_bold_and_bulleted_lessons_keep_exceptions_not_following_fields
+    self.assertEqual(len(result), 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_plain_bold_and_bulleted_lessons_keep_exceptions_not_following_fields (tests.pilotage.test_harness_memory.MemoryAuditTests) (label='- **Appris** :')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_harness_memory.py", line 39, in test_plain_bold_and_bulleted_lessons_keep_exceptions_not_following_fields
+    self.assertEqual(len(result), 1)
+AssertionError: 2 != 1
+
+======================================================================
+FAIL: test_plain_bold_and_bulleted_lessons_keep_exceptions_not_following_fields (tests.pilotage.test_harness_memory.MemoryAuditTests) (label='**Appris :**')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_harness_memory.py", line 39, in test_plain_bold_and_bulleted_lessons_keep_exceptions_not_following_fields
+    self.assertEqual(len(result), 1)
+AssertionError: 0 != 1
+
+======================================================================
+FAIL: test_unstructured_current_decisions_cannot_disappear_behind_budget (tests.pilotage.test_harness_memory.MemoryAuditTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_harness_memory.py", line 49, in test_unstructured_current_decisions_cannot_disappear_behind_budget
+    self.assertIn('Sauf les avoirs', record['text'])
+AssertionError: 'Sauf les avoirs' not found in '# Contexte ciblé\nSélection lexicale, rappel non exhaustif : synonymes et contradictions ne sont pas résolus. Une date, même plus récente, ne vaut pas arbitrage. Vérifier les décisions courantes ; les autres sources peuvent être historiques.\n\nIndex des sections non incluses — ouvrir les lignes indiquées ; détails et empreintes dans le JSON :\n- .odoo-agents/PROJECT.md : L1-L1, L2-L3, L4-L7\n'
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.010s
+
+FAILED (failures=6, errors=1)

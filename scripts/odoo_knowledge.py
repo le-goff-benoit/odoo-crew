@@ -91,6 +91,47 @@ def validate(root, release, row):
             raise ValueError('déploiement non vérifié')
 
 
+def project_decision(root, release, row):
+    """Prepare the project projection; caller owns the knowledge lock.
+
+    Only a reviewed decision is promoted. Delivery is never inferred from it.
+    Contributions remain the immutable origin; a retry repairs a partial write.
+    """
+    if row['kind'] != 'decision' or row['state'] != 'accepted':
+        if row.get('supersedes_project'):
+            raise ValueError('remplacement projet réservé aux décisions acceptées')
+        return None
+    import odoo_memory
+    target = within(root, '.odoo-agents/DECISIONS.json')
+    data = read_json(target) if target.exists() else {'schema': 1, 'decisions': [], 'questions': []}
+    identifier = release + '--' + row['id']
+    origin = f'changelog/{release}/knowledge/{row["id"]}.json'
+    promoted = {'id': identifier, 'status': 'confirmed', 'statement': row['statement'],
+                'scope': row['scope'], 'exceptions': row.get('exceptions', []),
+                'sources': row['sources'] + ([row['review']] if row['review'] not in row['sources'] else []),
+                'confirmed_by': row['reviewed_by'], 'implementation': {'status': 'unknown'},
+                'origin': origin}
+    existing = next((d for d in data['decisions'] if d['id'] == identifier), None)
+    if existing:
+        if any(existing.get(k) != promoted[k] for k in ('statement', 'scope', 'exceptions', 'sources', 'confirmed_by', 'origin')):
+            raise ValueError('projection de décision différente : réconcilier la mémoire')
+        odoo_memory.validate(data, root)
+        return data
+    predecessor = row.get('supersedes_project')
+    if not predecessor and row.get('supersedes'):
+        previous_row = read_json(within(root, f'changelog/{release}/knowledge/{row["supersedes"]}.json'))
+        if previous_row.get('kind') == 'decision' and previous_row.get('state') == 'accepted':
+            predecessor = release + '--' + row['supersedes']
+    if predecessor:
+        previous = next((d for d in data['decisions'] if d['id'] == predecessor), None)
+        if not previous or previous['status'] != 'confirmed':
+            raise ValueError('décision remplacée absente ou remplacement concurrent')
+        previous.update(status='superseded', superseded_by=identifier)
+    data['decisions'].append(promoted)
+    odoo_memory.validate(data, root)
+    return data
+
+
 def publish(root, release, row):
     root = Path(root).resolve()
     with locked(root):
@@ -99,14 +140,19 @@ def publish(root, release, row):
         if target.exists():
             if read_json(target) != row:
                 raise ValueError('contribution immuable : publier un nouvel identifiant et un remplacement explicite')
-            return target
+        projection = project_decision(root, release, row)
         # One accepted successor per entry: competing reviews must be reconciled.
         for path in target.parent.glob('*.json'):
             other = read_json(path)
-            if row.get('supersedes') and other.get('supersedes') == row['supersedes']:
+            if path != target and row.get('supersedes') and other.get('supersedes') == row['supersedes']:
                 raise ValueError('remplacement concurrent : réconcilier les contributions')
         atomic(target, row)
-        return target
+        if projection is not None:
+            atomic(within(root, '.odoo-agents/DECISIONS.json'), projection)
+    if row['kind'] == 'deployment':
+        from odoo_feedback import automatic
+        automatic(root, release)
+    return target
 
 
 def contributions(root, release=None):
@@ -132,8 +178,11 @@ def contributions(root, release=None):
             rows.append(dict(row, release=folder.name, path=str(path.relative_to(root))))
     # A stale successor does not silently resurrect an obsolete rule.
     replaced = {(r['release'], r['supersedes']) for r in rows if r.get('supersedes')}
+    register = within(root, '.odoo-agents/DECISIONS.json')
+    historical = {r['origin'] for r in read_json(register).get('decisions', [])
+                  if r.get('status') == 'superseded' and r.get('origin')} if register.exists() else set()
     for row in rows:
-        row['current'] = (row['release'], row['id']) not in replaced
+        row['current'] = (row['release'], row['id']) not in replaced and row['path'] not in historical
     return rows
 
 
@@ -253,9 +302,18 @@ def verify_brief(root, record):
 def impact_sources(root, release, task):
     """Explicit decision links only; unknown semantic dependencies stay a review task."""
     result = {}
+    entries = []
     for path in sorted(release_path(root, release).glob('knowledge/*.json')):
         path = within(root, str(path.relative_to(Path(root))))
-        row = read_json(path)
+        entries.append((path, read_json(path)))
+    # Keep historical contributions on disk, but only the current decisions
+    # define task impacts. Their old source hashes may legitimately predate
+    # an explicitly accepted replacement; current sources still must verify.
+    replaced = {row['supersedes'] for _, row in entries
+                if row.get('supersedes') and row.get('state') == 'accepted'}
+    for path, row in entries:
+        if row.get('id') in replaced:
+            continue
         if row.get('kind') == 'decision' and row.get('state') == 'accepted' and task in row.get('affects_tasks', []):
             for ref in row['sources'] + [row['review']]:
                 verify(root, ref)

@@ -66,3 +66,21 @@ Si la délégation n'est pas disponible, applique le rôle indiqué toi-même. L
 preuves et les transitions sont identiques. **Les fichiers de la release sont
 le canal de transmission** : `revue_fonctionnelle.md` → code → `qa.md` ; le
 fichier de flow dit seulement où en est l'exécution.
+
+Si une hypothèse ou un contrat est réfuté pendant un run, consigne le motif
+dans un fichier de preuve non vide. Libère d'abord chaque revendication avec
+son propriétaire, puis annule explicitement le run :
+
+```bash
+python3 ~/.odoo19-agents/scripts/odoo_flow.py cancel "$FLOW" \
+  --owner codex-orchestrator --reason "Hypothèse réfutée : reprise nécessaire" \
+  --evidence <fichier-du-motif>
+```
+
+L'annulation conserve les événements, jetons, contrats et réceptions existants,
+ajoute une trace avec propriétaire, motif et empreinte de la preuve, et marque
+le run **ANNULÉ**, sans validation. Elle refuse un run terminal ou encore
+revendiqué, y compris dans le registre partagé, et ne libère aucun autre run.
+Le plan voit alors une tâche bloquée : utilise ses commandes normales `revise`
+et `reopen` avant de démarrer une nouvelle tentative. Les portes humaines et
+les exigences de réception restent entières dans cette nouvelle tentative.

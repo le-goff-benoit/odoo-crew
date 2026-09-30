@@ -79,6 +79,43 @@ class ReceptionTests(unittest.TestCase):
         for target, draft in [('PROJECT.md', 'project-draft.md'), ('JOURNAL.md', 'journal-draft.md')]:
             (self.root / '.odoo-agents' / target).write_bytes((self.root / draft).read_bytes())
 
+    def test_append_memories_preserve_concurrent_additions_and_retry_once(self):
+        path = self.ready()
+        pinned = self.prepare(path, memories=[
+            '.odoo-agents/PROJECT.md=+project-draft.md',
+            '.odoo-agents/JOURNAL.md=+journal-draft.md'])
+        bundle = json.loads((self.root / pinned['path']).read_text())
+        self.assertTrue(all('base' not in row for row in bundle['memory']))
+        _, review = self.receipt(pinned)
+        journal = self.root / '.odoo-agents/JOURNAL.md'
+        with journal.open('a') as stream: stream.write('\nAutre tâche indépendante.\n')
+        reception.publish(self.root, pinned, review)
+        first = journal.read_bytes()
+        self.assertIn(b'Autre', first)
+        reception.publish(self.root, pinned, review)
+        self.assertEqual(first, journal.read_bytes())
+        reception.verify(review, pinned, self.root, published=True)
+        journal.write_bytes(first.replace(b'Calcul', b'Erreur'))
+        with self.assertRaisesRegex(ValueError, 'altéré'):
+            reception.verify(review, pinned, self.root, published=True)
+
+    def test_append_rejects_modified_base_and_stale_evidence(self):
+        path = self.ready()
+        pinned = self.prepare(path, memories=[
+            '.odoo-agents/PROJECT.md=+project-draft.md',
+            '.odoo-agents/JOURNAL.md=+journal-draft.md'])
+        _, review = self.receipt(pinned)
+        target = self.root / '.odoo-agents/PROJECT.md'
+        before = target.read_bytes()
+        target.write_text('Règle remplacée pendant la tâche')
+        with self.assertRaisesRegex(ValueError, 'base mémoire'):
+            reception.publish(self.root, pinned, review)
+        target.write_bytes(before)
+        (self.root / 'runtime.log').write_text('Résultat changé')
+        with self.assertRaisesRegex(ValueError, 'modifié'):
+            reception.publish(self.root, pinned, review)
+        self.assertEqual(before, target.read_bytes())
+
     def test_three_gates_require_receipt_and_accept_independent_content_in_log(self):
         for gate in sorted(GATES):
             with self.subTest(gate=gate):

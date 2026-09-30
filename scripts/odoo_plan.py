@@ -440,7 +440,10 @@ def mutate(release, action, identifier, *, proof=None, acceptance=None, memory=N
             raise ValueError('action inconnue')
         plan['history'].append({'at': flow.now(), 'action': action, 'task_id': identifier, 'reason': reason})
         save(release, plan)
-        return result
+    if action in ('finish', 'reopen', 'defer'):
+        from odoo_feedback import automatic
+        automatic(project, release.name)
+    return result
 
 
 def main():

@@ -22,7 +22,7 @@ class ModelPolicyTests(unittest.TestCase):
     def test_candidate_unavailable_does_not_fall_back_or_claim_observation(self):
         result = resolve('codex', 'odoo-developer', 'normal', candidate=True, available=['gpt-6-astra'])
         self.assertEqual(result['availability'], 'unavailable')
-        self.assertEqual(result['requested_model'], 'gpt-5.6-terra')
+        self.assertEqual(result['requested_model'], 'gpt-6-sol')
         self.assertIsNone(result['observed_model'])
         self.assertEqual(result['policy'], 'experimental')
 
