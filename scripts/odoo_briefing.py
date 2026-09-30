@@ -109,6 +109,9 @@ def journal_entries(journal: Path) -> list[str]:
     text = journal.read_text(encoding="utf-8", errors="replace")
     # Retire le gabarit d'entrée présent dans l'en-tête.
     text = re.sub(r"```markdown.*?```", "", text, flags=re.S)
+    # Publication markers are storage metadata. A following append must not
+    # change the preceding journal entry or create another feedback occurrence.
+    text = re.sub(r'(?m)^<!-- (?:crew-memory:[a-f0-9]{64}|/crew-memory) -->[ \t]*\n?', '', text)
     parts = re.split(r"(?m)^## (?=\d{4}-\d{2}-\d{2})", text)
     return ["## " + p.strip() for p in parts[1:] if p.strip()]
 

@@ -64,3 +64,14 @@ class FeedbackTests(unittest.TestCase):
         self.assertEqual(feedback.snapshot(self.root)['pending'], 1)
         with self.assertRaises(ValueError):
             feedback.record(self.root, '.odoo-agents/JOURNAL.md', 'inventé', 'human_correction')
+
+    def test_delta_markers_never_create_duplicate_historical_lessons(self):
+        from odoo_reception import append_block
+        self.journal.write_text('# Journal\n')
+        for index in (1, 2):
+            content = f'## 2026-10-0{index} — Tâche\n- Appris : leçon {index}.\n'.encode()
+            block, _ = append_block({'target': '.odoo-agents/JOURNAL.md', 'draft': {'sha256': str(index) * 64}}, content)
+            with self.journal.open('ab') as stream: stream.write(block)
+            result = feedback.collect(self.root)
+            self.assertEqual(result['pending'], index)
+            self.assertTrue(all('crew-memory' not in e['text'] for e in result['events']))
