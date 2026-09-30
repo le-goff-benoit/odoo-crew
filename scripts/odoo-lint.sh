@@ -34,9 +34,12 @@ HERE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 #     runbot » dans l'en-tête du ruff.toml officiel.
 #   - PLW0642 : `order = order.with_company(...)` est un idiome Odoo courant.
 #   - E265 / E261 / E262 : les marqueurs de section `#=== FIELDS ===#` du style Odoo.
+#   - TID252 : ignorée jusqu'en 19.4, sortie de la liste `ignore` en 20.0 mais
+#     ajoutée aux règles « pas encore activées sur runbot » ; sans elle, un
+#     `from .. import` devient bloquant avec la config 20.0.
 # Mesuré sur addons/{sale,account,project,hr,stock}/models de la 19.0 :
 # 543 COM812, 82 I001, 73 RUF021, ~180 RET, 58 E741, 44 PLW0642, 55 E26x.
-NOT_ENFORCED="lint.extend-ignore = ['COM812','I001','RUF021','RET','E741','PLW0642','E265','E261','E262']"
+NOT_ENFORCED="lint.extend-ignore = ['COM812','I001','RUF021','RET','E741','PLW0642','E265','E261','E262','TID252']"
 
 STATUS=0
 

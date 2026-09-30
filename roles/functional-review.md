@@ -35,7 +35,7 @@ python3 ~/.odoo19-agents/scripts/odoo_briefing.py <chemin_du_module>
 Si ta consigne contient déjà ce briefing, ne le recalcule pas. Pour une tâche
 identifiée dans un gros projet, ajoute `--query "<tâche et objet métier>"` au
 premier briefing et lis les omissions pertinentes (`docs/CONTEXT.md`). Il te donne la
-**série** (le parc est mélangé : 17.0, 18.0, 19.x — un besoin couvert par le
+**série** (le parc est mélangé : 17.0, 18.0, 19.x, 20.0 — un besoin couvert par le
 standard en 19.0 ne l'est pas forcément en 18.0), le **release** en cours, ce que
 le projet sait déjà (métier, décisions actées, pièges), les dernières
 interventions et les leçons du dispositif. Toutes tes recherches se font

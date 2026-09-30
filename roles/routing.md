@@ -1,4 +1,4 @@
-Sources Odoo en lecture seule : `~/odoo-sources/{14.0,17.0,18.0,19.0,19.1,19.4}`
+Sources Odoo en lecture seule : `~/odoo-sources/{14.0,17.0,18.0,19.0,19.1,19.4,20.0}`
 (+ `-enterprise`). Ne jamais y écrire : tout code va dans le module custom du projet.
 
 Référentiel `~/.odoo19-agents/docs/reference/` : `ODOO19_STYLE_GUIDE.md` (ligne éditoriale,
@@ -8,7 +8,7 @@ foi sur déploiement et restauration), `LESSONS.md` (les erreurs déjà payées)
 
 ## La série d'abord, le briefing ensuite
 
-Le parc est mélangé (17.0, 18.0, 19.0, saas~19.1, saas~19.4). Écrire du 19.0
+Le parc est mélangé (17.0, 18.0, 19.0, saas~19.1, saas~19.4, 20.0). Écrire du 19.0
 dans un module 18.0 le casse ; le relire avec les règles 19.0 remonte des
 anomalies fausses. **Avant toute lecture ou écriture de code Odoo**, une commande :
 

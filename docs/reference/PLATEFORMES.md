@@ -142,11 +142,13 @@ Deux précautions :
 
 ## Odoo Online / SaaS
 
-La série n'est pas choisie : la plateforme impose la dernière `saas~19.x`, et
-celle-ci déplace des règles réputées stables. **Ne pas viser la 19.0.**
+La série n'est pas choisie : c'est celle que sert l'instance (une `saas~X.y` ou
+une majeure), et elle déplace des règles réputées stables. **La lire sur
+l'instance (`/odoo-env` vérifie version et cohérence de série), ne pas la
+supposer — ni 19.0, ni « la dernière saas~19.x » depuis la sortie de la 20.0.**
 
-Le détail des formes concernées est dans `SERIES_MATRIX.md` § saas~19.x — il n'est
-pas recopié ici. Voir aussi `LESSONS.md` L2.
+Le détail des formes concernées est dans `SERIES_MATRIX.md` § saas~19.x et § 20.0
+— il n'est pas recopié ici. Voir aussi `LESSONS.md` L2.
 
 Pas de shell, pas d'accès Postgres, pas de module custom : toute leçon supposant
 un `psql` ou un `ssh` ne s'y applique pas.

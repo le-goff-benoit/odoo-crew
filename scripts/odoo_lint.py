@@ -95,6 +95,28 @@ PY_PATTERNS = [
      "`name_get()` supprimé : implémenter `_compute_display_name()`", since("no_name_get")),
     (r"\.sudo\(\)", "INFO",
      "`sudo()` : vérifier qu'un commentaire justifie l'élévation de droits", ALWAYS),
+    (r"\bregistry\.clear_cache\b", "ERREUR",
+     "`registry.clear_cache` supprimé en 19.4 : `self.env.transaction.invalidate_ormcache()`",
+     since("api_ormcache")),
+    (r"\btransaction\.invalidate_ormcache\b", "ERREUR",
+     "`transaction.invalidate_ormcache` n'existe qu'à partir de la 19.4 : "
+     "utiliser `self.env.registry.clear_cache()`", before("api_ormcache")),
+    (r"from odoo\.tools import .*\bormcache\b|\btools\.ormcache\b|\bodoo\.tools\.cache\b",
+     "AVERTISSEMENT",
+     "`ormcache` s'importe depuis `odoo.api` (`@api.ormcache`) : l'import par `odoo.tools` "
+     "est déprécié", since("api_ormcache")),
+    (r"\bormcache_context\b", "ERREUR",
+     "`ormcache_context` supprimé en 19.4 : passer la clé de contexte à `@api.ormcache` "
+     "(`'self.env.context.get(\"x\")'`)", since("api_ormcache")),
+    (r"@api\.ormcache\b|from odoo\.api import .*\bormcache\b", "ERREUR",
+     "`api.ormcache` n'existe qu'à partir de la 19.4 : utiliser `@tools.ormcache`",
+     before("api_ormcache")),
+    (r"^\s+_rec_names_search\s*=\s*\[", "INFO",
+     "`_rec_names_search` s'écrit en tuple depuis la 20.0 "
+     "(`upgrade_code/19.5-00-tuple-rec_names_search.py`)", since("rec_names_tuple")),
+    (r"\.add_where\(\s*[rf]?[\"']", "AVERTISSEMENT",
+     "`Query.add_where` n'accepte plus que `SQL(...)` en 20.0 (chaîne dépréciée)",
+     since("query_sql_only")),
 ]
 
 XML_PATTERNS = [
@@ -117,6 +139,12 @@ XML_PATTERNS = [
      before("groups_privilege")),
     (r"<xpath[^>]*expr=\"[^\"]*\[\d+\]", "AVERTISSEMENT",
      "xpath positionnel fragile : ancrer sur un `name=` ou un `id=`", ALWAYS),
+    (r"\btype=[\"']base64[\"']", "AVERTISSEMENT",
+     "`type=\"base64\"` remplacé par `type=\"bytes\"` (19.3, déprécié en 20.0)",
+     since("xml_bytes")),
+    (r"\btype=[\"']bytes[\"']", "ERREUR",
+     "`type=\"bytes\"` n'existe qu'à partir de la 19.3 : utiliser `type=\"base64\"`",
+     before("xml_bytes")),
 ]
 
 findings: list[tuple[str, str, int, str]] = []

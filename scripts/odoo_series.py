@@ -2,7 +2,7 @@
 """Résolution de la série Odoo cible d'un module ou d'un projet.
 
 Le poste héberge plusieurs séries de sources et le parc de modules custom est
-mélangé (17.0, 18.0, 19.0, saas~19.x). Écrire du 19.0 dans un module 18.0 le
+mélangé (17.0, 18.0, 19.0, saas~19.x, 20.0). Écrire du 19.0 dans un module 18.0 le
 casse, et linter du 18.0 avec les règles 19.0 produit de fausses erreurs.
 Tout l'outillage passe donc par ce module pour savoir *de quelle série on parle*.
 
@@ -43,10 +43,16 @@ FEATURES = {
     "group_ids_rename": "19.0",  # res.users.groups_id -> group_ids
     "env_cr_props": "19.0",      # self._cr/_uid/_context dépréciés
     "hr_version": "19.0",        # hr.contract -> hr.version
+    "xml_bytes": "19.3",         # <field type="base64"> -> type="bytes"
     "ir_access_csv": "19.4",     # ir.model.access.csv + ir.rule -> ir.access.csv
+    "api_ormcache": "19.4",      # tools.ormcache -> api.ormcache, clear_cache -> invalidate_ormcache
+    "rec_names_tuple": "20.0",   # _rec_names_search en tuple
+    "query_sql_only": "20.0",    # Query.add_where/select/order : objets SQL seulement
 }
 
 # Modules communautaires supprimés, par série d'introduction de la suppression.
+# Une série saas retire aussi : un module absent de 19.1 l'est de 19.4 et de 20.0.
+# Relevé par présence du `__manifest__.py` (un dossier peut subsister sans lui).
 REMOVED = {
     "19.0": {
         "account_edi_ubl_cii_tax_extension", "account_peppol_selfbilling",
@@ -59,6 +65,32 @@ REMOVED = {
         "website_event_meet_quiz", "website_jitsi", "website_membership",
         "website_payment_authorize",
     },
+    "19.1": {
+        "account_peppol_advanced_fields", "hr_hourly_cost", "hr_org_chart",
+        "iot_base", "iot_box_image", "l10n_dk_nemhandel", "l10n_dk_oioubl",
+        "l10n_tr_nilvera_einvoice_extended", "pos_restaurant_adyen",
+        "pos_restaurant_stripe", "pos_self_order_adyen", "pos_self_order_stripe",
+        "pos_self_order_viva_com",
+    },
+    "19.4": {
+        "account_add_gln", "account_peppol_response", "base_iban",
+        "delivery_mondialrelay", "hr_holidays_homeworking", "hr_homeworking",
+        "hr_homeworking_calendar", "hr_work_entry_holidays",
+        "l10n_dk_nemhandel_response", "l10n_ec_stock", "l10n_fr_hr_work_entry_holidays",
+        "l10n_pl_bank_verification", "l10n_ro_cpv_code", "l10n_sa_withholding_tax",
+        "l10n_tr_nilvera_base_vat", "purchase_requisition_sale",
+        "website_sale_autocomplete", "website_sale_collect_wishlist",
+        "website_sale_comparison", "website_sale_comparison_wishlist",
+        "website_sale_mondialrelay", "website_sale_stock_wishlist",
+        "website_sale_wishlist",
+    },
+    "20.0": {
+        "base_vat", "delivery_stock_picking_batch", "l10n_ar_stock_batch",
+        "l10n_cn_city", "l10n_hu_edi_receive", "l10n_latam_base",
+        "l10n_ro_edi_stock_batch", "l10n_tr_nilvera", "l10n_tr_nilvera_edispatch",
+        "l10n_tr_nilvera_einvoice", "l10n_uy_pos", "mrp_subcontracting_repair",
+        "portal_address_extended", "stock_picking_batch", "transifex",
+    },
 }
 
 REPLACEMENTS = {
@@ -67,6 +99,15 @@ REPLACEMENTS = {
     "web_editor": "remplacé par `html_builder`",
     "membership": "supprimé",
     "product_images": "supprimé",
+    "hr_org_chart": "fusionné dans `hr`",
+    "hr_hourly_cost": "fusionné dans `hr` (`hourly_cost` sur l'employé)",
+    "hr_homeworking": "fusionné dans `hr` (`hr.employee.location`)",
+    "base_iban": "supprimé : `validate_iban` est dans `account/tools/bank_account_number.py` "
+                 "(19.4), puis `odoo/tools/bank_account_number.py` (20.0)",
+    "website_sale_wishlist": "fusionné dans `website_sale` (`product.wishlist`)",
+    "website_sale_comparison": "fusionné dans `website_sale` (`product.attribute.category`)",
+    "base_vat": "fusionné dans `base` (contrôle TVA / VIES sur `res.partner`)",
+    "stock_picking_batch": "fusionné dans `stock` (`stock.picking.batch`)",
 }
 
 
@@ -99,8 +140,8 @@ def nearest(series: str) -> str:
 def ruff_config(series: str) -> Path:
     """`ruff.toml` officiel le plus proche.
 
-    Seule la 19.0 publie un `ruff.toml` sur ce poste ; les séries antérieures
-    n'en ont pas. Les familles de règles sélectionnées sont du style Python pur
+    19.0, 19.1, 19.4 et 20.0 publient chacune leur `ruff.toml` (celui de la 20.0
+    demande ruff ≥ 0.16.1) ; les séries antérieures n'en ont pas. Les familles de règles sélectionnées sont du style Python pur
     (imports, f-strings dans les logs, virgules finales) : elles s'appliquent
     telles quelles à un module 17/18. Ce qui diffère entre séries, ce sont les
     motifs Odoo — c'est `odoo_lint.py` qui les porte, pas `ruff`.

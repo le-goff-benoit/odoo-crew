@@ -82,9 +82,10 @@ plus dans le standard (223 modules portent un `ir.access.csv`) et les `ir.rule`
 sont fusionnées dans le modèle `ir.access`. Le guide énonçait comme « erreur
 bloquante » l'absence de ligne dans `ir.model.access.csv` — faux à partir de 19.4.
 **Cause** : une photographie de la 19.0 prise pour une vérité durable.
-**Règle** : pour un projet Odoo Online / SaaS, viser la dernière `saas~19.x`, pas
-la 19.0 ; vérifier la forme de la sécurité dans les sources de **la** série visée.
-**Effet** : `SERIES_MATRIX.md` § saas~19.x, contrôle sécurité daté dans
+**Règle** : pour un projet Odoo Online / SaaS, viser la série que sert l'instance
+(lue par `/odoo-env`), pas la 19.0 ni une « dernière version » supposée ; vérifier
+la forme de la sécurité dans les sources de **la** série visée.
+**Effet** : `SERIES_MATRIX.md` § saas~19.x et § 20.0, contrôle sécurité daté dans
 `odoo_lint.py` (`ir_access_csv`).
 
 ### L3 — Un contrôle qui se trompe de série est pire que pas de contrôle

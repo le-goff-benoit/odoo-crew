@@ -3,7 +3,7 @@
 Un même dispositif pour traiter les demandes Odoo avec Claude Code ou Codex :
 des rôles spécialisés, un plan de release, un graphe persistant, des preuves
 vérifiables et une mémoire de projet commune. La série Odoo est toujours détectée avant le travail
-(17.0, 18.0, 19.0 ou saas~19.x).
+(17.0, 18.0, 19.0, saas~19.x ou 20.0).
 
 Pour installer ou mettre à jour le dispositif, voir [INSTALL.md](INSTALL.md).
 

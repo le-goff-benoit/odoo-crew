@@ -196,3 +196,7 @@ aucune donnée client publiée.
 Le protocole interdit les réparations cachées et conserve les incidents. Les
 contre-exemples servent à choisir la prochaine correction ciblée, sans installer
 comme progrès établi une variante qui manque sa contre-épreuve.
+
+## Série 20.0 — 30 septembre 2026
+
+Sources `20.0` et `20.0-enterprise` clonées ; série ajoutée au référentiel par comptage direct : colonne 20.0 et § dédié dans `SERIES_MATRIX.md`, formes datées (`api_ormcache` 19.4, `xml_bytes` 19.3, `rec_names_tuple` et `query_sql_only` 20.0) et modules retirés en 19.1/19.4/20.0 dans `odoo_series.py`, 9 motifs datés dans `odoo_lint.py` (zéro faux positif sur le standard des séries concernées), `TID252` non bloquante avec le `ruff.toml` 20.0. Test `tests/outillage/test_odoo_series_dating.py`, rouge sur l'ancienne version ; lint des 72 modules clients inchangé dans leur série (649 → 649). L2 et `PLATEFORMES.md` ne supposent plus « la dernière saas~19.x ». Passage ciblé : journaux non relus, `dernier-retex` inchangé.

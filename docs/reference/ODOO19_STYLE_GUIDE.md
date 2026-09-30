@@ -6,8 +6,9 @@
 > le code d'Odoo, pas la documentation ni la mémoire.**
 >
 > ⚠️ **Ce guide décrit la 19.0, et elle seule.** Le parc de modules du poste est
-> majoritairement en **18.0**, et les séries `saas~19.1` / `saas~19.4` déplacent
-> certaines règles énoncées ici — dont la sécurité, refondue en 19.4. Avant
+> majoritairement en **18.0**, et les séries `saas~19.1` / `saas~19.4` puis la
+> **20.0** déplacent certaines règles énoncées ici — dont la sécurité, refondue en
+> 19.4. Avant
 > d'appliquer une règle de ce guide, vérifier la série du module et consulter
 > **[`SERIES_MATRIX.md`](SERIES_MATRIX.md)**, qui fait foi en cas de contradiction :
 >
@@ -671,7 +672,10 @@ La 19.0 n'est pas le dernier état d'Odoo 19. Les séries `saas~19.1` et `saas~1
 présentes sur le poste changent des règles de ce guide : sécurité unifiée dans
 `ir.access` (19.4), `registry.clear_cache` → `transaction.invalidate_ormcache`
 (19.4), `type="base64"` → `type="bytes"` dans les données XML (19.3), `ruff.toml`
-différent (19.1+). Détail et datation : [`SERIES_MATRIX.md`](SERIES_MATRIX.md).
+différent (19.1+). La **20.0** hérite de tous ces changements et y ajoute
+`_rec_names_search` en tuple et des requêtes `Query` en `SQL` seulement ; elle
+retire `stock_picking_batch` et `base_vat` (fusionnés dans `stock` et `base`).
+Détail et datation : [`SERIES_MATRIX.md`](SERIES_MATRIX.md).
 
 ### Modules supprimés / fusionnés (community)
 

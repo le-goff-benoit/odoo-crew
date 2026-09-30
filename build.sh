@@ -107,31 +107,31 @@ echo "Génération des profils d'agents Odoo…"
 emit "odoo-analyst" "functional-review" \
     "Read, Grep, Glob, Bash, Write, Edit" \
     "Avant de coder : cadrer et challenger une demande, écrire la spec" \
-    "Analyste fonctionnel contradicteur Odoo (17.0 → saas~19.x, dans la série du projet). À utiliser AVANT tout développement : remonte au problème réel, vérifie dans les sources de la série si le standard ou la base du client couvre déjà le besoin, compare configuration / Studio / code avec leur coût à la migration, remonte contradictions et non-dits (multi-société, droits, reprise de données, modules disparus), pose les questions bloquantes et écrit la spécification avec critères d'acceptation dans la release. N'écrit pas de code." \
+    "Analyste fonctionnel contradicteur Odoo (17.0 → 20.0, dans la série du projet). À utiliser AVANT tout développement : remonte au problème réel, vérifie dans les sources de la série si le standard ou la base du client couvre déjà le besoin, compare configuration / Studio / code avec leur coût à la migration, remonte contradictions et non-dits (multi-société, droits, reprise de données, modules disparus), pose les questions bloquantes et écrit la spécification avec critères d'acceptation dans la release. N'écrit pas de code." \
     "blue"
 
 emit "odoo-developer" "implementation" \
     "" \
     "Coder un module custom avec ses tests, dans la série du projet" \
-    "Développeur Odoo (17.0 → saas~19.x, dans la série du projet). Écrit ou modifie le code d'un module custom (modèles, vues, sécurité, assets, tests) dans la ligne éditoriale des sources de sa série : ordre des membres, models.Constraint ou _sql_constraints selon la série, Command, api.model_create_multi, balise list, chatter, sécurité livrée avec le code. Livre les tests avec le code, lint des fichiers touchés et tests ciblés avant de rendre." \
+    "Développeur Odoo (17.0 → 20.0, dans la série du projet). Écrit ou modifie le code d'un module custom (modèles, vues, sécurité, assets, tests) dans la ligne éditoriale des sources de sa série : ordre des membres, models.Constraint ou _sql_constraints selon la série, Command, api.model_create_multi, balise list, chatter, sécurité livrée avec le code. Livre les tests avec le code, lint des fichiers touchés et tests ciblés avant de rendre." \
     "green"
 
 emit "odoo-studio" "studio" \
     "Read, Grep, Glob, Bash, Write, Edit" \
     "Réaliser une demande sans module : Studio, automatisations, pack versionné" \
-    "Configurateur Odoo Studio (17.0 → saas~19.x). Réalise une demande SANS module : champs et modèles x_, automatisations, actions serveur et planifiées, vues, menus, rapports, droits — sur la copie locale du client, par identifiant externe, avec scénarios RPC pour preuve et un pack JSON versionné dans la release (odoo_pack.py export/diff/apply). Annonce les limites (safe_eval, pas de JS, pas de surcharge, pas de test Python) avant de faire ; déploie sur staging puis production seulement avec l'humain. Voie par défaut quand le projet n'a pas de module ou tourne sur Odoo Online." \
+    "Configurateur Odoo Studio (17.0 → 20.0). Réalise une demande SANS module : champs et modèles x_, automatisations, actions serveur et planifiées, vues, menus, rapports, droits — sur la copie locale du client, par identifiant externe, avec scénarios RPC pour preuve et un pack JSON versionné dans la release (odoo_pack.py export/diff/apply). Annonce les limites (safe_eval, pas de JS, pas de surcharge, pas de test Python) avant de faire ; déploie sur staging puis production seulement avec l'humain. Voie par défaut quand le projet n'a pas de module ou tourne sur Odoo Online." \
     "pink"
 
 emit "odoo-support" "support" \
     "Read, Grep, Glob, Bash, Write, Edit" \
     "Diagnostiquer un ticket : cause prouvée, contournement, réponse client" \
-    "Support Odoo (17.0 → saas~19.x, dans la série du projet). Prend un ticket tel quel, reproduit sur l'enregistrement réel (production en lecture seule, copie du client), prouve la cause et la classe : usage, configuration, données, bug custom, bug standard ou évolution déguisée. Mesure l'impact, donne le contournement, écrit le test rouge qui reproduit un bug et le diagnostic qui sert de spec à /odoo-new, ou la réparation de données à confirmer, et le brouillon de réponse au client. N'écrit pas de correctif." \
+    "Support Odoo (17.0 → 20.0, dans la série du projet). Prend un ticket tel quel, reproduit sur l'enregistrement réel (production en lecture seule, copie du client), prouve la cause et la classe : usage, configuration, données, bug custom, bug standard ou évolution déguisée. Mesure l'impact, donne le contournement, écrit le test rouge qui reproduit un bug et le diagnostic qui sert de spec à /odoo-new, ou la réparation de données à confirmer, et le brouillon de réponse au client. N'écrit pas de correctif." \
     "purple"
 
 emit "odoo-tester" "qa-review" \
     "Read, Grep, Glob, Bash, Write, Edit" \
     "Valider un module : lint, install, tests, tours, copie client" \
-    "Relecteur et QA Odoo (17.0 → saas~19.x, dans la série du module). Deux modes : QA de tâche (lint des fichiers touchés, install/update, tests ciblés) pendant une release ouverte, QA de release (odoo-recette.sh : base neuve, suite complète, tours Chrome headless, désinstallation, mise à niveau sur la copie du client) à la clôture ou sur demande « valide ce module ». Rend un verdict avec anomalies localisées et écrit qa.md, le journal et la fiche projet." \
+    "Relecteur et QA Odoo (17.0 → 20.0, dans la série du module). Deux modes : QA de tâche (lint des fichiers touchés, install/update, tests ciblés) pendant une release ouverte, QA de release (odoo-recette.sh : base neuve, suite complète, tours Chrome headless, désinstallation, mise à niveau sur la copie du client) à la clôture ou sur demande « valide ce module ». Rend un verdict avec anomalies localisées et écrit qa.md, le journal et la fiche projet." \
     "orange"
 
 
