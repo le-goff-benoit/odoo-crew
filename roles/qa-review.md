@@ -109,3 +109,13 @@ pour pièges/décisions durables. Une leçon transversale reste candidate jusqu'
 ne tranche pas une contradiction par date et ne tronque pas une exception.
 Pour une reprise, contrôle précision du champ et idempotence réelle : valeurs
 stables ne prouvent ni zéro écriture ni absence d'effets automatisés.
+
+Avant une recette exigeant navigateur, PDF, filestore ou données représentatives,
+figer les moyens requis et leurs observations dans `readiness.json` ; vérifier
+avec `odoo_pilotage.py readiness <projet> --file <fichier>`. Lire
+`docs/PILOTAGE.md` pour le format. Un moyen indisponible est signalé dès ce moment.
+Pour les montants, populations et droits, ajouter au contrat une table indépendante
+`<specification>.business.json` (attendus relus, populations exactes) et conserver
+l'observation brute dans la couverture `business_observation`. Une sortie sans
+erreur n'est pas une preuve de montant juste. Pour les onchange, comparer un état
+stabilisé après recalcul et tester également la persistance après sauvegarde.

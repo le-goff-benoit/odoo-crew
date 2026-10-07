@@ -193,6 +193,11 @@ def result_hash(receipt):
 
 
 def statuses(plan, project):
+    from odoo_pilotage import cached_statuses
+    return cached_statuses(plan, project, _statuses)
+
+
+def _statuses(plan, project):
     states = {task['id']: task_status(task, project) for task in plan['tasks']}
     by_id = {task['id']: task for task in plan['tasks']}
     for task in plan['tasks']:
@@ -217,6 +222,20 @@ def overlapping(first, second, project):
                for a in first for b in second)
 
 
+def depends_on_transitively(task, identifier, tasks_by_id):
+    """Recognize a dependency through any number of validated plan tasks."""
+    pending = list(task.get('depends_on', []))
+    seen = set()
+    while pending:
+        dependency = pending.pop()
+        if dependency == identifier:
+            return True
+        if dependency not in seen:
+            seen.add(dependency)
+            pending.extend(tasks_by_id[dependency].get('depends_on', []))
+    return False
+
+
 def available(plan, project, identifier):
     states = statuses(plan, project)
     task = next(t for t in plan['tasks'] if t['id'] == identifier)
@@ -230,9 +249,15 @@ def available(plan, project, identifier):
     deps = [d for d in task.get('depends_on', []) if states[d][0] != 'validated']
     if deps:
         return False, 'dépendances : ' + ', '.join(deps)
+    tasks_by_id = {item['id']: item for item in plan['tasks']}
     for other in plan['tasks']:
         if other['id'] != identifier and states[other['id']][0] in ('running', 'awaiting_receipt', 'interrupted'):
             if overlapping(task['scopes'], other['scopes'], project):
+                # Once the dependent graph is terminal, its receipt waits for this
+                # task to be revalidated. Its source proofs still guard against
+                # changes made while that dependency is resumed.
+                if states[other['id']][0] == 'awaiting_receipt' and depends_on_transitively(other, identifier, tasks_by_id):
+                    continue
                 from odoo_candidate import isolated, active_for_task
                 candidate = (other.get('attempts') or [{}])[-1].get('candidate')
                 if candidate and active_for_task(other, project) and isolated(candidate, task):
@@ -476,6 +501,9 @@ def main():
             ready, why = available(plan, project, task['id'])
             print(f"{task['id']} · {states[task['id']][0]} · {'PRÊT' if ready else why} · {task['title']}")
     else:
+        if args.action == 'start':
+            from odoo_effort import forecast_coverage
+            forecast_coverage(args.release)
         print(mutate(args.release, args.action, args.task, proof=args.proof, acceptance=args.acceptance, memory=args.memory, reason=args.reason, check_proofs=json.loads(args.check_proofs.read_text()) if args.check_proofs else None, knowledge=args.knowledge))
 
 

@@ -96,11 +96,34 @@ def write(path, value):
 
 def location(release):
     release = Path(release).resolve()
+    if is_express(release) and (release / 'README.md').is_file():
+        return release, release.parents[2]
     if is_preparation(release) and release.is_dir():
         return release, release.parent.parent
     if release.parent.name != 'changelog' or not (release / 'README.md').is_file():
         raise ValueError('release changelog/<dossier> avec README.md requise')
     return release, release.parent.parent
+
+
+def is_express(folder):
+    folder = Path(folder)
+    return folder.parent.name == 'express' and folder.parent.parent.name == '.odoo-agents'
+
+
+def express_init(project, flow_path, title):
+    project = Path(project).resolve()
+    path = (project / flow_path).resolve()
+    if not path.is_relative_to(project / '.odoo-agents/flows') or read(path).get('kind') != 'express':
+        raise ValueError('flow express du projet requis')
+    identifier(path.stem)
+    if not title.strip(): raise ValueError('titre métier requis')
+    folder = project / '.odoo-agents/express' / path.stem
+    folder.mkdir(parents=True, exist_ok=True)
+    if not (folder / 'README.md').exists():
+        (folder / 'README.md').write_text('# ' + title.strip() + '\n')
+    init(folder)
+    add_task(folder, 'EXPRESS', title.strip())
+    return {'folder': str(folder), 'task': 'EXPRESS'}
 
 
 def is_preparation(folder):
@@ -170,7 +193,7 @@ def empty_state(release):
 def measurement_state(release, data):
     """Read-only projection; attached entries never enter release/effort.json."""
     result = deepcopy(data)
-    if not is_preparation(release):
+    if not is_preparation(release) and not is_express(release):
         entries = preparation_entries(Path(release).resolve().parent.parent, Path(release).name)
         if entries:
             if PREPARATION_TASK in result['tasks']:
@@ -335,9 +358,10 @@ def interval(entry):
 
 def check_allocation(release, data, candidate, replacing=None):
     """One project lock serializes overlap checks across its releases."""
-    project = Path(release).parent.parent
+    _, project = location(release)
     folders = list((project / 'changelog').iterdir()) if (project / 'changelog').is_dir() else []
     folders.append(preparation_folder(project))
+    folders.extend((project / '.odoo-agents/express').glob('*'))
     for folder in folders:
         path = folder / 'effort.json'
         if not path.exists():
@@ -479,8 +503,8 @@ def import_usage(release, task, agent, provider, source, since=None, until=None)
         raise ValueError('fenêtre non positive')
     if since:
         since, until = [datetime.fromtimestamp(instant(x), timezone.utc).isoformat() for x in (since, until)]
-    usage = normalized_usage(source, provider, since, until)
     with locked(release) as (release, _):
+        usage = normalized_usage(source, provider, since, until)
         data = state(release); ensure_task(data, task, agent)
         same = next((e for e in data['entries'] if e['basis'] == 'native'
                      and (e['provider'], e['thread_id'], e.get('since'), e.get('until')) == (provider, usage['thread_id'], since, until)), None)
@@ -500,12 +524,47 @@ def import_usage(release, task, agent, provider, source, since=None, until=None)
         if same:
             if same.get('tokens') is not None and entry.get('tokens') is not None:
                 counter_delta(same['tokens'], entry['tokens'])
-            entry['history'] = same.get('history', []) + [{k: v for k, v in same.items() if k != 'history'}]
+            entry['history'] = same.get('history', []) + [{k: v for k, v in same.items() if k in ('source_sha256', 'observed_at', 'status', 'seconds', 'known_active_seconds', 'tokens', 'provider_cost')}]
             data['entries'][data['entries'].index(same)] = entry
         else:
             data['entries'].append(entry)
         save(release, data)
         return entry
+
+
+def forecast_coverage(release):
+    data = state(Path(release)); current = contracts(Path(release))
+    latest = data['estimates'][-1]['lines'] if data['estimates'] else []
+    planned = {r['task'] for r in latest}
+    required = set(current) | set(data['tasks'])
+    if (Path(release) / 'plan.json').exists():
+        from odoo_plan import read as read_plan, statuses
+        plan, project = read_plan(Path(release))
+        finished = {key for key, value in statuses(plan,project).items() if value[0] in ('validated','deferred')}
+        required = (required - finished) | {'RELEASE'}
+    missing = sorted(required - planned)
+    if missing:
+        raise ValueError('estimation requise avant exécution : ' + ', '.join(missing))
+    changed = sorted({r['task'] for r in latest if r['task'] in required and r.get('contract_sha256') and current.get(r['task'], {}).get('sha256') != r['contract_sha256']})
+    if changed:
+        raise ValueError('estimation à réviser pour le nouveau périmètre : ' + ', '.join(changed))
+    return {'complete': True, 'tasks': sorted(planned)}
+
+
+def track(release, task, agent, provider, source, *, watch=True):
+    """Bind one dedicated native session to a stable role; recover by idempotent import."""
+    release = Path(release).resolve(); source = Path(source).resolve()
+    forecast_coverage(release)
+    data = state(release)
+    if forecast_revision(data, task, agent, now()) is None:
+        raise ValueError('estimer ce rôle avant le démarrage : ' + task + '/' + agent)
+    from odoo_effort_watch import register, launch, sample
+    binding = register(release, task, agent, provider, source)
+    result = sample(binding)
+    if result.get('status') == 'sealed':
+        raise ValueError('suivi scellé : complément historique explicite requis')
+    if watch: launch(binding)
+    return result
 
 
 def rates(release, definition):
@@ -598,7 +657,7 @@ def report_data(release, data, live=False):
         old, new = initial.get((task, agent)), latest.get((task, agent))
         measured = bool(entries) and all(x.get('seconds') is not None and x['status'] == 'complete' for x in entries)
         actual = sum(x['seconds'] for x in entries) / 60 if measured else None
-        subtotal = sum(x['seconds'] for x in entries if x.get('seconds') is not None) / 60
+        subtotal = sum(x.get('seconds') if x.get('seconds') is not None else x.get('known_active_seconds') or 0 for x in entries) / 60
         tokens = {k: sum(x['tokens'][k] for x in entries)
                   if all((x.get('tokens') or {}).get(k) is not None for x in entries) else None
                   for k in TOKEN_KEYS} if entries else None
@@ -757,6 +816,8 @@ def check_report(release):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='action', required=True)
+    p = sub.add_parser('express-init'); p.add_argument('project', type=Path)
+    p.add_argument('--flow', required=True); p.add_argument('--title', required=True)
     for action in ('prepare-start', 'prepare-stop', 'prepare-interrupt', 'prepare-attach', 'prepare-status'):
         p = sub.add_parser(action)
         p.add_argument('project', type=Path)
@@ -772,7 +833,7 @@ def main():
             p.add_argument('--release', type=Path, required=True)
         if action == 'prepare-interrupt':
             p.add_argument('--reason', required=True)
-    for action in ('init', 'add-task', 'estimate', 'start', 'stop', 'interrupt', 'check-closure', 'import-usage', 'rates', 'report', 'check'):
+    for action in ('init', 'add-task', 'estimate', 'start', 'stop', 'interrupt', 'check-closure', 'check-estimates', 'seal-tracking', 'track', 'import-usage', 'rates', 'report', 'check'):
         p = sub.add_parser(action); p.add_argument('release', type=Path)
         if action == 'add-task':
             p.add_argument('--task', required=True); p.add_argument('--title', required=True)
@@ -780,10 +841,10 @@ def main():
             p.add_argument('--file', type=Path, required=True)
         if action == 'estimate':
             p.add_argument('--reason')
-        if action in ('start', 'import-usage'):
+        if action in ('start', 'track', 'import-usage'):
             p.add_argument('--task', required=True); p.add_argument('--agent', required=True)
             p.add_argument('--provider', choices=('codex', 'claude'), required=True)
-        if action in ('start', 'stop', 'import-usage'):
+        if action in ('start', 'stop', 'track', 'import-usage'):
             p.add_argument('--source', type=Path, required=True)
         if action in ('stop', 'interrupt'):
             p.add_argument('--entry', required=True)
@@ -793,7 +854,9 @@ def main():
             p.add_argument('--since'); p.add_argument('--until')
     args = parser.parse_args()
     try:
-        if args.action == 'prepare-start':
+        if args.action == 'express-init':
+            result = express_init(args.project,args.flow,args.title)
+        elif args.action == 'prepare-start':
             result = prepare_start(args.project, args.agent, args.provider, args.source, args.release)
         elif args.action == 'prepare-stop':
             result = stop(preparation_folder(args.project), args.entry, args.source)
@@ -814,6 +877,13 @@ def main():
             result = estimate(args.release, read(args.file), args.reason)
         elif args.action == 'rates':
             result = rates(args.release, read(args.file))
+        elif args.action == 'seal-tracking':
+            from odoo_effort_watch import seal
+            result = seal(args.release)
+        elif args.action == 'check-estimates':
+            result = forecast_coverage(args.release)
+        elif args.action == 'track':
+            result = track(args.release, args.task, args.agent, args.provider, args.source)
         elif args.action == 'start':
             result = start(args.release, args.task, args.agent, args.provider, args.source)
         elif args.action == 'stop':

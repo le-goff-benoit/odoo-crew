@@ -97,3 +97,11 @@ lecture sur ce candidat et le développement de B sur son propre périmètre ; n
 fais jamais écrire deux agents sur le candidat. Une mutation du candidat refuse
 la réception. Si B dépend du résultat A, attends la réception A. L'orchestrateur
 intègre seul les résultats et contrôle ensuite le candidat commun de release.
+
+Avant démarrage, `odoo_effort.py check-estimates <release>` contrôle les
+prévisions ; `odoo_work.py start <projet> --release ID --task T01` applique aussi
+ce contrôle. Suivre `roles/estimation.md` pour la collecte native durable.
+Publier les découvertes acceptées avec une conséquence utile (`effect`) et leurs
+exceptions : elles rejoignent automatiquement les apprentissages du projet.
+`prepare` recharge ces acquis et récupère les mesures interrompues. Ne pas
+remplacer les exceptions client par une règle générale sans contre-épreuve.

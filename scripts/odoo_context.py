@@ -14,7 +14,7 @@ import odoo_knowledge
 
 
 def inventory(project):
-    paths = [project / '.odoo-agents' / name for name in ('PROJECT.md', 'JOURNAL.md', 'DECISIONS.json', 'DOCUMENTS.json', 'SOURCE_INDEX.json')]
+    paths = [project / '.odoo-agents' / name for name in ('PROJECT.md', 'JOURNAL.md', 'DECISIONS.json', 'LEARNINGS.json', 'DOCUMENTS.json', 'SOURCE_INDEX.json')]
     paths += list((project / 'decisions').glob('*.md')) + list((project / 'changelog').glob('*/revue_fonctionnelle.md'))
     for pattern in ('*/demande.md', '*/intentions.json', '*/plan.json', '*/consolidation.md', '*/knowledge/*.json'):
         paths += list((project / 'changelog').glob(pattern))
@@ -110,6 +110,12 @@ def context(project, query='', budget=12000, release=None, task=None, role='orch
             rendered = odoo_memory.render(json.loads(path.read_text()), project)
             parts = [{'title': 'Décisions courantes et questions ouvertes', 'content': rendered,
                       'start_line': None, 'end_line': None, 'section_sha256': digest(rendered)}]
+        elif name == '.odoo-agents/LEARNINGS.json':
+            from odoo_pilotage import learnings
+            rows = [r for r in learnings(project) if r['current']]
+            content = '# Apprentissages du projet\n' + json.dumps(rows, ensure_ascii=False, indent=2)
+            parts = markdown_sections(content)
+            mandatory = True
         elif name == '.odoo-agents/DOCUMENTS.json':
             parts = markdown_sections(odoo_documents.render(project))
             for part in parts:

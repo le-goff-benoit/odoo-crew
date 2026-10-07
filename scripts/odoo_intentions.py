@@ -13,6 +13,10 @@ import odoo_flow as flow
 STATUSES = {'clarify', 'ready', 'planned', 'satisfied', 'deferred'}
 
 
+def open_questions(item):
+    return [q for q in item.get('questions', []) if isinstance(q, str) or not (q.get('answer') or q.get('response'))]
+
+
 def read(path):
     data = json.loads(Path(path).read_text())
     if data.get('schema') != 1 or not isinstance(data.get('items'), list):
@@ -28,7 +32,7 @@ def read(path):
         for key in ('questions', 'constraints', 'decisions', 'tasks'):
             if not isinstance(item.get(key), list):
                 raise ValueError(key + ' doit être une liste')
-        if item['questions'] and item['status'] not in ('clarify', 'deferred'):
+        if open_questions(item) and item['status'] not in ('clarify', 'deferred'):
             raise ValueError('question bloquante non résolue')
     return data
 
@@ -52,7 +56,7 @@ def update(release, definition):
                 item.setdefault(key, [])
             item.setdefault('criteria', [item.get('purpose', '')])
             item.setdefault('coverage', [])
-            item.setdefault('status', 'clarify' if item['questions'] else 'ready')
+            item.setdefault('status', 'clarify' if open_questions(item) else 'ready')
             if item['status'] == 'satisfied':
                 raise ValueError('utiliser satisfy avec réception vérifiée')
             old = next((i for i in data['items'] if i['id'] == item['id']), None)
@@ -80,7 +84,7 @@ def validate_data(data):
             raise ValueError('identifiant, texte et résultat attendu requis')
         if i.get('status') not in STATUSES or any(not isinstance(i.get(k), list) for k in ('questions', 'constraints', 'decisions', 'tasks')):
             raise ValueError('état ou listes invalides')
-        if i['questions'] and i['status'] not in ('clarify', 'deferred'):
+        if open_questions(i) and i['status'] not in ('clarify', 'deferred'):
             raise ValueError('question bloquante non résolue')
 
 
@@ -99,7 +103,7 @@ def reconcile(release, identifier=None, standard_proof=None):
             old = deepcopy(item)
             item['tasks'] = [t['id'] for t in plan['tasks'] if item['id'] in t.get('intentions', [])]
             if item['status'] != 'deferred':
-                if item['questions']:
+                if open_questions(item):
                     item['status'] = 'clarify'
                 elif item['tasks']:
                     by_task = {t['id']: t for t in plan['tasks']}
@@ -115,11 +119,11 @@ def reconcile(release, identifier=None, standard_proof=None):
             if identifier == item['id'] and standard_proof:
                 proof_path = reference(project, standard_proof)
                 verify(json.loads(proof_path.read_text()), project)
-                if item['questions'] or item['tasks']:
+                if open_questions(item) or item['tasks']:
                     raise ValueError('solution standard réservée à une intention sans tâche ni question')
                 item['standard_proof'] = {'path': standard_proof, 'sha256': flow.graph_hash(proof_path)}
                 item['status'] = 'satisfied'
-            elif item.get('standard_proof') and not item['tasks'] and not item['questions']:
+            elif item.get('standard_proof') and not item['tasks'] and not open_questions(item):
                 try:
                     proof_path = reference(project, item['standard_proof']['path'])
                     if flow.graph_hash(proof_path) != item['standard_proof']['sha256']:

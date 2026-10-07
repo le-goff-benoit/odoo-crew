@@ -98,7 +98,7 @@ def project_decision(root, release, row):
     Contributions remain the immutable origin; a retry repairs a partial write.
     """
     if row['kind'] != 'decision' or row['state'] != 'accepted':
-        if row.get('supersedes_project'):
+        if row.get('supersedes_project') and row['kind'] != 'discovery':
             raise ValueError('remplacement projet réservé aux décisions acceptées')
         return None
     import odoo_memory
@@ -141,12 +141,16 @@ def publish(root, release, row):
             if read_json(target) != row:
                 raise ValueError('contribution immuable : publier un nouvel identifiant et un remplacement explicite')
         projection = project_decision(root, release, row)
+        from odoo_pilotage import learning_projection
+        learning = learning_projection(root, release, row)
         # One accepted successor per entry: competing reviews must be reconciled.
         for path in target.parent.glob('*.json'):
             other = read_json(path)
             if path != target and row.get('supersedes') and other.get('supersedes') == row['supersedes']:
                 raise ValueError('remplacement concurrent : réconcilier les contributions')
         atomic(target, row)
+        if learning is not None:
+            atomic(within(root, '.odoo-agents/LEARNINGS.json'), learning)
         if projection is not None:
             atomic(within(root, '.odoo-agents/DECISIONS.json'), projection)
     if row['kind'] == 'deployment':
@@ -253,7 +257,8 @@ def snapshot(root, release=None):
                             'limitation': index['layers'][0]['limitation']}
         except (ValueError, OSError, KeyError, TypeError) as exc:
             warnings.append('Index de sources non vérifié : ' + str(exc))
-    return {'schema': 1, 'release': release, 'decisions': decisions, 'questions': questions, 'documents': documents, 'source_index': source_index,
+    from odoo_pilotage import learnings
+    return {'learnings': learnings(root, release), 'schema': 1, 'release': release, 'decisions': decisions, 'questions': questions, 'documents': documents, 'source_index': source_index,
             'contributions': rows, 'receipts': receipts, 'warnings': warnings,
             'limitation': 'Sources et preuves vérifiées ; fidélité métier à relire. Une réception locale ne prouve pas un déploiement.'}
 
@@ -284,6 +289,15 @@ def brief(root, release, task=None, role='orchestrator'):
     out.append('## Pièces à consulter (originaux et repères dans DOCUMENTS.json)')
     for row in data['documents']:
         out.append(f"- {row['id']} {row['version']} [{row['status']}/{row['freshness']}] : {row['original']['path']}")
+    from odoo_pilotage import learnings
+    project_learnings = [r for r in learnings(root) if r['current']]
+    if project_learnings:
+        out.append('## Apprentissages du projet')
+        for row in project_learnings:
+            out.append('- ' + row['statement'] + ' — ' + row.get('effect', ''))
+            if row.get('exceptions'): out.append('  Exceptions : ' + '; '.join(row['exceptions']))
+            out.append('  Source : ' + row['origin'])
+        data['project_learnings'] = project_learnings
     text = '\n'.join(out) + '\n'
     return {'schema': 1, 'project': str(Path(root).resolve()), 'release': release,
             'task': task, 'role': role, 'knowledge_sha256': digest(data), 'text': text}

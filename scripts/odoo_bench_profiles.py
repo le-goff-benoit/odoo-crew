@@ -72,6 +72,14 @@ def snapshot_candidate(source, target):
         shutil.copytree(source / name, target / name, ignore=ignore)
     for name in ('build.sh', 'AGENTS.md'):
         shutil.copy2(source / name, target / name)
+    # The test suite imports this executable summary helper. Reports remain excluded.
+    helper = source / 'docs/quality-lab/agent-workflows-2026-09-15/summarize.py'
+    if helper.is_file():
+        if helper.is_symlink() or not helper.resolve().is_relative_to(source.resolve()):
+            raise ValueError('helper hors paquet')
+        destination = target / helper.relative_to(source)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(helper, destination)
 
 
 class SourceServer(socketserver.UnixStreamServer):

@@ -273,3 +273,13 @@ Après la dernière entrée du journal, `odoo_feedback.py collect <projet> --rel
 <id>` actualise les retours. Le sceau et la commande de clôture font déjà cette
 collecte automatiquement ; la répétition est idempotente. Examiner les candidats
 via `/odoo-feedback`, sans relancer la recette pour leur seul tri.
+
+Une publication avec contrôles manquants reste distincte de la clôture QA.
+`odoo_pilotage.py delivery` enregistre cible, tâches, preuve et réserves acceptées
+(contrôle manquant, prochaine action et responsable), sans rendre la QA verte.
+Une tâche devient « Déployée » seulement après observation relue de la cible
+selon le contrat de livraison ; GitHub, staging et production restent distincts.
+Avant le bilan final, `odoo_effort.py seal-tracking <release>` effectue le dernier
+import et arrête les collecteurs liés. Générer ensuite `report`. Une reprise
+ordinaire ne réécrit pas les mesures scellées ; les compléments historiques
+passent par un import explicite et un nouveau bilan identifié.

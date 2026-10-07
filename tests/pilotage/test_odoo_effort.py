@@ -416,3 +416,30 @@ class EffortTests(unittest.TestCase):
         alias = self.usage('other'); alias['identities'] = self.usage()['identities']
         with self.assertRaises(ValueError):
             self.record(alias)
+
+class DurableEffortTests(unittest.TestCase):
+    setUp = EffortTests.setUp
+    usage = EffortTests.usage
+    record = EffortTests.record
+    def test_partial_native_preserves_known_completed_segments(self):
+        usage=self.usage(seconds=None); usage.update(complete=False,known_active_seconds=120)
+        self.record(usage)
+        row=effort.report(self.release)['rows'][0]
+        self.assertIsNone(row['actual_minutes']); self.assertEqual(row['known_minutes'],2)
+
+    def test_track_requires_forecast_and_local_binding_is_sealed(self):
+        import odoo_effort_watch as watcher
+        with patch.object(watcher,'folder',return_value=self.project/'cache'):
+            (self.project/'cache').mkdir()
+            with patch.object(effort,'normalized_usage',return_value=self.usage()):
+                effort.track(self.release,'A','odoo-developer','codex',self.project/'native',watch=False)
+                self.assertEqual(watcher.reconcile(self.project,restart=False)['recovered'],1)
+                watcher.seal(self.release)
+                before = (self.release/'effort.json').read_bytes()
+                with self.assertRaisesRegex(ValueError,'scellée'):
+                    effort.track(self.release,'A','odoo-developer','codex',self.project/'native',watch=False)
+                self.assertEqual((self.release/'effort.json').read_bytes(),before)
+                self.assertEqual(watcher.reconcile(self.project,restart=False)['recovered'],0)
+                effort.add_task(self.release,'B','Missing forecast')
+                with self.assertRaisesRegex(ValueError,'estimation requise'):
+                    effort.track(self.release,'B','odoo-developer','codex','native',watch=False)

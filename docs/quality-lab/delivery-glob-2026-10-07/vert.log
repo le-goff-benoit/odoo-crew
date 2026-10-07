@@ -1,0 +1,29 @@
+test_recursive_glob_accepts_file_at_zero_directory_depth (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) ... ok
+test_recursive_glob_accepts_nested_file_and_rejects_absence (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) ... ok
+test_same_result_as_odoo_stdlib_glob_on_reserved_patterns (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) ... ok
+test_actual_previous_version_required_not_just_git_base (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_build_must_cover_entire_target_module_and_no_untracked_files (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_deployment_mutations_old_version_wrong_target_unsourced_effect_failed_build (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_failed_build_and_changed_log_rejected (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_manifest_missing_file_blocks_delivery (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_migration_file_presence_does_not_prove_execution (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_migration_must_be_in_target_range_and_have_entrypoint (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_proof_command_and_environment_cannot_be_substituted (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_ready_is_not_deployed_and_sourced_read_closes_contract (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_relative_module_paths_normalize_shell_completion (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_schema_change_without_version_bump (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_schema_summary_cannot_be_edited_to_hide_error (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_submodule_inside_module_is_not_silently_excluded (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_unchanged_migration_in_version_range_still_requires_execution (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_unsourced_attestation_and_tampered_capture_rejected (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_untracked_import_is_missing_from_exact_commit (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_valid_migration_and_old_unchanged_history (tests.pilotage.test_odoo_delivery_guard.DeliveryGuardTests) ... ok
+test_incoming_email_import_is_not_removed (tests.pilotage.test_odoo_delivery.RemovedDeliveryTests) ... ok
+test_legacy_commands_refused_without_echoing_arguments (tests.pilotage.test_odoo_delivery.RemovedDeliveryTests) ... ok
+test_no_importable_send_or_connection_api (tests.pilotage.test_odoo_delivery.RemovedDeliveryTests) ... ok
+test_old_records_not_read_or_modified (tests.pilotage.test_odoo_delivery.RemovedDeliveryTests) ... ok
+
+----------------------------------------------------------------------
+Ran 24 tests in 1.498s
+
+OK

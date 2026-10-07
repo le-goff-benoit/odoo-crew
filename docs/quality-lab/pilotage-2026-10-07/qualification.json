@@ -1,0 +1,117 @@
+{
+  "baseline": "d4c5d6dabc1e29769b84f7f334466881de76d71b",
+  "maximum_calls": 8,
+  "calls_started": 3,
+  "completed": 2,
+  "campaign": "incomplete",
+  "stop_reason": "Claude Code subscription disabled by organization",
+  "adoption": "No model, effort or delegation policy changed; no general performance conclusion.",
+  "trials": [
+    {
+      "id": "positive-codex-reference",
+      "provider": "codex",
+      "seconds": 67.838,
+      "transport": "completed",
+      "usage": {
+        "input_tokens": 82417,
+        "cached_input_tokens": 44928,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1887,
+        "reasoning_output_tokens": 30
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "reading": {
+        "native_outputs_complete": true,
+        "calls": 7,
+        "total_characters_returned": 15684,
+        "entrypoint_characters_returned": 10085,
+        "references_characters_returned": 3392,
+        "unique_sources": 7,
+        "entrypoint": "/home/blegoff/.codex/skills/odoo-tester/SKILL.md"
+      },
+      "problems": [],
+      "result_sha256": "b3b233fdafc97985e9d8458a8ed254454d47a92fd241c4e5cde77d40e56327eb"
+    },
+    {
+      "id": "positive-codex-candidate",
+      "provider": "codex",
+      "seconds": 59.057,
+      "transport": "completed",
+      "usage": {
+        "input_tokens": 65878,
+        "cached_input_tokens": 46080,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 1839,
+        "reasoning_output_tokens": 0
+      },
+      "actual_model": null,
+      "actual_effort": null,
+      "reading": {
+        "native_outputs_complete": true,
+        "calls": 7,
+        "total_characters_returned": 16402,
+        "entrypoint_characters_returned": 10803,
+        "references_characters_returned": 3392,
+        "unique_sources": 7,
+        "entrypoint": "/home/blegoff/.codex/skills/odoo-tester/SKILL.md"
+      },
+      "problems": [],
+      "result_sha256": "173a876cdc6c5ae6fa10126adb854c8cacfa2691e4f353a170947238ed4703dc"
+    },
+    {
+      "id": "positive-claude-candidate",
+      "provider": "claude",
+      "seconds": 2.516,
+      "transport": "error",
+      "usage": {
+        "tokens": {
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "input_tokens": 0,
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "output_tokens": 0,
+          "server_tool_use": {
+            "web_search_requests": 0,
+            "web_fetch_requests": 0
+          },
+          "service_tier": "standard",
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "inference_geo": "",
+          "iterations": [],
+          "speed": "standard",
+          "fallback_credit": null
+        },
+        "cost_usd": 0
+      },
+      "actual_model": "<synthetic>",
+      "actual_effort": null,
+      "reading": {
+        "native_outputs_complete": true,
+        "calls": 0,
+        "total_characters_returned": 0,
+        "entrypoint_characters_returned": 0,
+        "references_characters_returned": 0,
+        "unique_sources": 0,
+        "entrypoint": "/home/blegoff/.claude/agents/odoo-tester.md"
+      },
+      "problems": [
+        "résultat JSON absent",
+        "profil généré non lu via instrument",
+        "pièces originales non lues via instrument"
+      ],
+      "result_sha256": null
+    }
+  ],
+  "semantic_review": {
+    "reviewer": "independent Crew reviewer",
+    "positive_codex_reference": "accepted documentary scope only",
+    "positive_codex_candidate": "accepted documentary scope only",
+    "holdout": "not executed"
+  }
+}

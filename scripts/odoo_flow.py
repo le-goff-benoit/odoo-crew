@@ -652,7 +652,14 @@ def claim_node(state_path: Path, graph_path: Path, node_name: str, owner: str) -
             for other in definition['tasks']:
                 if other['id'] == task['id'] or not odoo_plan.overlapping(task['scopes'], other['scopes'], project):
                     continue
-                if odoo_plan.task_status(other, project)[0] in ('running', 'awaiting_receipt', 'interrupted'):
+                other_status = odoo_plan.task_status(other, project)[0]
+                if other_status in ('running', 'awaiting_receipt', 'interrupted'):
+                    # A completed dependent can only receive its result after this
+                    # prerequisite is revalidated; its source proofs guard changes.
+                    if (other_status == 'awaiting_receipt' and
+                            odoo_plan.depends_on_transitively(
+                                other, task['id'], {item['id']: item for item in definition['tasks']})):
+                        continue
                     candidate = (other.get('attempts') or [{}])[-1].get('candidate')
                     if not (candidate and active_for_task(other, project) and isolated(candidate, task)):
                         raise FlowError('périmètre de reprise réservé par ' + other['id'])

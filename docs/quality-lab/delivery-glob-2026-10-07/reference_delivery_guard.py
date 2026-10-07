@@ -72,21 +72,6 @@ def fields(entries, prefix):
     return found
 
 
-def asset_glob_matches(path, pattern):
-    """Match Git paths like Odoo's glob(..., recursive=True), without reading the checkout."""
-    def match(parts, patterns):
-        if not patterns:
-            return not parts
-        if patterns[0] == '**':
-            return match(parts, patterns[1:]) or bool(
-                parts and not parts[0].startswith('.') and match(parts[1:], patterns)
-            )
-        return bool(parts and (not parts[0].startswith('.') or patterns[0].startswith('.'))
-                    and fnmatch.fnmatchcase(parts[0], patterns[0]) and match(parts[1:], patterns[1:]))
-
-    return match(PurePosixPath(path).parts, PurePosixPath(pattern).parts)
-
-
 def check_module(entries, prefix, errors):
     for path, item in entries.items():
         if not path.startswith(prefix + '/'):
@@ -120,7 +105,7 @@ def check_module(entries, prefix, errors):
             for name in names:
                 if isinstance(name, str) and name.startswith(PurePosixPath(prefix).name + '/'):
                     pattern = str(PurePosixPath(prefix).parent / name)
-                    if not any(asset_glob_matches(p, pattern) for p in entries):
+                    if not any(fnmatch.fnmatch(p, pattern) for p in entries):
                         errors.append('asset déclaré absent : ' + pattern)
     return manifest
 

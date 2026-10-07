@@ -233,3 +233,9 @@ ciblé par défaut (`--full-memory` pour le détail), décisions acceptées disp
 entre releases, publication de petits ajouts mémoire et collecte automatique des
 retours. Le tri ne modifie aucune règle générale sans évaluation. Tricorder propose
 le parcours demande → travail → réception et garde les instruments dans Détails.
+
+## Pilotage — octobre 2026
+
+[Contrats de pilotage](docs/PILOTAGE.md) : résultats métier, moyens de recette,
+publication avec réserves, apprentissages projet et collecte durable des mesures.
+[Bilan et limites de la release](docs/quality-lab/pilotage-2026-10-07/README.md).

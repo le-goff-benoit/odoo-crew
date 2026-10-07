@@ -56,3 +56,14 @@ le distinguant du réalisé. Sans plan, `add-task` permet de déclarer le travai
 passé sans prévision artificielle. L'absence de traces anciennes ou de coût ne bloque
 pas la QA : le bilan indique précisément ce qui manque. Termine par une entrée
 de journal courte qui référence l'estimation et ses hypothèses principales.
+
+Mesures durables : pour une session **dédiée à une seule tâche et un rôle stable**,
+préférer `odoo_effort.py track <release> --task T01 --agent odoo-developer
+--provider codex --source <journal-session>`. Le collecteur local importe les
+segments natifs toutes les 15 secondes ; `odoo_work.py prepare` récupère les
+segments après interruption et relance la collecte. Le rôle reste stable entre
+reprises ; l'identité de session est conservée séparément. Une conversation
+multi-tâches utilise des fenêtres `import-usage --since --until` disjointes,
+jamais un import intégral attribué arbitrairement. `check-estimates <release>`
+contrôle la couverture avant lancement. Les durées natives manquantes restent
+inconnues ; les segments connus demeurent visibles et ne deviennent pas un total.

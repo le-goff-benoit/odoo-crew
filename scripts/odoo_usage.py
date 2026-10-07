@@ -402,6 +402,7 @@ def read_usage(path, provider, since=None, until=None):
         start = end = None
         warnings.append("window_outside_observed_session")
     active = _union(intervals, lower, upper) if intervals else None
+    known_active = active
     if "some_completed_turn_durations_missing" in warnings:
         active = None
     if active is None:
@@ -421,7 +422,7 @@ def read_usage(path, provider, since=None, until=None):
         "model": next(iter(models)) if len(models) == 1 else None,
         "started_at": _iso(start), "ended_at": _iso(end),
         "elapsed_seconds": round(end - start, 6) if start is not None and end is not None else None,
-        "active_seconds": active, "complete": complete, "tokens": tokens,
+        "active_seconds": active, "known_active_seconds": known_active, "complete": complete, "tokens": tokens,
         "tokens_complete": tokens is not None and all(tokens.get(k) is not None for k in TOKEN_KEYS),
         "provider_cost": cost, "source_sha256": hashlib.sha256(raw).hexdigest(),
         "warnings": sorted(set(warnings)), "identities": sorted(identities),

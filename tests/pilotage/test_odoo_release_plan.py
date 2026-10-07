@@ -88,6 +88,43 @@ class ReleasePlanTests(unittest.TestCase):
         self.assertTrue(plan.available(p, self.root, 'D')[0])
         with self.assertRaises(ValueError): plan.mutate(self.release, 'start', 'C')
 
+    def test_terminal_dependent_waiting_for_receipt_allows_dependency_revalidation(self):
+        self.definition['tasks'] = [self.task('A', 'a'), self.task('B', 'a', ['A'])]
+        self.init(); self.finish_a()
+        dependent_flow = Path(plan.mutate(self.release, 'start', 'B'))
+        plan.mutate(self.release, 'reopen', 'A', reason='source partagée à revalider')
+        p, _ = plan.read(self.release)
+        self.assertFalse(plan.available(p, self.root, 'A')[0])
+        state = json.loads(dependent_flow.read_text())
+        state['status'] = 'complete'
+        dependent_flow.write_text(json.dumps(state))
+        p, _ = plan.read(self.release)
+        self.assertEqual(plan.statuses(p, self.root)['B'][0], 'awaiting_receipt')
+        self.assertTrue(plan.available(p, self.root, 'A')[0])
+
+    def test_terminal_dependent_allows_transitive_dependency_revalidation(self):
+        self.definition['tasks'] = [self.task('A', 'a'), self.task('B', 'a', ['A']),
+                                    self.task('C', 'a', ['B'])]
+        self.init(); self.finish_a()
+        intermediate_flow = Path(plan.mutate(self.release, 'start', 'B'))
+        state = json.loads(intermediate_flow.read_text())
+        state['status'] = 'complete'
+        intermediate_flow.write_text(json.dumps(state))
+        for filename in ('acceptance-b.md', 'memory-b.md'):
+            (self.root / filename).write_text('résultat B contrôlé')
+        plan.mutate(self.release, 'finish', 'B', proof=self.proof(),
+                    acceptance='acceptance-b.md', memory='memory-b.md')
+        dependent_flow = Path(plan.mutate(self.release, 'start', 'C'))
+        plan.mutate(self.release, 'reopen', 'A', reason='source partagée à revalider')
+        state = json.loads(dependent_flow.read_text())
+        state['status'] = 'complete'
+        dependent_flow.write_text(json.dumps(state))
+        p, _ = plan.read(self.release)
+        self.assertEqual(plan.statuses(p, self.root)['C'][0], 'awaiting_receipt')
+        self.assertTrue(plan.available(p, self.root, 'A')[0])
+        self.assertTrue(plan.depends_on_transitively(
+            p['tasks'][2], 'A', {task['id']: task for task in p['tasks']}))
+
     def test_existing_plan_and_fake_import_refused(self):
         self.init()
         with self.assertRaises(ValueError): self.init()

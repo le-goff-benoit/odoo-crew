@@ -1,0 +1,86 @@
+test_recursive_glob_accepts_file_at_zero_directory_depth (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) ... FAIL
+test_recursive_glob_accepts_nested_file_and_rejects_absence (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) ... ok
+test_same_result_as_odoo_stdlib_glob_on_reserved_patterns (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) ...
+======================================================================
+FAIL: test_recursive_glob_accepts_file_at_zero_directory_depth (tests.pilotage.test_delivery_asset_globs.AssetGlobTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_delivery_asset_globs.py", line 19, in test_recursive_glob_accepts_file_at_zero_directory_depth
+    self.assertEqual(self.errors('sample/static/tests/tours/**/*', ['sample/static/tests/tours/tour.js']), [])
+AssertionError: Lists differ: ['asset déclaré absent : sample/static/tests/tours/**/*'] != []
+
+First list contains 1 additional elements.
+First extra element 0:
+'asset déclaré absent : sample/static/tests/tours/**/*'
+
+- ['asset déclaré absent : sample/static/tests/tours/**/*']
++ []
+
+======================================================================
+FAIL: test_same_result_as_odoo_stdlib_glob_on_reserved_patterns (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) (pattern='sample/static/js/*.js', file='sample/static/js/nested/b.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_delivery_asset_globs.py", line 36, in test_same_result_as_odoo_stdlib_glob_on_reserved_patterns
+    self.assertEqual(not self.errors(pattern, [name]), expected)
+AssertionError: True != False
+
+======================================================================
+FAIL: test_same_result_as_odoo_stdlib_glob_on_reserved_patterns (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) (pattern='sample/static/js/*.js', file='sample/static/js/nested/deeper/c.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_delivery_asset_globs.py", line 36, in test_same_result_as_odoo_stdlib_glob_on_reserved_patterns
+    self.assertEqual(not self.errors(pattern, [name]), expected)
+AssertionError: True != False
+
+======================================================================
+FAIL: test_same_result_as_odoo_stdlib_glob_on_reserved_patterns (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) (pattern='sample/static/js/*.js', file='sample/static/js/.hidden.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_delivery_asset_globs.py", line 36, in test_same_result_as_odoo_stdlib_glob_on_reserved_patterns
+    self.assertEqual(not self.errors(pattern, [name]), expected)
+AssertionError: True != False
+
+======================================================================
+FAIL: test_same_result_as_odoo_stdlib_glob_on_reserved_patterns (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) (pattern='sample/static/js/*.js', file='sample/static/js/.hidden/d.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_delivery_asset_globs.py", line 36, in test_same_result_as_odoo_stdlib_glob_on_reserved_patterns
+    self.assertEqual(not self.errors(pattern, [name]), expected)
+AssertionError: True != False
+
+======================================================================
+FAIL: test_same_result_as_odoo_stdlib_glob_on_reserved_patterns (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) (pattern='sample/static/js/**/*.js', file='sample/static/js/a.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_delivery_asset_globs.py", line 36, in test_same_result_as_odoo_stdlib_glob_on_reserved_patterns
+    self.assertEqual(not self.errors(pattern, [name]), expected)
+AssertionError: False != True
+
+======================================================================
+FAIL: test_same_result_as_odoo_stdlib_glob_on_reserved_patterns (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) (pattern='sample/static/js/**/*.js', file='sample/static/js/.hidden/d.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_delivery_asset_globs.py", line 36, in test_same_result_as_odoo_stdlib_glob_on_reserved_patterns
+    self.assertEqual(not self.errors(pattern, [name]), expected)
+AssertionError: True != False
+
+======================================================================
+FAIL: test_same_result_as_odoo_stdlib_glob_on_reserved_patterns (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) (pattern='sample/static/**/*.js', file='sample/static/js/.hidden.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_delivery_asset_globs.py", line 36, in test_same_result_as_odoo_stdlib_glob_on_reserved_patterns
+    self.assertEqual(not self.errors(pattern, [name]), expected)
+AssertionError: True != False
+
+======================================================================
+FAIL: test_same_result_as_odoo_stdlib_glob_on_reserved_patterns (tests.pilotage.test_delivery_asset_globs.AssetGlobTests) (pattern='sample/static/**/*.js', file='sample/static/js/.hidden/d.js')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/blegoff/.odoo19-agents/tests/pilotage/test_delivery_asset_globs.py", line 36, in test_same_result_as_odoo_stdlib_glob_on_reserved_patterns
+    self.assertEqual(not self.errors(pattern, [name]), expected)
+AssertionError: True != False
+
+----------------------------------------------------------------------
+Ran 3 tests in 0.006s
+
+FAILED (failures=9)

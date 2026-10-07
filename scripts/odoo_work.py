@@ -30,10 +30,12 @@ def status(root, release=None, task=None):
             raise ValueError('tâche absente du plan sélectionné')
     memory = odoo_knowledge.snapshot(root, release)
     warnings.extend(memory['warnings'])
+    from odoo_pilotage import learnings
+    project_learnings = [r for r in learnings(root) if r['current']]
     feedback = odoo_feedback.snapshot(root, release)
     warnings.extend(feedback['warnings'])
     return {'schema': 1, 'project': str(root), 'release': release, 'task': task,
-            'tasks': tasks, 'feedback_pending': feedback['pending'], 'warnings': warnings,
+            'learnings': project_learnings, 'tasks': tasks, 'feedback_pending': feedback['pending'], 'warnings': warnings,
             'next': 'Reprendre le flow existant et ses preuves.' if any(t['attempt'] for t in tasks if not task or task == t['id'])
                     else 'Qualifier la demande avec /odoo-new, ou exécuter le plan autorisé avec /odoo-start.',
             'completion': 'Critères couverts, preuves actuelles et réception publiée. Une preuve valide se réutilise ; un nouvel essai exige une cause.'}
@@ -66,6 +68,9 @@ def main():
                 raise ValueError('--release et --task requis')
             import odoo_plan
             folder = odoo_knowledge.release_path(args.project, args.release)
+            if args.action == 'start':
+                from odoo_effort import forecast_coverage
+                forecast_coverage(folder)
             print(odoo_plan.mutate(folder, 'start' if args.action == 'start' else 'finish', args.task,
                 proof=args.proof, acceptance=args.acceptance, memory=args.memory, knowledge=args.knowledge,
                 check_proofs=json.loads(args.check_proofs.read_text()) if args.check_proofs else None))
@@ -75,7 +80,12 @@ def main():
                 raise ValueError('--release et --file requis ; contribution relue avec ses sources')
             print(odoo_knowledge.publish(args.project, args.release, json.loads(args.file.read_text())))
             return
+        if args.action == 'prepare':
+            from odoo_effort_watch import reconcile
+            recovered = reconcile(args.project)
         current = status(args.project, args.release, args.task)
+        if args.action == 'prepare':
+            current['measurements'] = recovered
         if args.action in ('prepare', 'feedback'):
             result = odoo_feedback.automatic(args.project, args.release)
             current['feedback_pending'] = result.get('pending')

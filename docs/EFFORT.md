@@ -255,3 +255,16 @@ Références pour distinguer prix techniques et abonnement :
 [tarification API OpenAI](https://developers.openai.com/api/docs/pricing) et
 [tarification Codex](https://learn.chatgpt.com/docs/pricing), consultées le
 9 septembre 2026. Aucun prix de ces pages n'est recopié comme valeur par défaut.
+
+## Collecte durable et corrections Express
+
+`track` suit une session dédiée avec estimation préalable ; `prepare` récupère
+les segments après interruption. `seal-tracking` effectue le dernier import et
+arrête les collecteurs avant `report`, en signalant les mesures incomplètes.
+Les chemins natifs restent dans le cache local privé. Les fenêtres multi-tâches
+restent explicites et disjointes. Voir [PILOTAGE.md](PILOTAGE.md).
+
+`express-init <projet> --flow <flow-relatif> --title "Résultat métier"` prépare
+`.odoo-agents/express/<flow-id>` ; estimer et mesurer la tâche `EXPRESS` dans ce
+dossier avec les mêmes commandes. Les allocations sont contrôlées contre les
+releases et la préparation pour éviter les doubles comptes.

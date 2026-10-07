@@ -112,3 +112,10 @@ pas « déployé » par un push. Ces contrôles restent distincts de la recette 
 Pour les nouveaux plans, active `shared_memory: true`. Lis `docs/KNOWLEDGE.md` :
 la mémoire se nourrit dès les intentions puis à chaque découverte/réception,
 et se transmet aux agents de chaque tâche, sans attendre la clôture.
+
+Le résumé d'intention contient demande exacte, résultat souhaité, proposition
+concrète de tâches, contraintes et décisions. Conserver les questions posées
+avec leur réponse dans `questions` (`text`, `answer`) ; seules celles sans réponse
+restent ouvertes. Compléter `proposal` lors du cadrage et après chaque arbitrage.
+Avant exécution, estimer toutes les tâches et le travail commun `RELEASE` avec
+hypothèses ; aucun identifiant de session ne remplace le rôle estimé.

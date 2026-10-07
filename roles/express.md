@@ -66,3 +66,11 @@ l'utilisateur a explicitement demandé de pousser, déployer ou travailler « en
 express » avec livraison. Après le push, relis la référence distante et vérifie
 qu'elle correspond au commit local. Une production Odoo reste soumise aux règles
 de confirmation de `odoo_instance.py`.
+
+Dès qualification, `odoo_effort.py express-init <projet> --flow <flow-relatif>
+--title "Résultat métier de la correction"` crée son registre de temps local au
+projet. Estimer la tâche `EXPRESS` avant réalisation, puis mesurer selon
+`roles/estimation.md`. Utiliser une phrase métier dans les résultats des nœuds
+`express_scope` et `express_implementation` : le cockpit affiche ces descriptions.
+À la fin, sceller la collecte et générer le bilan de ce registre. Une intervention
+Express garde son propre suivi, sans fabriquer une release complète.

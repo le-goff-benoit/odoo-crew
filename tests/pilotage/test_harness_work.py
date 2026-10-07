@@ -20,6 +20,12 @@ class WorkTests(unittest.TestCase):
             plan.initialise(release, {'schema': 1, 'tasks': [{'id': 'T1', 'title': 'Résultat', 'request': 'request.md',
                 'route': 'module', 'risk': 'normal', 'acceptance': ['résultat = 1'], 'scopes': ['code.py'], 'depends_on': []}]})
             self.assertTrue(work.status(root, 'test', 'T1')['tasks'][0]['ready'])
+            import odoo_effort as effort
+            effort.init(release)
+            effort.estimate(release, {'lines': [{'task':'T1','agent':'odoo-developer','optimistic_minutes':1,
+                'likely_minutes':2,'pessimistic_minutes':3,'basis':'Synthetic','confidence':'low','assumptions':['Local copy']},
+                {'task':'RELEASE','title':'Livraison','agent':'orchestrator','optimistic_minutes':1,'likely_minutes':2,'pessimistic_minutes':3,
+                 'basis':'Synthetic','confidence':'low','assumptions':['Local copy']}]})
             command = [sys.executable, work.__file__]
             first = subprocess.run(command + ['start', str(root), '--release', 'test', '--task', 'T1'], capture_output=True, text=True)
             self.assertEqual(first.returncode, 0, first.stderr)

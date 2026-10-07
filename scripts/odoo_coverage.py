@@ -57,6 +57,9 @@ def contract(project, source):
         raise ValueError('identifiants de critères dupliqués')
     result = {'source': str(path.relative_to(Path(project).resolve())),
               'source_sha256': digest(path.read_bytes()), 'criteria': criteria}
+    oracle = path.with_suffix('.business.json')
+    if oracle.is_file():
+        result['business_contract'] = {'path': str(oracle.relative_to(Path(project).resolve())), 'sha256': digest(oracle.read_bytes())}
     result['sha256'] = digest(json.dumps(result, sort_keys=True, ensure_ascii=False).encode())
     return result
 
@@ -79,6 +82,9 @@ def verify(proof, pinned, project, require_complete=True):
     missing = [row['id'] for row in rows if row.get('status') != 'covered']
     if missing and require_complete:
         raise ValueError('critères non couverts : ' + ', '.join(missing))
+    if require_complete and pinned.get('business_contract'):
+        from odoo_pilotage import business_results
+        business_results(project, pinned['business_contract'], proof.get('business_observation', {}))
     for row in rows:
         if row.get('status') not in {'covered', 'partial', 'missing', 'failed'}:
             raise ValueError(row['id'] + ' : statut de couverture invalide')
