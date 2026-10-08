@@ -32,6 +32,7 @@ restauration, `LESSONS.md` pour les erreurs déjà payées. Charger selon le bes
 | Validation seule | `odoo-tester` |
 | Guide ou communication demandés | `camptocamp-docs` |
 | Environnements et accès | `/odoo-env` |
+| Préparer/suivre une livraison GitHub → Odoo.sh | `odoo-deployer` : candidat, accord exact, build puis vérification |
 | Estimation des agents | `/odoo-estimate` |
 | Remarque à retenir / bilan | `/odoo-feedback` |
 | Améliorer les agents et outils | `/odoo-improve` |

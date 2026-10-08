@@ -22,6 +22,7 @@ version Odoo de votre projet.
 | **Expert Studio** | Configure les champs, écrans et automatisations, avec un suivi des changements. |
 | **Responsable qualité** | Vérifie les résultats attendus et identifie ce qui reste à corriger. |
 | **Support** | Recherche la cause d’un problème et propose un contournement ou la suite à donner. |
+| **Déploiement** | Prépare un candidat et suit GitHub → Odoo.sh, avec accord exact et vérification de la cible (profil expérimental). |
 
 L’**agent principal orchestre le travail** : il mobilise les rôles nécessaires,
 regroupe leurs résultats et vous sollicite pour les décisions manquantes.
@@ -239,3 +240,15 @@ le parcours demande → travail → réception et garde les instruments dans Dé
 [Contrats de pilotage](docs/PILOTAGE.md) : résultats métier, moyens de recette,
 publication avec réserves, apprentissages projet et collecte durable des mesures.
 [Bilan et limites de la release](docs/quality-lab/pilotage-2026-10-07/README.md).
+
+## Pack Tricorder expérimental
+
+`tricorder-pack.json` expose les six profils métier au nouveau moteur générique.
+L’import lit les rôles, leurs empreintes et les règles de série/plateforme ; il
+ne lance aucun script ni déploiement. `odoo-deployer` est généré par `build.sh`
+pour Claude et Codex. Les anciens contrats de flows Crew restent en place dans
+les outils historiques ; leur migration complète vers Tricorder n’est pas attestée.
+
+La livraison via GitHub puis Odoo.sh sera qualifiée sur les cibles indiquées par
+l’utilisateur. Les tests synthétiques du rôle et la conformité de génération ne
+prouvent pas un déploiement natif ni un gain de qualité.

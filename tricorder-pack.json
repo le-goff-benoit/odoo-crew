@@ -1,0 +1,27 @@
+{
+  "schema": 1,
+  "engine_schema": 1,
+  "id": "odoo-crew",
+  "title": "Odoo Crew",
+  "version": "0.1.0",
+  "status": "experimental",
+  "description": "Profils métier Odoo pour le moteur générique Tricorder. Déploiement GitHub puis Odoo.sh. Les outils natifs restent à qualifier par série et cible.",
+  "profiles": [
+    {"id": "odoo-analyst", "title": "Analyste Odoo", "source": "roles/functional-review.md"},
+    {"id": "odoo-developer", "title": "Développeur Odoo", "source": "roles/implementation.md"},
+    {"id": "odoo-studio", "title": "Configuration Studio", "source": "roles/studio.md"},
+    {"id": "odoo-tester", "title": "Testeur Odoo", "source": "roles/qa-review.md"},
+    {"id": "odoo-support", "title": "Support Odoo", "source": "roles/support.md"},
+    {"id": "odoo-deployer", "title": "Déploiement Odoo", "source": "roles/deployment.md"}
+  ],
+  "policies": {
+    "domain": "odoo",
+    "series_required": true,
+    "online_requires_studio": true,
+    "qa_requires_local_copy": true,
+    "production_approval": "each-exact-operation",
+    "release_root": "release",
+    "human_document": "README.md",
+    "tracking_directory": ".suivi"
+  }
+}

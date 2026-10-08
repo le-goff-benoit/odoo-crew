@@ -1,5 +1,15 @@
 # Suivi des propositions et critères d'adoption
 
+## 2026-10-08 — Pack Tricorder et préparation du déploiement
+
+- Ajout du manifeste de pack générique et du rôle canonique `deployment.md`.
+- Publication Git, build Odoo.sh et livraison observée séparés ; accord lié au candidat et à la cible.
+- Profil expérimental `odoo-deployer`, disponible après génération ; modèle piloté par la politique existante.
+- Validation : graphe 59 nœuds/129 arêtes ; 435 tests (1 ignoré), 38 sorties générées conformes ; skill valide.
+- Aucun appel natif de déploiement, aucun push ; pas de gain comportemental revendiqué.
+- La migration des anciens flows et dossiers de release Crew reste un travail distinct à achever.
+
+
 **Avancement utile — consigne adoptée à la demande du chef de projet** : contrat
 de mission, bilan après investigation longue ou dépassement du budget, acquis
 et décision attendue, poursuite motivée/recentrage/passation. Ni arrêt automatique,

@@ -116,6 +116,12 @@ emit "odoo-developer" "implementation" \
     "Implémenter un module custom Odoo dans la série du projet, avec sécurité, tests ciblés et lint. Après cadrage fonctionnel." \
     "green"
 
+emit "odoo-deployer" "deployment" \
+    "Read, Grep, Glob, Bash, Write, Edit" \
+    "Préparer et vérifier une livraison GitHub vers Odoo.sh" \
+    "Préparer un déploiement Odoo, vérifier son candidat et sa recette, suivre GitHub puis Odoo.sh après accord humain, et prouver la version livrée." \
+    "orange"
+
 emit "odoo-studio" "studio" \
     "Read, Grep, Glob, Bash, Write, Edit" \
     "Réaliser une demande sans module : Studio, automatisations, pack versionné" \
