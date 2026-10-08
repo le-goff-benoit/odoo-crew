@@ -241,14 +241,14 @@ le parcours demande → travail → réception et garde les instruments dans Dé
 publication avec réserves, apprentissages projet et collecte durable des mesures.
 [Bilan et limites de la release](docs/quality-lab/pilotage-2026-10-07/README.md).
 
-## Pack Tricorder expérimental
+## Pack Tricorder
 
-`tricorder-pack.json` expose les six profils métier au nouveau moteur générique.
-L’import lit les rôles, leurs empreintes et les règles de série/plateforme ; il
-ne lance aucun script ni déploiement. `odoo-deployer` est généré par `build.sh`
-pour Claude et Codex. Les anciens contrats de flows Crew restent en place dans
-les outils historiques ; leur migration complète vers Tricorder n’est pas attestée.
-
-La livraison via GitHub puis Odoo.sh sera qualifiée sur les cibles indiquées par
-l’utilisateur. Les tests synthétiques du rôle et la conformité de génération ne
-prouvent pas un déploiement natif ni un gain de qualité.
+`tricorder-pack.json` expose six profils métier au moteur générique (version 0.2).
+Leur source canonique est `roles/tricorder.md` : un contrat partagé et une section
+par métier. Le chargeur fige uniquement le contrat et la section du profil choisi.
+Ces profils remettent leurs résultats au moteur Tricorder ; ils ne créent pas de
+flows historiques. Code isolé, tests sur copie locale, accords de publication et
+suivi GitHub → Odoo.sh sont séparés. Les anciennes commandes restent utilisables
+pour les projets existants ; elles ne sont pas importées dans le pack.
+La qualification métier et les connexions réelles restent propres à la série,
+au projet et aux comptes configurés. Un résultat local ne qualifie pas Odoo.sh.

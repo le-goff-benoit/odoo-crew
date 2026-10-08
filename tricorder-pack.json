@@ -3,16 +3,46 @@
   "engine_schema": 1,
   "id": "odoo-crew",
   "title": "Odoo Crew",
-  "version": "0.1.0",
-  "status": "experimental",
-  "description": "Profils métier Odoo pour le moteur générique Tricorder. Déploiement GitHub puis Odoo.sh. Les outils natifs restent à qualifier par série et cible.",
+  "version": "0.2.0",
+  "status": "validated-local",
+  "description": "Profils Odoo dédiés au moteur Tricorder : code isolé, preuves et décisions humaines. Qualification métier et distante propre à chaque série et cible.",
   "profiles": [
-    {"id": "odoo-analyst", "title": "Analyste Odoo", "source": "roles/functional-review.md"},
-    {"id": "odoo-developer", "title": "Développeur Odoo", "source": "roles/implementation.md"},
-    {"id": "odoo-studio", "title": "Configuration Studio", "source": "roles/studio.md"},
-    {"id": "odoo-tester", "title": "Testeur Odoo", "source": "roles/qa-review.md"},
-    {"id": "odoo-support", "title": "Support Odoo", "source": "roles/support.md"},
-    {"id": "odoo-deployer", "title": "Déploiement Odoo", "source": "roles/deployment.md"}
+    {
+      "id": "odoo-analyst",
+      "title": "Analyste Odoo",
+      "source": "roles/tricorder.md",
+      "section": "odoo-analyst"
+    },
+    {
+      "id": "odoo-developer",
+      "title": "Développeur Odoo",
+      "source": "roles/tricorder.md",
+      "section": "odoo-developer"
+    },
+    {
+      "id": "odoo-studio",
+      "title": "Configuration Studio",
+      "source": "roles/tricorder.md",
+      "section": "odoo-studio"
+    },
+    {
+      "id": "odoo-tester",
+      "title": "Testeur Odoo",
+      "source": "roles/tricorder.md",
+      "section": "odoo-tester"
+    },
+    {
+      "id": "odoo-support",
+      "title": "Support Odoo",
+      "source": "roles/tricorder.md",
+      "section": "odoo-support"
+    },
+    {
+      "id": "odoo-deployer",
+      "title": "Déploiement Odoo",
+      "source": "roles/tricorder.md",
+      "section": "odoo-deployer"
+    }
   ],
   "policies": {
     "domain": "odoo",
