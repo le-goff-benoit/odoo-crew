@@ -11,6 +11,12 @@ métier, avec un suivi des résultats et des prochaines étapes.
 Disponible dans **Claude Code et Codex**, avec une méthode commune adaptée à la
 version Odoo de votre projet.
 
+[Release du 8 octobre : revue, changements et limites](release/2026-10-08/README.md)
+
+![Profils Odoo dans le workflow Tricorder](release/2026-10-08/captures/pack-odoo.png)
+
+*Projet fictif : configuration des profils dans Tricorder, sans exécution métier Odoo.*
+
 [Commencer](docs/INSTALL.md) · [Qualité et résultats des essais](docs/quality-lab/README.md)
 
 ## À chacun son rôle, à vous le pilotage
@@ -243,9 +249,14 @@ publication avec réserves, apprentissages projet et collecte durable des mesure
 
 ## Pack Tricorder
 
-`tricorder-pack.json` expose six profils métier au moteur générique (version 0.2).
+`tricorder-pack.json` expose six profils métier au moteur générique (version 0.3.1).
 Leur source canonique est `roles/tricorder.md` : un contrat partagé et une section
 par métier. Le chargeur fige uniquement le contrat et la section du profil choisi.
+Les blocs fixent les entrées, sorties et décisions ; le profil précise la méthode.
+Les questions imprévues sont conservées par le moteur de conversation. Le support
+distingue urgence et risque : un test rouge est exigé pour un bug, pas pour une
+question d’usage. Ces ajustements de contrat ne constituent pas une mesure de
+qualité comportementale des modèles.
 Ces profils remettent leurs résultats au moteur Tricorder ; ils ne créent pas de
 flows historiques. Code isolé, tests sur copie locale, accords de publication et
 suivi GitHub → Odoo.sh sont séparés. Les anciennes commandes restent utilisables

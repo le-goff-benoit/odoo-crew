@@ -1,5 +1,33 @@
 # Suivi des propositions et critères d'adoption
 
+## 2026-10-08 — Revue conjointe, pack 0.3.1
+
+[Analyse et critères](../release/2026-10-08/README.md). Contrat explicité : une fin
+non résolue reste non résolue ; chaque tâche conserve la série et la plateforme
+de son projet. Corrections outillées dans Tricorder pour les paramètres effectifs,
+l’aiguillage après précision et les dépendances. Parité et contrats testés ; aucun
+gain comportemental des modèles revendiqué sans campagne native comparative.
+Les workflows CLI restent inchangés ; leurs boucles ne sont pas assimilées aux
+modèles graphiques. Les améliorations plus larges restent des axes à éprouver.
+
+
+## 2026-10-08 — Contrats de conversation Tricorder (0.3)
+
+Référence : `c00c315`, pack 0.2. Défaut reproduit par lecture comparative :
+le profil support imposait un test rouge même pour une demande d’usage ; le
+contrat ne séparait pas explicitement méthode du profil et aiguillage du bloc.
+La règle canonique support exige le test rouge lorsqu’un bug est diagnostiqué.
+
+Correction de fidélité adoptée : test rouge conditionné au bug, urgence distincte
+du risque, remise dans les I/O du bloc, questions durables via le moteur.
+Contre-épreuves déterministes Tricorder : sortie critique/ordinaire/inconnue,
+choix invalide refusé, même graphe Codex/Claude, réponse qui n’autorise pas une
+production, QA refusée sans copie locale et autorisée avec contexte déclaré.
+Preuves : `~/odoo-tricorder/release/2026-10-08_terminal-et-release/.suivi/preuves/`.
+Aucune campagne LLM exécutée, aucune supériorité d’agent ni qualité métier
+mesurée revendiquée. Les transitions sont prouvées, la qualité du diagnostic
+reste à recevoir sur chaque demande réelle.
+
 ## 2026-10-08 — Pack Tricorder et préparation du déploiement
 
 - Ajout du manifeste de pack générique et du rôle canonique `deployment.md`.

@@ -8,7 +8,7 @@ ROOT=Path(__file__).resolve().parents[2]
 class TricorderPackTests(unittest.TestCase):
     def test_six_dedicated_profiles_and_single_shared_contract(self):
         pack=json.loads((ROOT/'tricorder-pack.json').read_text())
-        self.assertEqual(pack['version'],'0.2.0')
+        self.assertEqual(pack['version'],'0.3.1')
         self.assertEqual(len(pack['profiles']),6)
         for profile in pack['profiles']:
             text=(ROOT/profile['source']).read_text()

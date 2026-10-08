@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-08",
+  "pack_version": "0.3.1",
+  "baseline_commit": "c00c315",
+  "scope": "Deterministic contracts, generation and synthetic Tricorder integration; no native LLM campaign.",
+  "graph": {
+    "nodes": 59,
+    "edges": 129,
+    "bounded_cycles": 6,
+    "result": "passed"
+  },
+  "unittest": {
+    "tests": 436,
+    "skipped": 1,
+    "result": "passed"
+  },
+  "generation": {
+    "isolated": "passed",
+    "parity": "passed",
+    "installed": "passed",
+    "files": 38,
+    "routing_blocks": 2
+  },
+  "screenshots": {
+    "pack-odoo.png": {
+      "fixture": "tests/studio.spec.cjs: review: Odoo profiles",
+      "result": "visually inspected",
+      "sha256": "87555db6b79d812dd96e00603df2da8a9063d6d9e29a6bddc95c887495e23560"
+    }
+  },
+  "limits": [
+    "No real client data, production writes or new model evaluation.",
+    "Textual profile improvements are not measured native behavioral gains."
+  ]
+}
