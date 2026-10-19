@@ -3,45 +3,15 @@
   "engine_schema": 1,
   "id": "odoo-crew",
   "title": "Odoo Crew",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "status": "validated-local",
-  "description": "Profils Odoo dédiés au moteur Tricorder : code isolé, preuves et décisions humaines. Qualification métier et distante propre à chaque série et cible.",
+  "description": "Un consultant Odoo polyvalent : analyse métier, conseil client, configuration, développement et vérification dans le cadre des blocs du moteur.",
   "profiles": [
     {
-      "id": "odoo-analyst",
-      "title": "Analyste Odoo",
+      "id": "odoo-consultant",
+      "title": "Consultant Odoo",
       "source": "roles/tricorder.md",
-      "section": "odoo-analyst"
-    },
-    {
-      "id": "odoo-developer",
-      "title": "Développeur Odoo",
-      "source": "roles/tricorder.md",
-      "section": "odoo-developer"
-    },
-    {
-      "id": "odoo-studio",
-      "title": "Configuration Studio",
-      "source": "roles/tricorder.md",
-      "section": "odoo-studio"
-    },
-    {
-      "id": "odoo-tester",
-      "title": "Testeur Odoo",
-      "source": "roles/tricorder.md",
-      "section": "odoo-tester"
-    },
-    {
-      "id": "odoo-support",
-      "title": "Support Odoo",
-      "source": "roles/tricorder.md",
-      "section": "odoo-support"
-    },
-    {
-      "id": "odoo-deployer",
-      "title": "Déploiement Odoo",
-      "source": "roles/tricorder.md",
-      "section": "odoo-deployer"
+      "section": "odoo-consultant"
     }
   ],
   "policies": {

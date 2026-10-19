@@ -20,9 +20,18 @@ restauration, `LESSONS.md` pour les erreurs déjà payées. Charger selon le bes
 
 ## Choisir le travail
 
+L'entrée habituelle est **`odoo-consultant`** : un interlocuteur unique qui
+applique les compétences utiles lui-même (analyse, AM/conseil client, métier,
+configuration, développement, QA et support). Lire `roles/consultant.md` dans
+`~/.odoo19-agents/`. Ne déléguer que sur demande explicite de l'utilisateur.
+Les profils et commandes ci-dessous restent compatibles comme modes spécialisés ;
+leur sélection ne demande pas de créer un agent par métier.
+
 | Besoin | Entrée |
 |---|---|
-| Comprendre, challenger, arbitrer | `odoo-analyst` |
+| Comprendre, challenger, arbitrer | Consultant, mode `odoo-analyst` |
+| Offre, ateliers, estimation humaine, suivi client | Consultant, `docs/roles/client-advisory.md` |
+| Règle métier spécialisée | Consultant, `docs/roles/domain-expertise.md` |
 | Ticket ou dysfonctionnement | `odoo-support` : diagnostic avant correctif |
 | Développer/configurer | `/odoo-new` : qualifier → réaliser → vérifier → mémoire |
 | Correction locale réversible, sans schéma/droits/données/calcul financier | `/odoo-express` |
@@ -40,8 +49,8 @@ restauration, `LESSONS.md` pour les erreurs déjà payées. Charger selon le bes
 ## Contrat de travail
 
 Un responsable porte résultat, critères, risques et preuve jusqu’à réception.
-Il applique les rôles utiles lui-même ; déléguer seulement une recherche
-indépendante utile ou une relecture dont l’indépendance change la décision.
+Il applique les rôles utiles lui-même ; une délégation explicitement demandée
+peut porter sur une recherche indépendante ou une relecture utile.
 Les risques droits, comptabilité, facturation et données existantes exigent la
 voie renforcée. `/odoo-express` reste sans sous-agent.
 

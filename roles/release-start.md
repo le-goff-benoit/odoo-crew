@@ -35,8 +35,9 @@ Après l'arrêt terminal `memory_task_blocked`, `reopen --reason` ouvre la voie 
 une nouvelle tentative et conserve l'historique ; ne rouvre pas une tâche encore
 active, ne supprime pas ses verrous à la main et ne déclare pas ses dépendants prêts.
 
-Des tâches indépendantes peuvent être préparées en parallèle quand le moteur de
-sous-agents est disponible. L'orchestrateur demeure l'unique écrivain de la
+Des tâches indépendantes peuvent être préparées en parallèle sur demande explicite
+de l'utilisateur, quand le moteur de sous-agents est disponible.
+L'orchestrateur demeure l'unique écrivain de la
 release et du journal. Les agents produisent des fragments isolés ; les verrous
 du graphe continuent à borner les écritures. Si leurs ressources sont communes,
 ils attendent ; n'annonce pas un parallélisme que le moteur n'a pas exécuté.

@@ -1,3 +1,12 @@
+## Un agent, plusieurs compétences
+
+Par défaut, le principal applique lui-même les rôles utiles dans sa session.
+Leur nom décrit une compétence ou une phase, pas un sous-agent à créer.
+La délégation exige une demande explicite de l'utilisateur, même si un outil
+de sous-agents est disponible. Les procédures historiques de délégation ne
+s'activent qu'après cette demande. Sans délégation, annoncer les auto-relectures
+comme non indépendantes ; ne jamais contourner un garde indépendant déjà lié.
+
 ## Modèle par rôle
 
 L'orchestrateur conserve le modèle principal et fixe critères, contrôles et

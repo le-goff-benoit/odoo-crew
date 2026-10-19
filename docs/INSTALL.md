@@ -36,6 +36,22 @@ jamais être écrit dans ces dépôts.
 
 ## Première installation
 
+Si le dépôt est déjà présent ailleurs, par exemple dans `~/odoo-crew`, utiliser
+ce checkout comme source canonique et créer le lien attendu (s'il est absent) :
+
+```bash
+ln -s ~/odoo-crew ~/.odoo19-agents
+cd ~/.odoo19-agents
+./build.sh
+```
+
+Ne pas remplacer un répertoire ou un lien existant. Après génération, ouvrir une
+nouvelle session Codex/Claude pour la découverte du skill `odoo-consultant` et du
+nouvel aiguillage. Une session déjà ouverte ne recharge pas nécessairement ses
+instructions. Pour vérifier sans modifier l'installation : `./build.sh --check`.
+
+Pour une installation neuve sans checkout existant :
+
 ```bash
 git clone git@github.com:le-goff-benoit/odoo-crew.git ~/.odoo19-agents
 cd ~/.odoo19-agents

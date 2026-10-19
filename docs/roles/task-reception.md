@@ -24,7 +24,7 @@ Les formats et limites sont dans `docs/QA_COVERAGE.md` du référentiel.
 
 **Réception de la demande et de la mémoire avant `pass`.** Prépare deux fichiers
 neufs contenant seulement les ajouts proposés de `PROJECT.md` et `JOURNAL.md`
-(décision, portée, exceptions, preuve et entrée de quinze lignes au plus). Ne les publie pas encore. Sur risque élevé ou ambiguïté métier, lorsque les sous-agents sont disponibles,
+(décision, portée, exceptions, preuve et entrée de quinze lignes au plus). Ne les publie pas encore. Sur risque élevé ou ambiguïté métier, lorsque la délégation est explicitement demandée et disponible,
 sur une tâche directe ou un flow du plan équipé de la reprise de réception, active le garde
 avec `odoo_flow.py prepare-reception <flow>` :
 `--source` pour la demande originale et chaque décision applicable, `--spec`

@@ -268,6 +268,10 @@ emit_skill() {
     done
 }
 
+emit_skill "odoo-consultant" "consultant" \
+    "Un consultant unique : métier, conseil client, configuration, code et mémoire" \
+    "Traiter une demande Odoo avec un seul interlocuteur : analyse métier, conseil client et offres, diagnostic, configuration ou développement, validation et apprentissages sourcés par release."
+
 emit_skill "camptocamp-docs" "docs" \
     "Guide utilisateur, changelog, communication client à la charte Camptocamp" \
     "Livrables documentaires Camptocamp pour un client Odoo : guide utilisateur ou de décision (DOCX + PDF à la charte, captures depuis une copie locale restaurée), dossier de changelog d'une release (README, demande, recette navigateur, communication client). Produit un guide DOCX/PDF ou une communication sur demande explicite, pour une release identifiée, y compris après clôture. Le doc.md métier appartient à /odoo-close."

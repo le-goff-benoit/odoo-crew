@@ -6,10 +6,10 @@ import unittest
 ROOT=Path(__file__).resolve().parents[2]
 
 class TricorderPackTests(unittest.TestCase):
-    def test_six_dedicated_profiles_and_single_shared_contract(self):
+    def test_single_consultant_profile_preserves_engine_contract(self):
         pack=json.loads((ROOT/'tricorder-pack.json').read_text())
-        self.assertEqual(pack['version'],'0.3.1')
-        self.assertEqual(len(pack['profiles']),6)
+        self.assertEqual(pack['version'],'0.4.0')
+        self.assertEqual([p['id'] for p in pack['profiles']], ['odoo-consultant'])
         for profile in pack['profiles']:
             text=(ROOT/profile['source']).read_text()
             sections=re.split(r'(?m)^## ([a-zA-Z][a-zA-Z0-9_.-]*)\s*$',text)

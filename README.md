@@ -1,125 +1,81 @@
-![Votre équipe d’agents Odoo, réunie autour de votre projet](docs/assets/agents-odoo-banner.png)
+# Un consultant Odoo, plusieurs compétences
 
-# Votre équipe d’agents pour les projets Odoo
+Un seul interlocuteur pour comprendre le besoin métier, conseiller le client,
+configurer Odoo, développer, vérifier le résultat et conserver les apprentissages.
+Disponible dans Claude Code et Codex, avec les sources de la série du client.
 
-**Du besoin métier à la livraison, avancez avec des spécialistes à vos côtés.**
+[Installation](docs/INSTALL.md) · [Mémoire](docs/KNOWLEDGE.md) · [Contrôles et limites](docs/quality-lab/README.md)
 
-Consultant fonctionnel ou chef de projet Odoo ? Confiez vos demandes aux agents
-pour cadrer, réaliser et vérifier le travail. Vous gardez la main sur les décisions
-métier, avec un suivi des résultats et des prochaines étapes.
+[Release du 19 octobre : consultant unique et fiches d'apprentissage](release/2026-10-19/README.md)
 
-Disponible dans **Claude Code et Codex**, avec une méthode commune adaptée à la
-version Odoo de votre projet.
+## Une entrée, des procédures spécialisées
 
-[Release du 8 octobre : revue, changements et limites](release/2026-10-08/README.md)
+Le skill **`odoo-consultant`** est l'entrée habituelle. Décrivez directement le
+résultat attendu ; le consultant mobilise les compétences nécessaires dans la
+même session. Il ne crée pas un agent BA, AM, développeur ou testeur à chaque étape.
+La délégation est réservée à une demande explicite de l'utilisateur. Le modèle
+principal reste inchangé et une auto-relecture n'est jamais dite indépendante.
 
-![Profils Odoo dans le workflow Tricorder](release/2026-10-08/captures/pack-odoo.png)
-
-*Projet fictif : configuration des profils dans Tricorder, sans exécution métier Odoo.*
-
-[Commencer](docs/INSTALL.md) · [Qualité et résultats des essais](docs/quality-lab/README.md)
-
-## À chacun son rôle, à vous le pilotage
-
-| Votre spécialiste | Ce qu’il vous apporte |
+| Compétence | Ce qu'elle apporte |
 |---|---|
-| **Analyste fonctionnel** | Clarifie le besoin, vérifie le standard et compare configuration, Studio et développement. |
-| **Développeur** | Réalise les évolutions spécifiques et leurs tests, selon les règles du projet. |
-| **Expert Studio** | Configure les champs, écrans et automatisations, avec un suivi des changements. |
-| **Responsable qualité** | Vérifie les résultats attendus et identifie ce qui reste à corriger. |
-| **Support** | Recherche la cause d’un problème et propose un contournement ou la suite à donner. |
-| **Déploiement** | Prépare un candidat et suit GitHub → Odoo.sh, avec accord exact et vérification de la cible (profil expérimental). |
+| Analyse métier / BA | Besoin réel, standard existant, critères et arbitrages. |
+| Conseil client / AM | Périmètre, offre, ateliers, hypothèses, responsabilités et suivi. |
+| Expertise fonctionnelle | Modules installés, dépendances, règles métier et sources officielles. |
+| Configuration / développement | Standard, Studio ou module custom, selon le projet et sa série. |
+| Qualité / support | Diagnostic, contrôles proportionnés, résultats et limites vérifiables. |
+| Livraison | Candidat, GitHub/Odoo.sh, autorisations et observation du résultat livré. |
 
-L’**agent principal orchestre le travail** : il mobilise les rôles nécessaires,
-regroupe leurs résultats et vous sollicite pour les décisions manquantes.
-Il peut déléguer des tâches indépendantes à des sous-agents, lorsque l’outil le permet.
+Les procédures se chargent au besoin : [consultant](roles/consultant.md),
+[conseil client](docs/roles/client-advisory.md), [expertise métier](docs/roles/domain-expertise.md).
+Aucun profil ne garantit une connaissance universelle : le consultant vérifie les
+sources pertinentes et distingue ce qui est observé de ce qui reste hypothétique.
+Les estimations de prestation humaine sont séparées des minutes d'exécution IA.
 
-## Comment les agents travaillent ensemble
+Les commandes `/odoo-new`, `/odoo-plan`, `/odoo-start`, `/odoo-close`,
+`/odoo-feedback` et `/odoo-improve` restent disponibles. Les anciens profils CLI
+restent compatibles comme modes spécialisés. Les flows existants gardent leurs
+contrats, verrous et preuves ; un garde de réception indépendante déjà lié n'est
+jamais contourné au motif que le travail devient mono-agent.
 
-**Une évolution : comprendre avant de réaliser.**
+Le pack Tricorder 0.4 propose uniquement le profil `odoo-consultant`. Les sections
+historiques restent dans `roles/tricorder.md` pour les workflows existants ; ceux-ci
+ne sont pas migrés automatiquement. Tricorder reste responsable de ses blocs,
+permissions et réceptions. Cette adaptation du pack ne prouve pas une exécution
+native dans une installation Tricorder externe.
 
-```text
-Votre demande --> Analyste
-                     |
-                     +--> Standard suffisant --> Recommandation
-                     |
-                     +--> Developpeur ou Studio --> Qualite --> Resultat verifie
-                                   ^                   |
-                                   +--- corrections ---+
-```
+## Apprendre pendant les releases et réutiliser après
 
-Chaque tâche conserve ses décisions et ses résultats dans la mémoire du projet.
-Un blocage ou un contrôle qui reste en échec vous est signalé.
+Les contributions sourcées vivent dans `changelog/<release>/knowledge/`.
+Les décisions acceptées alimentent `.odoo-agents/DECISIONS.json` et les découvertes
+acceptées `.odoo-agents/LEARNINGS.json`. Une proposition n'est pas un acquis.
+Le briefing les relit entre releases, avec leurs exceptions et contrôles de fraîcheur.
 
-**La mémoire de release est partagée pendant le travail.** Une découverte ou une
-question est publiée dès qu'elle peut aider une autre tâche. Les passations reçues
-alimentent immédiatement les suivantes ; une nouvelle décision désigne les tâches
-affectées, et leurs anciennes réceptions deviennent périmées. Documents DOCX,
-XLSX et PDF gardent leurs originaux et repères ; les sources Odoo sont indexées
-par série/révision, avec le custom séparé. La clôture consolide ces acquis.
-[Fonctionnement et commandes](docs/KNOWLEDGE.md) ·
-[Banc et limites](docs/quality-lab/knowledge-2026-09-15/README.md).
-
-**Une investigation longue reste pilotable.** Les agents font un point sur les
-acquis prouvés, la question restante et le prochain contrôle utile, avec sa durée
-indicative. Le budget déclenche une revue de l'approche, pas un arrêt automatique.
-L'analyste passe la main lorsque le besoin est suffisamment cadré ; un retour
-partiel ne devient pas une tâche prête à réceptionner. Ces consignes sont communes
-à Claude et Codex ; elles ne constituent pas un superviseur automatique.
-[Essais et limites](docs/quality-lab/progress-2026-09-11/README.md).
-
-**Un correctif express : modifier, vérifier et livrer sans coordination superflue.**
+`odoo_work.py prepare` génère aussi un dossier distinct, consultable :
 
 ```text
-/odoo-express --> Qualification courte --> Modification locale --> Test cible
-                         |                                         |
-                         +-- perimetre elargi --> /odoo-new        +--> Livraison demandee
+<projet>/.odoo-agents/learnings/
+├── index.json
+└── <release>--<id>.json
 ```
 
-Ce parcours s'applique aux retouches précises et réversibles dans une zone déjà
-connue, par exemple la mise en page d'un rapport sans changement de ses montants.
-L'agent principal réalise toutes les étapes. Le lint, la mise à jour du module et
-le test ciblé restent obligatoires. Les ajustements liés partagent la même entrée
-de changelog express.
+Ces fiches sont des vues du registre : actuelles, périmées ou remplacées. Elles
+ne remplacent ni les sources ni leur validation. L'export n'écrase pas les notes
+personnelles et ne transfère rien entre clients. Une connaissance générale peut
+ensuite rejoindre le référentiel partagé via `/odoo-improve`, avec vérification,
+contre-exemple et retrait des données confidentielles. Cela améliore les méthodes
+et références disponibles, sans réentraîner le modèle.
 
-**Une release : organiser plusieurs demandes jusqu’à la livraison.**
+Pour reprendre un travail et actualiser les fiches :
 
-```text
-/odoo-plan --> /odoo-estimate --> /odoo-start
-  Cadrer         Prevoir          Executer les taches
-                                       |
-                                       v
-                                  /odoo-close
-                            Recette complete + documentation
-                            + bilan du temps prevu / realise
+```bash
+python3 ~/.odoo19-agents/scripts/odoo_work.py prepare /projet --query "besoin métier"
+# Avec un plan existant : ajouter --release <id> --task <id>
 ```
 
-L’orchestrateur suit les dépendances. Les contrôles ciblés accompagnent chaque
-tâche ; la recette complète vérifie l’ensemble à la clôture.
-
-**Intentions → Plan → Exécution.** Le principal conserve les demandes originales,
-construit le plan et prescrit critères, cas et commandes de test avant délégation.
-Une précision nouvelle révise les tâches concernées et conserve les réceptions
-indépendantes. Le suivi d’orchestration indique les tâches autorisées et les attentes.
-Le garde Stop relance un principal qui s’arrête alors qu’une action autorisée est
-prête ; une fin d’enfant reste un résultat à examiner.
-
-La QA peut lire un candidat figé pendant un développement indépendant, avec
-worktree et ressources distincts ; la recette du résultat intégré reste requise.
-Le principal conserve son modèle. Les [candidats par rôle](docs/quality-lab/models-2026-09-15/README.md)
-restent expérimentaux. Voir le [guide d’exécution](docs/RELEASE_EXECUTION.md) et
-les [essais natifs de continuation](docs/quality-lab/continuation-2026-09-15/README.md).
-
-**Un ticket : diagnostiquer, puis orienter la suite.**
-
-```text
-Votre ticket --> Support --> Diagnostic
-                                |
-                                +--> Usage / configuration --> Explication
-                                +--> Bug prouve -------------> /odoo-new
-                                +--> Nouveau besoin ---------> Analyste
-                                +--> Donnees a reparer ------> Essai sur copie
-```
+Le [guide mémoire](docs/KNOWLEDGE.md) décrit les contributions et remplacements ;
+le [guide du harness](docs/HARNESS.md) décrit les contrôles et retours d'expérience.
+Les commandes ne remplacent pas les vérifications fonctionnelles. Les gains de
+qualité du nouveau profil ne sont pas établis par une campagne LLM comparative.
 
 ## Réduire les reprises et vérifier ce qui part
 
@@ -249,15 +205,16 @@ publication avec réserves, apprentissages projet et collecte durable des mesure
 
 ## Pack Tricorder
 
-`tricorder-pack.json` expose six profils métier au moteur générique (version 0.3.1).
-Leur source canonique est `roles/tricorder.md` : un contrat partagé et une section
-par métier. Le chargeur fige uniquement le contrat et la section du profil choisi.
+`tricorder-pack.json` expose un consultant polyvalent au moteur générique (version 0.4.0).
+Sa source canonique est `roles/tricorder.md` : un contrat partagé et une section
+consultant, avec les sections historiques conservées pour compatibilité.
+Le chargeur fige uniquement le contrat et la section du profil choisi.
 Les blocs fixent les entrées, sorties et décisions ; le profil précise la méthode.
 Les questions imprévues sont conservées par le moteur de conversation. Le support
 distingue urgence et risque : un test rouge est exigé pour un bug, pas pour une
 question d’usage. Ces ajustements de contrat ne constituent pas une mesure de
 qualité comportementale des modèles.
-Ces profils remettent leurs résultats au moteur Tricorder ; ils ne créent pas de
+Ce profil remet ses résultats au moteur Tricorder ; il ne crée pas de
 flows historiques. Code isolé, tests sur copie locale, accords de publication et
 suivi GitHub → Odoo.sh sont séparés. Les anciennes commandes restent utilisables
 pour les projets existants ; elles ne sont pas importées dans le pack.

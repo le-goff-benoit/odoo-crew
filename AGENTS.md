@@ -20,6 +20,11 @@ référentiel, scripts, stack). L'aiguillage Odoo de `~/.claude/CLAUDE.md` et
   `odoo-support` ; commandes `/odoo-new`, `/odoo-close`, `/odoo-feedback`, `/odoo-plan`,
   `/odoo-start`, `/odoo-express`, `/odoo-improve`, `/odoo-estimate` ;
   skill `camptocamp-docs`. Le vocabulaire est « release », pas « lot ».
+- L'entrée principale est le skill `odoo-consultant`, source `roles/consultant.md`.
+  Les profils historiques restent des modes compatibles ; par défaut le principal
+  les applique lui-même. Le pack Tricorder expose le seul consultant. Le dossier
+  projet `learnings/` est une projection de `LEARNINGS.json`, jamais une seconde
+  autorité ni une mémoire inter-clients.
 - Un renommage passe par `build.sh` (liste des anciens noms à retirer) et par
   les `AGENTS.md` des projets qui citent les commandes.
 

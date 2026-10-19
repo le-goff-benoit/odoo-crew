@@ -142,6 +142,33 @@ jamais leur vérité ou leur interprétation.
 
 ## Continuité entre releases
 
+Les découvertes acceptées alimentent déjà `.odoo-agents/LEARNINGS.json`, à partir
+des contributions immuables de `changelog/<release>/knowledge/`. Le consultant
+unique utilise ce même registre ; aucune nouvelle validation ou mémoire globale
+n'est inférée du changement de profil.
+
+`odoo_work.py prepare` actualise les fiches dans `.odoo-agents/learnings/`.
+Pour les actualiser seules :
+
+```bash
+python3 ~/.odoo19-agents/scripts/odoo_learnings.py PROJET
+```
+
+Chaque fiche JSON conserve portée, sources, exceptions, effet et origine de release.
+`index.json` distingue les fiches actuelles, périmées et remplacées. Les propositions
+ne deviennent pas des acquis ; un changement de source rend la fiche périmée.
+Le dossier est une vue générée locale, pas un endroit où éditer une règle. Publier
+la correction par contribution et remplacement explicite, puis régénérer. L'export
+préserve les notes personnelles et ne copie aucune donnée dans un autre projet.
+Les lectures du briefing continuent de valider le registre d'origine, jamais une
+fiche isolée. Une erreur d'export est annoncée sans invalider les tests du produit.
+
+Pour une nouvelle découverte, renseigner dans `scope` la série, le domaine et les
+modules concernés ; préciser la date d'effet dans l'énoncé pour une règle datée.
+La relecture peut être effectuée par le consultant et doit alors être désignée
+comme telle. Elle ne constitue pas une expertise légale indépendante. La promotion
+vers les références partagées reste le parcours `/odoo-improve`, sans données client.
+
 Les décisions acceptées publiées à partir du 30 septembre alimentent aussi le
 registre projet. `supersedes_project` désigne une décision d’une ancienne release.
 Les propositions ne sont jamais promues automatiquement ; les décisions

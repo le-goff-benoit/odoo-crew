@@ -31,8 +31,8 @@ créer trois agents pour économiser trente secondes coûte plus qu'il ne rappor
    les agents actifs et les nœuds parallélisables ;
 2. lis le profil de chaque nœud prêt, puis revendique les nœuds retenus avec
    `claim --owner <nom-explicite>` ; ne masque pas la sortie de la commande ;
-3. exécute le rôle toi-même, ou délègue les nœuds d'une même vague quand ils
-   sont indépendants et que cela améliore réellement délai ou qualité ;
+3. exécute le rôle toi-même ; seulement sur demande explicite de travail
+   multi-agent, délègue les nœuds indépendants d'une même vague ;
 4. donne à chaque agent le briefing déjà calculé, la demande, le chemin de la
    release, le mode du nœud et un fichier de preuve propre dans
    `.odoo-agents/flow-artifacts/<run>/<nœud>.md` ;
@@ -62,7 +62,8 @@ avec `--human-confirmed --evidence <fichier>`. Ce drapeau atteste seulement
 que l'orchestrateur vient de recevoir la décision ; `odoo_instance.py` garde
 ses propres confirmations obligatoires pour une écriture en production.
 
-Si la délégation n'est pas disponible, applique le rôle indiqué toi-même. Les
+Sans demande explicite de délégation, ou si elle n'est pas disponible,
+applique le rôle indiqué toi-même. Les
 preuves et les transitions sont identiques. **Les fichiers de la release sont
 le canal de transmission** : `revue_fonctionnelle.md` → code → `qa.md` ; le
 fichier de flow dit seulement où en est l'exécution.

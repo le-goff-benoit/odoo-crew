@@ -86,6 +86,13 @@ def main():
         current = status(args.project, args.release, args.task)
         if args.action == 'prepare':
             current['measurements'] = recovered
+            import odoo_learnings
+            try:
+                cards = odoo_learnings.export(args.project)
+                current['learning_cards'] = cards
+                current['warnings'].extend(cards['warnings'])
+            except (ValueError, OSError, KeyError, TypeError) as exc:
+                current['warnings'].append('Fiches apprentissages à régénérer : ' + str(exc))
         if args.action in ('prepare', 'feedback'):
             result = odoo_feedback.automatic(args.project, args.release)
             current['feedback_pending'] = result.get('pending')

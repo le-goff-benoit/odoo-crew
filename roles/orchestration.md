@@ -7,6 +7,12 @@ porte humaine, un terminal du graphe ou deux reprises infructueuses.
 
 ## Contrat permanent
 
+Par défaut tu réalises toi-même les phases fonctionnelle, technique et QA.
+Les rôles sont tes procédures ; leur succession ne crée pas de sous-agents.
+Les instructions de délégation ci-dessous ne s'appliquent que si l'utilisateur
+demande explicitement un travail multi-agent. La disponibilité d'un outil ne
+constitue pas cette demande. Une auto-relecture reste non indépendante.
+
 - Série avant code : briefing transmis ou `python3 ~/.odoo19-agents/scripts/odoo_briefing.py <projet>`.
   Si la tâche est identifiée, ajoute `--query "<tâche et objet métier>" --budget 12000`
   dès ce premier briefing ; consulte les omissions pertinentes avant de décider.
